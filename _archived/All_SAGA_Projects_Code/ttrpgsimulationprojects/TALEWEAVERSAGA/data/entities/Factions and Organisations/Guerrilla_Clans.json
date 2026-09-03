@@ -1,0 +1,67 @@
+{
+    "Name": "Guerrilla Clans",
+    "Type": "Faction",
+    "Description": "A reclusive and enigmatic force, the Guerrilla Clans are a masterclass in asymmetrical warfare, leveraging their mastery of disappearance, environmental navigation, and unconventional technology to outmaneuver and outlast their foes.",
+    "Core Philosophy": "A culture of quiet observation, where patience, study, and an intimate connection with the environment are the keys to success.",
+    "Military Doctrine": "The Unseen Hand",
+    "Tactical Applications": [
+        {
+            "name": "Leap-Charms",
+            "description": "Provides the user with a single, silent 50-foot jump.",
+            "function": "Force multiplier for rapid and silent repositioning."
+        },
+        {
+            "name": "Pop-Bolts",
+            "description": "A standard crossbow bolt enchanted to explode in a silent, concussive burst upon impact.",
+            "function": "Non-lethal tool for stunning sentries, creating powerful diversions, and disrupting enemy formations."
+        }
+    ],
+    "Technology": [
+        {
+            "name": "Charm",
+            "description": "A simple, single-use sigil painted by a 'hedge-wizard' to execute a specific guerrilla application.",
+            "function": "Tactical tool for precision ambushes, sabotage, and psychological warfare."
+        },
+        {
+            "name": "Leap-Charms",
+            "description": "Provides the user with a single, silent 50-foot jump.",
+            "function": "Force multiplier for rapid and silent repositioning."
+        },
+        {
+            "name": "Pop-Bolts",
+            "description": "A standard crossbow bolt enchanted to explode in a silent, concussive burst upon impact.",
+            "function": "Non-lethal tool for stunning sentries, creating powerful diversions, and disrupting enemy formations."
+        }
+    ],
+    "Social Structure": [
+        {
+            "name": "Constituent Peoples",
+            "description": "A confederation of peoples known for their agility and keen senses: primarily small cats, rabbits, and rodent people.",
+            "function": "Force multiplier for their military strategy."
+        },
+        {
+            "name": "Settlement Patterns",
+            "description": "Semi-nomadic or subterranean and camouflaged settlements designed to maintain security and mobility.",
+            "function": "Force multiplier for their military strategy."
+        }
+    ],
+    "Communication Methods": [
+        {
+            "name": "Whispering Network",
+            "description": "A discreet and efficient communication system utilizing natural sounds, specific animal calls, and subtle trail markers.",
+            "function": "Intelligence and command transmission."
+        }
+    ],
+    "Geopolitical Role and Foreign Relations": [
+        {
+            "name": "Primary Alliance",
+            "description": "The Free Sky-Baronies",
+            "function": "Mutual respect for self-determination and capability gaps."
+        },
+        {
+            "name": "Strict Protocol for Engagement",
+            "description": "A rigid and specific protocol for outsiders seeking a formal meeting.",
+            "function": "Maintains security and autonomy."
+        }
+    ]
+}

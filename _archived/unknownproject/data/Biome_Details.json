@@ -1,0 +1,97 @@
+[
+  {
+    "Biome": "The Whispering Savannah",
+    "Description": "A vast, broken landscape dominated by tall, waving grasses that can swallow travelers whole, punctuated by rugged outcrops and dense thorny thickets.",
+    "Factions": "Guerrilla Clans"
+  },
+  {
+    "Biome": "The Canopy Forests",
+    "Description": "Massive, high-altitude forests with trees large enough to support civilizations in their branches.",
+    "Factions": "Canopy Clans; Sylvan Empire"
+  },
+  {
+    "Biome": "The Lush Valley",
+    "Description": "A fertile, vibrant valley located between the spurs of the mountain chain, protected from the harsher elements.",
+    "Factions": "Flower Valley Folk"
+  },
+  {
+    "Biome": "The Petrified Crystal Forest",
+    "Description": "Once a living forest, now turned into stone and crystal by Chaos energy, located within the Crystal Basin.",
+    "Factions": "Prism-Scale Collective"
+  },
+  {
+    "Biome": "The Iron Caldera",
+    "Description": "A harsh, endless desert centered around volcanic activity. It features grit, intense heat, and \"Ironwood Oases\".",
+    "Factions": "Ironborn; Dust-Husk Drifters"
+  },
+  {
+    "Biome": "The Crystal Basin",
+    "Description": "An ancient ocean bed turned into a shimmering salt desert after being heaved to the surface.",
+    "Factions": "Prism-Scale Collective"
+  },
+  {
+    "Biome": "The Crater-Pocked Wasteland",
+    "Description": "A desolate, scarred landscape filled with impact craters.",
+    "Factions": "Vaneer Concord"
+  },
+  {
+    "Biome": "Obsidian Flatlands",
+    "Description": "Volcanic plains located on the East Coast near the jungles.",
+    "Factions": "Scute Confederacy"
+  },
+  {
+    "Biome": "The Rusty Cliffs",
+    "Description": "Rocky, inaccessible islands and cliffs along the southern coast.",
+    "Factions": "Marsupial Folk"
+  },
+  {
+    "Biome": "The Toxic River Delta",
+    "Description": "A massive, biologically hazardous river system filled with industrial runoff and natural toxins.",
+    "Factions": "River Folk"
+  },
+  {
+    "Biome": "The Sump-Mire",
+    "Description": "A dark, muddy swamp region similar to a \"Bayou Noir\" setting, featuring heavy fog and submerged dangers.",
+    "Factions": "Sump-Kin; River Syndicate"
+  },
+  {
+    "Biome": "The Lagoons",
+    "Description": "A maze of water channels along the East Coast jungles.",
+    "Factions": "River Folk"
+  },
+  {
+    "Biome": "Southern Mineral Springs",
+    "Description": "Geothermally heated springs in the southern mountains.",
+    "Factions": "Ghosts"
+  },
+  {
+    "Biome": "The Central Mountain Chain",
+    "Description": "A massive range bisecting the continent, featuring snow-capped peaks and deep chasms.",
+    "Factions": "Ursine Hegemony; Avian Empire"
+  },
+  {
+    "Biome": "The Misty Crags",
+    "Description": "A vertical biome of sheer cliffs, deep shadows, and constant fog/mist.",
+    "Factions": "Hive Commonwealth"
+  },
+  {
+    "Biome": "Volcanic Islands",
+    "Description": "Active volcanic chains, particularly in the North.",
+    "Factions": "Coastal Empire"
+  },
+  {
+    "Biome": "Chaos Zones",
+    "Description": "Areas of unstable reality that separate the stable biomes. Physics do not function correctly here.",
+    "Factions": "None"
+  },
+  {
+    "Biome": "The Impact Crater",
+    "Description": "A massive crater roughly in the center of the continent where the \"Engineer\" god rests.",
+    "Factions": "None"
+  },
+  {
+    "Biome": "The Agricultural Heartland",
+    "Description": "Stable, fertile plains used for massive-scale farming.",
+    "Factions": "Heartland Alliance"
+  }
+]

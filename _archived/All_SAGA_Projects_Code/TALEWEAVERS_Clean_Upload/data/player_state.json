@@ -1,0 +1,43 @@
+{
+  "player_id": "char_001",
+  "name": "Subject 001",
+  "location": {
+    "hex_x": 0,
+    "hex_y": 0
+  },
+  "vitals": {
+    "hp": 25,
+    "max_hp": 25,
+    "max_stamina": 15,
+    "max_composure": 10,
+    "max_focus": 10
+  },
+  "tension": 0,
+  "inventory": [
+    "Rusted Cleaver",
+    "Iron Root Tea"
+  ],
+  "campaign_roadmap": {
+    "campaign_name": "The Shattered Silence",
+    "main_antagonist_faction": "Unknown Threat",
+    "starting_location": "0",
+    "quest_nodes": [
+      {
+        "step_number": 1,
+        "narrative_objective": "Survey the immediate surroundings.",
+        "trigger_location": "0",
+        "encounter_type": "DISCOVERY",
+        "success_state_change": "UNLOCK_STEP_2"
+      }
+    ]
+  },
+  "active_quests": [
+    {
+      "step_number": 1,
+      "narrative_objective": "Survey the immediate surroundings.",
+      "trigger_location": "0",
+      "encounter_type": "DISCOVERY",
+      "success_state_change": "UNLOCK_STEP_2"
+    }
+  ]
+}

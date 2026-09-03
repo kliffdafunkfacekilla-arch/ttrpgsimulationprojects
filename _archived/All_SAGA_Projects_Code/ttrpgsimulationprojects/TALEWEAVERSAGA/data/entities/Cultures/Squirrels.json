@@ -1,0 +1,25 @@
+{
+    "category": "Cultures",
+    "entity_name": "Squirrels",
+    "aliases": [
+        "Sciurini"
+    ],
+    "tags": [],
+    "stats": {
+        "intimidation": 8,
+        "diplomacy": 9,
+        "stealth": 7,
+        "endurance": 6,
+        "knowledge": 8,
+        "networking": 9,
+        "perception": 8,
+        "charisma": 9,
+        "agility": 7,
+        "strength": 5,
+        "stamina": 6,
+        "speed": 5,
+        "mental_toughness": 8,
+        "social_status": 9
+    },
+    "description": ""
+}

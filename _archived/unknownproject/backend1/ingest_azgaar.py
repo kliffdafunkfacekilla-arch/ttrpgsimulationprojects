@@ -1,0 +1,425 @@
+import os
+import sys
+import json
+import math
+import random
+import csv
+from sqlalchemy.orm import Session
+from sqlalchemy import delete
+
+# Override database password in URL if it is the default postgres:postgres
+db_url = os.getenv("DATABASE_URL", "postgresql://postgres:postgres@localhost/ostraka_db")
+if "postgres:postgres@" in db_url:
+    db_url = db_url.replace("postgres:postgres@", "postgres:PigPig3897!!@")
+    os.environ["DATABASE_URL"] = db_url
+
+# Ensure the workspace directory is in the Python path for clean imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from backend.database import SessionLocal
+from backend.models import HexState
+from backend import rpg_system
+
+def get_faction_demographics_and_species_list(faction_id: str | None, total_pop: int):
+    """
+    Returns faction-specific species demographics and exactly 20 biological type singular entities.
+    Aligned strictly with the Obsidian vault lore.
+    """
+    if faction_id == "Heartland_Alliance":
+        species_weights = [("Deer", 0.40), ("Wolves", 0.25), ("Beavers", 0.15), ("Wolverines", 0.10), ("Bats", 0.10)]
+    elif faction_id == "Ursine_Hegemony":
+        species_weights = [("Bears", 0.45), ("Cats", 0.25), ("Owls", 0.20), ("Wolverines", 0.10)]
+    elif faction_id == "Aetheric_Enclave":
+        # Represents the Vaneer Concord (Arthropods)
+        species_weights = [("Spiders", 0.35), ("Ants", 0.35), ("Mantises", 0.15), ("Beetles", 0.15)]
+    elif faction_id == "Wildlands_Tribes":
+        # Represents Canopy Clans (Vulpines, Simians, Pangolins, Sloths, etc.)
+        species_weights = [("Vulpines", 0.20), ("Simians", 0.20), ("Opossums", 0.15), ("Squirrels", 0.15), ("Tarsiers", 0.10), ("Bats", 0.10), ("Pangolins", 0.10)]
+    elif faction_id == "Avian_Empire":
+        species_weights = [("Raptors", 0.30), ("Owls", 0.25), ("Corvids", 0.20), ("Songbirds", 0.15), ("Flightless_Birds", 0.10)]
+    else:
+        # Neutral Wildlands - general wild creatures
+        species_weights = [("Wolves", 0.30), ("Bears", 0.20), ("Mice", 0.30), ("Deer", 0.20)]
+
+    # Compute absolute demographic numbers
+    demographics = {}
+    for name, weight in species_weights:
+        demographics[name] = max(1, int(total_pop * weight))
+
+    # Map from plural to singular taxonomy
+    plural_to_singular = {
+        "Deer": "Deer",
+        "Wolves": "Wolf",
+        "Beavers": "Beaver",
+        "Wolverines": "Wolverine",
+        "Bats": "Bat",
+        "Bears": "Bear",
+        "Cats": "Cat",
+        "Owls": "Owl",
+        "Spiders": "Spider",
+        "Ants": "Ant",
+        "Mantises": "Mantis",
+        "Beetles": "Beetle",
+        "Vulpines": "Vulpine",
+        "Simians": "Simian",
+        "Opossums": "Opossum",
+        "Squirrels": "Squirrel",
+        "Tarsiers": "Tarsier",
+        "Pangolins": "Pangolin",
+        "Sloths": "Sloth",
+        "Red_Pandas": "Red_Panda",
+        "Raptors": "Raptor",
+        "Corvids": "Corvid",
+        "Songbirds": "Songbird",
+        "Flightless_Birds": "Flightless_Bird",
+        "Mice": "Mouse"
+    }
+
+    species_list = []
+    remaining = 20
+    for idx, (name, weight) in enumerate(species_weights):
+        singular = plural_to_singular.get(name, name[:-1])
+        if idx == len(species_weights) - 1:
+            count = remaining
+        else:
+            count = max(1, int(20 * weight))
+            remaining -= count
+        species_list.extend([singular] * count)
+
+    # Ensure list is exactly 20 elements
+    while len(species_list) < 20:
+        species_list.append(plural_to_singular.get(species_weights[0][0], species_weights[0][0][:-1]))
+    species_list = species_list[:20]
+    
+    return demographics, species_list
+
+def ingest_world_data():
+    """
+    Main ingestion engine mapping Azgaar's fantasy map GeoJSON layers into
+    highly nested Ostraka database records, populating canon species, biomes,
+    and faction variables correctly.
+    """
+    print("\n=======================================================")
+    print("      OSTRAKA AZGAAR FANTASY MAP INGESTION ENGINE")
+    print("=======================================================")
+    
+    worldsim_dir = r"c:\Users\krazy\worldsim"
+    
+    # Locate real dataset files in worldsim workspace
+    cells_file = None
+    cultures_file = None
+    
+    if os.path.exists(worldsim_dir):
+        for f in os.listdir(worldsim_dir):
+            if f.startswith("Orvaia Cells") and f.endswith(".geojson"):
+                cells_file = os.path.join(worldsim_dir, f)
+            elif f.startswith("Orvaia Cultures") and f.endswith(".csv"):
+                cultures_file = os.path.join(worldsim_dir, f)
+                
+    if not cells_file:
+        print("Error: Could not locate 'Orvaia Cells' GeoJSON file in worldsim directory!")
+        return
+        
+    print(f"Located master cells file: {cells_file}")
+    if cultures_file:
+        print(f"Located cultures file: {cultures_file}")
+    else:
+        print("Warning: No cultures CSV file located! Using standard fallbacks.")
+
+    # 1. Load cultures lookup dictionary from CSV
+    culture_lookup = {}
+    if cultures_file and os.path.exists(cultures_file):
+        try:
+            with open(cultures_file, "r", encoding="utf-8") as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    cid = row.get("Id")
+                    name = row.get("Name")
+                    if cid is not None and name:
+                        culture_lookup[int(cid)] = name
+            print(f"Successfully loaded {len(culture_lookup)} cultures from CSV.")
+        except Exception as e:
+            print(f"Error parsing cultures CSV: {e}")
+
+    # 2. Load cells GeoJSON
+    try:
+        with open(cells_file, "r", encoding="utf-8") as f:
+            cells_geojson = json.load(f)
+        features = cells_geojson.get("features", [])
+        print(f"Successfully loaded GeoJSON with {len(features)} cells.")
+    except Exception as e:
+        print(f"Error loading Cells GeoJSON file: {e}")
+        return
+
+    session = SessionLocal()
+    try:
+        # Clear existing tables for clean slate
+        print("Clearing old hex states records from database...")
+        session.execute(delete(HexState))
+        session.commit()
+        
+        print(f"Ingesting {len(features)} cells into PostgreSQL...")
+        
+        hex_records = []
+        for idx, feat in enumerate(features):
+            props = feat.get("properties", {})
+            geom = feat.get("geometry", {})
+            coords = geom.get("coordinates", [])
+            
+            # Map sequential unique index to Ostraka format 'hex_00001' to 'hex_11088'
+            cell_num = idx + 1
+            hex_id = f"hex_{cell_num:05d}"
+            
+            # Environment (Layer 4) biome translations
+            biome_id = props.get("biome", 7)
+            
+            # Default Ostraka environmental parameters
+            moisture = 0.40
+            temperature = 20.0
+            elevation = 0.10
+            aetheric_leak = 0.10
+            biome_name = "Plains"
+
+            if biome_id == 0:
+                biome_name = "Ocean"
+                moisture = 1.0
+                temperature = 15.0
+                elevation = -0.5
+                aetheric_leak = 0.05
+            elif biome_id == 1:
+                biome_name = "Glacier"
+                moisture = 0.1
+                temperature = -18.0
+                elevation = 0.6
+                aetheric_leak = 0.1
+            elif biome_id == 2:
+                biome_name = "Cold Desert"
+                moisture = 0.05
+                temperature = -5.0
+                elevation = 0.2
+                aetheric_leak = 0.1
+            elif biome_id == 3:
+                biome_name = "Tundra"
+                moisture = 0.25
+                temperature = -8.0
+                elevation = 0.4
+                aetheric_leak = 0.1
+            elif biome_id == 4:
+                biome_name = "Taiga"
+                moisture = 0.5
+                temperature = -2.0
+                elevation = 0.35
+                aetheric_leak = 0.1
+            elif biome_id == 5:
+                biome_name = "Temperate Forest"
+                moisture = 0.6
+                temperature = 14.0
+                elevation = 0.2
+                aetheric_leak = 0.1
+            elif biome_id == 6:
+                biome_name = "Temperate Rainforest"
+                moisture = 0.8
+                temperature = 12.0
+                elevation = 0.25
+                aetheric_leak = 0.15
+            elif biome_id == 7:
+                biome_name = "Grassland"
+                moisture = 0.4
+                temperature = 18.0
+                elevation = 0.1
+                aetheric_leak = 0.1
+            elif biome_id == 8:
+                biome_name = "Tropical Seasonal Forest"
+                moisture = 0.7
+                temperature = 25.0
+                elevation = 0.15
+                aetheric_leak = 0.1
+            elif biome_id == 9:
+                biome_name = "Tropical Rainforest"
+                moisture = 0.9
+                temperature = 28.0
+                elevation = 0.15
+                aetheric_leak = 0.2
+            elif biome_id == 10:
+                biome_name = "Savanna"
+                moisture = 0.3
+                temperature = 26.0
+                elevation = 0.1
+                aetheric_leak = 0.1
+            elif biome_id == 11:
+                biome_name = "Hot Desert"
+                moisture = 0.02
+                temperature = 38.0
+                elevation = 0.15
+                aetheric_leak = 0.1
+            elif biome_id == 12:
+                biome_name = "Swamp"
+                moisture = 0.85
+                temperature = 20.0
+                elevation = 0.05
+                aetheric_leak = 0.2
+            elif biome_id == 13:
+                biome_name = "Mountain"
+                moisture = 0.3
+                temperature = 5.0
+                elevation = 0.8
+                aetheric_leak = 0.25
+                
+            # Politics (Layer 3) faction mapping from 19 state IDs
+            state_id = props.get("state", 0)
+            faction_id = None
+            
+            if state_id != 0:
+                if state_id in [16, 21, 26, 31]:
+                    faction_id = "Heartland_Alliance"
+                elif state_id in [17, 22, 27, 32]:
+                    faction_id = "Ursine_Hegemony"
+                elif state_id in [18, 23, 28]:
+                    faction_id = "Aetheric_Enclave"
+                elif state_id in [14, 19, 24, 29]:
+                    faction_id = "Wildlands_Tribes"
+                elif state_id in [15, 20, 25, 30]:
+                    faction_id = "Avian_Empire"
+                else:
+                    # Dynamic fallback matching state % 5
+                    rem = state_id % 5
+                    if rem == 1:
+                        faction_id = "Heartland_Alliance"
+                    elif rem == 2:
+                        faction_id = "Ursine_Hegemony"
+                    elif rem == 3:
+                        faction_id = "Aetheric_Enclave"
+                    elif rem == 4:
+                        faction_id = "Wildlands_Tribes"
+                    else:
+                        faction_id = "Avian_Empire"
+
+            # Syndicate (Layer 3) underground culture mapping
+            culture_id = props.get("culture", 0)
+            culture_name = culture_lookup.get(culture_id, "Free_Folk")
+            
+            # Elevation mapping based on height property
+            height_val = props.get("height", 0)
+            cell_type = props.get("type", "island")
+            
+            if cell_type in ["ocean", "lake"]:
+                elevation = -0.5
+            else:
+                # Normalize height between 0.01 and 1.0 (assuming max height around 8000)
+                elevation = min(1.0, max(0.01, float(height_val) / 8000.0))
+            
+            # Level 2 urban parameters & geometry payload (storing the real polygon coords)
+            urban_meters = {
+                "happy_meter": round(random.uniform(0.5, 0.9), 2),
+                "crime_rating": round(random.uniform(0.01, 0.2), 2),
+                "active_guild_influence": culture_name,
+                "azgaar_geometry": coords
+            }
+            
+            # Environmental resources stockpiles mapping
+            timber_stock = random.randint(30, 150) if moisture > 0.5 else random.randint(5, 20)
+            iron_stock = random.randint(20, 80) if elevation > 0.5 else random.randint(0, 10)
+            grain_stock = random.randint(50, 200) if (elevation < 0.5 and moisture > 0.3) else random.randint(1, 20)
+            
+            stockpiles = {
+                "timber": timber_stock,
+                "raw_iron": iron_stock,
+                "grain": grain_stock,
+                "steel": random.randint(0, 5),
+                "weapons": random.randint(0, 3)
+            }
+            
+            # Demographics and citizens generation
+            cell_pop = props.get("population", 0)
+            total_pop = max(100, int(cell_pop))
+            
+            demographics, species_list = get_faction_demographics_and_species_list(faction_id, total_pop)
+                
+            # Populating Ground Level entities (Layer 1) with exactly 20 distinct citizen entities
+            local_entities = []
+            professions = ["Farmer", "Miner", "Woodcutter", "Weaver", "Scholar", "Trader", "Guard"]
+            interests = ["THE_ARTS", "SURVIVAL", "COMMERCE", "METABOLISM", "LORE"]
+            fears_pool = ["FAMINE", "REBELLION", "DECAY", "THE_VOID", "WAR"]
+            
+            for ent_idx in range(1, 21):
+                bio_type = species_list[ent_idx - 1]
+                
+                # Make sure guard/miner professions align nicely with biological types
+                prof = random.choice(professions)
+                if bio_type in ["Bear", "Wolverine", "Raptor", "Wolf"] and random.random() < 0.5:
+                    prof = "Guard"
+                elif bio_type in ["Ant", "Spider", "Beaver"] and random.random() < 0.5:
+                    prof = "Miner" if bio_type == "Ant" else "Woodcutter"
+                
+                personality = random.choice(["BRAVE", "DILIGENT", "CUNNING", "PEACEFUL"])
+                interest = random.choice(interests)
+                traits_dict = {
+                    "personality": personality,
+                    "interest": interest
+                }
+                
+                # Citizens have base CITIZEN rolls
+                rpg_stats, magic_profile = rpg_system.generate_stats(bio_type, prof, entity_type="CITIZEN", traits=traits_dict)
+                dynamic_pools = rpg_system.calculate_derived_pools(rpg_stats)
+                    
+                local_entities.append({
+                    "entity_id": f"{hex_id}_ent_{ent_idx:02d}",
+                    "biological_type": bio_type,
+                    "profession": prof,
+                    "dna_profile": {
+                        "personality": personality,
+                        "interest": interest,
+                        "fears": [random.choice(fears_pool)]
+                    },
+                    "metabolic_state": {
+                        "hunger_level": random.randint(5, 60),
+                        "sanity_score": round(random.uniform(0.7, 1.0), 2),
+                        "health": 100
+                    },
+                    "action_state": "IDLE",
+                    "rpg_stats": rpg_stats,
+                    "magic_profile": magic_profile,
+                    "dynamic_pools": dynamic_pools
+                })
+                
+            hex_record = HexState(
+                hex_id=hex_id,
+                tick_count=0,
+                elevation=elevation,
+                moisture=moisture,
+                temperature=temperature,
+                faction_id=faction_id,
+                macro_stability=round(random.uniform(0.7, 1.0), 2),
+                aetheric_leak_rate=aetheric_leak,
+                military_engagements={},
+                covert_networks={},
+                urban_meters=urban_meters,
+                stockpiles=stockpiles,
+                demographics=demographics,
+                local_entities=local_entities
+            )
+            hex_records.append(hex_record)
+            
+            # Batch inserts to avoid high memory pressure (every 2000 records)
+            if len(hex_records) >= 2000:
+                session.add_all(hex_records)
+                session.commit()
+                print(f"Inserted {idx + 1} / {len(features)} cells...")
+                hex_records = []
+            
+        if hex_records:
+            session.add_all(hex_records)
+            session.commit()
+            
+        print(f"Successfully bulk inserted all {len(features)} Azgaar-mapped cells into PostgreSQL database!")
+        print("World ingestion complete: operational and ready for simulation steps.")
+        
+    except Exception as e:
+        session.rollback()
+        print(f"Transaction failed: {e}")
+    finally:
+        session.close()
+        print("=======================================================\n")
+
+if __name__ == "__main__":
+    ingest_world_data()

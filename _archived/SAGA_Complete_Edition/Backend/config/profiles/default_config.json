@@ -1,0 +1,43 @@
+{
+  "app": {
+    "name": "SAGA Unified",
+    "version": "1.0.0",
+    "debug": true
+  },
+  "audio": {
+    "tts": {
+      "engine": "edge-tts",
+      "voice": "en-GB-RyanNeural",
+      "enabled": true
+    },
+    "stt": {
+      "engine": "speech_recognition",
+      "backend": "google",
+      "enabled": false
+    }
+  },
+  "ai": {
+    "model_path": "",
+    "system_prompt": "You are a gritty black-powder fantasy game master. Describe scenes with atmospheric detail, but never calculate game mechanics.",
+    "temperature": 0.7
+  },
+  "data": {
+    "chromadb_path": "data/chromadb",
+    "sqlite_path": "data/sqlite",
+    "save_directory": "data/saves"
+  },
+  "world": {
+    "external_db_enabled": false,
+    "omnis_db_path": "",
+    "procedural_generation": true
+  },
+  "game": {
+    "difficulty": "Normal",
+    "combat_frequency": "Medium",
+    "content_filters": {
+      "alcohol": false,
+      "gore": false,
+      "spiders": false
+    }
+  }
+}

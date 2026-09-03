@@ -1,0 +1,57 @@
+{
+    "name": "Lith-Weave",
+    "type": "Resource",
+    "diet": "Lithovore",
+    "seasonal_shift": {
+        "spring_summer": {
+            "color": "Pale Green",
+            "properties": "Softer, more flexible"
+        },
+        "autumn_winter": {
+            "color": "Lavender/Violet",
+            "properties": "Denser, higher mineral content for insulation"
+        }
+    },
+    "properties": {
+        "kinetic_hardening": {
+            "mechanic": "Hollow tubes filled with microscopic silica crystals",
+            "at_rest": "Soft, heavy, and drapes like thick velvet",
+            "upon_impact": "Rigid in milliseconds, becomes soft plate armor"
+        }
+    },
+    "industry": {
+        "harvesting": {
+            "scrapers": "Sparrows, Nuthatches, or Raccoon climbers",
+            "danger": "Risk of falling or defensive strike by Cloud-Cutter Ray"
+        },
+        "processing": {
+            "retting": "Soaked in high-altitude mineral springs to dissolve outer husk",
+            "spinning": "Spun while wet, or it becomes too brittle to work",
+            "oil_bath": "Soaked in Cloud-Ram Lanolin to keep fibers flexible"
+        }
+    },
+    "economic_value": {
+        "military_grade": {
+            "harvest": "Winter",
+            "value": "Prized by Iron Caldera and Grey Wardens"
+        },
+        "luxury_grade": {
+            "harvest": "Spring",
+            "value": "Sought after by River Folk merchants and Equine Nobles"
+        },
+        "turncoat_cape": {
+            "harvest": "Patches of Green and Violet",
+            "value": "Most expensive garments, shimmering, iridescent"
+        }
+    },
+    "weaknesses": {
+        "dry_rot": {
+            "description": "Becomes brittle and shatters like glass if struck",
+            "trigger": "Exposure to intense dry heat or fires"
+        },
+        "weight": {
+            "description": "Significantly heavier than cotton or wool",
+            "consequence": "Sinks like a stone when swimming"
+        }
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "Species": "Ursine (Polar Bear variant)",
+    "Real Name": "Koda of the Snowpeak",
+    "Title": "\"Mama\" (to her crew), \"The Ice-Branded\" (behind her back)",
+    "Visuals": {
+        "Sigil of Ice": true,
+        "Fur Cloak": true
+    },
+    "Personality": {
+        "Discipline": true,
+        "Violence": true,
+        "Efficiency": true
+    },
+    "Reputation": {
+        "Fearsome": true,
+        "Not Vicious": true
+    },
+    "Abilities": {
+        "Pirate Captain": true,
+        "Organizer": true,
+        "Rum Rationer": true,
+        "Gun Cleaner": true
+    },
+    "Hearth": {
+        "Rules": [
+            "Rule 1: You pay, you stay",
+            "Rule 2: No 'cold hearts'",
+            "Rule 3: Leave your politics at the dock",
+            "*Rule 4*: Respect the Hearth or you get hurt"
+        ]
+    }
+}

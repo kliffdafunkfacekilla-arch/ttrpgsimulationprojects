@@ -1,0 +1,36 @@
+{
+  "TEXTURES": {
+    "PANELS": {
+      "MAIN": "assets/gui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/RectangleBox_96x96.png",
+      "CHAT": "assets/gui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/RectangleBox_96x96.png",
+      "BAR_CONTAINER": "assets/gui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/HealthBarPanel_160x41.png"
+    },
+    "BUTTONS": {
+      "NORMAL": "assets/gui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/Button_52x14.png",
+      "HOVER": "assets/gui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/HighlightButton_60x23.png",
+      "CLICK": "assets/gui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/HighlightButton_60x23.png"
+    },
+    "BARS": {
+      "FILL_RED": "assets/gui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueRed_120x8.png",
+      "FILL_BLUE": "assets/gui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/ValueBlue_120x8.png"
+    },
+    "DECOR": {
+      "CORNER": "assets/gui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/CornerKnot_14x14.png",
+      "ORB_CONTAINER": "assets/gui/Fantasy Minimal Pixel Art GUI by eta-commercial-free/UI/BlackSmallCircleBox_19x19.png"
+    }
+  },
+  "PILLAR_ICONS": {
+    "NEXUS": "assets/icons/Free - Raven Fantasy Icons/Free - Raven Fantasy Icons/Separated Files/32x32/fb522.png",
+    "ORDO": "assets/icons/Free - Raven Fantasy Icons/Free - Raven Fantasy Icons/Separated Files/32x32/fb1102.png",
+    "MOTUS": "assets/icons/Free - Raven Fantasy Icons/Free - Raven Fantasy Icons/Separated Files/32x32/fb1012.png",
+    "MASS": "assets/icons/Free - Raven Fantasy Icons/Free - Raven Fantasy Icons/Separated Files/32x32/fb1132.png",
+    "RATIO": "assets/icons/Free - Raven Fantasy Icons/Free - Raven Fantasy Icons/Separated Files/32x32/fb1155.png",
+    "FLUX": "assets/icons/Free - Raven Fantasy Icons/Free - Raven Fantasy Icons/Separated Files/32x32/fb1161.png",
+    "ANUMIS": "assets/icons/Free - Raven Fantasy Icons/Free - Raven Fantasy Icons/Separated Files/32x32/fb1166.png",
+    "VITA": "assets/icons/Free - Raven Fantasy Icons/Free - Raven Fantasy Icons/Separated Files/32x32/fb1170.png",
+    "AURA": "assets/icons/Free - Raven Fantasy Icons/Free - Raven Fantasy Icons/Separated Files/32x32/fb1175.png",
+    "LUX": "assets/icons/Free - Raven Fantasy Icons/Free - Raven Fantasy Icons/Separated Files/32x32/fb1201.png",
+    "LEX": "assets/icons/Free - Raven Fantasy Icons/Free - Raven Fantasy Icons/Separated Files/32x32/fb1209.png",
+    "OMEN": "assets/icons/Free - Raven Fantasy Icons/Free - Raven Fantasy Icons/Separated Files/32x32/fb1212.png"
+  }
+}

@@ -1,0 +1,51 @@
+{
+    "Name": "Sh'lar",
+    "Type": "People",
+    "Subtype": "Entity/Non-Corporeal",
+    "Tags": [
+        "Magistar",
+        "Corruption",
+        "Chaos",
+        "Entity"
+    ],
+    "Stats": {
+        "Intimidation": 9,
+        "Influence": 8,
+        "Corruption": 9,
+        "Psychological Resistance": 4,
+        "Willpower": 3,
+        "Truth Resistance": 4,
+        "Cunning": 8,
+        "Deception": 7,
+        "Manipulation": 8,
+        "Stealth": 5,
+        "Speed": 2,
+        "Accuracy": 4,
+        "Endurance": 3,
+        "Strength": 2,
+        "Intellect": 9,
+        "Perception": 6,
+        "Charisma": 7,
+        "Defense": 2,
+        "Tactics": 5
+    },
+    "Abilities": {
+        "Whisper": {
+            "type": "Psychological Corruption",
+            "effect": "Creates Dissonance"
+        },
+        "Rot": {
+            "type": "Physical/Industrial Corruption",
+            "effect": "Guides Mutation of Flesh"
+        },
+        "Corrupt": {
+            "type": "Influence",
+            "effect": "Tries to Suggest Corruption"
+        }
+    },
+    "Limitations": {
+        "Anchor": "Bound to the Convergence",
+        "Constraint": "Requires Mortal Vessel to Agree to Corruption"
+    },
+    "Strategic Threat": "The reason there is no 'Peace.'"
+}

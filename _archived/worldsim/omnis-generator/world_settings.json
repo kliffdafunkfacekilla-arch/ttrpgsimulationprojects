@@ -1,0 +1,1985 @@
+{
+    "calendar": {
+        "days_per_year": 360,
+        "months": [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
+        ],
+        "seasons": [
+            {
+                "name": "Spring",
+                "start_day": 0,
+                "end_day": 89,
+                "growth_mod": 1.2,
+                "travel_cost_mod": 1.0
+            },
+            {
+                "name": "Summer",
+                "start_day": 90,
+                "end_day": 179,
+                "growth_mod": 1.5,
+                "travel_cost_mod": 1.0
+            },
+            {
+                "name": "Autumn",
+                "start_day": 180,
+                "end_day": 269,
+                "growth_mod": 0.8,
+                "travel_cost_mod": 1.2
+            },
+            {
+                "name": "Winter",
+                "start_day": 270,
+                "end_day": 359,
+                "growth_mod": 0.1,
+                "travel_cost_mod": 2.5
+            }
+        ],
+        "moons": [
+            {
+                "name": "Aether-Moon",
+                "cycle_days": 30,
+                "phases": [
+                    "New",
+                    "Waxing Crescent",
+                    "First Quarter",
+                    "Waxing Gibbous",
+                    "Full",
+                    "Waning Gibbous",
+                    "Third Quarter",
+                    "Waning Crescent"
+                ]
+            }
+        ]
+    },
+    "winds_and_temps": {
+        "precipitation_multiplier": 1.0,
+        "global_latitude_min": -90.0,
+        "global_latitude_max": 90.0,
+        "zones": [
+            {
+                "name": "Polar North",
+                "y_min": 0.0,
+                "y_max": 14.3,
+                "wind_dir": "NE",
+                "wind_speed": 0.6,
+                "temp_min": -30.0,
+                "temp_max": -5.0
+            },
+            {
+                "name": "Subpolar North",
+                "y_min": 14.3,
+                "y_max": 28.6,
+                "wind_dir": "W",
+                "wind_speed": 0.7,
+                "temp_min": -10.0,
+                "temp_max": 12.0
+            },
+            {
+                "name": "Temperate North",
+                "y_min": 28.6,
+                "y_max": 42.9,
+                "wind_dir": "SW",
+                "wind_speed": 0.4,
+                "temp_min": 5.0,
+                "temp_max": 25.0
+            },
+            {
+                "name": "Tropical / Equator",
+                "y_min": 42.9,
+                "y_max": 57.1,
+                "wind_dir": "E",
+                "wind_speed": 0.5,
+                "temp_min": 20.0,
+                "temp_max": 40.0
+            },
+            {
+                "name": "Temperate South",
+                "y_min": 57.1,
+                "y_max": 71.4,
+                "wind_dir": "NW",
+                "wind_speed": 0.4,
+                "temp_min": 5.0,
+                "temp_max": 25.0
+            },
+            {
+                "name": "Subpolar South",
+                "y_min": 71.4,
+                "y_max": 85.7,
+                "wind_dir": "W",
+                "wind_speed": 0.7,
+                "temp_min": -10.0,
+                "temp_max": 12.0
+            },
+            {
+                "name": "Polar South",
+                "y_min": 85.7,
+                "y_max": 100.0,
+                "wind_dir": "SE",
+                "wind_speed": 0.6,
+                "temp_min": -35.0,
+                "temp_max": -10.0
+            }
+        ],
+        "chaos_nodes": [],
+        "convergence_locations": []
+    },
+    "entities": {
+        "flora": [
+            {
+                "name": "flora_stone_root",
+                "growth_rate": 1.0,
+                "harvest_yield": 10
+            },
+            {
+                "name": "flora_ghost_flower",
+                "growth_rate": 0.5,
+                "harvest_yield": 5
+            }
+        ],
+        "fauna": [
+            {
+                "name": "fauna_timber_wolf",
+                "spawn_rate": 0.8,
+                "combat_power": 15
+            },
+            {
+                "name": "fauna_sky_grazer",
+                "spawn_rate": 1.2,
+                "food_yield": 20
+            },
+            {
+                "name": "fauna_red_deer",
+                "spawn_rate": 1.5,
+                "food_yield": 15
+            }
+        ],
+        "factions": [
+            {
+                "id": 1,
+                "name": "Ursine Hegemony",
+                "color": "#7B5E3F"
+            },
+            {
+                "id": 2,
+                "name": "River Folk",
+                "color": "#3B88B3"
+            },
+            {
+                "id": 3,
+                "name": "Sump-Kin",
+                "color": "#5D8A4E"
+            },
+            {
+                "id": 4,
+                "name": "Iron Caladrea",
+                "color": "#A14D43"
+            },
+            {
+                "id": 5,
+                "name": "Vaneer Concord",
+                "color": "#806680"
+            },
+            {
+                "id": 6,
+                "name": "Hive Collective",
+                "color": "#D4A13B"
+            },
+            {
+                "id": 7,
+                "name": "Avians",
+                "color": "#6B6E70"
+            },
+            {
+                "id": 8,
+                "name": "Flower Valwey",
+                "color": "#E68BA7"
+            },
+            {
+                "id": 9,
+                "name": "Sylvian",
+                "color": "#4D8F63"
+            },
+            {
+                "id": 10,
+                "name": "Sciute",
+                "color": "#7B8055"
+            },
+            {
+                "id": 11,
+                "name": "Meridian Chain",
+                "color": "#3B6E8A"
+            },
+            {
+                "id": 12,
+                "name": "Prism Lizards",
+                "color": "#8A3B8A"
+            },
+            {
+                "id": 13,
+                "name": "Canopy Clans",
+                "color": "#A1803B"
+            },
+            {
+                "id": 14,
+                "name": "East Hounds",
+                "color": "#B35E3B"
+            },
+            {
+                "id": 15,
+                "name": "Guirrilla Clans",
+                "color": "#4D4D4D"
+            },
+            {
+                "id": 16,
+                "name": "Theocracy",
+                "color": "#8A8A8A"
+            },
+            {
+                "id": 17,
+                "name": "The Reliance",
+                "color": "#5E3B7B"
+            }
+        ],
+        "fringe_groups": [
+            {
+                "name": "Obsidian Cartel",
+                "color": "#1E1E1E",
+                "specialty": "Smuggling & Black Market"
+            },
+            {
+                "name": "Freesky Barons",
+                "color": "#87CEEB",
+                "specialty": "Airborne Raiding"
+            },
+            {
+                "name": "Ghost Wind Raiders",
+                "color": "#DAA520",
+                "specialty": "Fast Skirmishes"
+            },
+            {
+                "name": "Gilded Compass",
+                "color": "#FFD700",
+                "specialty": "Resource Exploration"
+            },
+            {
+                "name": "Crimson Coursairs",
+                "color": "#DC143C",
+                "specialty": "Piracy"
+            },
+            {
+                "name": "Silent Current",
+                "color": "#008080",
+                "specialty": "Underwater Infiltration"
+            },
+            {
+                "name": "The Black Label",
+                "color": "#4B0082",
+                "specialty": "Espionage"
+            },
+            {
+                "name": "The Otter Syndicate",
+                "color": "#8B4513",
+                "specialty": "River Trade Monopolies"
+            },
+            {
+                "name": "The Spring Ghosts",
+                "color": "#98FB98",
+                "specialty": "Sabotage"
+            }
+        ]
+    },
+    "resources_and_materials": [
+        {
+            "name": "Grain",
+            "harvested_from": "Farms/Kelp",
+            "cost": 5
+        },
+        {
+            "name": "Lumber",
+            "harvested_from": "Forests/Camps",
+            "cost": 10
+        },
+        {
+            "name": "Stone",
+            "harvested_from": "Mountains/Mines",
+            "cost": 12
+        },
+        {
+            "name": "Iron Ore",
+            "harvested_from": "Iron Veins",
+            "cost": 15
+        },
+        {
+            "name": "Copper Ore",
+            "harvested_from": "Copper Veins",
+            "cost": 10
+        },
+        {
+            "name": "Coal",
+            "harvested_from": "Mines",
+            "cost": 8
+        },
+        {
+            "name": "Dragonstone",
+            "harvested_from": "Dragonstone Crater",
+            "cost": 150
+        },
+        {
+            "name": "Coral",
+            "harvested_from": "Coral Mines",
+            "cost": 25
+        }
+    ],
+    "building_types": [
+        {
+            "name": "farms",
+            "label": "Farm",
+            "cost": {
+                "Lumber": 50,
+                "Stone": 50
+            },
+            "effect": "Produces 0.15 food per tick"
+        },
+        {
+            "name": "docks",
+            "label": "Dock",
+            "cost": {
+                "Lumber": 70,
+                "Stone": 30
+            },
+            "effect": "Produces 0.10 food per tick"
+        },
+        {
+            "name": "mines",
+            "label": "Mine",
+            "cost": {
+                "Lumber": 30,
+                "Stone": 80
+            },
+            "effect": "Boosts mining yields by 10%"
+        },
+        {
+            "name": "watchtowers",
+            "label": "Watchtower",
+            "cost": {
+                "Lumber": 40,
+                "Stone": 60
+            },
+            "effect": "Increases safety rating (+0.15)"
+        },
+        {
+            "name": "walls",
+            "label": "City Wall",
+            "cost": {
+                "Lumber": 20,
+                "Stone": 120
+            },
+            "effect": "Shields population and structures (+0.20 safety)"
+        },
+        {
+            "name": "barracks",
+            "label": "Barracks",
+            "cost": {
+                "Lumber": 60,
+                "Stone": 100,
+                "Smelted Steel": 20
+            },
+            "effect": "Houses garrison units (+0.25 security)"
+        },
+        {
+            "name": "camps",
+            "label": "Camp",
+            "cost": {
+                "Lumber": 40,
+                "Stone": 20
+            },
+            "effect": "Carrying capacity +500"
+        },
+        {
+            "name": "greenhouse",
+            "label": "Greenhouse",
+            "cost": {
+                "Lumber": 30,
+                "Stone": 30
+            },
+            "effect": "Farms flora"
+        },
+        {
+            "name": "orchard",
+            "label": "Orchard",
+            "cost": {
+                "Lumber": 30,
+                "Stone": 30
+            },
+            "effect": "Farms flora"
+        },
+        {
+            "name": "pen",
+            "label": "Pen",
+            "cost": {
+                "Lumber": 30,
+                "Stone": 30
+            },
+            "effect": "Farms fauna"
+        },
+        {
+            "name": "kennel",
+            "label": "Kennel",
+            "cost": {
+                "Lumber": 30,
+                "Stone": 30
+            },
+            "effect": "Farms fauna"
+        },
+        {
+            "name": "cloud_ram_pen",
+            "label": "Cloud Ram Pen",
+            "cost": {
+                "Lumber": 35,
+                "Stone": 35
+            },
+            "effect": "Farms Cloud Rams"
+        },
+        {
+            "name": "beetle_stable",
+            "label": "Beetle Stable",
+            "cost": {
+                "Lumber": 40,
+                "Stone": 20
+            },
+            "effect": "Farms Draft Beetles"
+        },
+        {
+            "name": "weaver_farm",
+            "label": "Weaver Farm",
+            "cost": {
+                "Lumber": 20,
+                "Stone": 60
+            },
+            "effect": "Farms Weaver Cows"
+        },
+        {
+            "name": "dune_dog_den",
+            "label": "Dune Dog Den",
+            "cost": {
+                "Lumber": 20,
+                "Stone": 15
+            },
+            "effect": "Farms Dune Dogs"
+        },
+        {
+            "name": "snail_dock",
+            "label": "Snail Dock",
+            "cost": {
+                "Lumber": 30,
+                "Stone": 50
+            },
+            "effect": "Farms Abyssal Snails"
+        },
+        {
+            "name": "sheep_pasture",
+            "label": "Sheep Pasture",
+            "cost": {
+                "Lumber": 25,
+                "Stone": 25
+            },
+            "effect": "Farms Domestic Sheep"
+        },
+        {
+            "name": "horse_stable",
+            "label": "Horse Stable",
+            "cost": {
+                "Lumber": 40,
+                "Stone": 30
+            },
+            "effect": "Farms Draft Horses"
+        },
+        {
+            "name": "aphid_farm",
+            "label": "Aphid Farm",
+            "cost": {
+                "Lumber": 30,
+                "Stone": 20
+            },
+            "effect": "Farms Titan Aphids"
+        },
+        {
+            "name": "falcon_roost",
+            "label": "Falcon Roost",
+            "cost": {
+                "Lumber": 25,
+                "Stone": 15
+            },
+            "effect": "Farms Falcons"
+        },
+        {
+            "name": "church",
+            "label": "Church",
+            "cost": {
+                "Lumber": 40,
+                "Stone": 60
+            },
+            "effect": "Increases mental well-being (+0.03)"
+        },
+        {
+            "name": "theatre",
+            "label": "Theatre",
+            "cost": {
+                "Lumber": 50,
+                "Stone": 30
+            },
+            "effect": "Increases mental well-being (+0.03)"
+        },
+        {
+            "name": "arena",
+            "label": "Arena",
+            "cost": {
+                "Lumber": 60,
+                "Stone": 80
+            },
+            "effect": "Increases mental well-being (+0.05)"
+        },
+        {
+            "name": "kelp_farms",
+            "label": "Kelp Farm",
+            "cost": {
+                "Lumber": 20,
+                "Stone": 60,
+                "Rope": 20
+            },
+            "effect": "Produces 0.18 food per tick (aquatic)"
+        },
+        {
+            "name": "underwater_domes",
+            "label": "Underwater Dome",
+            "cost": {
+                "Lumber": 10,
+                "Stone": 90,
+                "Crystal Chips": 10
+            },
+            "effect": "Carrying capacity +500 (aquatic)"
+        },
+        {
+            "name": "coral_mines",
+            "label": "Coral Mine",
+            "cost": {
+                "Lumber": 20,
+                "Stone": 50,
+                "Basic Weapons": 10
+            },
+            "effect": "Produces Coral and Stone (aquatic)"
+        },
+        {
+            "name": "reef_walls",
+            "label": "Reef Wall",
+            "cost": {
+                "Stone": 150,
+                "Coral": 50
+            },
+            "effect": "Shields population (+0.25 safety, aquatic)"
+        },
+        {
+            "name": "workshops",
+            "label": "Workshop",
+            "cost": {
+                "Lumber": 40,
+                "Stone": 40,
+                "Iron Ore": 20
+            },
+            "effect": "Enables dynamic refining and crafting"
+        }
+    ],
+    "production_recipes": [
+        {
+            "name": "Smelted Steel",
+            "inputs": {
+                "Iron Ore": 5.0,
+                "Coal": 3.0
+            },
+            "output": 1.0,
+            "description": "Used to craft heavy arms and tools."
+        },
+        {
+            "name": "Copper Wire",
+            "inputs": {
+                "Copper Ore": 1.0
+            },
+            "output": 2.0,
+            "description": "Conducts magical current for batteries."
+        },
+        {
+            "name": "Refined Aether Battery",
+            "inputs": {
+                "Dragonstone": 2.0,
+                "Coal": 2.0
+            },
+            "output": 1.0,
+            "description": "Feeds reality wards."
+        },
+        {
+            "name": "Flour",
+            "inputs": {
+                "Grain": 4.0
+            },
+            "output": 1.0,
+            "description": "Milled from raw grain."
+        },
+        {
+            "name": "Alcohol",
+            "inputs": {
+                "Flour": 3.0
+            },
+            "output": 1.0,
+            "description": "Brewed for tavern use."
+        },
+        {
+            "name": "Basic Weapons",
+            "inputs": {
+                "Smelted Steel": 2.0,
+                "Lumber": 2.0
+            },
+            "output": 10.0,
+            "description": "Armed equipment for barracks defense."
+        },
+        {
+            "name": "Ostrakan Hardtack",
+            "inputs": {
+                "Flour": 2.0,
+                "Leather": 1.0
+            },
+            "output": 1.0,
+            "description": "Sturdy travel rations."
+        },
+        {
+            "name": "Jewelry (Gold)",
+            "inputs": {
+                "Gold": 1.0,
+                "Crystal Chips": 2.0
+            },
+            "output": 1.0,
+            "description": "Fine ornament for wealth."
+        },
+        {
+            "name": "Jewelry (Silver)",
+            "inputs": {
+                "Silver": 1.0,
+                "Crystal Chips": 2.0
+            },
+            "output": 1.0,
+            "description": "Ornament crafted from silver."
+        },
+        {
+            "name": "Fine Clothes (Silk-Steel)",
+            "inputs": {
+                "Silk-Steel Thread": 2.0
+            },
+            "output": 1.0,
+            "description": "Premium garments."
+        },
+        {
+            "name": "Fine Clothes (Wool)",
+            "inputs": {
+                "Wool": 3.0
+            },
+            "output": 1.0,
+            "description": "Warm winter garments."
+        },
+        {
+            "name": "Medicine",
+            "inputs": {
+                "Kelp": 3.0,
+                "Anesthetic Toxin": 1.0
+            },
+            "output": 1.0,
+            "description": "Heals physical wounds."
+        },
+        {
+            "name": "Toys",
+            "inputs": {
+                "Lumber": 3.0,
+                "Leather": 1.0
+            },
+            "output": 1.0,
+            "description": "Brings joy and comfort."
+        },
+        {
+            "name": "Fancy Food",
+            "inputs": {
+                "Luxury Meat": 2.0,
+                "Peak-Cheese": 1.0
+            },
+            "output": 1.0,
+            "description": "Served to high nobility."
+        },
+        {
+            "name": "Drained Fleece Wool",
+            "inputs": {
+                "Wool": 3.0
+            },
+            "output": 1.0,
+            "description": "Washed and prepared fleece."
+        },
+        {
+            "name": "Grain",
+            "inputs": {
+                "Honeydew": 5.0
+            },
+            "output": 3.0,
+            "description": "Honeydew processed into grain supply."
+        }
+    ],
+    "travel_costs": {
+        "Plains": {
+            "walking": 1.0,
+            "riding": 0.5,
+            "boating": 10.0
+        },
+        "Forest": {
+            "walking": 1.5,
+            "riding": 1.0,
+            "boating": 10.0
+        },
+        "Mountain": {
+            "walking": 3.0,
+            "riding": 4.0,
+            "boating": 10.0
+        },
+        "Ocean": {
+            "walking": 10.0,
+            "riding": 10.0,
+            "boating": 1.0
+        },
+        "Reef": {
+            "walking": 10.0,
+            "riding": 10.0,
+            "boating": 1.5
+        }
+    },
+    "military_units": [
+        {
+            "name": "Badger Guard",
+            "cost": {
+                "Wealth": 50,
+                "Basic Weapons": 1.0
+            },
+            "might": 15,
+            "endurance": 12
+        },
+        {
+            "name": "Fox Ranger",
+            "cost": {
+                "Wealth": 60,
+                "Basic Weapons": 1.0,
+                "Leather Armor": 1.0
+            },
+            "might": 12,
+            "endurance": 10
+        },
+        {
+            "name": "Mole Sapper",
+            "cost": {
+                "Wealth": 75,
+                "Basic Weapons": 1.0,
+                "Stone": 5
+            },
+            "might": 18,
+            "endurance": 15
+        }
+    ],
+    "paragon_generation": {
+        "base_stat_min": 5,
+        "base_stat_max": 15,
+        "namebases": {
+            "Beavers": {
+                "firsts": [
+                    "Castor",
+                    "Chisel",
+                    "Bramble",
+                    "Flattail",
+                    "Timber",
+                    "Damian"
+                ],
+                "titles": [
+                    "the Builder",
+                    "the Mason",
+                    "the Constructer",
+                    "the Steady",
+                    "the Diligent",
+                    "the Sharp-toothed"
+                ],
+                "lasts": [
+                    "Oakfeller",
+                    "Stonetail",
+                    "Riverblock",
+                    "Clayweaver",
+                    "Mudbar",
+                    "Pondkeep"
+                ]
+            },
+            "Owls": {
+                "firsts": [
+                    "Hoot",
+                    "Screech",
+                    "Archimedes",
+                    "Featherstone",
+                    "Barny",
+                    "Strix"
+                ],
+                "titles": [
+                    "the Wise",
+                    "the Silent-Winged",
+                    "the Truth-Teller",
+                    "the All-Seeing",
+                    "the Nightwatch",
+                    "the Logic-Seeker"
+                ],
+                "lasts": [
+                    "Screechowl",
+                    "Sagefeather",
+                    "Moonhollow",
+                    "Skygazer",
+                    "Talonstrike",
+                    "Aetherwing"
+                ]
+            },
+            "Wolves": {
+                "firsts": [
+                    "Fang",
+                    "Lupine",
+                    "Greyback",
+                    "Packward",
+                    "Kael",
+                    "Lycaon"
+                ],
+                "titles": [
+                    "the Boundary-Keeper",
+                    "the Pack-Leader",
+                    "the Fierce",
+                    "the Howler",
+                    "the Shadow-Stalker",
+                    "the Wild"
+                ],
+                "lasts": [
+                    "Bloodtooth",
+                    "Winterfang",
+                    "Packweaver",
+                    "Frostclaw",
+                    "Wildrun",
+                    "Silentpaw"
+                ]
+            },
+            "Bears": {
+                "firsts": [
+                    "Ursus",
+                    "Kodiak",
+                    "Grizzly",
+                    "Snowpaw",
+                    "Beowulf",
+                    "Arthur"
+                ],
+                "titles": [
+                    "the Stasis-Keeper",
+                    "the Mountain",
+                    "the Ice-Walker",
+                    "the Sleeping",
+                    "the Mighty",
+                    "the Guardian"
+                ],
+                "lasts": [
+                    "Stoneclaw",
+                    "Winterhide",
+                    "Frostbite",
+                    "Cavewall",
+                    "Honeylick",
+                    "Grizzlycoat"
+                ]
+            }
+        }
+    },
+    "town_tiers": [
+        {
+            "name": "Camp",
+            "min_pop": 0,
+            "max_pop": 99,
+            "score": 1
+        },
+        {
+            "name": "Hamlet",
+            "min_pop": 100,
+            "max_pop": 499,
+            "score": 2
+        },
+        {
+            "name": "Village",
+            "min_pop": 500,
+            "max_pop": 1999,
+            "score": 3
+        },
+        {
+            "name": "Town",
+            "min_pop": 2000,
+            "max_pop": 9999,
+            "score": 4
+        },
+        {
+            "name": "City",
+            "min_pop": 10000,
+            "max_pop": null,
+            "score": 5
+        }
+    ],
+    "transport_unlocks": [
+        {
+            "name": "Foot Travel",
+            "min_tech": 1
+        },
+        {
+            "name": "Draft Horses",
+            "min_tech": 3
+        },
+        {
+            "name": "Naval Travel",
+            "min_tech": 4
+        },
+        {
+            "name": "Draft-Beetles",
+            "min_tech": 5
+        },
+        {
+            "name": "Airships",
+            "min_tech": 8
+        },
+        {
+            "name": "Snail-Draught",
+            "min_tech": 10
+        },
+        {
+            "name": "Aether-Skiffs",
+            "min_tech": 12
+        }
+    ],
+    "building_unlocks": [
+        {
+            "name": "Wooden Shacks",
+            "min_tech": 1
+        },
+        {
+            "name": "Stone Outposts",
+            "min_tech": 4
+        },
+        {
+            "name": "Brick Masonry",
+            "min_tech": 7
+        },
+        {
+            "name": "Iron Calderas",
+            "min_tech": 10
+        },
+        {
+            "name": "Sacred Spires",
+            "min_tech": 15
+        }
+    ],
+    "wellbeing_coefficients": {
+        "wellbeing_decay_rate": 0.1,
+        "food_per_farm": 0.15,
+        "food_per_kelp_farm": 0.18,
+        "food_per_dock": 0.1,
+        "safety_per_tower": 0.15,
+        "safety_per_wall": 0.2,
+        "safety_per_reef_wall": 0.25,
+        "security_per_barracks": 0.25,
+        "riot_discontent_limit": 0.7,
+        "riot_crime_limit": 0.6,
+        "revolution_discontent_limit": 0.9,
+        "revolution_crime_limit": 0.8,
+        "trade_abundance_level": 0.8,
+        "winter_travel_cost": 2.5,
+        "summer_growth_mult": 1.5,
+        "baseline_chaos": 0.5,
+        "moon_phase_effect": 1.5
+    },
+    "ecology": {
+        "biome_species": {
+            "default": {
+                "fauna_timber_wolf": 10.0,
+                "fauna_wild_boar": 20.0,
+                "fauna_red_deer": 30.0,
+                "fauna_black_bear": 5.0,
+                "fauna_domestic_sheep": 25.0,
+                "fauna_draft_horse": 8.0,
+                "fauna_peregrine_falcon": 12.0,
+                "fauna_field_mouse": 40.0,
+                "flora_common_oak": 200.0,
+                "flora_wild_rye": 150.0,
+                "flora_bluebell": 40.0,
+                "flora_forest_fern": 60.0,
+                "flora_plains_grass": 300.0
+            },
+            "cold_mountain": {
+                "fauna_cloud_ram": 30.0,
+                "fauna_fur_wyrm": 15.0,
+                "flora_alpine_spruce": 180.0
+            },
+            "desert_arid": {
+                "fauna_dune_dog": 20.0,
+                "fauna_dust_skipper": 25.0,
+                "fauna_glass_sand_eel": 5.0,
+                "flora_ghost_flower": 100.0,
+                "flora_saguaro": 60.0,
+                "flora_desert_sage": 80.0
+            },
+            "forest_canopy": {
+                "fauna_draft_beetle": 15.0,
+                "fauna_titan_aphid": 20.0,
+                "fauna_night_carapace": 8.0,
+                "flora_strangler_fig": 30.0
+            },
+            "aquatic_river": {
+                "fauna_abyssal_snail": 10.0,
+                "fauna_river_fish": 50.0,
+                "flora_marsh_reed": 80.0
+            },
+            "ocean_depths": {
+                "fauna_abyssal_whale": 5.0,
+                "fauna_saltwater_fish": 100.0,
+                "flora_ocean_kelp": 150.0
+            },
+            "coastal_reef": {
+                "fauna_reef_shark": 10.0,
+                "fauna_coral_crab": 20.0,
+                "fauna_seagull": 30.0,
+                "flora_luminescent_coral": 50.0
+            },
+            "airborne_altitude": {
+                "fauna_sky_grazer": 50.0,
+                "fauna_cloud_cutter_ray": 5.0,
+                "fauna_glimmer_wings": 15.0,
+                "fauna_gem_shell_beetle": 10.0
+            },
+            "industrial_rocky": {
+                "fauna_gritbore": 20.0,
+                "fauna_furnace_tick": 12.0
+            },
+            "volcanic_steppe": {
+                "fauna_ash_bison": 15.0
+            },
+            "underground": {
+                "fauna_weaver_cow": 8.0,
+                "flora_grave_roots": 30.0,
+                "flora_silver_leaf": 15.0
+            },
+            "swamp": {
+                "flora_forest_fern": 120.0,
+                "flora_grave_roots": 20.0
+            }
+        },
+        "faction_biome_categories": {
+            "Ursine Hegemony": [
+                "default",
+                "cold_mountain",
+                "airborne_altitude"
+            ],
+            "River Folk": [
+                "default",
+                "aquatic_river",
+                "forest_canopy"
+            ],
+            "Sump-Kin": [
+                "default",
+                "swamp",
+                "industrial_rocky",
+                "underground"
+            ],
+            "Iron Caladrea": [
+                "default",
+                "industrial_rocky",
+                "volcanic_steppe",
+                "cold_mountain"
+            ],
+            "Vaneer Concord": [
+                "default",
+                "underground"
+            ],
+            "Hive Collective": [
+                "default",
+                "forest_canopy"
+            ],
+            "Avians": [
+                "default",
+                "airborne_altitude",
+                "cold_mountain"
+            ],
+            "Flower Valwey": [
+                "default",
+                "forest_canopy",
+                "desert_arid"
+            ],
+            "Sylvian": [
+                "default",
+                "forest_canopy"
+            ],
+            "Sciute": [
+                "default",
+                "aquatic_river",
+                "coastal_reef"
+            ],
+            "Meridian Chain": [
+                "default",
+                "aquatic_river",
+                "coastal_reef",
+                "ocean_depths"
+            ],
+            "Prism Lizards": [
+                "default",
+                "industrial_rocky",
+                "underground"
+            ],
+            "Canopy Clans": [
+                "default",
+                "forest_canopy",
+                "airborne_altitude"
+            ],
+            "East Hounds": [
+                "default",
+                "volcanic_steppe",
+                "cold_mountain"
+            ],
+            "Guirrilla Clans": [
+                "default",
+                "industrial_rocky",
+                "underground"
+            ],
+            "Theocracy": [
+                "default",
+                "aquatic_river",
+                "coastal_reef",
+                "ocean_depths"
+            ],
+            "The Reliance": [
+                "default",
+                "underground",
+                "desert_arid"
+            ]
+        },
+        "species_params": {
+            "fauna_sky_grazer": {
+                "growth": 0.06,
+                "cap": 500.0,
+                "chaos_aff": -0.3,
+                "food_chain": "prey"
+            },
+            "fauna_glimmer_wings": {
+                "growth": 0.1,
+                "cap": 200.0,
+                "chaos_aff": 0.5,
+                "food_chain": "predator"
+            },
+            "fauna_gritbore": {
+                "growth": 0.08,
+                "cap": 300.0,
+                "chaos_aff": 0.0,
+                "food_chain": "scavenger"
+            },
+            "fauna_ash_bison": {
+                "growth": 0.04,
+                "cap": 150.0,
+                "chaos_aff": -0.2,
+                "food_chain": "herbivore"
+            },
+            "fauna_cloud_cutter_ray": {
+                "growth": 0.02,
+                "cap": 30.0,
+                "chaos_aff": 0.3,
+                "food_chain": "apex"
+            },
+            "fauna_cloud_ram": {
+                "growth": 0.06,
+                "cap": 300.0,
+                "chaos_aff": -0.1,
+                "food_chain": "herbivore"
+            },
+            "fauna_draft_beetle": {
+                "growth": 0.05,
+                "cap": 200.0,
+                "chaos_aff": -0.1,
+                "food_chain": "herbivore"
+            },
+            "fauna_dune_dog": {
+                "growth": 0.07,
+                "cap": 250.0,
+                "chaos_aff": 0.0,
+                "food_chain": "prey"
+            },
+            "fauna_dust_skipper": {
+                "growth": 0.08,
+                "cap": 300.0,
+                "chaos_aff": 0.0,
+                "food_chain": "scavenger"
+            },
+            "fauna_fur_wyrm": {
+                "growth": 0.09,
+                "cap": 200.0,
+                "chaos_aff": 0.1,
+                "food_chain": "scavenger"
+            },
+            "fauna_furnace_tick": {
+                "growth": 0.12,
+                "cap": 250.0,
+                "chaos_aff": 0.2,
+                "food_chain": "pest"
+            },
+            "fauna_gem_shell_beetle": {
+                "growth": 0.06,
+                "cap": 150.0,
+                "chaos_aff": 0.3,
+                "food_chain": "prey"
+            },
+            "fauna_glass_sand_eel": {
+                "growth": 0.03,
+                "cap": 50.0,
+                "chaos_aff": 0.4,
+                "food_chain": "apex"
+            },
+            "fauna_night_carapace": {
+                "growth": 0.05,
+                "cap": 100.0,
+                "chaos_aff": 0.1,
+                "food_chain": "predator"
+            },
+            "fauna_abyssal_snail": {
+                "growth": 0.03,
+                "cap": 100.0,
+                "chaos_aff": -0.2,
+                "food_chain": "herbivore"
+            },
+            "fauna_weaver_cow": {
+                "growth": 0.04,
+                "cap": 80.0,
+                "chaos_aff": -0.3,
+                "food_chain": "prey"
+            },
+            "fauna_titan_aphid": {
+                "growth": 0.1,
+                "cap": 400.0,
+                "chaos_aff": 0.0,
+                "food_chain": "prey"
+            },
+            "fauna_timber_wolf": {
+                "growth": 0.04,
+                "cap": 200.0,
+                "chaos_aff": -0.1,
+                "food_chain": "predator"
+            },
+            "fauna_wild_boar": {
+                "growth": 0.07,
+                "cap": 300.0,
+                "chaos_aff": -0.1,
+                "food_chain": "herbivore"
+            },
+            "fauna_red_deer": {
+                "growth": 0.08,
+                "cap": 500.0,
+                "chaos_aff": -0.2,
+                "food_chain": "prey"
+            },
+            "fauna_peregrine_falcon": {
+                "growth": 0.05,
+                "cap": 200.0,
+                "chaos_aff": 0.0,
+                "food_chain": "predator"
+            },
+            "fauna_black_bear": {
+                "growth": 0.03,
+                "cap": 80.0,
+                "chaos_aff": -0.1,
+                "food_chain": "predator"
+            },
+            "fauna_domestic_sheep": {
+                "growth": 0.09,
+                "cap": 400.0,
+                "chaos_aff": -0.3,
+                "food_chain": "prey"
+            },
+            "fauna_draft_horse": {
+                "growth": 0.05,
+                "cap": 150.0,
+                "chaos_aff": -0.2,
+                "food_chain": "prey"
+            },
+            "fauna_field_mouse": {
+                "growth": 0.15,
+                "cap": 800.0,
+                "chaos_aff": 0.1,
+                "food_chain": "prey"
+            },
+            "fauna_river_fish": {
+                "growth": 0.12,
+                "cap": 600.0,
+                "chaos_aff": -0.1,
+                "food_chain": "prey"
+            },
+            "fauna_seagull": {
+                "growth": 0.08,
+                "cap": 400.0,
+                "chaos_aff": 0.0,
+                "food_chain": "scavenger"
+            },
+            "fauna_reef_shark": {
+                "growth": 0.03,
+                "cap": 100.0,
+                "chaos_aff": 0.2,
+                "food_chain": "predator"
+            },
+            "fauna_abyssal_whale": {
+                "growth": 0.01,
+                "cap": 20.0,
+                "chaos_aff": 0.3,
+                "food_chain": "apex"
+            },
+            "fauna_saltwater_fish": {
+                "growth": 0.14,
+                "cap": 1000.0,
+                "chaos_aff": -0.2,
+                "food_chain": "prey"
+            },
+            "fauna_coral_crab": {
+                "growth": 0.06,
+                "cap": 300.0,
+                "chaos_aff": 0.1,
+                "food_chain": "scavenger"
+            },
+            "flora_ghost_flower": {
+                "growth": 0.12,
+                "cap": 1500.0,
+                "chaos_aff": 0.5,
+                "food_chain": "flora"
+            },
+            "flora_grave_roots": {
+                "growth": 0.06,
+                "cap": 400.0,
+                "chaos_aff": 0.3,
+                "food_chain": "flora"
+            },
+            "flora_stone_root": {
+                "growth": 0.08,
+                "cap": 1500.0,
+                "chaos_aff": -0.3,
+                "food_chain": "flora"
+            },
+            "flora_strangler_fig": {
+                "growth": 0.1,
+                "cap": 500.0,
+                "chaos_aff": 0.2,
+                "food_chain": "flora"
+            },
+            "flora_silver_leaf": {
+                "growth": 0.03,
+                "cap": 200.0,
+                "chaos_aff": -0.4,
+                "food_chain": "flora"
+            },
+            "flora_saguaro": {
+                "growth": 0.04,
+                "cap": 300.0,
+                "chaos_aff": 0.0,
+                "food_chain": "flora"
+            },
+            "flora_common_oak": {
+                "growth": 0.06,
+                "cap": 2000.0,
+                "chaos_aff": -0.2,
+                "food_chain": "flora"
+            },
+            "flora_wild_rye": {
+                "growth": 0.12,
+                "cap": 1500.0,
+                "chaos_aff": -0.3,
+                "food_chain": "flora"
+            },
+            "flora_bluebell": {
+                "growth": 0.1,
+                "cap": 500.0,
+                "chaos_aff": -0.1,
+                "food_chain": "flora"
+            },
+            "flora_forest_fern": {
+                "growth": 0.09,
+                "cap": 800.0,
+                "chaos_aff": 0.0,
+                "food_chain": "flora"
+            },
+            "flora_alpine_spruce": {
+                "growth": 0.05,
+                "cap": 1500.0,
+                "chaos_aff": -0.2,
+                "food_chain": "flora"
+            },
+            "flora_desert_sage": {
+                "growth": 0.06,
+                "cap": 600.0,
+                "chaos_aff": 0.0,
+                "food_chain": "flora"
+            },
+            "flora_plains_grass": {
+                "growth": 0.15,
+                "cap": 3000.0,
+                "chaos_aff": 0.0,
+                "food_chain": "flora"
+            },
+            "flora_marsh_reed": {
+                "growth": 0.1,
+                "cap": 1000.0,
+                "chaos_aff": 0.0,
+                "food_chain": "flora"
+            },
+            "flora_ocean_kelp": {
+                "growth": 0.15,
+                "cap": 2000.0,
+                "chaos_aff": -0.1,
+                "food_chain": "flora"
+            },
+            "flora_luminescent_coral": {
+                "growth": 0.02,
+                "cap": 500.0,
+                "chaos_aff": 0.4,
+                "food_chain": "flora"
+            }
+        },
+        "predation_matrix": {
+            "fauna_timber_wolf": [
+                "fauna_red_deer",
+                "fauna_wild_boar",
+                "fauna_domestic_sheep"
+            ],
+            "fauna_black_bear": [
+                "fauna_red_deer",
+                "fauna_wild_boar",
+                "fauna_domestic_sheep"
+            ],
+            "fauna_cloud_cutter_ray": [
+                "fauna_sky_grazer",
+                "fauna_gem_shell_beetle",
+                "fauna_glimmer_wings"
+            ],
+            "fauna_night_carapace": [
+                "fauna_titan_aphid",
+                "fauna_dune_dog",
+                "fauna_dust_skipper"
+            ],
+            "fauna_glimmer_wings": [
+                "fauna_domestic_sheep",
+                "fauna_dune_dog",
+                "fauna_titan_aphid"
+            ],
+            "fauna_glass_sand_eel": [
+                "fauna_dune_dog",
+                "fauna_dust_skipper"
+            ],
+            "fauna_peregrine_falcon": [
+                "fauna_fur_wyrm",
+                "fauna_dust_skipper",
+                "fauna_field_mouse"
+            ],
+            "fauna_reef_shark": [
+                "fauna_saltwater_fish",
+                "fauna_coral_crab"
+            ],
+            "fauna_abyssal_whale": [
+                "fauna_reef_shark",
+                "fauna_saltwater_fish"
+            ]
+        },
+        "harvest_table": {
+            "fauna_timber_wolf": {
+                "resource": "Leather",
+                "amount": 2.0,
+                "lethal": true,
+                "secondary": null
+            },
+            "fauna_wild_boar": {
+                "resource": "Leather",
+                "amount": 1.5,
+                "lethal": true,
+                "secondary": [
+                    "Grain",
+                    1.0
+                ]
+            },
+            "fauna_red_deer": {
+                "resource": "Venison",
+                "amount": 2.0,
+                "lethal": true,
+                "secondary": [
+                    "Antler",
+                    0.5
+                ]
+            },
+            "fauna_black_bear": {
+                "resource": "Fat",
+                "amount": 3.0,
+                "lethal": true,
+                "secondary": [
+                    "Leather",
+                    2.0
+                ]
+            },
+            "fauna_ash_bison": {
+                "resource": "Stone-Hide",
+                "amount": 3.0,
+                "lethal": true,
+                "secondary": [
+                    "Grain",
+                    2.0
+                ]
+            },
+            "fauna_cloud_cutter_ray": {
+                "resource": "Stinger Weapon",
+                "amount": 1.0,
+                "lethal": true,
+                "secondary": [
+                    "Voltaic Fleece",
+                    4.0
+                ]
+            },
+            "fauna_night_carapace": {
+                "resource": "Luxury Meat",
+                "amount": 2.0,
+                "lethal": true,
+                "secondary": null
+            },
+            "fauna_gritbore": {
+                "resource": "Grain",
+                "amount": 1.5,
+                "lethal": true,
+                "secondary": null
+            },
+            "fauna_glimmer_wings": {
+                "resource": "Camouflage Dye",
+                "amount": 1.0,
+                "lethal": true,
+                "secondary": null
+            },
+            "fauna_furnace_tick": {
+                "resource": "Alloy Carapace",
+                "amount": 1.0,
+                "lethal": true,
+                "secondary": null
+            },
+            "fauna_gem_shell_beetle": {
+                "resource": "Crystal Chips",
+                "amount": 1.0,
+                "lethal": true,
+                "secondary": null
+            },
+            "fauna_fur_wyrm": {
+                "resource": "Leather",
+                "amount": 0.5,
+                "lethal": true,
+                "secondary": null
+            },
+            "fauna_glass_sand_eel": {
+                "resource": "Leather",
+                "amount": 1.0,
+                "lethal": true,
+                "secondary": null
+            },
+            "fauna_sky_grazer": {
+                "resource": "Voltaic Fleece",
+                "amount": 1.0,
+                "lethal": false,
+                "secondary": [
+                    "Ozone-Milk",
+                    2.0
+                ]
+            },
+            "fauna_cloud_ram": {
+                "resource": "Wool",
+                "amount": 1.5,
+                "lethal": false,
+                "secondary": [
+                    "Peak-Cheese",
+                    1.0
+                ]
+            },
+            "fauna_domestic_sheep": {
+                "resource": "Wool",
+                "amount": 1.0,
+                "lethal": false,
+                "secondary": [
+                    "Grain",
+                    0.5
+                ]
+            },
+            "fauna_draft_horse": {
+                "resource": "Leather",
+                "amount": 0.0,
+                "lethal": false,
+                "secondary": null
+            },
+            "fauna_draft_beetle": {
+                "resource": "Leather",
+                "amount": 0.0,
+                "lethal": false,
+                "secondary": null
+            },
+            "fauna_dune_dog": {
+                "resource": "Leather",
+                "amount": 0.0,
+                "lethal": false,
+                "secondary": null
+            },
+            "fauna_abyssal_snail": {
+                "resource": "Leather",
+                "amount": 0.0,
+                "lethal": false,
+                "secondary": null
+            },
+            "fauna_weaver_cow": {
+                "resource": "Silk-Steel Thread",
+                "amount": 2.0,
+                "lethal": false,
+                "secondary": null
+            },
+            "fauna_titan_aphid": {
+                "resource": "Honeydew",
+                "amount": 1.5,
+                "lethal": false,
+                "secondary": null
+            },
+            "fauna_peregrine_falcon": {
+                "resource": "Leather",
+                "amount": 0.0,
+                "lethal": false,
+                "secondary": null
+            },
+            "fauna_dust_skipper": {
+                "resource": "Leather",
+                "amount": 0.0,
+                "lethal": false,
+                "secondary": null
+            },
+            "fauna_field_mouse": {
+                "resource": "Grain",
+                "amount": 0.0,
+                "lethal": true,
+                "secondary": null
+            },
+            "fauna_river_fish": {
+                "resource": "Fish",
+                "amount": 1.5,
+                "lethal": true,
+                "secondary": null
+            },
+            "fauna_seagull": {
+                "resource": "Guano",
+                "amount": 0.5,
+                "lethal": true,
+                "secondary": null
+            },
+            "fauna_reef_shark": {
+                "resource": "Shark Tooth",
+                "amount": 1.0,
+                "lethal": true,
+                "secondary": [
+                    "Fish",
+                    2.0
+                ]
+            },
+            "fauna_abyssal_whale": {
+                "resource": "Whale Oil",
+                "amount": 4.0,
+                "lethal": true,
+                "secondary": [
+                    "Meat",
+                    4.0
+                ]
+            },
+            "fauna_saltwater_fish": {
+                "resource": "Fish",
+                "amount": 2.0,
+                "lethal": true,
+                "secondary": null
+            },
+            "fauna_coral_crab": {
+                "resource": "Crab Shell",
+                "amount": 1.0,
+                "lethal": true,
+                "secondary": [
+                    "Meat",
+                    0.5
+                ]
+            },
+            "flora_ghost_flower": {
+                "resource": "Ghost Flower",
+                "amount": 1.0,
+                "lethal": true,
+                "secondary": null
+            },
+            "flora_grave_roots": {
+                "resource": "Anesthetic Toxin",
+                "amount": 0.5,
+                "lethal": false,
+                "secondary": null
+            },
+            "flora_stone_root": {
+                "resource": "Lumber",
+                "amount": 3.0,
+                "lethal": true,
+                "secondary": null
+            },
+            "flora_strangler_fig": {
+                "resource": "Rope",
+                "amount": 1.0,
+                "lethal": true,
+                "secondary": null
+            },
+            "flora_silver_leaf": {
+                "resource": "Night-Nectar",
+                "amount": 0.5,
+                "lethal": false,
+                "secondary": null
+            },
+            "flora_saguaro": {
+                "resource": "Grain",
+                "amount": 0.5,
+                "lethal": false,
+                "secondary": null
+            },
+            "flora_common_oak": {
+                "resource": "Lumber",
+                "amount": 2.0,
+                "lethal": true,
+                "secondary": null
+            },
+            "flora_wild_rye": {
+                "resource": "Grain",
+                "amount": 2.0,
+                "lethal": true,
+                "secondary": null
+            },
+            "flora_bluebell": {
+                "resource": "Night-Nectar",
+                "amount": 0.3,
+                "lethal": true,
+                "secondary": null
+            },
+            "flora_forest_fern": {
+                "resource": "Rope",
+                "amount": 0.5,
+                "lethal": true,
+                "secondary": null
+            },
+            "flora_alpine_spruce": {
+                "resource": "Lumber",
+                "amount": 2.5,
+                "lethal": true,
+                "secondary": [
+                    "Resin",
+                    0.5
+                ]
+            },
+            "flora_desert_sage": {
+                "resource": "Grain",
+                "amount": 0.3,
+                "lethal": false,
+                "secondary": null
+            },
+            "flora_plains_grass": {
+                "resource": "Grain",
+                "amount": 0.5,
+                "lethal": true,
+                "secondary": null
+            },
+            "flora_marsh_reed": {
+                "resource": "Rope",
+                "amount": 0.8,
+                "lethal": true,
+                "secondary": null
+            },
+            "flora_ocean_kelp": {
+                "resource": "Kelp",
+                "amount": 2.0,
+                "lethal": true,
+                "secondary": [
+                    "Fish",
+                    0.5
+                ]
+            },
+            "flora_luminescent_coral": {
+                "resource": "Coral",
+                "amount": 0.5,
+                "lethal": true,
+                "secondary": [
+                    "Crystal Chips",
+                    0.5
+                ]
+            }
+        },
+        "domestication_table": {
+            "fauna_sky_grazer": {
+                "facility": "domestic_pens",
+                "input": [
+                    "Grain",
+                    2.0
+                ],
+                "output": [
+                    "Voltaic Fleece",
+                    1.0
+                ],
+                "secondary": [
+                    "Ozone-Milk",
+                    2.0
+                ],
+                "tool_bonus": null
+            },
+            "fauna_cloud_ram": {
+                "facility": "domestic_cloud_ram_pens",
+                "input": [
+                    "Grain",
+                    1.5
+                ],
+                "output": [
+                    "Wool",
+                    2.0
+                ],
+                "secondary": [
+                    "Peak-Cheese",
+                    1.5
+                ],
+                "tool_bonus": null
+            },
+            "fauna_draft_beetle": {
+                "facility": "domestic_beetle_stables",
+                "input": [
+                    "Lumber",
+                    1.0
+                ],
+                "output": [
+                    "Lumber",
+                    0.0
+                ],
+                "secondary": null,
+                "tool_bonus": "transport"
+            },
+            "fauna_weaver_cow": {
+                "facility": "domestic_weaver_farms",
+                "input": [
+                    "Grain",
+                    3.0
+                ],
+                "output": [
+                    "Silk-Steel Thread",
+                    2.0
+                ],
+                "secondary": null,
+                "tool_bonus": null
+            },
+            "fauna_dune_dog": {
+                "facility": "domestic_dune_dog_dens",
+                "input": [
+                    "Grain",
+                    0.5
+                ],
+                "output": [
+                    "Grain",
+                    0.0
+                ],
+                "secondary": null,
+                "tool_bonus": "pest_control"
+            },
+            "fauna_abyssal_snail": {
+                "facility": "domestic_snail_docks",
+                "input": [
+                    "Stone",
+                    1.0
+                ],
+                "output": [
+                    "Stone",
+                    0.0
+                ],
+                "secondary": null,
+                "tool_bonus": "heavy_transport"
+            },
+            "fauna_domestic_sheep": {
+                "facility": "domestic_sheep_pastures",
+                "input": [
+                    "Grain",
+                    1.0
+                ],
+                "output": [
+                    "Wool",
+                    1.5
+                ],
+                "secondary": [
+                    "Grain",
+                    1.0
+                ],
+                "tool_bonus": null
+            },
+            "fauna_draft_horse": {
+                "facility": "domestic_horse_stables",
+                "input": [
+                    "Grain",
+                    1.5
+                ],
+                "output": [
+                    "Grain",
+                    0.0
+                ],
+                "secondary": null,
+                "tool_bonus": "fast_transport"
+            },
+            "fauna_titan_aphid": {
+                "facility": "domestic_aphid_farms",
+                "input": [
+                    "Lumber",
+                    0.5
+                ],
+                "output": [
+                    "Honeydew",
+                    2.0
+                ],
+                "secondary": null,
+                "tool_bonus": null
+            },
+            "fauna_peregrine_falcon": {
+                "facility": "domestic_falcon_roosts",
+                "input": [
+                    "Grain",
+                    0.5
+                ],
+                "output": [
+                    "Grain",
+                    0.0
+                ],
+                "secondary": null,
+                "tool_bonus": "messenger"
+            },
+            "fauna_timber_wolf": {
+                "facility": "domestic_kennels",
+                "input": [
+                    "Ostrakan Hardtack",
+                    1.0
+                ],
+                "output": [
+                    "Leather",
+                    0.5
+                ],
+                "secondary": null,
+                "tool_bonus": "guard"
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+  "CATEGORIES": {
+    "UI": {
+      "SFX_CLICK": "assets/audio/Minifantasy_Dungeon_SFX/01_chest_open_1.wav",
+      "SFX_CANCEL": "assets/audio/Minifantasy_Dungeon_SFX/02_chest_close_1.wav"
+    },
+    "COMBAT": {
+      "SFX_SWORD_HIT": "assets/audio/Minifantasy_Dungeon_SFX/26_sword_hit_1.wav",
+      "SFX_SWORD_MISS": "assets/audio/Minifantasy_Dungeon_SFX/27_sword_miss_1.wav",
+      "SFX_HUMAN_ATK": "assets/audio/Minifantasy_Dungeon_SFX/07_human_atk_sword_1.wav",
+      "SFX_ORC_ATK": "assets/audio/Minifantasy_Dungeon_SFX/17_orc_atk_sword_1.wav",
+      "SFX_DAMAGE": "assets/audio/Minifantasy_Dungeon_SFX/11_human_damage_1.wav",
+      "SFX_DEATH": "assets/audio/Minifantasy_Dungeon_SFX/14_human_death_spin.wav"
+    },
+    "MAGIC": {
+      "SFX_SPELL_GENERIC": "assets/audio/Free Fantasy SFX Pack By TomMusic/Free Fantasy SFX Pack By TomMusic/WAV Files/SFX/Spells/Spell Impact 1.wav",
+      "SFX_NEXUS_FLAME": "assets/audio/Free Fantasy SFX Pack By TomMusic/Free Fantasy SFX Pack By TomMusic/WAV Files/SFX/Torch/Light Torch 1.wav"
+    },
+    "AMBIENCE": {
+      "BGS_CAVE": "assets/audio/Free Fantasy SFX Pack By TomMusic/Free Fantasy SFX Pack By TomMusic/WAV Files/BGS Loops/Cave/Cave.wav",
+      "BGS_FOREST_DAY": "assets/audio/Free Fantasy SFX Pack By TomMusic/Free Fantasy SFX Pack By TomMusic/WAV Files/BGS Loops/Forest Day/Forest Day.wav",
+      "BGS_DANCE": "assets/audio/Minifantasy_Dungeon_Music/Minifantasy_Dungeon_Music/Music/Goblins_Dance_(Battle).wav"
+    }
+  }
+}

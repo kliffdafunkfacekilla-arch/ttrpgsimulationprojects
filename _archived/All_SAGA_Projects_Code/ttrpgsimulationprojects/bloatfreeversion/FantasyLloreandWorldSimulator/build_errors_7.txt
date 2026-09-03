@@ -1,0 +1,25 @@
+[SETUP] Setting up environment...
+  [CC] src\io\AssetManager.cpp
+In file included from c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:4:
+In file included from src\io/../../include/SimulationModules.hpp:8:
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\include\Terrain.hpp:26:64: error: use of undeclared identifier 'ColorKey'
+   26 |                                              const std::vector<ColorKey> &keys);
+      |                                                                ^~~~~~~~
+1 error generated.
+  [FAIL] src\io\AssetManager.cpp
+  [CC] src\apps\App_Architect.cpp
+In file included from c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\apps\App_Architect.cpp:9:
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\include\Terrain.hpp:26:64: error: use of undeclared identifier 'ColorKey'
+   26 |                                              const std::vector<ColorKey> &keys);
+      |                                                                ^~~~~~~~
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\apps\App_Architect.cpp:49:32: error: no member named 'ColorKey' in namespace 'TerrainController'
+   49 | std::vector<TerrainController::ColorKey> importKeys = {
+      |                                ^~~~~~~~
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\apps\App_Architect.cpp:176:98: error: assigning to 'MapTemplate' from incompatible type 'int'
+  176 |       if (ImGui::Combo("World Template", &currentType, templateNames, 7)) { settings.worldType = currentType; TerrainController::GenerateHeightmap(buffers, settings); mapDirty = true; }
+      |                                                                                                  ^~~~~~~~~~~
+3 errors generated.
+  [FAIL] src\apps\App_Architect.cpp
+
+[INFO] Compiled: 0 | Cached: 35
+[ERROR] 2 file(s) failed to compile.

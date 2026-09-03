@@ -1,0 +1,328 @@
+
+"""
+Some basic unit tests for L{imaginary.idea} (but many tests for this code are in
+other modules instead).
+"""
+
+import attr
+
+from zope.interface import implements, implementer
+
+from twisted.trial.unittest import TestCase
+
+from imaginary.iimaginary import (
+    IWhyNot, INameable, ILinkContributor, IObstruction, ILinkAnnotator,
+    IElectromagneticMedium)
+from imaginary.language import ExpressString
+from imaginary.idea import (
+    Idea, Link, Path, AlsoKnownAs, ProviderOf, Named, DelegatingRetriever,
+    Reachable, CanSee)
+
+
+@attr.s(repr=False)
+class Reprable(object):
+    repr = attr.ib()
+
+    def __repr__(self):
+        return self.repr
+
+
+class PathTests(TestCase):
+    """
+    Tests for L{imaginary.idea.Path}.
+    """
+    def test_repr(self):
+        """
+        A L{Path} instance can be rendered into a string by C{repr}.
+        """
+        key = Idea(AlsoKnownAs("key"))
+        table = Idea(AlsoKnownAs("table"))
+        hall = Idea(AlsoKnownAs("hall"))
+        path = Path(links=[
+                Link(source=hall, target=table),
+                Link(source=table, target=key)])
+        self.assertEquals(
+            repr(path),
+            "Path(\n"
+            "\t'hall' => 'table' []\n"
+            "\t'table' => 'key' [])")
+
+
+    def test_unnamedDelegate(self):
+        """
+        The I{repr} of a L{Path} containing delegates without names includes the
+        I{repr} of the delegates.
+        """
+        key = Idea(Reprable("key"))
+        table = Idea(Reprable("table"))
+        hall = Idea(Reprable("hall"))
+        path = Path(links=[
+                Link(source=hall, target=table),
+                Link(source=table, target=key)])
+        self.assertEquals(
+            repr(path),
+            "Path(\n"
+            "\thall => table []\n"
+            "\ttable => key [])")
+
+
+
+@attr.s
+class OneLink(object):
+    implements(ILinkContributor)
+
+    link = attr.ib()
+
+    def links(self):
+        return [self.link]
+
+
+class TooHigh(object):
+    implements(IWhyNot)
+
+    def tellMeWhyNot(self):
+        return ExpressString("the table is too high")
+
+
+class ArmsReach(DelegatingRetriever):
+    """
+    Restrict retrievable to things within arm's reach.
+
+        alas for poor Alice! when she got to the door, she found he had
+        forgotten the little golden key, and when she went back to the table for
+        it, she found she could not possibly reach it:
+    """
+    def moreObjectionsTo(self, path, result):
+        """
+        Object to finding the key.
+        """
+        # This isn't a very good implementation of ArmsReach.  It doesn't
+        # actually check distances or paths or anything.  It just knows the
+        # key is on the table, and Alice is too short.
+        named = path.targetAs(INameable)
+        if named.knownTo(None, "key"):
+            return [TooHigh()]
+        return []
+
+
+class WonderlandSetupMixin:
+    """
+    A test case mixin which sets up a graph based on a scene from Alice in
+    Wonderland.
+    """
+    def setUp(self):
+        garden = Idea(AlsoKnownAs("garden"))
+        door = Idea(AlsoKnownAs("door"))
+        hall = Idea(AlsoKnownAs("hall"))
+        alice = Idea(AlsoKnownAs("alice"))
+        key = Idea(AlsoKnownAs("key"))
+        table = Idea(AlsoKnownAs("table"))
+
+        alice.linkers.append(OneLink(Link(alice, hall)))
+        hall.linkers.append(OneLink(Link(hall, door)))
+        hall.linkers.append(OneLink(Link(hall, table)))
+        table.linkers.append(OneLink(Link(table, key)))
+        door.linkers.append(OneLink(Link(door, garden)))
+
+        self.alice = alice
+        self.hall = hall
+        self.door = door
+        self.garden = garden
+        self.table = table
+        self.key = key
+
+
+
+class IdeaTests(WonderlandSetupMixin, TestCase):
+    """
+    Tests for L{imaginary.idea.Idea}.
+    """
+    def test_objections(self):
+        """
+        The L{IRetriever} passed to L{Idea.obtain} can object to certain results.
+        This excludes them from the result returned by L{Idea.obtain}.
+        """
+        # XXX The last argument is the observer, and is supposed to be an
+        # IThing.
+        retriever = Named("key", ProviderOf(INameable), self.alice)
+
+        # Sanity check.  Alice should be able to reach the key if we don't
+        # restrict things based on her height.
+        self.assertEquals(
+            list(self.alice.obtain(retriever)), [self.key.delegate])
+
+        # But when we consider how short she is, she should not be able to reach
+        # it.
+        results = self.alice.obtain(ArmsReach(retriever))
+        self.assertEquals(list(results), [])
+
+
+class Closed(object):
+    implements(IObstruction)
+
+    def whyNot(self):
+        return ExpressString("the door is closed")
+
+
+
+@attr.s
+class ConstantAnnotation(object):
+    implements(ILinkAnnotator)
+
+    annotation = attr.ib()
+
+    def annotationsFor(self, link, idea):
+        return [self.annotation]
+
+
+
+class ReachableTests(WonderlandSetupMixin, TestCase):
+    """
+    Tests for L{imaginary.idea.Reachable}.
+    """
+    def setUp(self):
+        WonderlandSetupMixin.setUp(self)
+        # XXX The last argument is the observer, and is supposed to be an
+        # IThing.
+        self.retriever = Reachable(
+            Named("garden", ProviderOf(INameable), self.alice))
+
+
+    def test_anyObstruction(self):
+        """
+        If there are any obstructions in the path traversed by the retriever
+        wrapped by L{Reachable}, L{Reachable} objects to them and they are not
+        returned by L{Idea.obtain}.
+        """
+        # Make the door closed..  Now Alice cannot reach the garden.
+        self.door.annotators.append(ConstantAnnotation(Closed()))
+        self.assertEquals(list(self.alice.obtain(self.retriever)), [])
+
+
+    def test_noObstruction(self):
+        """
+        If there are no obstructions in the path traversed by the retriever
+        wrapped by L{Reachable}, all results are returned by L{Idea.obtain}.
+        """
+        self.assertEquals(
+            list(self.alice.obtain(self.retriever)),
+            [self.garden.delegate])
+
+
+class Wood(object):
+    implements(IElectromagneticMedium)
+
+    def isOpaque(self, observer):
+        return True
+
+
+
+class Glass(object):
+    implements(IElectromagneticMedium)
+
+    def isOpaque(self, observer):
+        return False
+
+
+@implementer(IElectromagneticMedium)
+class SelectivelyOpaque(object):
+    def __init__(self, observer):
+        self.observer = observer
+
+
+    def isOpaque(self, observer):
+        """
+        Be opaque to every observer except the one this object was initialized
+        with.
+        """
+        return observer is not self.observer
+
+
+
+class CanSeeTests(WonderlandSetupMixin, TestCase):
+    """
+    Tests for L{imaginary.idea.CanSee}.
+    """
+    def setUp(self):
+        WonderlandSetupMixin.setUp(self)
+        self.observer = object()
+        self.retriever = CanSee(
+            Named("garden", ProviderOf(INameable), self.alice),
+            self.observer)
+
+
+    def test_throughTransparent(self):
+        """
+        L{Idea.obtain} continues past an L{IElectromagneticMedium} which returns
+        C{False} from its C{isOpaque} method.
+        """
+        self.door.annotators.append(ConstantAnnotation(Glass()))
+        self.assertEquals(
+            list(self.alice.obtain(self.retriever)), [self.garden.delegate])
+
+
+    def test_notThroughOpaque(self):
+        """
+        L{Idea.obtain} does not continue past an L{IElectromagneticMedium} which
+        returns C{True} from its C{isOpaque} method.
+        """
+        # Make the door opaque.  Now Alice cannot see the garden.
+        self.door.annotators.append(ConstantAnnotation(Wood()))
+        self.assertEquals(list(self.alice.obtain(self.retriever)), [])
+
+
+    def test_observer(self):
+        """
+        L{CanSee} passes the observer it is initialized with as the sole
+        argument to C{isOpaque}.
+        """
+        self.door.annotators.append(
+            ConstantAnnotation(SelectivelyOpaque(self.observer)))
+        self.assertEqual(
+            [self.garden.delegate],
+            list(self.alice.obtain(self.retriever)))
+
+
+
+class EachSubPathTests(TestCase):
+    """
+    Tests for L{Path.eachSubPath}.
+    """
+    def test_empty(self):
+        """
+        An empty L{Path} has no subpaths at all.
+        """
+        self.assertEqual([], list(Path(links=[]).eachSubPath()))
+
+
+    def test_single(self):
+        """
+        A L{Path} of one L{Link} has one subpath that is equal to itself.
+        """
+        source = Idea("source")
+        target = Idea("target")
+        path = Path(links=[Link(source=source, target=target)])
+        self.assertEqual([path], list(path.eachSubPath()))
+
+
+    def test_many(self):
+        """
+        A L{Path} of N L{Link}s has N - 1 subpaths, in order from shortest to
+        longest, consisting of each L{Path} which is a prefix of it.
+        """
+        beginning = Idea("beginning")
+        earlyMiddle = Idea("early middle")
+        lateMiddle = Idea("late middle")
+        end = Idea("end")
+
+        one = Link(source=beginning, target=earlyMiddle)
+        two = Link(source=earlyMiddle, target=lateMiddle)
+        three = Link(source=lateMiddle, target=end)
+
+        path = Path(links=[one, two, three])
+
+        self.assertEqual(
+            [Path(links=[one]),
+             Path(links=[one, two]),
+             Path(links=[one, two, three])],
+            list(path.eachSubPath()))

@@ -1,0 +1,277 @@
+{
+  "HAZ_ZONE_MASS_01": {
+    "category": "HAZARD",
+    "title": "The Crushing Lowlands (Zone of Mass)",
+    "narrative_prompt": "The air pressure suddenly drops, and the flattened earth before you groans. The gravity here rolls in waves; you are about to be hit by a 10x gravitational compression.",
+    "mechanics": {
+      "detection": {
+        "skill": "Awareness + Logic",
+        "dc": 14,
+        "success_effect": "You notice the dust settling unnaturally fast before the wave hits."
+      },
+      "bypass": {
+        "skill": "Might + Fortitude",
+        "dc": 16,
+        "cost_to_attempt": "2 Stamina"
+      },
+      "failure_consequence": {
+        "damage": "3d10 Force",
+        "status_effect": "[Prone] and [Suppressed]",
+        "injury": "1 Major Body Injury (Crushed Ribs / 'Grav-Dense' Warp)"
+      }
+    }
+  },
+
+  "HAZ_ZONE_ORDO_02": {
+    "category": "HAZARD",
+    "title": "The Frozen Grid (Zone of Ordo)",
+    "narrative_prompt": "The landscape squares off into pixelated, imposing geometry. A flash-freezing storm of absolute zero is sweeping through, freezing falling stones in mid-air.",
+    "mechanics": {
+      "detection": {
+        "skill": "Awareness + Intuition",
+        "dc": 13,
+        "success_effect": "You feel the kinetic energy draining from the air."
+      },
+      "bypass": {
+        "skill": "Vitality + Endurance",
+        "dc": 15,
+        "cost_to_attempt": "1 Stamina"
+      },
+      "failure_consequence": {
+        "damage": "3d8 Cold",
+        "status_effect": "[Stop]",
+        "injury": "1 Major Body Injury (Frost-Shattered Flesh / 'Grid-Lock' Warp)"
+      }
+    }
+  },
+
+  "HAZ_ZONE_MOTUS_03": {
+    "category": "HAZARD",
+    "title": "The Kinetic Wastes (Zone of Motus)",
+    "narrative_prompt": "Distance is a lie here. Supersonic winds scream past, carrying 'Sonic Vines' that whip out with the concussive force of a sonic boom.",
+    "mechanics": {
+      "detection": {
+        "skill": "Awareness + Reflexes",
+        "dc": 15,
+        "success_effect": "You gauge the deceptive distance and spot the incoming vector."
+      },
+      "bypass": {
+        "skill": "Finesse + Reflexes",
+        "dc": 16,
+        "cost_to_attempt": "2 Stamina"
+      },
+      "failure_consequence": {
+        "damage": "3d8 Sonic",
+        "status_effect": "[Staggered]",
+        "injury": "1 Minor Body Injury (Ruptured Eardrums / 'The Blur' Warp)"
+      }
+    }
+  },
+
+  "HAZ_ZONE_FLUX_04": {
+    "category": "HAZARD",
+    "title": "The Gilded Bog (Zone of Flux)",
+    "narrative_prompt": "The states of matter are deeply confused. The solid stone path ahead suddenly loses its cohesion, turning into a pool of acidic, golden sludge.",
+    "mechanics": {
+      "detection": {
+        "skill": "Intuition + Logic",
+        "dc": 14,
+        "success_effect": "You notice the structural integrity of the stone shifting."
+      },
+      "bypass": {
+        "skill": "Reflexes + Finesse",
+        "dc": 15,
+        "cost_to_attempt": "1 Stamina"
+      },
+      "failure_consequence": {
+        "damage": "2d10 Acid",
+        "status_effect": "[Entangled]",
+        "injury": "1 Major Body Injury (Melted Extremity / 'State-Drift' Warp)"
+      }
+    }
+  },
+
+  "HAZ_ZONE_VITA_05": {
+    "category": "HAZARD",
+    "title": "The Chimera Veldt (Zone of Vita)",
+    "narrative_prompt": "The air smells of blooming flowers and rotting meat. A cloud of hyper-evolutionary spores erupts from a bleeding rock, threatening to trigger rampant, cancerous mutation.",
+    "mechanics": {
+      "detection": {
+        "skill": "Knowledge + Awareness",
+        "dc": 13,
+        "success_effect": "You identify the spore-vent before it bursts."
+      },
+      "bypass": {
+        "skill": "Fortitude + Vitality",
+        "dc": 16,
+        "cost_to_attempt": "1 Stamina"
+      },
+      "failure_consequence": {
+        "damage": "2d10 Poison",
+        "status_effect": "[Sickened]",
+        "injury": "1 Major Body Injury (Tumorous Growth / 'Hyper-Evolve' Warp)"
+      }
+    }
+  },
+
+  "HAZ_ZONE_NEXUS_06": {
+    "category": "HAZARD",
+    "title": "The Tungsten Hells (Zone of Nexus)",
+    "narrative_prompt": "The heat shimmer creates mirages of burning cities. Above, the dark clouds condense not into water, but into a sudden downpour of liquid magma.",
+    "mechanics": {
+      "detection": {
+        "skill": "Awareness + Intuition",
+        "dc": 15,
+        "success_effect": "You sense the thermal pressure dropping right before the rain."
+      },
+      "bypass": {
+        "skill": "Endurance + Fortitude",
+        "dc": 15,
+        "cost_to_attempt": "2 Stamina"
+      },
+      "failure_consequence": {
+        "damage": "4d8 Fire",
+        "status_effect": "[Burn]",
+        "injury": "1 Major Body Injury (Searing Burns / 'Ember-Hide' Warp)"
+      }
+    }
+  },
+
+  "HAZ_ZONE_RATIO_07": {
+    "category": "HAZARD",
+    "title": "The Magnetic Fog (Zone of Ratio)",
+    "narrative_prompt": "The thick white fog smells of ozone. The magnetic field randomly reverses, threatening to hurl all your metal gear—and you—into the upward-striking lightning.",
+    "mechanics": {
+      "detection": {
+        "skill": "Logic + Awareness",
+        "dc": 16,
+        "success_effect": "You calculate the magnetic inversion seconds before it triggers."
+      },
+      "bypass": {
+        "skill": "Finesse + Reflexes",
+        "dc": 15,
+        "cost_to_attempt": "2 Focus"
+      },
+      "failure_consequence": {
+        "damage": "3d10 Shock",
+        "status_effect": "[Stunned]",
+        "injury": "1 Major Mind Injury (Neural Overload / 'Static-Bleach' Warp)"
+      }
+    }
+  },
+
+  "HAZ_ZONE_ANUMIS_08": {
+    "category": "HAZARD",
+    "title": "The Shifting Veil (Zone of Anumis)",
+    "narrative_prompt": "Distance is sliced into pieces like a bad painting. You step forward, but the space folds, threatening to phase your body into a solid wall.",
+    "mechanics": {
+      "detection": {
+        "skill": "Knowledge + Logic",
+        "dc": 15,
+        "success_effect": "You read the arcane geometry of the rift."
+      },
+      "bypass": {
+        "skill": "Willpower + Intuition",
+        "dc": 16,
+        "cost_to_attempt": "2 Focus"
+      },
+      "failure_consequence": {
+        "damage": "2d10 Arcane",
+        "status_effect": "[Confused]",
+        "injury": "1 Minor Mind Injury (Reality Dissociation / 'Spell-Touched' Warp)"
+      }
+    }
+  },
+
+  "HAZ_ZONE_LUX_09": {
+    "category": "HAZARD",
+    "title": "The Prism Spires (Zone of Lux)",
+    "narrative_prompt": "Blinding white light obliterates all shadows. You are walking into a forest of razor-sharp, completely invisible glass spires.",
+    "mechanics": {
+      "detection": {
+        "skill": "Awareness + Finesse",
+        "dc": 16,
+        "success_effect": "You catch the microscopic prismatic refractions on the glass."
+      },
+      "bypass": {
+        "skill": "Reflexes + Intuition",
+        "dc": 14,
+        "cost_to_attempt": "1 Stamina"
+      },
+      "failure_consequence": {
+        "damage": "2d8 Radiant",
+        "status_effect": "[Blinded]",
+        "injury": "1 Minor Body Injury (Glass-Shrapnel Lacerations / 'Glass-Gaze' Warp)"
+      }
+    }
+  },
+
+  "HAZ_ZONE_OMEN_10": {
+    "category": "HAZARD",
+    "title": "The Rotting Gardens (Zone of Omen)",
+    "narrative_prompt": "A wave of accelerated entropy washes over you. Your shadow detaches from your feet, and the flesh on your hands begins to rapidly age and wither.",
+    "mechanics": {
+      "detection": {
+        "skill": "Intuition + Awareness",
+        "dc": 15,
+        "success_effect": "You sense the timeline rotting before it touches you."
+      },
+      "bypass": {
+        "skill": "Willpower + Fortitude",
+        "dc": 16,
+        "cost_to_attempt": "2 Focus"
+      },
+      "failure_consequence": {
+        "damage": "3d8 Necrotic",
+        "status_effect": "[Frail]",
+        "injury": "1 Major Mind Injury (Temporal Decay / 'Crypt-Rot' Warp)"
+      }
+    }
+  },
+
+  "HAZ_ZONE_AURA_11": {
+    "category": "HAZARD",
+    "title": "The Euphoric Oasis (Zone of Aura)",
+    "narrative_prompt": "The air becomes perfumed and tranquil. Wisps of light sing a hypnotic, narcotic song, attempting to lull you into an eternal, mindless slumber.",
+    "mechanics": {
+      "detection": {
+        "skill": "Intuition + Logic",
+        "dc": 14,
+        "success_effect": "You recognize the false paradise for the trap it is."
+      },
+      "bypass": {
+        "skill": "Willpower + Charm",
+        "dc": 15,
+        "cost_to_attempt": "2 Focus"
+      },
+      "failure_consequence": {
+        "damage": "2d6 Psychic",
+        "status_effect": "[Compelled: Sleep]",
+        "injury": "1 Major Mind Injury (Euphoric Fugue / 'The Glamour' Warp)"
+      }
+    }
+  },
+
+  "HAZ_ZONE_LEX_12": {
+    "category": "HAZARD",
+    "title": "The Bedlam Peaks (Zone of Lex)",
+    "narrative_prompt": "The landscape reacts to your darkest thoughts. The terrain suddenly folds and snaps like origami, trying to crush you into a simple geometric shape.",
+    "mechanics": {
+      "detection": {
+        "skill": "Awareness + Logic",
+        "dc": 15,
+        "success_effect": "You spot the geometric fault lines before they fold."
+      },
+      "bypass": {
+        "skill": "Willpower + Endurance",
+        "dc": 17,
+        "cost_to_attempt": "3 Focus"
+      },
+      "failure_consequence": {
+        "damage": "3d10 Force",
+        "status_effect": "[Trapped]",
+        "injury": "1 Major Mind Injury (Guilt-Wrack Crushing / 'Origami-Fold' Warp)"
+      }
+    }
+  }
+}

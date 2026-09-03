@@ -1,0 +1,64 @@
+{
+    "name": "Equine Nobles",
+    "type": "Cultures",
+    "description": "Aristocracy",
+    "role": "Senators, Diplomats, and Financiers",
+    "vibe": "Regency Era / High Feudalism",
+    "lineage": "Obsessed with",
+    "etiquette": "Obsessed with",
+    "magic": "Non-magical",
+    "policy": "Remove magical foals from line of succession",
+    "politics": {
+        "weapon": "Backhanded Compliment",
+        "back-room": "Real laws passed in private",
+        "attitude": "High and Mighty"
+    },
+    "code": {
+        "duty": "Watchmen of the Earth",
+        "unforgivable sin": "The Sleeping Watch",
+        "result": "Impeccable watchtowers and signal fires"
+    },
+    "military": {
+        "unit": "Wind Runners",
+        "composition": "Light, unarmored scouts",
+        "mission": "Eyes and ears of the Estate",
+        "speed": "Get a message across the entire Heartland in 12 hours"
+    },
+    "sub-factions": [
+        {
+            "name": "The Stallions (Horses)",
+            "role": "The Dukes and Duchesses",
+            "personality": "Stoic, traditional, and commanding",
+            "obsession": "Pedigree"
+        },
+        {
+            "name": "The Stripes (Zebras)",
+            "role": "The Southern Gentry",
+            "personality": "The 'New Money'. Loud, flashy, and more adventurous",
+            "weapon": "Rapier"
+        },
+        {
+            "name": "The Mules (Donkeys)",
+            "role": "The Treasurers and Judges",
+            "personality": "Stubborn, wealthy, and conservative",
+            "power": "Control the Treasury"
+        }
+    ],
+    "relationships": [
+        {
+            "vs": "The [[Wolves]] (Marshals)",
+            "dynamic": "Master vs. Hound",
+            "reality": "The Nobles pay the [[Wolves]] and build their forts"
+        },
+        {
+            "vs": "The Rats (Bankers)",
+            "dynamic": "Old Money vs. New Debt",
+            "reality": "The Nobles are in debt to the Golden Warrens"
+        },
+        {
+            "vs": "The Farmers (Commons)",
+            "dynamic": "Lord vs. Vassal",
+            "reality": "A benevolent dictatorship"
+        }
+    ]
+}

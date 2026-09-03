@@ -1,0 +1,208 @@
+{
+  "PILLARS": {
+    "NEXUS": {
+      "theme": "The Flame",
+      "element": "Tungsten",
+      "bane_of": "OMEN",
+      "vulnerable_to": "ORDO",
+      "tiers": {
+        "1": {"name": "Spark", "manifestation": "Ignition: 1 Dmg.", "shape": "Point", "cantrip": "Matchstick: Ignite touch-points.", "passive": "Tungsten Skin: Immune to singes."},
+        "2": {"name": "Glow", "manifestation": "Thermal Sight: See heat.", "shape": "Aura", "cantrip": "Lantern: Hand-glow.", "passive": "Internal Hearth: Ignore cold."},
+        "3": {"name": "Heat", "manifestation": "Sear: Apply [Burn].", "shape": "Ray", "cantrip": "Boil: Heat cup of tea instantly.", "passive": "Warm Presence: +1 Composure rec."},
+        "4": {"name": "Forge", "manifestation": "Weld: Fuse [Metal].", "shape": "Link", "cantrip": "Heat Room: Warm a stone hall.", "passive": "Fire-Warden: 25% Res to Nexus."},
+        "5": {"name": "Flare", "manifestation": "Sun-Blind: [Obscured].", "shape": "Flash", "cantrip": "Cutter: Melt through locks.", "passive": "Efficiency: T1-2 cost 0 Focus."},
+        "6": {"name": "Blast", "manifestation": "Plasma Arc: [Frail].", "shape": "Cylinder", "cantrip": "Cistern Boil: Boil vats of water.", "passive": "Fuel-Blood: Use Stamina for Focus."},
+        "7": {"name": "Melt", "manifestation": "Slag-Wave: [Stone] to Lava.", "shape": "Ring", "cantrip": "Vaporize: Clear fog/water.", "passive": "Aegis: 50% Res / Bane vuln halved."},
+        "8": {"name": "Core", "manifestation": "Fusion Aura: Proximity [Burn].", "shape": "Sphere", "cantrip": "Forge-Master: Repair by holding.", "passive": "Resonant Battery: +5 Max Focus."},
+        "9": {"name": "Brand", "manifestation": "Carulkem's Heart: Sun-Birth.", "shape": "Singularity", "cantrip": "Noon-Day: Mile-wide daylight.", "passive": "Ascension: Immune to Omen bane."}
+      }
+    },
+    "ORDO": {
+      "theme": "The Chill",
+      "element": "Titanium",
+      "bane_of": "NEXUS",
+      "vulnerable_to": "MOTUS",
+      "tiers": {
+        "1": {"name": "Chill", "manifestation": "Chill: Remove Pain.", "shape": "Mist", "cantrip": "Frost-Touch: Cool a drink.", "passive": "Cold-Blood: Need less water."},
+        "2": {"name": "Rime", "manifestation": "Rime: Floor [Unstable].", "shape": "Puddle", "cantrip": "Preserve: Keep organic fresh.", "passive": "Titanium Will: +1 vs Spirit."},
+        "3": {"name": "Frost", "manifestation": "Frost: Apply [Sapped].", "shape": "Cone", "cantrip": "Mist-Maker: Cover small obj.", "passive": "Braced: Cannot be Staggered."},
+        "4": {"name": "Bind", "manifestation": "Bind: [Stop] object.", "shape": "Cube", "cantrip": "Cool Vent: Chill a room.", "passive": "Ordo-Warden: 25% Res to Ordo."},
+        "5": {"name": "Shell", "manifestation": "Shell: +2 Armor Mod.", "shape": "Shell", "cantrip": "Solidify: Turn water to block.", "passive": "Stillness: Hold breath 10m."},
+        "6": {"name": "Drain", "manifestation": "Drain: Delete Momentum.", "shape": "Zone", "cantrip": "Deep Freeze: Freeze cistern.", "passive": "Efficiency: T1-2 cost 0 Focus."},
+        "7": {"name": "Shatter", "manifestation": "Shatter: Apply [Fragile].", "shape": "Spike", "cantrip": "Crypt-Cold: Put out fires.", "passive": "Aegis: 50% Res / Bane vuln halved."},
+        "8": {"name": "Stasis", "manifestation": "Stasis: Time-Pause.", "shape": "Point", "cantrip": "Perfect Stasis: Preserve corpse.", "passive": "Diamond Mind: Immune to Confuse."},
+        "9": {"name": "Brand", "manifestation": "The Glazier: Absolute Stasis.", "shape": "Grid", "cantrip": "Whiteout: Mile-wide wasteland.", "passive": "Ascension: Immune to Nexus bane."}
+      }
+    },
+    "MOTUS": {
+      "theme": "The Speed",
+      "element": "Lead",
+      "bane_of": "ORDO",
+      "vulnerable_to": "MASS",
+      "tiers": {
+        "1": {"name": "Twitch", "manifestation": "Twitch: +2 Maneuver.", "shape": "Vibration", "cantrip": "Flick: Switch coin from 5ft.", "passive": "Quick-Dry: Skin repels mud."},
+        "2": {"name": "Hum", "manifestation": "Hum: Target [Muted].", "shape": "Spiral", "cantrip": "Pitch: Mimic any voice.", "passive": "Lead-Ear: Immune to deafen."},
+        "3": {"name": "Pulse", "manifestation": "Pulse: [Push] small obj.", "shape": "Pulse", "cantrip": "Ripple: Clear dust/debris.", "passive": "Fast-Step: Ignore Unstable."},
+        "4": {"name": "Surge", "manifestation": "Surge: Grant Momentum.", "shape": "Vector", "cantrip": "Vibrate: Jiggle lock open.", "passive": "Motus-Warden: 25% Res to Motus."},
+        "5": {"name": "Blur", "manifestation": "Blur: Gain [Obscured].", "shape": "Flicker", "cantrip": "Cheat: Move hands in blur.", "passive": "Efficiency: T1-2 cost 0 Focus."},
+        "6": {"name": "Boom", "manifestation": "Boom: Blunt + Stagger.", "shape": "Sphere", "cantrip": "Glass-Break: Break all windows.", "passive": "Nervous: Stamina for Move act."},
+        "7": {"name": "Vector", "manifestation": "Vector: Bounce Attack.", "shape": "Zig-Zag", "cantrip": "Water-Run: Run across pond.", "passive": "Aegis: 50% Res / Bane vuln halved."},
+        "8": {"name": "Phase", "manifestation": "Phase: Walk through wood.", "shape": "Outline", "cantrip": "Heat-Gen: Vibrate obj to heat.", "passive": "Reflex: +1 Action Die (Even)."},
+        "9": {"name": "Brand", "manifestation": "The Silence: Absolute Vector.", "shape": "Flash", "cantrip": "Two Places: Appear as twins.", "passive": "Ascension: Immune to Ordo bane."}
+      }
+    },
+    "MASS": {
+      "theme": "The Weight",
+      "element": "Osmium",
+      "bane_of": "MOTUS",
+      "vulnerable_to": "RATIO",
+      "tiers": {
+        "1": {"name": "Anchor", "manifestation": "Anchor: Gain [Static].", "shape": "Square", "cantrip": "Heavy Pocket: Make obj 50lb.", "passive": "Rooted: Cannot be pushed."},
+        "2": {"name": "Burden", "manifestation": "Burden: -2 Manual acts.", "shape": "Shadow", "cantrip": "Paperweight: Pin document.", "passive": "Osmium Bone: -1 Blunt Dmg."},
+        "3": {"name": "Dip", "manifestation": "Dip: Force [Prone].", "shape": "Plane", "cantrip": "Leveler: Know if floor is flat.", "passive": "Grip: Adv. on Grapple."},
+        "4": {"name": "Well", "manifestation": "Well: [Pull] 5ft area.", "shape": "Bubble", "cantrip": "Ascend: Weight becomes 1lb.", "passive": "Mass-Warden: 25% Res to Mass."},
+        "5": {"name": "Press", "manifestation": "Press: Zone [Pressure].", "shape": "Cylinder", "cantrip": "Compactor: Crush can to cube.", "passive": "Efficiency: T1-2 cost 0 Focus."},
+        "6": {"name": "Orbit", "manifestation": "Orbit: Debris Shield.", "shape": "Ring", "cantrip": "Float: Make water hover.", "passive": "Density: Stamina ignores fall dmg."},
+        "7": {"name": "Void", "manifestation": "Void: 2x Dmg + Pull.", "shape": "Point", "cantrip": "Sinkhole: Collapse floor section.", "passive": "Aegis: 50% Res / Bane vuln halved."},
+        "8": {"name": "Core", "manifestation": "Core: Target [Trapped].", "shape": "Sphere", "cantrip": "World-Press: Flatten a shed.", "passive": "Relativistic: Immune to Stop."},
+        "9": {"name": "Brand", "manifestation": "The Burden: World-Weight.", "shape": "Singularity", "cantrip": "Gravity God: Choose 'Down'.", "passive": "Ascension: Immune to Motus bane."}
+      }
+    },
+    "RATIO": {
+      "theme": "The Logic",
+      "element": "Silicon",
+      "bane_of": "MASS",
+      "vulnerable_to": "FLUX",
+      "tiers": {
+        "1": {"name": "Pulse", "manifestation": "1 Focus Dmg: Strike a target's mind.", "shape": "Point", "cantrip": "Spark: Power a light or tinderbox.", "passive": "Logical: +1 Knowledge."},
+        "2": {"name": "Trace", "manifestation": "Reveal Tag: Learn a hidden enemy trait.", "shape": "Line", "cantrip": "Perfect Measure: Know exact dimensions by touch.", "passive": "Insulated: Immune to static shock."},
+        "3": {"name": "Arc", "manifestation": "Hit 2 Targets: Chain your attack.", "shape": "Zig-Zag", "cantrip": "Recharge: Power a dead machine.", "passive": "Quick-Think: +2 Initiative."},
+        "4": {"name": "Flow", "manifestation": "Apply [Sapped]: Drain energy from the target.", "shape": "Circle", "cantrip": "Calculator: Solve complex math instantly.", "passive": "Ratio-Warden: 25% Res to Ratio damage."},
+        "5": {"name": "Spike", "manifestation": "Command Dmg: Targeted logic strike.", "shape": "Diamond", "cantrip": "Code-Break: Know the exact intent of a lock.", "passive": "Efficiency: T1-2 cost 0 Focus."},
+        "6": {"name": "Surge", "manifestation": "Lose Action Beat: Target skips a pulse.", "shape": "Cone", "cantrip": "Grid-Sense: Map an entire room by touch.", "passive": "Pulse-Blood: Focus heals Stamina."},
+        "7": {"name": "Bolt", "manifestation": "Linear Dmg: High-damage lightning.", "shape": "Ray", "cantrip": "Flash-Bang: Blind a 5ft area for 1 second.", "passive": "Aegis: 50% Res / Bane vuln halved."},
+        "8": {"name": "Matrix", "manifestation": "No Tactic Choice: Lock enemy out of the Clash matrix.", "shape": "Grid", "cantrip": "System-Command: Shut down all nearby tech.", "passive": "Transcendent: Immune to Confusion."},
+        "9": {"name": "Brand", "manifestation": "Algorithm: Total rewrite of local variables.", "shape": "Hexagon", "cantrip": "Perfect Order: Fix any broken machine effortlessly.", "passive": "Ascension: Immune to Mass bane."}
+      }
+    },
+    "FLUX": {
+      "theme": "The Acid",
+      "element": "Gold",
+      "bane_of": "RATIO",
+      "vulnerable_to": "ANUMIS",
+      "tiers": {
+        "1": {"name": "Clean", "manifestation": "Remove Tag: Wash away a status effect.", "shape": "Droplet", "cantrip": "Spotless: Remove rust, blood, or grime instantly.", "passive": "Slick: +2 bonus vs. Grapple attempts."},
+        "2": {"name": "Slick", "manifestation": "Floor [Unstable]: Coat the ground in frictionless fluid.", "shape": "Puddle", "cantrip": "Silent Hinge: Lubricate any lock or door perfectly.", "passive": "Chemical Gut: Immune to ingested poison."},
+        "3": {"name": "Leak", "manifestation": "Item [Fragile]: Corrode enemy gear.", "shape": "Spiral", "cantrip": "Digest: Eat through rope or simple bindings.", "passive": "Fluid Motion: Ignore mud or deep water penalties."},
+        "4": {"name": "Mist", "manifestation": "Obscured/Burn: A cloud of caustic vapor.", "shape": "Cloud", "cantrip": "Scent-Wash: Completely remove your own scent track.", "passive": "Flux-Warden: 25% Resistance to all Flux damage."},
+        "5": {"name": "Warp", "manifestation": "Stone to Cloth: Transmute a solid object's state.", "shape": "Sphere", "cantrip": "Melt-Key: Soften a lock's tumblers.", "passive": "Efficiency: T1-2 Flux spells cost 0 Focus."},
+        "6": {"name": "Dissolve", "manifestation": "Destroy Metal: Vaporize an enemy's weapon or armor.", "shape": "Ray", "cantrip": "Purify: Clean an entire cistern of stagnant water.", "passive": "Permeable: Spend Stamina to walk through cloth or thin barriers."},
+        "7": {"name": "Flow", "manifestation": "Walk through walls: Phase through solid stone.", "shape": "Outline", "cantrip": "Sludge: Turn the floor into a liquid pool.", "passive": "Aegis of Gold: 50% Res. Weakness to Anumis halved."},
+        "8": {"name": "Flux", "manifestation": "Vapor to Metal: Solidify the air around an enemy.", "shape": "Burst", "cantrip": "Armor-Slag: Melt enemy plate armor instantly.", "passive": "Liquid Form: Completely immune to the [Trapped] tag."},
+        "9": {"name": "Brand", "manifestation": "Aurgenas' Maw: The Gilded Solvent's caustic wave.", "shape": "Wave", "cantrip": "World-Wash: Completely erase a physical structure.", "passive": "Ascension: No longer vulnerable to Anumis while channelling."}
+      }
+    },
+    "ANUMIS": {
+      "theme": "The Arcane",
+      "element": "Bismuth",
+      "bane_of": "FLUX",
+      "vulnerable_to": "VITA",
+      "tiers": {
+        "1": {"name": "Sense", "manifestation": "Detect Magic.", "shape": "Eye", "cantrip": "Ghost-Tap: Touch from 10ft.", "passive": "Sensitive: Know if room glitched."},
+        "2": {"name": "Echo", "manifestation": "Move 5lb obj.", "shape": "Limb", "cantrip": "Throw Voice: Project speech.", "passive": "Flicker: Mirror reflect slow."},
+        "3": {"name": "Leak", "manifestation": "Drain 1 Focus.", "shape": "Spiral", "cantrip": "Cold Spot: Make room eerie.", "passive": "Mind-Wall: +1 vs Neural tags."},
+        "4": {"name": "Phase", "manifestation": "Immune to Blunt.", "shape": "Blur", "cantrip": "Data-Read: Know object history.", "passive": "Anumis-Warden: 25% Res to Anumis."},
+        "5": {"name": "Mimic", "manifestation": "Copy small item.", "shape": "Fractal", "cantrip": "Key-Print: Temp copy of key.", "passive": "Efficiency: T1-2 cost 0 Focus."},
+        "6": {"name": "Breach", "manifestation": "Banish target.", "shape": "Portal", "cantrip": "Void-Step: Walk through door.", "passive": "Soul-Battery: Use Composure for spell."},
+        "7": {"name": "Strike", "manifestation": "Ignores Armor.", "shape": "Sword", "cantrip": "Silence: 5ft sphere of no sound.", "passive": "Aegis: 50% Res / Bane vuln halved."},
+        "8": {"name": "Warp", "manifestation": "Swap spots.", "shape": "X-Cross", "cantrip": "Unmake: Turn art to pigment.", "passive": "Aetheric: Immune to Sapped."},
+        "9": {"name": "Brand", "manifestation": "Lophex's Void.", "shape": "Zero", "cantrip": "Delete: Erase non-living obj.", "passive": "Ascension: Immune to Flux bane."}
+      }
+    },
+    "VITA": {
+      "theme": "The Life",
+      "element": "Silver",
+      "bane_of": "ANUMIS",
+      "vulnerable_to": "AURA",
+      "tiers": {
+        "1": {"name": "Pulse", "manifestation": "Stop Bleeding: Instantly seal a wound.", "shape": "Vein", "cantrip": "Heart-Sense: Feel the pulse of an object or being.", "passive": "Fast Healer: +1 HP on short rest."},
+        "2": {"name": "Knit", "manifestation": "Heal 2 HP: Mend torn flesh.", "shape": "Stitch", "cantrip": "Bloom: Revive a withered or dying plant.", "passive": "Silver-Blood: Immune to natural disease."},
+        "3": {"name": "Blight", "manifestation": "Apply [Sapped]: Drain target's life force.", "shape": "Spores", "cantrip": "Sicken: Rot a meal instantly.", "passive": "Vitality: +2 Max Stamina."},
+        "4": {"name": "Surge", "manifestation": "+1 Move: Grant temporary speed/growth.", "shape": "Star", "cantrip": "Wide-Awake: Only 4 hours of sleep needed.", "passive": "Vita-Warden: 25% Res to Vita damage."},
+        "5": {"name": "Warp", "manifestation": "Target [Unstable]: Disorient biology.", "shape": "Mass", "cantrip": "Graft: Re-attach a severed limb (if held).", "passive": "Efficiency: T1-2 cost 0 Focus."},
+        "6": {"name": "Bond", "manifestation": "Share Dmg/Focus: Link life forces together.", "shape": "Vines", "cantrip": "Species-Speech: Feel and project animal vibes.", "passive": "Iron Gut: Can eat spoiled meat safely."},
+        "7": {"name": "Evolve", "manifestation": "+3 Armor: Rapidly grow a chitinous shell.", "shape": "Cocoon", "cantrip": "Morph: Change face/features for 1 hour.", "passive": "Aegis: 50% Res / Bane vuln halved."},
+        "8": {"name": "Scourge", "manifestation": "Major Injury: Force a tumorous or lethal mutation.", "shape": "Black Vein", "cantrip": "Deforest: Kill all plant life in a 20ft radius.", "passive": "Relentless: Immune to pain-stagger."},
+        "9": {"name": "Brand", "manifestation": "Gavusrix's Garden: Rampant, uncontrolled biome-growth.", "shape": "Root", "cantrip": "Life-Giver: Resurrect an ally (if cast within the last round).", "passive": "Ascension: Immune to Anumis bane."}
+      }
+    },
+    "AURA": {
+      "theme": "The Spirit",
+      "element": "Phosphorus",
+      "bane_of": "VITA",
+      "vulnerable_to": "LUX",
+      "tiers": {
+        "1": {"name": "Kindle", "manifestation": "1 Composure Rec.", "shape": "Halo", "cantrip": "Mood-Light: Change room colors.", "passive": "Empath: Know current emotion."},
+        "2": {"name": "Stir", "manifestation": "Rage (Attack near).", "shape": "Spikes", "cantrip": "Whisper: Tame small animal.", "passive": "Spirit-Sight: See ghost haze."},
+        "3": {"name": "Calm", "manifestation": "No Aggression.", "shape": "Sphere", "cantrip": "Somber: Make a room quiet.", "passive": "Centered: +1 vs Confusion."},
+        "4": {"name": "Fear", "manifestation": "[Compelled: Flee].", "shape": "Mask", "cantrip": "Dread-Chill: Make hair stand up.", "passive": "Aura-Warden: 25% Res to Aura."},
+        "5": {"name": "Echo", "manifestation": "Share Focus.", "shape": "Threads", "cantrip": "Memory-Touch: Share a memory.", "passive": "Efficiency: T1-2 cost 0 Focus."},
+        "6": {"name": "Shiver", "manifestation": "Composure Dmg.", "shape": "Wave", "cantrip": "Glass-Sing: Hum glassware.", "passive": "Vessel: Use Composure for Aura."},
+        "7": {"name": "Command", "manifestation": "Dictate Move.", "shape": "Cross", "cantrip": "Sway: Make crowd look away.", "passive": "Aegis: 50% Res / Bane vuln halved."},
+        "8": {"name": "Shield", "manifestation": "Mind-Immune.", "shape": "Shell", "cantrip": "Benediction: Purify water.", "passive": "Radiant Spirit: Cast warm light."},
+        "9": {"name": "Brand", "manifestation": "Soul-Fire.", "shape": "Phoenix", "cantrip": "Sanctify: No violence in Zone.", "passive": "Ascension: Immune to Vita bane."}
+      }
+    },
+    "LUX": {
+      "theme": "The Light",
+      "element": "Chromium",
+      "bane_of": "AURA",
+      "vulnerable_to": "LEX",
+      "tiers": {
+        "1": {"name": "Glint", "manifestation": "Distraction: Flash light to disorient.", "shape": "Spark", "cantrip": "Guiding Bolt: Create a floating speck of light.", "passive": "Eagle-Eye: See perfectly in starlight."},
+        "2": {"name": "Image", "manifestation": "False Object: Create a hard-light hologram.", "shape": "Frame", "cantrip": "Mirror-Shine: Make shields or armor perfectly reflective.", "passive": "Chromium Skin: No sun-shadow."},
+        "3": {"name": "Bend", "manifestation": "[Obscured]: Bend light to hide a target.", "shape": "Prism", "cantrip": "Rainbow-Bridge: Create a solid 5ft bridge of light.", "passive": "Glint: Flash eyes to startle enemies."},
+        "4": {"name": "Beam", "manifestation": "Searing Dmg: A concentrated laser burn.", "shape": "Line", "cantrip": "Focus-Light: Read easily in a chaotic storm.", "passive": "Lux-Warden: 25% Res to Lux damage."},
+        "5": {"name": "Solid", "manifestation": "Wall/Cover: Create a barrier of solid light.", "shape": "Plane", "cantrip": "Light-Key: Form a physical light key (lasts 1 min).", "passive": "Efficiency: T1-2 cost 0 Focus."},
+        "6": {"name": "Blind", "manifestation": "Zone Flash: Permanently damage retinas.", "shape": "Circle", "cantrip": "Sun-Dial: Know the exact time intuitively.", "passive": "Photonic: Burn Stamina to blind melee attackers."},
+        "7": {"name": "Sear", "manifestation": "Laser-Lance: Cut through heavy armor.", "shape": "Continuous", "cantrip": "Purify: Burn away Blight or surface Poison.", "passive": "Aegis: 50% Res / Bane vuln halved."},
+        "8": {"name": "Guard", "manifestation": "+5 Armor: A shell of highly refracted light.", "shape": "Shell", "cantrip": "Dawn-Bringer: Dispel all magical Darkness.", "passive": "Ever-Watchful: Immune to Blind effects."},
+        "9": {"name": "Brand", "manifestation": "Opecten's Mirror: The all-seeing surveillance fracture.", "shape": "Kaleidoscope", "cantrip": "True-Sight: See instantly through all illusions.", "passive": "Ascension: Immune to Aura bane."}
+      }
+    },
+    "LEX": {
+      "theme": "The Law",
+      "element": "Lithium",
+      "bane_of": "LUX",
+      "vulnerable_to": "OMEN",
+      "tiers": {
+        "1": {"name": "Command", "manifestation": "Single Word: Force a momentary action.", "shape": "Ring", "cantrip": "Echo: Voice carries for miles.", "passive": "Linguist: Understand intent behind words."},
+        "2": {"name": "Seal", "manifestation": "Lock door/chest: Magically seal an object.", "shape": "Glyph", "cantrip": "The Mark: Leave an invisible tracking seal.", "passive": "Incorruptible: +2 to resist Charms."},
+        "3": {"name": "Deny", "manifestation": "Target cannot X: Forbid a specific action.", "shape": "Cross", "cantrip": "Truth-Bound: Know instantly if a promise is broken.", "passive": "Authority: Advantage on Social checks with guards."},
+        "4": {"name": "Oath", "manifestation": "Geas: Impose a long-term binding contract.", "shape": "Rings", "cantrip": "Scribe: Write legibly on stone or the air.", "passive": "Lex-Warden: 25% Resistance to all Lex damage."},
+        "5": {"name": "Zone", "manifestation": "Edict: Establish a new Rule within the perimeter.", "shape": "Perimeter", "cantrip": "Quiet-Law: No loud noise permitted within 10ft.", "passive": "Efficiency: Tier 1-2 Lex spells cost 0 Focus."},
+        "6": {"name": "Cloak", "manifestation": "Deny Element: Create a shield against a specific force.", "shape": "Shield", "cantrip": "Judge's Gaze: Know if a crime has been committed.", "passive": "Steadfast: Immune to Tier 1-3 Compel commands."},
+        "7": {"name": "Puppet", "manifestation": "Control Move: Dictate an enemy's movement.", "shape": "Strands", "cantrip": "Sanctify: No Deception allowed in the room.", "passive": "Aegis of Lithium: 50% Res. Weakness to Omen halved."},
+        "8": {"name": "Write", "manifestation": "Change a Tag: Rewrite a Tag on a target or object.", "shape": "Scroll", "cantrip": "Command Weather: Force the rain to clear.", "passive": "King-Born: Immune to the [Terrifying] tag."},
+        "9": {"name": "Brand", "manifestation": "Tyrustis' Edict: The Mad King's absolute law.", "shape": "Throne", "cantrip": "Final Word: 'Die' forces a direct HP check.", "passive": "Ascension: No longer vulnerable to Omen while channelling."}
+      }
+    },
+    "OMEN": {
+      "theme": "The Entropy",
+      "element": "Iridium",
+      "bane_of": "LEX",
+      "vulnerable_to": "NEXUS",
+      "tiers": {
+        "1": {"name": "Dread", "manifestation": "-1 Composure: Inject the terror of the future.", "shape": "Wisp", "cantrip": "Wilt: Make a vibrant flower turn brown instantly.", "passive": "Death-Sense: Feel if anyone is dying nearby."},
+        "2": {"name": "Rust", "manifestation": "Item is [Brittle]: Rapidly age an object.", "shape": "Spiral", "cantrip": "Dust-Cloud: Hide small items in a cloud of entropy.", "passive": "Unfazed: Immune to natural rot/decay."},
+        "3": {"name": "Halt", "manifestation": "Lose Next Move: Freeze a target in the timeline.", "shape": "Hourglass", "cantrip": "Stale: Make any food dry and tasteless.", "passive": "Old Soul: +2 to Lore/History checks."},
+        "4": {"name": "Rot", "manifestation": "Apply [Frail]: Weaken organic bonds.", "shape": "Mist", "cantrip": "Memory-Fade: Erase the last 10 seconds of a target's memory.", "passive": "Omen-Warden: 25% Res to Omen damage."},
+        "5": {"name": "Echo", "manifestation": "Repeat Damage: Force the past to happen again.", "shape": "Shadow", "cantrip": "Antique: Know the exact age of an object by touching it.", "passive": "Efficiency: T1-2 cost 0 Focus."},
+        "6": {"name": "Miasma", "manifestation": "Gear in Zone Rusts: Widespread technological decay.", "shape": "Funnel", "cantrip": "Grave-Breath: Blow out all non-magical fires.", "passive": "Gray-Walking: Stamina ignores Stop/Stasis effects."},
+        "7": {"name": "Freeze", "manifestation": "Time-Stop: Remove 1 Target from the timestream.", "shape": "Fractured", "cantrip": "Pause-Self: Stop your own bleeding by freezing the wound in time.", "passive": "Aegis: 50% Res / Bane vuln halved."},
+        "8": {"name": "Reap", "manifestation": "Major Injury: Sever the target's future entirely.", "shape": "Scythe", "cantrip": "Skeleton-Key: Rust any lock open completely.", "passive": "Fate-Weaver: 1x Chaos Reroll per day."},
+        "9": {"name": "Brand", "manifestation": "Termhill's Star: Total temporal instability / Paradox.", "shape": "Eclipse", "cantrip": "The End: Turn small non-living objects in a Zone to dust.", "passive": "Ascension: Immune to Nexus bane."}
+      }
+    }
+  }
+}

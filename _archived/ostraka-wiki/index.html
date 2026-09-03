@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ostraka Lore Wiki</title>
+    <meta name="description" content="An interactive lore wiki for the world of Ostraka." />
+    <link rel="stylesheet" href="/node_modules/leaflet/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app">
+      <!-- WIKI VIEW -->
+      <div id="slideshow">
+        <div class="slide-text-panel">
+          <div class="slide-header">
+            <span class="slide-label" id="slide-label">Chapter 1 of 15</span>
+            <h1 class="slide-chapter-title" id="slide-chapter-title">The First Age</h1>
+          </div>
+          <div class="slide-body" id="slide-body">
+            <p class="placeholder-text">Select a chapter to begin reading.</p>
+          </div>
+        </div>
+        <div class="slide-visual-panel">
+          <div class="era-map-zone" id="era-map-zone">
+            <div class="world-map-wrapper">
+              <img src="/map_full.png" alt="World Map" class="world-map-image" id="world-map-img">
+            </div>
+          </div>
+          <div class="chapter-illus-zone hidden" id="illus-zone">
+            <img src="" alt="Chapter Illustration" id="illus-img">
+          </div>
+        </div>
+        <nav class="slide-nav">
+          <button id="btn-prev" class="nav-btn" disabled>&#8592; Previous</button>
+          <div class="nav-center">
+            <button id="toc-toggle" class="toc-btn">&#9776; Chapters</button>
+            <span class="nav-title" id="nav-title">Ostraka Lore Wiki</span>
+            <button id="btn-goto-map" class="nav-btn">World Map</button>
+          </div>
+          <button id="btn-next" class="nav-btn">Next &#8594;</button>
+        </nav>
+      </div>
+
+      <!-- DEDICATED MAP VIEW -->
+      <div id="map-view" class="hidden">
+        <div class="map-view-header">
+          <div class="map-header-left">
+            <h2>World Map Explorer</h2>
+          </div>
+          <div class="map-controls">
+            <label for="map-variant-select">Map Variant:</label>
+            <div class="select-wrapper">
+              <select id="map-variant-select">
+                <option value="/map_full.png">Physical Map</option>
+                <option value="/map_factions.png">Factions Map</option>
+                <option value="/map_chaos_zones.png">Chaos Zones Map</option>
+                <option value="/map_trade_goods.png">Trade Goods Map</option>
+                <option value="/map_fae_era.png">Fae Era Map</option>
+                <option value="/map_magister_era.png">Magistar Era Map</option>
+              </select>
+            </div>
+          </div>
+          <button id="btn-goto-wiki" class="nav-btn">Lore Wiki</button>
+        </div>
+        <div class="map-view-body">
+          <div class="world-map-wrapper">
+            <img src="/map_full.png" alt="World Map" class="world-map-image" id="explorer-map-img">
+            <div id="world-grid" class="world-grid"></div>
+          </div>
+          <div class="map-hint">Click any region to explore in detail</div>
+        </div>
+      </div>
+
+      <!-- SECTOR DETAIL VIEW -->
+      <div id="region-view" class="hidden">
+        <button id="btn-back" class="btn-back">&#8592; Back to Map</button>
+        <div id="region-map"></div>
+        <div id="region-lore-panel" class="region-lore-panel hidden">
+          <div class="lore-panel-header">
+            <h3>Region Archives</h3>
+          </div>
+          <div id="region-lore-list" class="region-lore-list"></div>
+        </div>
+      </div>
+
+      <aside id="toc-sidebar" class="hidden">
+        <div class="toc-header">
+          <h2>Chapters</h2>
+          <button id="toc-close">&times;</button>
+        </div>
+        <ul id="toc-list"></ul>
+      </aside>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

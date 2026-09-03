@@ -1,0 +1,19 @@
+{
+    "Name": "Somoan Wood-Hen",
+    "Type": "Fauna",
+    "Diet": "Carnivorous",
+    "Base_Health": 15,
+    "Speed": 2,
+    "Territorial_Aggression": 8,
+    "Self_Preservation_Instincts": 0,
+    "Utility": {
+        "Siren": true,
+        "Mine_Sweeper": true
+    },
+    "Cultural_Significance": {
+        "Taboo": true,
+        "Eating": "Bad luck",
+        "Consumption": "Absolute famine",
+        "Folklore": "Can see ghosts"
+    }
+}

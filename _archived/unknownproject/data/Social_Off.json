@@ -1,0 +1,38 @@
+[
+  {
+    "Attribute": "MIGHT",
+    "Skill Name": "Intimidation",
+    "The Weapon": "The Hammer",
+    "Description (The Action)": "The Threat. Using physical presence, volume, or violence to force compliance. \"Get out of my way or I'll go through you.\""
+  },
+  {
+    "Attribute": "FINESSE",
+    "Skill Name": "Repartee",
+    "The Weapon": "The Quill",
+    "Description (The Action)": "The Jab. Fast talk, witty comebacks, and stinging insults. Using words like a rapier. \"Nice outfit. Did you lose a bet?\""
+  },
+  {
+    "Attribute": "FORTITUDE",
+    "Skill Name": "Coercion",
+    "The Weapon": "The Gaze",
+    "Description (The Action)": "The Pressure. Relentless, unblinking pressure. Not shouting, just refusing to back down until they crack. \"I can wait all day.\""
+  },
+  {
+    "Attribute": "LOGIC",
+    "Skill Name": "Rhetoric",
+    "The Weapon": "The Ledger",
+    "Description (The Action)": "The Argument. Using facts, laws, and logical fallacies to dismantle their point. \"Actually, regulation 4.B clearly states...\""
+  },
+  {
+    "Attribute": "AWARENESS",
+    "Skill Name": "Insight",
+    "The Weapon": "The Lens",
+    "Description (The Action)": "The Read. Cold reading. Calling out their ticks, secrets, or lies to rattle them. \"You're sweating. What are you afraid of?\""
+  },
+  {
+    "Attribute": "CHARM",
+    "Skill Name": "Persuasion",
+    "The Weapon": "The Stage",
+    "Description (The Action)": "The Performance. Seduction, inspiration, or active deception. Making them want to agree with you. \"Trust me, it's for the best.\""
+  }
+]

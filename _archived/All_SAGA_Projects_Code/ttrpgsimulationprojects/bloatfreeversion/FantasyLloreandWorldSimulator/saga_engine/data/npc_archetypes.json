@@ -1,0 +1,209 @@
+{
+  "NPC_AVIAN_IRON_BEAK": {
+    "faction": "Avian Empire",
+    "title": "Iron-Beak Interrogator",
+    "category": "SOCIAL",
+    "narrative_prompt": "A tall, impeccably dressed avian stares at you in complete silence. They are waiting for a Yes or No.",
+    "vitals": {
+      "hp": 20, "stamina": 15,
+      "composure": 45, "focus": 35
+    },
+    "tags": ["[Vocal]", "[Logical]", "[Terrifying]"],
+    "mechanics": {
+      "behavior": "Never attacks physically first. Uses social combat to drain Composure.",
+      "social_tactics": {
+        "The Binary Trap": "Forces a [Logical] clash. If the player is evasive, the Iron-Beak inflicts 1d6 Composure Trauma."
+      }
+    },
+    "loot_drop": ["Shadow-Seal Ink Vial", "20 Aetherium Coins"]
+  },
+
+  "NPC_IRON_FORGE_DANCER": {
+    "faction": "Iron Caldera",
+    "title": "Forge Dancer",
+    "category": "COMBAT",
+    "narrative_prompt": "A silent, heavily scarred lizard-folk steps forward, their movements a fluid, instantly deadly dance.",
+    "vitals": {
+      "hp": 40, "stamina": 35,
+      "composure": 30, "focus": 20
+    },
+    "tags": ["[Biped]", "[Momentum]", "[Precise]", "[Thermal]"],
+    "mechanics": {
+      "armor_mod": 4,
+      "clash_logic": {
+        "PRESS": "Burning Strike: 1d10 [Slashing] + [Burn] tag.",
+        "HOLD": "Unyielding: If they win a HOLD tactic, attacker takes 1d4 thermal recoil damage."
+      },
+      "zero_state_breach": "Never yields ground. If Stamina hits 0, they immediately trigger a final [Brutal] attack before collapsing."
+    },
+    "loot_drop": ["Volatile Aether Flask", "Masterwork Copper Goggles"]
+  },
+
+  "NPC_SUMP_SLITHER_GUARD": {
+    "faction": "Sump-Kin",
+    "title": "Slither-Guard Cavalry",
+    "category": "COMBAT",
+    "narrative_prompt": "A slick Frog-Kin emerges from the muck, riding a massive, venomous Water Moccasin and leveling a lever-action rifle.",
+    "vitals": {
+      "hp": 30, "stamina": 25,
+      "composure": 15, "focus": 15
+    },
+    "tags": ["[Ambulatory]", "[Venomous]", "[Mechanical]", "[Ranged]"],
+    "mechanics": {
+      "armor_mod": 2,
+      "clash_logic": {
+        "MANEUVER": "Toxic reposition. Mount applies [Poison] to anyone in the previous zone.",
+        "TRICK": "Rifle-Blast: 1d10 [Piercing]. Ignores [Static] cover."
+      }
+    },
+    "loot_drop": ["Grade B 'Iron-Grade' Stimulant", "Lever-Action Rifle"]
+  },
+
+  "NPC_GREY_WARDEN_FIST": {
+    "faction": "The Warden Clans",
+    "title": "Warden of the Fist",
+    "category": "COMBAT",
+    "narrative_prompt": "A grey-robed ascetic draws two locking scimitars. The metal threads in their robe begin to glow with sickly chaos radiation.",
+    "vitals": {
+      "hp": 25, "stamina": 30,
+      "composure": 10, "focus": 40
+    },
+    "tags": ["[Aetheric]", "[Precise]", "[Faltering]"],
+    "mechanics": {
+      "armor_mod": 1,
+      "clash_logic": {
+        "PRESS": "Death Storm: 2d6 [Slashing]. Uses Focus instead of Stamina to fuel attacks.",
+        "DISENGAGE": "Sigil-Thread Discharge: Leaves a localized [Hazard] of pure Chaos in the zone."
+      },
+      "zero_state_breach": "Kamikaze Run. If HP reaches 0, the Warden detonates their internal chaos, dealing 4d10 [Aetheric] damage to the entire zone."
+    },
+    "loot_drop": ["Locking Scimitars", "Raw Dragonstone Shard"]
+  },
+
+  "NPC_GUERRILLA_SHADOW_PAW": {
+    "faction": "Guerrilla Clans",
+    "title": "Shadow Paw Operative",
+    "category": "COMBAT",
+    "narrative_prompt": "A tiny, cloaked feline drops silently from the canopy, an explosive-tipped crossbow bolt already loaded.",
+    "vitals": {
+      "hp": 15, "stamina": 20,
+      "composure": 30, "focus": 25
+    },
+    "tags": ["[Obscured]", "[Precise]", "[Momentum]"],
+    "mechanics": {
+      "armor_mod": 0,
+      "clash_logic": {
+        "TRICK": "Pop-Bolt: 1d8 [Blunt] + [Stunned] tag. Silent detonation.",
+        "DISENGAGE": "Leap-Charm: Instantly moves 50ft vertically to escape the clash."
+      }
+    },
+    "loot_drop": ["Dusted-Ink Vial", "3x Pop-Bolts", "Leap-Charm"]
+  },
+
+  "NPC_SCIURINI_STEWARD": {
+    "faction": "Heartland Alliance (The Guild)",
+    "title": "Sciurini Guild Steward",
+    "category": "COMBAT",
+    "narrative_prompt": "The immaculate Squirrel butler adjusts his monocle as the explosion rocks the room. He brushes a speck of dust from his tailcoat, draws a reinforced silver serving tray, and steps between you and the assassin.",
+    "vitals": {
+      "hp": 18, "max_stamina": 20, "current_stamina": 20,
+      "max_composure": 30, "max_focus": 45, "current_focus": 45
+    },
+    "tags": ["[Biped]", "[Manual]", "[Precise]", "[Aetheric]"],
+    "mechanics": {
+      "armor_mod": 1,
+      "biomancy_state": "Active (Star-Acorn enhanced processing speed)",
+      "clash_logic": {
+        "MANEUVER": "Graceful Deflection: Steward uses their reinforced serving tray to parry, gaining [Momentum] and draining 2 Focus from the attacker.",
+        "TRICK": "Surgical Scalpel: 1d8 [Piercing]. Target gains [Bleed]. Uses Focus instead of Stamina to strike."
+      },
+      "zero_state_breach": "If Focus drops to 0, the Biomancy enhancement fails. The Steward loses [Precise] and becomes [Staggered]."
+    },
+    "loot_drop": ["Perfectly Pressed Handkerchief", "Silver Scalpel", "1x Star-Acorn"]
+  },
+
+  "NPC_RAT_CANE_MASTER": {
+    "faction": "The Golden Warrens",
+    "title": "Strand Auditor",
+    "category": "SOCIAL_AND_COMBAT",
+    "narrative_prompt": "A tall Rat in flowing silk robes and ruby-tinted goggles steps into the den. The rhythmic clicking of his beaded head-tassels fills the sudden silence.",
+    "vitals": {
+      "hp": 22, "max_stamina": 25, "current_stamina": 25,
+      "max_composure": 40, "max_focus": 35, "current_focus": 35
+    },
+    "tags": ["[Biped]", "[Vocal]", "[Deceptive]", "[Finesse]"],
+    "mechanics": {
+      "armor_mod": 0,
+      "social_tactics": {
+        "The Click": "Uses rhythmic beads to mesmerize. Forces an [Intuition] check; failure results in the target gaining the [Distracted] tag before combat begins."
+      },
+      "clash_logic": {
+        "PRESS": "Hidden Stiletto: 1d10 [Piercing]. Triggers instantly from the hollow cane.",
+        "TRICK": "Nerve Strike: 1d6 [Blunt]. Target loses 1d4 Stamina."
+      }
+    },
+    "loot_drop": ["Ruby-Tinted Goggles", "Concealed Stiletto Cane", "15 Aetherium Coins"]
+  },
+
+  "NPC_OTTER_FOG_SINGER": {
+    "faction": "The River Syndicate",
+    "title": "Delta Krewe Fog-Singer",
+    "category": "COMBAT",
+    "narrative_prompt": "An Otter in a heavy, waterproof trench coat begins to hum a low, dissonant chord. Instantly, a thick, unnatural river fog rolls over the docks, swallowing the light.",
+    "vitals": {
+      "hp": 28, "max_stamina": 30, "current_stamina": 30,
+      "max_composure": 25, "max_focus": 30, "current_focus": 30
+    },
+    "tags": ["[Ambulatory]", "[Vocal]", "[Obscuring]", "[Aetheric]"],
+    "mechanics": {
+      "armor_mod": 2,
+      "clash_logic": {
+        "DISENGAGE": "The Shroud: Singer vanishes into the mist, applying [Obscured] to the entire Zone. Ranged attacks against them suffer severe Disadvantage.",
+        "HOLD": "Current Manipulation: Singer shifts the water beneath the target's feet, applying the [Unstable] tag."
+      }
+    },
+    "loot_drop": ["Mojo Bag (Gris-Gris)", "Tin of Dock-Oil", "Whisper-Pearl"]
+  },
+
+  "NPC_TARSIER_SNIPER": {
+    "faction": "The Canopy Clans",
+    "title": "Ghost-Eye Auditor",
+    "category": "COMBAT",
+    "narrative_prompt": "You don't hear the shot. You only see the massive, unblinking eyes of the tiny Tarsier rotating 180 degrees in the canopy above as your commander drops dead.",
+    "vitals": {
+      "hp": 12, "max_stamina": 15, "current_stamina": 15,
+      "max_composure": 35, "max_focus": 40, "current_focus": 40
+    },
+    "tags": ["[Arboreal]", "[Visual]", "[Ranged]", "[Precise]"],
+    "mechanics": {
+      "armor_mod": 1,
+      "clash_logic": {
+        "PRESS": "Long-Eye Jezzail: 2d10 [Piercing]. Subsonic round; completely silent. Target cannot use [Reactive] tags to defend.",
+        "MANEUVER": "Vertical Spring: Instantly leaps 15ft vertically to re-establish stealth."
+      },
+      "zero_state_breach": "The Tarsier relies entirely on distance. If engaged in a melee Clash Lock, all their actions suffer Disadvantage and cost double Stamina."
+    },
+    "loot_drop": ["Long-Eye Jezzail (Stone-Root Stock)", "5x Subsonic Slugs", "Velvet Cleaning Cloth"]
+  },
+
+  "NPC_WOLVERINE_GUARD": {
+    "faction": "The Wolverine Brotherhood",
+    "title": "Brotherhood Sentinel",
+    "category": "COMBAT",
+    "narrative_prompt": "A stout, muscular Wolverine stands before the door. Their leather muzzle-plate bristles with multi-colored strings that snap like a chaotic mane as they draw their weapons.",
+    "vitals": {
+      "hp": 45, "max_stamina": 50, "current_stamina": 50,
+      "max_composure": 50, "max_focus": 15, "current_focus": 15
+    },
+    "tags": ["[Biped]", "[Static]", "[Brutal]", "[Stoic]"],
+    "mechanics": {
+      "armor_mod": 4,
+      "clash_logic": {
+        "HOLD": "The Empty Room: Refuses to yield the Zone. Anyone attempting to Move past them is automatically dragged into a Clash Lock.",
+        "PRESS": "Elbow Spike: 1d12 [Piercing]. Inflicts the [Faltering] tag."
+      },
+      "zero_state_breach": "Indifferent Loyalty. If Composure hits 0, they do not panic. They fight to the death to fulfill the contract, gaining [Enraged] but remaining immune to [Compelled: Flee]."
+    },
+    "loot_drop": ["Black Light Leather Armor", "Elbow-Spike Gauntlets"]
+  }
+}

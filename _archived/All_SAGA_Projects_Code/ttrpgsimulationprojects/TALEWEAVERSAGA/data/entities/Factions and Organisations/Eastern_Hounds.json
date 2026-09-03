@@ -1,0 +1,87 @@
+{
+    "Name": "The Eastern Hounds",
+    "Type": "Faction",
+    "Core_Resource": "White-Bone & Solar-Worm Fur",
+    "Mounts": {
+        "type": "Giant Moa",
+        "name": "Thunder-Striders"
+    },
+    "Philosophy": {
+        "trauma": true,
+        "pragmatism": true
+    },
+    "Doctrine": {
+        "fair_game": true,
+        "voluntary_amnesia": true,
+        "oblivion_fruit": true
+    },
+    "Seasonal_Migration": [
+        {
+            "phase": "Dust",
+            "goal": "Mine White-Bone",
+            "source": "Steppes",
+            "resource": "Chaos-Insulator"
+        },
+        {
+            "phase": "Frost",
+            "goal": "Trap Solar-Worms",
+            "source": "Coastal Migration",
+            "resource": "Solar-Worm Fur"
+        }
+    ],
+    "Beasts": [
+        {
+            "type": "Giant Moa",
+            "name": "Thunder-Striders",
+            "description": "10-foot tall flightless bird with shaggy grey feathers",
+            "utility": "immune to visual illusions, can shatter iron plate",
+            "role": "primary mount and beast of burden"
+        },
+        {
+            "type": "Bird",
+            "name": "Somoan Wood-Hen",
+            "description": "Round, badger-tempered birds the size of turkeys",
+            "utility": "hyper-territorial, deafening shrieking frenzy",
+            "role": "camp security"
+        },
+        {
+            "type": "Bovine",
+            "name": "Ash-Bison",
+            "description": "Massive bovines with wool matted in volcanic ash",
+            "role": "primary source of meat and leather"
+        }
+    ],
+    "External_Relations": [
+        {
+            "faction": "Meridian Chain",
+            "relationship": "predatory",
+            "conflict": "raid caravans, target snail-barge support trains"
+        },
+        {
+            "faction": "Prism-Scale Collective",
+            "relationship": "hard counter",
+            "conflict": "fight blindfolded, raid outer crystal mines"
+        },
+        {
+            "faction": "Canopy Clans",
+            "relationship": "mercantile",
+            "trade": "Steppe-Runners, Solar-Worm Furs, Grave-Berry Extract"
+        },
+        {
+            "faction": "Iron Caldera",
+            "relationship": "symbiotic necessity",
+            "exchange": "raw White-Bone ceramic for high-grade Iron Weapons and tools"
+        }
+    ],
+    "Raiding_Behavior": {
+        "silent_ride": true,
+        "thump_codes": true,
+        "fog_walk": true,
+        "target_prioritization": {
+            "steel": true,
+            "food": true,
+            "white_bone": true
+        },
+        "clean_break": true
+    }
+}

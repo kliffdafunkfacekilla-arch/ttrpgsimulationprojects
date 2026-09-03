@@ -1,0 +1,395 @@
+{
+  "main": {
+    "id": "7fbc762bf62453e5",
+    "type": "split",
+    "children": [
+      {
+        "id": "4952a6d5089eb920",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "419ef86d38ee9b87",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Factions and Organisations/Scute Confederacy1.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Scute Confederacy1"
+            }
+          },
+          {
+            "id": "ba633f44d751eb6d",
+            "type": "leaf",
+            "state": {
+              "type": "bases",
+              "state": {
+                "file": "Cultures.base",
+                "viewName": "Table"
+              },
+              "icon": "lucide-table",
+              "title": "Cultures"
+            }
+          },
+          {
+            "id": "e91c55e570de140d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Magic and Religion/Avian Shadow Set Contract.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Avian Shadow Set Contract"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "ec1c1b757229a830",
+    "type": "split",
+    "children": [
+      {
+        "id": "e13f4b38dee784f1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d4b42a048c13eb35",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "80bc66d5049bd00f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#The",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "de72bda0ffe439fc",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 760.5063095092773
+  },
+  "right": {
+    "id": "1996ff21c3e7db19",
+    "type": "split",
+    "children": [
+      {
+        "id": "288a25adbbad2f86",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8f7a9755c61b6e9b",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Known Locations.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Known Locations"
+            }
+          },
+          {
+            "id": "67ed52caa50b0b20",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Known Locations.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Known Locations"
+            }
+          },
+          {
+            "id": "77e13d49a45eb0d5",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "715eb08d0fb9bbbe",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "ed5766c5f2b1aea1",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Factions and Organisations/The Grey Wardens.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of The Grey Wardens"
+            }
+          },
+          {
+            "id": "8a73004adfdb9d07",
+            "type": "leaf",
+            "state": {
+              "type": "CALENDARIUM",
+              "state": {
+                "calendar": "ID_19eb08992829",
+                "ephemeral": {
+                  "viewState": 1,
+                  "displaying": {
+                    "day": 1,
+                    "month": 0,
+                    "year": 1650
+                  },
+                  "displayDayNumber": true,
+                  "displaySeasonColors": true,
+                  "interpolateColors": true,
+                  "displayMoons": true,
+                  "displayWeather": true,
+                  "location": ""
+                },
+                "id": "ID_8ad8e8088afb"
+              },
+              "icon": "CALENDARIUM",
+              "title": "Calendarium"
+            }
+          },
+          {
+            "id": "51b135c94f71c066",
+            "type": "leaf",
+            "state": {
+              "type": "CALENDARIUM",
+              "state": {
+                "calendar": "ID_19eb08992829",
+                "ephemeral": {
+                  "viewing": {
+                    "day": 1,
+                    "month": 0,
+                    "year": 1650
+                  },
+                  "viewState": 0,
+                  "displaying": {
+                    "day": 1,
+                    "month": 0,
+                    "year": 1650
+                  },
+                  "displayDayNumber": true,
+                  "displaySeasonColors": true,
+                  "interpolateColors": true,
+                  "displayMoons": true,
+                  "displayWeather": true,
+                  "location": ""
+                },
+                "id": "ID_29ea89989b08",
+                "child": "ID_9a28da58aa49"
+              },
+              "icon": "CALENDARIUM",
+              "title": "Calendarium"
+            }
+          },
+          {
+            "id": "090fac10b67d5d78",
+            "type": "leaf",
+            "state": {
+              "type": "CALENDARIUM",
+              "state": {
+                "calendar": "ID_19eb08992829",
+                "ephemeral": {
+                  "viewState": 1,
+                  "displaying": {
+                    "day": 1,
+                    "month": 0,
+                    "year": 1650
+                  },
+                  "displayDayNumber": true,
+                  "displaySeasonColors": true,
+                  "interpolateColors": true,
+                  "displayMoons": true,
+                  "displayWeather": true,
+                  "location": ""
+                },
+                "id": "ID_c8b9c8ebd928"
+              },
+              "icon": "CALENDARIUM",
+              "title": "Calendarium"
+            }
+          },
+          {
+            "id": "752bea9639911fa6",
+            "type": "leaf",
+            "state": {
+              "type": "MAIN_VIEW",
+              "state": {},
+              "icon": "srt-ribbon",
+              "title": "Solo RPG Toolkit"
+            }
+          }
+        ],
+        "currentTab": 3
+      },
+      {
+        "id": "be46eafb24c9d67a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2c3f66207e2a9f22",
+            "type": "leaf",
+            "state": {
+              "type": "CALENDARIUM_AGENDA",
+              "state": {
+                "calendar": "ID_19eb08992829",
+                "id": "ID_9a28da58aa49",
+                "parent": "ID_29ea89989b08"
+              },
+              "icon": "CALENDARIUM_AGENDA",
+              "title": "Agenda"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "audio-recorder:Start/stop recording": false,
+      "markdown-importer:Open format converter": false,
+      "publish:Publish changes...": false,
+      "obsidian-leaflet-plugin:Open Leaflet Map": false,
+      "webpage-html-export:Export as HTML": false,
+      "obisidian-note-linker:Note Linker": false,
+      "chat-with-bard:New Gemini Chat": false,
+      "ink-player:Activate Ink Story": false,
+      "obsidian-javascript-init:Run Init JavaScript": false,
+      "fantasy-content-generator:Fantasy Generators": false,
+      "solo-rpg-toolkit:Solo RPG Toolkit": false,
+      "digitalgarden:Digital Garden Publication Center": false,
+      "calendarium:Open Calendarium": false
+    }
+  },
+  "active": "e91c55e570de140d",
+  "lastOpenFiles": [
+    "World Map Image.md",
+    "Magic and Religion/Vita.md",
+    "Magic and Religion/Ordo.md",
+    "Magic and Religion/Motus.md",
+    "Magic and Religion/Omen1.md",
+    "Magic and Religion/Ratio1.md",
+    "Magic and Religion/Lux.md",
+    "Magic and Religion/Mass1.md",
+    "Magic and Religion/Nexus1.md",
+    "Magic and Religion/Flux1.md",
+    "Magic and Religion/Lex.md",
+    "Magic and Religion/Avian Shadow Set Contract.md",
+    "Magic and Religion/Anumis.md",
+    "Magic and Religion/Aura.md",
+    "Resource/Jolt Cakes.md",
+    "Resource/Aether-Clear.md",
+    "Resource/Avian Silk.md",
+    "History/The Dawn of the Celestial Clockwork.md",
+    "Resource/Honey Trade.md",
+    "Fauna/Cloud Cutter.md",
+    "Factions and Organisations/Chaos.base",
+    "Factions and Organisations/Canal Krewes.md",
+    "Factions and Organisations/Hearthless.md",
+    "Cultures/Beavers.md",
+    "Cultures/Deer farmers.md",
+    "Factions and Organisations/Dust-Husk Riders.md",
+    "Cultures/Equine Nobles.md",
+    "History.base",
+    "Magic and Religion.base",
+    "Factions and Organizations.base",
+    "Cultures.base",
+    "Tech.base",
+    "Bio.base",
+    "Locations.base",
+    "People.base",
+    "Index.base",
+    "Locations/shatter1.png",
+    "Images/Crystal Lizard.jpg",
+    "Images/Theocraccy.jpg",
+    "Images/Vine Caste.jpg",
+    "Images/Komodo Guard.jpg",
+    "Locations/Pirate Port.jpg",
+    "Untitled.canvas",
+    "Decks/Tarot/21-TheWorld.png",
+    "Decks/Tarot/20-Judgement.png",
+    "Decks/Tarot/19-TheSun.png",
+    "Decks/Tarot/18-TheMoon.png",
+    "Untitled 1.canvas"
+  ]
+}

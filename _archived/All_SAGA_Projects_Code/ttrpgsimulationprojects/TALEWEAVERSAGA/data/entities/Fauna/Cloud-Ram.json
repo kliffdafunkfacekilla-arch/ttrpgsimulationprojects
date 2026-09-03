@@ -1,0 +1,14 @@
+{
+    "Name": "Cloud-Ram",
+    "Type": "Fauna",
+    "Diet": "Herbivore",
+    "Base Health": 120,
+    "Speed": 30,
+    "Strength": 15,
+    "Agility": 18,
+    "Endurance": 12,
+    "Dexterity": 8,
+    "Intelligence": 6,
+    "Special Ability": "Thermal Wool",
+    "Description": "A chimera-like herbivore perfectly adapted to the thin air and freezing temperatures of the high peaks."
+}

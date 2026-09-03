@@ -1,0 +1,8 @@
+C:/msys64/mingw64/bin/ld: build\apps\App_Sim.o:App_Sim.cpp:(.text+0x1870): undefined reference to `WorldBuffers::Initialize(unsigned int)'
+C:/msys64/mingw64/bin/ld: build\apps\App_Sim.o:App_Sim.cpp:(.text+0x198e): undefined reference to `AssetManager::Initialize()'
+C:/msys64/mingw64/bin/ld: build\apps\App_Sim.o:App_Sim.cpp:(.text+0x1c34): undefined reference to `TerrainController::GenerateHeightmap(WorldBuffers&, WorldSettings const&)'
+C:/msys64/mingw64/bin/ld: build\apps\App_Sim.o:App_Sim.cpp:(.text+0x1c42): undefined reference to `TerrainController::RecalculateBiomes(WorldBuffers&)'
+C:/msys64/mingw64/bin/ld: build\apps\App_Sim.o:App_Sim.cpp:(.text+0x2543): undefined reference to `WorldBuffers::Cleanup()'
+C:/msys64/mingw64/bin/ld: build\simulation\LogisticsSystem.o:LogisticsSystem.cpp:(.text+0x9f1): undefined reference to `AssetManager::GetTotalCellWealth(unsigned int, WorldBuffers const&)'
+C:/msys64/mingw64/bin/ld: build\simulation\UnitSystem.o:UnitSystem.cpp:(.text+0xc9f): undefined reference to `AssetManager::GetRelation(int, int)'
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)

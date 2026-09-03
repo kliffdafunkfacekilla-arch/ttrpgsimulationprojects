@@ -1,0 +1,132 @@
+[
+  {
+    "Attribute": "Might",
+    "Mammal": "10",
+    "Avian": "8",
+    "Reptile": "10",
+    "Insect": "12",
+    "Aquatic": "9",
+    "Plant": "11",
+    "Reference": "60"
+  },
+  {
+    "Attribute": "Endurance",
+    "Mammal": "11",
+    "Avian": "10",
+    "Reptile": "9",
+    "Insect": "8",
+    "Aquatic": "12",
+    "Plant": "10",
+    "Reference": "60"
+  },
+  {
+    "Attribute": "Finesse",
+    "Mammal": "12",
+    "Avian": "10",
+    "Reptile": "8",
+    "Insect": "10",
+    "Aquatic": "11",
+    "Plant": "9",
+    "Reference": "60"
+  },
+  {
+    "Attribute": "Reflexes",
+    "Mammal": "9",
+    "Avian": "12",
+    "Reptile": "11",
+    "Insect": "10",
+    "Aquatic": "10",
+    "Plant": "8",
+    "Reference": "60"
+  },
+  {
+    "Attribute": "Vitality",
+    "Mammal": "10",
+    "Avian": "11",
+    "Reptile": "10",
+    "Insect": "9",
+    "Aquatic": "8",
+    "Plant": "12",
+    "Reference": "60"
+  },
+  {
+    "Attribute": "Fortitude",
+    "Mammal": "8",
+    "Avian": "9",
+    "Reptile": "12",
+    "Insect": "11",
+    "Aquatic": "10",
+    "Plant": "10",
+    "Reference": "60"
+  },
+  {
+    "Attribute": "Knowledge",
+    "Mammal": "12",
+    "Avian": "11",
+    "Reptile": "10",
+    "Insect": "10",
+    "Aquatic": "9",
+    "Plant": "8",
+    "Reference": "60"
+  },
+  {
+    "Attribute": "Logic",
+    "Mammal": "8",
+    "Avian": "9",
+    "Reptile": "12",
+    "Insect": "11",
+    "Aquatic": "10",
+    "Plant": "10",
+    "Reference": "60"
+  },
+  {
+    "Attribute": "Awareness",
+    "Mammal": "9",
+    "Avian": "12",
+    "Reptile": "8",
+    "Insect": "10",
+    "Aquatic": "11",
+    "Plant": "10",
+    "Reference": "60"
+  },
+  {
+    "Attribute": "Intuition",
+    "Mammal": "10",
+    "Avian": "8",
+    "Reptile": "11",
+    "Insect": "12",
+    "Aquatic": "10",
+    "Plant": "9",
+    "Reference": "60"
+  },
+  {
+    "Attribute": "Charm",
+    "Mammal": "11",
+    "Avian": "10",
+    "Reptile": "10",
+    "Insect": "9",
+    "Aquatic": "8",
+    "Plant": "12",
+    "Reference": "60"
+  },
+  {
+    "Attribute": "Willpower",
+    "Mammal": "10",
+    "Avian": "10",
+    "Reptile": "9",
+    "Insect": "8",
+    "Aquatic": "12",
+    "Plant": "11",
+    "Reference": "60"
+  },
+  {
+    "Attribute": "",
+    "Mammal": "120",
+    "Avian": "120",
+    "Reptile": "120",
+    "Insect": "120",
+    "Aquatic": "120",
+    "Plant": "120",
+    "Reference": ""
+  }
+]

@@ -1,0 +1,164 @@
+[SETUP] Setting up environment...
+  [CC] src\io\AssetManager.cpp
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:335:33: error: no member named 'color' in 'WikiArticle'
+  335 |           ag.color[0] = article.color[0]; ag.color[1] = article.color[1]; ag.color[2] = article.color[2];
+      |                         ~~~~~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:335:65: error: no member named 'color' in 'WikiArticle'
+  335 |           ag.color[0] = article.color[0]; ag.color[1] = article.color[1]; ag.color[2] = article.color[2];
+      |                                                         ~~~~~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:335:97: error: no member named 'color' in 'WikiArticle'
+  335 |           ag.color[0] = article.color[0]; ag.color[1] = article.color[1]; ag.color[2] = article.color[2];
+      |                                                                                         ~~~~~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:345:32: error: no member named 'color' in 'WikiArticle'
+  345 |         nag.color[0] = article.color[0]; nag.color[1] = article.color[1]; nag.color[2] = article.color[2];
+      |                        ~~~~~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:345:65: error: no member named 'color' in 'WikiArticle'
+  345 |         nag.color[0] = article.color[0]; nag.color[1] = article.color[1]; nag.color[2] = article.color[2];
+      |                                                         ~~~~~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:345:98: error: no member named 'color' in 'WikiArticle'
+  345 |         nag.color[0] = article.color[0]; nag.color[1] = article.color[1]; nag.color[2] = article.color[2];
+      |                                                                                          ~~~~~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:359:39: error: no member named 'yieldResourceID' in 'WikiArticle'
+  359 |         nag.resourceYieldID = article.yieldResourceID;
+      |                               ~~~~~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:360:43: error: no member named 'yieldAmount' in 'WikiArticle'
+  360 |         nag.resourceYieldAmount = article.yieldAmount;
+      |                                   ~~~~~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:370:14: error: no member named 'idealMoisture' in 'AgentTemplate'
+  370 |         simT.idealMoisture = nag.idealMoisture;
+      |         ~~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:371:14: error: no member named 'might' in 'AgentTemplate'
+  371 |         simT.might = article.might;
+      |         ~~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:371:30: error: no member named 'might' in 'WikiArticle'
+  371 |         simT.might = article.might;
+      |                      ~~~~~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:372:14: error: no member named 'toughness' in 'AgentTemplate'
+  372 |         simT.toughness = article.toughness;
+      |         ~~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:372:34: error: no member named 'toughness' in 'WikiArticle'
+  372 |         simT.toughness = article.toughness;
+      |                          ~~~~~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:373:37: error: no member named 'intelligence' in 'WikiArticle'
+  373 |         simT.intelligence = article.intelligence;
+      |                             ~~~~~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:374:14: error: no member named 'speed' in 'AgentTemplate'
+  374 |         simT.speed = article.speed;
+      |         ~~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:374:30: error: no member named 'speed' in 'WikiArticle'
+  374 |         simT.speed = article.speed;
+      |                      ~~~~~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:375:14: error: no member named 'growthRate' in 'AgentTemplate'
+  375 |         simT.growthRate = article.growthRate;
+      |         ~~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:375:35: error: no member named 'growthRate' in 'WikiArticle'
+  375 |         simT.growthRate = article.growthRate;
+      |                           ~~~~~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:376:14: error: no member named 'outputResourceID' in 'AgentTemplate'
+  376 |         simT.outputResourceID = nag.resourceYieldID;
+      |         ~~~~ ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+  [FAIL] src\io\AssetManager.cpp
+  [CC] src\io\LoreManager.cpp
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\LoreManager.cpp:92:50: error: no member named 'isFlora' in 'WikiArticle'
+   92 |                     if (folder == "Flora") { art.isFlora = true; art.isAgent = true; art.agentType = AgentType::FLORA; }
+      |                                              ~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\LoreManager.cpp:93:55: error: no member named 'isFauna' in 'WikiArticle'
+   93 |                     else if (folder == "Fauna") { art.isFauna = true; art.isAgent = true; art.agentType = AgentType::FAUNA; }
+      |                                                   ~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\LoreManager.cpp:95:58: error: no member named 'isCulture' in 'WikiArticle'
+   95 |                     else if (folder == "Cultures") { art.isCulture = true; art.isAgent = true; art.agentType = AgentType::CIVILIZED; }
+      |                                                      ~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\LoreManager.cpp:110:25: error: no member named 'might' in 'WikiArticle'
+  110 |                     art.might = j.value("might", 0.5f);
+      |                     ~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\LoreManager.cpp:111:25: error: no member named 'toughness' in 'WikiArticle'
+  111 |                     art.toughness = j.value("toughness", 0.5f);
+      |                     ~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\LoreManager.cpp:112:25: error: no member named 'intelligence' in 'WikiArticle'
+  112 |                     art.intelligence = j.value("intelligence", 0.5f);
+      |                     ~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\LoreManager.cpp:113:25: error: no member named 'speed' in 'WikiArticle'
+  113 |                     art.speed = j.value("speed", 0.5f);
+      |                     ~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\LoreManager.cpp:114:25: error: no member named 'growthRate' in 'WikiArticle'
+  114 |                     art.growthRate = j.value("growthRate", 0.1f);
+      |                     ~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\LoreManager.cpp:118:25: error: no member named 'yieldResourceID' in 'WikiArticle'
+  118 |                     art.yieldResourceID = j.value("yieldID", -1);
+      |                     ~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\LoreManager.cpp:119:25: error: no member named 'yieldAmount' in 'WikiArticle'
+  119 |                     art.yieldAmount = j.value("yieldAmount", 0.0f);
+      |                     ~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\LoreManager.cpp:120:25: error: no member named 'yieldOnDeath' in 'WikiArticle'
+  120 |                     art.yieldOnDeath = j.value("yieldOnDeath", false);
+      |                     ~~~ ^
+11 errors generated.
+  [FAIL] src\io\LoreManager.cpp
+  [CC] src\core\TerrainController.cpp
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\core\TerrainController.cpp:144:97: error: use of undeclared identifier 'ColorKey'
+  144 | void LoadHeightmapFromImageWithKeys(WorldBuffers &b, const std::string &path, const std::vector<ColorKey> &keys) {}
+      |                                                                                                 ^~~~~~~~
+1 error generated.
+  [FAIL] src\core\TerrainController.cpp
+  [CC] src\simulation\ConflictSystem.cpp
+src\simulation\ConflictSystem.cpp:65:39: error: no member named 'greed' in 'FactionData'
+   65 |       float factionGreed = myFaction->greed;
+      |                            ~~~~~~~~~  ^
+src\simulation\ConflictSystem.cpp:72:26: error: no member named 'desireResourceID' in 'FactionData'
+   72 |           if (myFaction->desireResourceID != -1 && b.GetResource(nIdx, myFaction->desireResourceID) > 10.0f) {
+      |               ~~~~~~~~~  ^
+src\simulation\ConflictSystem.cpp:72:83: error: no member named 'desireResourceID' in 'FactionData'
+   72 |           if (myFaction->desireResourceID != -1 && b.GetResource(nIdx, myFaction->desireResourceID) > 10.0f) {
+      |                                                                        ~~~~~~~~~  ^
+src\simulation\ConflictSystem.cpp:75:26: error: no member named 'hateAgentID' in 'FactionData'
+   75 |           if (myFaction->hateAgentID != -1 && theirID == myFaction->hateAgentID) isWar = true;
+      |               ~~~~~~~~~  ^
+src\simulation\ConflictSystem.cpp:75:69: error: no member named 'hateAgentID' in 'FactionData'
+   75 |           if (myFaction->hateAgentID != -1 && theirID == myFaction->hateAgentID) isWar = true;
+      |                                                          ~~~~~~~~~  ^
+src\simulation\ConflictSystem.cpp:76:26: error: no member named 'strategy' in 'FactionData'
+   76 |           if (myFaction->strategy == FactionStrategy::FORTIFY && (rand() % 100 < 80)) isWar = false;
+      |               ~~~~~~~~~  ^
+src\simulation\ConflictSystem.cpp:76:38: error: use of undeclared identifier 'FactionStrategy'
+   76 |           if (myFaction->strategy == FactionStrategy::FORTIFY && (rand() % 100 < 80)) isWar = false;
+      |                                      ^
+src\simulation\ConflictSystem.cpp:83:43: error: no member named 'might' in 'AgentTemplate'
+   83 |                 damage *= (1.0f + species.might);
+      |                                   ~~~~~~~ ^
+8 errors generated.
+  [FAIL] src\simulation\ConflictSystem.cpp
+  [CC] src\apps\App_Architect.cpp
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\apps\App_Architect.cpp:82:19: error: no member named 'DEEP_OCEAN' in 'BiomeType'
+   82 |   case BiomeType::DEEP_OCEAN: return {5, 40, 100};
+      |                   ^~~~~~~~~~
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\apps\App_Architect.cpp:84:19: error: no member named 'BEACH' in 'BiomeType'
+   84 |   case BiomeType::BEACH: return {200, 220, 180};
+      |                   ^~~~~
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\apps\App_Architect.cpp:90:19: error: no member named 'FOREST' in 'BiomeType'
+   90 |   case BiomeType::FOREST: return {10, 80, 20};
+      |                   ^~~~~~
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\apps\App_Architect.cpp:92:19: error: no member named 'TAIGA' in 'BiomeType'
+   92 |   case BiomeType::TAIGA: return {50, 80, 70};
+      |                   ^~~~~
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\apps\App_Architect.cpp:93:19: error: no member named 'DESERT' in 'BiomeType'
+   93 |   case BiomeType::DESERT: return {210, 180, 100};
+      |                   ^~~~~~
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\apps\App_Architect.cpp:94:19: error: no member named 'MOUNTAIN' in 'BiomeType'
+   94 |   case BiomeType::MOUNTAIN: return {100, 100, 100};
+      |                   ^~~~~~~~
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\apps\App_Architect.cpp:153:28: error: no member named 'SeedLife' in 'TerrainController'
+  153 |         TerrainController::SeedLife(buffers, (int)(relY * 1000) * 1000 + (int)(relX * 1000), AssetManager::agentRegistry[selectedAgentIdx].id, (int)(1000 * brushStrength));
+      |                            ^~~~~~~~
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\apps\App_Architect.cpp:156:28: error: no member named 'PaintBiome' in 'TerrainController'
+  156 |         TerrainController::PaintBiome(buffers, (int)(relY * 1000) * 1000 + (int)(relX * 1000), (int)brushSize, selectedBiomeIdx);
+      |                            ^~~~~~~~~~
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\apps\App_Architect.cpp:176:98: error: assigning to 'MapTemplate' from incompatible type 'int'
+  176 |       if (ImGui::Combo("World Template", &currentType, templateNames, 7)) { settings.worldType = currentType; TerrainController::GenerateHeightmap(buffers, settings); mapDirty = true; }
+      |                                                                                                  ^~~~~~~~~~~
+9 errors generated.
+  [FAIL] src\apps\App_Architect.cpp
+
+[INFO] Compiled: 0 | Cached: 32
+[ERROR] 5 file(s) failed to compile.

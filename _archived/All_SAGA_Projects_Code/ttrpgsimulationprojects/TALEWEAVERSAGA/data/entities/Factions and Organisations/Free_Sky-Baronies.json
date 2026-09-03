@@ -1,0 +1,123 @@
+{
+    "Name": "Free Sky-Baronies",
+    "Archetype": "Aether-Bound Outlaw Syndicate",
+    "Philosophy & Code": {
+        "Statement": "The Sovereignty of the Skiff",
+        "Principles": [
+            {
+                "Title": "Nice Enough",
+                "Description": "To the common folk (Raccoons, Deer), the Barons are heroes. They do not rob the poor because 'there is no profit in a carcass' and the poor provide the safe houses and intelligence needed to evade the Banks."
+            },
+            {
+                "Title": "Brutal When Crossed",
+                "Description": "If a village informs on a Baron to the Gilded Compass, the 'Robin Hood' mask falls. The Chapter enacts 'Collective Debt,' stripping the settlement of all resources to compensate for the operational risk."
+            },
+            {
+                "Title": "Punching Down",
+                "Description": "A Baron who robs a peasant is considered a 'gutter-runner'\u2014too weak to hit a real target. This is a firing offense (literally)."
+            }
+        ],
+        "Consequences": [
+            {
+                "Title": "The Unforgivable Sin",
+                "Description": "Robbing a peasant is considered a 'gutter-runner' too weak to hit a real target."
+            },
+            {
+                "Title": "Collective Debt",
+                "Description": "The Chapter enacts 'Collective Debt,' stripping the settlement of all resources to compensate for the operational risk."
+            }
+        ]
+    },
+    "Structure": {
+        "Chapters": 12,
+        "Leadership": [
+            {
+                "Title": "President (Baron)",
+                "Description": "The Chapter Leader."
+            },
+            {
+                "Title": "VP",
+                "Description": "The Second-in-Command."
+            },
+            {
+                "Title": "Master of Arms",
+                "Description": "Enforces internal discipline and defense."
+            },
+            {
+                "Title": "Quartermaster",
+                "Description": "Fences stolen goods and procurer of Dragonstone (D-Dust)."
+            },
+            {
+                "Title": "Cloud Captain",
+                "Description": "Fleet commander."
+            },
+            {
+                "Title": "Sergeant of Secrets",
+                "Description": "Spymaster and expert in 'Technical Truths' to counter Avian interrogation."
+            }
+        ],
+        "Governance": {
+            "Decision-Making": {
+                "Method": "Consensus-by-Endurance"
+            },
+            "Challenges": {
+                "Method": "Combat or 'Trial by Core'"
+            }
+        }
+    },
+    "Recruitment": {
+        "Method": {
+            "Title": "Earning the Patch",
+            "Description": "This is a physical, bio-mechanical commitment."
+        },
+        "Ritual": {
+            "Title": "The Brand",
+            "Description": "The prospect is branded using a nickel/copper emblem attached to the Unstable Dragonstone Core of the station."
+        },
+        "Appearance": {
+            "Title": "The Look",
+            "Description": "Members wear double-breasted heavy canvas trench coats dyed to match their brand color."
+        }
+    },
+    "Economy": {
+        "Monopoly": {
+            "Goods": [
+                "Mandible-Mash",
+                "Fir-Gin",
+                "Scale-Cracker"
+            ],
+            "Market": "The Prohibition Kings of the Shatterlands"
+        },
+        "Racket": {
+            "Method": "Sky-Escorts"
+        },
+        "Client": {
+            "Title": "The Hypocrisy Client",
+            "Description": "The biggest customers are the Highborn Horse Nobles. The very Senators passing anti-smuggling laws are buying Baron booze for their private salons."
+        },
+        "Laundering": {
+            "Method": {
+                "Title": "The River Syndicate (Otters)",
+                "Description": "They use the River Syndicate (Otters) and 'Ghost Barges' to clean the Aetherium Coin earned from illicit sales."
+            }
+        }
+    },
+    "Tactics": {
+        "Method": {
+            "Title": "Fight or Die",
+            "Description": "Unlike pirates who surrender for a plea deal, Barons provide no such choice. They outrun the enemy or engage in suicidal defense. This makes them a 'high-cost' target for security forces."
+        },
+        "Equipment": {
+            "Title": "The Fleet",
+            "Description": "Mass-produced Standard Aether-Skiffs, 'chopped and dropped' for speed. They strip heavy armor to outrun Corsairs."
+        }
+    },
+    "Origins": {
+        "Event": "The Hauler's Rebellion",
+        "Description": "They were originally honest cargo haulers crushed by Avian taxes and Vaneer audits. They unionized, armed their ships, and realized that smuggling paid better than hauling grain."
+    },
+    "Philosophy & Identity": {
+        "Statement": "The Sovereignty of the Skiff",
+        "Description": "They reject 'Dry-Land Law' (Avian/Vaneer/Scute). They believe the sky cannot be owned by those who only seek to tax it."
+    }
+}

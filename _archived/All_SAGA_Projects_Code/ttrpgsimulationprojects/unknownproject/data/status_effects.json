@@ -1,0 +1,200 @@
+[
+  {
+    "STATUS": "BLEED",
+    "MARKER": "Red Drop",
+    "EFFECT DESCRIPTION": "Take 1d4 Damage at the start of your turn. Stacks (e.g., Bleed 2 = 2d4).",
+    "CURE / END": "Medicine Check (DC 12) or Magical Healing."
+  },
+  {
+    "STATUS": "BLINDED",
+    "MARKER": "Eye Slash",
+    "EFFECT DESCRIPTION": "All Attacks have Disadvantage. Enemies have Advantage to hit you. Perception is 0.",
+    "CURE / END": "End of Duration or \"Cure Ailment.\""
+  },
+  {
+    "STATUS": "DEAFENED",
+    "MARKER": "Crossed Ear",
+    "EFFECT DESCRIPTION": "Automatic failure on Hearing Perception. Vulnerable to Sonic damage.",
+    "CURE / END": "End of Duration."
+  },
+  {
+    "STATUS": "EXHAUSTED",
+    "MARKER": "Sweat Drop",
+    "EFFECT DESCRIPTION": "-2 Penalty to all Rolls per stack. At Stack 5, Speed = 0. At Stack 6, Death.",
+    "CURE / END": "Long Rest (-1 Stack)."
+  },
+  {
+    "STATUS": "GRAPPLED",
+    "MARKER": "Chain Link",
+    "EFFECT DESCRIPTION": "Speed = 0. Disadvantage on Dex/Reflex saves. Cannot Move.",
+    "CURE / END": "Escape Action (Athletics/Acrobatics) vs Opponent."
+  },
+  {
+    "STATUS": "PRONE",
+    "MARKER": "Down Arrow",
+    "EFFECT DESCRIPTION": "Lying on ground. Melee attacks against you have Advantage. Ranged have Disadvantage.",
+    "CURE / END": "Spend Half Movement to stand up."
+  },
+  {
+    "STATUS": "POISONED",
+    "MARKER": "Green Skull",
+    "EFFECT DESCRIPTION": "Take Disadvantage on Attack Rolls and Ability Checks.",
+    "CURE / END": "Constitution Save (End of Turn) or Antidote."
+  },
+  {
+    "STATUS": "RESTRAINED",
+    "MARKER": "Rope",
+    "EFFECT DESCRIPTION": "Speed = 0. Attacks vs You have Advantage. You have Disadvantage on Dex Saves.",
+    "CURE / END": "Strength Save or Cutting the bonds."
+  },
+  {
+    "STATUS": "SICKENED",
+    "MARKER": "Nauseated",
+    "EFFECT DESCRIPTION": "Cannot take the Dash or Charge actions. -2 to Defenses.",
+    "CURE / END": "Constitution Save (End of Turn)."
+  },
+  {
+    "STATUS": "STUNNED",
+    "MARKER": "Stars",
+    "EFFECT DESCRIPTION": "Incapacitated (No Actions/Reactions). Auto-fail Str/Dex Saves. Attacks vs You = Crit.",
+    "CURE / END": "End of Duration (usually 1 round)."
+  },
+  {
+    "STATUS": "WEAKENED",
+    "MARKER": "Broken Sword",
+    "EFFECT DESCRIPTION": "Your Melee Attacks deal Half Damage.",
+    "CURE / END": "Rest or \"Restoration\" spell."
+  },
+  {
+    "STATUS": "CHARMED",
+    "MARKER": "Heart",
+    "EFFECT DESCRIPTION": "You regard the charmer as a friendly acquaintance. Cannot attack them.",
+    "CURE / END": "Taking Damage from the Charmer breaks it."
+  },
+  {
+    "STATUS": "CONFUSED",
+    "MARKER": "? mark",
+    "EFFECT DESCRIPTION": "Roll d10 start of turn: 1-4: Do nothing. 5-7: Move Randomly. 8-10: Attack nearest creature.",
+    "CURE / END": "Willpower Save (End of Turn)."
+  },
+  {
+    "STATUS": "DOOMED",
+    "MARKER": "Skull",
+    "EFFECT DESCRIPTION": "You cannot be Healed. Death Saves are made with Disadvantage.",
+    "CURE / END": "\"Remove Curse\" or defeating the source."
+  },
+  {
+    "STATUS": "FEAR",
+    "MARKER": "Ghost",
+    "EFFECT DESCRIPTION": "You cannot move closer to the source of fear. Attack Rolls have Disadvantage.",
+    "CURE / END": "Willpower Save (End of Turn)."
+  },
+  {
+    "STATUS": "FEEBLE",
+    "MARKER": "Broken Bulb",
+    "EFFECT DESCRIPTION": "Logic & Knowledge scores drop to 1. Cannot cast spells or use Tech.",
+    "CURE / END": "\"Greater Restoration\" only."
+  },
+  {
+    "STATUS": "SHAKEN",
+    "MARKER": "Tremble",
+    "EFFECT DESCRIPTION": "-2 Penalty to all Defenses (Physical and Mental).",
+    "CURE / END": "Rally Action (Charm) or Leader's Inspire."
+  },
+  {
+    "STATUS": "SILENCED",
+    "MARKER": "Muted",
+    "EFFECT DESCRIPTION": "Cannot speak. Cannot cast Spells with Verbal components. Immune to Thunder damage.",
+    "CURE / END": "Leaving the Zone of Silence."
+  },
+  {
+    "STATUS": "TAUNTED",
+    "MARKER": "Bullseye",
+    "EFFECT DESCRIPTION": "You must attack the Taunter if able. All other targets have Disadvantage to be hit.",
+    "CURE / END": "Logic Save or hitting the Taunter."
+  },
+  {
+    "STATUS": "BURNING",
+    "MARKER": "Flame",
+    "EFFECT DESCRIPTION": "Take 1d6 Fire Damage at start of turn. Panic (Must pass Will save to not run to water).",
+    "CURE / END": "Action: \"Stop, Drop, & Roll\" (Dex Check)."
+  },
+  {
+    "STATUS": "CORRODED",
+    "MARKER": "Acid Drop",
+    "EFFECT DESCRIPTION": "Your Armor (DB) is reduced by -2. Permanent until repaired.",
+    "CURE / END": "Blacksmith Repair or Mending spell."
+  },
+  {
+    "STATUS": "FROZEN",
+    "MARKER": "Ice Cube",
+    "EFFECT DESCRIPTION": "Restrained. Vulnerable to Bludgeoning/Sonic damage.",
+    "CURE / END": "Taking 5+ Fire Damage melts the ice."
+  },
+  {
+    "STATUS": "PETRIFIED",
+    "MARKER": "Grey Stone",
+    "EFFECT DESCRIPTION": "Turned to Stone. Weight x10. Incapacitated. Resistance to All Damage.",
+    "CURE / END": "\"Stone to Flesh\" or High-Tier Alchemy."
+  },
+  {
+    "STATUS": "SHOCKED",
+    "MARKER": "Lightning",
+    "EFFECT DESCRIPTION": "No Reactions allowed this round. Speed reduced by 10ft.",
+    "CURE / END": "End of Turn."
+  },
+  {
+    "STATUS": "SOAKED",
+    "MARKER": "Water Drop",
+    "EFFECT DESCRIPTION": "Vulnerable to Cold and Lightning. Resistance to Fire.",
+    "CURE / END": "Drying off (1 min) or Fire damage."
+  },
+  {
+    "STATUS": "VOID-TOUCHED",
+    "MARKER": "Black Spiral",
+    "EFFECT DESCRIPTION": "Whenever you spend Focus/Stamina, take 1d4 Necrotic Damage.",
+    "CURE / END": "Long Rest in a Sanctuary/Safe Zone."
+  },
+  {
+    "STATUS": "BLESSED",
+    "MARKER": "Halo",
+    "EFFECT DESCRIPTION": "Add +1d4 to all Attack Rolls and Saving Throws.",
+    "CURE / END": "Priest Spells / Shrines."
+  },
+  {
+    "STATUS": "COVER (Half)",
+    "MARKER": "Shield \u00bd",
+    "EFFECT DESCRIPTION": "2 Bonus to Physical Defense (DB) and Reflex Saves.",
+    "CURE / END": "Low walls, furniture, other creatures."
+  },
+  {
+    "STATUS": "COVER (3/4)",
+    "MARKER": "Shield \u00be",
+    "EFFECT DESCRIPTION": "5 Bonus to Physical Defense (DB) and Reflex Saves.",
+    "CURE / END": "Arrow slits, heavy trees."
+  },
+  {
+    "STATUS": "HASTE",
+    "MARKER": "Winged Boot",
+    "EFFECT DESCRIPTION": "Speed Doubled. +2 Defense. One extra Action per turn.",
+    "CURE / END": "Logic/Time Magic."
+  },
+  {
+    "STATUS": "INVISIBLE",
+    "MARKER": "Empty Eye",
+    "EFFECT DESCRIPTION": "Cannot be seen. Attacks against you have Disadvantage. Your attacks have Advantage.",
+    "CURE / END": "Attacking or Casting a Spell breaks it."
+  },
+  {
+    "STATUS": "REGEN",
+    "MARKER": "Green Cross",
+    "EFFECT DESCRIPTION": "Regain X HP at the start of your turn (e.g., Regen 5).",
+    "CURE / END": "Vitality Talents / Potions."
+  },
+  {
+    "STATUS": "WARDED",
+    "MARKER": "Blue Shield",
+    "EFFECT DESCRIPTION": "You have Temporary HP. While you have Temp HP, you cannot be Wounded/Bleeding.",
+    "CURE / END": "Magic Shields / Tech Fields."
+  }
+]

@@ -1,0 +1,37 @@
+{
+    "Entity": {
+        "Name": "Kaelen the Unmovable",
+        "Aliases": [
+            "Kaelen",
+            "The Unmovable"
+        ],
+        "Tags": [
+            "NPC",
+            "History",
+            "Warden",
+            "Mass",
+            "Might"
+        ],
+        "Attributes": {
+            "Strength": null,
+            "Perception": null,
+            "Endurance": null,
+            "Charisma": null,
+            "Intelligence": null,
+            "Agility": null,
+            "Willpower": null,
+            "Resilience": null
+        },
+        "Roles": [
+            "High-Executioner"
+        ],
+        "Former Masters": [
+            "Magistar Tiraton"
+        ],
+        "Event": "The Defection"
+    },
+    "Stats": {
+        "Morale": 20,
+        "Combat Value": 15
+    }
+}

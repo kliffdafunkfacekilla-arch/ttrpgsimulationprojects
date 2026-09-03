@@ -1,0 +1,1029 @@
+{
+  "combatants": [
+    {
+      "name": "StonestriStonestrikerker",
+      "max_hp": 31,
+      "hp": 31,
+      "team": "Blue",
+      "x": 2,
+      "y": 6,
+      "sprite": "wolf"
+    },
+    {
+      "name": "Stonefang",
+      "max_hp": 27,
+      "hp": 27,
+      "team": "Red",
+      "x": 9,
+      "y": 6,
+      "sprite": "wolf"
+    }
+  ],
+  "log": [
+    {
+      "type": "info",
+      "actor": "System",
+      "description": "Combat Started! Round 1"
+    },
+    {
+      "type": "move",
+      "actor": "Stonefang",
+      "from": [
+        9,
+        6
+      ],
+      "to": [
+        8,
+        5
+      ]
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "move",
+      "actor": "StonestriStonestrikerker",
+      "from": [
+        2,
+        6
+      ],
+      "to": [
+        3,
+        6
+      ]
+    },
+    {
+      "type": "info",
+      "actor": "System",
+      "description": "Round 2 Begins"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "chaos_surge",
+      "actor": "Stonefang",
+      "result": "BACKFIRE"
+    },
+    {
+      "type": "info",
+      "actor": "System",
+      "description": "BACKFIRE! Stonefang failed to contain the rift."
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "move",
+      "actor": "StonestriStonestrikerker",
+      "from": [
+        3,
+        6
+      ],
+      "to": [
+        4,
+        6
+      ]
+    },
+    {
+      "type": "info",
+      "actor": "System",
+      "description": "Round 3 Begins"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "move",
+      "actor": "Stonefang",
+      "from": [
+        8,
+        5
+      ],
+      "to": [
+        7,
+        4
+      ]
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "move",
+      "actor": "StonestriStonestrikerker",
+      "from": [
+        4,
+        6
+      ],
+      "to": [
+        5,
+        6
+      ]
+    },
+    {
+      "type": "info",
+      "actor": "System",
+      "description": "Round 4 Begins"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "move",
+      "actor": "Stonefang",
+      "from": [
+        7,
+        4
+      ],
+      "to": [
+        6,
+        5
+      ]
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Attacks StonestriStonestrikerker: 19 vs 18 (Margin: 1)"
+    },
+    {
+      "type": "attack",
+      "actor": "Stonefang",
+      "target": "StonestriStonestrikerker",
+      "result": "GLANCING",
+      "damage": 1,
+      "margin": 1
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Attacks Stonefang: 7 vs 19 (Margin: -12)"
+    },
+    {
+      "type": "attack",
+      "actor": "StonestriStonestrikerker",
+      "target": "Stonefang",
+      "result": "MISS",
+      "damage": 0
+    },
+    {
+      "type": "info",
+      "actor": "System",
+      "description": "Round 5 Begins"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Attacks StonestriStonestrikerker: 14 vs 0 (Margin: 14)"
+    },
+    {
+      "type": "attack",
+      "actor": "Stonefang",
+      "target": "StonestriStonestrikerker",
+      "result": "CRITICAL",
+      "damage": 3,
+      "margin": 14
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "CRITICAL IMPACT! Trauma roll required."
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Attacks Stonefang: 12 vs 10 (Margin: 2)"
+    },
+    {
+      "type": "attack",
+      "actor": "StonestriStonestrikerker",
+      "target": "Stonefang",
+      "result": "GLANCING",
+      "damage": 2,
+      "margin": 2
+    },
+    {
+      "type": "info",
+      "actor": "System",
+      "description": "Round 6 Begins"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Attacks StonestriStonestrikerker: 5 vs 1 (Margin: 4)"
+    },
+    {
+      "type": "attack",
+      "actor": "Stonefang",
+      "target": "StonestriStonestrikerker",
+      "result": "GLANCING",
+      "damage": 1,
+      "margin": 4
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Attacks Stonefang: 14 vs 10 (Margin: 4)"
+    },
+    {
+      "type": "attack",
+      "actor": "StonestriStonestrikerker",
+      "target": "Stonefang",
+      "result": "GLANCING",
+      "damage": 1,
+      "margin": 4
+    },
+    {
+      "type": "info",
+      "actor": "System",
+      "description": "Round 7 Begins"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Attacks StonestriStonestrikerker: 17 vs 5 (Margin: 12)"
+    },
+    {
+      "type": "attack",
+      "actor": "Stonefang",
+      "target": "StonestriStonestrikerker",
+      "result": "CRITICAL",
+      "damage": 7,
+      "margin": 12
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "CRITICAL IMPACT! Trauma roll required."
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Attacks Stonefang: 14 vs 4 (Margin: 10)"
+    },
+    {
+      "type": "attack",
+      "actor": "StonestriStonestrikerker",
+      "target": "Stonefang",
+      "result": "SOLID",
+      "damage": 1,
+      "margin": 10
+    },
+    {
+      "type": "info",
+      "actor": "System",
+      "description": "Round 8 Begins"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Attacks StonestriStonestrikerker: 2 vs 16 (Margin: -14)"
+    },
+    {
+      "type": "attack",
+      "actor": "Stonefang",
+      "target": "StonestriStonestrikerker",
+      "result": "MISS",
+      "damage": 0
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Attacks Stonefang: 2 vs 17 (Margin: -15)"
+    },
+    {
+      "type": "attack",
+      "actor": "StonestriStonestrikerker",
+      "target": "Stonefang",
+      "result": "MISS",
+      "damage": 0
+    },
+    {
+      "type": "info",
+      "actor": "System",
+      "description": "Round 9 Begins"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Attacks StonestriStonestrikerker: 2 vs 17 (Margin: -15)"
+    },
+    {
+      "type": "attack",
+      "actor": "Stonefang",
+      "target": "StonestriStonestrikerker",
+      "result": "MISS",
+      "damage": 0
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Attacks Stonefang: 5 vs 16 (Margin: -11)"
+    },
+    {
+      "type": "attack",
+      "actor": "StonestriStonestrikerker",
+      "target": "Stonefang",
+      "result": "MISS",
+      "damage": 0
+    },
+    {
+      "type": "info",
+      "actor": "System",
+      "description": "Round 10 Begins"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Attacks StonestriStonestrikerker: 8 vs 8 (Margin: 0)"
+    },
+    {
+      "type": "clash_start",
+      "actor": "Stonefang",
+      "target": "StonestriStonestrikerker",
+      "stat": "Might"
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "System",
+      "description": "Clash Resolution (Disengage): Stonefang(11) vs StonestriStonestrikerker(12)"
+    },
+    {
+      "type": "clash_result",
+      "actor": "StonestriStonestrikerker",
+      "effect": "RECOVER_SP"
+    },
+    {
+      "type": "info",
+      "actor": "System",
+      "description": "Round 11 Begins"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Attacks StonestriStonestrikerker: 4 vs 16 (Margin: -12)"
+    },
+    {
+      "type": "attack",
+      "actor": "Stonefang",
+      "target": "StonestriStonestrikerker",
+      "result": "MISS",
+      "damage": 0
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Attacks Stonefang: 18 vs 20 (Margin: -2)"
+    },
+    {
+      "type": "attack",
+      "actor": "StonestriStonestrikerker",
+      "target": "Stonefang",
+      "result": "MISS",
+      "damage": 0
+    },
+    {
+      "type": "info",
+      "actor": "System",
+      "description": "Round 12 Begins"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Attacks StonestriStonestrikerker: 2 vs 19 (Margin: -17)"
+    },
+    {
+      "type": "attack",
+      "actor": "Stonefang",
+      "target": "StonestriStonestrikerker",
+      "result": "MISS",
+      "damage": 0
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Attacks Stonefang: 10 vs 3 (Margin: 7)"
+    },
+    {
+      "type": "attack",
+      "actor": "StonestriStonestrikerker",
+      "target": "Stonefang",
+      "result": "SOLID",
+      "damage": 1,
+      "margin": 7
+    },
+    {
+      "type": "info",
+      "actor": "System",
+      "description": "Round 13 Begins"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Attacks StonestriStonestrikerker: 11 vs 6 (Margin: 5)"
+    },
+    {
+      "type": "attack",
+      "actor": "Stonefang",
+      "target": "StonestriStonestrikerker",
+      "result": "GLANCING",
+      "damage": 1,
+      "margin": 5
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Attacks Stonefang: 14 vs 18 (Margin: -4)"
+    },
+    {
+      "type": "attack",
+      "actor": "StonestriStonestrikerker",
+      "target": "Stonefang",
+      "result": "MISS",
+      "damage": 0
+    },
+    {
+      "type": "info",
+      "actor": "System",
+      "description": "Round 14 Begins"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Attacks StonestriStonestrikerker: 0 vs 7 (Margin: -7)"
+    },
+    {
+      "type": "attack",
+      "actor": "Stonefang",
+      "target": "StonestriStonestrikerker",
+      "result": "MISS",
+      "damage": 0
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Attacks Stonefang: 6 vs 15 (Margin: -9)"
+    },
+    {
+      "type": "attack",
+      "actor": "StonestriStonestrikerker",
+      "target": "Stonefang",
+      "result": "MISS",
+      "damage": 0
+    },
+    {
+      "type": "info",
+      "actor": "System",
+      "description": "Round 15 Begins"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Attacks StonestriStonestrikerker: 19 vs 3 (Margin: 16)"
+    },
+    {
+      "type": "attack",
+      "actor": "Stonefang",
+      "target": "StonestriStonestrikerker",
+      "result": "CRITICAL",
+      "damage": 7,
+      "margin": 16
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "CRITICAL IMPACT! Trauma roll required."
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Attacks Stonefang: 15 vs 18 (Margin: -3)"
+    },
+    {
+      "type": "attack",
+      "actor": "StonestriStonestrikerker",
+      "target": "Stonefang",
+      "result": "MISS",
+      "damage": 0
+    },
+    {
+      "type": "info",
+      "actor": "System",
+      "description": "Round 16 Begins"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Attacks StonestriStonestrikerker: 12 vs 13 (Margin: -1)"
+    },
+    {
+      "type": "attack",
+      "actor": "Stonefang",
+      "target": "StonestriStonestrikerker",
+      "result": "MISS",
+      "damage": 0
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Attacks Stonefang: 15 vs 8 (Margin: 7)"
+    },
+    {
+      "type": "attack",
+      "actor": "StonestriStonestrikerker",
+      "target": "Stonefang",
+      "result": "SOLID",
+      "damage": 4,
+      "margin": 7
+    },
+    {
+      "type": "info",
+      "actor": "System",
+      "description": "Round 17 Begins"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Attacks StonestriStonestrikerker: 18 vs 15 (Margin: 3)"
+    },
+    {
+      "type": "attack",
+      "actor": "Stonefang",
+      "target": "StonestriStonestrikerker",
+      "result": "GLANCING",
+      "damage": 1,
+      "margin": 3
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Attacks Stonefang: 6 vs 3 (Margin: 3)"
+    },
+    {
+      "type": "attack",
+      "actor": "StonestriStonestrikerker",
+      "target": "Stonefang",
+      "result": "GLANCING",
+      "damage": 2,
+      "margin": 3
+    },
+    {
+      "type": "info",
+      "actor": "System",
+      "description": "Round 18 Begins"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Attacks StonestriStonestrikerker: 19 vs 4 (Margin: 15)"
+    },
+    {
+      "type": "attack",
+      "actor": "Stonefang",
+      "target": "StonestriStonestrikerker",
+      "result": "CRITICAL",
+      "damage": 5,
+      "margin": 15
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "CRITICAL IMPACT! Trauma roll required."
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Attacks Stonefang: 19 vs 8 (Margin: 11)"
+    },
+    {
+      "type": "attack",
+      "actor": "StonestriStonestrikerker",
+      "target": "Stonefang",
+      "result": "CRITICAL",
+      "damage": 8,
+      "margin": 11
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "CRITICAL IMPACT! Trauma roll required."
+    },
+    {
+      "type": "info",
+      "actor": "System",
+      "description": "Round 19 Begins"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Attacks StonestriStonestrikerker: 7 vs 15 (Margin: -8)"
+    },
+    {
+      "type": "attack",
+      "actor": "Stonefang",
+      "target": "StonestriStonestrikerker",
+      "result": "MISS",
+      "damage": 0
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Attacks Stonefang: 3 vs 13 (Margin: -10)"
+    },
+    {
+      "type": "attack",
+      "actor": "StonestriStonestrikerker",
+      "target": "Stonefang",
+      "result": "MISS",
+      "damage": 0
+    },
+    {
+      "type": "info",
+      "actor": "System",
+      "description": "Round 20 Begins"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Attacks StonestriStonestrikerker: 19 vs 10 (Margin: 9)"
+    },
+    {
+      "type": "attack",
+      "actor": "Stonefang",
+      "target": "StonestriStonestrikerker",
+      "result": "SOLID",
+      "damage": 2,
+      "margin": 9
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Turn Starts"
+    },
+    {
+      "type": "info",
+      "actor": "StonestriStonestrikerker",
+      "description": "Attacks Stonefang: 13 vs 10 (Margin: 3)"
+    },
+    {
+      "type": "attack",
+      "actor": "StonestriStonestrikerker",
+      "target": "Stonefang",
+      "result": "GLANCING",
+      "damage": 1,
+      "margin": 3
+    },
+    {
+      "type": "info",
+      "actor": "System",
+      "description": "Round 21 Begins"
+    },
+    {
+      "type": "info",
+      "actor": "Stonefang",
+      "description": "Turn Starts"
+    }
+  ],
+  "map": [
+    [
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "mud",
+      "normal",
+      "water_shallow",
+      "normal",
+      "normal"
+    ],
+    [
+      "normal",
+      "normal",
+      "normal",
+      "wall_stone",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal"
+    ],
+    [
+      "normal",
+      "normal",
+      "normal",
+      "tree",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "wall_stone",
+      "normal",
+      "normal"
+    ],
+    [
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "wall_stone",
+      "water_deep",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal"
+    ],
+    [
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "water_deep",
+      "mud",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal"
+    ],
+    [
+      "normal",
+      "normal",
+      "normal",
+      "tree",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal"
+    ],
+    [
+      "wall_stone",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "water_shallow",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal"
+    ],
+    [
+      "normal",
+      "normal",
+      "fire",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal"
+    ],
+    [
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "ice",
+      "normal",
+      "normal",
+      "normal",
+      "water_shallow",
+      "normal",
+      "normal"
+    ],
+    [
+      "normal",
+      "water_shallow",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "wall_stone",
+      "normal",
+      "normal"
+    ],
+    [
+      "normal",
+      "wall_stone",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "tree"
+    ],
+    [
+      "normal",
+      "normal",
+      "ice",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "normal",
+      "water_deep",
+      "normal",
+      "normal",
+      "normal"
+    ]
+  ],
+  "winner": "Blue Team"
+}

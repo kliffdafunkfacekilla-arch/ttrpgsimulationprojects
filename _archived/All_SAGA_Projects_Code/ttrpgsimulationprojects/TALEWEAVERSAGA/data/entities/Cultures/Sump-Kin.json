@@ -1,0 +1,54 @@
+{
+    "name": "Sump-Kin",
+    "aliases": [
+        "Chem-Barons"
+    ],
+    "tags": [
+        "Industrial",
+        "Swamp",
+        "Bio-Industrialist"
+    ],
+    "social_hierarchy": {
+        "Toad Barons": {
+            "type": "dictatorship",
+            "description": "Ruling class, strategists, and deal-makers"
+        },
+        "Newt-Kin": {
+            "type": "foremen",
+            "description": "Middle-management layer, enforcers of the Barons' will"
+        },
+        "Frog-Kin": {
+            "type": "labor",
+            "description": "Primary labor force, divided by species"
+        }
+    },
+    "military": {
+        "type": "asymmetric",
+        "units": [
+            "Rifle-Frogs",
+            "Mounts",
+            "Scouts"
+        ],
+        "tactics": [
+            "Bait & Switch",
+            "Chute",
+            "Distraction",
+            "Sacrifice"
+        ]
+    },
+    "economy": {
+        "type": "alchemical",
+        "cycles": [
+            "Waste Cycle"
+        ],
+        "exports": [
+            "Legal Goods",
+            "Illegal Goods"
+        ]
+    },
+    "dependencies": [
+        "Vaneer Concord 1",
+        "Heartland Alliance",
+        "Free Sky-Baronies"
+    ]
+}

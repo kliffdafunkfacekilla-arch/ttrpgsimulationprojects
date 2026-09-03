@@ -1,0 +1,101 @@
+[SETUP] Setting up environment...
+  [CC] src\io\AssetManager.cpp
+In file included from c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:2:
+src\io/../../include/Lore.hpp:74:3: error: unknown type name 'TameBonus'
+   74 |   TameBonus tameBonus = TameBonus::NONE;
+      |   ^
+In file included from c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:2:
+In file included from src\io/../../include/Lore.hpp:100:
+src\io/../../include/nlohmann/json.hpp:18930:26: warning: result of comparison of constant 400 with expression of type 'const std::uint8_t' (aka 'const unsigned char') is always true [-Wtautological-constant-out-of-range-compare]
+ 18930 |         JSON_ASSERT(byte < utf8d.size());
+       |                     ~~~~ ^ ~~~~~~~~~~~~
+src\io/../../include/nlohmann/json.hpp:2552:35: note: expanded from macro 'JSON_ASSERT'
+ 2552 |     #define JSON_ASSERT(x) assert(x)
+      |                                   ^
+C:/msys64/mingw64/include/assert.h:52:7: note: expanded from macro 'assert'
+   52 |  ((!!(_Expression)) || \
+      |       ^~~~~~~~~~~
+In file included from c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:4:
+In file included from src\io/../../include/SimulationModules.hpp:8:
+src\io/../../include/Terrain.hpp:5:7: error: redefinition of 'TerrainController' as different kind of symbol
+    5 | class TerrainController {
+      |       ^
+src\io/../../include/WorldEngine.hpp:273:11: note: previous definition is here
+  273 | namespace TerrainController {
+      |           ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:379:14: error: no member named 'tameBonusType' in 'AgentTemplate'
+  379 |         simT.tameBonusType = article.tameBonus;
+      |         ~~~~ ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\AssetManager.cpp:380:14: error: no member named 'tameBonusValue' in 'AgentTemplate'
+  380 |         simT.tameBonusValue = article.tameBonusValue;
+      |         ~~~~ ^
+1 warning and 4 errors generated.
+  [FAIL] src\io\AssetManager.cpp
+  [CC] src\io\LoreManager.cpp
+In file included from c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\LoreManager.cpp:1:
+src\io/../../include/Lore.hpp:74:3: error: unknown type name 'TameBonus'
+   74 |   TameBonus tameBonus = TameBonus::NONE;
+      |   ^
+In file included from c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\LoreManager.cpp:1:
+In file included from src\io/../../include/Lore.hpp:100:
+src\io/../../include/nlohmann/json.hpp:18930:26: warning: result of comparison of constant 400 with expression of type 'const std::uint8_t' (aka 'const unsigned char') is always true [-Wtautological-constant-out-of-range-compare]
+ 18930 |         JSON_ASSERT(byte < utf8d.size());
+       |                     ~~~~ ^ ~~~~~~~~~~~~
+src\io/../../include/nlohmann/json.hpp:2552:35: note: expanded from macro 'JSON_ASSERT'
+ 2552 |     #define JSON_ASSERT(x) assert(x)
+      |                                   ^
+C:/msys64/mingw64/include/assert.h:52:7: note: expanded from macro 'assert'
+   52 |  ((!!(_Expression)) || \
+      |       ^~~~~~~~~~~
+1 warning and 1 error generated.
+  [FAIL] src\io\LoreManager.cpp
+  [CC] src\core\TerrainController.cpp
+  [CC] src\simulation\ConflictSystem.cpp
+In file included from src\simulation\ConflictSystem.cpp:2:
+src\simulation/../../include/Lore.hpp:74:3: error: unknown type name 'TameBonus'
+   74 |   TameBonus tameBonus = TameBonus::NONE;
+      |   ^
+In file included from src\simulation\ConflictSystem.cpp:2:
+In file included from src\simulation/../../include/Lore.hpp:100:
+src\simulation/../../include/nlohmann/json.hpp:18930:26: warning: result of comparison of constant 400 with expression of type 'const std::uint8_t' (aka 'const unsigned char') is always true [-Wtautological-constant-out-of-range-compare]
+ 18930 |         JSON_ASSERT(byte < utf8d.size());
+       |                     ~~~~ ^ ~~~~~~~~~~~~
+src\simulation/../../include/nlohmann/json.hpp:2552:35: note: expanded from macro 'JSON_ASSERT'
+ 2552 |     #define JSON_ASSERT(x) assert(x)
+      |                                   ^
+C:/msys64/mingw64/include/assert.h:52:7: note: expanded from macro 'assert'
+   52 |  ((!!(_Expression)) || \
+      |       ^~~~~~~~~~~
+1 warning and 1 error generated.
+  [FAIL] src\simulation\ConflictSystem.cpp
+  [CC] src\apps\App_Architect.cpp
+In file included from c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\apps\App_Architect.cpp:5:
+src\apps/../../include/Lore.hpp:74:3: error: unknown type name 'TameBonus'
+   74 |   TameBonus tameBonus = TameBonus::NONE;
+      |   ^
+In file included from c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\apps\App_Architect.cpp:5:
+In file included from src\apps/../../include/Lore.hpp:100:
+src\apps/../../include/nlohmann/json.hpp:18930:26: warning: result of comparison of constant 400 with expression of type 'const std::uint8_t' (aka 'const unsigned char') is always true [-Wtautological-constant-out-of-range-compare]
+ 18930 |         JSON_ASSERT(byte < utf8d.size());
+       |                     ~~~~ ^ ~~~~~~~~~~~~
+src\apps/../../include/nlohmann/json.hpp:2552:35: note: expanded from macro 'JSON_ASSERT'
+ 2552 |     #define JSON_ASSERT(x) assert(x)
+      |                                   ^
+C:/msys64/mingw64/include/assert.h:52:7: note: expanded from macro 'assert'
+   52 |  ((!!(_Expression)) || \
+      |       ^~~~~~~~~~~
+In file included from c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\apps\App_Architect.cpp:9:
+src\apps/../../include/Terrain.hpp:5:7: error: redefinition of 'TerrainController' as different kind of symbol
+    5 | class TerrainController {
+      |       ^
+src\apps/../../include/WorldEngine.hpp:273:11: note: previous definition is here
+  273 | namespace TerrainController {
+      |           ^
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\apps\App_Architect.cpp:176:98: error: assigning to 'MapTemplate' from incompatible type 'int'
+  176 |       if (ImGui::Combo("World Template", &currentType, templateNames, 7)) { settings.worldType = currentType; TerrainController::GenerateHeightmap(buffers, settings); mapDirty = true; }
+      |                                                                                                  ^~~~~~~~~~~
+1 warning and 3 errors generated.
+  [FAIL] src\apps\App_Architect.cpp
+
+[INFO] Compiled: 1 | Cached: 32
+[ERROR] 4 file(s) failed to compile.

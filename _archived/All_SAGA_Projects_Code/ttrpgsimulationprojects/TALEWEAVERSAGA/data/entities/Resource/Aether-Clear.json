@@ -1,0 +1,36 @@
+{
+    "resource_name": "Aether-Clear",
+    "resource_type": "Medicine",
+    "rarity": 5,
+    "base_value": 500,
+    "weight": 1,
+    "volume": 1,
+    "energy_cost": 10,
+    "duration": 30,
+    "effect": "Heals Corruption Sickness",
+    "curability": "Partial",
+    "secondary_effect": "Clears mental fog caused by Chaos Zone exposure",
+    "requirements": {
+        "ingredients": [
+            {
+                "name": "Ozone-Milk",
+                "quantity": 2
+            },
+            {
+                "name": "Ghost Flowers",
+                "quantity": 1
+            }
+        ],
+        "steps": [
+            "Fermentation",
+            "Distillation",
+            "Add Second Ingredient"
+        ]
+    },
+    "exclusivity": "Quill-Kin",
+    "security_features": [
+        "Gross syrup taste",
+        "Medical use only"
+    ],
+    "leverage": "Monopoly on Corruption Sickness treatment"
+}

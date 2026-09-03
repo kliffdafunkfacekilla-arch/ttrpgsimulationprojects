@@ -1,0 +1,885 @@
+[SETUP] Setting up environment...
+  [CC] src\platform\WindowsUtils.cpp
+  [CC] src\io\PlatformUtils.cpp
+  [CC] src\io\BinaryExporter.cpp
+src\io\BinaryExporter.cpp:39:15: error: no member named 'agentID' in 'WorldBuffers'
+   39 |   if (buffers.agentID)
+      |       ~~~~~~~ ^
+src\io\BinaryExporter.cpp:40:58: error: no member named 'agentID' in 'WorldBuffers'
+   40 |     outFile.write(reinterpret_cast<const char *>(buffers.agentID),
+      |                                                  ~~~~~~~ ^
+src\io\BinaryExporter.cpp:42:15: error: no member named 'agentStrength' in 'WorldBuffers'
+   42 |   if (buffers.agentStrength)
+      |       ~~~~~~~ ^
+src\io\BinaryExporter.cpp:43:58: error: no member named 'agentStrength' in 'WorldBuffers'
+   43 |     outFile.write(reinterpret_cast<const char *>(buffers.agentStrength),
+      |                                                  ~~~~~~~ ^
+src\io\BinaryExporter.cpp:45:15: error: no member named 'structureType' in 'WorldBuffers'
+   45 |   if (buffers.structureType)
+      |       ~~~~~~~ ^
+src\io\BinaryExporter.cpp:46:58: error: no member named 'structureType' in 'WorldBuffers'
+   46 |     outFile.write(reinterpret_cast<const char *>(buffers.structureType),
+      |                                                  ~~~~~~~ ^
+src\io\BinaryExporter.cpp:88:15: error: no member named 'agentID' in 'WorldBuffers'
+   88 |   if (buffers.agentID)
+      |       ~~~~~~~ ^
+src\io\BinaryExporter.cpp:89:50: error: no member named 'agentID' in 'WorldBuffers'
+   89 |     inFile.read(reinterpret_cast<char *>(buffers.agentID), count * sizeof(int));
+      |                                          ~~~~~~~ ^
+src\io\BinaryExporter.cpp:90:15: error: no member named 'agentStrength' in 'WorldBuffers'
+   90 |   if (buffers.agentStrength)
+      |       ~~~~~~~ ^
+src\io\BinaryExporter.cpp:91:50: error: no member named 'agentStrength' in 'WorldBuffers'
+   91 |     inFile.read(reinterpret_cast<char *>(buffers.agentStrength),
+      |                                          ~~~~~~~ ^
+src\io\BinaryExporter.cpp:93:15: error: no member named 'structureType' in 'WorldBuffers'
+   93 |   if (buffers.structureType)
+      |       ~~~~~~~ ^
+src\io\BinaryExporter.cpp:94:50: error: no member named 'structureType' in 'WorldBuffers'
+   94 |     inFile.read(reinterpret_cast<char *>(buffers.structureType),
+      |                                          ~~~~~~~ ^
+src\io\BinaryExporter.cpp:118:15: error: no member named 'agentID' in 'WorldBuffers'
+  118 |   if (buffers.agentID)
+      |       ~~~~~~~ ^
+src\io\BinaryExporter.cpp:119:58: error: no member named 'agentID' in 'WorldBuffers'
+  119 |     outFile.write(reinterpret_cast<const char *>(buffers.agentID), count * sizeof(int));
+      |                                                  ~~~~~~~ ^
+src\io\BinaryExporter.cpp:120:15: error: no member named 'agentStrength' in 'WorldBuffers'
+  120 |   if (buffers.agentStrength)
+      |       ~~~~~~~ ^
+src\io\BinaryExporter.cpp:121:58: error: no member named 'agentStrength' in 'WorldBuffers'
+  121 |     outFile.write(reinterpret_cast<const char *>(buffers.agentStrength), count * sizeof(float));
+      |                                                  ~~~~~~~ ^
+src\io\BinaryExporter.cpp:122:15: error: no member named 'structureType' in 'WorldBuffers'
+  122 |   if (buffers.structureType)
+      |       ~~~~~~~ ^
+src\io\BinaryExporter.cpp:123:58: error: no member named 'structureType' in 'WorldBuffers'
+  123 |     outFile.write(reinterpret_cast<const char *>(buffers.structureType), count * sizeof(uint8_t));
+      |                                                  ~~~~~~~ ^
+src\io\BinaryExporter.cpp:153:15: error: no member named 'agentID' in 'WorldBuffers'
+  153 |   if (buffers.agentID)
+      |       ~~~~~~~ ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+  [FAIL] src\io\BinaryExporter.cpp
+  [CC] src\io\AssetManager.cpp
+  [CC] src\io\LoreManager.cpp
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\LoreManager.cpp:95:123: error: no member named 'CIVILIZED' in 'AgentType'
+   95 |                     else if (folder == "Cultures") { art.isCulture = true; art.isAgent = true; art.agentType = AgentType::CIVILIZED; }
+      |                                                                                                                           ^~~~~~~~~
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\LoreManager.cpp:164:13: error: use of undeclared identifier 'SyncError'
+  164 | std::vector<SyncError> ValidateSync(struct WorldBuffers &buffers) {
+      |             ^~~~~~~~~
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\src\io\LoreManager.cpp:165:24: error: use of undeclared identifier 'SyncError'
+  165 |     return std::vector<SyncError>();
+      |                        ^~~~~~~~~
+3 errors generated.
+  [FAIL] src\io\LoreManager.cpp
+  [CC] src\io\MasterExporter.cpp
+  [CC] src\io\HeightmapLoader.cpp
+src\io\HeightmapLoader.cpp:27:27: error: no member named 'posX' in 'WorldBuffers'
+   27 |     int x = (int)(buffers.posX[i] * (width - 1));
+      |                   ~~~~~~~ ^
+src\io\HeightmapLoader.cpp:28:27: error: no member named 'posY' in 'WorldBuffers'
+   28 |     int y = (int)(buffers.posY[i] * (height - 1));
+      |                   ~~~~~~~ ^
+2 errors generated.
+  [FAIL] src\io\HeightmapLoader.cpp
+  [CC] src\lore\LoreScribe.cpp
+src\lore\LoreScribe.cpp:8:8: error: unknown type name 'LoreScribe'
+    8 | static LoreScribe globalScribe;
+      |        ^
+src\lore\LoreScribe.cpp:43:6: error: use of undeclared identifier 'LoreScribe'; did you mean 'LoreScribeNS'?
+   43 | void LoreScribe::Initialize(std::string filename) {
+      |      ^~~~~~~~~~
+      |      LoreScribeNS
+src\lore\LoreScribe.cpp:6:11: note: 'LoreScribeNS' declared here
+    6 | namespace LoreScribeNS {
+      |           ^
+src\lore\LoreScribe.cpp:43:6: error: use of undeclared identifier 'LoreScribe'; did you mean 'LoreScribeNS'?
+   43 | void LoreScribe::Initialize(std::string filename) {
+      |      ^~~~~~~~~~
+      |      LoreScribeNS
+src\lore\LoreScribe.cpp:6:11: note: 'LoreScribeNS' declared here
+    6 | namespace LoreScribeNS {
+      |           ^
+src\lore\LoreScribe.cpp:43:18: error: out-of-line definition of 'Initialize' does not match any declaration in namespace 'LoreScribeNS'
+   43 | void LoreScribe::Initialize(std::string filename) {
+      |                  ^~~~~~~~~~
+src\lore\LoreScribe.cpp:57:6: error: use of undeclared identifier 'LoreScribe'; did you mean 'LoreScribeNS'?
+   57 | void LoreScribe::RecordEvent(const ChronosConfig &time, std::string category,
+      |      ^~~~~~~~~~
+      |      LoreScribeNS
+src\lore\LoreScribe.cpp:6:11: note: 'LoreScribeNS' declared here
+    6 | namespace LoreScribeNS {
+      |           ^
+src\lore\LoreScribe.cpp:57:6: error: use of undeclared identifier 'LoreScribe'; did you mean 'LoreScribeNS'?
+   57 | void LoreScribe::RecordEvent(const ChronosConfig &time, std::string category,
+      |      ^~~~~~~~~~
+      |      LoreScribeNS
+src\lore\LoreScribe.cpp:6:11: note: 'LoreScribeNS' declared here
+    6 | namespace LoreScribeNS {
+      |           ^
+src\lore\LoreScribe.cpp:57:18: error: out-of-line definition of 'RecordEvent' does not match any declaration in namespace 'LoreScribeNS'
+   57 | void LoreScribe::RecordEvent(const ChronosConfig &time, std::string category,
+      |                  ^~~~~~~~~~~
+src\lore\LoreScribe.cpp:61:23: error: no member named 'yearCount' in 'ChronosConfig'
+   61 |   historyFile << time.yearCount << "," << time.monthCount << ","
+      |                  ~~~~ ^
+src\lore\LoreScribe.cpp:61:48: error: no member named 'monthCount' in 'ChronosConfig'
+   61 |   historyFile << time.yearCount << "," << time.monthCount << ","
+      |                                           ~~~~ ^
+src\lore\LoreScribe.cpp:62:23: error: no member named 'dayCount' in 'ChronosConfig'
+   62 |               << time.dayCount << "," << category << "," << cellID << ",\""
+      |                  ~~~~ ^
+src\lore\LoreScribe.cpp:69:48: error: no member named 'yearCount' in 'ChronosConfig'
+   69 |   std::string date = "Y" + std::to_string(time.yearCount) + "-M" +
+      |                                           ~~~~ ^
+src\lore\LoreScribe.cpp:70:42: error: no member named 'monthCount' in 'ChronosConfig'
+   70 |                      std::to_string(time.monthCount);
+      |                                     ~~~~ ^
+src\lore\LoreScribe.cpp:71:3: error: use of undeclared identifier 'sessionLogs'
+   71 |   sessionLogs.push_back({date, category, text});
+      |   ^~~~~~~~~~~
+src\lore\LoreScribe.cpp:74:7: error: use of undeclared identifier 'sessionLogs'
+   74 |   if (sessionLogs.size() > 50) {
+      |       ^~~~~~~~~~~
+src\lore\LoreScribe.cpp:75:5: error: use of undeclared identifier 'sessionLogs'
+   75 |     sessionLogs.erase(sessionLogs.begin());
+      |     ^~~~~~~~~~~
+src\lore\LoreScribe.cpp:75:23: error: use of undeclared identifier 'sessionLogs'
+   75 |     sessionLogs.erase(sessionLogs.begin());
+      |                       ^~~~~~~~~~~
+src\lore\LoreScribe.cpp:79:6: error: use of undeclared identifier 'LoreScribe'; did you mean 'LoreScribeNS'?
+   79 | void LoreScribe::RecordJSONEvent(const std::string &type,
+      |      ^~~~~~~~~~
+      |      LoreScribeNS
+src\lore\LoreScribe.cpp:6:11: note: 'LoreScribeNS' declared here
+    6 | namespace LoreScribeNS {
+      |           ^
+src\lore\LoreScribe.cpp:79:6: error: use of undeclared identifier 'LoreScribe'; did you mean 'LoreScribeNS'?
+   79 | void LoreScribe::RecordJSONEvent(const std::string &type,
+      |      ^~~~~~~~~~
+      |      LoreScribeNS
+src\lore\LoreScribe.cpp:6:11: note: 'LoreScribeNS' declared here
+    6 | namespace LoreScribeNS {
+      |           ^
+src\lore\LoreScribe.cpp:79:18: error: out-of-line definition of 'RecordJSONEvent' does not match any declaration in namespace 'LoreScribeNS'
+   79 | void LoreScribe::RecordJSONEvent(const std::string &type,
+      |                  ^~~~~~~~~~~~~~~
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+  [FAIL] src\lore\LoreScribe.cpp
+  [CC] src\core\NeighborFinder.cpp
+src\core\NeighborFinder.cpp:13:9: error: no member named 'neighborData' in 'NeighborGraph'
+   13 |   graph.neighborData = new int[count * 8];
+      |   ~~~~~ ^
+src\core\NeighborFinder.cpp:14:9: error: no member named 'offsetTable' in 'NeighborGraph'
+   14 |   graph.offsetTable = new int[count];
+      |   ~~~~~ ^
+src\core\NeighborFinder.cpp:15:9: error: no member named 'countTable' in 'NeighborGraph'
+   15 |   graph.countTable = new uint8_t[count];
+      |   ~~~~~ ^
+src\core\NeighborFinder.cpp:29:11: error: no member named 'offsetTable' in 'NeighborGraph'
+   29 |     graph.offsetTable[i] = currentOffset;
+      |     ~~~~~ ^
+src\core\NeighborFinder.cpp:49:17: error: no member named 'neighborData' in 'NeighborGraph'
+   49 |           graph.neighborData[currentOffset + foundCount] = neighborIdx;
+      |           ~~~~~ ^
+src\core\NeighborFinder.cpp:55:11: error: no member named 'countTable' in 'NeighborGraph'
+   55 |     graph.countTable[i] = foundCount;
+      |     ~~~~~ ^
+src\core\NeighborFinder.cpp:64:18: error: no member named 'neighborData' in 'NeighborGraph'
+   64 |   delete[] graph.neighborData;
+      |            ~~~~~ ^
+src\core\NeighborFinder.cpp:65:18: error: no member named 'offsetTable' in 'NeighborGraph'
+   65 |   delete[] graph.offsetTable;
+      |            ~~~~~ ^
+src\core\NeighborFinder.cpp:66:18: error: no member named 'countTable' in 'NeighborGraph'
+   66 |   delete[] graph.countTable;
+      |            ~~~~~ ^
+9 errors generated.
+  [FAIL] src\core\NeighborFinder.cpp
+  [CC] src\visuals\MapRenderer.cpp
+src\visuals\MapRenderer.cpp:111:13: error: no member named 'resourceType' in 'WorldBuffers'
+  111 |       if (b.resourceType != nullptr && b.resourceAmount != nullptr && b.resourceAmount[i] > 0.0f) {
+      |           ~ ^
+src\visuals\MapRenderer.cpp:111:42: error: no member named 'resourceAmount' in 'WorldBuffers'
+  111 |       if (b.resourceType != nullptr && b.resourceAmount != nullptr && b.resourceAmount[i] > 0.0f) {
+      |                                        ~ ^
+src\visuals\MapRenderer.cpp:111:73: error: no member named 'resourceAmount' in 'WorldBuffers'
+  111 |       if (b.resourceType != nullptr && b.resourceAmount != nullptr && b.resourceAmount[i] > 0.0f) {
+      |                                                                       ~ ^
+src\visuals\MapRenderer.cpp:112:27: error: no member named 'resourceType' in 'WorldBuffers'
+  112 |           uint8_t res = b.resourceType[i];
+      |                         ~ ^
+4 errors generated.
+  [FAIL] src\visuals\MapRenderer.cpp
+  [CC] src\frontend\GuiController.cpp
+In file included from src\frontend\GuiController.cpp:1:
+src\frontend/../../include/GuiController.hpp:32:34: error: unknown type name 'TerrainController'
+   32 |                                  TerrainController &terrain,
+      |                                  ^
+src\frontend/../../include/GuiController.hpp:41:34: error: unknown type name 'TerrainController'
+   41 |                                  TerrainController &terrain,
+      |                                  ^
+src\frontend\GuiController.cpp:32:40: error: unknown type name 'TerrainController'
+   32 |                                        TerrainController &terrain,
+      |                                        ^
+src\frontend\GuiController.cpp:72:37: error: no member named 'zoomLevel' in 'WorldSettings'
+   72 |     float zoom = pow(4.0f, settings.zoomLevel);
+      |                            ~~~~~~~~ ^
+src\frontend\GuiController.cpp:78:46: error: no member named 'viewOffset' in 'WorldSettings'
+   78 |     float worldX = (normX / zoom) + settings.viewOffset[0];
+      |                                     ~~~~~~~~ ^
+src\frontend\GuiController.cpp:79:46: error: no member named 'viewOffset' in 'WorldSettings'
+   79 |     float worldY = (normY / zoom) + settings.viewOffset[1];
+      |                                     ~~~~~~~~ ^
+src\frontend\GuiController.cpp:134:14: error: no member named 'timeScale' in 'WorldSettings'
+  134 |     settings.timeScale = std::max(1, settings.timeScale - 1);
+      |     ~~~~~~~~ ^
+src\frontend\GuiController.cpp:134:47: error: no member named 'timeScale' in 'WorldSettings'
+  134 |     settings.timeScale = std::max(1, settings.timeScale - 1);
+      |                                      ~~~~~~~~ ^
+src\frontend\GuiController.cpp:140:14: error: no member named 'timeScale' in 'WorldSettings'
+  140 |     settings.timeScale = std::min(50, settings.timeScale + 1);
+      |     ~~~~~~~~ ^
+src\frontend\GuiController.cpp:140:48: error: no member named 'timeScale' in 'WorldSettings'
+  140 |     settings.timeScale = std::min(50, settings.timeScale + 1);
+      |                                       ~~~~~~~~ ^
+src\frontend\GuiController.cpp:142:38: error: no member named 'timeScale' in 'WorldSettings'
+  142 |   ImGui::Text("Speed: %dx", settings.timeScale);
+      |                             ~~~~~~~~ ^
+src\frontend\GuiController.cpp:168:5: error: unknown type name 'TerrainController'
+  168 |     TerrainController &terrain, NeighborGraph &graph, int &activeTab,
+      |     ^
+src\frontend\GuiController.cpp:195:22: error: no member named 'erosionIterations' in 'WorldSettings'
+  195 |         if (settings.erosionIterations > 0)
+      |             ~~~~~~~~ ^
+src\frontend\GuiController.cpp:196:57: error: no member named 'erosionIterations' in 'WorldSettings'
+  196 |           terrain.ApplyThermalErosion(buffers, settings.erosionIterations);
+      |                                                ~~~~~~~~ ^
+src\frontend\GuiController.cpp:265:50: error: no member named 'tempZonePolar' in 'WorldSettings'
+  265 |       ImGui::SliderFloat("Polar Temp", &settings.tempZonePolar, 0.0f, 1.0f);
+      |                                         ~~~~~~~~ ^
+src\frontend\GuiController.cpp:266:54: error: no member named 'tempZoneTemperate' in 'WorldSettings'
+  266 |       ImGui::SliderFloat("Temperate Temp", &settings.tempZoneTemperate, 0.0f,
+      |                                             ~~~~~~~~ ^
+src\frontend\GuiController.cpp:268:53: error: no member named 'tempZoneTropical' in 'WorldSettings'
+  268 |       ImGui::SliderFloat("Tropical Temp", &settings.tempZoneTropical, 0.0f,
+      |                                            ~~~~~~~~ ^
+src\frontend\GuiController.cpp:270:55: error: no member named 'globalTempModifier' in 'WorldSettings'
+  270 |       ImGui::SliderFloat("Global Temp Mod", &settings.globalTempModifier, 0.0f,
+      |                                              ~~~~~~~~ ^
+src\frontend\GuiController.cpp:277:45: error: no member named 'windZonesDir' in 'WorldSettings'
+  277 |         ImGui::SliderFloat(label, &settings.windZonesDir[i], -3.14f, 3.14f);
+      |                                    ~~~~~~~~ ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+  [FAIL] src\frontend\GuiController.cpp
+  [CC] src\frontend\EditorUI.cpp
+src\frontend\EditorUI.cpp:191:49: error: no member named 'foodRequirement' in 'AgentDefinition'
+  191 |         ImGui::SliderFloat("Food Need/Tick", &a.foodRequirement, 0.0f, 10.0f);
+      |                                               ~ ^
+src\frontend\EditorUI.cpp:195:49: error: no member named 'diet' in 'AgentDefinition'
+  195 |         DrawRequirementMap("Consumes (Diet)", a.diet);
+      |                                               ~ ^
+src\frontend\EditorUI.cpp:197:51: error: no member named 'output' in 'AgentDefinition'
+  197 |         DrawRequirementMap("Produces (Output)", a.output);
+      |                                                 ~ ^
+3 errors generated.
+  [FAIL] src\frontend\EditorUI.cpp
+  [CC] src\biology\AgentSystem.cpp
+src\biology\AgentSystem.cpp:50:33: error: no member named 'diet' in 'AgentDefinition'
+   50 |     for (auto const &pair : dna.diet) {
+      |                             ~~~ ^
+src\biology\AgentSystem.cpp:75:31: error: no member named 'diet' in 'AgentDefinition'
+   75 |   for (auto const &pair : dna.diet) {
+      |                           ~~~ ^
+src\biology\AgentSystem.cpp:79:9: error: no member named 'AddResource' in 'WorldBuffers'
+   79 |       b.AddResource(i, pair.first, -needed);
+      |       ~ ^
+src\biology\AgentSystem.cpp:82:9: error: no member named 'AddResource' in 'WorldBuffers'
+   82 |       b.AddResource(i, pair.first, -available);
+      |       ~ ^
+src\biology\AgentSystem.cpp:87:33: error: no member named 'output' in 'AgentDefinition'
+   87 |     for (auto const &pair : dna.output) {
+      |                             ~~~ ^
+src\biology\AgentSystem.cpp:88:9: error: no member named 'AddResource' in 'WorldBuffers'
+   88 |       b.AddResource(i, pair.first, pair.second * (myPop / 100.0f));
+      |       ~ ^
+src\biology\AgentSystem.cpp:97:38: error: no member named 'AddResource' in 'WorldBuffers'
+   97 |     if (dna.resourceYieldID != -1) b.AddResource(i, dna.resourceYieldID, dna.resourceYieldAmount);
+      |                                    ~ ^
+src\biology\AgentSystem.cpp:107:17: error: no member named 'moonPhase' in 'ChronosConfig'
+  107 |     if (c && c->moonPhase > 0.45f && c->moonPhase < 0.55f) currentAggression *= 1.5f;
+      |              ~  ^
+src\biology\AgentSystem.cpp:107:41: error: no member named 'moonPhase' in 'ChronosConfig'
+  107 |     if (c && c->moonPhase > 0.45f && c->moonPhase < 0.55f) currentAggression *= 1.5f;
+      |                                      ~  ^
+src\biology\AgentSystem.cpp:110:22: error: no member named 'offsetTable' in 'NeighborGraph'
+  110 |       int offset = g.offsetTable[i];
+      |                    ~ ^
+src\biology\AgentSystem.cpp:111:21: error: no member named 'countTable' in 'NeighborGraph'
+  111 |       int count = g.countTable[i];
+      |                   ~ ^
+src\biology\AgentSystem.cpp:113:22: error: no member named 'neighborData' in 'NeighborGraph'
+  113 |         int nIdx = g.neighborData[offset + k];
+      |                    ~ ^
+src\biology\AgentSystem.cpp:118:17: error: no member named 'defense' in 'WorldBuffers'
+  118 |           if (b.defense) dmg -= b.defense[nIdx];
+      |               ~ ^
+src\biology\AgentSystem.cpp:118:35: error: no member named 'defense' in 'WorldBuffers'
+  118 |           if (b.defense) dmg -= b.defense[nIdx];
+      |                                 ~ ^
+src\biology\AgentSystem.cpp:133:22: error: no member named 'offsetTable' in 'NeighborGraph'
+  133 |       int offset = g.offsetTable[i];
+      |                    ~ ^
+src\biology\AgentSystem.cpp:134:21: error: no member named 'countTable' in 'NeighborGraph'
+  134 |       int count = g.countTable[i];
+      |                   ~ ^
+src\biology\AgentSystem.cpp:136:22: error: no member named 'neighborData' in 'NeighborGraph'
+  136 |         int nIdx = g.neighborData[offset + k];
+      |                    ~ ^
+src\biology\AgentSystem.cpp:153:22: error: no member named 'offsetTable' in 'NeighborGraph'
+  153 |       int offset = g.offsetTable[i];
+      |                    ~ ^
+src\biology\AgentSystem.cpp:154:21: error: no member named 'countTable' in 'NeighborGraph'
+  154 |       int count = g.countTable[i];
+      |                   ~ ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+  [FAIL] src\biology\AgentSystem.cpp
+  [CC] src\environment\ClimateSim.cpp
+src\environment\ClimateSim.cpp:23:25: error: no member named 'BARE' in 'BiomeType'
+   23 |       return BiomeType::BARE;
+      |                         ^~~~
+src\environment\ClimateSim.cpp:25:25: error: no member named 'SHRUBLAND' in 'BiomeType'
+   25 |       return BiomeType::SHRUBLAND;
+      |                         ^~~~~~~~~
+src\environment\ClimateSim.cpp:26:23: error: no member named 'TEMPERATE_DECIDUOUS_FOREST' in 'BiomeType'; did you mean 'TEMPERATE_RAIN_FOREST'?
+   26 |     return BiomeType::TEMPERATE_DECIDUOUS_FOREST;
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                       TEMPERATE_RAIN_FOREST
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\include\WorldEngine.hpp:62:3: note: 'TEMPERATE_RAIN_FOREST' declared here
+   62 |   TEMPERATE_RAIN_FOREST,
+      |   ^
+src\environment\ClimateSim.cpp:30:25: error: no member named 'TEMPERATE_DESERT' in 'BiomeType'
+   30 |       return BiomeType::TEMPERATE_DESERT;
+      |                         ^~~~~~~~~~~~~~~~
+src\environment\ClimateSim.cpp:34:25: error: no member named 'TEMPERATE_DECIDUOUS_FOREST' in 'BiomeType'; did you mean 'TEMPERATE_RAIN_FOREST'?
+   34 |       return BiomeType::TEMPERATE_DECIDUOUS_FOREST;
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                         TEMPERATE_RAIN_FOREST
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\include\WorldEngine.hpp:62:3: note: 'TEMPERATE_RAIN_FOREST' declared here
+   62 |   TEMPERATE_RAIN_FOREST,
+      |   ^
+src\environment\ClimateSim.cpp:41:23: error: no member named 'SUBTROPICAL_DESERT' in 'BiomeType'
+   41 |     return BiomeType::SUBTROPICAL_DESERT;
+      |                       ^~~~~~~~~~~~~~~~~~
+src\environment\ClimateSim.cpp:43:23: error: no member named 'TROPICAL_SEASONAL_FOREST' in 'BiomeType'; did you mean 'TROPICAL_RAIN_FOREST'?
+   43 |     return BiomeType::TROPICAL_SEASONAL_FOREST;
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~
+      |                       TROPICAL_RAIN_FOREST
+c:\Users\krazy\Documents\GitHub\FantasyLloreandWorldSimulator\include\WorldEngine.hpp:59:3: note: 'TROPICAL_RAIN_FOREST' declared here
+   59 |   TROPICAL_RAIN_FOREST,
+      |   ^
+src\environment\ClimateSim.cpp:60:9: error: no member named 'currentSeason' in 'ChronosConfig'
+   60 |   if (c.currentSeason == 1) seasonMod = 0.15f; // Summer
+      |       ~ ^
+src\environment\ClimateSim.cpp:61:14: error: no member named 'currentSeason' in 'ChronosConfig'
+   61 |   else if (c.currentSeason == 3) seasonMod = -0.15f; // Winter
+      |            ~ ^
+src\environment\ClimateSim.cpp:75:14: error: no member named 'tempZonePolar' in 'WorldSettings'
+   75 |           (s.tempZonePolar * (1.0f - alpha) + s.tempZoneTemperate * alpha) *
+      |            ~ ^
+src\environment\ClimateSim.cpp:75:49: error: no member named 'tempZoneTemperate' in 'WorldSettings'
+   75 |           (s.tempZonePolar * (1.0f - alpha) + s.tempZoneTemperate * alpha) *
+      |                                               ~ ^
+src\environment\ClimateSim.cpp:80:14: error: no member named 'tempZoneTemperate' in 'WorldSettings'
+   80 |           (s.tempZoneTemperate * (1.0f - alpha) + s.tempZoneTropical * alpha) *
+      |            ~ ^
+src\environment\ClimateSim.cpp:80:53: error: no member named 'tempZoneTropical' in 'WorldSettings'
+   80 |           (s.tempZoneTemperate * (1.0f - alpha) + s.tempZoneTropical * alpha) *
+      |                                                   ~ ^
+src\environment\ClimateSim.cpp:93:30: error: no member named 'windZonesDir' in 'WorldSettings'
+   93 |     float localWindAngle = s.windZonesDir[windZoneIdx];
+      |                            ~ ^
+src\environment\ClimateSim.cpp:94:33: error: no member named 'windZonesStr' in 'WorldSettings'
+   94 |     float localWindStrength = s.windZonesStr[windZoneIdx];
+      |                               ~ ^
+src\environment\ClimateSim.cpp:99:7: error: no member named 'windDX' in 'WorldBuffers'
+   99 |     b.windDX[i] = windX;
+      |     ~ ^
+src\environment\ClimateSim.cpp:100:7: error: no member named 'windDY' in 'WorldBuffers'
+  100 |     b.windDY[i] = windY;
+      |     ~ ^
+src\environment\ClimateSim.cpp:131:27: error: no member named 'raininess' in 'WorldSettings'
+  131 |       moisture = 0.1f * s.raininess;
+      |                         ~ ^
+src\environment\ClimateSim.cpp:145:27: error: no member named 'raininess' in 'WorldSettings'
+  145 |     moisture *= (0.7f + s.raininess * 1.3f);
+      |                         ~ ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+  [FAIL] src\environment\ClimateSim.cpp
+  [CC] src\environment\HydrologySim.cpp
+src\environment\HydrologySim.cpp:31:32: error: no member named 'offsetTable' in 'NeighborGraph'
+   31 |                 int offset = g.offsetTable[i];
+      |                              ~ ^
+src\environment\HydrologySim.cpp:32:31: error: no member named 'countTable' in 'NeighborGraph'
+   32 |                 int count = g.countTable[i];
+      |                             ~ ^
+src\environment\HydrologySim.cpp:35:34: error: no member named 'neighborData' in 'NeighborGraph'
+   35 |                     int nIdx = g.neighborData[offset + k];
+      |                                ~ ^
+3 errors generated.
+  [FAIL] src\environment\HydrologySim.cpp
+  [CC] src\environment\ChaosField.cpp
+src\environment\ChaosField.cpp:20:9: error: no member named 'chaos' in 'WorldBuffers'
+   20 |   if (b.chaos)
+      |       ~ ^
+src\environment\ChaosField.cpp:21:7: error: no member named 'chaos' in 'WorldBuffers'
+   21 |     b.chaos[index] = intensity;
+      |     ~ ^
+src\environment\ChaosField.cpp:27:10: error: no member named 'chaos' in 'WorldBuffers'
+   27 |   if (!b.chaos || !g.neighborData)
+      |        ~ ^
+src\environment\ChaosField.cpp:27:22: error: no member named 'neighborData' in 'NeighborGraph'
+   27 |   if (!b.chaos || !g.neighborData)
+      |                    ~ ^
+src\environment\ChaosField.cpp:31:25: error: no member named 'convergenceAngle' in 'WorldSettings'
+   31 |   float angleOffset = s.convergenceAngle;
+      |                       ~ ^
+src\environment\ChaosField.cpp:45:11: error: no member named 'chaos' in 'WorldBuffers'
+   45 |         b.chaos[idx] = 1.0f; // Max chaos at source points
+      |         ~ ^
+src\environment\ChaosField.cpp:51:5: error: no member named 'chaos' in 'WorldBuffers'
+   51 |   b.chaos[cy * side + cx] = 1.0f;
+      |   ~ ^
+src\environment\ChaosField.cpp:55:9: error: no member named 'chaos' in 'WorldBuffers'
+   55 |       b.chaos[rift.index] = rift.intensity;
+      |       ~ ^
+src\environment\ChaosField.cpp:68:23: error: no member named 'chaos' in 'WorldBuffers'
+   68 |     float current = b.chaos[i];
+      |                     ~ ^
+src\environment\ChaosField.cpp:72:20: error: no member named 'offsetTable' in 'NeighborGraph'
+   72 |     int offset = g.offsetTable[i];
+      |                  ~ ^
+src\environment\ChaosField.cpp:73:19: error: no member named 'countTable' in 'NeighborGraph'
+   73 |     int count = g.countTable[i];
+      |                 ~ ^
+src\environment\ChaosField.cpp:76:20: error: no member named 'neighborData' in 'NeighborGraph'
+   76 |       int nIdx = g.neighborData[offset + k];
+      |                  ~ ^
+src\environment\ChaosField.cpp:77:24: error: no member named 'chaos' in 'WorldBuffers'
+   77 |       neighborSum += b.chaos[nIdx];
+      |                      ~ ^
+src\environment\ChaosField.cpp:89:83: error: no member named 'mutantSpawnChance' in 'WorldSettings'
+   89 |     if (current > 0.8f && b.cultureID[i] == -1 && (rand() % 10000) / 10000.0f < s.mutantSpawnChance) {
+      |                                                                                 ~ ^
+src\environment\ChaosField.cpp:96:17: error: no member named 'chaos' in 'WorldBuffers'
+   96 |   std::memcpy(b.chaos, nextChaos.data(), b.count * sizeof(float));
+      |               ~ ^
+15 errors generated.
+  [FAIL] src\environment\ChaosField.cpp
+  [CC] src\environment\DisasterSystem.cpp
+src\environment\DisasterSystem.cpp:44:15: error: no member named 'infrastructure' in 'WorldBuffers'
+   44 |         if (b.infrastructure)
+      |             ~ ^
+src\environment\DisasterSystem.cpp:45:13: error: no member named 'infrastructure' in 'WorldBuffers'
+   45 |           b.infrastructure[i] =
+      |           ~ ^
+src\environment\DisasterSystem.cpp:46:32: error: no member named 'infrastructure' in 'WorldBuffers'
+   46 |               std::max(0.0f, b.infrastructure[i] - strength * falloff);
+      |                              ~ ^
+src\environment\DisasterSystem.cpp:55:15: error: no member named 'infrastructure' in 'WorldBuffers'
+   55 |         if (b.infrastructure)
+      |             ~ ^
+src\environment\DisasterSystem.cpp:56:13: error: no member named 'infrastructure' in 'WorldBuffers'
+   56 |           b.infrastructure[i] =
+      |           ~ ^
+src\environment\DisasterSystem.cpp:57:32: error: no member named 'infrastructure' in 'WorldBuffers'
+   57 |               std::max(0.0f, b.infrastructure[i] - strength * 5.0f * falloff);
+      |                              ~ ^
+src\environment\DisasterSystem.cpp:98:49: error: no type named 'DisasterSetting' in 'WorldSettings'
+   98 |   auto CheckAndSpawn = [&](const WorldSettings::DisasterSetting &ds, int type) {
+      |                                  ~~~~~~~~~~~~~~~^
+src\environment\DisasterSystem.cpp:107:19: error: no member named 'quakeSettings' in 'WorldSettings'
+  107 |   CheckAndSpawn(s.quakeSettings, 0);
+      |                 ~ ^
+src\environment\DisasterSystem.cpp:108:19: error: no member named 'tsunamiSettings' in 'WorldSettings'
+  108 |   CheckAndSpawn(s.tsunamiSettings, 1);
+      |                 ~ ^
+src\environment\DisasterSystem.cpp:109:19: error: no member named 'tornadoSettings' in 'WorldSettings'
+  109 |   CheckAndSpawn(s.tornadoSettings, 2);
+      |                 ~ ^
+src\environment\DisasterSystem.cpp:110:19: error: no member named 'hurricaneSettings' in 'WorldSettings'
+  110 |   CheckAndSpawn(s.hurricaneSettings, 3);
+      |                 ~ ^
+src\environment\DisasterSystem.cpp:111:19: error: no member named 'wildfireSettings' in 'WorldSettings'
+  111 |   CheckAndSpawn(s.wildfireSettings, 4);
+      |                 ~ ^
+src\environment\DisasterSystem.cpp:112:19: error: no member named 'floodSettings' in 'WorldSettings'
+  112 |   CheckAndSpawn(s.floodSettings, 5);
+      |                 ~ ^
+src\environment\DisasterSystem.cpp:113:19: error: no member named 'droughtSettings' in 'WorldSettings'
+  113 |   CheckAndSpawn(s.droughtSettings, 6);
+      |                 ~ ^
+14 errors generated.
+  [FAIL] src\environment\DisasterSystem.cpp
+  [CC] src\simulation\CivilizationSim.cpp
+src\simulation\CivilizationSim.cpp:21:34: error: no member named 'CIVILIZED' in 'AgentType'
+   21 |       if (def.type == AgentType::CIVILIZED && b.structureType) {
+      |                                  ^~~~~~~~~
+src\simulation\CivilizationSim.cpp:21:49: error: no member named 'structureType' in 'WorldBuffers'
+   21 |       if (def.type == AgentType::CIVILIZED && b.structureType) {
+      |                                               ~ ^
+src\simulation\CivilizationSim.cpp:22:35: error: no member named 'structureType' in 'WorldBuffers'
+   22 |         factionCityPower[id] += b.structureType[i];
+      |                                 ~ ^
+src\simulation\CivilizationSim.cpp:56:32: error: no member named 'CIVILIZED' in 'AgentType'
+   56 |     if (def.type == AgentType::CIVILIZED && b.structureType) {
+      |                                ^~~~~~~~~
+src\simulation\CivilizationSim.cpp:56:47: error: no member named 'structureType' in 'WorldBuffers'
+   56 |     if (def.type == AgentType::CIVILIZED && b.structureType) {
+      |                                             ~ ^
+src\simulation\CivilizationSim.cpp:57:30: error: no member named 'structureType' in 'WorldBuffers'
+   57 |       uint8_t &structure = b.structureType[i];
+      |                            ~ ^
+src\simulation\CivilizationSim.cpp:61:11: error: no member named 'AddResource' in 'WorldBuffers'
+   61 |         b.AddResource(i, 1, -50.0f);
+      |         ~ ^
+src\simulation\CivilizationSim.cpp:62:9: error: use of undeclared identifier 'LoreScribeNS'
+   62 |         LoreScribeNS::LogEvent(0, "FOUNDING", i, "A new settlement established.");
+      |         ^
+src\simulation\CivilizationSim.cpp:65:11: error: no member named 'AddResource' in 'WorldBuffers'
+   65 |         b.AddResource(i, 1, -100.0f);
+      |         ~ ^
+src\simulation\CivilizationSim.cpp:66:11: error: no member named 'AddResource' in 'WorldBuffers'
+   66 |         b.AddResource(i, 2, -20.0f);
+      |         ~ ^
+src\simulation\CivilizationSim.cpp:69:11: error: no member named 'AddResource' in 'WorldBuffers'
+   69 |         b.AddResource(i, 1, -200.0f);
+      |         ~ ^
+src\simulation\CivilizationSim.cpp:70:11: error: no member named 'AddResource' in 'WorldBuffers'
+   70 |         b.AddResource(i, 2, -50.0f);
+      |         ~ ^
+src\simulation\CivilizationSim.cpp:71:9: error: use of undeclared identifier 'LoreScribeNS'
+   71 |         LoreScribeNS::LogEvent(0, "VILLAGE", i, "A settlement grew into a village.");
+      |         ^
+src\simulation\CivilizationSim.cpp:72:87: error: no member named 'wealth' in 'WorldBuffers'
+   72 |       } else if (structure == 3 && pop > 1000.0f && b.GetResource(i, 0) > 500.0f && b.wealth[i] > 100.0f && b.GetResource(i, 2) > 200.0f) {
+      |                                                                                     ~ ^
+src\simulation\CivilizationSim.cpp:74:11: error: no member named 'AddResource' in 'WorldBuffers'
+   74 |         b.AddResource(i, 2, -200.0f);
+      |         ~ ^
+src\simulation\CivilizationSim.cpp:75:11: error: no member named 'wealth' in 'WorldBuffers'
+   75 |         b.wealth[i] -= 100.0f;
+      |         ~ ^
+src\simulation\CivilizationSim.cpp:76:9: error: use of undeclared identifier 'LoreScribeNS'
+   76 |         LoreScribeNS::LogEvent(0, "TOWN", i, "A village grew into a town.");
+      |         ^
+src\simulation\CivilizationSim.cpp:77:88: error: no member named 'wealth' in 'WorldBuffers'
+   77 |       } else if (structure == 4 && pop > 5000.0f && b.GetResource(i, 0) > 1000.0f && b.wealth[i] > 500.0f && b.GetResource(i, 2) > 1000.0f) {
+      |                                                                                      ~ ^
+src\simulation\CivilizationSim.cpp:79:11: error: no member named 'AddResource' in 'WorldBuffers'
+   79 |         b.AddResource(i, 2, -1000.0f);
+      |         ~ ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+  [FAIL] src\simulation\CivilizationSim.cpp
+  [CC] src\simulation\ConflictSystem.cpp
+src\simulation\ConflictSystem.cpp:26:34: error: no member named 'CIVILIZED' in 'AgentType'
+   26 |     if (myDef.type == AgentType::CIVILIZED && b.structureType) {
+      |                                  ^~~~~~~~~
+src\simulation\ConflictSystem.cpp:26:49: error: no member named 'structureType' in 'WorldBuffers'
+   26 |     if (myDef.type == AgentType::CIVILIZED && b.structureType) {
+      |                                               ~ ^
+src\simulation\ConflictSystem.cpp:28:27: error: no member named 'structureType' in 'WorldBuffers'
+   28 |       float security = (b.structureType[i] * 10.0f) + (myStr * 0.01f);
+      |                         ~ ^
+src\simulation\ConflictSystem.cpp:38:13: error: no member named 'AddResource' in 'WorldBuffers'
+   38 |           b.AddResource(i, 1, -stolen / 2.0f);
+      |           ~ ^
+src\simulation\ConflictSystem.cpp:40:11: error: use of undeclared identifier 'LoreScribeNS'
+   40 |           LoreScribeNS::LogEvent(0, "CRIME", i, "Bandits raided a settlement.");
+      |           ^
+src\simulation\ConflictSystem.cpp:46:20: error: no member named 'offsetTable' in 'NeighborGraph'
+   46 |     int offset = g.offsetTable[i];
+      |                  ~ ^
+src\simulation\ConflictSystem.cpp:47:19: error: no member named 'countTable' in 'NeighborGraph'
+   47 |     int count = g.countTable[i];
+      |                 ~ ^
+src\simulation\ConflictSystem.cpp:50:20: error: no member named 'neighborData' in 'NeighborGraph'
+   50 |       int nIdx = g.neighborData[offset + k];
+      |                  ~ ^
+src\simulation\ConflictSystem.cpp:64:44: error: no member named 'aggression' in 'FactionData'
+   64 |       float factionAggression = myFaction->aggression;
+      |                                 ~~~~~~~~~  ^
+src\simulation\ConflictSystem.cpp:65:39: error: no member named 'greed' in 'FactionData'
+   65 |       float factionGreed = myFaction->greed;
+      |                            ~~~~~~~~~  ^
+src\simulation\ConflictSystem.cpp:70:36: error: no member named 'CIVILIZED' in 'AgentType'
+   70 |       if (myDef.type == AgentType::CIVILIZED) {
+      |                                    ^~~~~~~~~
+src\simulation\ConflictSystem.cpp:72:26: error: no member named 'desireResourceID' in 'FactionData'
+   72 |           if (myFaction->desireResourceID != -1 && b.GetResource(nIdx, myFaction->desireResourceID) > 10.0f) {
+      |               ~~~~~~~~~  ^
+src\simulation\ConflictSystem.cpp:72:83: error: no member named 'desireResourceID' in 'FactionData'
+   72 |           if (myFaction->desireResourceID != -1 && b.GetResource(nIdx, myFaction->desireResourceID) > 10.0f) {
+      |                                                                        ~~~~~~~~~  ^
+src\simulation\ConflictSystem.cpp:75:26: error: no member named 'hateAgentID' in 'FactionData'
+   75 |           if (myFaction->hateAgentID != -1 && theirID == myFaction->hateAgentID) isWar = true;
+      |               ~~~~~~~~~  ^
+src\simulation\ConflictSystem.cpp:75:69: error: no member named 'hateAgentID' in 'FactionData'
+   75 |           if (myFaction->hateAgentID != -1 && theirID == myFaction->hateAgentID) isWar = true;
+      |                                                          ~~~~~~~~~  ^
+src\simulation\ConflictSystem.cpp:76:55: error: no member named 'FORTIFY' in 'FactionStrategy'
+   76 |           if (myFaction->strategy == FactionStrategy::FORTIFY && (rand() % 100 < 80)) isWar = false;
+      |                                                       ^~~~~~~
+src\simulation\ConflictSystem.cpp:91:15: error: no member named 'structureType' in 'WorldBuffers'
+   91 |         if (b.structureType) defense = (b.structureType[nIdx] * 10.0f);
+      |             ~ ^
+src\simulation\ConflictSystem.cpp:91:43: error: no member named 'structureType' in 'WorldBuffers'
+   91 |         if (b.structureType) defense = (b.structureType[nIdx] * 10.0f);
+      |                                         ~ ^
+src\simulation\ConflictSystem.cpp:102:11: error: use of undeclared identifier 'LoreScribeNS'
+  102 |           LoreScribeNS::LogEvent(0, "CONQUEST", nIdx, myFaction->name + " has seized territory.");
+      |           ^
+19 errors generated.
+  [FAIL] src\simulation\ConflictSystem.cpp
+  [CC] src\simulation\LogisticsSystem.cpp
+src\simulation\LogisticsSystem.cpp:9:10: error: no member named 'wealth' in 'WorldBuffers'
+    9 |   if (!b.wealth || !b.infrastructure || !g.neighborData)
+      |        ~ ^
+src\simulation\LogisticsSystem.cpp:9:23: error: no member named 'infrastructure' in 'WorldBuffers'
+    9 |   if (!b.wealth || !b.infrastructure || !g.neighborData)
+      |                     ~ ^
+src\simulation\LogisticsSystem.cpp:9:44: error: no member named 'neighborData' in 'NeighborGraph'
+    9 |   if (!b.wealth || !b.infrastructure || !g.neighborData)
+      |                                          ~ ^
+src\simulation\LogisticsSystem.cpp:32:11: error: no member named 'AddResource' in 'WorldBuffers'
+   32 |         b.AddResource(i, 0, 1.0f * workForce * foodMult);
+      |         ~ ^
+src\simulation\LogisticsSystem.cpp:36:11: error: no member named 'AddResource' in 'WorldBuffers'
+   36 |         b.AddResource(i, 1, 0.5f * workForce * woodMult);
+      |         ~ ^
+src\simulation\LogisticsSystem.cpp:40:11: error: no member named 'AddResource' in 'WorldBuffers'
+   40 |         b.AddResource(i, 2, 0.3f * workForce * stoneMult);
+      |         ~ ^
+src\simulation\LogisticsSystem.cpp:47:7: error: no member named 'wealth' in 'WorldBuffers'
+   47 |     b.wealth[i] += production;
+      |     ~ ^
+src\simulation\LogisticsSystem.cpp:52:7: error: no member named 'wealth' in 'WorldBuffers'
+   52 |     b.wealth[i] = std::max(0.0f, b.wealth[i] - consumption);
+      |     ~ ^
+src\simulation\LogisticsSystem.cpp:52:36: error: no member named 'wealth' in 'WorldBuffers'
+   52 |     b.wealth[i] = std::max(0.0f, b.wealth[i] - consumption);
+      |                                  ~ ^
+src\simulation\LogisticsSystem.cpp:56:11: error: no member named 'structureType' in 'WorldBuffers'
+   56 |     if (b.structureType) {
+      |         ~ ^
+src\simulation\LogisticsSystem.cpp:57:24: error: no member named 'structureType' in 'WorldBuffers'
+   57 |       uint8_t type = b.structureType[i];
+      |                      ~ ^
+src\simulation\LogisticsSystem.cpp:67:9: error: no member named 'infrastructure' in 'WorldBuffers'
+   67 |       b.infrastructure[i] += (targetInfra - b.infrastructure[i]) * 0.1f;
+      |       ~ ^
+src\simulation\LogisticsSystem.cpp:67:47: error: no member named 'infrastructure' in 'WorldBuffers'
+   67 |       b.infrastructure[i] += (targetInfra - b.infrastructure[i]) * 0.1f;
+      |                                             ~ ^
+src\simulation\LogisticsSystem.cpp:78:23: error: no member named 'wealth' in 'WorldBuffers'
+   78 |     nextWealth[i] = b.wealth[i];
+      |                     ~ ^
+src\simulation\LogisticsSystem.cpp:82:23: error: no member named 'infrastructure' in 'WorldBuffers'
+   82 |     float myInfra = b.infrastructure[i];
+      |                     ~ ^
+src\simulation\LogisticsSystem.cpp:87:20: error: no member named 'offsetTable' in 'NeighborGraph'
+   87 |     int offset = g.offsetTable[i];
+      |                  ~ ^
+src\simulation\LogisticsSystem.cpp:88:19: error: no member named 'countTable' in 'NeighborGraph'
+   88 |     int count = g.countTable[i];
+      |                 ~ ^
+src\simulation\LogisticsSystem.cpp:91:20: error: no member named 'neighborData' in 'NeighborGraph'
+   91 |       int nIdx = g.neighborData[offset + k];
+      |                  ~ ^
+src\simulation\LogisticsSystem.cpp:94:13: error: no member named 'infrastructure' in 'WorldBuffers'
+   94 |       if (b.infrastructure[nIdx] < myInfra) {
+      |           ~ ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+  [FAIL] src\simulation\LogisticsSystem.cpp
+  [CC] src\simulation\UnitSystem.cpp
+src\simulation\UnitSystem.cpp:55:11: error: no member named 'AddResource' in 'WorldBuffers'
+   55 |         b.AddResource(cellIdx, u.resourceID, u.resourceAmount);
+      |         ~ ^
+src\simulation\UnitSystem.cpp:85:26: error: no member named 'defense' in 'WorldBuffers'
+   85 |       float defense = (b.defense) ? b.defense[cellIdx] : 0.0f;
+      |                        ~ ^
+src\simulation\UnitSystem.cpp:85:39: error: no member named 'defense' in 'WorldBuffers'
+   85 |       float defense = (b.defense) ? b.defense[cellIdx] : 0.0f;
+      |                                     ~ ^
+src\simulation\UnitSystem.cpp:94:15: error: no member named 'chaos' in 'WorldBuffers'
+   94 |         if (b.chaos)
+      |             ~ ^
+src\simulation\UnitSystem.cpp:95:13: error: no member named 'chaos' in 'WorldBuffers'
+   95 |           b.chaos[cellIdx] += 0.1f;
+      |           ~ ^
+src\simulation\UnitSystem.cpp:97:9: error: use of undeclared identifier 'LoreScribeNS'
+   97 |         LoreScribeNS::LogEvent(0, "ARMY_VICTORY", cellIdx,
+      |         ^
+6 errors generated.
+  [FAIL] src\simulation\UnitSystem.cpp
+  [CC] deps\imgui\imgui_tables.cpp
+  [CC] deps\imgui\imgui_widgets.cpp
+  [CC] deps\imgui\backends\imgui_impl_glfw.cpp
+  [CC] deps\imgui\backends\imgui_impl_opengl3.cpp
+  [CC] src\apps\App_Launcher.cpp
+  [CC] src\apps\App_Architect.cpp
+  [CC] src\apps\App_Lore.cpp
+src\apps\App_Lore.cpp:694:28: error: no member named 'resourceRelationships' in 'WikiArticle'
+  694 |           for (auto it = a.resourceRelationships.begin();
+      |                          ~ ^
+src\apps\App_Lore.cpp:695:24: error: no member named 'resourceRelationships' in 'WikiArticle'
+  695 |                it != a.resourceRelationships.end();) {
+      |                      ~ ^
+src\apps\App_Lore.cpp:712:22: error: no member named 'resourceRelationships' in 'WikiArticle'
+  712 |               it = a.resourceRelationships.erase(it);
+      |                    ~ ^
+src\apps\App_Lore.cpp:724:17: error: no member named 'resourceRelationships' in 'WikiArticle'
+  724 |               a.resourceRelationships[i] = ResourceRel::PASSIVE_BONUS;
+      |               ~ ^
+src\apps\App_Lore.cpp:742:28: error: no member named 'biomePreferences' in 'WikiArticle'
+  742 |           for (auto it = a.biomePreferences.begin();
+      |                          ~ ^
+src\apps\App_Lore.cpp:743:24: error: no member named 'biomePreferences' in 'WikiArticle'
+  743 |                it != a.biomePreferences.end();) {
+      |                      ~ ^
+src\apps\App_Lore.cpp:752:22: error: no member named 'biomePreferences' in 'WikiArticle'
+  752 |               it = a.biomePreferences.erase(it);
+      |                    ~ ^
+src\apps\App_Lore.cpp:768:17: error: no member named 'biomePreferences' in 'WikiArticle'
+  768 |               a.biomePreferences[i] = 0.5f;
+      |               ~ ^
+src\apps\App_Lore.cpp:786:28: error: no member named 'livingOutput' in 'WikiArticle'
+  786 |           for (auto it = a.livingOutput.begin(); it != a.livingOutput.end();) {
+      |                          ~ ^
+src\apps\App_Lore.cpp:786:58: error: no member named 'livingOutput' in 'WikiArticle'
+  786 |           for (auto it = a.livingOutput.begin(); it != a.livingOutput.end();) {
+      |                                                        ~ ^
+src\apps\App_Lore.cpp:796:22: error: no member named 'livingOutput' in 'WikiArticle'
+  796 |               it = a.livingOutput.erase(it);
+      |                    ~ ^
+src\apps\App_Lore.cpp:809:17: error: no member named 'livingOutput' in 'WikiArticle'
+  809 |               a.livingOutput[i] = 1.0f;
+      |               ~ ^
+src\apps\App_Lore.cpp:823:28: error: no member named 'harvestOutput' in 'WikiArticle'
+  823 |           for (auto it = a.harvestOutput.begin();
+      |                          ~ ^
+src\apps\App_Lore.cpp:824:24: error: no member named 'harvestOutput' in 'WikiArticle'
+  824 |                it != a.harvestOutput.end();) {
+      |                      ~ ^
+src\apps\App_Lore.cpp:834:22: error: no member named 'harvestOutput' in 'WikiArticle'
+  834 |               it = a.harvestOutput.erase(it);
+      |                    ~ ^
+src\apps\App_Lore.cpp:847:17: error: no member named 'harvestOutput' in 'WikiArticle'
+  847 |               a.harvestOutput[i] = 1.0f;
+      |               ~ ^
+src\apps\App_Lore.cpp:880:36: error: no member named 'spawnBiomeIDs' in 'WikiArticle'
+  880 |           for (size_t i = 0; i < a.spawnBiomeIDs.size(); ++i) {
+      |                                  ~ ^
+src\apps\App_Lore.cpp:883:51: error: no member named 'spawnBiomeIDs' in 'WikiArticle'
+  883 |             ImGui::Text("%s (%d)", GetBiomeName(a.spawnBiomeIDs[i]),
+      |                                                 ~ ^
+src\apps\App_Lore.cpp:884:27: error: no member named 'spawnBiomeIDs' in 'WikiArticle'
+  884 |                         a.spawnBiomeIDs[i]);
+      |                         ~ ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+  [FAIL] src\apps\App_Lore.cpp
+  [CC] src\apps\App_Sim.cpp
+src\apps\App_Sim.cpp:33:26: error: no member named 'agentStrength' in 'WorldBuffers'
+   33 |     bool isWar = buffers.agentStrength[i] > 200.0f;
+      |                  ~~~~~~~ ^
+src\apps\App_Sim.cpp:34:29: error: no member named 'chaos' in 'WorldBuffers'
+   34 |     bool isFamine = buffers.chaos[i] > 0.8f;
+      |                     ~~~~~~~ ^
+src\apps\App_Sim.cpp:75:13: error: no member named 'agentStrength' in 'WorldBuffers'
+   75 |           b.agentStrength[idx] *= (1.0f - amt);
+      |           ~ ^
+src\apps\App_Sim.cpp:77:13: error: no member named 'chaos' in 'WorldBuffers'
+   77 |           b.chaos[idx] = std::min(1.0f, b.chaos[idx] + amt);
+      |           ~ ^
+src\apps\App_Sim.cpp:77:43: error: no member named 'chaos' in 'WorldBuffers'
+   77 |           b.chaos[idx] = std::min(1.0f, b.chaos[idx] + amt);
+      |                                         ~ ^
+src\apps\App_Sim.cpp:80:41: error: no member named 'chaos' in 'WorldBuffers'
+   80 |                     << " (Chaos: " << b.chaos[idx] << ")\n";
+      |                                       ~ ^
+src\apps\App_Sim.cpp:91:9: error: use of undeclared identifier 'LoreScribeNS'
+   91 |         LoreScribeNS::LogEvent(0, "RELIC_DISCOVERY", idx,
+      |         ^
+src\apps\App_Sim.cpp:98:9: error: use of undeclared identifier 'LoreScribeNS'
+   98 |         LoreScribeNS::LogJsonEvent("RELIC_DISCOVERY", eventData);
+      |         ^
+src\apps\App_Sim.cpp:148:3: error: use of undeclared identifier 'LoreScribeNS'
+  148 |   LoreScribeNS::Initialize();
+      |   ^
+src\apps\App_Sim.cpp:156:15: error: no member named 'AddResource' in 'WorldBuffers'
+  156 |       buffers.AddResource(i, 0, 500.0f); // Food
+      |       ~~~~~~~ ^
+src\apps\App_Sim.cpp:157:15: error: no member named 'AddResource' in 'WorldBuffers'
+  157 |       buffers.AddResource(i, 1, 200.0f); // Wood
+      |       ~~~~~~~ ^
+src\apps\App_Sim.cpp:158:15: error: no member named 'AddResource' in 'WorldBuffers'
+  158 |       buffers.AddResource(i, 2, 50.0f);  // Iron/Stone
+      |       ~~~~~~~ ^
+src\apps\App_Sim.cpp:159:15: error: no member named 'wealth' in 'WorldBuffers'
+  159 |       buffers.wealth[i] = 1000.0f;       // Starting liquidity
+      |       ~~~~~~~ ^
+src\apps\App_Sim.cpp:179:5: error: use of undeclared identifier 'LoreScribeNS'
+  179 |     LoreScribeNS::currentYear = year;
+      |     ^
+src\apps\App_Sim.cpp:183:16: error: no member named 'convergenceAngle' in 'WorldSettings'
+  183 |       settings.convergenceAngle += 0.05f; // shift chaos paths over time
+      |       ~~~~~~~~ ^
+src\apps\App_Sim.cpp:184:20: error: no member named 'convergenceAngle' in 'WorldSettings'
+  184 |       if (settings.convergenceAngle > 3.14159f * 2.0f) settings.convergenceAngle -= 3.14159f * 2.0f;
+      |           ~~~~~~~~ ^
+src\apps\App_Sim.cpp:184:65: error: no member named 'convergenceAngle' in 'WorldSettings'
+  184 |       if (settings.convergenceAngle > 3.14159f * 2.0f) settings.convergenceAngle -= 3.14159f * 2.0f;
+      |                                                        ~~~~~~~~ ^
+src\apps\App_Sim.cpp:185:19: error: no member named 'dayCount' in 'ChronosConfig'
+  185 |       clockConfig.dayCount += 30; // approx 30 days per month
+      |       ~~~~~~~~~~~ ^
+src\apps\App_Sim.cpp:186:19: error: no member named 'currentSeason' in 'ChronosConfig'
+  186 |       clockConfig.currentSeason = (clockConfig.dayCount / clockConfig.daysPerSeason) % 4;
+      |       ~~~~~~~~~~~ ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+  [FAIL] src\apps\App_Sim.cpp
+  [CC] src\apps\App_Replay.cpp
+src\apps\App_Replay.cpp:110:29: error: no member named 'agentID' in 'WorldBuffers'
+  110 |       int agentID = buffers.agentID[i];
+      |                     ~~~~~~~ ^
+src\apps\App_Replay.cpp:112:19: error: no member named 'structureType' in 'WorldBuffers'
+  112 |           buffers.structureType ? buffers.structureType[i] : (uint8_t)0;
+      |           ~~~~~~~ ^
+src\apps\App_Replay.cpp:112:43: error: no member named 'structureType' in 'WorldBuffers'
+  112 |           buffers.structureType ? buffers.structureType[i] : (uint8_t)0;
+      |                                   ~~~~~~~ ^
+src\apps\App_Replay.cpp:134:42: error: no member named 'agentStrength' in 'WorldBuffers'
+  134 |         int soldierCount = (int)(buffers.agentStrength[i] / 50.0f);
+      |                                  ~~~~~~~ ^
+src\apps\App_Replay.cpp:170:32: error: no member named 'agentStrength' in 'WorldBuffers'
+  170 |             std::clamp(buffers.agentStrength[i] / 1000.0f, 0.0f, 1.0f);
+      |                        ~~~~~~~ ^
+src\apps\App_Replay.cpp:262:26: error: no member named 'agentID' in 'WorldBuffers'
+  262 |       int agID = buffers.agentID[i];
+      |                  ~~~~~~~ ^
+6 errors generated.
+  [FAIL] src\apps\App_Replay.cpp
+
+[INFO] Compiled: 10 | Cached: 7
+[ERROR] 20 file(s) failed to compile.

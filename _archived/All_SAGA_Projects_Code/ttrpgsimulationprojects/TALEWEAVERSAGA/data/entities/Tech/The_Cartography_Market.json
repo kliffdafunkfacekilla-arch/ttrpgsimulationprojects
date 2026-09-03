@@ -1,0 +1,24 @@
+{
+    "tech_tier": 3,
+    "energy_cost": 50,
+    "processing_time": 30,
+    "memory_storage": 10,
+    "cooling_system": "passive",
+    "maintenance_interval": "monthly",
+    "upgrade_path": [
+        {
+            "name": "Phase-Chart Update",
+            "description": "Receive the latest map updates and avoid the consequences of using an outdated chart.",
+            "cost": 100,
+            "time": 15,
+            "difficulty": 2
+        },
+        {
+            "name": "Cartographer's Guild Subscription",
+            "description": "Stay ahead of the curve with the latest navigation tools and avoid the dangers of the Shattered World.",
+            "cost": 500,
+            "time": 60,
+            "difficulty": 4
+        }
+    ]
+}

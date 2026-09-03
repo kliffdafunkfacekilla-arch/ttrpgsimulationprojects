@@ -1,0 +1,91 @@
+[
+    {
+        "id": "wpn_steel_rapier",
+        "name": "Steel Rapier",
+        "category": "WEAPON",
+        "weight": 2.0,
+        "base_value_aetherium": 25,
+        "damage_dice": "1d8",
+        "damage_type": "Piercing",
+        "lead_stat_required": "Finesse",
+        "traits": [
+            "Light",
+            "Parrying"
+        ],
+        "tags": [
+            "metal",
+            "elegant"
+        ],
+        "sprite": {
+            "sheet_url": "/assets/icons/weapons1.png",
+            "x": 32,
+            "y": 0,
+            "w": 32,
+            "h": 32
+        }
+    },
+    {
+        "id": "wpn_iron_mace",
+        "name": "Iron Mace",
+        "category": "WEAPON",
+        "weight": 5.0,
+        "base_value_aetherium": 15,
+        "damage_dice": "1d6+2",
+        "damage_type": "Blunt",
+        "lead_stat_required": "Might",
+        "traits": [
+            "Crushing"
+        ],
+        "tags": [
+            "metal",
+            "heavy"
+        ],
+        "sprite": {
+            "sheet_url": "/assets/icons/weapons1.png",
+            "x": 96,
+            "y": 0,
+            "w": 32,
+            "h": 32
+        }
+    },
+    {
+        "id": "csm_travelers_bread",
+        "name": "Traveler's Bread",
+        "category": "CONSUMABLE",
+        "weight": 0.5,
+        "base_value_aetherium": 2,
+        "effect_type": "HEAL",
+        "effect_math": "Regain 1 Stamina",
+        "tags": [
+            "food",
+            "durable"
+        ],
+        "sprite": {
+            "sheet_url": "/assets/icons/Food.png",
+            "x": 0,
+            "y": 0,
+            "w": 32,
+            "h": 32
+        }
+    },
+    {
+        "id": "csm_restoration_ale",
+        "name": "Waystation Ale",
+        "category": "CONSUMABLE",
+        "weight": 1.0,
+        "base_value_aetherium": 4,
+        "effect_type": "HEAL",
+        "effect_math": "Regain 1d4 Stamina & 1 Composure",
+        "tags": [
+            "liquid",
+            "fermented"
+        ],
+        "sprite": {
+            "sheet_url": "/assets/icons/Food.png",
+            "x": 128,
+            "y": 128,
+            "w": 32,
+            "h": 32
+        }
+    }
+]

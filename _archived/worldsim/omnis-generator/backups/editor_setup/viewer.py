@@ -1,0 +1,1485 @@
+# ui/viewer.py
+import pygame
+import os
+import numpy as np
+import json
+from shapely.wkt import loads
+from database import get_db_connection
+
+# Standard 17 Ostraka Faction Names
+FACTION_NAMES = [
+    "Ursine Hegemony",
+    "River Folk",
+    "Sump-Kin",
+    "Iron Caladrea",
+    "Vaneer Concord",
+    "Hive Collective",
+    "Avians",
+    "Flower Valwey",
+    "Sylvian",
+    "Sciute",
+    "Meridian Chain",
+    "Prism Lizards",
+    "Canopy Clans",
+    "East Hounds",
+    "Guirrilla Clans",
+    "Theocracy",
+    "The Reliance"
+]
+
+# 12 Prisons / Cults
+PRISON_NAMES = [
+    "Tiraton", "Stagus", "Metrion", "Aurgenas", "Vecelo", "Lophex",
+    "Tyrustis", "Opecten", "Carulkem", "Termhill", "Virantor", "Gavusrix"
+]
+
+# Fringe Groups
+FRINGE_NAMES = [
+    "Obsidian Cartel", "Freesky Barons", "Ghost Wind Raiders", "Gilded Compass",
+    "Crimson Coursairs", "Silent Current", "The Black Label", "The Otter Syndicate",
+    "The Spring Ghosts"
+]
+
+def wrap_text(text, font, max_width):
+    """Utility function to wrap text for Pygame drawing."""
+    words = text.split(' ')
+    lines = []
+    current_line = []
+    for word in words:
+        current_line.append(word)
+        test_line = ' '.join(current_line)
+        if font.size(test_line)[0] > max_width:
+            current_line.pop()
+            lines.append(' '.join(current_line))
+            current_line = [word]
+    if current_line:
+        lines.append(' '.join(current_line))
+    return lines
+
+class MapViewer:
+    def __init__(self, screen_width=1280, screen_height=720):
+        pygame.init()
+        self.screen_width = screen_width
+        self.screen_height = screen_height
+        self.screen = pygame.display.set_mode((screen_width, screen_height))
+        pygame.display.set_caption("TTRPG World Builder & Simulator (Optimized)")
+        
+        # Navigation
+        self.zoom = 7.0  # Default zoom factor
+        self.pan_x = 0.0
+        self.pan_y = 0.0
+        self.dragging = False
+        self.dragged = False
+        self.drag_start_x = 0
+        self.drag_start_y = 0
+        
+        # Map center coordinates
+        self.map_center_x = 50.0
+        self.map_center_y = 50.0
+        
+        # Selection & Editor Tabs
+        self.selected_cell = None
+        self.active_tab = 'stats'  # 'stats', 'build', 'cults', 'biome'
+        
+        # Simulation model connection
+        self.model = None
+        self.autoplay = False
+        self.last_tick_time = 0
+        
+        # Visual Layers
+        self.active_layer = 'biomes'
+        
+        # Data caches
+        self.cells = []
+        self.edges = []
+        self.factions = {}  # cell_id -> faction_data
+        self.resource_nodes = []
+        
+        # Spatial partitioning grid buckets for instant hover lookups
+        self.grid_buckets = {}
+        
+        # Premium palette for all 17 factions
+        self.faction_colors = {
+            1: (180, 50, 50),     # Red - Ursine Hegemony
+            2: (50, 180, 50),     # Green - River Folk
+            3: (100, 100, 180),   # Purple/Blue - Sump-Kin
+            4: (180, 150, 50),    # Orange/Yellow - Iron Caladrea
+            5: (180, 50, 180),    # Pink - Vaneer Concord
+            6: (50, 180, 180),    # Cyan - Hive Collective
+            7: (230, 126, 34),    # Dark Orange - Avians
+            8: (46, 204, 113),    # Emerald Green - Flower Valwey
+            9: (39, 174, 96),     # Nephrite Green - Sylvian
+            10: (241, 196, 15),   # Sun Yellow - Sciute
+            11: (155, 89, 182),   # Amethyst Purple - Meridian Chain
+            12: (52, 152, 219),   # Peter River Blue - Prism Lizards
+            13: (26, 188, 156),   # Turquoise - Canopy Clans
+            14: (243, 156, 18),   # Orange - East Hounds
+            15: (149, 165, 166),  # Asbestos Grey - Guirrilla Clans
+            16: (211, 84, 0),     # Pumpkin Orange - Theocracy
+            17: (127, 140, 141)   # Concrete Grey - The Reliance
+        }
+        self.logs = []
+        
+        # Load assets
+        self.sprites = {}
+        self.textures = {}  # Store original-size cleaned textures for tiling
+        self.small_sprites = {} # Pre-scaled sprites for structures (high performance)
+        
+        self.load_spritesheet()
+        self.sync_data()
+
+    def remove_checkerboard(self, surface):
+        """Removes the white/grey checkerboard background of a sprite using an optimized BFS flood-fill from edges."""
+        w, h = surface.get_size()
+        visited = [[False] * h for _ in range(w)]
+        queue = []
+        
+        for x in range(w):
+            queue.append((x, 0))
+            visited[x][0] = True
+            queue.append((x, h - 1))
+            visited[x][h - 1] = True
+        for y in range(1, h - 1):
+            queue.append((0, y))
+            visited[0][y] = True
+            queue.append((w - 1, y))
+            visited[w - 1][y] = True
+            
+        idx = 0
+        while idx < len(queue):
+            x, y = queue[idx]
+            idx += 1
+            
+            color = surface.get_at((x, y))
+            is_white = color.r >= 240 and color.g >= 240 and color.b >= 240
+            is_grey = (210 <= color.r <= 235 and 
+                       210 <= color.g <= 235 and 
+                       210 <= color.b <= 235 and 
+                       abs(color.r - color.g) <= 5 and 
+                       abs(color.g - color.b) <= 5)
+                       
+            if is_white or is_grey:
+                surface.set_at((x, y), (0, 0, 0, 0))
+                for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                    nx, ny = x + dx, y + dy
+                    if 0 <= nx < w and 0 <= ny < h and not visited[nx][ny]:
+                        visited[nx][ny] = True
+                        queue.append((nx, ny))
+
+    def load_spritesheet(self):
+        """Loads and slices the spritesheet, removes checkerboards, and caches textures/sprites."""
+        assets_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'assets')
+        sheet_path = os.path.join(assets_dir, 'spritesheet.png')
+        
+        if not os.path.exists(sheet_path):
+            print(f"Warning: Spritesheet not found at {sheet_path}. Running with fallback shapes.")
+            return
+
+        try:
+            sheet = pygame.image.load(sheet_path).convert_alpha()
+            y_bounds = [0, 127, 255, 383, 511, 639, 768, 891, 1010, 1126, 1253, 1393, 1534]
+            tile_w = 176
+            cols = 16
+            
+            for r in range(12):
+                y_start = y_bounds[r]
+                y_end = y_bounds[r + 1]
+                h = y_end - y_start
+                for c in range(cols):
+                    x_start = c * tile_w
+                    rect = pygame.Rect(x_start + 2, y_start + 2, tile_w - 4, h - 4)
+                    sub = sheet.subsurface(rect).copy()
+                    
+                    self.remove_checkerboard(sub)
+                    self.textures[(r + 1, c + 1)] = sub
+                    
+                    scaled = pygame.transform.smoothscale(sub, (32, 23))
+                    self.sprites[(r + 1, c + 1)] = scaled
+                    
+                    # Pre-cache small 20x15 versions for structures (massive performance boost)
+                    self.small_sprites[(r + 1, c + 1)] = pygame.transform.smoothscale(sub, (20, 15))
+            print(f"Successfully loaded, sliced, and trimmed spritesheet: {len(self.sprites)} sprites cached.")
+        except Exception as e:
+            print(f"Error loading spritesheet: {e}")
+
+    def sync_data(self):
+        """Queries the current cells, edges, factions, and logs from SQLite database."""
+        conn = get_db_connection()
+        cur = conn.cursor()
+        
+        # 1. Fetch cells
+        cur.execute('SELECT * FROM cells')
+        cell_rows = cur.fetchall()
+        self.cells = []
+        self.grid_buckets = {}
+        
+        for row in cell_rows:
+            try:
+                poly = loads(row['geom_wkt'])
+                coords = list(poly.exterior.coords)
+                centroid_x, centroid_y = poly.centroid.x, poly.centroid.y
+                
+                # Parse JSON fields
+                cults_influence = json.loads(row['cults_json']) if row['cults_json'] else {}
+                fringe_influence = json.loads(row['fringe_json']) if row['fringe_json'] else {}
+                flora = json.loads(row['flora_json']) if row['flora_json'] else {}
+                fauna = json.loads(row['fauna_json']) if row['fauna_json'] else {}
+                
+                cell_dict = {
+                    'id': row['id'],
+                    'biome': row['biome'],
+                    'elevation': row['elevation'],
+                    'depth_elevation': row['depth_elevation'],
+                    'food_supply': row['food_supply'],
+                    'chaos_saturation': row['chaos_saturation'],
+                    'weather': row['weather'],
+                    'controlling_burg_id': row['controlling_burg_id'],
+                    'cults_influence': cults_influence,
+                    'fringe_influence': fringe_influence,
+                    'flora': flora,
+                    'fauna': fauna,
+                    'coords': coords,
+                    'center': (centroid_x, centroid_y)
+                }
+                
+                self.cells.append(cell_dict)
+                
+                # Spatial partitioning grid buckets (10x10 area size)
+                bx = int(centroid_x / 10)
+                by = int(centroid_y / 10)
+                bkey = (bx, by)
+                if bkey not in self.grid_buckets:
+                    self.grid_buckets[bkey] = []
+                self.grid_buckets[bkey].append(cell_dict)
+                
+            except Exception as e:
+                print(f"Error loading polygon WKT for cell {row['id']}: {e}")
+                
+        # Calculate dynamic map center boundaries
+        if self.cells:
+            xs = [c['center'][0] for c in self.cells]
+            ys = [c['center'][1] for c in self.cells]
+            self.map_center_x = (min(xs) + max(xs)) / 2.0
+            self.map_center_y = (min(ys) + max(ys)) / 2.0
+        else:
+            self.map_center_x = 50.0
+            self.map_center_y = 50.0
+                
+        # 2. Fetch edges
+        cur.execute('SELECT cell_a, cell_b FROM cell_edges')
+        self.edges = [dict(r) for r in cur.fetchall()]
+        
+        # 3. Fetch macro groups (factions)
+        cur.execute('SELECT * FROM macro_groups')
+        self.factions = {r['cell_id']: dict(r) for r in cur.fetchall()}
+        
+        # 4. Fetch resource nodes
+        cur.execute('SELECT * FROM resource_nodes')
+        self.resource_nodes = [dict(r) for r in cur.fetchall()]
+        
+        # 5. Fetch logs
+        cur.execute('SELECT * FROM simulation_logs ORDER BY id DESC LIMIT 5')
+        self.logs = [dict(r) for r in cur.fetchall()]
+        
+        cur.close()
+        conn.close()
+
+    def to_screen(self, x, y):
+        """Converts map coordinates to viewport screen coordinates centered around the map center."""
+        viewport_w = 960
+        viewport_h = 720
+        screen_x = int((x - self.map_center_x) * self.zoom + (viewport_w / 2) + self.pan_x)
+        screen_y = int((y - self.map_center_y) * self.zoom + (viewport_h / 2) + self.pan_y)
+        return screen_x, screen_y
+
+    def get_cell_at_pos(self, mouse_pos):
+        """Finds the cell closest to the click position in screen coordinates using spatial grid buckets (instant)."""
+        if mouse_pos[0] >= 960:
+            return None
+        viewport_w = 960
+        viewport_h = 720
+        mx = (mouse_pos[0] - (viewport_w / 2) - self.pan_x) / self.zoom + self.map_center_x
+        my = (mouse_pos[1] - (viewport_h / 2) - self.pan_y) / self.zoom + self.map_center_y
+        
+        bx = int(mx / 10)
+        by = int(my / 10)
+        
+        # Search this bucket and neighboring 8 buckets
+        candidates = []
+        for dbx in [-1, 0, 1]:
+            for dby in [-1, 0, 1]:
+                bkey = (bx + dbx, by + dby)
+                if bkey in self.grid_buckets:
+                    candidates.extend(self.grid_buckets[bkey])
+                    
+        if not candidates:
+            candidates = self.cells
+            
+        if not candidates:
+            return None
+            
+        closest_cell = min(candidates, key=lambda c: (c['center'][0] - mx)**2 + (c['center'][1] - my)**2)
+        dist = np.hypot(closest_cell['center'][0] - mx, closest_cell['center'][1] - my)
+        
+        if dist < 10.0:
+            return closest_cell
+        return None
+
+    def get_cell_color(self, cell):
+        """Calculates color for a cell based on the active layer."""
+        if self.active_layer == 'elevation':
+            elev = cell['elevation']
+            if elev < 0: # Ocean depths
+                val = int(abs(elev) * 150) + 50
+                return (20, 20, max(50, min(255, val)))
+            else: # Land
+                val = int(elev * 180) + 70
+                return (val, int(val * 0.9), int(val * 0.7))
+                
+        elif self.active_layer == 'factions':
+            # Look up faction via the controlling settlement (province) of the cell
+            burg_id = cell.get('controlling_burg_id')
+            faction_info = self.factions.get(burg_id)
+            if faction_info:
+                fid = faction_info['faction_id']
+                return self.faction_colors.get(fid, (150, 150, 150))
+            return (220, 220, 220) if cell['elevation'] >= 0 else (40, 60, 90)
+            
+        elif self.active_layer == 'settlements':
+            burg_id = cell.get('controlling_burg_id')
+            if burg_id:
+                # Generate consistent colors for province influence areas
+                r = (burg_id * 37) % 200 + 55
+                g = (burg_id * 59) % 200 + 55
+                b = (burg_id * 83) % 200 + 55
+                return (r, g, b)
+            return (220, 220, 220) if cell['elevation'] >= 0 else (40, 60, 90)
+            
+        elif self.active_layer == 'cults':
+            if cell.get('cults_influence'):
+                dominant_cult = None
+                max_inf = 0.0
+                for name, inf in cell['cults_influence'].items():
+                    if inf > max_inf:
+                        max_inf = inf
+                        dominant_cult = name
+                
+                if dominant_cult and max_inf > 0.02:
+                    cult_colors = {
+                        "Tiraton": (231, 76, 60),      # Bright Red
+                        "Stagus": (46, 204, 113),       # Light Green
+                        "Metrion": (52, 152, 219),      # Light Blue
+                        "Aurgenas": (241, 196, 15),     # Yellow
+                        "Vecelo": (155, 89, 182),      # Purple
+                        "Lophex": (26, 188, 156),       # Turquoise
+                        "Tyrustis": (230, 126, 34),     # Orange
+                        "Opecten": (52, 73, 94),        # Dark Blue-Grey
+                        "Carulkem": (243, 156, 18),     # Dark Yellow/Orange
+                        "Termhill": (149, 165, 166),    # Silver
+                        "Virantor": (120, 40, 140),     # Dark Purple
+                        "Gavusrix": (180, 50, 50),      # Dark Red
+                        "Wardens": (240, 240, 240)      # White
+                    }
+                    base_color = cult_colors.get(dominant_cult, (150, 150, 150))
+                    factor = min(1.0, max_inf * 3.0)
+                    r = int(base_color[0] * factor + 40 * (1 - factor))
+                    g = int(base_color[1] * factor + 40 * (1 - factor))
+                    b = int(base_color[2] * factor + 40 * (1 - factor))
+                    return (r, g, b)
+            return (40, 40, 40)
+            
+        elif self.active_layer == 'fringe':
+            if cell.get('fringe_influence'):
+                dominant_fringe = None
+                max_inf = 0.0
+                for name, inf in cell['fringe_influence'].items():
+                    if inf > max_inf:
+                        max_inf = inf
+                        dominant_fringe = name
+                
+                if dominant_fringe and max_inf > 0.02:
+                    fringe_colors = {
+                        "Obsidian Cartel": (30, 30, 30),        # Near Black
+                        "Freesky Barons": (135, 206, 235),     # Sky Blue
+                        "Ghost Wind Raiders": (218, 165, 32),   # Goldenrod
+                        "Gilded Compass": (255, 215, 0),       # Gold
+                        "Crimson Coursairs": (220, 20, 60),     # Crimson
+                        "Silent Current": (0, 128, 128),        # Teal
+                        "The Black Label": (75, 0, 130),        # Indigo
+                        "The Otter Syndicate": (139, 69, 19),   # Saddle Brown
+                        "The Spring Ghosts": (144, 238, 144)    # Light Green
+                    }
+                    base_color = fringe_colors.get(dominant_fringe, (150, 150, 150))
+                    factor = min(1.0, max_inf * 4.0)
+                    r = int(base_color[0] * factor + 40 * (1 - factor))
+                    g = int(base_color[1] * factor + 40 * (1 - factor))
+                    b = int(base_color[2] * factor + 40 * (1 - factor))
+                    return (r, g, b)
+            return (40, 40, 40)
+            
+        elif self.active_layer == 'ecology':
+            flora_pop = cell.get('flora', {}).get('population', 0.0)
+            fauna_pop = cell.get('fauna', {}).get('population', 0.0)
+            green = int(min(255, (flora_pop / 100.0) * 200))
+            red = int(min(255, (fauna_pop / 50.0) * 200))
+            return (red, green, 40)
+            
+        elif self.active_layer == 'resources':
+            return (45, 45, 45)
+            
+        else: # 'biomes' layer (default)
+            if cell['chaos_saturation'] > 0.8:
+                return (139, 0, 0)
+            biome = cell['biome']
+            biome_colors = {
+                'Forest': (45, 106, 45),
+                'Plains': (168, 201, 110),
+                'Desert': (212, 168, 67),
+                'Mountain': (138, 138, 138),
+                'Swamp': (74, 122, 74),
+                'Ocean': (26, 95, 138),
+                'Coastal': (72, 180, 195),
+                'Reef': (219, 112, 147),
+                'Abyssal': (10, 25, 60),
+                'Thermal': (120, 20, 60)
+            }
+            return biome_colors.get(biome, (200, 200, 200))
+
+    def get_biome_sprite_coords(self, biome, elevation):
+        """Maps biomes and depth to spritesheet grid rows/columns (1-indexed)."""
+        if elevation < 0: # Underwater
+            if biome == 'Coastal':
+                return 4, 1  # R4, C1 - Sandy Seabed
+            elif biome == 'Reef':
+                return 6, 4  # R6, C4 - Colorful Coral Reef
+            elif biome == 'Ocean':
+                return 5, 5  # R5, C5 - Light Kelp Forest
+            elif biome == 'Abyssal':
+                return 6, 3  # R6, C3 - Abyssal Chasm
+            elif biome == 'Thermal':
+                return 6, 11 # R6, C11 - Active Steaming Vents
+            else:
+                return 4, 9  # R4, C9 - Open Water
+        else: # Land biomes
+            biome_map = {
+                'Plains': (1, 1),
+                'Forest': (1, 2),
+                'Desert': (1, 4),
+                'Mountain': (1, 7),
+                'Swamp': (1, 8),
+            }
+            return biome_map.get(biome, (1, 1))
+
+    def draw_map(self):
+        """Draws cells, borders, edges, and sprites with optimized boundary frustum culling directly to screen."""
+        pygame.draw.rect(self.screen, (30, 30, 30), (0, 0, 960, 720))
+        
+        if not self.cells:
+            return
+            
+        # Frustum culling bounds in map coordinates (avoids drawing offscreen cells)
+        viewport_w = 960
+        viewport_h = 720
+        x0 = (0 - (viewport_w / 2) - self.pan_x) / self.zoom + self.map_center_x
+        x1 = (viewport_w - (viewport_w / 2) - self.pan_x) / self.zoom + self.map_center_x
+        y0 = (0 - (viewport_h / 2) - self.pan_y) / self.zoom + self.map_center_y
+        y1 = (viewport_h - (viewport_h / 2) - self.pan_y) / self.zoom + self.map_center_y
+        
+        margin = 15.0  # Buffer margin
+        mx_min, mx_max = min(x0, x1) - margin, max(x0, x1) + margin
+        my_min, my_max = min(y0, y1) - margin, max(y0, y1) + margin
+        
+        # 1. Draw Cell Polygons (Solid layer backgrounds)
+        for cell in self.cells:
+            cx, cy = cell['center']
+            if not (mx_min <= cx <= mx_max and my_min <= cy <= my_max):
+                continue
+                
+            surface_coords = [self.to_screen(x, y) for x, y in cell['coords']]
+            if len(surface_coords) < 3:
+                continue
+                
+            color = self.get_cell_color(cell)
+            pygame.draw.polygon(self.screen, color, surface_coords)
+            pygame.draw.polygon(self.screen, (50, 50, 50), surface_coords, 1)
+
+        # 2. Draw Sprite Overlays (Capitals, Units, Weather, and Placed Structures) only on settlement cells when zoomed in
+        if self.zoom >= 10.0:
+            for cell in self.cells:
+                cx, cy = cell['center']
+                if not (mx_min <= cx <= mx_max and my_min <= cy <= my_max):
+                    continue
+                    
+                scx, scy = self.to_screen(cx, cy)
+                
+                # Check if this exact cell is a settlement hub cell
+                faction_info = self.factions.get(cell['id'])
+                is_subaquatic = cell['elevation'] < 0
+                
+                sprite = None
+                if faction_info:
+                    if faction_info.get('is_capital') == 1:
+                        if is_subaquatic:
+                            sprite = self.sprites.get((6, 12))  # Sunken Ruins
+                        else:
+                            sprite = self.sprites.get((10, 10)) # Castle Keep
+                    elif faction_info['faction_id'] > 0 and faction_info.get('barracks_count', 0) > 0:
+                        if is_subaquatic:
+                            sprite = self.sprites.get((11, 10)) # School of Fish
+                        else:
+                            fid = faction_info['faction_id']
+                            faction_unit_cols = {
+                                1: 1, 2: 2, 3: 3, 4: 4, 5: 5,
+                                6: 8, 7: 5, 8: 9, 9: 12, 10: 7,
+                                11: 10, 12: 11, 13: 5, 14: 2, 15: 3,
+                                16: 10, 17: 12
+                            }
+                            unit_col = faction_unit_cols.get(fid)
+                            if unit_col:
+                                sprite = self.sprites.get((11, unit_col))
+                            
+                if sprite:
+                    self.screen.blit(sprite, (scx - 16, scy - 11))
+                    
+                # Placed Structures drawn around the center (only on settlement cells)
+                if faction_info:
+                    if is_subaquatic:
+                        if faction_info.get('kelp_farms_count', 0) > 0:
+                            s = self.small_sprites.get((4, 5))
+                            if s: self.screen.blit(s, (scx - 22, scy - 18))
+                                
+                        if faction_info.get('coral_mines_count', 0) > 0:
+                            s = self.small_sprites.get((4, 4))
+                            if s: self.screen.blit(s, (scx + 2, scy - 18))
+                                
+                        if faction_info.get('underwater_domes_count', 0) > 0:
+                            s = self.small_sprites.get((10, 4))
+                            if s: self.screen.blit(s, (scx - 22, scy + 3))
+                                
+                        if faction_info.get('reef_walls_count', 0) > 0:
+                            s = self.small_sprites.get((4, 7))
+                            if s: self.screen.blit(s, (scx + 2, scy + 3))
+                    else:
+                        if faction_info.get('farms_count', 0) > 0:
+                            s = self.small_sprites.get((10, 1))
+                            if s: self.screen.blit(s, (scx - 22, scy - 18))
+                                
+                        if faction_info.get('mines_count', 0) > 0:
+                            s = self.small_sprites.get((10, 3))
+                            if s: self.screen.blit(s, (scx + 2, scy - 18))
+                                
+                        if faction_info.get('barracks_count', 0) > 0:
+                            s = self.small_sprites.get((10, 10))
+                            if s: self.screen.blit(s, (scx - 22, scy + 3))
+                                
+                        if faction_info.get('watchtowers_count', 0) > 0:
+                            s = self.small_sprites.get((10, 11))
+                            if s: self.screen.blit(s, (scx + 2, scy + 3))
+
+                # Local Weather Overlays
+                if cell['weather'] == 'Chaos Storm':
+                    effect = self.sprites.get((12, 5))
+                    if effect: self.screen.blit(effect, (scx - 16, scy - 11))
+                        
+        # 3. Draw Resource Node Markers (Active circles with 2-char label)
+        if self.active_layer == 'resources' and self.zoom >= 3.0:
+            font_node = pygame.font.SysFont("arial", 10, bold=True)
+            for node in getattr(self, 'resource_nodes', []):
+                cid = node['cell_id']
+                cell = next((c for c in self.cells if c['id'] == cid), None)
+                if cell:
+                    cx, cy = cell['center']
+                    if not (mx_min <= cx <= mx_max and my_min <= cy <= my_max):
+                        continue
+                    scx, scy = self.to_screen(cx, cy)
+                    if 0 <= scx < 960 and 0 <= scy < 720:
+                        name = node['name']
+                        if "Iron" in name:
+                            color, label = (120, 120, 120), "Fe"
+                        elif "Copper" in name:
+                            color, label = (184, 115, 51), "Cu"
+                        elif "Coral" in name:
+                            color, label = (255, 127, 80), "Co"
+                        elif "Dragonstone" in name:
+                            color, label = (186, 85, 211), "Ds"
+                        elif "Osmium" in name:
+                            color, label = (0, 206, 209), "Os"
+                        elif "Steel" in name:
+                            color, label = (70, 130, 180), "St"
+                        else:
+                            color, label = (200, 180, 50), "R"
+                            
+                        pygame.draw.circle(self.screen, (30, 30, 30), (scx, scy), 9)
+                        pygame.draw.circle(self.screen, color, (scx, scy), 8)
+                        
+                        txt = font_node.render(label, True, (255, 255, 255) if color[0] < 180 else (0, 0, 0))
+                        txt_rect = txt.get_rect(center=(scx, scy))
+                        self.screen.blit(txt, txt_rect)
+                        
+        # 4. Highlight Selected Cell Outline
+        if self.selected_cell:
+            surface_coords = [self.to_screen(x, y) for x, y in self.selected_cell['coords']]
+            if len(surface_coords) >= 3:
+                pygame.draw.polygon(self.screen, (255, 255, 0), surface_coords, 3)
+
+    def draw_tooltip(self):
+        """Draws a hover tooltip near the mouse cursor with cell data/information."""
+        mouse_pos = pygame.mouse.get_pos()
+        if mouse_pos[0] >= 960 or mouse_pos[1] >= 720:
+            return
+            
+        cell = self.get_cell_at_pos(mouse_pos)
+        if not cell:
+            return
+            
+        cell_id = cell['id']
+        controlling_burg_id = cell.get('controlling_burg_id')
+        province_info = self.factions.get(controlling_burg_id)
+        
+        lines = []
+        lines.append(f"Cell ID: {cell_id} | Controlling Hub ID: {controlling_burg_id}")
+        lines.append(f"Biome: {cell['biome']} (Elev: {cell['elevation']:.2f})")
+        lines.append(f"Weather: {cell['weather']}")
+        
+        # Display specific details based on active layer to make layers self-explanatory
+        if self.active_layer == 'cults' and cell.get('cults_influence'):
+            lines.append("Cult Influences:")
+            sorted_cults = sorted(cell['cults_influence'].items(), key=lambda x: x[1], reverse=True)
+            for name, val in sorted_cults[:3]:
+                if val > 0.0:
+                    lines.append(f" - {name}: {val*100:.0f}%")
+        elif self.active_layer == 'fringe' and cell.get('fringe_influence'):
+            lines.append("Fringe Group Influences:")
+            sorted_fringe = sorted(cell['fringe_influence'].items(), key=lambda x: x[1], reverse=True)
+            for name, val in sorted_fringe[:3]:
+                if val > 0.0:
+                    lines.append(f" - {name}: {val*100:.0f}%")
+        elif self.active_layer == 'ecology':
+            lines.append(f"Ecology (Flora): {cell['flora'].get('name', 'None')} ({cell['flora'].get('population', 0.0):.1f})")
+            lines.append(f"Ecology (Fauna): {cell['fauna'].get('name', 'None')} ({cell['fauna'].get('population', 0.0):.1f})")
+            
+        matching_node = next((n for n in getattr(self, 'resource_nodes', []) if n['cell_id'] == cell_id), None)
+        if matching_node:
+            lines.append(f"Resource Node: {matching_node['name']} ({matching_node['yield_remaining']:.0f} left)")
+            
+        if province_info:
+            f_name = province_info['faction_name']
+            is_cap = " (Capital)" if (province_info.get('is_capital') == 1 and cell_id == controlling_burg_id) else ""
+            if cell_id == controlling_burg_id:
+                lines.append(f"Settlement Hub: {f_name}{is_cap}")
+            else:
+                lines.append(f"Province/Faction: {f_name}{is_cap}")
+            lines.append(f"Prov Pop: {province_info['population']} | Discontent: {province_info['discontent']:.2f}")
+        
+        font = pygame.font.SysFont("arial", 12)
+        line_surfaces = [font.render(line, True, (255, 255, 255)) for line in lines]
+        
+        width = max(s.get_width() for s in line_surfaces) + 20
+        height = sum(s.get_height() for s in line_surfaces) + 14
+        
+        tx = mouse_pos[0] + 15
+        ty = mouse_pos[1] + 15
+        if tx + width > 960:
+            tx = mouse_pos[0] - width - 15
+        if ty + height > 720:
+            ty = mouse_pos[1] - height - 15
+            
+        tooltip_surf = pygame.Surface((width, height), pygame.SRCALPHA)
+        tooltip_surf.fill((30, 34, 42, 230))
+        pygame.draw.rect(tooltip_surf, (80, 90, 100), (0, 0, width, height), 1)
+        
+        curr_y = 7
+        for s in line_surfaces:
+            tooltip_surf.blit(s, (10, curr_y))
+            curr_y += s.get_height()
+            
+        self.screen.blit(tooltip_surf, (tx, ty))
+
+    def draw_sidebar(self):
+        """Draws control buttons, legend panel, and advanced tabbed editor."""
+        sidebar_x = 960
+        pygame.draw.rect(self.screen, (40, 44, 52), (sidebar_x, 0, 320, 720))
+        pygame.draw.line(self.screen, (80, 80, 80), (sidebar_x, 0), (sidebar_x, 720), 2)
+        
+        font_large = pygame.font.SysFont("arial", 20, bold=True)
+        font_medium = pygame.font.SysFont("arial", 14, bold=True)
+        font_small = pygame.font.SysFont("arial", 12)
+        font_small_bold = pygame.font.SysFont("arial", 11, bold=True)
+        
+        # Render Title
+        title = font_large.render("TTRPG World Conductor", True, (255, 255, 255))
+        self.screen.blit(title, (sidebar_x + 20, 20))
+        
+        # Simulation stats
+        tick_val = self.model.current_tick if self.model else 0
+        tick_text = font_medium.render(f"Simulation Tick: {tick_val}", True, (170, 220, 255))
+        self.screen.blit(tick_text, (sidebar_x + 20, 50))
+        
+        layer_text = font_medium.render(f"Active Layer: {self.active_layer.upper()}", True, (255, 255, 150))
+        self.screen.blit(layer_text, (sidebar_x + 20, 75))
+        
+        autoplay_status = "PLAYING (3s step)" if self.autoplay else "PAUSED"
+        color = (100, 255, 100) if self.autoplay else (255, 100, 100)
+        auto_text = font_medium.render(f"Autoplay: {autoplay_status}", True, color)
+        self.screen.blit(auto_text, (sidebar_x + 20, 100))
+        
+        # Action Buttons
+        self.buttons = {
+            'gen': pygame.Rect(sidebar_x + 20, 130, 280, 30),
+            'load_ostraka': pygame.Rect(sidebar_x + 20, 165, 280, 30),
+            'tick': pygame.Rect(sidebar_x + 20, 200, 280, 30),
+            'auto': pygame.Rect(sidebar_x + 20, 235, 280, 30),
+            'layer': pygame.Rect(sidebar_x + 20, 270, 280, 30),
+            'sync': pygame.Rect(sidebar_x + 20, 305, 280, 30),
+        }
+        
+        btn_labels = {
+            'gen': "Generate Random World (1k Cells)",
+            'load_ostraka': "Load Ostraka World Map (10k Cells)",
+            'tick': "Run 1 Simulation Tick",
+            'auto': "Toggle Autoplay Tick Loop",
+            'layer': "Switch Visual Layer",
+            'sync': "Force Database Sync"
+        }
+        
+        for name, rect in self.buttons.items():
+            pygame.draw.rect(self.screen, (60, 70, 85), rect, border_radius=5)
+            txt = font_medium.render(btn_labels[name], True, (230, 240, 255))
+            txt_rect = txt.get_rect(center=rect.center)
+            self.screen.blit(txt, txt_rect)
+            
+        # Draw Details Editor OR Legend Panel
+        if self.selected_cell:
+            cell = self.selected_cell
+            cell_id = cell['id']
+            controlling_burg_id = cell.get('controlling_burg_id', cell_id)
+            faction_info = self.factions.get(controlling_burg_id)
+            is_sub = cell['elevation'] < 0
+            
+            # Setup Tabs Bar (Y = 350)
+            self.tabs = {
+                'stats': pygame.Rect(sidebar_x + 10, 350, 68, 22),
+                'build': pygame.Rect(sidebar_x + 83, 350, 68, 22),
+                'cults': pygame.Rect(sidebar_x + 156, 350, 68, 22),
+                'biome': pygame.Rect(sidebar_x + 229, 350, 81, 22),
+            }
+            
+            tab_labels = {'stats': "1. Stats", 'build': "2. Build", 'cults': "3. Cults", 'biome': "4. Biome/Node"}
+            for t_name, rect in self.tabs.items():
+                t_color = (80, 95, 110) if self.active_tab == t_name else (45, 50, 60)
+                pygame.draw.rect(self.screen, t_color, rect, border_top_left_radius=4, border_top_right_radius=4)
+                txt = font_small_bold.render(tab_labels[t_name], True, (255, 255, 255) if self.active_tab == t_name else (160, 160, 160))
+                txt_rect = txt.get_rect(center=rect.center)
+                self.screen.blit(txt, txt_rect)
+                
+            # Render Content Area Background
+            pygame.draw.rect(self.screen, (50, 55, 68), (sidebar_x + 10, 372, 300, 290), border_radius=4)
+            
+            # Helper to draw interactive adjust row
+            def draw_adjust_row(y, label, val_str, minus_rect, plus_rect):
+                lbl = font_small.render(label, True, (200, 210, 230))
+                val = font_small_bold.render(val_str, True, (255, 255, 255))
+                self.screen.blit(lbl, (sidebar_x + 20, y))
+                self.screen.blit(val, (sidebar_x + 130, y))
+                
+                # Minus
+                pygame.draw.rect(self.screen, (100, 70, 70), minus_rect, border_radius=3)
+                m_txt = font_small_bold.render("-", True, (255, 255, 255))
+                self.screen.blit(m_txt, m_txt.get_rect(center=minus_rect.center))
+                
+                # Plus
+                pygame.draw.rect(self.screen, (70, 100, 70), plus_rect, border_radius=3)
+                p_txt = font_small_bold.render("+", True, (255, 255, 255))
+                self.screen.blit(p_txt, p_txt.get_rect(center=plus_rect.center))
+                
+            # Define Adjust Button Rects dynamically
+            self.edit_buttons = {}
+            matching_node = next((n for n in getattr(self, 'resource_nodes', []) if n['cell_id'] == cell_id), None)
+            
+            # TAB 1: STATS
+            if self.active_tab == 'stats':
+                owner_name = faction_info['faction_name'] if faction_info else "Water (Unoccupied)"
+                is_cap_str = " (Capital)" if (faction_info and faction_info.get('is_capital') == 1 and cell_id == controlling_burg_id) else ""
+                
+                # Cycle Faction button
+                self.edit_buttons['change_faction'] = pygame.Rect(sidebar_x + 20, 385, 280, 24)
+                pygame.draw.rect(self.screen, (70, 80, 100), self.edit_buttons['change_faction'], border_radius=4)
+                txt = font_small_bold.render(f"Faction: {owner_name[:20]}{is_cap_str}", True, (255, 230, 150))
+                self.screen.blit(txt, txt.get_rect(center=self.edit_buttons['change_faction'].center))
+                
+                # Draw faction soldier/unit icon next to Faction name if valid
+                faction_unit_cols = {
+                    1: 1, 2: 2, 3: 3, 4: 4, 5: 5,
+                    6: 8, 7: 5, 8: 9, 9: 12, 10: 7,
+                    11: 10, 12: 11, 13: 5, 14: 2, 15: 3,
+                    16: 10, 17: 12
+                }
+                if faction_info:
+                    fid = faction_info['faction_id']
+                    if fid > 0:
+                        unit_col = faction_unit_cols.get(fid)
+                        if unit_col:
+                            u_sprite = self.small_sprites.get((11, unit_col)) if not is_sub else self.small_sprites.get((11, 10))
+                            if u_sprite:
+                                self.screen.blit(u_sprite, (sidebar_x + 280, 387))
+                
+                pop_val = faction_info['population'] if faction_info else 0
+                discontent = faction_info['discontent'] if faction_info else 0.0
+                crime = faction_info['crime_level'] if faction_info else 0.0
+                
+                # Pop adjust
+                self.edit_buttons['pop_minus'] = pygame.Rect(sidebar_x + 210, 420, 35, 20)
+                self.edit_buttons['pop_plus'] = pygame.Rect(sidebar_x + 255, 420, 35, 20)
+                draw_adjust_row(423, "Population:", f"{pop_val}", self.edit_buttons['pop_minus'], self.edit_buttons['pop_plus'])
+                
+                # Discontent adjust
+                self.edit_buttons['dis_minus'] = pygame.Rect(sidebar_x + 210, 450, 35, 20)
+                self.edit_buttons['dis_plus'] = pygame.Rect(sidebar_x + 255, 450, 35, 20)
+                draw_adjust_row(453, "Discontent:", f"{discontent:.2f}", self.edit_buttons['dis_minus'], self.edit_buttons['dis_plus'])
+                
+                # Crime adjust
+                self.edit_buttons['crime_minus'] = pygame.Rect(sidebar_x + 210, 480, 35, 20)
+                self.edit_buttons['crime_plus'] = pygame.Rect(sidebar_x + 255, 480, 35, 20)
+                draw_adjust_row(483, "Crime Level:", f"{crime:.2f}", self.edit_buttons['crime_minus'], self.edit_buttons['crime_plus'])
+                
+                # Capital Toggle
+                self.edit_buttons['toggle_capital'] = pygame.Rect(sidebar_x + 210, 510, 80, 20)
+                pygame.draw.rect(self.screen, (80, 90, 110), self.edit_buttons['toggle_capital'], border_radius=3)
+                cap_txt = font_small_bold.render("Toggle Cap", True, (255, 255, 255))
+                self.screen.blit(cap_txt, cap_txt.get_rect(center=self.edit_buttons['toggle_capital'].center))
+                self.screen.blit(font_small.render("Capital Status:", True, (200, 210, 230)), (sidebar_x + 20, 513))
+                
+                if faction_info and faction_info.get('is_capital') == 1 and cell_id == controlling_burg_id:
+                    c_sprite = self.small_sprites.get((10, 10)) if not is_sub else self.small_sprites.get((6, 12))
+                    if c_sprite:
+                        self.screen.blit(c_sprite, (sidebar_x + 180, 510))
+                
+                if faction_info:
+                    pw = faction_info.get('physical_well_being', 1.0)
+                    mw = faction_info.get('mental_well_being', 1.0)
+                    wp = faction_info.get('hub_wealth', 0.0)
+                    pr = faction_info.get('pressure', 0.0)
+                    self.screen.blit(font_small.render(f"Physical/Mental Health: {pw:.2f} / {mw:.2f}", True, (170, 175, 185)), (sidebar_x + 20, 545))
+                    self.screen.blit(font_small.render(f"Hub Wealth / Crisis Pressure: {wp:.1f} / {pr:.2f}", True, (170, 175, 185)), (sidebar_x + 20, 565))
+                else:
+                    self.screen.blit(font_small.render("No settlement active in this cell.", True, (170, 175, 185)), (sidebar_x + 20, 545))
+                    
+            # TAB 2: BUILD
+            elif self.active_tab == 'build':
+                if faction_info:
+                    if is_sub:
+                        # Aquatic
+                        self.edit_buttons['kelp_minus'] = pygame.Rect(sidebar_x + 210, 385, 35, 20)
+                        self.edit_buttons['kelp_plus'] = pygame.Rect(sidebar_x + 255, 385, 35, 20)
+                        draw_adjust_row(388, "Kelp Farms:", f"{faction_info['kelp_farms_count']}", self.edit_buttons['kelp_minus'], self.edit_buttons['kelp_plus'])
+                        s = self.small_sprites.get((4, 5))
+                        if s: self.screen.blit(s, (sidebar_x + 180, 388))
+                        
+                        self.edit_buttons['coral_minus'] = pygame.Rect(sidebar_x + 210, 415, 35, 20)
+                        self.edit_buttons['coral_plus'] = pygame.Rect(sidebar_x + 255, 415, 35, 20)
+                        draw_adjust_row(418, "Coral Mines:", f"{faction_info['coral_mines_count']}", self.edit_buttons['coral_minus'], self.edit_buttons['coral_plus'])
+                        s = self.small_sprites.get((4, 4))
+                        if s: self.screen.blit(s, (sidebar_x + 180, 418))
+                        
+                        self.edit_buttons['domes_minus'] = pygame.Rect(sidebar_x + 210, 445, 35, 20)
+                        self.edit_buttons['domes_plus'] = pygame.Rect(sidebar_x + 255, 445, 35, 20)
+                        draw_adjust_row(448, "Aquatic Domes:", f"{faction_info['underwater_domes_count']}", self.edit_buttons['domes_minus'], self.edit_buttons['domes_plus'])
+                        s = self.small_sprites.get((10, 4))
+                        if s: self.screen.blit(s, (sidebar_x + 180, 448))
+                        
+                        self.edit_buttons['walls_minus'] = pygame.Rect(sidebar_x + 210, 475, 35, 20)
+                        self.edit_buttons['walls_plus'] = pygame.Rect(sidebar_x + 255, 475, 35, 20)
+                        draw_adjust_row(478, "Reef Walls:", f"{faction_info['reef_walls_count']}", self.edit_buttons['walls_minus'], self.edit_buttons['walls_plus'])
+                        s = self.small_sprites.get((4, 7))
+                        if s: self.screen.blit(s, (sidebar_x + 180, 478))
+                    else:
+                        # Terrestrial
+                        self.edit_buttons['farms_minus'] = pygame.Rect(sidebar_x + 210, 385, 35, 20)
+                        self.edit_buttons['farms_plus'] = pygame.Rect(sidebar_x + 255, 385, 35, 20)
+                        draw_adjust_row(388, "Farms:", f"{faction_info['farms_count']}", self.edit_buttons['farms_minus'], self.edit_buttons['farms_plus'])
+                        s = self.small_sprites.get((10, 1))
+                        if s: self.screen.blit(s, (sidebar_x + 180, 388))
+                        
+                        self.edit_buttons['mines_minus'] = pygame.Rect(sidebar_x + 210, 415, 35, 20)
+                        self.edit_buttons['mines_plus'] = pygame.Rect(sidebar_x + 255, 415, 35, 20)
+                        draw_adjust_row(418, "Mines:", f"{faction_info['mines_count']}", self.edit_buttons['mines_minus'], self.edit_buttons['mines_plus'])
+                        s = self.small_sprites.get((10, 3))
+                        if s: self.screen.blit(s, (sidebar_x + 180, 418))
+                        
+                        self.edit_buttons['barracks_minus'] = pygame.Rect(sidebar_x + 210, 445, 35, 20)
+                        self.edit_buttons['barracks_plus'] = pygame.Rect(sidebar_x + 255, 445, 35, 20)
+                        draw_adjust_row(448, "Barracks:", f"{faction_info['barracks_count']}", self.edit_buttons['barracks_minus'], self.edit_buttons['barracks_plus'])
+                        s = self.small_sprites.get((10, 10))
+                        if s: self.screen.blit(s, (sidebar_x + 180, 448))
+                        
+                        self.edit_buttons['towers_minus'] = pygame.Rect(sidebar_x + 210, 475, 35, 20)
+                        self.edit_buttons['towers_plus'] = pygame.Rect(sidebar_x + 255, 475, 35, 20)
+                        draw_adjust_row(478, "Watchtowers:", f"{faction_info['watchtowers_count']}", self.edit_buttons['towers_minus'], self.edit_buttons['towers_plus'])
+                        s = self.small_sprites.get((10, 11))
+                        if s: self.screen.blit(s, (sidebar_x + 180, 478))
+                        
+                        self.edit_buttons['workshops_minus'] = pygame.Rect(sidebar_x + 210, 505, 35, 20)
+                        self.edit_buttons['workshops_plus'] = pygame.Rect(sidebar_x + 255, 505, 35, 20)
+                        draw_adjust_row(508, "Workshops:", f"{faction_info['workshops_count']}", self.edit_buttons['workshops_minus'], self.edit_buttons['workshops_plus'])
+                        s = self.small_sprites.get((10, 12))
+                        if s: self.screen.blit(s, (sidebar_x + 180, 508))
+                        
+                    # Docks Toggle
+                    self.edit_buttons['toggle_docks'] = pygame.Rect(sidebar_x + 210, 540, 80, 20)
+                    pygame.draw.rect(self.screen, (80, 90, 110), self.edit_buttons['toggle_docks'], border_radius=3)
+                    docks_status = "Enabled" if faction_info.get('docks_count', 0) > 0 else "None"
+                    dock_txt = font_small_bold.render("Toggle Docks", True, (255, 255, 255))
+                    self.screen.blit(dock_txt, dock_txt.get_rect(center=self.edit_buttons['toggle_docks'].center))
+                    self.screen.blit(font_small.render(f"Docks/Harbor: {docks_status}", True, (200, 210, 230)), (sidebar_x + 20, 543))
+                else:
+                    self.screen.blit(font_small.render("No settlement active in this cell.", True, (170, 175, 185)), (sidebar_x + 20, 385))
+                    
+            # TAB 3: CULTS & FRINGE (Local cell properties)
+            elif self.active_tab == 'cults':
+                # Cults
+                prisons = ["Tiraton", "Stagus", "Metrion", "Aurgenas", "Vecelo", "Lophex", "Tyrustis", "Opecten", "Carulkem", "Termhill", "Virantor", "Gavusrix", "Wardens"]
+                sorted_cults = sorted(cell['cults_influence'].items(), key=lambda x: x[1], reverse=True)
+                active_cults = [(k, v) for k, v in sorted_cults if v > 0.0][:3]
+                while len(active_cults) < 3:
+                    for p in prisons:
+                        if p not in [x[0] for x in active_cults]:
+                            active_cults.append((p, 0.0))
+                            break
+                            
+                self.top_cults_drawn = [x[0] for x in active_cults]
+                
+                # Draw Cult 1, 2, 3
+                self.edit_buttons['cult1_minus'] = pygame.Rect(sidebar_x + 210, 385, 35, 20)
+                self.edit_buttons['cult1_plus'] = pygame.Rect(sidebar_x + 255, 385, 35, 20)
+                draw_adjust_row(388, f"Cult: {active_cults[0][0][:10]}", f"{active_cults[0][1]*100:.0f}%", self.edit_buttons['cult1_minus'], self.edit_buttons['cult1_plus'])
+                
+                self.edit_buttons['cult2_minus'] = pygame.Rect(sidebar_x + 210, 410, 35, 20)
+                self.edit_buttons['cult2_plus'] = pygame.Rect(sidebar_x + 255, 410, 35, 20)
+                draw_adjust_row(413, f"Cult: {active_cults[1][0][:10]}", f"{active_cults[1][1]*100:.0f}%", self.edit_buttons['cult2_minus'], self.edit_buttons['cult2_plus'])
+                
+                self.edit_buttons['cult3_minus'] = pygame.Rect(sidebar_x + 210, 435, 35, 20)
+                self.edit_buttons['cult3_plus'] = pygame.Rect(sidebar_x + 255, 435, 35, 20)
+                draw_adjust_row(438, f"Cult: {active_cults[2][0][:10]}", f"{active_cults[2][1]*100:.0f}%", self.edit_buttons['cult3_minus'], self.edit_buttons['cult3_plus'])
+                
+                # Fringe
+                sorted_fringe = sorted(cell['fringe_influence'].items(), key=lambda x: x[1], reverse=True)
+                active_fringe = [(k, v) for k, v in sorted_fringe if v > 0.0][:3]
+                while len(active_fringe) < 3:
+                    for f in FRINGE_NAMES:
+                        if f not in [x[0] for x in active_fringe]:
+                            active_fringe.append((f, 0.0))
+                            break
+                            
+                self.top_fringe_drawn = [x[0] for x in active_fringe]
+                
+                self.edit_buttons['fringe1_minus'] = pygame.Rect(sidebar_x + 210, 470, 35, 20)
+                self.edit_buttons['fringe1_plus'] = pygame.Rect(sidebar_x + 255, 470, 35, 20)
+                draw_adjust_row(473, f"Fringe: {active_fringe[0][0][:10]}", f"{active_fringe[0][1]*100:.0f}%", self.edit_buttons['fringe1_minus'], self.edit_buttons['fringe1_plus'])
+                
+                self.edit_buttons['fringe2_minus'] = pygame.Rect(sidebar_x + 210, 495, 35, 20)
+                self.edit_buttons['fringe2_plus'] = pygame.Rect(sidebar_x + 255, 495, 35, 20)
+                draw_adjust_row(498, f"Fringe: {active_fringe[1][0][:10]}", f"{active_fringe[1][1]*100:.0f}%", self.edit_buttons['fringe2_minus'], self.edit_buttons['fringe2_plus'])
+                
+                self.edit_buttons['fringe3_minus'] = pygame.Rect(sidebar_x + 210, 520, 35, 20)
+                self.edit_buttons['fringe3_plus'] = pygame.Rect(sidebar_x + 255, 520, 35, 20)
+                draw_adjust_row(523, f"Fringe: {active_fringe[2][0][:10]}", f"{active_fringe[2][1]*100:.0f}%", self.edit_buttons['fringe3_minus'], self.edit_buttons['fringe3_plus'])
+                
+                # Inject Buttons
+                self.edit_buttons['inject_cult'] = pygame.Rect(sidebar_x + 20, 555, 280, 22)
+                pygame.draw.rect(self.screen, (70, 80, 100), self.edit_buttons['inject_cult'], border_radius=4)
+                txt = font_small_bold.render("Inject Next Cult Group (+10%)", True, (240, 240, 240))
+                self.screen.blit(txt, txt.get_rect(center=self.edit_buttons['inject_cult'].center))
+                
+                self.edit_buttons['inject_fringe'] = pygame.Rect(sidebar_x + 20, 585, 280, 22)
+                pygame.draw.rect(self.screen, (70, 80, 100), self.edit_buttons['inject_fringe'], border_radius=4)
+                txt = font_small_bold.render("Inject Next Fringe Group (+10%)", True, (240, 240, 240))
+                self.screen.blit(txt, txt.get_rect(center=self.edit_buttons['inject_fringe'].center))
+                
+            # TAB 4: BIOME & NODE (Local cell properties)
+            elif self.active_tab == 'biome':
+                # Cycle Biome button
+                self.edit_buttons['change_biome'] = pygame.Rect(sidebar_x + 20, 385, 280, 24)
+                pygame.draw.rect(self.screen, (70, 80, 100), self.edit_buttons['change_biome'], border_radius=4)
+                txt = font_small_bold.render(f"Biome: {cell['biome']}", True, (255, 230, 150))
+                self.screen.blit(txt, txt.get_rect(center=self.edit_buttons['change_biome'].center))
+                
+                # Elevation adjust
+                self.edit_buttons['elev_minus'] = pygame.Rect(sidebar_x + 210, 415, 35, 20)
+                self.edit_buttons['elev_plus'] = pygame.Rect(sidebar_x + 255, 415, 35, 20)
+                draw_adjust_row(418, "Elevation Height:", f"{cell['elevation']:.2f}", self.edit_buttons['elev_minus'], self.edit_buttons['elev_plus'])
+                
+                # Resource Node
+                node_name = matching_node['name'] if matching_node else "None"
+                self.edit_buttons['cycle_node'] = pygame.Rect(sidebar_x + 20, 445, 280, 24)
+                pygame.draw.rect(self.screen, (70, 80, 100), self.edit_buttons['cycle_node'], border_radius=4)
+                txt = font_small_bold.render(f"Node Type: {node_name[:24]}", True, (255, 230, 150))
+                self.screen.blit(txt, txt.get_rect(center=self.edit_buttons['cycle_node'].center))
+                
+                node_yield = matching_node['yield_remaining'] if matching_node else 0.0
+                self.edit_buttons['yield_minus'] = pygame.Rect(sidebar_x + 210, 475, 35, 20)
+                self.edit_buttons['yield_plus'] = pygame.Rect(sidebar_x + 255, 475, 35, 20)
+                draw_adjust_row(478, "Node Yield Remaining:", f"{node_yield:.0f}", self.edit_buttons['yield_minus'], self.edit_buttons['yield_plus'])
+                
+                # Clear Node
+                self.edit_buttons['clear_node'] = pygame.Rect(sidebar_x + 20, 510, 280, 24)
+                pygame.draw.rect(self.screen, (120, 70, 70), self.edit_buttons['clear_node'], border_radius=4)
+                txt = font_small_bold.render("Clear Resource Node", True, (240, 240, 240))
+                self.screen.blit(txt, txt.get_rect(center=self.edit_buttons['clear_node'].center))
+                
+            # Deselect Button
+            self.edit_buttons['deselect'] = pygame.Rect(sidebar_x + 20, 670, 280, 30)
+            pygame.draw.rect(self.screen, (100, 50, 50), self.edit_buttons['deselect'], border_radius=5)
+            txt = font_medium.render("Back to Event Logs", True, (240, 240, 240))
+            self.screen.blit(txt, txt.get_rect(center=self.edit_buttons['deselect'].center))
+            
+        else:
+            # Render Legend Panel (to explain what the layers represent)
+            legend_title = font_medium.render(f"Visual Legend: {self.active_layer.upper()}", True, (255, 200, 100))
+            self.screen.blit(legend_title, (sidebar_x + 20, 350))
+            
+            # Draw legend details dynamically
+            ly = 375
+            if self.active_layer == 'biomes':
+                biomes_list = [
+                    ('Plains', (168, 201, 110)),
+                    ('Forest', (45, 106, 45)),
+                    ('Desert', (212, 168, 67)),
+                    ('Mountain', (138, 138, 138)),
+                    ('Swamp', (74, 122, 74)),
+                    ('Coastal Water', (72, 180, 195)),
+                    ('Coral Reefs', (219, 112, 147)),
+                    ('Open Ocean', (26, 95, 138)),
+                    ('Abyssal Trench', (10, 25, 60)),
+                    ('Thermal Vents', (120, 20, 60))
+                ]
+                for name, col in biomes_list:
+                    pygame.draw.rect(self.screen, col, (sidebar_x + 20, ly + 2, 12, 12), border_radius=2)
+                    self.screen.blit(font_small.render(name, True, (200, 200, 200)), (sidebar_x + 40, ly))
+                    ly += 16
+            elif self.active_layer == 'elevation':
+                self.screen.blit(font_small.render("Heightmap / Depth gradient:", True, (200, 200, 200)), (sidebar_x + 20, ly))
+                ly += 18
+                # Draw small vertical color bar
+                for h_idx in range(50):
+                    val = h_idx / 50.0
+                    col = (int(val * 180) + 70, int(val * 162) + 63, int(val * 126) + 49) # Land
+                    pygame.draw.rect(self.screen, col, (sidebar_x + 20, ly + h_idx, 15, 1))
+                self.screen.blit(font_small.render("- High Mountains (Bright Brown)", True, (180, 180, 180)), (sidebar_x + 42, ly + 2))
+                self.screen.blit(font_small.render("- Low Land (Dark Green-Brown)", True, (180, 180, 180)), (sidebar_x + 42, ly + 40))
+                ly += 60
+                for d_idx in range(50):
+                    val = d_idx / 50.0
+                    col = (20, 20, max(50, min(255, int(val * 150) + 50)))
+                    pygame.draw.rect(self.screen, col, (sidebar_x + 20, ly + d_idx, 15, 1))
+                self.screen.blit(font_small.render("- Shallow Waters (Cyan-Blue)", True, (180, 180, 180)), (sidebar_x + 42, ly + 2))
+                self.screen.blit(font_small.render("- Abyssal Depths (Dark Navy)", True, (180, 180, 180)), (sidebar_x + 42, ly + 40))
+            elif self.active_layer == 'factions':
+                self.screen.blit(font_small.render("Territories of the 17 Factions:", True, (200, 200, 200)), (sidebar_x + 20, ly))
+                ly += 18
+                sorted_fids = sorted(self.faction_colors.keys())
+                for fid in sorted_fids[:10]: # Draw first 10 for space
+                    col = self.faction_colors[fid]
+                    pygame.draw.rect(self.screen, col, (sidebar_x + 20, ly + 2, 12, 12), border_radius=2)
+                    self.screen.blit(font_small.render(FACTION_NAMES[fid - 1], True, (200, 200, 200)), (sidebar_x + 40, ly))
+                    ly += 16
+                self.screen.blit(font_small.render("... and 7 others (Hover to inspect)", True, (150, 150, 150)), (sidebar_x + 20, ly))
+            elif self.active_layer == 'settlements':
+                self.screen.blit(font_small.render("Settlement Influence Areas (Provinces):", True, (200, 200, 200)), (sidebar_x + 20, ly))
+                ly += 18
+                self.screen.blit(font_small.render("Cells with matching colors are controlled", True, (170, 170, 170)), (sidebar_x + 20, ly))
+                ly += 14
+                self.screen.blit(font_small.render("by the same local Settlement center.", True, (170, 170, 170)), (sidebar_x + 20, ly))
+                ly += 22
+                self.screen.blit(font_small.render("Cities expand and gather resources from", True, (170, 170, 170)), (sidebar_x + 20, ly))
+                ly += 14
+                self.screen.blit(font_small.render("their controlled cells.", True, (170, 170, 170)), (sidebar_x + 20, ly))
+            elif self.active_layer == 'cults':
+                self.screen.blit(font_small.render("The 12 Cults & Grey Warden Influence:", True, (200, 200, 200)), (sidebar_x + 20, ly))
+                ly += 18
+                cult_legend = [
+                    ("Tiraton (Red)", (231, 76, 60)),
+                    ("Stagus (Green)", (46, 204, 113)),
+                    ("Metrion (Blue)", (52, 152, 219)),
+                    ("Vecelo (Purple)", (155, 89, 182)),
+                    ("Wardens (White)", (240, 240, 240))
+                ]
+                for name, col in cult_legend:
+                    pygame.draw.rect(self.screen, col, (sidebar_x + 20, ly + 2, 12, 12), border_radius=2)
+                    self.screen.blit(font_small.render(name, True, (200, 200, 200)), (sidebar_x + 40, ly))
+                    ly += 16
+            elif self.active_layer == 'fringe':
+                self.screen.blit(font_small.render("Bands of Fringe Actors Influence:", True, (200, 200, 200)), (sidebar_x + 20, ly))
+                ly += 18
+                fringe_legend = [
+                    ("Obsidian Cartel (Black)", (30, 30, 30)),
+                    ("Freesky Barons (Sky Blue)", (135, 206, 235)),
+                    ("Crimson Coursairs (Crimson)", (220, 20, 60)),
+                    ("Otter Syndicate (Brown)", (139, 69, 19)),
+                    ("Silent Current (Teal)", (0, 128, 128))
+                ]
+                for name, col in fringe_legend:
+                    pygame.draw.rect(self.screen, col, (sidebar_x + 20, ly + 2, 12, 12), border_radius=2)
+                    self.screen.blit(font_small.render(name, True, (200, 200, 200)), (sidebar_x + 40, ly))
+                    ly += 16
+            elif self.active_layer == 'ecology':
+                self.screen.blit(font_small.render("Flora / Fauna Biomass Densities:", True, (200, 200, 200)), (sidebar_x + 20, ly))
+                ly += 18
+                pygame.draw.rect(self.screen, (0, 200, 40), (sidebar_x + 20, ly + 2, 12, 12), border_radius=2)
+                self.screen.blit(font_small.render("High Flora Population (Green)", True, (180, 180, 180)), (sidebar_x + 40, ly))
+                ly += 16
+                pygame.draw.rect(self.screen, (200, 0, 40), (sidebar_x + 20, ly + 2, 12, 12), border_radius=2)
+                self.screen.blit(font_small.render("High Fauna Population (Red)", True, (180, 180, 180)), (sidebar_x + 40, ly))
+                ly += 16
+                pygame.draw.rect(self.screen, (200, 200, 40), (sidebar_x + 20, ly + 2, 12, 12), border_radius=2)
+                self.screen.blit(font_small.render("High Mixed Coexistence (Yellow)", True, (180, 180, 180)), (sidebar_x + 40, ly))
+            elif self.active_layer == 'resources':
+                self.screen.blit(font_small.render("Geological Resource Node Types:", True, (200, 200, 200)), (sidebar_x + 20, ly))
+                ly += 18
+                nodes = [
+                    ("Fe - Rich Iron Vein", (120, 120, 120)),
+                    ("Cu - Rich Copper Vein", (184, 115, 51)),
+                    ("Co - Coral Mine", (255, 127, 80)),
+                    ("Ds - Dragonstone Crater", (186, 85, 211)),
+                    ("Os - Osmium Conductor", (0, 206, 209)),
+                    ("St - Ancient Steel Ruins", (70, 130, 180))
+                ]
+                for name, col in nodes:
+                    pygame.draw.circle(self.screen, col, (sidebar_x + 26, ly + 7), 6)
+                    self.screen.blit(font_small.render(name, True, (200, 200, 200)), (sidebar_x + 40, ly))
+                    ly += 16
+            
+            # Render standard wrapped logs
+            logs_title = font_medium.render("Simulation Event Logs:", True, (255, 200, 100))
+            self.screen.blit(logs_title, (sidebar_x + 20, 555))
+            
+            font_log = pygame.font.SysFont("arial", 10)
+            log_y = 575
+            # Draw last 4 logs (most recent first)
+            for entry in self.logs[:4]:
+                desc = entry['description']
+                tick = entry['tick_number']
+                ev_type = entry['event_type']
+                text_str = f"[{tick}] [{ev_type}] {desc}"
+                
+                color_map = {1: (200, 200, 200), 3: (255, 255, 180), 5: (255, 150, 150)}
+                log_color = color_map.get(entry.get('severity', 1), (200, 200, 200))
+                
+                # Wrap text to fit within 280 pixels width
+                wrapped_lines = wrap_text(text_str, font_log, 280)
+                for line in wrapped_lines[:2]: # Show at most 2 lines per log
+                    log_lbl = font_log.render(line, True, log_color)
+                    self.screen.blit(log_lbl, (sidebar_x + 20, log_y))
+                    log_y += 13
+                log_y += 4 # Extra spacing between entries
+                if log_y > 710:
+                    break
+
+    def handle_edit_action(self, action):
+        """Executes detailed map edits for the selected cell, writing to SQLite in real-time."""
+        if not self.selected_cell:
+            return
+            
+        cell_id = self.selected_cell['id']
+        controlling_burg_id = self.selected_cell.get('controlling_burg_id', cell_id)
+        is_aquatic = self.selected_cell['elevation'] < 0
+        
+        conn = get_db_connection()
+        cur = conn.cursor()
+        
+        # Check if the controlling settlement has a row in macro_groups
+        cur.execute("SELECT * FROM macro_groups WHERE cell_id = ?", (controlling_burg_id,))
+        row = cur.fetchone()
+        faction_row = dict(row) if row else None
+        
+        if action == 'deselect':
+            self.selected_cell = None
+            cur.close()
+            conn.close()
+            return
+            
+        # Structure editing (Updates applied to the controlling province/settlement row)
+        elif action == 'cycle_farm_plus' and faction_row:
+            col = 'kelp_farms_count' if is_aquatic else 'farms_count'
+            cur.execute(f"UPDATE macro_groups SET {col} = MIN(3, {col} + 1) WHERE cell_id = ?", (controlling_burg_id,))
+        elif action == 'cycle_farm_minus' and faction_row:
+            col = 'kelp_farms_count' if is_aquatic else 'farms_count'
+            cur.execute(f"UPDATE macro_groups SET {col} = MAX(0, {col} - 1) WHERE cell_id = ?", (controlling_burg_id,))
+            
+        elif action == 'cycle_mine_plus' and faction_row:
+            col = 'coral_mines_count' if is_aquatic else 'mines_count'
+            cur.execute(f"UPDATE macro_groups SET {col} = MIN(3, {col} + 1) WHERE cell_id = ?", (controlling_burg_id,))
+        elif action == 'cycle_mine_minus' and faction_row:
+            col = 'coral_mines_count' if is_aquatic else 'mines_count'
+            cur.execute(f"UPDATE macro_groups SET {col} = MAX(0, {col} - 1) WHERE cell_id = ?", (controlling_burg_id,))
+            
+        elif action == 'cycle_barracks_plus' and faction_row:
+            col = 'underwater_domes_count' if is_aquatic else 'barracks_count'
+            cur.execute(f"UPDATE macro_groups SET {col} = MIN(3, {col} + 1) WHERE cell_id = ?", (controlling_burg_id,))
+        elif action == 'cycle_barracks_minus' and faction_row:
+            col = 'underwater_domes_count' if is_aquatic else 'barracks_count'
+            cur.execute(f"UPDATE macro_groups SET {col} = MAX(0, {col} - 1) WHERE cell_id = ?", (controlling_burg_id,))
+            
+        elif action == 'cycle_tower_plus' and faction_row:
+            col = 'reef_walls_count' if is_aquatic else 'watchtowers_count'
+            cur.execute(f"UPDATE macro_groups SET {col} = MIN(3, {col} + 1) WHERE cell_id = ?", (controlling_burg_id,))
+        elif action == 'cycle_tower_minus' and faction_row:
+            col = 'reef_walls_count' if is_aquatic else 'watchtowers_count'
+            cur.execute(f"UPDATE macro_groups SET {col} = MAX(0, {col} - 1) WHERE cell_id = ?", (controlling_burg_id,))
+            
+        elif action == 'cycle_workshops_plus' and faction_row and not is_aquatic:
+            cur.execute("UPDATE macro_groups SET workshops_count = MIN(3, workshops_count + 1) WHERE cell_id = ?", (controlling_burg_id,))
+        elif action == 'cycle_workshops_minus' and faction_row and not is_aquatic:
+            cur.execute("UPDATE macro_groups SET workshops_count = MAX(0, workshops_count - 1) WHERE cell_id = ?", (controlling_burg_id,))
+            
+        elif action == 'toggle_docks' and faction_row:
+            new_val = 1 if faction_row.get('docks_count', 0) == 0 else 0
+            cur.execute("UPDATE macro_groups SET docks_count = ? WHERE cell_id = ?", (new_val, controlling_burg_id))
+            
+        # Stats editing (Updates applied to the controlling province/settlement row)
+        elif action == 'pop_plus' and faction_row:
+            cur.execute("UPDATE macro_groups SET population = population + 100 WHERE cell_id = ?", (controlling_burg_id,))
+        elif action == 'pop_minus' and faction_row:
+            cur.execute("UPDATE macro_groups SET population = MAX(0, population - 100) WHERE cell_id = ?", (controlling_burg_id,))
+            
+        elif action == 'dis_plus' and faction_row:
+            cur.execute("UPDATE macro_groups SET discontent = MIN(1.0, discontent + 0.05) WHERE cell_id = ?", (controlling_burg_id,))
+        elif action == 'dis_minus' and faction_row:
+            cur.execute("UPDATE macro_groups SET discontent = MAX(0.0, discontent - 0.05) WHERE cell_id = ?", (controlling_burg_id,))
+            
+        elif action == 'crime_plus' and faction_row:
+            cur.execute("UPDATE macro_groups SET crime_level = MIN(1.0, crime_level + 0.05) WHERE cell_id = ?", (controlling_burg_id,))
+        elif action == 'crime_minus' and faction_row:
+            cur.execute("UPDATE macro_groups SET crime_level = MAX(0.0, crime_level - 0.05) WHERE cell_id = ?", (controlling_burg_id,))
+            
+        elif action == 'toggle_capital' and faction_row:
+            new_val = 1 if faction_row.get('is_capital', 0) == 0 else 0
+            cur.execute("UPDATE macro_groups SET is_capital = ? WHERE cell_id = ?", (new_val, controlling_burg_id))
+            
+        elif action == 'change_faction' and faction_row:
+            current_fid = faction_row['faction_id']
+            new_fid = (current_fid + 1) % 18
+            new_name = 'Neutrals' if new_fid == 0 else FACTION_NAMES[new_fid - 1]
+            cur.execute("UPDATE macro_groups SET faction_id = ?, faction_name = ?, is_capital = 0 WHERE cell_id = ?", (new_fid, new_name, controlling_burg_id))
+            
+        # Biome & Elevation editing (Applied to the clicked cell locally)
+        elif action == 'change_biome':
+            biomes_list = ['Ocean', 'Plains', 'Forest', 'Desert', 'Mountain', 'Swamp', 'Coastal', 'Reef', 'Abyssal', 'Thermal']
+            cur.execute("SELECT biome FROM cells WHERE id = ?", (cell_id,))
+            current_biome = cur.fetchone()[0]
+            new_idx = (biomes_list.index(current_biome) + 1) % len(biomes_list)
+            new_biome = biomes_list[new_idx]
+            new_elev = -0.5 if new_biome in ['Ocean', 'Coastal', 'Reef', 'Abyssal', 'Thermal'] else 0.1
+            cur.execute("UPDATE cells SET biome = ?, elevation = ?, depth_elevation = ? WHERE id = ?", (new_biome, new_elev, new_elev, cell_id))
+            
+        elif action == 'elev_plus':
+            cur.execute("UPDATE cells SET elevation = elevation + 0.05, depth_elevation = depth_elevation + 0.05 WHERE id = ?", (cell_id,))
+        elif action == 'elev_minus':
+            cur.execute("UPDATE cells SET elevation = elevation - 0.05, depth_elevation = depth_elevation - 0.05 WHERE id = ?", (cell_id,))
+            
+        # Resource Node editing (Applied to the clicked cell locally)
+        elif action == 'cycle_node':
+            node_types = [
+                {"name": "Rich Iron Vein", "icon": "🪨", "desc": "Yields Iron", "yield": 400.0},
+                {"name": "Rich Copper Vein", "icon": "🟠", "desc": "Yields Copper", "yield": 400.0},
+                {"name": "Luminescent Coral Mine", "icon": "🪸", "desc": "Yields Coral", "yield": 200.0},
+                {"name": "Dragonstone Crater", "icon": "🔮", "desc": "Yields Dragonstone", "yield": 50.0},
+                {"name": "Rich Osmium Vein", "icon": "⬛", "desc": "Yields Osmium", "yield": 150.0},
+                {"name": "Ancient Steel Ruins", "icon": "⚔️", "desc": "Yields Smelted Steel", "yield": 100.0}
+            ]
+            cur.execute("SELECT * FROM resource_nodes WHERE cell_id = ?", (cell_id,))
+            node_row = cur.fetchone()
+            if not node_row:
+                first_node = node_types[0]
+                cur.execute('''
+                    INSERT INTO resource_nodes (cell_id, faction_id, name, icon, description, yield_remaining, is_discovered)
+                    VALUES (?, ?, ?, ?, ?, ?, 1)
+                ''', (cell_id, faction_row['faction_id'] if faction_row else 0, first_node["name"], first_node["icon"], first_node["desc"], first_node["yield"]))
+            else:
+                curr_name = node_row['name']
+                curr_idx = next((i for i, nt in enumerate(node_types) if nt["name"] == curr_name), -1)
+                next_idx = (curr_idx + 1) % len(node_types)
+                next_node = node_types[next_idx]
+                cur.execute("DELETE FROM resource_nodes WHERE cell_id = ?", (cell_id,))
+                cur.execute('''
+                    INSERT INTO resource_nodes (cell_id, faction_id, name, icon, description, yield_remaining, is_discovered)
+                    VALUES (?, ?, ?, ?, ?, ?, 1)
+                ''', (cell_id, faction_row['faction_id'] if faction_row else 0, next_node["name"], next_node["icon"], next_node["desc"], next_node["yield"]))
+                
+        elif action == 'yield_plus' and matching_node:
+            cur.execute("UPDATE resource_nodes SET yield_remaining = yield_remaining + 50.0 WHERE cell_id = ?", (cell_id,))
+        elif action == 'yield_minus' and matching_node:
+            cur.execute("UPDATE resource_nodes SET yield_remaining = MAX(0.0, yield_remaining - 50.0) WHERE cell_id = ?", (cell_id,))
+        elif action == 'clear_node':
+            cur.execute("DELETE FROM resource_nodes WHERE cell_id = ?", (cell_id,))
+            
+        # Cult / Fringe Adjustments (Applied to the clicked cell locally)
+        elif action.startswith('cult') and (action.endswith('plus') or action.endswith('minus')):
+            idx = int(action[4]) - 1
+            if idx < len(getattr(self, 'top_cults_drawn', [])):
+                cult_name = self.top_cults_drawn[idx]
+                cur.execute("SELECT cults_json FROM cells WHERE id = ?", (cell_id,))
+                cults_inf = json.loads(cur.fetchone()[0])
+                current_val = cults_inf.get(cult_name, 0.0)
+                new_val = min(1.0, max(0.0, current_val + 0.05 if action.endswith('plus') else current_val - 0.05))
+                cults_inf[cult_name] = round(new_val, 2)
+                cur.execute("UPDATE cells SET cults_json = ? WHERE id = ?", (json.dumps(cults_inf), cell_id))
+                
+        elif action.startswith('fringe') and (action.endswith('plus') or action.endswith('minus')):
+            idx = int(action[6]) - 1
+            if idx < len(getattr(self, 'top_fringe_drawn', [])):
+                fringe_name = self.top_fringe_drawn[idx]
+                cur.execute("SELECT fringe_json FROM cells WHERE id = ?", (cell_id,))
+                fringe_inf = json.loads(cur.fetchone()[0])
+                current_val = fringe_inf.get(fringe_name, 0.0)
+                new_val = min(1.0, max(0.0, current_val + 0.05 if action.endswith('plus') else current_val - 0.05))
+                fringe_inf[fringe_name] = round(new_val, 2)
+                cur.execute("UPDATE cells SET fringe_json = ? WHERE id = ?", (json.dumps(fringe_inf), cell_id))
+                
+        elif action == 'inject_cult':
+            prisons = ["Tiraton", "Stagus", "Metrion", "Aurgenas", "Vecelo", "Lophex", "Tyrustis", "Opecten", "Carulkem", "Termhill", "Virantor", "Gavusrix", "Wardens"]
+            cur.execute("SELECT cults_json FROM cells WHERE id = ?", (cell_id,))
+            cults_inf = json.loads(cur.fetchone()[0])
+            for p in prisons:
+                if cults_inf.get(p, 0.0) == 0.0:
+                    cults_inf[p] = 0.10
+                    break
+            cur.execute("UPDATE cells SET cults_json = ? WHERE id = ?", (json.dumps(cults_inf), cell_id))
+            
+        elif action == 'inject_fringe':
+            cur.execute("SELECT fringe_json FROM cells WHERE id = ?", (cell_id,))
+            fringe_inf = json.loads(cur.fetchone()[0])
+            for f in FRINGE_NAMES:
+                if fringe_inf.get(f, 0.0) == 0.0:
+                    fringe_inf[f] = 0.10
+                    break
+            cur.execute("UPDATE cells SET fringe_json = ? WHERE id = ?", (json.dumps(fringe_inf), cell_id))
+            
+        conn.commit()
+        cur.close()
+        conn.close()
+        
+        # Sync and restore selections
+        self.sync_data()
+        for cell in self.cells:
+            if cell['id'] == cell_id:
+                self.selected_cell = cell
+                break
+
+    def handle_click(self, pos):
+        """Processes button clicks in the sidebar and routes editor clicks."""
+        # 1. Check Tab Clicks
+        if self.selected_cell and hasattr(self, 'tabs'):
+            for t_name, rect in self.tabs.items():
+                if rect.collidepoint(pos):
+                    self.active_tab = t_name
+                    return
+                    
+        # 2. Check selected cell editor actions
+        if self.selected_cell and hasattr(self, 'edit_buttons'):
+            for name, rect in self.edit_buttons.items():
+                if rect.collidepoint(pos):
+                    self.handle_edit_action(name)
+                    return
+                    
+        # 3. Check main sidebar buttons
+        for name, rect in self.buttons.items():
+            if rect.collidepoint(pos):
+                if name == 'gen':
+                    from map_generator import generate_world
+                    generate_world(seed=42, num_cells=1000)
+                    if self.model:
+                        from simulation_engine import TTRPGWorldModel
+                        self.model = TTRPGWorldModel()
+                    self.selected_cell = None
+                    self.sync_data()
+                    print("Generated and synced fresh random world.")
+                elif name == 'load_ostraka':
+                    from map_generator import import_ostraka_map
+                    success = import_ostraka_map()
+                    if success:
+                        if self.model:
+                            from simulation_engine import TTRPGWorldModel
+                            self.model = TTRPGWorldModel()
+                        self.selected_cell = None
+                        self.sync_data()
+                        print("Loaded and synced Ostraka world map.")
+                    else:
+                        print("Failed to load Ostraka world map.")
+                elif name == 'tick':
+                    if self.model:
+                        self.model.step()
+                        self.sync_data()
+                    else:
+                        print("Warning: Simulation Model not running.")
+                elif name == 'auto':
+                    self.autoplay = not self.autoplay
+                    self.last_tick_time = pygame.time.get_ticks()
+                    print(f"Autoplay toggled: {self.autoplay}")
+                elif name == 'layer':
+                    layers = ['biomes', 'elevation', 'factions', 'settlements', 'cults', 'fringe', 'ecology', 'resources']
+                    idx = layers.index(self.active_layer)
+                    self.active_layer = layers[(idx + 1) % len(layers)]
+                    self.sync_data()
+                    print(f"Visual layer switched to: {self.active_layer}")
+                elif name == 'sync':
+                    self.sync_data()
+                    print("Data synchronized from database.")
+
+    def run(self):
+        """Main Pygame Loop."""
+        clock = pygame.time.Clock()
+        running = True
+        
+        while running:
+            # Handle events
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 1: # Left click
+                        if event.pos[0] >= 960: # Sidebar click
+                            self.handle_click(event.pos)
+                        else: # Drag start
+                            self.dragging = True
+                            self.dragged = False
+                            self.drag_start_x, self.drag_start_y = event.pos
+                    elif event.button == 4: # Mouse wheel scroll up
+                        self.zoom = min(40.0, self.zoom + 0.5)
+                    elif event.button == 5: # Mouse wheel scroll down
+                        self.zoom = max(1.5, self.zoom - 0.5)
+                elif event.type == pygame.MOUSEBUTTONUP:
+                    if event.button == 1:
+                        self.dragging = False
+                        if not self.dragged and event.pos[0] < 960:
+                            self.selected_cell = self.get_cell_at_pos(event.pos)
+                            if self.selected_cell:
+                                print(f"Selected cell {self.selected_cell['id']} (Biome: {self.selected_cell['biome']})")
+                elif event.type == pygame.MOUSEMOTION:
+                    if self.dragging:
+                        mx, my = event.pos
+                        dx = mx - self.drag_start_x
+                        dy = my - self.drag_start_y
+                        if abs(dx) > 2 or abs(dy) > 2:
+                            self.dragged = True
+                        self.pan_x += dx
+                        self.pan_y += dy
+                        self.drag_start_x, self.drag_start_y = mx, my
+            
+            # Autoplay ticks (run at most once every 3.0 seconds to keep UI responsive)
+            if self.autoplay and self.model:
+                now = pygame.time.get_ticks()
+                if now - self.last_tick_time >= 3000:
+                    self.model.step()
+                    self.sync_data()
+                    self.last_tick_time = now
+                
+            # Render frame
+            self.screen.fill((20, 20, 20))
+            self.draw_map()
+            self.draw_tooltip()
+            self.draw_sidebar()
+            pygame.display.flip()
+            
+            clock.tick(30)
+            
+        pygame.quit()

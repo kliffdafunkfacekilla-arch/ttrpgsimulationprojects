@@ -1,0 +1,784 @@
+import os
+import sys
+import random
+import argparse
+import asyncio
+from typing import Optional, List, Dict, Any
+from sqlalchemy.orm import Session
+from sqlalchemy.orm.attributes import flag_modified
+from sqlalchemy.future import select
+
+# Ensure the workspace directory is in the Python path for clean imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from backend.database import SessionLocal, IS_ASYNC
+from backend.models import HexState, WorldSettings
+from backend.logger import SimulationLogger
+from backend import chemistry
+from backend import rpg_system
+
+# Set seed for reproducibility during simulation dry-runs
+random.seed(42)
+
+def clamp(val: float, min_val: float, max_val: float) -> float:
+    """Clamps a floating point value within a defined range."""
+    return max(min(val, max_val), min_val)
+
+def process_tick(
+    hex_state: HexState,
+    settings: Optional[WorldSettings] = None,
+    session: Optional[Session] = None,
+    logger: Optional[SimulationLogger] = None
+) -> int:
+    """
+    Processes a single-step simulation tick on a HexState instance.
+    Advances the tick_count by 1 (1 hour), handles local economic production,
+    mid-night demographic food consumption, covert espionage sabotage,
+    military siege resolution and conquests, and individual entity metabolic loops.
+    
+    Returns:
+        The number of entities processed inside this hex state.
+    """
+    # 1. Upgrade stockpiles to support tags dynamically (backward-compatible)
+    chemistry.upgrade_all_stockpiles(hex_state)
+
+    # Initialize local_scars if not already a dictionary
+    if not isinstance(hex_state.local_scars, dict):
+        hex_state.local_scars = {}
+
+    # Event tags accumulator for systemic chemistry engine
+    event_tags = []
+
+    # Pull physical multipliers from adjustable world settings
+    magic_flow = settings.global_magic_flow if settings else 1.0
+    metabolism_rate = settings.global_metabolism_rate if settings else 1.0
+    crop_yield_mult = settings.base_crop_yield if settings else 1.0
+    species_mods = settings.species_modifiers if settings else {}
+    faction_mods = settings.faction_modifiers if settings else {}
+
+    # 1. The Global Tick (Layer 4 & 3)
+    # --------------------------------
+    hex_state.tick_count += 1
+    hour = hex_state.tick_count % 24
+    
+    # Classify current time block
+    if 6 <= hour < 18:
+        time_block = "ON_SHIFT"      # Hours 06:00 - 17:59
+    elif 18 <= hour < 21:
+        time_block = "LEISURE"       # Hours 18:00 - 20:59
+    elif hour == 21:
+        time_block = "DEVOTION"      # Hours 21:00 - 21:59
+    else:
+        time_block = "REST"          # Hours 22:00 - 05:59
+
+    # 1.A Supernatural Aetheric Chaos Storms
+    # ---------------------------------------
+    # Chaos storms strike wet/unstable regions based on high leak rates, scaled by magic flow settings
+    if hex_state.aetheric_leak_rate > 0.30 and random.random() < 0.05:
+        if random.random() < (0.2 * magic_flow):
+            # Storm strikes! Generate CORRUPT and AETHERIC catalyst tags
+            event_tags.extend(["CORRUPT", "AETHERIC"])
+            hex_state.macro_stability = round(clamp(hex_state.macro_stability - 0.15, 0.0, 1.0), 2)
+            
+            # Drain sanity of all citizens inside the affected cell via composure
+            for ent in hex_state.local_entities:
+                if "rpg_stats" not in ent or "dynamic_pools" not in ent or "magic_profile" not in ent:
+                    traits_dict = {
+                        "personality": ent.get("dna_profile", {}).get("personality", "PEACEFUL"),
+                        "interest": ent.get("dna_profile", {}).get("interest", "SURVIVAL")
+                    }
+                    entity_type = "HERO" if ent.get("is_hero") else "CITIZEN"
+                    rpg_stats, magic_profile = rpg_system.generate_stats(
+                        ent.get("biological_type", "Mouse"),
+                        ent.get("profession", "Farmer"),
+                        entity_type=entity_type,
+                        traits=traits_dict
+                    )
+                    if "rpg_stats" not in ent:
+                        ent["rpg_stats"] = rpg_stats
+                    if "magic_profile" not in ent:
+                        ent["magic_profile"] = magic_profile
+                    if "dynamic_pools" not in ent:
+                        ent["dynamic_pools"] = rpg_system.calculate_derived_pools(ent["rpg_stats"])
+
+                pools = ent["dynamic_pools"]
+                comp_max = pools.get("composure_max", 10)
+                drain = max(1, int(comp_max * 0.15))
+                pools["composure"] = max(0, pools.get("composure", comp_max) - drain)
+
+                m_state = ent.setdefault("metabolic_state", {"hunger_level": 0, "sanity_score": 1.0, "health": 100})
+                m_state["sanity_score"] = round(pools["composure"] / comp_max, 2)
+                
+            if session and logger:
+                logger.log_event(
+                    session=session,
+                    tick=hex_state.tick_count,
+                    hex_id=hex_state.hex_id,
+                    event_type="STORM",
+                    severity=3,
+                    summary=(
+                        f"An aetheric chaos storm struck {hex_state.hex_id} due to a critical leak rate of "
+                        f"{hex_state.aetheric_leak_rate:.2f} (Magic Flow: {magic_flow:.2f})."
+                    ),
+                    current_entities=hex_state.local_entities
+                )
+
+    # 1.B Dynamic Climate / Temperature Checks (Blizzard Trigger)
+    # -----------------------------------------------------------
+    if hex_state.temperature <= 0.0:
+        event_tags.append("FREEZE")
+        # 10% chance of triggering an active Blizzard storm event if moisture is high
+        if hex_state.moisture > 0.50 and random.random() < 0.10:
+            if session and logger:
+                logger.log_event(
+                    session=session,
+                    tick=hex_state.tick_count,
+                    hex_id=hex_state.hex_id,
+                    event_type="STORM",
+                    severity=3,
+                    summary=f"A harsh freezing blizzard rolled through {hex_state.hex_id}, generating freeze catalyst reactions.",
+                    current_entities=hex_state.local_entities
+                )
+
+    # 2. Local Economics & Logistics (Layer 2)
+    # ----------------------------------------
+    # Baseline hourly production during ON_SHIFT working hours
+    if time_block == "ON_SHIFT":
+        # Timber yield (forests: wet regions)
+        if hex_state.moisture > 0.5:
+            yield_timber = random.randint(1, 3)
+            curr = chemistry.get_stock(hex_state.stockpiles, "timber")
+            # If timber production is HALTED by FREEZE, skip growth
+            if "HALTED" not in hex_state.stockpiles.get("timber", {}).get("tags", []):
+                chemistry.set_stock(hex_state.stockpiles, "timber", curr + yield_timber)
+            
+        # Iron yield (mountains: elevated regions)
+        if hex_state.elevation > 0.5:
+            yield_iron = random.randint(1, 2)
+            curr = chemistry.get_stock(hex_state.stockpiles, "raw_iron")
+            if "HALTED" not in hex_state.stockpiles.get("raw_iron", {}).get("tags", []):
+                chemistry.set_stock(hex_state.stockpiles, "raw_iron", curr + yield_iron)
+            
+        # Grain yield (fertile plains: wet, warm lowlands), boosted by global crop yield settings
+        if hex_state.elevation < 0.5 and hex_state.moisture > 0.4:
+            yield_grain = int(random.randint(2, 4) * crop_yield_mult)
+            curr = chemistry.get_stock(hex_state.stockpiles, "grain")
+            if "HALTED" not in hex_state.stockpiles.get("grain", {}).get("tags", []):
+                chemistry.set_stock(hex_state.stockpiles, "grain", curr + yield_grain)
+
+    # Daily consumption check (triggers exactly at midnight, Hour 0)
+    if hour == 0:
+        total_grain_needed = 0.0
+        
+        # Compute dynamic consumption demands by evaluating custom species modifiers
+        for species_name, count in hex_state.demographics.items():
+            if count <= 0:
+                continue
+            singular_species = species_name[:-1] if species_name.endswith('s') else species_name
+            
+            # Species-specific food need modifiers (default: 1.0)
+            species_mult = 1.0
+            if species_mods and singular_species in species_mods:
+                species_mult = species_mods[singular_species].get("food_need", 1.0)
+                
+            # Faction-specific food need modifiers (default: 1.0)
+            faction_mult = 1.0
+            if faction_mods and hex_state.faction_id in faction_mods:
+                faction_mult = faction_mods[hex_state.faction_id].get("food_need", 1.0)
+                
+            # Compute total demand
+            total_grain_needed += (count * 0.1) * metabolism_rate * species_mult * faction_mult
+            
+        grain_needed = max(1, int(total_grain_needed))
+        grain_available = chemistry.get_stock(hex_state.stockpiles, "grain")
+        
+        if grain_available >= grain_needed:
+            # Satisfactory consumption
+            chemistry.set_stock(hex_state.stockpiles, "grain", grain_available - grain_needed)
+            # Boost happy meter due to secure food stockpiles
+            hex_state.urban_meters["happy_meter"] = round(clamp(hex_state.urban_meters.get("happy_meter", 0.5) + 0.02, 0.0, 1.0), 2)
+        else:
+            # Shortage occurs: consume all remaining, then trigger starvation penalty and Famine log
+            chemistry.set_stock(hex_state.stockpiles, "grain", 0)
+            hex_state.urban_meters["happy_meter"] = round(clamp(hex_state.urban_meters.get("happy_meter", 0.5) - 0.10, 0.0, 1.0), 2)
+            hex_state.urban_meters["crime_rating"] = round(clamp(hex_state.urban_meters.get("crime_rating", 0.1) + 0.05, 0.0, 1.0), 2)
+            
+            if session and logger:
+                logger.log_event(
+                    session=session,
+                    tick=hex_state.tick_count,
+                    hex_id=hex_state.hex_id,
+                    event_type="FAMINE",
+                    severity=4,
+                    summary=(
+                        f"Famine occurred in {hex_state.hex_id}: grain stockpile depleted to 0. "
+                        f"Needed: {grain_needed}, Available: {grain_available}."
+                    ),
+                    current_entities=hex_state.local_entities
+                )
+
+    # 3. Layer 3 Grand Strategy Matrix (Espionage & Warfare)
+    # ------------------------------------------------------
+    
+    # 3.A Espionage Sabotage Loop
+    if hex_state.covert_networks and isinstance(hex_state.covert_networks, dict) and "infiltrated_by" in hex_state.covert_networks:
+        spy_faction = hex_state.covert_networks["infiltrated_by"]
+        intel_level = hex_state.covert_networks.get("intel_level", 0.5)
+        crime_rate = hex_state.urban_meters.get("crime_rating", 0.1)
+        
+        # Roll for successful covert operation based on local security weakness (crime rating)
+        if random.random() < (0.50 + crime_rate):
+            # Select sabotage profile
+            if random.random() < 0.50:
+                # Option 1: Siphon military stockpiles
+                stolen_type = "weapons" if random.random() < 0.50 else "steel"
+                current_stock = chemistry.get_stock(hex_state.stockpiles, stolen_type)
+                if current_stock > 0:
+                    stolen = min(current_stock, random.randint(1, 3))
+                    chemistry.set_stock(hex_state.stockpiles, stolen_type, current_stock - stolen)
+                    
+                    # If weapons are stolen to 0, barracks is ruined
+                    if stolen_type == "weapons" and chemistry.get_stock(hex_state.stockpiles, stolen_type) == 0:
+                        hex_state.local_scars.setdefault("ruins", [])
+                        if "barracks" not in hex_state.local_scars["ruins"]:
+                            hex_state.local_scars["ruins"].append("barracks")
+                            flag_modified(hex_state, "local_scars")
+            else:
+                # Option 2: Dissolve stability to fuel a rebellion
+                hex_state.macro_stability = round(clamp(hex_state.macro_stability - 0.10, 0.0, 1.0), 2)
+                
+                # Check for full scale rebellion triggering event
+                if hex_state.macro_stability < 0.20:
+                    if session and logger:
+                        logger.log_event(
+                            session=session,
+                            tick=hex_state.tick_count,
+                            hex_id=hex_state.hex_id,
+                            event_type="REBELLION",
+                            severity=4,
+                            summary=f"Rebellion sparked in {hex_state.hex_id} due to extreme instigative sabotage (Intel: {intel_level:.2f}).",
+                            current_entities=hex_state.local_entities
+                        )
+
+    # 3.B Tactical Warfare & Siege Loop
+    if hex_state.military_engagements and isinstance(hex_state.military_engagements, dict) and "invading_faction" in hex_state.military_engagements:
+        engagement = hex_state.military_engagements
+        invader = engagement.get("invading_faction")
+        attacker_strength = engagement.get("attacker_strength", 0)
+        
+        if attacker_strength > 0:
+            # Active Siege combat generates KINETIC catalyst tag
+            event_tags.append("KINETIC")
+            # 30% chance of sparking fires (IGNITE catalyst) during combat
+            if random.random() < 0.30:
+                event_tags.append("IGNITE")
+
+            # Check geographical modifiers (Layer 4 environment check)
+            is_freezing = hex_state.temperature <= 0.0
+            
+            # Check logistical reserves (Layer 2 stockpiles check)
+            weapons_stock = chemistry.get_stock(hex_state.stockpiles, "weapons")
+            has_weapons = weapons_stock > 0
+            
+            # Forcibly reduce weapons stockpile during active siege combat
+            if has_weapons:
+                # Defending unit consumes 1 weapon stockpile to fight
+                chemistry.set_stock(hex_state.stockpiles, "weapons", weapons_stock - 1)
+                if chemistry.get_stock(hex_state.stockpiles, "weapons") == 0:
+                    # Weapons depleted! Mark barracks as ruined
+                    hex_state.local_scars.setdefault("ruins", [])
+                    if "barracks" not in hex_state.local_scars["ruins"]:
+                        hex_state.local_scars["ruins"].append("barracks")
+                        flag_modified(hex_state, "local_scars")
+            else:
+                # Already out of weapons during siege. Defenses are crumbling: mark barracks as ruined
+                hex_state.local_scars.setdefault("ruins", [])
+                if "barracks" not in hex_state.local_scars["ruins"]:
+                    hex_state.local_scars["ruins"].append("barracks")
+                    flag_modified(hex_state, "local_scars")
+
+            # Siege damage to grain stores (Raid/Pillage effect)
+            grain_stock = chemistry.get_stock(hex_state.stockpiles, "grain")
+            if grain_stock > 0:
+                pillage = min(grain_stock, random.randint(1, 4))
+                chemistry.set_stock(hex_state.stockpiles, "grain", grain_stock - pillage)
+                if chemistry.get_stock(hex_state.stockpiles, "grain") == 0:
+                    # Grain depleted via siege raid! Mark silo as ruined
+                    hex_state.local_scars.setdefault("ruins", [])
+                    if "silo" not in hex_state.local_scars["ruins"]:
+                        hex_state.local_scars["ruins"].append("silo")
+                        flag_modified(hex_state, "local_scars")
+
+            # 20% chance of siege collateral setting terrain on fire
+            if random.random() < 0.20:
+                hex_state.local_scars["terrain_damage"] = "burned"
+                flag_modified(hex_state, "local_scars")
+            
+            # Base casualties calculations
+            attacker_losses = random.randint(4, 12)
+            defender_losses = random.randint(4, 12)
+            
+            # Apply modifiers
+            if is_freezing:
+                attacker_losses = int(attacker_losses * 1.20)  # Freezing increases attacker attrition by 20%
+            if not has_weapons:
+                defender_losses = int(defender_losses * 2.00)   # Starved of weapons, defender casualties double
+                
+            # Apply attacker casualty reduction
+            new_attacker_strength = max(0, attacker_strength - attacker_losses)
+            engagement["attacker_strength"] = new_attacker_strength
+            engagement["siege_duration"] = engagement.get("siege_duration", 0) + 1
+            
+            # Apply defender casualty reduction to demographics
+            pop_loss_applied = 0
+            species_keys = list(hex_state.demographics.keys())
+            random.shuffle(species_keys)
+            for k in species_keys:
+                if pop_loss_applied >= defender_losses:
+                    break
+                pop_count = hex_state.demographics[k]
+                if pop_count > 0:
+                    sub = min(pop_count, defender_losses - pop_loss_applied)
+                    hex_state.demographics[k] = pop_count - sub
+                    pop_loss_applied += sub
+                    
+            # Delete physical soldiers/guards from Level 1 entities array (simulating combat death)
+            dead_entities_target = min(2, defender_losses // 4 + 1)
+            killed_count = 0
+            surviving_entities = []
+            
+            for ent in hex_state.local_entities:
+                prof = ent.get("profession", "").upper()
+                if ent.get("is_hero", False):
+                    surviving_entities.append(ent)
+                    continue
+                if (prof in ["GUARD", "SOLDIER"]) and killed_count < dead_entities_target:
+                    killed_count += 1
+                    continue
+                surviving_entities.append(ent)
+                
+            hex_state.local_entities = surviving_entities
+            
+            # Check Conquest Success conditions
+            new_total_pop = sum(hex_state.demographics.values())
+            
+            if new_total_pop <= 0 or hex_state.macro_stability <= 0.0 or new_attacker_strength <= 0:
+                if new_attacker_strength > 0 and (new_total_pop <= 0 or hex_state.macro_stability <= 0.0):
+                    # SUCCESSFUL CONQUEST!
+                    summary_text = (
+                        f"Successful conquest of {hex_state.hex_id} by {invader}. "
+                        f"Siege resolved after {engagement.get('siege_duration', 1)} hour(s)."
+                    )
+                    hex_state.faction_id = invader
+                    hex_state.macro_stability = 0.80
+                    hex_state.military_engagements = {}
+                    
+                    # Defending hex loses the siege: mark ALL buildings as ruined and burn terrain
+                    hex_state.local_scars["terrain_damage"] = "burned"
+                    hex_state.local_scars.setdefault("ruins", [])
+                    for building in ["silo", "barracks", "lumber_mill"]:
+                        if building not in hex_state.local_scars["ruins"]:
+                            hex_state.local_scars["ruins"].append(building)
+                    flag_modified(hex_state, "local_scars")
+                    
+                    # Reset demographics to representing new occupation force
+                    occupying_species = "Bears" if "Ursine" in invader else "Wolves" if "River" in invader or "Wildlands" in invader else "Mice"
+                    hex_state.demographics = {occupying_species: new_attacker_strength // 2}
+                    
+                    # Seed new occupation soldier entities
+                    hex_state.local_entities = []
+                    for i in range(1, 3):
+                        personality = "DISCIPLINED"
+                        interest = "MILITARY"
+                        traits_dict = {"personality": personality, "interest": interest}
+                        rpg_stats, magic_profile = rpg_system.generate_stats(
+                            occupying_species[:-1] if occupying_species.endswith('s') else occupying_species,
+                            "Soldier",
+                            entity_type="CITIZEN",
+                            traits=traits_dict
+                        )
+                        dynamic_pools = rpg_system.calculate_derived_pools(rpg_stats)
+                        
+                        hex_state.local_entities.append({
+                            "entity_id": f"{hex_state.hex_id}_ent_occupier_{i}",
+                            "biological_type": occupying_species[:-1] if occupying_species.endswith('s') else occupying_species,
+                            "profession": "Soldier",
+                            "dna_profile": {"personality": personality, "interest": interest, "fears": ["REBELLION"]},
+                            "metabolic_state": {"hunger_level": 5, "sanity_score": 0.95, "health": 100},
+                            "action_state": "WORKING",
+                            "rpg_stats": rpg_stats,
+                            "magic_profile": magic_profile,
+                            "dynamic_pools": dynamic_pools
+                        })
+                    
+                    if session and logger:
+                        logger.log_event(
+                            session=session,
+                            tick=hex_state.tick_count,
+                            hex_id=hex_state.hex_id,
+                            event_type="SIEGE",
+                            severity=5,
+                            summary=summary_text,
+                            current_entities=hex_state.local_entities
+                        )
+                else:
+                    # Infiltration repelled or armies mutually annihilated: wipe siege
+                    summary_text = f"Invasion siege of {hex_state.hex_id} repelled or attacker force annihilated."
+                    hex_state.military_engagements = {}
+                    
+                    if session and logger:
+                        logger.log_event(
+                            session=session,
+                            tick=hex_state.tick_count,
+                            hex_id=hex_state.hex_id,
+                            event_type="SIEGE",
+                            severity=3,
+                            summary=summary_text,
+                            current_entities=hex_state.local_entities
+                        )
+
+    # 4. Resolve Systemic Tag-Based Chemistry Interactions (Systemic Chemistry Engine)
+    # ----------------------------------------------------------------------------
+    chemistry.resolve_interactions(event_tags, hex_state)
+
+    # 5. Entity Metabolism & Scheduling (Layer 1)
+    # -------------------------------------------
+    processed_entities = 0
+    for ent in hex_state.local_entities:
+        processed_entities += 1
+        
+        # Base schedule mapping based on clock time block
+        if time_block == "ON_SHIFT":
+            base_action = "WORKING"
+        elif time_block == "LEISURE":
+            base_action = "RELAXING"
+        elif time_block == "DEVOTION":
+            base_action = "PRAYING"
+        else:
+            base_action = "SLEEPING"
+            
+        # Hero Command Override Scheduling Intercept
+        is_hero = ent.get("is_hero", False)
+        active_directive = ent.get("active_directive", "AUTO")
+        
+        if is_hero and active_directive != "AUTO":
+            base_action = active_directive
+            
+        metabolic = ent.setdefault("metabolic_state", {"hunger_level": 0, "sanity_score": 1.0, "health": 100})
+        
+        # Lazily guarantee RPG stats and pools exist inside citizen/occupier structures
+        if "rpg_stats" not in ent or "dynamic_pools" not in ent or "magic_profile" not in ent:
+            traits_dict = {
+                "personality": ent.get("dna_profile", {}).get("personality", "PEACEFUL"),
+                "interest": ent.get("dna_profile", {}).get("interest", "SURVIVAL")
+            }
+            entity_type = "HERO" if is_hero else "CITIZEN"
+            rpg_stats, magic_profile = rpg_system.generate_stats(
+                ent.get("biological_type", "Mouse"),
+                ent.get("profession", "Farmer"),
+                entity_type=entity_type,
+                traits=traits_dict
+            )
+            if "rpg_stats" not in ent:
+                ent["rpg_stats"] = rpg_stats
+            if "magic_profile" not in ent:
+                ent["magic_profile"] = magic_profile
+            if "dynamic_pools" not in ent:
+                ent["dynamic_pools"] = rpg_system.calculate_derived_pools(ent["rpg_stats"])
+
+        pools = ent["dynamic_pools"]
+        rpg_stats = ent["rpg_stats"]
+        
+        # Waking hours burn energy, increasing hunger
+        if base_action not in ["SLEEPING", "RESTING", "RELAXING"]:
+            singular_species = ent.get("biological_type", "Mouse")
+            species_mult = 1.0
+            if species_mods and singular_species in species_mods:
+                species_mult = species_mods[singular_species].get("food_need", 1.0)
+                
+            hunger_inc = int(random.randint(1, 3) * metabolism_rate * species_mult)
+            metabolic["hunger_level"] = min(100, metabolic.get("hunger_level", 0) + max(1, hunger_inc))
+
+        # Check hunger thresholds for starvation overrides
+        is_starving = False
+        if is_hero:
+            if metabolic["hunger_level"] > 90:
+                is_starving = True
+        else:
+            if metabolic["hunger_level"] > 80:
+                is_starving = True
+                
+        if is_starving:
+            base_action = "SEEKING_FOOD"
+            # Starvation inflicts Composure damage (Mental drain)
+            pools["composure"] = max(0, pools.get("composure", 0) - 1)
+            
+            # Resource-Metabolic integration: consume grain directly from stockpiles if available
+            grain_stock = chemistry.get_stock(hex_state.stockpiles, "grain")
+            if grain_stock > 0:
+                chemistry.set_stock(hex_state.stockpiles, "grain", grain_stock - 1)
+                metabolic["hunger_level"] = 0
+                # Eating restores composure
+                pools["composure"] = min(pools.get("composure_max", 10), pools.get("composure", 0) + 2)
+                base_action = "EATING"
+
+        # Action-Based Stamina and Focus Pool depletion / regeneration loops
+        if base_action == "WORKING":
+            manual_labor_profs = ["MINER", "GUARD", "WOODCUTTER", "FARMER", "WEAVER", "TRADER", "SOLDIER", "HUNTER"]
+            ent_prof_upper = ent.get("profession", "").upper()
+            if ent_prof_upper in manual_labor_profs:
+                # Burn stamina (physical labor)
+                pools["stamina"] = max(-10, pools.get("stamina", 0) - random.randint(1, 3))
+            elif ent_prof_upper == "SCHOLAR":
+                # Burn focus (mental labor)
+                pools["focus"] = max(-10, pools.get("focus", 0) - random.randint(1, 3))
+        elif base_action == "SEEKING_FOOD":
+            pools["stamina"] = max(-10, pools.get("stamina", 0) - random.randint(1, 3))
+        elif base_action == "PRAYING":
+            pools["focus"] = max(-10, pools.get("focus", 0) - random.randint(1, 3))
+        elif base_action in ["SLEEPING", "RESTING", "RELAXING"]:
+            stamina_max = pools.get("stamina_max", 10)
+            focus_max = pools.get("focus_max", 10)
+            # Regenerate stamina and focus back towards max capacity
+            pools["stamina"] = min(stamina_max, pools.get("stamina", 0) + random.randint(2, 4))
+            pools["focus"] = min(focus_max, pools.get("focus", 0) + random.randint(2, 4))
+
+        # Handle Pool Breakdowns & Penalties
+        # Stamina Breakdown -> Exhaustion: sets to 0 and deducts 1 from HP
+        if pools.get("stamina", 0) < 0:
+            pools["stamina"] = 0
+            pools["hp"] = max(0, pools.get("hp", 0) - 1)
+            
+        # Focus Breakdown -> Mental Breakdown: sets to 0 and deducts 1 from Composure
+        if pools.get("focus", 0) < 0:
+            pools["focus"] = 0
+            pools["composure"] = max(0, pools.get("composure", 0) - 1)
+
+        # Secure clamps to avoid pool overflow/underflow
+        hp_max = pools.get("hp_max", 15)
+        composure_max = pools.get("composure_max", 15)
+        pools["hp"] = clamp(pools.get("hp", hp_max), 0, hp_max)
+        pools["composure"] = clamp(pools.get("composure", composure_max), 0, composure_max)
+
+        # Sync legacy sanity_score & health to the new physical and mental pools
+        if composure_max > 0:
+            metabolic["sanity_score"] = round(pools["composure"] / composure_max, 2)
+        else:
+            metabolic["sanity_score"] = 1.0
+
+        if hp_max > 0:
+            metabolic["health"] = int((pools["hp"] / hp_max) * 100)
+        else:
+            metabolic["health"] = 100
+
+        ent["action_state"] = base_action
+        
+    # Explicitly flag modified nested JSONB columns for deep mutation commit tracking
+    flag_modified(hex_state, "stockpiles")
+    flag_modified(hex_state, "urban_meters")
+    flag_modified(hex_state, "demographics")
+    flag_modified(hex_state, "military_engagements")
+    flag_modified(hex_state, "covert_networks")
+    flag_modified(hex_state, "local_entities")
+    flag_modified(hex_state, "local_scars")
+
+    return processed_entities
+
+def run_dry_run(ticks: int = 24) -> None:
+    """
+    Executes a fully localized dry-run simulation in memory.
+    Builds mock hexes with specific properties and processes them across a tick cycle,
+    printing clear delta traces to show economics and entity dynamics in action.
+    """
+    print("\n=======================================================")
+    print("        OSTRAKA DRY RUN SIMULATION MODULE")
+    print("=======================================================")
+    print(f"Executing dry-run for {ticks} ticks (representing {ticks} hours)...")
+    
+    # Instantiate 3 highly distinct mock hex states for demonstration
+    hexes = [
+        HexState(
+            hex_id="hex_0001",
+            tick_count=0,
+            elevation=0.85,    # Highlands (Iron mine)
+            moisture=0.30,     # Dry
+            temperature=-5.0,  # Freezing Cold (Warfare modifier active!)
+            faction_id="Ursine_Hegemony",
+            macro_stability=0.85,
+            aetheric_leak_rate=0.15,
+            urban_meters={"happy_meter": 0.70, "crime_rating": 0.05},
+            stockpiles={"timber": 100, "raw_iron": 50, "grain": 20, "steel": 10, "weapons": 5},
+            demographics={"Bears": 200, "Wolves": 100, "Mice": 20},
+            military_engagements={"invading_faction": "Heartland_Alliance", "attacker_strength": 120, "siege_duration": 0},
+            covert_networks={"infiltrated_by": "River_Folk", "intel_level": 0.8},
+            local_entities=[
+                {
+                    "entity_id": "hex_0001_ent_01",
+                    "biological_type": "Bear",
+                    "profession": "Guard",
+                    "dna_profile": {"personality": "BRAVE", "interest": "MILITARY", "fears": ["DECAY"]},
+                    "metabolic_state": {"hunger_level": 10, "sanity_score": 0.90, "health": 100},
+                    "action_state": "IDLE"
+                }
+            ]
+        ),
+        HexState(
+            hex_id="hex_0002",
+            tick_count=0,
+            elevation=0.15,    # Lowlands
+            moisture=0.75,     # Fertile wet plain
+            temperature=22.0,  # Warm
+            faction_id="Heartland_Alliance",
+            macro_stability=0.90,
+            aetheric_leak_rate=0.08,
+            urban_meters={"happy_meter": 0.85, "crime_rating": 0.02},
+            stockpiles={"timber": 200, "raw_iron": 10, "grain": 40, "steel": 5, "weapons": 0}, # No weapons! Defender casualties double
+            demographics={"Mice": 20, "Bears": 5, "Wolves": 2},
+            military_engagements={"invading_faction": "Ursine_Hegemony", "attacker_strength": 250, "siege_duration": 0}, # Invasion targeting low pop
+            covert_networks={},
+            local_entities=[
+                {
+                    "entity_id": "hex_0002_ent_01",
+                    "biological_type": "Mouse",
+                    "profession": "Farmer",
+                    "dna_profile": {"personality": "DILIGENT", "interest": "THE_ARTS", "fears": ["FAMINE"]},
+                    "metabolic_state": {"hunger_level": 15, "sanity_score": 0.95, "health": 100},
+                    "action_state": "IDLE"
+                }
+            ]
+        ),
+        HexState(
+            hex_id="hex_0003",
+            tick_count=0,
+            elevation=0.20,
+            moisture=0.10,     # Dry wasteland
+            temperature=35.0,  # Hot
+            faction_id=None,   # Wild
+            macro_stability=0.35,
+            aetheric_leak_rate=0.75,
+            urban_meters={"happy_meter": 0.40, "crime_rating": 0.50},
+            stockpiles={"timber": 10, "raw_iron": 5, "grain": 3, "steel": 0},  # Barely any food
+            demographics={"Wolves": 120, "Bears": 30, "Mice": 10},
+            military_engagements={},
+            covert_networks={},
+            local_entities=[
+                {
+                    "entity_id": "hex_0003_ent_01",
+                    "biological_type": "Wolf",
+                    "profession": "Hunter",
+                    "dna_profile": {"personality": "CUNNING", "interest": "COMMERCE", "fears": ["PREDATORS"]},
+                    "metabolic_state": {"hunger_level": 78, "sanity_score": 0.60, "health": 100},
+                    "action_state": "IDLE"
+                }
+            ]
+        )
+    ]
+    
+    print("\n--- INITIAL STATE HIGHLIGHT ---")
+    for h in hexes:
+        ent = h.local_entities[0] if h.local_entities else None
+        print(f"[{h.hex_id}] Faction: {h.faction_id} | Stockpiles: {h.stockpiles}")
+        print(f"          Military Engagement: {h.military_engagements}")
+        print(f"          Covert Spy Networks: {h.covert_networks}")
+        print(f"          Demographics: {h.demographics}")
+        if ent:
+            print(f"          Resident: {ent['entity_id']} ({ent['biological_type']}) - Profession: {ent['profession']} | Action: {ent['action_state']}")
+        
+    print("\n--- SIMULATION TICKS EXECUTION ---")
+    for t in range(1, ticks + 1):
+        for h in hexes:
+            process_tick(h)
+        # Log checkpoints to showcase cycle block shifts
+        sample_01 = hexes[0]
+        sample_02 = hexes[1]
+        
+        if t in [1, 2, 3, 6, 12, 24] or ticks <= 5:
+            print(f"Tick {t:02d} | hex_0001 (Highlands) -> Invader Strength: {sample_01.military_engagements.get('attacker_strength', 0)} | Weapons Left: {chemistry.get_stock(sample_01.stockpiles, 'weapons')} | Stability: {sample_01.macro_stability}")
+            print(f"        | hex_0002 (Lowlands)  -> Faction Owned: {sample_02.faction_id} | Demographics: {sample_02.demographics}")
+            
+    print("\n--- FINAL STATE SUMMARY HIGHLIGHT ---")
+    for h in hexes:
+        ent = h.local_entities[0] if h.local_entities else None
+        print(f"[{h.hex_id}] Faction: {h.faction_id} | Stockpiles: {h.stockpiles}")
+        print(f"          Military Engagement: {h.military_engagements}")
+        print(f"          Demographics: {h.demographics}")
+        if ent:
+            print(f"          Resident: {ent['entity_id']} ({ent['biological_type']}) - Profession: {ent['profession']} | Action: {ent['action_state']}")
+    print("=======================================================\n")
+
+def run_simulation(ticks_count: int = 1) -> None:
+    """
+    Live simulation engine interface.
+    """
+    print(f"Connecting to database (Synchronous Engine)...")
+    session = SessionLocal()
+    try:
+        # 1. Load or Initialize Global Settings
+        settings = session.query(WorldSettings).filter_by(id=1).first()
+        if not settings:
+            settings = WorldSettings(
+                id=1, 
+                global_magic_flow=1.0, 
+                global_metabolism_rate=1.0, 
+                base_crop_yield=1.0
+            )
+            session.add(settings)
+            session.commit()
+            settings = session.query(WorldSettings).filter_by(id=1).first()
+
+        # 2. Query HexState Records
+        hex_records = session.query(HexState).all()
+        if not hex_records:
+            print("No HexState rows found in the database. Please run the world generator first:")
+            print("  python backend/world_generator.py")
+            return
+        
+        print(f"Loaded {len(hex_records)} hexes. Processing {ticks_count} tick(s)...")
+        
+        # 3. Instantiate the Simulation Logger
+        logger_inst = SimulationLogger()
+        
+        total_entities = 0
+        for _ in range(ticks_count):
+            total_entities = 0
+            for hex_record in hex_records:
+                ent_count = process_tick(
+                    hex_record, 
+                    settings=settings, 
+                    session=session, 
+                    logger=logger_inst
+                )
+                total_entities += ent_count
+                
+                # Explicitly flag modified nested JSONB columns for commit tracking
+                flag_modified(hex_record, "stockpiles")
+                flag_modified(hex_record, "urban_meters")
+                flag_modified(hex_record, "demographics")
+                flag_modified(hex_record, "military_engagements")
+                flag_modified(hex_record, "covert_networks")
+                flag_record = hex_record
+                flag_modified(hex_record, "local_entities")
+                flag_modified(hex_record, "local_scars")
+        
+        # Save all mutations
+        session.commit()
+        
+        clock_tick = hex_records[0].tick_count
+        in_game_hour = clock_tick % 24
+        print(f"Tick [{clock_tick}] completed: Advanced clock to Hour [{in_game_hour:02d}:00]. Processed {total_entities} total entities.")
+    except Exception as e:
+        session.rollback()
+        print(f"\nDatabase transaction failed: {e}")
+    finally:
+        session.close()
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Multi-Tier Simulation Engine Tick Controller")
+    parser.add_argument("--ticks", type=int, default=1, help="Number of ticks (hours) to simulate")
+    parser.add_argument("--dry-run", action="store_true", help="Run a diagnostic closed-loop simulation in memory")
+    args = parser.parse_args()
+    
+    if args.dry_run:
+        run_dry_run(ticks=args.ticks)
+    else:
+        run_simulation(ticks_count=args.ticks)

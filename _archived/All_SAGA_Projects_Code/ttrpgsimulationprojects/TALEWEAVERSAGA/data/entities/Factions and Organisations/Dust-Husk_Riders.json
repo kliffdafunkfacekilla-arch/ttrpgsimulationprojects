@@ -1,0 +1,45 @@
+{
+    "name": "Dust-Husk Riders",
+    "type": "Faction",
+    "description": "A nomadic fleet of highly specialized plant-like species that have adapted to the harsh conditions of the Dust Bowl.",
+    "members": [
+        {
+            "name": "Moon-Flower Kin",
+            "biology": "Pale, fragile, vine-like humanoids that remain dormant in protective buds during the scorching daylight hours. At night, they bloom with massive, luminescent white flowers that emit a hypnotic, nectarous scent.",
+            "function": "Spiritual and navigational heart of the fleet, responsible for determining the auspicious times for a ship to depart from port.",
+            "role": "Astrologers and navigators"
+        },
+        {
+            "name": "Cactus-Kin",
+            "biology": "Hulking, water-retentive bodies covered in iron-hard spines, making them living fortresses.",
+            "function": "Living ballast, responsible for maintaining the vessels and manning the heavy armaments.",
+            "role": "Captains and Engineers"
+        },
+        {
+            "name": "Yucca-Kin",
+            "biology": "Tall, twisted, and fibrous, with a shaggy 'bark' and spiky leaves serving as hair.",
+            "function": "Pilots, responsible for steering the ships by feeling the vibrations of the ground.",
+            "role": "Cargo Masters"
+        },
+        {
+            "name": "Tumbleweed-Kin",
+            "biology": "Sensory expertise attuned to Motion and Wind, capable of perceiving distant threats, approaching storms, and hidden opportunities carried on the desert currents.",
+            "function": "Scouts, responsible for sensing the intangible and carrying information to the fleet."
+        }
+    ],
+    "philosophy": "Trinity of Silence: a philosophy of action that emphasizes trust, instinct, and decisive action.",
+    "technology": {
+        "vessels": {
+            "Insect-Shell Ships": {
+                "description": "Built from the lightweight yet durable shells of massive insects native to the region.",
+                "function": "Lightweight yet durable vessels designed for speed and agility."
+            }
+        },
+        "weaponry": {
+            "Needle-Cannons": {
+                "description": "Heavy cannons that fire clusters of iron-hard spines, manned exclusively by the powerful Cactus-Kin.",
+                "function": "Primary armaments for close-quarters engagements."
+            }
+        }
+    }
+}

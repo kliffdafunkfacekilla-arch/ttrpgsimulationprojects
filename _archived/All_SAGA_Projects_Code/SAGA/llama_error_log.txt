@@ -1,0 +1,16 @@
+FAILED TO INIT LLAMA:
+Traceback (most recent call last):
+  File "C:\Users\krazy\Desktop\SAGA\ai_dm\director.py", line 30, in __init__
+        self._llama = Llama(
+                      ~~~~~^
+        model_path=str(self.model_path),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        verbose=True,
+        ^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\krazy\AppData\Roaming\Python\Python313\site-packages\llama_cpp\llama.py", line 208, in __init__
+    llama_cpp.llama_backend_init()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+OSError: exception: access violation reading 0x0000000000000000

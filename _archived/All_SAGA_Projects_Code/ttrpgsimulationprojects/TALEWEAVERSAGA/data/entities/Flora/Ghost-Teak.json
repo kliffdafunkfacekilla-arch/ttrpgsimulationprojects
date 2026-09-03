@@ -1,0 +1,24 @@
+{
+    "Name": "Ghost-Teak",
+    "Scientific Designation": "Tectona Spiritus",
+    "Cultivator": "Sciurini",
+    "Grow Zone": "The Crown-Layer",
+    "Properties": {
+        "Strength": 100,
+        "Weight": 0.5
+    },
+    "Industrial Utility": {
+        "Aviation": {
+            "Usage": "Airship gondolas and glider-frames"
+        },
+        "Instruments": {
+            "Usage": "Void-Lutes"
+        }
+    },
+    "Harvest": {
+        "Method": "Sky-Jacking",
+        "Risk": {
+            "Fatality Rate": 80
+        }
+    }
+}

@@ -1,0 +1,39 @@
+{
+  "system_name": "Shatterlands Standard",
+  "version": "1.0",
+  "attributes": [
+    {"id": "might", "name": "Might", "description": "Physical power and brute strength."},
+    {"id": "endurance", "name": "Endurance", "description": "Stamina and physical resilience."},
+    {"id": "vitality", "name": "Vitality", "description": "Biological health and recovery."},
+    {"id": "reflexes", "name": "Reflexes", "description": "Reaction speed and dodging."},
+    {"id": "finesse", "name": "Finesse", "description": "Precision and manual dexterity."},
+    {"id": "awareness", "name": "Awareness", "description": "Sensory perception and alertness."},
+    {"id": "intuition", "name": "Intuition", "description": "Gut feeling and social insight."},
+    {"id": "knowledge", "name": "Knowledge", "description": "Academic learning and facts."},
+    {"id": "willpower", "name": "Willpower", "description": "Mental focus and resistance."}
+  ],
+  "vitals": [
+    {
+      "id": "hp",
+      "name": "Health Points",
+      "formula": "vitality * 5 + might * 2",
+      "abbreviation": "HP"
+    },
+    {
+      "id": "stamina",
+      "name": "Stamina",
+      "formula": "endurance * 10",
+      "abbreviation": "STM"
+    },
+    {
+      "id": "focus",
+      "name": "Aetheric Focus",
+      "formula": "willpower * 5 + intuition * 2",
+      "abbreviation": "FOC"
+    }
+  ],
+  "resolutions": {
+    "standard_check": "1d20 + @attr",
+    "damage_scaling": "@weapon_dice + (@might / 2)"
+  }
+}

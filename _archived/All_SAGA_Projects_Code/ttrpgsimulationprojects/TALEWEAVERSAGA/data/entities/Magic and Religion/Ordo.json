@@ -1,0 +1,26 @@
+{
+    "name": "Ordo",
+    "type": "Magic and Religion",
+    "attributes": {
+        "offense": {
+            "name": "Cold",
+            "effect": "drain kinetic energy from targets, freezing them at Absolute Zero"
+        },
+        "defense": {
+            "effect": "reinforce structural integrity of matter, turning skin as hard as diamond or creating barriers of force"
+        },
+        "utility": {
+            "preservation": {
+                "food": true,
+                "bodies": true
+            },
+            "construction": {
+                "permanent": true,
+                "structures": [
+                    "bridges",
+                    "shelters"
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,55 @@
+{
+    "attributes": {
+        "former_master": {
+            "type": "reference",
+            "value": "Magistar Opecten"
+        },
+        "role": {
+            "type": "string",
+            "value": "Surveillance Officer"
+        },
+        "defection_event": {
+            "type": "string",
+            "value": "The Blind Spot"
+        },
+        "awareness": {
+            "type": "stat",
+            "value": 5
+        }
+    },
+    "stats": {
+        "strength": 2,
+        "constitution": 3,
+        "dexterity": 4,
+        "intelligence": 5,
+        "wisdom": 5,
+        "charisma": 3
+    },
+    "skills": {
+        "surveillance": {
+            "type": "stat",
+            "value": 4
+        },
+        "negotiation": {
+            "type": "stat",
+            "value": 2
+        },
+        "strategic_thinking": {
+            "type": "stat",
+            "value": 3
+        }
+    },
+    "abilities": {
+        "lux_awareness": {
+            "type": "stat",
+            "value": 2
+        },
+        "magical_resistance": {
+            "type": "stat",
+            "value": 1
+        }
+    },
+    "equipment": {
+        "none": []
+    }
+}

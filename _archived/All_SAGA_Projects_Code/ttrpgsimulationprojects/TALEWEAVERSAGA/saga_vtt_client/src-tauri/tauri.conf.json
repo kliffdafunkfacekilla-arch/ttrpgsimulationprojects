@@ -1,0 +1,21 @@
+{
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build",
+    "devUrl": "http://localhost:5173",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "title": "TALEWEAVERS",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  }
+}

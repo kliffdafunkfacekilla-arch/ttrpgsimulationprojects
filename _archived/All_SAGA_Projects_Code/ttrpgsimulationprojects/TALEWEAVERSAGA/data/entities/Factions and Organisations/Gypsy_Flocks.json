@@ -1,0 +1,20 @@
+{
+    "name": "Gypsy Flocks",
+    "type": "Factions and Organisations",
+    "description": "Nomadic performers and artisans who bring music, news, and goods to isolated settlements, while unknowingly serving as the unwitting guardians of the world's stability.",
+    "public_perception": {
+        "enchanted": 0.8,
+        "mysterious": 0.6,
+        "valued_artisans": 0.9,
+        "untrustworthy": 0.4,
+        "harbingers_of_news": 0.7
+    },
+    "secret_mission": {
+        "quest": "Find the 12 Sacred Groves and enact the Ritual of Return to bring The Fae back to the world.",
+        "true_purpose": "Preservation of the current world order, unknowingly serving as the guardians of the system they seek to dismantle."
+    },
+    "cosmic_legacy": {
+        "connection_to_engineer": true,
+        "divine_imprint": "Guard the prisons"
+    }
+}

@@ -1,0 +1,68 @@
+{
+    "type": "Faction",
+    "name": "Cloud-Harriers",
+    "location": "Northern Outer Cliffs, Engineer's Mountain Range",
+    "culture": "Sky-Western",
+    "archetype": "Sky-Western",
+    "tags": [
+        "Avian",
+        "Roughnecks",
+        "High-Altitude Ranchers"
+    ],
+    "aliases": [
+        "Cliff-Shearers"
+    ],
+    "resources": {
+        "Voltaic Fleece": {
+            "properties": [
+                "conductive",
+                "heat-resistant"
+            ],
+            "utility": "insulation for Aetheric-Reaction Engines",
+            "value": {
+                "Storm-Grade": {
+                    "high_value": true,
+                    "utility": "forges would overheat",
+                    "global_impact": "decides who flies"
+                },
+                "Shadow-Grade": {
+                    "low_value": true,
+                    "utility": "flat, lifeless wool for winter coats"
+                }
+            }
+        },
+        "Ozone-Milk": {
+            "properties": [
+                "glowing",
+                "blue-tinged",
+                "bio-electric stimulant"
+            ],
+            "utility": {
+                "Raw": {
+                    "utility": "static leavening in bread",
+                    "consumption": "energy kick for laborers"
+                },
+                "Refined": {
+                    "utility": "Anti-Chaos medicine for Quill-Kin"
+                }
+            }
+        }
+    },
+    "methods": {
+        "Frame-Drop": {
+            "drivers": "small, agile gliders",
+            "trap": "massive, counter-weighted steel frames",
+            "pit_stop": {
+                "shearers": "use Obsidian Blades to strip wool",
+                "milkers": "attach high-suction hoses to drain udder tanks"
+            }
+        }
+    },
+    "mystery": {
+        "tagging": {
+            "role": "physical contact with herds",
+            "research": "study of herds",
+            "data": "intel on 'The Vanishing' and Dragonstone Prisons"
+        }
+    }
+}

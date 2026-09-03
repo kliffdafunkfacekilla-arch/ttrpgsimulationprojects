@@ -1,0 +1,120 @@
+import os
+import json
+import re
+import shutil
+import sys
+import requests
+from flask import Flask, render_template, request, redirect, url_for, flash
+
+# Configuration
+APP_HOST = "0.0.0.0"
+APP_PORT = 5000
+OLLAMA_URL = "http://localhost:11434/api/generate"
+OLLAMA_MODEL = "qwen2.5:latest"
+BASE_DIR = r"c:\Users\krazy\Documents\shatterlands"
+LORE_DB = os.path.join(BASE_DIR, "00_Master_Lore_DB")
+FINAL_VAULT = os.path.join(BASE_DIR, "01_Final_Obsidian_Vault")
+STATE_FILE = os.path.join(BASE_DIR, "lore_forge_state.json")
+ILLUSTRATIONS_DIR = r"c:\Users\krazy\Desktop\ostraka-wiki\public\illustrations"
+ONTOLOGY_FILE = os.path.join(BASE_DIR, "world_ontology.json")
+DISCOVERED_MISSING = os.path.join(BASE_DIR, "discovered_missing_lore.txt")
+
+from lore_forge import (
+    build_world_ontology,
+    validate_world_completeness,
+    load_canon_texts,
+    load_state,
+    save_state,
+    gather_raw_text,
+    process_subject_vault,
+    ensure_ollama
+)
+
+app = Flask(__name__)
+app.secret_key = os.urandom(24)
+
+@app.route('/')
+def index():
+    try:
+        ensure_ollama()
+    except SystemExit:
+        return "<h2>Ollama is not running. Please start Ollama with 'ollama serve' in your terminal first!</h2>", 503
+        
+    state = load_state()
+    ontology = build_world_ontology()
+    canon_paragraphs = load_canon_texts()
+    status = validate_world_completeness(ontology, canon_paragraphs)
+    
+    return render_template(
+        'index.html',
+        progress=status['progress'],
+        gaps=status['gaps'],
+        errors=status['errors'],
+        processed=state.get('processed_subjects', [])
+    )
+
+@app.route('/clarify/<category>/<subject>/<field>')
+def clarify(category, subject, field):
+    raw_context = gather_raw_text(category, subject)
+    
+    # Reconstruct question from validation logic
+    question = f"Please provide information about '{field}' for '{subject}'."
+    if category == "02_Cultures" and field == "setting_constraint":
+        question = f"Culture '{subject}' contains human references. Please write animal-humanoid/beast-folk descriptions instead to satisfy the setting constraint."
+        
+    return render_template(
+        'interview.html',
+        category=category,
+        subject=subject,
+        field=field,
+        question=question,
+        raw_context=raw_context
+    )
+
+@app.route('/submit_clarification', methods=['POST'])
+def submit_clarification():
+    category = request.form['category']
+    subject = request.form['subject']
+    field = request.form['field']
+    answer = request.form['answer'].strip()
+    
+    if answer:
+        subj_dir = os.path.join(LORE_DB, category, subject)
+        os.makedirs(subj_dir, exist_ok=True)
+        clar_file = os.path.join(subj_dir, "clarifications.md")
+        with open(clar_file, "a", encoding="utf-8") as f:
+            f.write(f"\n### Clarification ({field})\n{answer}\n")
+            
+        # Re-run ontology synthesis
+        build_world_ontology(force_rebuild=True)
+        flash(f"Clarified '{field}' for '{subject}' successfully.")
+    else:
+        flash("Clarification skipped (empty answer).")
+        
+    return redirect(url_for('index'))
+
+@app.route('/forge', methods=['POST'])
+def forge():
+    state = load_state()
+    ontology = build_world_ontology()
+    canon_paragraphs = load_canon_texts()
+    global_glossary = list(ontology["subjects"].keys())
+    
+    print("\n[~] Forging Obsidian Vault...")
+    cats = sorted([c for c in os.listdir(LORE_DB) if os.path.isdir(os.path.join(LORE_DB, c))])
+    cats = [c for c in cats if "08_The_Write_Wager" not in c]
+    
+    compiled_files = []
+    for cat in cats:
+        cat_path = os.path.join(LORE_DB, cat)
+        subjects = sorted([s for s in os.listdir(cat_path) if os.path.isdir(os.path.join(cat_path, s))])
+        for subject in subjects:
+            process_subject_vault(cat, subject, state, canon_paragraphs, global_glossary)
+            compiled_files.append(f"{cat}/{subject}.md")
+            
+    return render_template('finished.html', files=compiled_files)
+
+if __name__ == '__main__':
+    # Make sure output vault directory exists
+    os.makedirs(FINAL_VAULT, exist_ok=True)
+    app.run(host=APP_HOST, port=APP_PORT)

@@ -1,0 +1,3242 @@
+[
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "1",
+    "Type": "Offense",
+    "Name": "Push",
+    "Damage_Type": "Force",
+    "Description": "Shove target away (Knockback)."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "1",
+    "Type": "Defense",
+    "Name": "Brace",
+    "Damage_Type": "Force",
+    "Description": "Ignore Knockback or Prone effects."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "1",
+    "Type": "Utility",
+    "Name": "Lift",
+    "Damage_Type": "Force",
+    "Description": "Reduce the weight of an object."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "2",
+    "Type": "Offense",
+    "Name": "Pull",
+    "Damage_Type": "Force",
+    "Description": "Drag target closer to you."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "2",
+    "Type": "Defense",
+    "Name": "Catch",
+    "Damage_Type": "Force",
+    "Description": "Stop a physical projectile mid-air."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "2",
+    "Type": "Utility",
+    "Name": "Jump",
+    "Damage_Type": "Force",
+    "Description": "Boost jump height/distance significantly."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "3",
+    "Type": "Offense",
+    "Name": "Slam",
+    "Damage_Type": "Force",
+    "Description": "Knock target Prone with heavy force."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "3",
+    "Type": "Defense",
+    "Name": "Repel",
+    "Damage_Type": "Force",
+    "Description": "Deflect arrows/bolts aimed at you."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "3",
+    "Type": "Utility",
+    "Name": "Burden",
+    "Damage_Type": "Force",
+    "Description": "Increase weight of target (Slow)."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "4",
+    "Type": "Offense",
+    "Name": "Crush",
+    "Damage_Type": "Force",
+    "Description": "Constrict/Squeeze target (Grapple)."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "4",
+    "Type": "Defense",
+    "Name": "Dense",
+    "Damage_Type": "Force",
+    "Description": "Reduce incoming Physical Damage."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "4",
+    "Type": "Utility",
+    "Name": "Climb",
+    "Damage_Type": "Force",
+    "Description": "Spider Climb (Shift gravity)."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "5",
+    "Type": "Offense",
+    "Name": "Launch",
+    "Damage_Type": "Force",
+    "Description": "Fling enemy a long distance."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "5",
+    "Type": "Defense",
+    "Name": "Orbit",
+    "Damage_Type": "Force",
+    "Description": "Shield of debris circles you."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "5",
+    "Type": "Utility",
+    "Name": "Feather",
+    "Damage_Type": "Force",
+    "Description": "Slow Fall / No fall damage."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "6",
+    "Type": "Offense",
+    "Name": "Breach",
+    "Damage_Type": "Force",
+    "Description": "Destroy cover or walls instantly."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "6",
+    "Type": "Defense",
+    "Name": "Heavy",
+    "Damage_Type": "Force",
+    "Description": "You cannot be moved against your will."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "6",
+    "Type": "Utility",
+    "Name": "Float",
+    "Damage_Type": "Force",
+    "Description": "Levitate self or object."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "7",
+    "Type": "Offense",
+    "Name": "Flatten",
+    "Damage_Type": "Force",
+    "Description": "Compress target into 2D space."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "7",
+    "Type": "Defense",
+    "Name": "Nullify",
+    "Damage_Type": "Force",
+    "Description": "Stop all momentum in an area."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "7",
+    "Type": "Utility",
+    "Name": "Fly",
+    "Damage_Type": "Force",
+    "Description": "True Flight (Control Gravity)."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "8",
+    "Type": "Offense",
+    "Name": "Implode",
+    "Damage_Type": "Force",
+    "Description": "Create a vacuum (Massive Damage)."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "8",
+    "Type": "Defense",
+    "Name": "Field",
+    "Damage_Type": "Force",
+    "Description": "Anti-Gravity Aura (Enemies float)."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "8",
+    "Type": "Utility",
+    "Name": "Reverse",
+    "Damage_Type": "Force",
+    "Description": "Flip gravity (Ceiling is floor)."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "9",
+    "Type": "Offense",
+    "Name": "Meteor",
+    "Damage_Type": "Force",
+    "Description": "Orbital Strike from above."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "9",
+    "Type": "Defense",
+    "Name": "Event Horizon",
+    "Damage_Type": "Force",
+    "Description": "Absorb incoming magical projectiles."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "9",
+    "Type": "Utility",
+    "Name": "Well",
+    "Damage_Type": "Force",
+    "Description": "Create heavy Gravity Well."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "10",
+    "Type": "Offense",
+    "Name": "Erase",
+    "Damage_Type": "Force",
+    "Description": "Delete matter from existence."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "10",
+    "Type": "Defense",
+    "Name": "Invincible",
+    "Damage_Type": "Force",
+    "Description": "Infinite Mass (Cannot be hurt)."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "10",
+    "Type": "Utility",
+    "Name": "Black Hole",
+    "Damage_Type": "Force",
+    "Description": "Consume light and matter."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "1",
+    "Type": "Offense",
+    "Name": "Halt",
+    "Damage_Type": "Cold",
+    "Description": "Stop target movement completely."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "1",
+    "Type": "Defense",
+    "Name": "Stand",
+    "Damage_Type": "Cold",
+    "Description": "Stand up from Prone instantly."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "1",
+    "Type": "Utility",
+    "Name": "Hold",
+    "Damage_Type": "Cold",
+    "Description": "Keep a door or object shut."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "2",
+    "Type": "Offense",
+    "Name": "Trip",
+    "Damage_Type": "Cold",
+    "Description": "Create an obstacle to trip foes."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "2",
+    "Type": "Defense",
+    "Name": "Skin",
+    "Damage_Type": "Cold",
+    "Description": "Natural Armor bonus."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "2",
+    "Type": "Utility",
+    "Name": "Sustain",
+    "Damage_Type": "Cold",
+    "Description": "Ignore hunger/thirst/fatigue."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "3",
+    "Type": "Offense",
+    "Name": "Trap",
+    "Damage_Type": "Cold",
+    "Description": "Bind target's legs/wheels."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "3",
+    "Type": "Defense",
+    "Name": "Anchor",
+    "Damage_Type": "Cold",
+    "Description": "Become immovable."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "3",
+    "Type": "Utility",
+    "Name": "Bridge",
+    "Damage_Type": "Cold",
+    "Description": "Create a temporary structure."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "4",
+    "Type": "Offense",
+    "Name": "Cage",
+    "Damage_Type": "Cold",
+    "Description": "Create walls around target."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "4",
+    "Type": "Defense",
+    "Name": "Barricade",
+    "Damage_Type": "Cold",
+    "Description": "Create cover instantly."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "4",
+    "Type": "Utility",
+    "Name": "Preserve",
+    "Damage_Type": "Cold",
+    "Description": "Stop decay on object/body."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "5",
+    "Type": "Offense",
+    "Name": "Petrify",
+    "Damage_Type": "Cold",
+    "Description": "Turn target to stone (Save)."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "5",
+    "Type": "Defense",
+    "Name": "Reinforce",
+    "Damage_Type": "Cold",
+    "Description": "Gain Temporary HP."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "5",
+    "Type": "Utility",
+    "Name": "Shelter",
+    "Damage_Type": "Cold",
+    "Description": "Create a safe hut/bunker."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "6",
+    "Type": "Offense",
+    "Name": "Entomb",
+    "Damage_Type": "Cold",
+    "Description": "Bury target under earth."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "6",
+    "Type": "Defense",
+    "Name": "Absorb",
+    "Damage_Type": "Cold",
+    "Description": "Take damage meant for an ally."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "6",
+    "Type": "Utility",
+    "Name": "Lock",
+    "Damage_Type": "Cold",
+    "Description": "Arcane Lock (Unopenable)."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "7",
+    "Type": "Offense",
+    "Name": "Stasis",
+    "Damage_Type": "Cold",
+    "Description": "Freeze target in time/space."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "7",
+    "Type": "Defense",
+    "Name": "Reflect",
+    "Damage_Type": "Cold",
+    "Description": "Return damage to attacker."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "7",
+    "Type": "Utility",
+    "Name": "Statue",
+    "Damage_Type": "Cold",
+    "Description": "Feign Death (Indistinguishable)."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "8",
+    "Type": "Offense",
+    "Name": "Arrest",
+    "Damage_Type": "Cold",
+    "Description": "Stop target's heart (Save)."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "8",
+    "Type": "Defense",
+    "Name": "Immunity",
+    "Damage_Type": "Cold",
+    "Description": "Take 0 Damage for 1 round."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "8",
+    "Type": "Utility",
+    "Name": "Stamina",
+    "Damage_Type": "Cold",
+    "Description": "Run forever without tiring."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "9",
+    "Type": "Offense",
+    "Name": "Crystallize",
+    "Damage_Type": "Cold",
+    "Description": "Make target fragile (Shatter)."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "9",
+    "Type": "Defense",
+    "Name": "Fortress",
+    "Damage_Type": "Cold",
+    "Description": "Invulnerable Structure."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "9",
+    "Type": "Utility",
+    "Name": "Monolith",
+    "Damage_Type": "Cold",
+    "Description": "Create permanent wall/tower."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "10",
+    "Type": "Offense",
+    "Name": "Stop",
+    "Damage_Type": "Cold",
+    "Description": "End Time for target."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "10",
+    "Type": "Defense",
+    "Name": "Eternal",
+    "Damage_Type": "Cold",
+    "Description": "Cannot die this round."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "10",
+    "Type": "Utility",
+    "Name": "Foundation",
+    "Damage_Type": "Cold",
+    "Description": "Create new land/island."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "1",
+    "Type": "Offense",
+    "Name": "Pierce",
+    "Damage_Type": "Acid",
+    "Description": "Ignore Armor Rating (AR)."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "1",
+    "Type": "Defense",
+    "Name": "Dodge",
+    "Damage_Type": "Acid",
+    "Description": "Bonus to AC vs one attack."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "1",
+    "Type": "Utility",
+    "Name": "Unlock",
+    "Damage_Type": "Acid",
+    "Description": "Open simple mechanism."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "2",
+    "Type": "Offense",
+    "Name": "Trip",
+    "Damage_Type": "Acid",
+    "Description": "Precision hit to knock down."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "2",
+    "Type": "Defense",
+    "Name": "Parry",
+    "Damage_Type": "Acid",
+    "Description": "Reduce incoming melee damage."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "2",
+    "Type": "Utility",
+    "Name": "Untie",
+    "Damage_Type": "Acid",
+    "Description": "Escape bindings/grapple."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "3",
+    "Type": "Offense",
+    "Name": "Disarm",
+    "Damage_Type": "Acid",
+    "Description": "Force drop of held item."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "3",
+    "Type": "Defense",
+    "Name": "Catch",
+    "Damage_Type": "Acid",
+    "Description": "Grab weapon/item thrown at you."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "3",
+    "Type": "Utility",
+    "Name": "Swap",
+    "Damage_Type": "Acid",
+    "Description": "Switch held items instantly."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "4",
+    "Type": "Offense",
+    "Name": "Bleed",
+    "Damage_Type": "Acid",
+    "Description": "Deal Damage over Time."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "4",
+    "Type": "Defense",
+    "Name": "Deflect",
+    "Damage_Type": "Acid",
+    "Description": "Redirect attack to adjacent."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "4",
+    "Type": "Utility",
+    "Name": "Guide",
+    "Damage_Type": "Acid",
+    "Description": "Next attack is Auto-Hit."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "5",
+    "Type": "Offense",
+    "Name": "Snatch",
+    "Damage_Type": "Acid",
+    "Description": "Steal equipped item."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "5",
+    "Type": "Defense",
+    "Name": "Blur",
+    "Damage_Type": "Acid",
+    "Description": "Attacks have Disadvantage."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "5",
+    "Type": "Utility",
+    "Name": "Filter",
+    "Damage_Type": "Acid",
+    "Description": "Clean poison/toxin from liquid."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "6",
+    "Type": "Offense",
+    "Name": "Sever",
+    "Damage_Type": "Acid",
+    "Description": "Cut off a limb or appendage."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "6",
+    "Type": "Defense",
+    "Name": "Flow",
+    "Damage_Type": "Acid",
+    "Description": "Move 5ft when hit (Reaction)."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "6",
+    "Type": "Utility",
+    "Name": "Phase",
+    "Damage_Type": "Acid",
+    "Description": "Walk through solid wall."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "7",
+    "Type": "Offense",
+    "Name": "Needle",
+    "Damage_Type": "Acid",
+    "Description": "Line attack through enemies."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "7",
+    "Type": "Defense",
+    "Name": "Ghost",
+    "Damage_Type": "Acid",
+    "Description": "Become Ethereal (No Phys Dmg)."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "7",
+    "Type": "Utility",
+    "Name": "Pass",
+    "Damage_Type": "Acid",
+    "Description": "Allow ally to phase."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "8",
+    "Type": "Offense",
+    "Name": "Ricochet",
+    "Damage_Type": "Acid",
+    "Description": "Attack chains to new targets."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "8",
+    "Type": "Defense",
+    "Name": "Displace",
+    "Damage_Type": "Acid",
+    "Description": "You appear 5ft from real spot."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "8",
+    "Type": "Utility",
+    "Name": "Navigate",
+    "Damage_Type": "Acid",
+    "Description": "Find path to any location."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "9",
+    "Type": "Offense",
+    "Name": "Atomize",
+    "Damage_Type": "Acid",
+    "Description": "Disintegrate target."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "9",
+    "Type": "Defense",
+    "Name": "Liquid",
+    "Damage_Type": "Acid",
+    "Description": "Amorphous (Immune Crits/Grap)."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "9",
+    "Type": "Utility",
+    "Name": "Separate",
+    "Damage_Type": "Acid",
+    "Description": "Un-mix a potion/compound."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "10",
+    "Type": "Offense",
+    "Name": "Perfect",
+    "Damage_Type": "Acid",
+    "Description": "Auto-Critical Hit."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "10",
+    "Type": "Defense",
+    "Name": "Intangible",
+    "Damage_Type": "Acid",
+    "Description": "Permanent Phasing state."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "10",
+    "Type": "Utility",
+    "Name": "Singularity",
+    "Damage_Type": "Acid",
+    "Description": "Compress space to a point."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "1",
+    "Type": "Offense",
+    "Name": "Snap",
+    "Damage_Type": "Sonic",
+    "Description": "Quick low-damage hit."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "1",
+    "Type": "Defense",
+    "Name": "Duck",
+    "Damage_Type": "Sonic",
+    "Description": "Reaction AC bonus."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "1",
+    "Type": "Utility",
+    "Name": "Step",
+    "Damage_Type": "Sonic",
+    "Description": "5ft Shift (No Opportunity)."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "2",
+    "Type": "Offense",
+    "Name": "Barrage",
+    "Damage_Type": "Sonic",
+    "Description": "Multi-hit attack (Low Dmg)."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "2",
+    "Type": "Defense",
+    "Name": "Weave",
+    "Damage_Type": "Sonic",
+    "Description": "Move through enemy space."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "2",
+    "Type": "Utility",
+    "Name": "Dash",
+    "Damage_Type": "Sonic",
+    "Description": "Bonus Move action."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "3",
+    "Type": "Offense",
+    "Name": "Spin",
+    "Damage_Type": "Sonic",
+    "Description": "AOE hit around self."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "3",
+    "Type": "Defense",
+    "Name": "Evasion",
+    "Damage_Type": "Sonic",
+    "Description": "Dodge AOE effects (Save)."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "3",
+    "Type": "Utility",
+    "Name": "Leap",
+    "Damage_Type": "Sonic",
+    "Description": "Teleport 10ft."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "4",
+    "Type": "Offense",
+    "Name": "Vibrate",
+    "Damage_Type": "Sonic",
+    "Description": "Sonic Damage (Bypass Armor)."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "4",
+    "Type": "Defense",
+    "Name": "Catch",
+    "Damage_Type": "Sonic",
+    "Description": "Snatch arrow/bolt from air."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "4",
+    "Type": "Utility",
+    "Name": "Haste",
+    "Damage_Type": "Sonic",
+    "Description": "Increase Speed buff."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "5",
+    "Type": "Offense",
+    "Name": "Blitz",
+    "Damage_Type": "Sonic",
+    "Description": "Line Charge attack."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "5",
+    "Type": "Defense",
+    "Name": "Blink",
+    "Damage_Type": "Sonic",
+    "Description": "Teleport Dodge (Reaction)."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "5",
+    "Type": "Utility",
+    "Name": "Warp",
+    "Damage_Type": "Sonic",
+    "Description": "Teleport 60ft."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "6",
+    "Type": "Offense",
+    "Name": "Impact",
+    "Damage_Type": "Sonic",
+    "Description": "Damage scales with Speed."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "6",
+    "Type": "Defense",
+    "Name": "Afterimage",
+    "Damage_Type": "Sonic",
+    "Description": "Create decoy clones."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "6",
+    "Type": "Utility",
+    "Name": "Loop",
+    "Damage_Type": "Sonic",
+    "Description": "Repeat last action."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "7",
+    "Type": "Offense",
+    "Name": "Age",
+    "Damage_Type": "Sonic",
+    "Description": "Rapid aging attack."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "7",
+    "Type": "Defense",
+    "Name": "Rewind",
+    "Damage_Type": "Sonic",
+    "Description": "Undo recent damage taken."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "7",
+    "Type": "Utility",
+    "Name": "Portal",
+    "Damage_Type": "Sonic",
+    "Description": "Create travel gate."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "8",
+    "Type": "Offense",
+    "Name": "Lag",
+    "Damage_Type": "Sonic",
+    "Description": "Delay enemy turn/action."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "8",
+    "Type": "Defense",
+    "Name": "Stutter",
+    "Damage_Type": "Sonic",
+    "Description": "Phase out of reality briefly."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "8",
+    "Type": "Utility",
+    "Name": "Stop",
+    "Damage_Type": "Sonic",
+    "Description": "Time Stop (Short)."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "9",
+    "Type": "Offense",
+    "Name": "Paradox",
+    "Damage_Type": "Sonic",
+    "Description": "Exist twice (Double turns)."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "9",
+    "Type": "Defense",
+    "Name": "Reset",
+    "Damage_Type": "Sonic",
+    "Description": "Restart the combat round."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "9",
+    "Type": "Utility",
+    "Name": "Timeline",
+    "Damage_Type": "Sonic",
+    "Description": "Predict exact future."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "10",
+    "Type": "Offense",
+    "Name": "Infinite",
+    "Damage_Type": "Sonic",
+    "Description": "Attack every target instantly."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "10",
+    "Type": "Defense",
+    "Name": "Gone",
+    "Damage_Type": "Sonic",
+    "Description": "Non-Existence (Safe)."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "10",
+    "Type": "Utility",
+    "Name": "Reality",
+    "Damage_Type": "Sonic",
+    "Description": "Reload Save / Retcon."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "1",
+    "Type": "Offense",
+    "Name": "Sting",
+    "Damage_Type": "Poison",
+    "Description": "Minor Poison damage."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "1",
+    "Type": "Defense",
+    "Name": "Clot",
+    "Damage_Type": "Poison",
+    "Description": "Stop Bleeding immediately."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "1",
+    "Type": "Utility",
+    "Name": "Mend",
+    "Damage_Type": "Poison",
+    "Description": "Heal minor wounds."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "2",
+    "Type": "Offense",
+    "Name": "Tangle",
+    "Damage_Type": "Poison",
+    "Description": "Vines restrict movement."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "2",
+    "Type": "Defense",
+    "Name": "Bark",
+    "Damage_Type": "Poison",
+    "Description": "Natural Armor skin."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "2",
+    "Type": "Utility",
+    "Name": "Purge",
+    "Damage_Type": "Poison",
+    "Description": "Cure Poison/Toxin."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "3",
+    "Type": "Offense",
+    "Name": "Rot",
+    "Damage_Type": "Poison",
+    "Description": "Necrotic damage."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "3",
+    "Type": "Defense",
+    "Name": "Resist",
+    "Damage_Type": "Poison",
+    "Description": "Resist Elemental damage."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "3",
+    "Type": "Utility",
+    "Name": "Grow",
+    "Damage_Type": "Poison",
+    "Description": "Enlarge self or target."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "4",
+    "Type": "Offense",
+    "Name": "Drain",
+    "Damage_Type": "Poison",
+    "Description": "Lifesteal (Heal for Dmg)."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "4",
+    "Type": "Defense",
+    "Name": "Adrenaline",
+    "Damage_Type": "Poison",
+    "Description": "Gain Temporary HP."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "4",
+    "Type": "Utility",
+    "Name": "Adapt",
+    "Damage_Type": "Poison",
+    "Description": "Grow Gills/Claws/Wings."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "5",
+    "Type": "Offense",
+    "Name": "Infect",
+    "Damage_Type": "Poison",
+    "Description": "Inflict Disease."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "5",
+    "Type": "Defense",
+    "Name": "Regen",
+    "Damage_Type": "Poison",
+    "Description": "Heal HP every turn."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "5",
+    "Type": "Utility",
+    "Name": "Sense",
+    "Damage_Type": "Poison",
+    "Description": "Detect Life (Radar)."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "6",
+    "Type": "Offense",
+    "Name": "Wither",
+    "Damage_Type": "Poison",
+    "Description": "Drain Stat (Str/Dex)."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "6",
+    "Type": "Defense",
+    "Name": "Carapace",
+    "Damage_Type": "Poison",
+    "Description": "Damage Reduction (Flat)."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "6",
+    "Type": "Utility",
+    "Name": "Awaken",
+    "Damage_Type": "Poison",
+    "Description": "Animate Plant/Tree."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "7",
+    "Type": "Offense",
+    "Name": "Devour",
+    "Damage_Type": "Poison",
+    "Description": "Eat minion to heal full."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "7",
+    "Type": "Defense",
+    "Name": "Immune",
+    "Damage_Type": "Poison",
+    "Description": "Cure Disease/Immunity."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "7",
+    "Type": "Utility",
+    "Name": "Link",
+    "Damage_Type": "Poison",
+    "Description": "Life Bond (Share HP)."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "8",
+    "Type": "Offense",
+    "Name": "Plague",
+    "Damage_Type": "Poison",
+    "Description": "Spreading DoT infection."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "8",
+    "Type": "Defense",
+    "Name": "Cocoon",
+    "Damage_Type": "Poison",
+    "Description": "Stasis Heal (Full recovery)."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "8",
+    "Type": "Utility",
+    "Name": "Revive",
+    "Damage_Type": "Poison",
+    "Description": "Resurrect dead."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "9",
+    "Type": "Offense",
+    "Name": "Cancer",
+    "Damage_Type": "Poison",
+    "Description": "Massive Rapid DoT."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "9",
+    "Type": "Defense",
+    "Name": "Swarm",
+    "Damage_Type": "Poison",
+    "Description": "Turn into bugs (Immune)."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "9",
+    "Type": "Utility",
+    "Name": "Clone",
+    "Damage_Type": "Poison",
+    "Description": "Grow spare body."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "10",
+    "Type": "Offense",
+    "Name": "Extinct",
+    "Damage_Type": "Poison",
+    "Description": "Kill creature type."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "10",
+    "Type": "Defense",
+    "Name": "Reborn",
+    "Damage_Type": "Poison",
+    "Description": "Auto-Life on death."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "10",
+    "Type": "Utility",
+    "Name": "Genesis",
+    "Damage_Type": "Poison",
+    "Description": "Create new Lifeform."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "1",
+    "Type": "Offense",
+    "Name": "Heat",
+    "Damage_Type": "Fire",
+    "Description": "Deal Fire Damage."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "1",
+    "Type": "Defense",
+    "Name": "Harden",
+    "Damage_Type": "Fire",
+    "Description": "Bonus AC."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "1",
+    "Type": "Utility",
+    "Name": "Shape",
+    "Damage_Type": "Fire",
+    "Description": "Mold clay/stone/wood."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "2",
+    "Type": "Offense",
+    "Name": "Chill",
+    "Damage_Type": "Fire",
+    "Description": "Deal Cold Damage."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "2",
+    "Type": "Defense",
+    "Name": "Insulate",
+    "Damage_Type": "Fire",
+    "Description": "Resist Elements."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "2",
+    "Type": "Utility",
+    "Name": "Fuse",
+    "Damage_Type": "Fire",
+    "Description": "Weld metal/stone together."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "3",
+    "Type": "Offense",
+    "Name": "Shock",
+    "Damage_Type": "Fire",
+    "Description": "Deal Lightning Damage."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "3",
+    "Type": "Defense",
+    "Name": "Ground",
+    "Damage_Type": "Fire",
+    "Description": "Absorb Shock/Electricity."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "3",
+    "Type": "Utility",
+    "Name": "Rust",
+    "Damage_Type": "Fire",
+    "Description": "Weaken metal item."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "4",
+    "Type": "Offense",
+    "Name": "Burn",
+    "Damage_Type": "Fire",
+    "Description": "Ignite target (DoT)."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "4",
+    "Type": "Defense",
+    "Name": "Plate",
+    "Damage_Type": "Fire",
+    "Description": "Skin becomes Iron."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "4",
+    "Type": "Utility",
+    "Name": "Repair",
+    "Damage_Type": "Fire",
+    "Description": "Fix broken item."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "5",
+    "Type": "Offense",
+    "Name": "Melt",
+    "Damage_Type": "Fire",
+    "Description": "Deal Acid Damage."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "5",
+    "Type": "Defense",
+    "Name": "Cool",
+    "Damage_Type": "Fire",
+    "Description": "Extinguish fires instantly."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "5",
+    "Type": "Utility",
+    "Name": "Forge",
+    "Damage_Type": "Fire",
+    "Description": "Create weapon from raw mats."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "6",
+    "Type": "Offense",
+    "Name": "Shatter",
+    "Damage_Type": "Fire",
+    "Description": "Deal Sonic Damage."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "6",
+    "Type": "Defense",
+    "Name": "Diamond",
+    "Damage_Type": "Fire",
+    "Description": "Skin becomes Diamond (High AC)."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "6",
+    "Type": "Utility",
+    "Name": "Transmute",
+    "Damage_Type": "Fire",
+    "Description": "Change material type."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "7",
+    "Type": "Offense",
+    "Name": "Explode",
+    "Damage_Type": "Fire",
+    "Description": "Deal Force Damage."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "7",
+    "Type": "Defense",
+    "Name": "Rubber",
+    "Damage_Type": "Fire",
+    "Description": "Bounce Physical Damage."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "7",
+    "Type": "Utility",
+    "Name": "Liquify",
+    "Damage_Type": "Fire",
+    "Description": "Turn solid to liquid."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "8",
+    "Type": "Offense",
+    "Name": "Vaporize",
+    "Damage_Type": "Fire",
+    "Description": "Turn solid to gas (Cloud)."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "8",
+    "Type": "Defense",
+    "Name": "Mirror",
+    "Damage_Type": "Fire",
+    "Description": "Reflect Ray spells."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "8",
+    "Type": "Utility",
+    "Name": "Gas",
+    "Damage_Type": "Fire",
+    "Description": "Turn self to Mist."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "9",
+    "Type": "Offense",
+    "Name": "Fission",
+    "Damage_Type": "Fire",
+    "Description": "Nuclear Damage (Nuke)."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "9",
+    "Type": "Defense",
+    "Name": "Void",
+    "Damage_Type": "Fire",
+    "Description": "Absorb All Damage types."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "9",
+    "Type": "Utility",
+    "Name": "Gold",
+    "Damage_Type": "Fire",
+    "Description": "Lead to Gold (Wealth)."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "10",
+    "Type": "Offense",
+    "Name": "Unmake",
+    "Damage_Type": "Fire",
+    "Description": "Disintegrate Matter."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "10",
+    "Type": "Defense",
+    "Name": "Indestructible",
+    "Damage_Type": "Fire",
+    "Description": "God-like durability."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "10",
+    "Type": "Utility",
+    "Name": "Matter",
+    "Damage_Type": "Fire",
+    "Description": "Create Matter from nothing."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "1",
+    "Type": "Offense",
+    "Name": "Mark",
+    "Damage_Type": "Arcane",
+    "Description": "Prevent Stealth."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "1",
+    "Type": "Defense",
+    "Name": "Shield",
+    "Damage_Type": "Arcane",
+    "Description": "Magic Armor (Temp AC)."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "1",
+    "Type": "Utility",
+    "Name": "Read",
+    "Damage_Type": "Arcane",
+    "Description": "Decipher text/runes."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "2",
+    "Type": "Offense",
+    "Name": "Bolt",
+    "Damage_Type": "Arcane",
+    "Description": "Magic Missile (Auto hit)."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "2",
+    "Type": "Defense",
+    "Name": "Mask",
+    "Damage_Type": "Arcane",
+    "Description": "Nondetection (Anti-Scry)."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "2",
+    "Type": "Utility",
+    "Name": "Identify",
+    "Damage_Type": "Arcane",
+    "Description": "Learn item properties."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "3",
+    "Type": "Offense",
+    "Name": "Bind",
+    "Damage_Type": "Arcane",
+    "Description": "Hold Person (Paralyze)."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "3",
+    "Type": "Defense",
+    "Name": "Circle",
+    "Damage_Type": "Arcane",
+    "Description": "Protect Area (Magic Circle)."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "3",
+    "Type": "Utility",
+    "Name": "Tongues",
+    "Damage_Type": "Arcane",
+    "Description": "Speak any language."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "4",
+    "Type": "Offense",
+    "Name": "Silence",
+    "Damage_Type": "Arcane",
+    "Description": "Prevent Casting/Sound."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "4",
+    "Type": "Defense",
+    "Name": "Dampen",
+    "Damage_Type": "Arcane",
+    "Description": "Resist Magic Damage."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "4",
+    "Type": "Utility",
+    "Name": "Light",
+    "Damage_Type": "Arcane",
+    "Description": "Create Illusion (Visual)."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "5",
+    "Type": "Offense",
+    "Name": "Dispel",
+    "Damage_Type": "Arcane",
+    "Description": "End active spell."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "5",
+    "Type": "Defense",
+    "Name": "Counter",
+    "Damage_Type": "Arcane",
+    "Description": "Stop spell being cast."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "5",
+    "Type": "Utility",
+    "Name": "Summon",
+    "Damage_Type": "Arcane",
+    "Description": "Call Ally/Monster."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "6",
+    "Type": "Offense",
+    "Name": "Banish",
+    "Damage_Type": "Arcane",
+    "Description": "Send to another plane."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "6",
+    "Type": "Defense",
+    "Name": "Trap",
+    "Damage_Type": "Arcane",
+    "Description": "Explosive Rune defense."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "6",
+    "Type": "Utility",
+    "Name": "Message",
+    "Damage_Type": "Arcane",
+    "Description": "Long range comms."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "7",
+    "Type": "Offense",
+    "Name": "Anchor",
+    "Damage_Type": "Arcane",
+    "Description": "Block Teleportation."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "7",
+    "Type": "Defense",
+    "Name": "Reflection",
+    "Damage_Type": "Arcane",
+    "Description": "Return Spell to caster."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "7",
+    "Type": "Utility",
+    "Name": "Scry",
+    "Damage_Type": "Arcane",
+    "Description": "Spy on location."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "8",
+    "Type": "Offense",
+    "Name": "Unbind",
+    "Damage_Type": "Arcane",
+    "Description": "Destroy Magic Item."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "8",
+    "Type": "Defense",
+    "Name": "Prism",
+    "Damage_Type": "Arcane",
+    "Description": "Split incoming spell."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "8",
+    "Type": "Utility",
+    "Name": "Gate",
+    "Damage_Type": "Arcane",
+    "Description": "Planar Travel."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "9",
+    "Type": "Offense",
+    "Name": "Seal",
+    "Damage_Type": "Arcane",
+    "Description": "Permanent Binding."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "9",
+    "Type": "Defense",
+    "Name": "Invulnerability",
+    "Damage_Type": "Arcane",
+    "Description": "Immune to Magic."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "9",
+    "Type": "Utility",
+    "Name": "Memory",
+    "Damage_Type": "Arcane",
+    "Description": "Modify Memory."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "10",
+    "Type": "Offense",
+    "Name": "Source",
+    "Damage_Type": "Arcane",
+    "Description": "Drain Magic slots."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "10",
+    "Type": "Defense",
+    "Name": "Antimagic",
+    "Damage_Type": "Arcane",
+    "Description": "Create Dead Magic Zone."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "10",
+    "Type": "Utility",
+    "Name": "Wish",
+    "Damage_Type": "Arcane",
+    "Description": "Alter Reality."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "1",
+    "Type": "Offense",
+    "Name": "Angle",
+    "Damage_Type": "Shock",
+    "Description": "Ignore Cover penalty."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "1",
+    "Type": "Defense",
+    "Name": "Predict",
+    "Damage_Type": "Shock",
+    "Description": "Small AC Bonus."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "1",
+    "Type": "Utility",
+    "Name": "Count",
+    "Damage_Type": "Shock",
+    "Description": "Know exact number of items."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "2",
+    "Type": "Offense",
+    "Name": "Target",
+    "Damage_Type": "Shock",
+    "Description": "True Strike (Bonus to Hit)."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "2",
+    "Type": "Defense",
+    "Name": "Calculate",
+    "Damage_Type": "Shock",
+    "Description": "Dodge action (Int based)."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "2",
+    "Type": "Utility",
+    "Name": "Scan",
+    "Damage_Type": "Shock",
+    "Description": "See Enemy Stats/HP."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "3",
+    "Type": "Offense",
+    "Name": "Fracture",
+    "Damage_Type": "Shock",
+    "Description": "Hit Weak Point (Crit)."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "3",
+    "Type": "Defense",
+    "Name": "Pattern",
+    "Damage_Type": "Shock",
+    "Description": "Avoid Traps automatically."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "3",
+    "Type": "Utility",
+    "Name": "Solve",
+    "Damage_Type": "Shock",
+    "Description": "Unlock Puzzle/Lock."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "4",
+    "Type": "Offense",
+    "Name": "Deconstruct",
+    "Damage_Type": "Shock",
+    "Description": "Debuff Enemy Armor."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "4",
+    "Type": "Defense",
+    "Name": "Vector",
+    "Damage_Type": "Shock",
+    "Description": "Deflect Ranged Attack."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "4",
+    "Type": "Utility",
+    "Name": "Optimize",
+    "Damage_Type": "Shock",
+    "Description": "Max Damage Roll."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "5",
+    "Type": "Offense",
+    "Name": "Grid",
+    "Damage_Type": "Shock",
+    "Description": "Create Difficult Terrain."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "5",
+    "Type": "Defense",
+    "Name": "Correction",
+    "Damage_Type": "Shock",
+    "Description": "Bonus to Saving Throw."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "5",
+    "Type": "Utility",
+    "Name": "Analyze",
+    "Damage_Type": "Shock",
+    "Description": "Learn Lore/History."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "6",
+    "Type": "Offense",
+    "Name": "Algorithm",
+    "Damage_Type": "Shock",
+    "Description": "Auto-Damage (No Roll)."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "6",
+    "Type": "Defense",
+    "Name": "Loop",
+    "Damage_Type": "Shock",
+    "Description": "Trap enemy in logic loop."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "6",
+    "Type": "Utility",
+    "Name": "Program",
+    "Damage_Type": "Shock",
+    "Description": "Set Triggered Spell."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "7",
+    "Type": "Offense",
+    "Name": "Divide",
+    "Damage_Type": "Shock",
+    "Description": "Split Damage among foes."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "7",
+    "Type": "Defense",
+    "Name": "Equilibrium",
+    "Damage_Type": "Shock",
+    "Description": "Flatten Damage curve."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "7",
+    "Type": "Utility",
+    "Name": "Construct",
+    "Damage_Type": "Shock",
+    "Description": "Create Automaton."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "8",
+    "Type": "Offense",
+    "Name": "Error",
+    "Damage_Type": "Shock",
+    "Description": "Psychic Stun."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "8",
+    "Type": "Defense",
+    "Name": "Axiom",
+    "Damage_Type": "Shock",
+    "Description": "Impose Rule (No Flight)."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "8",
+    "Type": "Utility",
+    "Name": "Deduce",
+    "Damage_Type": "Shock",
+    "Description": "Reconstruct Scene."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "9",
+    "Type": "Offense",
+    "Name": "Paradox",
+    "Damage_Type": "Shock",
+    "Description": "Brain Melt (Int Dmg)."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "9",
+    "Type": "Defense",
+    "Name": "Null",
+    "Damage_Type": "Shock",
+    "Description": "Negate Enemy Action."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "9",
+    "Type": "Utility",
+    "Name": "Blueprint",
+    "Damage_Type": "Shock",
+    "Description": "Invent new device."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "10",
+    "Type": "Offense",
+    "Name": "Zero",
+    "Damage_Type": "Shock",
+    "Description": "Delete Entity (Math)."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "10",
+    "Type": "Defense",
+    "Name": "Absolute",
+    "Damage_Type": "Shock",
+    "Description": "Cannot Fail rolls."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "10",
+    "Type": "Utility",
+    "Name": "Rewrite",
+    "Damage_Type": "Shock",
+    "Description": "Change Physics Constant."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "1",
+    "Type": "Offense",
+    "Name": "Flare",
+    "Damage_Type": "Radiant",
+    "Description": "Dazzle (-1 to Hit)."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "1",
+    "Type": "Defense",
+    "Name": "Blur",
+    "Damage_Type": "Radiant",
+    "Description": "Visual Noise (Def Bonus)."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "1",
+    "Type": "Utility",
+    "Name": "Spot",
+    "Damage_Type": "Radiant",
+    "Description": "Bonus Perception."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "2",
+    "Type": "Offense",
+    "Name": "Beam",
+    "Damage_Type": "Radiant",
+    "Description": "Laser Damage."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "2",
+    "Type": "Defense",
+    "Name": "Flash",
+    "Damage_Type": "Radiant",
+    "Description": "Blind foe (1 Round)."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "2",
+    "Type": "Utility",
+    "Name": "Darkvision",
+    "Damage_Type": "Radiant",
+    "Description": "See in Darkness."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "3",
+    "Type": "Offense",
+    "Name": "Searing",
+    "Damage_Type": "Radiant",
+    "Description": "Burn Undead/Shadow."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "3",
+    "Type": "Defense",
+    "Name": "Mirror",
+    "Damage_Type": "Radiant",
+    "Description": "Create Decoys."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "3",
+    "Type": "Utility",
+    "Name": "Reveal",
+    "Damage_Type": "Radiant",
+    "Description": "See Invisible."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "4",
+    "Type": "Offense",
+    "Name": "Focus",
+    "Damage_Type": "Radiant",
+    "Description": "Heat Metal (Burn)."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "4",
+    "Type": "Defense",
+    "Name": "Invis",
+    "Damage_Type": "Radiant",
+    "Description": "Turn Invisible."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "4",
+    "Type": "Utility",
+    "Name": "X-Ray",
+    "Damage_Type": "Radiant",
+    "Description": "See Through Walls."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "5",
+    "Type": "Offense",
+    "Name": "Prism",
+    "Damage_Type": "Radiant",
+    "Description": "Split Beam (Multi-hit)."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "5",
+    "Type": "Defense",
+    "Name": "Camouflage",
+    "Damage_Type": "Radiant",
+    "Description": "Blend with surroundings."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "5",
+    "Type": "Utility",
+    "Name": "Project",
+    "Damage_Type": "Radiant",
+    "Description": "Hologram Illusion."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "6",
+    "Type": "Offense",
+    "Name": "Radiate",
+    "Damage_Type": "Radiant",
+    "Description": "Aura Damage."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "6",
+    "Type": "Defense",
+    "Name": "Disguise",
+    "Damage_Type": "Radiant",
+    "Description": "Alter Self Appearance."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "6",
+    "Type": "Utility",
+    "Name": "True Sight",
+    "Damage_Type": "Radiant",
+    "Description": "Trueseeing (Perfect)."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "7",
+    "Type": "Offense",
+    "Name": "Sun",
+    "Damage_Type": "Radiant",
+    "Description": "Massive Light Damage."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "7",
+    "Type": "Defense",
+    "Name": "Darkness",
+    "Damage_Type": "Radiant",
+    "Description": "Block Sight Line."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "7",
+    "Type": "Utility",
+    "Name": "Zone",
+    "Damage_Type": "Radiant",
+    "Description": "Remote Viewing."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "8",
+    "Type": "Offense",
+    "Name": "Blind",
+    "Damage_Type": "Radiant",
+    "Description": "Permanent Blindness."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "8",
+    "Type": "Defense",
+    "Name": "Phantom",
+    "Damage_Type": "Radiant",
+    "Description": "Major Image (Real)."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "8",
+    "Type": "Utility",
+    "Name": "History",
+    "Damage_Type": "Radiant",
+    "Description": "Postcognition (See Past)."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "9",
+    "Type": "Offense",
+    "Name": "Nova",
+    "Damage_Type": "Radiant",
+    "Description": "Explosion of Light."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "9",
+    "Type": "Defense",
+    "Name": "Mirage",
+    "Damage_Type": "Radiant",
+    "Description": "Fake Terrain."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "9",
+    "Type": "Utility",
+    "Name": "Map",
+    "Damage_Type": "Radiant",
+    "Description": "Know Location (GPS)."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "10",
+    "Type": "Offense",
+    "Name": "Supernova",
+    "Damage_Type": "Radiant",
+    "Description": "Nuclear Light."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "10",
+    "Type": "Defense",
+    "Name": "Nonexistence",
+    "Damage_Type": "Radiant",
+    "Description": "Hidden from Reality."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "10",
+    "Type": "Utility",
+    "Name": "Omniscience",
+    "Damage_Type": "Radiant",
+    "Description": "Know Everything."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "1",
+    "Type": "Offense",
+    "Name": "Jinx",
+    "Damage_Type": "Necrotic",
+    "Description": "-1d4 to Hit."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "1",
+    "Type": "Defense",
+    "Name": "Bless",
+    "Damage_Type": "Necrotic",
+    "Description": "+1d4 to Hit."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "1",
+    "Type": "Utility",
+    "Name": "Guess",
+    "Damage_Type": "Necrotic",
+    "Description": "Coin Flip (50/50)."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "2",
+    "Type": "Offense",
+    "Name": "Trip",
+    "Damage_Type": "Necrotic",
+    "Description": "Cause Prone (Bad Luck)."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "2",
+    "Type": "Defense",
+    "Name": "Miss",
+    "Damage_Type": "Necrotic",
+    "Description": "Force Reroll (Take Low)."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "2",
+    "Type": "Utility",
+    "Name": "Find",
+    "Damage_Type": "Necrotic",
+    "Description": "Locate Object."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "3",
+    "Type": "Offense",
+    "Name": "Jam",
+    "Damage_Type": "Necrotic",
+    "Description": "Weapon Failure."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "3",
+    "Type": "Defense",
+    "Name": "Dodge",
+    "Damage_Type": "Necrotic",
+    "Description": "Uncanny Dodge."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "3",
+    "Type": "Utility",
+    "Name": "Hunch",
+    "Damage_Type": "Necrotic",
+    "Description": "Danger Sense."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "4",
+    "Type": "Offense",
+    "Name": "Backfire",
+    "Damage_Type": "Necrotic",
+    "Description": "Enemy hits self."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "4",
+    "Type": "Defense",
+    "Name": "Lucky",
+    "Damage_Type": "Necrotic",
+    "Description": "Reroll 1s."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "4",
+    "Type": "Utility",
+    "Name": "Path",
+    "Damage_Type": "Necrotic",
+    "Description": "Best Route finding."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "5",
+    "Type": "Offense",
+    "Name": "Curse",
+    "Damage_Type": "Necrotic",
+    "Description": "Disadvantage on Rolls."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "5",
+    "Type": "Defense",
+    "Name": "Fate",
+    "Damage_Type": "Necrotic",
+    "Description": "Advantage on Rolls."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "5",
+    "Type": "Utility",
+    "Name": "Gamble",
+    "Damage_Type": "Necrotic",
+    "Description": "Random Buff effect."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "6",
+    "Type": "Offense",
+    "Name": "Fumble",
+    "Damage_Type": "Necrotic",
+    "Description": "Enemy drops item."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "6",
+    "Type": "Defense",
+    "Name": "Serendipity",
+    "Damage_Type": "Necrotic",
+    "Description": "Find Loot/Potion."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "6",
+    "Type": "Utility",
+    "Name": "Spirit",
+    "Damage_Type": "Necrotic",
+    "Description": "Talk to Dead."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "7",
+    "Type": "Offense",
+    "Name": "Ricochet",
+    "Damage_Type": "Necrotic",
+    "Description": "Miss hits Ally."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "7",
+    "Type": "Defense",
+    "Name": "Karma",
+    "Damage_Type": "Necrotic",
+    "Description": "Reflect Hit to attacker."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "7",
+    "Type": "Utility",
+    "Name": "Augury",
+    "Damage_Type": "Necrotic",
+    "Description": "Hint of Future."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "8",
+    "Type": "Offense",
+    "Name": "Calamity",
+    "Damage_Type": "Necrotic",
+    "Description": "Force Crit Fail."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "8",
+    "Type": "Defense",
+    "Name": "Miracle",
+    "Damage_Type": "Necrotic",
+    "Description": "Survive with 1HP."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "8",
+    "Type": "Utility",
+    "Name": "Destiny",
+    "Damage_Type": "Necrotic",
+    "Description": "Force specific Roll."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "9",
+    "Type": "Offense",
+    "Name": "Doom",
+    "Damage_Type": "Necrotic",
+    "Description": "Instant Kill."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "9",
+    "Type": "Defense",
+    "Name": "Divine",
+    "Damage_Type": "Necrotic",
+    "Description": "Auto-Save success."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "9",
+    "Type": "Utility",
+    "Name": "Prophecy",
+    "Damage_Type": "Necrotic",
+    "Description": "Narrative Truth."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "10",
+    "Type": "Offense",
+    "Name": "Ruin",
+    "Damage_Type": "Necrotic",
+    "Description": "Total Loss/Destruction."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "10",
+    "Type": "Defense",
+    "Name": "Favor",
+    "Damage_Type": "Necrotic",
+    "Description": "Auto-Natural 20."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "10",
+    "Type": "Utility",
+    "Name": "Weave",
+    "Damage_Type": "Necrotic",
+    "Description": "Retcon History."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "1",
+    "Type": "Offense",
+    "Name": "Mock",
+    "Damage_Type": "Spirit",
+    "Description": "Psychic Damage."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "1",
+    "Type": "Defense",
+    "Name": "Friend",
+    "Damage_Type": "Spirit",
+    "Description": "Sanctuary (No Attack)."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "1",
+    "Type": "Utility",
+    "Name": "Chime",
+    "Damage_Type": "Spirit",
+    "Description": "Attract attention."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "2",
+    "Type": "Offense",
+    "Name": "Taunt",
+    "Damage_Type": "Spirit",
+    "Description": "Force Attack."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "2",
+    "Type": "Defense",
+    "Name": "Calm",
+    "Damage_Type": "Spirit",
+    "Description": "End Rage/Hostility."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "2",
+    "Type": "Utility",
+    "Name": "Bond",
+    "Damage_Type": "Spirit",
+    "Description": "Empathy Link."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "3",
+    "Type": "Offense",
+    "Name": "Fear",
+    "Damage_Type": "Spirit",
+    "Description": "Cause Fleeing."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "3",
+    "Type": "Defense",
+    "Name": "Trust",
+    "Damage_Type": "Spirit",
+    "Description": "Ally Help Action."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "3",
+    "Type": "Utility",
+    "Name": "Whisper",
+    "Damage_Type": "Spirit",
+    "Description": "Send Message."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "4",
+    "Type": "Offense",
+    "Name": "Doubt",
+    "Damage_Type": "Spirit",
+    "Description": "Hesitate (Skip Turn)."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "4",
+    "Type": "Defense",
+    "Name": "Peace",
+    "Damage_Type": "Spirit",
+    "Description": "Stop Fight (Calm)."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "4",
+    "Type": "Utility",
+    "Name": "Suggestion",
+    "Damage_Type": "Spirit",
+    "Description": "Implant Idea."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "5",
+    "Type": "Offense",
+    "Name": "Enrage",
+    "Damage_Type": "Spirit",
+    "Description": "Berserk (Attack All)."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "5",
+    "Type": "Defense",
+    "Name": "Charm",
+    "Damage_Type": "Spirit",
+    "Description": "Befriend Target."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "5",
+    "Type": "Utility",
+    "Name": "Detect",
+    "Damage_Type": "Spirit",
+    "Description": "Read Mood/Intent."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "6",
+    "Type": "Offense",
+    "Name": "Despair",
+    "Damage_Type": "Spirit",
+    "Description": "Stun with Sadness."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "6",
+    "Type": "Defense",
+    "Name": "Heroism",
+    "Damage_Type": "Spirit",
+    "Description": "Buff HP/Morale."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "6",
+    "Type": "Utility",
+    "Name": "Inspire",
+    "Damage_Type": "Spirit",
+    "Description": "Buff Skill check."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "7",
+    "Type": "Offense",
+    "Name": "Terror",
+    "Damage_Type": "Spirit",
+    "Description": "Paralyze with Fear."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "7",
+    "Type": "Defense",
+    "Name": "Devotion",
+    "Damage_Type": "Spirit",
+    "Description": "Gain Bodyguard."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "7",
+    "Type": "Utility",
+    "Name": "Geas",
+    "Damage_Type": "Spirit",
+    "Description": "Magical Mission."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "8",
+    "Type": "Offense",
+    "Name": "Betray",
+    "Damage_Type": "Spirit",
+    "Description": "Attack own Ally."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "8",
+    "Type": "Defense",
+    "Name": "Love",
+    "Damage_Type": "Spirit",
+    "Description": "Permanent Thrall."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "8",
+    "Type": "Utility",
+    "Name": "Memory",
+    "Damage_Type": "Spirit",
+    "Description": "Modify Memory."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "9",
+    "Type": "Offense",
+    "Name": "Shatter",
+    "Damage_Type": "Spirit",
+    "Description": "Break Mind (Insanity)."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "9",
+    "Type": "Defense",
+    "Name": "Sanctuary",
+    "Damage_Type": "Spirit",
+    "Description": "Zone of Peace."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "9",
+    "Type": "Utility",
+    "Name": "Dream",
+    "Damage_Type": "Spirit",
+    "Description": "Inception/Dreamwalk."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "10",
+    "Type": "Offense",
+    "Name": "Soul",
+    "Damage_Type": "Spirit",
+    "Description": "Kill Spirit (Husk)."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "10",
+    "Type": "Defense",
+    "Name": "Worship",
+    "Damage_Type": "Spirit",
+    "Description": "Gain Followers."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "10",
+    "Type": "Utility",
+    "Name": "Identity",
+    "Damage_Type": "Spirit",
+    "Description": "Rewrite Personality."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "1",
+    "Type": "Offense",
+    "Name": "Halt",
+    "Damage_Type": "Psychic",
+    "Description": "Stop movement."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "1",
+    "Type": "Defense",
+    "Name": "Focus",
+    "Damage_Type": "Psychic",
+    "Description": "Save Bonus."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "1",
+    "Type": "Utility",
+    "Name": "Open",
+    "Damage_Type": "Psychic",
+    "Description": "Unlock (Command)."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "2",
+    "Type": "Offense",
+    "Name": "Drop",
+    "Damage_Type": "Psychic",
+    "Description": "Disarm target."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "2",
+    "Type": "Defense",
+    "Name": "Ignore",
+    "Damage_Type": "Psychic",
+    "Description": "Resist Pain/Wound."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "2",
+    "Type": "Utility",
+    "Name": "Truth",
+    "Damage_Type": "Psychic",
+    "Description": "Prevent Lying."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "3",
+    "Type": "Offense",
+    "Name": "Kneel",
+    "Damage_Type": "Psychic",
+    "Description": "Force Prone."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "3",
+    "Type": "Defense",
+    "Name": "Deny",
+    "Damage_Type": "Psychic",
+    "Description": "Block Path (Mental)."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "3",
+    "Type": "Utility",
+    "Name": "Speak",
+    "Damage_Type": "Psychic",
+    "Description": "Force Speech."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "4",
+    "Type": "Offense",
+    "Name": "Pain",
+    "Damage_Type": "Psychic",
+    "Description": "Psychic Damage."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "4",
+    "Type": "Defense",
+    "Name": "Clear",
+    "Damage_Type": "Psychic",
+    "Description": "Remove Fear/Charm."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "4",
+    "Type": "Utility",
+    "Name": "Oath",
+    "Damage_Type": "Psychic",
+    "Description": "Contract/Bond."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "5",
+    "Type": "Offense",
+    "Name": "Obey",
+    "Damage_Type": "Psychic",
+    "Description": "Command 1 Action."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "5",
+    "Type": "Defense",
+    "Name": "Forbid",
+    "Damage_Type": "Psychic",
+    "Description": "Block Action type."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "5",
+    "Type": "Utility",
+    "Name": "Detect",
+    "Damage_Type": "Psychic",
+    "Description": "Know Alignment/Type."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "6",
+    "Type": "Offense",
+    "Name": "Silence",
+    "Damage_Type": "Psychic",
+    "Description": "Prevent Sound."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "6",
+    "Type": "Defense",
+    "Name": "Shield",
+    "Damage_Type": "Psychic",
+    "Description": "Mental Armor."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "6",
+    "Type": "Utility",
+    "Name": "Zone",
+    "Damage_Type": "Psychic",
+    "Description": "Zone of Truth."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "7",
+    "Type": "Offense",
+    "Name": "Dominate",
+    "Damage_Type": "Psychic",
+    "Description": "Mind Control."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "7",
+    "Type": "Defense",
+    "Name": "Iron",
+    "Damage_Type": "Psychic",
+    "Description": "Immune Charm/Fear."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "7",
+    "Type": "Utility",
+    "Name": "Decree",
+    "Damage_Type": "Psychic",
+    "Description": "Set Rule in area."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "8",
+    "Type": "Offense",
+    "Name": "Exile",
+    "Damage_Type": "Psychic",
+    "Description": "Banishment."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "8",
+    "Type": "Defense",
+    "Name": "Refuse",
+    "Damage_Type": "Psychic",
+    "Description": "Immune Magic."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "8",
+    "Type": "Utility",
+    "Name": "Title",
+    "Damage_Type": "Psychic",
+    "Description": "Gain Rank/Status."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "9",
+    "Type": "Offense",
+    "Name": "Kill",
+    "Damage_Type": "Psychic",
+    "Description": "Power Word Kill."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "9",
+    "Type": "Defense",
+    "Name": "Unbreakable",
+    "Damage_Type": "Psychic",
+    "Description": "Immune to All."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "9",
+    "Type": "Utility",
+    "Name": "Legend",
+    "Damage_Type": "Psychic",
+    "Description": "Mass Awe/Fear."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "10",
+    "Type": "Offense",
+    "Name": "Unmake",
+    "Damage_Type": "Psychic",
+    "Description": "Erase from timeline."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "10",
+    "Type": "Defense",
+    "Name": "Absolute",
+    "Damage_Type": "Psychic",
+    "Description": "God-like Will."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "10",
+    "Type": "Utility",
+    "Name": "Law",
+    "Damage_Type": "Psychic",
+    "Description": "New Physics Law."
+  }
+]

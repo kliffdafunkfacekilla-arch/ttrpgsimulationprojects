@@ -1,0 +1,479 @@
+[
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 1",
+    "Option Name": "Tiny",
+    "Stat 1": "+2 Reflex, +1 Finesse",
+    "Stat 2": "-2 Might, -1 Vitality",
+    "Body Part": "Small Frame",
+    "Mechanic / Trait": "Squeeze: Move through 4-inch gaps. +Advantage on Stealth."
+  },
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 2",
+    "Option Name": "Small",
+    "Stat 1": "+1 Reflex",
+    "Stat 2": "-1 Might",
+    "Body Part": "Light Frame",
+    "Mechanic / Trait": "Lightweight: Trigger no pressure plates. Fall damage halved."
+  },
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 3",
+    "Option Name": "Medium",
+    "Stat 1": "None",
+    "Stat 2": "None",
+    "Body Part": "Balanced Frame",
+    "Mechanic / Trait": "Standard: No penalties. Can use standard gear."
+  },
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 4",
+    "Option Name": "Large",
+    "Stat 1": "+1 Might",
+    "Stat 2": "-1 Reflex",
+    "Body Part": "Heavy Frame",
+    "Mechanic / Trait": "Bulk: You provide Full Cover to allies. Cannot be Shoved by Medium creatures."
+  },
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 5",
+    "Option Name": "Huge",
+    "Stat 1": "+2 Might, +1 Vitality",
+    "Stat 2": "-2 Reflex, -1 Finesse",
+    "Body Part": "Siege Frame",
+    "Mechanic / Trait": "Siege: Deal double damage to structures. You occupy a 10ft x 10ft space."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Raptor",
+    "Stat 1": "Awareness",
+    "Stat 2": "Willpower",
+    "Body Part": "Accipiter Anatomy",
+    "Mechanic / Trait": "Includes: Hooked Beak, Talons, Broad Wings, Hunter Eyes."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Corvid",
+    "Stat 1": "Intuition",
+    "Stat 2": "Endurance",
+    "Body Part": "Corvus Anatomy",
+    "Mechanic / Trait": "Includes: Tool-Using Beak, Dexterous Feet, Voice Mimicry, Black Plumage."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Owl",
+    "Stat 1": "Knowledge",
+    "Stat 2": "Finesse",
+    "Body Part": "Strigiform Anatomy",
+    "Mechanic / Trait": "Includes: Silent Feathers, Night-Eyes, Swivel Neck (270\u00b0), Talons."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Parrot",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Vitality",
+    "Body Part": "Psittacine Anatomy",
+    "Mechanic / Trait": "Includes: Crushing Beak, Zygodactyl Feet (Climb), Vocal Mimicry."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Swan",
+    "Stat 1": "Awareness",
+    "Stat 2": "Charm",
+    "Body Part": "Waterfowl Anatomy",
+    "Mechanic / Trait": "Includes: Long Neck, Webbed Feet, Waterproof Feathers, Blunt Beak."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Ostrich",
+    "Stat 1": "Logic",
+    "Stat 2": "Might",
+    "Body Part": "Ratite Anatomy",
+    "Mechanic / Trait": "Includes: Vestigial Wings (No Flight), Powerful Legs, Kick-Claw."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Penguin",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Awareness",
+    "Body Part": "Spheniscid Anatomy",
+    "Mechanic / Trait": "Includes: Flipper-Wings (Swim), Blubber Layer, Upright Stance."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Heron",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Reflexes",
+    "Body Part": "Wading Anatomy",
+    "Mechanic / Trait": "Includes: Spear Beak, Stilt Legs, S-Curve Neck, Broad Wings."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Telescopic",
+    "Stat 1": "Vitality",
+    "Stat 2": "Reflexes",
+    "Body Part": "Magnifying Lens",
+    "Mechanic / Trait": "Passive: Eagle-Eye (See fine detail from 1 mile away. +5 Perception)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Night-Watch",
+    "Stat 1": "Logic",
+    "Stat 2": "Reflexes",
+    "Body Part": "Tubular Eyes",
+    "Mechanic / Trait": "Passive: Low-Light (Darkvision 120ft, but Disadvantage in bright sun)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Magnetic",
+    "Stat 1": "Awareness",
+    "Stat 2": "Charm",
+    "Body Part": "Magneto-Receptors",
+    "Mechanic / Trait": "Passive: Compass (Never lost. Detect metal within 10ft)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Panoramic",
+    "Stat 1": "Intuition",
+    "Stat 2": "Reflexes",
+    "Body Part": "Lateral Eyes",
+    "Mechanic / Trait": "Passive: 360-View (Cannot be Flanked. +2 Initiative)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Tracker",
+    "Stat 1": "Finesse",
+    "Stat 2": "Endurance",
+    "Body Part": "Olfactory Bulb",
+    "Mechanic / Trait": "Passive: Scavenger-Scent (Smell decay/blood from 1 mile away)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Stabilizer",
+    "Stat 1": "Knowledge",
+    "Stat 2": "Knowledge",
+    "Body Part": "Gyro-Head",
+    "Mechanic / Trait": "Active: Lock-On (Move at full speed while keeping Aim on a target)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Echo",
+    "Stat 1": "Awareness",
+    "Stat 2": "Willpower",
+    "Body Part": "Facial Disk",
+    "Mechanic / Trait": "Active: Pinpoint (Hearing-based Blindsight 30ft)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Flash",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Knowledge",
+    "Body Part": "Crest Display",
+    "Mechanic / Trait": "Active: Startle (Flare crest. Target within 10ft loses Reaction)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Wing-Blade",
+    "Stat 1": "Knowledge",
+    "Stat 2": "Logic",
+    "Body Part": "Spurred Wrists",
+    "Mechanic / Trait": "Active: Wing-Slash (Melee Attack. Deal Slashing + Bleed)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Buffet",
+    "Stat 1": "Vitality",
+    "Stat 2": "Vitality",
+    "Body Part": "Heavy Pinions",
+    "Mechanic / Trait": "Active: Gust (Cone Attack. Knock targets Prone with wind/impact)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Shield",
+    "Stat 1": "Awareness",
+    "Stat 2": "Might",
+    "Body Part": "Bone-Wings",
+    "Mechanic / Trait": "Passive: Mantle (Use Wings as Shield. +2 AC against Ranged Attacks)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Grasper",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Charm",
+    "Body Part": "Clawed Digits",
+    "Mechanic / Trait": "Active: Manipulate (Archaeopteryx claws allow item use while flying)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Diver",
+    "Stat 1": "Knowledge",
+    "Stat 2": "Vitality",
+    "Body Part": "Swept Wings",
+    "Mechanic / Trait": "Active: Stoop (Dive Attack. +1d6 Dmg for every 10ft fallen)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Silent",
+    "Stat 1": "Endurance",
+    "Stat 2": "Awareness",
+    "Body Part": "Serrated Fringes",
+    "Mechanic / Trait": "Passive: Owl-Flight (Flight makes 0 sound. Advantage on Stealth)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Launch",
+    "Stat 1": "Willpower",
+    "Stat 2": "Finesse",
+    "Body Part": "Strong Shoulders",
+    "Mechanic / Trait": "Active: Vertical-Takeoff (Launch into air without running start)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Swimmer",
+    "Stat 1": "Vitality",
+    "Stat 2": "Fortitude",
+    "Body Part": "Flipper-Wings",
+    "Mechanic / Trait": "Passive: Hydro-Dynamic (Swim Speed = Fly Speed. Cannot Fly)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Talons",
+    "Stat 1": "Vitality",
+    "Stat 2": "Awareness",
+    "Body Part": "Raptor Claws",
+    "Mechanic / Trait": "Active: Snatch (Grapple Check. On success, restrain target)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Sprinter",
+    "Stat 1": "Endurance",
+    "Stat 2": "Reflexes",
+    "Body Part": "Running Struts",
+    "Mechanic / Trait": "Active: Dash (Move 3x Speed on ground)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Climber",
+    "Stat 1": "Knowledge",
+    "Stat 2": "Reflexes",
+    "Body Part": "Zygodactyl Toes",
+    "Mechanic / Trait": "Passive: Tree-Walker (Climb Speed = Walk Speed. Hang upside down)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Wader",
+    "Stat 1": "Might",
+    "Stat 2": "Reflexes",
+    "Body Part": "Stilt Legs",
+    "Mechanic / Trait": "Passive: Marsh-Walk (Ignore difficult terrain in water/mud/snow)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Kicker",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Reflexes",
+    "Body Part": "Cassowary Claw",
+    "Mechanic / Trait": "Active: Eviscerate (Melee Kick. High Dmg + Knockback)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Percher",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Awareness",
+    "Body Part": "Locking Tendons",
+    "Mechanic / Trait": "Passive: Vigil (Can sleep while standing/perched without falling)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Paddler",
+    "Stat 1": "Intuition",
+    "Stat 2": "Vitality",
+    "Body Part": "Webbed Feet",
+    "Mechanic / Trait": "Passive: Surface-Swim (Swim Speed = Walk Speed)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Drop",
+    "Stat 1": "Finesse",
+    "Stat 2": "Awareness",
+    "Body Part": "Shock Absorbers",
+    "Mechanic / Trait": "Passive: Cushion (Reduce Fall Damage by half)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Downy",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Willpower",
+    "Body Part": "Insulating Down",
+    "Mechanic / Trait": "Passive: Cold-Proof (Resistance to Cold. Immune to Weather effects)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Oily",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Vitality",
+    "Body Part": "Preen Gland",
+    "Mechanic / Trait": "Passive: Waterproof (Cannot be waterlogged. Float automatically)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Armored",
+    "Stat 1": "Awareness",
+    "Stat 2": "Knowledge",
+    "Body Part": "Keratin Scales",
+    "Mechanic / Trait": "Passive: Hard-Feather (+2 Natural AC. Flight speed -10ft)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Display",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Vitality",
+    "Body Part": "Iridescent Plume",
+    "Mechanic / Trait": "Active: Dazzle (Target Disadvantage on Attack rolls due to flash)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Mimic",
+    "Stat 1": "Awareness",
+    "Stat 2": "Charm",
+    "Body Part": "Camo-Plumage",
+    "Mechanic / Trait": "Passive: Blend (+5 Stealth in chosen terrain)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Light",
+    "Stat 1": "Awareness",
+    "Stat 2": "Awareness",
+    "Body Part": "Hollow Bones",
+    "Mechanic / Trait": "Passive: Lift (Advantage on Acrobatics and Fly checks)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Storage",
+    "Stat 1": "Might",
+    "Stat 2": "Endurance",
+    "Body Part": "Crop Pouch",
+    "Mechanic / Trait": "Passive: Cache (Store items/food safely in throat pouch)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Tough",
+    "Stat 1": "Knowledge",
+    "Stat 2": "Vitality",
+    "Body Part": "Thick Skin",
+    "Mechanic / Trait": "Passive: Scarred (Ignore first 2 points of damage from any hit)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Mimic",
+    "Stat 1": "Awareness",
+    "Stat 2": "Knowledge",
+    "Body Part": "Syrinx Box",
+    "Mechanic / Trait": "Active: Voice-Thief (Perfectly mimic any sound or voice heard)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Song",
+    "Stat 1": "Charm",
+    "Stat 2": "Awareness",
+    "Body Part": "Song-Throat",
+    "Mechanic / Trait": "Active: Bardic-Chirp (Allies within 30ft gain +1d4 to next Save)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Rudder",
+    "Stat 1": "Logic",
+    "Stat 2": "Awareness",
+    "Body Part": "Fan Tail",
+    "Mechanic / Trait": "Passive: Turn-On-Dime (No turn radius limit while flying)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Balance",
+    "Stat 1": "Knowledge",
+    "Stat 2": "Vitality",
+    "Body Part": "Counter-Tail",
+    "Mechanic / Trait": "Passive: Wire-Walk (Advantage on Balance. Cannot be knocked Prone)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Beak",
+    "Stat 1": "Finesse",
+    "Stat 2": "Knowledge",
+    "Body Part": "Hooked Bill",
+    "Mechanic / Trait": "Active: Tear (Melee Attack. Auto-Crit against Prone targets)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Crush",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Awareness",
+    "Body Part": "Nut-Cracker Bill",
+    "Mechanic / Trait": "Active: Break (Double damage against objects/armor)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Fish",
+    "Stat 1": "Intuition",
+    "Stat 2": "Willpower",
+    "Body Part": "Throat Sac",
+    "Mechanic / Trait": "Active: Scoop (Grapple tiny/small target and hold in mouth)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Sonic",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Fortitude",
+    "Body Part": "Boom-Sack",
+    "Mechanic / Trait": "Active: Resonate (AOE Thunder Damage in 15ft cone)."
+  }
+]

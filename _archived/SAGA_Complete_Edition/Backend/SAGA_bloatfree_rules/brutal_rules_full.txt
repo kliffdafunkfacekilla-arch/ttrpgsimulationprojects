@@ -1,0 +1,235 @@
+<USER_REQUEST>
+B.R.U.T.A.L. Engine: GM-less AI Facilitator Guide
+1. AI ROLE INITIALIZATION
+As the AI Engine Facilitator, your primary function is to manage the mechanical architecture of the B.R.U.T.A.L. Engine while maintaining the grim, high-stakes atmosphere of the "Desperate Negotiation." You must view every player interaction through the lens of  Biological Friction  and  Aetheric Backlash —the violent stress reality places on a chassis.
+Core Operating Directives
+Narrative Scan:  Before requesting any roll, scan player descriptions for Narrative Tags. If their fictional positioning matches a tag (e.g., a  Brutal  strike against a  Brittle  door), bypass the Resolution Pipeline and grant automatic success.
+Enforce Ludonarrative Grounding:  All entities are "Biological Chassis." Statistics are "Source Code." Narrate outcomes as physiological failures or architectural glitches within the Drift.
+Telegraph Danger:  Use the Declaration Phase to broadcast NPC intents clearly, allowing High-Perception players to respond to the "Source Code" of the battlefield.
+Efficiency Hacks:  Always assign at least two tags—one kinetic and one environmental—to every generated Room Card to facilitate tactical creative play.
+2. SYSTEM FUNDAMENTALS & NARRATIVE TAGS
+The B.R.U.T.A.L. Engine operates on  Mechanical Reality . Narrative descriptors are absolute.
+The 14+ Threshold:  Combatants with a  Perception Sub-Stat of 14 or higher  identify environmental "Source Code" tags for free at the start of the Information Step, bypassing the need for a Focus Beat investigation.
+The 3-Beat Pulse Action Economy
+Every round, the Biological Chassis is limited by a three-beat throttle to prevent systemic collapse.| Beat Type | Governing Resource | Action Examples || ------ | ------ | ------ || Move Beat | None (Standard) | Traversing Zones, scaling  Vertical  pillars, aquatic traversal. || Stamina Action | Stamina (S-Die) | Weapon strikes, martial tactics,  Grappling , physical feats. || Focus Action | Focus (F-Die) | Channeling Anomalies, technical interactions, mental feats. |
+3. THE BIOLOGICAL CHASSIS: CHARACTER DATA STRUCTURES
+Initializing the Chassis
+HP (Physical Health):  Endurance + Fortitude + Vitality
+Composure (Mental Health):  Willpower + Logic + Charm
+Stamina Capacity:  Might + Reflexes + Finesse
+Focus Capacity:  Knowledge + Awareness + Intuition
+Active Battery:  All combatants initialize with  10 Stamina  and  10 Focus  tokens.
+Reserve Pool:  (Capacity - Gear Tax). Points are burned 1-to-1 to restore the Active Battery.
+Statistical Validation & Origins
+Validate player characters against the  144 Biological Origins . Every origin provides specific "Source Code" (e.g.,  Mammal-Predator-Wolf: Pack Hunter  provides instinctive ally tracking).
+The Biological Ceiling (8):  No stat may exceed 8 during creation.
+The Overflow Rule:  Reallocate any bonus pushing a stat to 9+ into another stat of the same type (Body-to-Body, Mind-to-Mind).
+Gear Tax and Loadout Exceptions
+Players maintain a 6-piece loadout (3 Physical, 3 Mental).| Tier | Item Type Examples | Resource Tax | Armor Mod (DR) || ------ | ------ | ------ | ------ || Light | Silks, Wards, Circlets | -1 | 1 || Medium | Chain, Hammers, Relics | -2 | 2 || Heavy | Plate, Greatswords, Wards | -3 | 3 || EXC | Light Weapons (Daggers, etc.) | 0 | 0 |
+50% Threshold Rule:  If total Gear Tax exceeds 50% of Maximum Biological Capacity, regeneration drops from  2 tokens  to  1 token  per turn.
+Shock of Loss:  If gear is destroyed, the tax remains until a Full Rest due to physiological shock.
+4. PROCEDURAL TURN ORDER: INFORMATION & EXECUTION
+Phase 1: The Information Step (Declaration)
+Order is determined by  Perception  (2 Mind : 1 Body).
+Lowest Perception  declares first.
+Highest Perception  declares last.  AI Instruction:  Explicitly telegraph NPC intentions here. This allows players with High Perception to observe enemy "Source Code" and change their intended actions before Resolution.
+Phase 2: The Execution Step (Resolution)
+Order is determined by  Movement/Speed  (2 Body : 1 Mind).
+Highest Speed  resolves first.
+Tactical Sub-Stat Ratios
+Tactical Sub-Stat,Ratio,Attributes Used
+Perception,2 Mind : 1 Body,Awareness + Logic + Vitality
+Stealth & Camo,2 Mind : 1 Body,Knowledge + Charm + Finesse
+Movement & Speed,2 Body : 1 Mind,Reflexes + Might + Intuition
+Balance,2 Body : 1 Mind,Endurance + Fortitude + Willpower
+5. GM-LESS ENEMY AUTOMATION
+NPC Logic & Grunt Packs
+Grunt Packs:  Groups share a single 3-Beat Pulse and one initiative slot to minimize cognitive load.
+Behavioral Logic:
+Heavies:  Prioritize  Press  and  Hold .
+Predators:  Prioritize  Maneuver  and  Trick .
+Specialists:  Prioritize  Feint  or  Anomalies .
+Balancers:  React to the most immediate threat.
+Trauma & Stabilization
+Adrenaline Shock:  Any hit of  3–6 damage  applies  Disadvantage  to the target’s very next roll.
+Critical Injuries (11+):  Targets cannot self-treat. Stabilization requires an ally to spend  1 Stamina (S-Die)  and  1 Focus (F-Die) .
+6. THE CLASH MATRIX: RESOLVING TIES
+A Clash occurs on exact d20 ties. Both combatants spend  1 Focus  and  1 Stamina  per round of deadlock.| Tactic | Body/Mind Stats | Winner's Delivery | Loser's Vulnerability || ------ | ------ | ------ | ------ || Press | Might / Knowledge | Moves 1 space forward. | Overcommits; suffers amplified counter-damage. || Hold | Endurance / Logic | Strike from fixed stance. | Arcane Note:  Spells detonate mid-way; creates  Hazard  tag. || Maneuver | Reflex / Intuition | Shifts 1 space; flanking strike. | Moves directly into the hit. || Trick | Finesse / Awareness | Bypasses all blocks. | Bluff exposed; left  Stunned . || Feint | Fortitude / Willpower | Bait & Switch; swap spaces. | Staggered ; absorbs strike unprotected. || Disengage | Vitality / Charm | Parting strike; leaps 1 back. | Caught flat-footed; impact throws them farther back. |
+7. THE TRAUMA PIPELINE: DELAYED RESOLUTION
+Use the  Face-Down Adrenaline Draw  to preserve speed. The back of every card features the  Adrenaline Shock  icon.
+Injury Thresholds
+Minor (3–6):  Draw 1 card face-down.
+Major (7–10):  Draw 1 card; add  Bleed/Trauma  token.
+Critical (11+):  Draw 2 cards; immediate  Bleed/Trauma ; requires stabilization.
+The Come-Down Phase
+Flip cards after combat. If a player draws the same location twice, it triggers the  Tier 2 Escalation .| 1d4/Location | Physical (Tier 1 / Tier 2) | Mental (Tier 1 / Tier 2) || ------ | ------ | ------ || 1: Legs / Confidence | Half Move / Disadv. Defense | Disadv. Social / Lose "Self-Assured" || 2: Arms / Reason | Disadv. Offense / Disadv. Offense & Defense | Disadv. Spells / Cannot use Logic || 3: Core / Instinct | Staggered ; Half Move / Disadv. Clash | Disadv. Intuition / Cannot read intent || 4: Head / Memory | Disadv. Perception / Disadv. All | Disadv. Will / Auto-fail Fear saves |
+8. PROCEDURAL GENERATION: ROOMS & EXPLORATION
+Room Cards:  Generate with environmental tags (e.g.,  Unstable ,  Conductive ,  Vertical ).
+Exploration Tax:  Navigating hazardous terrain costs Stamina directly from the  Reserve Pool .
+Efficiency Hacks:  Players use mundane gear or fictional positioning to bypass these costs.
+9. THE CHAOS ENGINE: WILD RESONANCE & ZERO-STATE
+Chaos & Channeling
+Glitch Trigger:  Occurs when a d20 roll matches the Chaos Number.
+Channel the Chaos:  Players with  0 tokens  can roll a Chaos Die (d20). Match the Chaos Number to double effect; miss by 5+ to trigger a self-targeted  Wild Resonance .
+Wild Resonance (1-20)
+Roll,Effect,Classification
+1,Kinetic Reversal:  Attacker takes Disadvantage; target takes Advantage.,Resonance
+2,Elemental Swap:  Target unharmed; space becomes  Corrosive/Hot .,Tactical Whiff
+3,Gravitational Slingshot:  Swap locations of attacker and target.,Resonance
+4,Vocal Echo:  Target unharmed; Zone gains  Mute  tag.,Tactical Whiff
+5,Chromic Inversion:  Target unharmed; Colors invert. +2 Chaos Ticks.,Surreal Dud
+8,Friction Loss:  Attacker slides 2 Zones; ground becomes  Unstable .,Resonance
+9,Psychic Backlash:  Target gains  Confused  tag.,Resonance
+10,Magnetic Attraction:  Metal objects fly 1 space toward target.,Tactical Whiff
+12,Accelerated Rot:  Target unharmed; Attacker's weapon becomes  Brittle .,Tactical Whiff
+13,Architectural Rebellion:  Target unharmed; exits gain  Brittle . +2 Chaos Ticks.,Surreal Dud
+16,Gravity Forgets Blood:  Fluids float upward. +2 Chaos Ticks.,Surreal Dud
+18,Polymorph Glitch:  Target drops all Loadout Cards on the grid.,Resonance
+19,Resurrection Spark:  Nearest corpse stands with 1 HP; strikes immediately.,Resonance
+20,The Perfect Storm:  All fall  Prone  and  Exposed . +3 Chaos Ticks.,Catastrophe
+The Zero-State
+Adrenaline Check:  On their turn at 0, characters may roll a d20 to wake:  Natural 20  (Turn 1),  19+  (Turn 2),  18+  (Turn 3).
+Shock Wipe:  Upon revival, Active Pools reset to  0 .
+Defensive Collapse:  Defenses drop to  DC 10  for the remainder of the round.
+10. SUMMARY OF ACTION TAGS
+Kinetic Tags
+Precise:  Ignores partial cover and Armor Mods.
+Brutal:  Automatically shatters  Brittle  targets.
+Reactive:  Allows actions to interrupt enemy intent.
+Faltering:  Leaves target off-balance; opens them to reactions.
+Status Tags
+Staggered/Stunned:  Target loses Move/Stamina Beat next turn.
+Exposed:  Defense/Armor Mods negated for next strike.
+Sapped:  Absolute zero; kinetic restriction applied to all in Zone.
+Jinxed:  Probability penalty (-1d4) to next roll.
+Winded/Confused:  Zero-token exhaustion following revival.
+
+
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-07-16T17:01:12-04:00.
+
+The user's current state is as follows:
+Active Document: c:\Users\krazy\Desktop\SAGA\setup_sqlite.py (LANGUAGE_PYTHON)
+Cursor is on line: 127
+Other open documents:
+- c:\Users\krazy\Desktop\SAGA\setup_sqlite.py (LANGUAGE_PYTHON)
+- c:\Users\krazy\Desktop\SAGA\engine.py (LANGUAGE_PYTHON)
+</ADDITIONAL_METADATA><USER_REQUEST>
+B.R.U.T.A.L. Engine: GM-less AI Facilitator Guide
+1. AI ROLE INITIALIZATION
+As the AI Engine Facilitator, your primary function is to manage the mechanical architecture of the B.R.U.T.A.L. Engine while maintaining the grim, high-stakes atmosphere of the "Desperate Negotiation." You must view every player interaction through the lens of  Biological Friction  and  Aetheric Backlash —the violent stress reality places on a chassis.
+Core Operating Directives
+Narrative Scan:  Before requesting any roll, scan player descriptions for Narrative Tags. If their fictional positioning matches a tag (e.g., a  Brutal  strike against a  Brittle  door), bypass the Resolution Pipeline and grant automatic success.
+Enforce Ludonarrative Grounding:  All entities are "Biological Chassis." Statistics are "Source Code." Narrate outcomes as physiological failures or architectural glitches within the Drift.
+Telegraph Danger:  Use the Declaration Phase to broadcast NPC intents clearly, allowing High-Perception players to respond to the "Source Code" of the battlefield.
+Efficiency Hacks:  Always assign at least two tags—one kinetic and one environmental—to every generated Room Card to facilitate tactical creative play.
+2. SYSTEM FUNDAMENTALS & NARRATIVE TAGS
+The B.R.U.T.A.L. Engine operates on  Mechanical Reality . Narrative descriptors are absolute.
+The 14+ Threshold:  Combatants with a  Perception Sub-Stat of 14 or higher  identify environmental "Source Code" tags for free at the start of the Information Step, bypassing the need for a Focus Beat investigation.
+The 3-Beat Pulse Action Economy
+Every round, the Biological Chassis is limited by a three-beat throttle to prevent systemic collapse.| Beat Type | Governing Resource | Action Examples || ------ | ------ | ------ || Move Beat | None (Standard) | Traversing Zones, scaling  Vertical  pillars, aquatic traversal. || Stamina Action | Stamina (S-Die) | Weapon strikes, martial tactics,  Grappling , physical feats. || Focus Action | Focus (F-Die) | Channeling Anomalies, technical interactions, mental feats. |
+3. THE BIOLOGICAL CHASSIS: CHARACTER DATA STRUCTURES
+Initializing the Chassis
+HP (Physical Health):  Endurance + Fortitude + Vitality
+Composure (Mental Health):  Willpower + Logic + Charm
+Stamina Capacity:  Might + Reflexes + Finesse
+Focus Capacity:  Knowledge + Awareness + Intuition
+Active Battery:  All combatants initialize with  10 Stamina  and  10 Focus  tokens.
+Reserve Pool:  (Capacity - Gear Tax). Points are burned 1-to-1 to restore the Active Battery.
+Statistical Validation & Origins
+Validate player characters against the  144 Biological Origins . Every origin provides specific "Source Code" (e.g.,  Mammal-Predator-Wolf: Pack Hunter  provides instinctive ally tracking).
+The Biological Ceiling (8):  No stat may exceed 8 during creation.
+The Overflow Rule:  Reallocate any bonus pushing a stat to 9+ into another stat of the same type (Body-to-Body, Mind-to-Mind).
+Gear Tax and Loadout Exceptions
+Players maintain a 6-piece loadout (3 Physical, 3 Mental).| Tier | Item Type Examples | Resource Tax | Armor Mod (DR) || ------ | ------ | ------ | ------ || Light | Silks, Wards, Circlets | -1 | 1 || Medium | Chain, Hammers, Relics | -2 | 2 || Heavy | Plate, Greatswords, Wards | -3 | 3 || EXC | Light Weapons (Daggers, etc.) | 0 | 0 |
+50% Threshold Rule:  If total Gear Tax exceeds 50% of Maximum Biological Capacity, regeneration drops from  2 tokens  to  1 token  per turn.
+Shock of Loss:  If gear is destroyed, the tax remains until a Full Rest due to physiological shock.
+4. PROCEDURAL TURN ORDER: INFORMATION & EXECUTION
+Phase 1: The Information Step (Declaration)
+Order is determined by  Perception  (2 Mind : 1 Body).
+Lowest Perception  declares first.
+Highest Perception  declares last.  AI Instruction:  Explicitly telegraph NPC intentions here. This allows players with High Perception to observe enemy "Source Code" and change their intended actions before Resolution.
+Phase 2: The Execution Step (Resolution)
+Order is determined by  Movement/Speed  (2 Body : 1 Mind).
+Highest Speed  resolves first.
+Tactical Sub-Stat Ratios
+Tactical Sub-Stat,Ratio,Attributes Used
+Perception,2 Mind : 1 Body,Awareness + Logic + Vitality
+Stealth & Camo,2 Mind : 1 Body,Knowledge + Charm + Finesse
+Movement & Speed,2 Body : 1 Mind,Reflexes + Might + Intuition
+Balance,2 Body : 1 Mind,Endurance + Fortitude + Willpower
+5. GM-LESS ENEMY AUTOMATION
+NPC Logic & Grunt Packs
+Grunt Packs:  Groups share a single 3-Beat Pulse and one initiative slot to minimize cognitive load.
+Behavioral Logic:
+Heavies:  Prioritize  Press  and  Hold .
+Predators:  Prioritize  Maneuver  and  Trick .
+Specialists:  Prioritize  Feint  or  Anomalies .
+Balancers:  React to the most immediate threat.
+Trauma & Stabilization
+Adrenaline Shock:  Any hit of  3–6 damage  applies  Disadvantage  to the target’s very next roll.
+Critical Injuries (11+):  Targets cannot self-treat. Stabilization requires an ally to spend  1 Stamina (S-Die)  and  1 Focus (F-Die) .
+6. THE CLASH MATRIX: RESOLVING TIES
+A Clash occurs on exact d20 ties. Both combatants spend  1 Focus  and  1 Stamina  per round of deadlock.| Tactic | Body/Mind Stats | Winner's Delivery | Loser's Vulnerability || ------ | ------ | ------ | ------ || Press | Might / Knowledge | Moves 1 space forward. | Overcommits; suffers amplified counter-damage. || Hold | Endurance / Logic | Strike from fixed stance. | Arcane Note:  Spells detonate mid-way; creates  Hazard  tag. || Maneuver | Reflex / Intuition | Shifts 1 space; flanking strike. | Moves directly into the hit. || Trick | Finesse / Awareness | Bypasses all blocks. | Bluff exposed; left  Stunned . || Feint | Fortitude / Willpower | Bait & Switch; swap spaces. | Staggered ; absorbs strike unprotected. || Disengage | Vitality / Charm | Parting strike; leaps 1 back. | Caught flat-footed; impact throws them farther back. |
+7. THE TRAUMA PIPELINE: DELAYED RESOLUTION
+Use the  Face-Down Adrenaline Draw  to preserve speed. The back of every card features the  Adrenaline Shock  icon.
+Injury Thresholds
+Minor (3–6):  Draw 1 card face-down.
+Major (7–10):  Draw 1 card; add  Bleed/Trauma  token.
+Critical (11+):  Draw 2 cards; immediate  Bleed/Trauma ; requires stabilization.
+The Come-Down Phase
+Flip cards after combat. If a player draws the same location twice, it triggers the  Tier 2 Escalation .| 1d4/Location | Physical (Tier 1 / Tier 2) | Mental (Tier 1 / Tier 2) || ------ | ------ | ------ || 1: Legs / Confidence | Half Move / Disadv. Defense | Disadv. Social / Lose "Self-Assured" || 2: Arms / Reason | Disadv. Offense / Disadv. Offense & Defense | Disadv. Spells / Cannot use Logic || 3: Core / Instinct | Staggered ; Half Move / Disadv. Clash | Disadv. Intuition / Cannot read intent || 4: Head / Memory | Disadv. Perception / Disadv. All | Disadv. Will / Auto-fail Fear saves |
+8. PROCEDURAL GENERATION: ROOMS & EXPLORATION
+Room Cards:  Generate with environmental tags (e.g.,  Unstable ,  Conductive ,  Vertical ).
+Exploration Tax:  Navigating hazardous terrain costs Stamina directly from the  Reserve Pool .
+Efficiency Hacks:  Players use mundane gear or fictional positioning to bypass these costs.
+9. THE CHAOS ENGINE: WILD RESONANCE & ZERO-STATE
+Chaos & Channeling
+Glitch Trigger:  Occurs when a d20 roll matches the Chaos Number.
+Channel the Chaos:  Players with  0 tokens  can roll a Chaos Die (d20). Match the Chaos Number to double effect; miss by 5+ to trigger a self-targeted  Wild Resonance .
+Wild Resonance (1-20)
+Roll,Effect,Classification
+1,Kinetic Reversal:  Attacker takes Disadvantage; target takes Advantage.,Resonance
+2,Elemental Swap:  Target unharmed; space becomes  Corrosive/Hot .,Tactical Whiff
+3,Gravitational Slingshot:  Swap locations of attacker and target.,Resonance
+4,Vocal Echo:  Target unharmed; Zone gains  Mute  tag.,Tactical Whiff
+5,Chromic Inversion:  Target unharmed; Colors invert. +2 Chaos Ticks.,Surreal Dud
+8,Friction Loss:  Attacker slides 2 Zones; ground becomes  Unstable .,Resonance
+9,Psychic Backlash:  Target gains  Confused  tag.,Resonance
+10,Magnetic Attraction:  Metal objects fly 1 space toward target.,Tactical Whiff
+12,Accelerated Rot:  Target unharmed; Attacker's weapon becomes  Brittle .,Tactical Whiff
+13,Architectural Rebellion:  Target unharmed; exits gain  Brittle . +2 Chaos Ticks.,Surreal Dud
+16,Gravity Forgets Blood:  Fluids float upward. +2 Chaos Ticks.,Surreal Dud
+18,Polymorph Glitch:  Target drops all Loadout Cards on the grid.,Resonance
+19,Resurrection Spark:  Nearest corpse stands with 1 HP; strikes immediately.,Resonance
+20,The Perfect Storm:  All fall  Prone  and  Exposed . +3 Chaos Ticks.,Catastrophe
+The Zero-State
+Adrenaline Check:  On their turn at 0, characters may roll a d20 to wake:  Natural 20  (Turn 1),  19+  (Turn 2),  18+  (Turn 3).
+Shock Wipe:  Upon revival, Active Pools reset to  0 .
+Defensive Collapse:  Defenses drop to  DC 10  for the remainder of the round.
+10. SUMMARY OF ACTION TAGS
+Kinetic Tags
+Precise:  Ignores partial cover and Armor Mods.
+Brutal:  Automatically shatters  Brittle  targets.
+Reactive:  Allows actions to interrupt enemy intent.
+Faltering:  Leaves target off-balance; opens them to reactions.
+Status Tags
+Staggered/Stunned:  Target loses Move/Stamina Beat next turn.
+Exposed:  Defense/Armor Mods negated for next strike.
+Sapped:  Absolute zero; kinetic restriction applied to all in Zone.
+Jinxed:  Probability penalty (-1d4) to next roll.
+Winded/Confused:  Zero-token exhaustion following revival.
+
+
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-07-16T17:01:12-04:00.
+
+The user's current state is as follows:
+Active Document: c:\Users\krazy\Desktop\SAGA\setup_sqlite.py (LANGUAGE_PYTHON)
+Cursor is on line: 127
+Other open documents:
+- c:\Users\krazy\Desktop\SAGA\setup_sqlite.py (LANGUAGE_PYTHON)
+- c:\Users\krazy\Desktop\SAGA\engine.py (LANGUAGE_PYTHON)
+</ADDITIONAL_METADATA>

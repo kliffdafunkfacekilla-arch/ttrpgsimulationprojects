@@ -1,0 +1,25 @@
+# Task List: Streamlined TTRPG Map Generator & Simulation Engine
+
+- `[x]` Phase 1: Project Initialization and World Generation
+  - `[x]` Create `requirements.txt`
+  - `[x]` Create `database.py` (SQLite schema setup)
+  - `[x]` Create `map_generator.py` (Voronoi mesh and cell_edges calculation)
+  - `[x]` Create `ui/viewer.py` (Pygame UI, sprite loading, slicing, and rendering)
+  - `[x]` Create `main.py` (orchestration and control loop)
+- `[x]` Phase 2: Basic Mesa Simulation Engine
+  - `[x]` Implement `CellAgent` and `FactionAgent` in `simulation_engine.py`
+  - `[x]` Implement `TTRPGWorldModel` (staged activation loop) in `simulation_engine.py`
+  - `[x]` Implement database bulk updates to SQLite in `_commit_to_database()`
+- `[x]` Phase 3: Modular Subsystems
+  - `[x]` Implement `systems/calendar_manager.py`
+  - `[x]` Implement `systems/spatial_chaos.py` (chaos spiral precomputation)
+  - `[x]` Implement `systems/weather_ecology.py` (dual weather logic)
+  - `[x]` Implement `systems/paragon_diplomacy.py` (leader logic)
+- `[x]` Phase 4: Visual Slicing & Boundary Clipping Fixes
+  - `[x]` Regenerate map database using clipped Shapely polygons
+  - `[x]` Adjust spritesheet row heights to match irregular grid boundaries
+  - `[x]` Add 2px trimming to remove black grid borders on sliced sprites
+  - `[x]` Map faction unit and keep POI columns to correct spritesheet columns
+- `[x]` Phase 5: Verification & Walkthrough
+  - `[x]` Run manual verification ticks and check database consistency
+  - `[x]` Create `walkthrough.md` summarizing progress and visual fixes

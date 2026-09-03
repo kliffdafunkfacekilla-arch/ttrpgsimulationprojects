@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+/* encyclopedia-style.css */
+.fantasy-book {
+    background-color: var(--theme-bg-outer, #f4ece1);
+    color: var(--theme-text, #2e2e2e);
+    font-family: var(--theme-font, 'Crimson Text', serif);
+    line-height: 1.5;
+    padding: 40px;
+    min-height: 100%;
+}
+
+.manual-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px;
+    background: var(--theme-bg-inner, #fffefc);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border: 1px solid var(--theme-accent, #d3c5b0);
+}
+
+.manual-page h1 {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 2px solid var(--theme-heading, #8b0000);
+    color: var(--theme-heading, #8b0000);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.manual-page h2 {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--theme-heading, #8b0000);
+    font-size: 1.8rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.manual-page h3 {
+    color: var(--theme-heading, #5a0000);
+    font-size: 1.4rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* The core 2-column layout */
+.content-columns {
+    column-count: 2;
+    column-gap: 40px;
+    column-rule: 1px solid var(--theme-accent, #d3c5b0);
+    text-align: justify;
+}
+
+/* Drop caps for that ancient book feel */
+.content-columns > p:first-of-type::first-letter {
+    float: left;
+    font-size: 3.5em;
+    line-height: 0.8;
+    padding-right: 8px;
+    color: var(--theme-heading, #8b0000);
+}
+
+.content-columns p {
+    margin-bottom: 1rem;
+}
+
+/* Special styling for those AI-placed image slots */
+.image-placeholder {
+    break-inside: avoid; /* Prevents image box from splitting across columns */
+    background: var(--theme-bg-outer, #e9e4d9);
+    border: 2px dashed var(--theme-accent, #a59d84);
+    padding: 20px;
+    margin: 15px 0;
+    text-align: center;
+    font-style: italic;
+    color: var(--theme-text, #555);
+    opacity: 0.8;
+}
+
+.image-placeholder::before {
+    content: "📷 ILLUSTRATION: ";
+    font-weight: bold;
+}

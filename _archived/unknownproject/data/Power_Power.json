@@ -1,0 +1,92 @@
+[
+  {
+    "Tier": "1",
+    "Resource_Cost": "1",
+    "Damage_Dice": "1d6",
+    "Healing_Dice": "1d6",
+    "Duration": "1 Round",
+    "Force_Magnitude": "5 ft / 50 lbs",
+    "Description": "Basic impact or momentary effect."
+  },
+  {
+    "Tier": "2",
+    "Resource_Cost": "2",
+    "Damage_Dice": "1d8",
+    "Healing_Dice": "1d8",
+    "Duration": "1 Minute",
+    "Force_Magnitude": "10 ft / 100 lbs",
+    "Description": "Standard combat power."
+  },
+  {
+    "Tier": "3",
+    "Resource_Cost": "3",
+    "Damage_Dice": "2d6",
+    "Healing_Dice": "2d6",
+    "Duration": "10 Minutes",
+    "Force_Magnitude": "15 ft / 200 lbs",
+    "Description": "Heavy hit; short-term buff."
+  },
+  {
+    "Tier": "4",
+    "Resource_Cost": "4",
+    "Damage_Dice": "2d8",
+    "Healing_Dice": "2d8",
+    "Duration": "1 Hour",
+    "Force_Magnitude": "20 ft / 500 lbs",
+    "Description": "Elite power; encounter-long buff."
+  },
+  {
+    "Tier": "5",
+    "Resource_Cost": "5",
+    "Damage_Dice": "3d6",
+    "Healing_Dice": "3d6",
+    "Duration": "8 Hours",
+    "Force_Magnitude": "30 ft / 1,000 lbs",
+    "Description": "Significant destruction; work-day duration."
+  },
+  {
+    "Tier": "6",
+    "Resource_Cost": "6",
+    "Damage_Dice": "3d8",
+    "Healing_Dice": "3d8",
+    "Duration": "24 Hours",
+    "Force_Magnitude": "50 ft / 1 Ton",
+    "Description": "Siege power; day-long buff."
+  },
+  {
+    "Tier": "7",
+    "Resource_Cost": "8",
+    "Damage_Dice": "4d10",
+    "Healing_Dice": "4d10",
+    "Duration": "1 Week",
+    "Force_Magnitude": "100 ft / 5 Tons",
+    "Description": "Structural damage; long-term change."
+  },
+  {
+    "Tier": "8",
+    "Resource_Cost": "10",
+    "Damage_Dice": "5d10",
+    "Healing_Dice": "5d10",
+    "Duration": "1 Month",
+    "Force_Magnitude": "500 ft / 10 Tons",
+    "Description": "Disaster level; seasonal change."
+  },
+  {
+    "Tier": "9",
+    "Resource_Cost": "12",
+    "Damage_Dice": "10d10",
+    "Healing_Dice": "Full Heal",
+    "Duration": "1 Year",
+    "Force_Magnitude": "1 Mile / City Block",
+    "Description": "Cataclysmic; year-long curse/buff."
+  },
+  {
+    "Tier": "10",
+    "Resource_Cost": "15",
+    "Damage_Dice": "Narrative (Kill)",
+    "Healing_Dice": "Resurrect",
+    "Duration": "Permanent",
+    "Force_Magnitude": "Global / Infinite",
+    "Description": "God-tier; alters reality forever."
+  }
+]

@@ -1,0 +1,697 @@
+TTRPG World Builder & Simulator
+Updated Architecture & Implementation Guide
+Revised Edition — Includes Feasibility Corrections & Complex System Guidance
+0. How To Use This Document
+This document supersedes the original setup guide. It preserves the full original architecture while correcting real implementation issues and adding detailed guidance for the three hardest parts of the project: the PostGIS/NetworkX grid, the Mesa 2.x API changes, and the frontend rendering at scale.
+Build Order Rule: Never proceed to a new phase until the previous one produces a visible result. Each phase ends with a working demo you can see and test before touching the next layer of complexity.
+Phase
+Goal
+Success Criteria
+1
+Database + Map
+Voronoi polygons visible in a browser
+2
+Basic Tick Loop
+One faction expands on the map after a tick
+3
+Modular Systems
+Weather and economy run independently
+4
+Complex Features
+Paragons, Z-axis, Chaos Spiral
+5
+Full Simulation
+All modules wired into the Mesa conductor
+1. Directory Structure & Dependencies
+The directory structure is unchanged from the original. This separation of backend and frontend is correct and should be maintained strictly.
+ttrpg_engine/
+│
+├── backend/
+│   ├── requirements.txt
+│   ├── main.py                  # FastAPI server
+│   ├── map_generator.py         # SciPy Voronoi math
+│   ├── simulation_engine.py     # Mesa conductor
+│   ├── database.py              # PostgreSQL connection
+│   └── systems/                 # Modular sub-systems (Phase 3+)
+│       ├── calendar_manager.py
+│       ├── spatial_chaos_system.py
+│       ├── weather_ecology_system.py
+│       ├── production_economy_system.py
+│       └── paragon_diplomacy_system.py
+│
+└── frontend/
+    ├── package.json
+    └── src/
+        ├── routes/
+        │   └── +page.svelte     # Main dashboard
+        └── lib/
+            └── Map.svelte       # Rendering component
+Backend Installation
+No changes to the package list. Install exactly as before:
+pip install fastapi uvicorn scipy numpy psycopg2-binary mesa
+⚠ Mesa Version Lock
+Pin Mesa to version 2.x exactly: pip install mesa==2.3.0. Mesa 3.x introduced further scheduler API changes. Locking the version prevents silent breakage if you recreate your environment later.
+Frontend Installation
+The SvelteKit + D3 setup is correct. One additional package is required for high-performance map rendering (see Section 5):
+npm create svelte@latest frontend
+cd frontend
+npm install d3
+npm install d3-tile   # Only needed if you add tile basemaps later
+2. The Database (PostgreSQL + PostGIS)
+2a. Core Schema (Phase 1 & 2)
+The base schema is correct. Build this first and verify it works before adding the Z-axis extensions.
+CREATE EXTENSION IF NOT EXISTS postgis;
+-- Core hex grid
+CREATE TABLE cells (
+    id            SERIAL PRIMARY KEY,
+    biome         VARCHAR(50),
+    elevation     FLOAT,
+    depth_elevation FLOAT DEFAULT 0.0,  -- NEW: positive=surface, negative=underwater
+    geom          GEOMETRY(Polygon, 4326)
+);
+-- Factions and populations
+CREATE TABLE macro_groups (
+    id            SERIAL PRIMARY KEY,
+    cell_id       INT REFERENCES cells(id) ON DELETE CASCADE,
+    faction_name  VARCHAR(100),
+    chaos_level   FLOAT DEFAULT 0.0,
+    population    INT DEFAULT 0,
+    discontent    FLOAT DEFAULT 0.0,
+    crime_level   FLOAT DEFAULT 0.0,
+    food_supply   FLOAT DEFAULT 0.5,
+    physical_well_being FLOAT DEFAULT 1.0,
+    mental_well_being   FLOAT DEFAULT 1.0,
+    safety_rating FLOAT DEFAULT 0.5,
+    camps_count   INT DEFAULT 0,
+    mines_count   INT DEFAULT 0,
+    farms_count   INT DEFAULT 0,
+    barracks_count INT DEFAULT 0,
+    watchtowers_count INT DEFAULT 0
+);
+-- Simulation logs
+CREATE TABLE simulation_logs (
+    id            SERIAL PRIMARY KEY,
+    tick_number   INT,
+    event_type    VARCHAR(50),
+    description   TEXT,
+    severity      INT DEFAULT 1,
+    created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+2b. Phase 3+ Schema Additions (Add Only When Needed)
+Do not add these tables until you are actively building the module that requires them. Adding them early clutters the schema and makes early debugging harder.
+-- Add when building paragon_diplomacy_system.py
+CREATE TABLE paragons (
+    id                SERIAL PRIMARY KEY,
+    name              VARCHAR(100),
+    macro_group_id    INT REFERENCES macro_groups(id),
+    faction_id        INT,
+    loyalty           FLOAT DEFAULT 0.5,
+    military_trait    FLOAT DEFAULT 0.0,
+    economic_trait    FLOAT DEFAULT 0.0,
+    chaos_corruption  FLOAT DEFAULT 0.0
+);
+-- Add when building production_economy_system.py
+CREATE TABLE cell_resources (
+    id        SERIAL PRIMARY KEY,
+    cell_id   INT REFERENCES cells(id),
+    iron      FLOAT DEFAULT 0.0,
+    kelp      FLOAT DEFAULT 0.0,
+    chaos_resin FLOAT DEFAULT 0.0
+);
+CREATE TABLE faction_inventories (
+    id            SERIAL PRIMARY KEY,
+    faction_id    INT,
+    refined_metal FLOAT DEFAULT 0.0,
+    advanced_units INT DEFAULT 0
+);
+-- Add when building spatial_chaos_system.py
+CREATE TABLE dragon_prisons (
+    id     SERIAL PRIMARY KEY,
+    cell_id INT REFERENCES cells(id),
+    geom   GEOMETRY(Point, 4326)
+);
+2c. The Critical Adjacency Query
+This query is the foundation of the NetworkGrid. It must work correctly before Mesa can do anything spatial. Test it in isolation first.
+-- Run this manually in psql to verify it returns rows before using it in Python
+SELECT
+    a.id AS cell_a,
+    b.id AS cell_b
+FROM cells a
+JOIN cells b
+    ON ST_Touches(a.geom, b.geom)
+WHERE a.id < b.id;  -- Prevents duplicate edges (A-B and B-A)
+⚠ Common PostGIS Pitfall: Invalid Voronoi Geometries
+SciPy's Voronoi function sometimes produces open or degenerate polygons at the boundary of the point cloud. These will cause ST_Touches to silently fail for those cells, leaving them as isolated islands in your graph. Fix this by running ST_IsValid(geom) after insertion and removing or repairing invalid rows before building the NetworkGrid.
+-- Run after inserting Voronoi cells to catch bad geometry
+SELECT id FROM cells WHERE NOT ST_IsValid(geom);
+-- Attempt auto-repair on invalid geometries
+UPDATE cells SET geom = ST_MakeValid(geom) WHERE NOT ST_IsValid(geom);
+3. map_generator.py — Corrected Implementation
+The original design is conceptually correct. The code below adds the geometry validation step and fixes the polygon winding order, which is a frequent source of invisible bugs where polygons insert without error but render incorrectly.
+import numpy as np
+from scipy.spatial import Voronoi
+from database import get_db_connection, execute_bulk_insert
+def generate_world(seed: int, num_cells: int = 1000):
+    rng = np.random.default_rng(seed)
+    points = rng.random((num_cells, 2)) * 100  # 100x100 grid
+    vor = Voronoi(points)
+    rows = []
+    for region_idx in vor.point_region:
+        region = vor.regions[region_idx]
+        # Skip open regions (contain -1 index = extends to infinity)
+        if -1 in region or len(region) < 3:
+            continue
+        vertices = vor.vertices[region]
+        # Build WKT polygon string
+        coords = ', '.join(f'{x} {y}' for x, y in vertices)
+        # Close the polygon by repeating the first vertex
+        first = f'{vertices[0][0]} {vertices[0][1]}'
+        wkt = f'POLYGON(({coords}, {first}))'
+        biomes = ['Forest', 'Plains', 'Desert', 'Mountain', 'Swamp', 'Ocean']
+        biome = rng.choice(biomes)
+        elevation = float(rng.uniform(-1.0, 1.0))  # Negative = underwater
+        rows.append((biome, elevation, elevation, wkt))
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute('TRUNCATE TABLE cells CASCADE')
+    conn.commit()
+    query = '''
+        INSERT INTO cells (biome, elevation, depth_elevation, geom)
+        VALUES %s
+    '''
+    # Use ST_GeomFromText and ST_MakeValid in one shot
+    # psycopg2 execute_values passes each row tuple into the template
+    from psycopg2.extras import execute_values
+    execute_values(
+        cur,
+        '''INSERT INTO cells (biome, elevation, depth_elevation, geom)
+           VALUES %s''',
+        rows,
+        template="(%s, %s, %s, ST_MakeValid(ST_GeomFromText(%s, 4326)))",
+        page_size=500
+    )
+    conn.commit()
+    cur.close()
+    conn.close()
+    return {'cells_created': len(rows)}
+4. simulation_engine.py — Mesa 2.x Corrected API
+This is the most important correction in this document. The original code uses Mesa's deprecated 1.x API. Mesa 2.x restructured the scheduler entirely. The code below is functionally equivalent to the original design but uses the correct current API.
+⚠ What Changed in Mesa 2.x
+mesa.time.StagedActivation no longer exists as a direct import. The staging pattern is now implemented by subclassing mesa.Model and overriding step() to call agent methods by name in sequence. mesa.time.SimultaneousActivation still works but is being phased toward mesa.AgentSet patterns. The architecture below gives you staged execution with the 2.x API.
+4a. The Corrected Agent Classes
+import mesa
+import networkx as nx
+from database import get_db_connection
+class CellAgent(mesa.Agent):
+    def __init__(self, unique_id, model, cell_data):
+        super().__init__(unique_id, model)
+        self.is_underwater = cell_data['depth_elevation'] < 0
+        self.biome = cell_data['biome']
+        self.food_supply = cell_data.get('food_supply', 0.5)
+        self.chaos_saturation = 0.0
+        self.weather = 'Clear'
+        self.farms_count = cell_data.get('farms_count', 0)
+        self._changed = False  # Dirty flag for efficient DB writes
+    def stage_environment(self):
+        if self.chaos_saturation > 0.8:
+            self.weather = 'Chaos Storm'
+        elif self.is_underwater:
+            self.weather = 'Abyssal Current'
+        else:
+            self.weather = 'Clear'
+    def stage_economy(self):
+        base = 0.5
+        if self.farms_count > 0:
+            base += 0.1 * self.farms_count
+        if self.weather == 'Chaos Storm':
+            base -= 0.3
+        self.food_supply = max(0.0, min(1.0, base))
+        self._changed = True
+    def stage_diplomacy(self):
+        pass  # Cells do not initiate diplomacy
+class FactionAgent(mesa.Agent):
+    def __init__(self, unique_id, model, faction_data):
+        super().__init__(unique_id, model)
+        self.faction_id = faction_data['faction_id']
+        self.faction_name = faction_data['faction_name']
+        self.chaos_level = faction_data.get('chaos_level', 0.0)
+        self.discontent = faction_data.get('discontent', 0.0)
+        self.barracks_count = faction_data.get('barracks_count', 0)
+        self.watchtowers_count = faction_data.get('watchtowers_count', 0)
+        self.population = faction_data.get('population', 100)
+        self.cell_id = faction_data['cell_id']
+        self._event_log = []
+        self._changed = False
+    def stage_environment(self):
+        pass
+    def stage_economy(self):
+        # Get the CellAgent we occupy and harvest its food
+        cell_contents = self.model.grid.get_cell_list_contents([self.pos])
+        cell = next((a for a in cell_contents if isinstance(a, CellAgent)), None)
+        if cell and cell.food_supply < (self.population / 10000):
+            self.discontent = min(1.0, self.discontent + 0.1)
+        self._changed = True
+    def stage_diplomacy(self):
+        if self.chaos_level >= 0.3 or self.discontent >= 0.4:
+            return  # Too unstable to expand
+        offensive_power = (self.barracks_count * 0.2) + (self.population * 0.001)
+        # mesa 2.x: get_neighbors returns agent objects, not positions
+        neighbor_positions = list(self.model.G.neighbors(self.pos))
+        for npos in neighbor_positions:
+            occupants = self.model.grid.get_cell_list_contents([npos])
+            enemy = next((a for a in occupants
+                          if isinstance(a, FactionAgent)
+                          and a.faction_id != self.faction_id), None)
+            if enemy is None:
+                continue
+            defense = (enemy.watchtowers_count * 0.1)
+            if offensive_power > defense + 0.2:
+                old_name = enemy.faction_name
+                enemy.faction_name = self.faction_name
+                enemy.faction_id = self.faction_id
+                enemy.chaos_level = 0.9
+                enemy._changed = True
+                self._event_log.append({
+                    'type': 'COMBAT',
+                    'desc': f'{self.faction_name} conquered cell {enemy.cell_id} from {old_name}',
+                    'severity': 5
+                })
+                break  # One conquest per tick per faction
+4b. The Corrected WorldModel (Mesa 2.x Staged Activation)
+class TTRPGWorldModel(mesa.Model):
+    def __init__(self):
+        super().__init__()
+        self.current_tick = 0
+        self._all_agents = []
+        conn = get_db_connection()
+        cur = conn.cursor()
+        # 1. Build the spatial graph from PostGIS
+        cur.execute('''
+            SELECT a.id AS cell_a, b.id AS cell_b
+            FROM cells a
+            JOIN cells b ON ST_Touches(a.geom, b.geom)
+            WHERE a.id < b.id
+        ''')
+        edges = cur.fetchall()
+        self.G = nx.Graph()
+        cur.execute('SELECT id FROM cells')
+        for (cell_id,) in cur.fetchall():
+            self.G.add_node(cell_id)
+        self.G.add_edges_from(edges)
+        self.grid = mesa.space.NetworkGrid(self.G)
+        # 2. Spawn CellAgents
+        cur.execute('SELECT * FROM cells')
+        cols = [desc[0] for desc in cur.description]
+        for row in cur.fetchall():
+            data = dict(zip(cols, row))
+            agent = CellAgent(f'cell_{data["id"]}', self, data)
+            self.grid.place_agent(agent, data['id'])
+            self._all_agents.append(agent)
+        # 3. Spawn FactionAgents on populated cells
+        cur.execute('''
+            SELECT m.*, c.id as cell_id FROM macro_groups m
+            JOIN cells c ON m.cell_id = c.id
+        ''')
+        cols = [desc[0] for desc in cur.description]
+        for row in cur.fetchall():
+            data = dict(zip(cols, row))
+            agent = FactionAgent(f'faction_{data["id"]}', self, data)
+            self.grid.place_agent(agent, data['cell_id'])
+            self._all_agents.append(agent)
+        cur.close()
+        conn.close()
+    def step(self):
+        # MESA 2.x STAGED ACTIVATION PATTERN
+        # Call each stage method on all agents in sequence.
+        # All agents complete stage N before any agent begins stage N+1.
+        # This is the replacement for the deprecated StagedActivation.
+        for stage in ['stage_environment', 'stage_economy', 'stage_diplomacy']:
+            for agent in self._all_agents:
+                getattr(agent, stage)()
+        self._commit_to_database()
+        self.current_tick += 1
+    def _commit_to_database(self):
+        from psycopg2.extras import execute_values
+        conn = get_db_connection()
+        cur = conn.cursor()
+        # Bulk update only dirty agents
+        cell_updates = [
+            (a.food_supply, a.chaos_saturation, a.weather, a.unique_id.split('_')[1])
+            for a in self._all_agents
+            if isinstance(a, CellAgent) and a._changed
+        ]
+        if cell_updates:
+            execute_values(cur, '''
+                UPDATE cells SET food_supply = data.food_supply,
+                chaos_saturation = data.chaos_saturation,
+                weather = data.weather
+                FROM (VALUES %s) AS data(food_supply, chaos_saturation, weather, id)
+                WHERE cells.id = data.id::int
+            ''', cell_updates)
+        faction_updates = [
+            (a.faction_id, a.faction_name, a.chaos_level, a.discontent,
+             a.cell_id)
+            for a in self._all_agents
+            if isinstance(a, FactionAgent) and a._changed
+        ]
+        if faction_updates:
+            execute_values(cur, '''
+                UPDATE macro_groups SET faction_id = data.faction_id,
+                faction_name = data.faction_name,
+                chaos_level = data.chaos_level,
+                discontent = data.discontent
+                FROM (VALUES %s) AS data
+                    (faction_id, faction_name, chaos_level, discontent, cell_id)
+                WHERE macro_groups.cell_id = data.cell_id::int
+            ''', faction_updates)
+        # Collect and insert all event logs
+        all_logs = []
+        for a in self._all_agents:
+            if isinstance(a, FactionAgent) and a._event_log:
+                for log in a._event_log:
+                    all_logs.append((self.current_tick, log['type'],
+                                     log['desc'], log['severity']))
+                a._event_log.clear()
+        if all_logs:
+            execute_values(cur, '''
+                INSERT INTO simulation_logs (tick_number, event_type, description, severity)
+                VALUES %s
+            ''', all_logs)
+        conn.commit()
+        cur.close()
+        conn.close()
+5. Frontend — Rendering 1,000 Polygons Correctly
+This is the second major correction. The original D3 SVG approach works for small maps but will become sluggish at 1,000+ Voronoi polygons. The fix is straightforward: use an HTML Canvas element instead of SVG for the map layer, while keeping SVG for tooltips and overlays.
+⚠ SVG Performance Ceiling
+SVG adds a DOM node for every polygon. At 1,000 cells, this is 1,000 DOM nodes that the browser repaints on every map update. At 60fps this becomes noticeably slow. Canvas draws pixels directly with no DOM nodes, making it 10-50x faster for dense polygon maps. The D3 API is nearly identical — only the rendering target changes.
+5a. Map.svelte — Canvas Renderer
+<script>
+  import { onMount } from 'svelte';
+  import * as d3 from 'd3';
+  export let mapData = null;  // GeoJSON FeatureCollection from API
+  export let onCellClick = () => {};
+  let canvas;
+  let tooltip = { visible: false, x: 0, y: 0, text: '' };
+  const WIDTH = 900;
+  const HEIGHT = 650;
+  function biomeColor(feature) {
+    const chaos = feature.properties?.chaos_level ?? 0;
+    if (chaos > 0.8) return '#8B0000';   // Deep red: high chaos
+    if (chaos > 0.5) return '#CC4400';   // Orange: rising chaos
+    const biome = feature.properties?.biome ?? 'Plains';
+    return { Forest: '#2d6a2d', Plains: '#a8c96e', Desert: '#d4a843',
+             Mountain: '#8a8a8a', Swamp: '#4a7a4a', Ocean: '#1a5f8a' }[biome] ?? '#cccccc';
+  }
+  function draw() {
+    if (!canvas || !mapData) return;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, WIDTH, HEIGHT);
+    // D3 projection fitted to canvas size
+    const projection = d3.geoIdentity().fitSize([WIDTH, HEIGHT], mapData);
+    const path = d3.geoPath().projection(projection).context(ctx);
+    for (const feature of mapData.features) {
+      ctx.beginPath();
+      path(feature);
+      ctx.fillStyle = biomeColor(feature);
+      ctx.fill();
+      ctx.strokeStyle = '#33333322';  // Semi-transparent border
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+    }
+  }
+  // Reactive: redraw whenever mapData changes
+  $: if (mapData) draw();
+  onMount(() => {
+    canvas.addEventListener('mousemove', (e) => {
+      // Tooltip hit-test (optional enhancement)
+    });
+  });
+</script>
+<div style='position: relative'>
+  <canvas bind:this={canvas} width={WIDTH} height={HEIGHT}
+    style='border: 1px solid #ccc; border-radius: 4px;' />
+</div>
+5b. +page.svelte — The Control Dashboard
+The overall structure is unchanged. The corrections here are: use fetch with await/async properly, and add error state handling so failures are visible.
+<script>
+  import Map from '$lib/Map.svelte';
+  let mapData = null;
+  let logs = [];
+  let status = 'Idle';
+  let error = null;
+  const API = 'http://localhost:8000';
+  async function syncMap() {
+    const res = await fetch(`${API}/api/state/map`);
+    mapData = await res.json();
+    const logRes = await fetch(`${API}/api/state/logs`);
+    logs = await logRes.json();
+  }
+  async function generateWorld() {
+    status = 'Generating...';
+    error = null;
+    try {
+      await fetch(`${API}/api/generate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ seed: 42, num_cells: 1000 })
+      });
+      await syncMap();
+      status = 'World Generated';
+    } catch (e) { error = e.message; status = 'Error'; }
+  }
+  async function runTick() {
+    status = 'Running Tick...';
+    error = null;
+    try {
+      await fetch(`${API}/api/simulate/tick`, { method: 'POST' });
+      await syncMap();
+      status = 'Tick Complete';
+    } catch (e) { error = e.message; status = 'Error'; }
+  }
+</script>
+<main>
+  <aside>
+    <h2>Controls</h2>
+    <p>Status: {status}</p>
+    {#if error}<p style='color:red'>{error}</p>{/if}
+    <button on:click={generateWorld}>Generate World</button>
+    <button on:click={runTick}>Run 1 Tick</button>
+    <button on:click={syncMap}>Sync Map & Logs</button>
+  </aside>
+  <section>
+    <Map {mapData} />
+  </section>
+  <footer>
+    {#each logs as log}
+      <div>[Tick {log.tick_number}] [{log.event_type}] {log.description}</div>
+    {/each}
+  </footer>
+</main>
+6. The Modular Sub-Systems (Phase 3)
+Only begin this phase once Phases 1 and 2 produce a working, visible result. Each module below is self-contained and can be built and tested independently before being plugged into the Mesa conductor.
+6a. calendar_manager.py
+Translates raw tick count into narrative time. This module has no database writes of its own — it returns a context object that other modules read.
+TICKS_PER_DAY = 3
+DAYS_PER_MONTH = 30
+MOON_CYCLE = 28  # days
+def get_calendar_context(tick: int) -> dict:
+    day = tick // TICKS_PER_DAY
+    month = day // DAYS_PER_MONTH
+    moon_phase = (day % MOON_CYCLE) / MOON_CYCLE  # 0.0=new, 0.5=full, 1.0=new
+    return {
+        'tick': tick,
+        'day': day,
+        'month': month,
+        'moon_phase': moon_phase,
+        'is_full_moon': 0.45 < moon_phase < 0.55,
+        # Full moon amplifies underwater weather and magic_density
+        'tide_multiplier': 1.0 + (moon_phase * 0.5) if 0.45 < moon_phase < 0.55 else 1.0,
+    }
+6b. spatial_chaos_system.py — The Dragon Prison Spiral
+This is one of the three most complex parts of the project. The approach below avoids per-tick geometry recalculation by computing the spiral influence once at world generation and storing the result as a permanent chaos modifier on the cells table.
+Design Decision: Pre-compute, Don't Recalculate
+The spiral path from 12 Dragon Prisons to the center is a static geometric property of the world. It never changes. Computing it every tick wastes CPU. Instead, compute it once during world generation and store the result as a chaos_base_modifier column on each cell. The simulation then just reads and applies this static value.
+import networkx as nx
+import numpy as np
+def compute_chaos_spiral(G: nx.Graph, prison_node_ids: list, center_node_id: int):
+    '''
+    Called ONCE during world generation, not every tick.
+    Calculates graph distance from each prison to the center,
+    then assigns a chaos modifier to every node along those paths.
+    Returns a dict: { node_id: chaos_modifier_float }
+    '''
+    modifiers = {}
+    for prison_id in prison_node_ids:
+        try:
+            path = nx.shortest_path(G, source=prison_id, target=center_node_id)
+        except nx.NetworkXNoPath:
+            continue  # Prison is on a disconnected island, skip
+        path_length = len(path)
+        for i, node_id in enumerate(path):
+            # Nodes closer to the center get higher chaos modifier
+            # Modifier decays with distance from center
+            distance_from_center = path_length - i
+            modifier = max(0.0, 1.0 - (distance_from_center / path_length) * 0.7)
+            # Take the maximum modifier if multiple prison paths cross this node
+            modifiers[node_id] = max(modifiers.get(node_id, 0.0), modifier)
+    return modifiers
+def apply_chaos_spiral_to_database(modifiers: dict):
+    '''Writes the precomputed modifiers to the cells table once.'''
+    from database import get_db_connection
+    from psycopg2.extras import execute_values
+    conn = get_db_connection()
+    cur = conn.cursor()
+    # Requires: ALTER TABLE cells ADD COLUMN chaos_base_modifier FLOAT DEFAULT 0.0;
+    execute_values(
+        cur,
+        'UPDATE cells SET chaos_base_modifier = data.mod',
+        '  FROM (VALUES %s) AS data(id, mod)',
+        '  WHERE cells.id = data.id::int',
+        [(node_id, mod) for node_id, mod in modifiers.items()]
+    )
+    conn.commit()
+    cur.close()
+    conn.close()
+6c. weather_ecology_system.py — Dual Biome Logic
+This module extends the CellAgent's stage_environment logic. The key architectural rule is that above-ground and underwater cells use completely separate calculation paths. Do not try to unify them.
+def calculate_weather(cell_agent, calendar_ctx: dict):
+    '''
+    Called from CellAgent.stage_environment().
+    Mutates the agent's weather and food_supply in place.
+    '''
+    if cell_agent.is_underwater:
+        # Underwater weather: driven by tide multiplier from moon phase
+        tide = calendar_ctx['tide_multiplier']
+        if cell_agent.chaos_saturation > 0.7:
+            cell_agent.weather = 'Abyssal Chaos Surge'
+            cell_agent.food_supply *= 0.5  # Kelp fields destroyed
+        elif tide > 1.3:
+            cell_agent.weather = 'Strong Current'
+            cell_agent.food_supply *= 0.85
+        else:
+            cell_agent.weather = 'Calm Depths'
+    else:
+        # Surface weather: pressure-driven diffusion
+        # chaos_saturation overrides normal weather entirely
+        if cell_agent.chaos_saturation > 0.8:
+            cell_agent.weather = 'Chaos Storm'
+            cell_agent.food_supply = max(0.0, cell_agent.food_supply - 0.3)
+            # Wildlife mutation: flag cell for dangerous variant spawning
+            cell_agent.has_mutated_wildlife = True
+        else:
+            cell_agent.weather = 'Clear'
+6d. paragon_diplomacy_system.py — The Micro-Simulation
+Paragons are the most performance-sensitive module because they query a separate table and modify cells across the map. The strategy below batches all paragon reads into a single query and processes them in pure Python before writing back.
+def run_paragon_pass(model, tick: int):
+    '''
+    Called from WorldModel.step() after stage_economy but before stage_diplomacy.
+    Reads all paragons once, applies their traits to the relevant agents.
+    '''
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute('SELECT * FROM paragons')
+    cols = [d[0] for d in cur.description]
+    paragons = [dict(zip(cols, row)) for row in cur.fetchall()]
+    cur.close()
+    conn.close()
+    for paragon in paragons:
+        cell_id = paragon['macro_group_id']
+        # Find the FactionAgent on this cell
+        occupants = model.grid.get_cell_list_contents([cell_id])
+        faction = next((a for a in occupants if isinstance(a, FactionAgent)
+                        and a.cell_id == cell_id), None)
+        if faction is None:
+            continue
+        # Apply economic bonus
+        if paragon['economic_trait'] > 0.5:
+            cell = next((a for a in occupants if isinstance(a, CellAgent)), None)
+            if cell:
+                cell.food_supply = min(1.0, cell.food_supply * 1.2)  # +20% yield
+        # Apply chaos corruption
+        if paragon['chaos_corruption'] > 0.7:
+            faction.discontent = min(1.0, faction.discontent + 0.05)
+            faction.chaos_level = min(1.0, faction.chaos_level + 0.03)
+            # Spread to neighbors
+            for npos in list(model.G.neighbors(cell_id)):
+                neighbor_occupants = model.grid.get_cell_list_contents([npos])
+                for a in neighbor_occupants:
+                    if isinstance(a, CellAgent):
+                        a.chaos_saturation = min(1.0, a.chaos_saturation + 0.02)
+7. Updated Full Execution Order
+The complete WorldModel.step() with all modules wired together. Build up to this incrementally — do not add a module until the preceding ones are stable.
+def step(self):
+    # Get calendar context once for the whole tick
+    from systems.calendar_manager import get_calendar_context
+    from systems.weather_ecology_system import calculate_weather
+    from systems.paragon_diplomacy_system import run_paragon_pass
+    cal = get_calendar_context(self.current_tick)
+    # ── LAYER 1: ENVIRONMENT ──
+    # Weather runs first. All other systems read its output.
+    for agent in self._all_agents:
+        if isinstance(agent, CellAgent):
+            # Apply static chaos spiral modifier first
+            agent.chaos_saturation = max(
+                agent.chaos_saturation,
+                agent.chaos_base_modifier  # Pre-computed at world gen
+            )
+            calculate_weather(agent, cal)
+    # ── LAYER 2: ECOLOGY & ECONOMY ──
+    for agent in self._all_agents:
+        agent.stage_economy()
+    # ── LAYER 3: PARAGONS ──
+    # Runs after economy so Paragons modify already-computed yields
+    run_paragon_pass(self, self.current_tick)
+    # ── LAYER 4: DIPLOMACY & CONFLICT ──
+    for agent in self._all_agents:
+        agent.stage_diplomacy()
+    # ── COMMIT ──
+    self._commit_to_database()
+    self.current_tick += 1
+Layer
+Module
+Why This Order Matters
+1
+calendar_manager
+All other modules need the moon phase and tide multiplier first
+2
+spatial_chaos_system
+Pre-computed at world gen. Applied to agents at tick start
+3
+weather_ecology_system
+Weather determines food. Must run before economy harvests it
+4
+production_economy_system
+Harvests food that weather just produced
+5
+paragon_diplomacy_system
+Modifies already-harvested economy yields
+6
+Faction stage_diplomacy
+Attacks based on final economic state of this tick
+7
+_commit_to_database
+All math is done. Single bulk write to PostgreSQL
+8. Running the System
+Boot sequence unchanged from the original. These three terminals must all be running simultaneously.
+# Terminal 1 — PostgreSQL (must be running before anything else)
+# (Start via your OS service manager: systemctl start postgresql)
+# Terminal 2 — FastAPI Backend
+cd ttrpg_engine/backend
+uvicorn main:app --reload
+# Listening on: http://localhost:8000
+# Terminal 3 — SvelteKit Frontend
+cd ttrpg_engine/frontend
+npm run dev
+# Open in browser: http://localhost:5173
+Phase 1 Smoke Test Checklist
+Run through these in order before proceeding to Phase 2. Each item should produce a visible, verifiable result.
+PostgreSQL is running and the cells table exists (psql: \dt)
+generate_world() inserts rows without error (check: SELECT COUNT(*) FROM cells)
+ST_IsValid query returns zero invalid geometries
+ST_Touches adjacency query returns rows (at least 1,000 edges for 1,000 cells)
+GET /api/state/map returns valid GeoJSON in the browser
+The SvelteKit frontend renders colored polygons on the canvas
+POST /api/simulate/tick completes without error
+At least one row appears in simulation_logs after a tick
+Tip: Test the Adjacency Query Before Running Mesa
+If ST_Touches returns zero edges, your Voronoi polygons are not touching — they likely have micro-gaps from floating-point rounding. Fix: use ST_Buffer(geom, 0.001) when inserting, or use ST_DWithin instead of ST_Touches with a small tolerance value.

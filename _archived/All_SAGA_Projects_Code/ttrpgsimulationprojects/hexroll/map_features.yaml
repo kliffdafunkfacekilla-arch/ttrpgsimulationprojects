@@ -1,0 +1,424 @@
+Rumor:
+  Details: ""
+
+
+Feature:
+  $subclass: !weighted
+    - Landmark^23
+    - Portal
+
+
+DungeonProxy:
+  Name: Dungeon
+  Probability:
+    The chance to finding it is 2 in 6 (accidental) or 4 in 6 (when searching)
+  $collections:
+    entrances:
+      $collect: DungeonEntrance
+  Hex:
+    $popone:
+        $collection: hexs
+        $inject:
+            $namespace: proxy
+            $values:
+              DungeonUUID: !jinja "{{proxy.Dungeon.uuid}}"
+              DungeonDesc: !jinja |
+                {{proxy.Dungeon.Title}}
+              DungeonEntrance: !jinja |
+                {% for e in proxy.entrances %}
+                * {{e.Description}}
+                {% endfor %}
+  Dungeon:
+    $roll:
+      $class: Dungeon
+      $bootstrap:
+        Hex: !jymbol "{{Hex.subclass_}}"
+        HexUUID: !jymbol "{{Hex.uuid}}"
+  Rumor:
+    $roll:
+      $class: Rumor
+      $inject:
+        $namespace: proxy
+        $values:
+          Details: !jinja >
+            The __{{proxy.Dungeon.Name.Title | title}}__ is 
+            __{{proxy.Hex.Terrain.Location}}, somewhere in
+            {{proxy.Hex.Region.Name.Full}} {{proxy.Hex.Region.Suffix}}__
+
+ResidencyProxy:
+  Name: Residency
+  Residency:
+    $roll:
+      $class: Residency
+      $inject:
+        $namespace: rproxy
+        $values:
+          HexLink: !jinja "[Hex {{rproxy.Hex.HexCounter}}](#{{rproxy.Hex.uuid}})"
+  Hex:
+    $popone:
+        $collection: hexs
+        $inject:
+            $namespace: rproxy
+            $values:
+              ResidencyUUID: !jinja "{{rproxy.Residency.uuid}}"
+              ResidencyClass: !jymbol >
+                {{Residency.subclass_}}
+              ResidencyHeader: !jinja |
+                {{rproxy.Residency.Header}}
+              ResidencyDesc: !jinja |
+                {{rproxy.Residency.Description}}
+              ResidencyDetails: !jinja |
+                {{rproxy.Residency.Details}}
+              ResidencyConnector: !jinja |
+                {{rproxy.Residency.Connector}}
+              ResidencyEncounter: !jinja "{{rproxy.Residency.Encounter}}"
+
+
+SettlementProxy:
+  Name: Settlement
+  Settlement:
+    $roll:
+      $class: Settlement
+      $inject:
+        $namespace: sproxy
+        $values:
+          HexLink: !jinja "[Hex {{sproxy.Hex.HexCounter}}](#{{sproxy.Hex.uuid}})"
+  Hex:
+    $popone:
+        $collection: hexs
+        $inject:
+            $namespace: sproxy
+            $values:
+              SettlementUUID: !jinja "{{sproxy.Settlement.uuid}}"
+              SettlementClass: !jymbol >
+                {{Settlement.subclass_}}
+              SettlementDesc: !jinja |
+                {{sproxy.Settlement.Description}}
+              SettlementFlair: !jinja |
+                {{sproxy.Settlement.Flair}}
+              SettlementDetails: !jinja |
+                {{sproxy.Settlement.Description}}
+              SettlementPrefix: !jinja |
+                {{sproxy.Settlement.Prefix}}
+              SettlementConnector: !jinja |
+                {{sproxy.Settlement.Connector}}
+
+  $watabou:
+    GenerateMap: !parameter generate_settlement_maps_using_watabou
+
+
+Nothing:
+  Name: Nothing  
+
+
+Inn:
+  Name:
+    $roll: InnName
+  Description: !jinja >
+    __{{Name.Full}}__ is welcoming travellers and adventurers
+  Details: !jinja |
+
+    ### {{Name.Full }} <a name='{{uuid}}'></a> <h3 class="sticky"> {{Name.Full}} </h3>
+
+    {{Tavern.Description}}
+  Hex:
+    $popone:
+        $collection: hexs
+        $inject:
+            $namespace: proxy
+            $values:
+              InnDesc: !jinja "{{proxy.Name.Full}}"
+              InnUUID: !jinja "{{proxy.uuid}}"
+  Tavern:
+    $roll: 
+      $class: Tavern
+      # This is injected to allow the militia description
+      # include the location of the Inn if they chose it as
+      # their gathering place.
+      $inject:
+        $namespace: Inn
+        $values:
+          RegionValue: !jinja >
+            __{{Inn.Hex.Region.Name.Full}} {{Inn.Hex.Region.Suffix}}__
+
+
+Encounter:
+  NeutralState:
+    - wandering
+    - sleeping
+    - foraging
+  ChaoticState:
+    - lurking
+    - prowling
+    - scavenging
+    - wandering
+    - hiding
+    - sleeping
+  Lair:
+    - a well-hidden cave
+    - an old abandoned copper mine
+    - an old forgotten gold mine
+    - the ruins of an abandoned stronghold
+    - the ruins of a forgotten keep
+    - the nearest dungeon
+
+
+  Hex:
+    $popone:
+        $collection: hexs
+        $inject:
+            $namespace: proxy
+            $values:
+              EncounterName: !jinja >
+                {%if Monster.NumberAppearingLair==1%}{{Monster.Title | articlize | capitalize}}
+                {%else%}{{Monster.Title}}s{%endif%}
+              EncounterDesc: !jinja >
+                {%if Monster.NumberAppearingLair==1%}{{Monster.Title | articlize | capitalize}} is
+                {%else%}{{Monster.NumberAppearingLair}} {{Monster.Title}}s are{%endif%}
+                {%if Monster.Alignment=='Chaotic'%}{{proxy.ChaoticState}}
+                {%else%}{{proxy.NeutralState}}{%endif%}
+              EncounterProbability: !jinja >
+                There’s a __2-in-6__ chance of encountering
+                {%if Monster.NumberAppearingLair==1%}it{%if Monster.Activity%},  {{Monster.Activity.Wilderness}}{%endif%}.
+                {%else%}at least some of them outside{%if Monster.Activity%},  {{Monster.Activity.Wilderness}}{%endif%}
+                (the rest will be in their lair inside {{proxy.Lair}}).{%endif%}
+              EncounterFlair: !jinja >
+
+
+                __{{Monster.Title}}__ <a class="npc-note-icon" onclick="note(this,'{{uuid}}_note');">✎ </a>
+
+                <div id="{{uuid}}_note_container"></div>
+
+                ---
+
+                {{Monster.Stats}}
+                {%if Monster.NumberAppearingLair<10%}
+
+
+                <div class="hpmarks">{%for m in range(Monster.NumberAppearingLair)%}
+                <sub>{% for hp in range(Monster.HitDiceRoll | diceroll) %}&#x274F;{%endfor%}</sub><br/>{%endfor%}</div>
+                {%endif%}
+
+
+                ---
+
+                {%if not Monster.TreasureType.Empty and (Monster.TreasureType.Details|trim)!=''%}
+                * __Lair__ hoard (__1-in-6__ base chance of finding if an encounter occured):
+                {{Monster.TreasureType.Details}}
+                {%endif%}
+
+  Rumor:
+    $roll:
+      $class: Rumor
+      $inject:
+        $namespace: hexenc
+        $values:
+          Details: !jinja >
+            There’s __{{hexenc.Hex.Monster.Title | articlize}}__ somewhere in
+            __{{hexenc.Hex.Region.Name.Full}} {{hexenc.Hex.Region.Suffix}}__.
+
+
+
+
+Portal:
+  Name: Portal
+  Description: There’s a magical portal to another hex
+  Flair: !jinja |
+    The portal is large slab of dark rock that has a seamingly hollow
+    arch-shaped stone gate on top.  There’s a strange {{Glow}} glow surrounding
+    it. Anyone or anything passing through the gate will get teleported into a
+    different hex (preselected by the referee), but there’s a 1-in-6 chance
+    that the portal {{UndesiredEffect}}. 
+
+  Glow:
+    - blue
+    - red
+    - purple
+    - green
+
+  UndesiredEffect:
+    - will teleport to a completely random hex instead
+    - will lose half of the character’s carried gold (roll per character)
+    - will change the character’s alignment (roll per character)
+    - will give the character donkey ears (roll per character)
+
+
+Landmark:
+  $subclass: !avoid_repeating
+    - Bridge
+    - Bridge
+    - Watchtower
+    - DeadAdventurers
+    - DeadAdventurers
+    - Wagons
+    - Wagons
+    - AbandonedVillage
+    - Altar
+    - SacrificialSite
+    - SignalingTower
+    - DeadMonster
+
+
+Watchtower:
+  Name: Watchtower
+  Description: 
+    - The ruins of an ancient watchtower are
+    - There’s an old abandoned watchtower
+    - There's a recently built but seemingly unstaffed watchtower
+
+
+
+CaravansPark:
+  Name: CaravansPark
+  Description: There’s a colorful and noisy caravans park
+
+
+BridgeEncounter:
+  Desc: !jinja |
+    {{Motive}} {%if Monster.NumberAppearingLair==1%} __{{Monster.Title}}__
+    {%else%}__{{Monster.Title}}s__{%endif%}
+
+    ---
+
+    {{Monster.Stats}}
+    {%if Monster.NumberAppearingLair<10 and Monster.NumericHD<6%}
+
+
+    <div class="hpmarks">{%for m in range(Monster.NumberAppearingLair)%}
+    <sub>{% for hp in range(Monster.HitDiceRoll | diceroll) %}&#x274F;{%endfor%}</sub><br/>{%endfor%}</div>
+    {%endif%}
+
+
+    ---
+
+    {%if not Monster.TreasureType.Empty and (Monster.TreasureType.Details|trim)!=''%}
+    * __Lair__ hoard (if found through tracking, deception or any other reasonable way):
+    {{Monster.TreasureType.Details}}
+    {%endif%}
+
+
+BridgeTroll:
+  $extends: BridgeEncounter
+  Motive:
+    - an extortionist
+    - a hungry
+    - a greedy
+  Monster:
+    $roll:
+      $class: Troll
+      $inject:
+        $values:
+          NumberAppearingLair: 1
+
+
+BridgeOgre:
+  $extends: BridgeEncounter
+  Motive:
+    - a hungry
+    - a deranged
+  Monster:
+    $roll:
+      $class: Ogre
+      $inject:
+        $values:
+          NumberAppearingLair: 1
+
+BridgeThugs:
+  $extends: BridgeEncounter
+  Motive:
+    - thieving
+    - murderous
+    - brutal
+    - violent
+  Monster:
+    $roll: 
+      $class: !weighted
+        - Bandit^3
+        - Goblin
+        - Gnoll
+        - Orc
+
+
+BridgeUnguarded:
+  $extends: BridgeEncounter
+  Motive: null
+  Monster: null
+  Desc: null
+
+
+Bridge:
+  Name: Bridge
+  Description:
+    - There’s a half-broken stone bridge
+    - There’s a recently built wooden bridge
+    - There’s a dangerous looking rope bridge
+  GuardedBy:
+    $roll:
+      $class: !weighted
+        - BridgeTroll
+        - BridgeOgre
+        - BridgeThugs^3
+        - BridgeUnguarded^5
+  Flair:
+    - !jinja >
+      {%if GuardedBy.Monster%}The bridge is guarded by {{GuardedBy.Desc}}{%endif%}
+
+AbandonedVillage:
+  Name: Abandoned Village
+  Description:
+    - The burned remains of a small village could be found
+    - There's a recently abandoned village
+
+Altar:
+  Name: Altar
+  Description:
+    - The crumbling ruins of an ancient altar could be found
+
+SignalingTower:
+  Name: Signaling Tower
+  Description:
+    - There’s a stone-made signaling tower
+    - There’s a wood-made signaling tower
+  Flair:
+    - Finding the tower will eliminate any risk of getting lost in this region.
+
+Wagons:
+  Name: Wagons
+  Number:
+    - three
+    - four
+    - five
+    - six
+  Description:
+    - !jinja "There are {{Number}} abandoned and half-broken wagons"
+    - !jinja "{{Number | capitalize}} wagons were abandoned and looted"
+    - !jinja "{{Number | capitalize}} heavily damaged wagons were left to decay"
+
+DeadAdventurers:
+  Name: Dead Adventurers
+  Number:
+    - three
+    - four
+    - five
+    - six
+  Description:
+    - !jinja "The bodies of {{Number}} dead adventurers were thrown to rot"
+    - !jinja "{{Number | capitalize}} unfortunate adventurers met their death"
+
+SacrificialSite:
+  Name: Sacrificial Grounds
+  Description: !jinja |
+    There's a sacrificial site with burnt {{Subject}} remains
+  Subject:
+    - human
+    - animal
+    - and unrecognizable
+
+DeadMonster:
+  Name: !jinja Dead {{FeatureMonster.Title}} Remains
+
+  Description:
+    - !jinja The headless remains of {{FeatureMonster.Title | articlize}} can be found 
+    - !jinja The headless rotting remains of a beheaded {{FeatureMonster.Title}} can be found 
+    - !jinja The chopped head of {{FeatureMonster.Title | articlize}} was left to rot
+    - !jinja The brutalized remains of {{FeatureMonster.Title | articlize}} were left to rot

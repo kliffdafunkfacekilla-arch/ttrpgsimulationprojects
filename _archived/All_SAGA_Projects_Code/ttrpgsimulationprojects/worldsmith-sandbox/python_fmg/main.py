@@ -1,0 +1,1075 @@
+import os
+import sys
+import sqlite3
+import json
+import random
+import math
+import subprocess
+
+from PyQt6.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QSplitter, QVBoxLayout, QHBoxLayout,
+    QTextEdit, QLabel, QLineEdit, QPushButton, QStatusBar, QMessageBox, QComboBox,
+    QSlider, QFileDialog, QDialog, QListWidget, QInputDialog, QCheckBox,
+    QFrame, QToolButton, QScrollArea, QMenu, QTableWidget, QTableWidgetItem, 
+    QTreeView, QFormLayout, QDoubleSpinBox, QHeaderView, QColorDialog, QTabWidget,
+    QProgressBar, QStackedWidget
+)
+from PyQt6.QtCore import Qt, QPointF, QPoint, pyqtSignal, QTimer, QDir, QThread, QObject
+from PyQt6.QtGui import (
+    QPainter, QColor, QPen, QBrush, QFont, QPixmap, QImage,
+    QTextCursor, QTextCharFormat, QFileSystemModel
+)
+
+# Add project root directory to path for nested imports
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from python_fmg.core.ai_worker import OllamaPromptWorker, LoreAuditWorker, AILoreIngestor, AILoreDriverWorker, AIBootstrapperWorker
+from python_fmg.renderers.notebook_editor import MarkdownNotebookEditor
+from python_fmg.core.azgaar_engine import AzgaarEngine, CosmosEngine
+from python_fmg.core.export_engine import WorldsmithExportEngine
+
+# =============================================================================
+# COHESIVE RELATIONAL DATABASE INITIALIZATION WITH TEMPORAL MODULES
+# =============================================================================
+from python_fmg.core.db_manager import setup_master_knowledge_db
+
+# =============================================================================
+# HIGH-FIDELITY INTERACTIVE VECTOR MAP CANVAS (W/ DIRECT RE-ROUTING BINDS)
+# =============================================================================
+class InteractiveLordsmithMapCanvas(QWidget):
+    cell_hovered = pyqtSignal(int, int, str, str)
+    cell_clicked = pyqtSignal(int)
+
+    def __init__(self, main_window):
+        super().__init__()
+        self.main_window = main_window
+        self.setMinimumSize(800, 800)
+        self.setMouseTracking(True)
+        self.active_layer = "States"
+        self.hovered_cell_idx = -1
+        self._bg_cache = None
+        self._cell_rects = {}
+
+    def resizeEvent(self, event):
+        super().resizeEvent(event)
+        self._cache_cell_geometry()
+        self._bg_cache = None
+
+    def _cache_cell_geometry(self):
+        engine = self.main_window.map_engine
+        if not getattr(engine, 'cells', None): return
+        
+        scale_x = self.width() / 1000.0
+        scale_y = self.height() / 1000.0
+        self._cell_rects = {}
+        
+        for cell in engine.cells:
+            cid = cell.get("i", 0)
+            cx = int(cell.get("centroid_x", 0) * scale_x)
+            cy = int(cell.get("centroid_y", 0) * scale_y)
+            self._cell_rects[cid] = (cx, cy, cell)
+
+    def draw_static_background(self):
+        from PyQt6.QtCore import QRect
+        from PyQt6.QtGui import QPainter, QPixmap, QColor, QBrush, QPen
+        
+        self._bg_cache = QPixmap(self.size())
+        self._bg_cache.fill(QColor("#09090d"))
+        
+        painter = QPainter(self._bg_cache)
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
+
+        engine = self.main_window.map_engine
+        if not getattr(engine, 'cells', None):
+            painter.setPen(QColor("#a0a0c0"))
+            painter.drawText(self.rect(), Qt.AlignmentFlag.AlignCenter, "WORLD NOT SYNTHESIZED YET\nIngest notes and resolve AI reconciliation questions.")
+            painter.end()
+            return
+
+        if not hasattr(self, 'tileset_img'):
+            self.tileset_img = QPixmap(os.path.join(self.main_window.project_dir, 'assets', 'biome_tiles.jpg'))
+            
+            def get_rect(c, r):
+                return QRect(c * 170 + 25, r * 204 + 10, 120, 120)
+
+            self.biome_tiles = {
+                "Tropical Rainforest": get_rect(0, 0), "Tropical Forest": get_rect(0, 0),
+                "Temperate Forest": get_rect(1, 0), "Taiga": get_rect(2, 0),
+                "Tundra": get_rect(3, 0), "Ice Cap / Glacier": get_rect(3, 0),
+                "Savanna": get_rect(4, 0), "Shrubland / Chaparral": get_rect(4, 0),
+                "Steppe / Grassland": get_rect(5, 0), "Arid Desert": get_rect(0, 1),
+                "Cold Desert": get_rect(0, 1), "Alpine / Mountain": get_rect(2, 1),
+                "Sunlit Coral Reef": get_rect(0, 2), "Sandy Lagoon & Seagrass Bed": get_rect(4, 2),
+                "Benthopelagic Silt Plains": get_rect(2, 2), "Abyssal Barren Desert": get_rect(2, 2),
+                "Abyssal Cryo-Brine Pool": get_rect(3, 2), "Oceanic Pelagic Barrens": get_rect(0, 3),
+                "Deep Glass Sponge Reef": get_rect(4, 3), "Chemosynthetic Thermal Oasis": get_rect(4, 3),
+                "Hydrothermal Chemotrophic Forest": get_rect(5, 3)
+            }
+
+        for cid, (cx, cy, cell) in self._cell_rects.items():
+            h = cell.get("h", 20)
+
+            if self.active_layer == "Biomes" and not self.tileset_img.isNull():
+                biome = cell.get("biome", "")
+                default_rect = get_rect(5, 0) if h >= 20 else get_rect(0, 3)
+                src_rect = self.biome_tiles.get(biome, default_rect)
+                painter.drawPixmap(QRect(cx - 16, cy - 16, 32, 32), self.tileset_img, src_rect)
+            else:
+                cell_brush = QBrush(QColor("#181825"))
+                if self.active_layer == "States":
+                    state_id = cell.get("state", 0)
+                    color_hex = "#181825"
+                    if state_id > 0 and hasattr(engine, 'states'):
+                        color_hex = next((s["color"] for s in engine.states if s["id"] == state_id), "#181825")
+                    cell_brush = QBrush(QColor(color_hex))
+                elif self.active_layer == "Provinces":
+                    prov_id = cell.get("province", 0)
+                    prov_color = self.main_window.resolve_province_color_from_cache(prov_id)
+                    cell_brush = QBrush(QColor(prov_color if prov_color else "#181825"))
+                elif self.active_layer == "Biomes":
+                    biome_colors = {
+                        "Rainforest": "#106e2e", "Taiga": "#15803d", "Desert": "#ca8a04", 
+                        "Marine": "#0c4a6e", "Deep Sea": "#082f49", "Tundra": "#38bdf8", "Ice": "#e0f2fe"
+                    }
+                    cell_brush = QBrush(QColor(biome_colors.get(cell.get("biome", ""), "#1e293b")))
+                else:
+                    val = int((h / 100.0) * 180) + 70
+                    cell_brush = QBrush(QColor(0, val, val // 2) if h >= 20 else QColor(0, val // 4, val))
+    
+                painter.setPen(Qt.PenStyle.NoPen)
+                painter.setBrush(cell_brush)
+                if self.active_layer != "Biomes":
+                    painter.drawEllipse(cx - 10, cy - 10, 20, 20)
+
+        painter.end()
+
+    def paintEvent(self, event):
+        from PyQt6.QtGui import QPainter, QColor, QPen
+        
+        if self._bg_cache is None:
+            self.draw_static_background()
+            
+        painter = QPainter(self)
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
+        
+        if self._bg_cache:
+            painter.drawPixmap(0, 0, self._bg_cache)
+
+        if self.hovered_cell_idx != -1 and self.hovered_cell_idx in self._cell_rects:
+            cx, cy, _ = self._cell_rects[self.hovered_cell_idx]
+            painter.setPen(QPen(QColor("#04D361"), 2))
+            painter.setBrush(Qt.BrushStyle.NoBrush)
+            painter.drawEllipse(cx - 12, cy - 12, 24, 24)
+
+    def mouseMoveEvent(self, event):
+        pos = event.position()
+        if not self._cell_rects:
+            return
+
+        closest_cid = -1
+        min_dist = float("inf")
+        
+        for cid, (cx, cy, cell) in self._cell_rects.items():
+            dist = (pos.x() - cx)**2 + (pos.y() - cy)**2
+            if dist < min_dist:
+                min_dist = dist
+                closest_cid = cid
+
+        if min_dist < 900: # 30^2
+            if closest_cid != self.hovered_cell_idx:
+                self.hovered_cell_idx = closest_cid
+                _, _, closest_cell = self._cell_rects[closest_cid]
+                
+                engine = self.main_window.map_engine
+                faction_name = "Neutral Territory"
+                if closest_cell.get("state", 0) > 0 and hasattr(engine, 'states'):
+                    faction_name = next((s["name"] for s in engine.states if s["id"] == closest_cell["state"]), "Neutral Territory")
+                
+                self.cell_hovered.emit(closest_cid, closest_cell.get("h", 0), closest_cell.get("biome", ""), faction_name)
+                self.update()
+        else:
+            self.hovered_cell_idx = -1
+            self.update()
+
+    def mousePressEvent(self, event):
+        if event.button() == Qt.MouseButton.LeftButton and self.hovered_cell_idx != -1:
+            self.cell_clicked.emit(self.hovered_cell_idx)
+
+# =============================================================================
+# WORKSPACE WIDGETS FOR ALL LORDSMITH SECTIONS
+class AzgaarFactionSubsystemWidget(QWidget):
+    def __init__(self, main_window):
+        super().__init__()
+        self.main_window = main_window
+        self.db_path = main_window.db_path
+        layout = QVBoxLayout(self)
+        layout.addWidget(QLabel("<b>🏳️ Sovereign States & Countries Ledger</b>"))
+        self.table = QTableWidget()
+        self.table.setColumnCount(9)
+        self.table.setHorizontalHeaderLabels(["ID", "Name", "Color", "Gov Type", "Aggress (1-10)", "Trade (1-10)", "Freedom (1-10)", "Magic Stance", "Domain"])
+        self.table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
+        self.table.setStyleSheet("QTableWidget { background-color: #0c0c10; gridline-color: #29292E; }")
+        self.table.itemSelectionChanged.connect(self.on_table_selection_changed)
+        layout.addWidget(self.table)
+        btn_add = QPushButton("➕ Add Sovereign State")
+        btn_add.clicked.connect(self.add_state)
+        layout.addWidget(btn_add)
+        
+    def refresh_grid(self):
+        self.table.blockSignals(True)
+        self.table.setRowCount(0)
+        try:
+            conn = sqlite3.connect(self.db_path, timeout=15.0)
+            conn.execute("PRAGMA journal_mode=WAL;")
+            cursor = conn.cursor()
+            cursor.execute("SELECT id, name, color, gov_type, aggression_scale, trade_scale, freedom, magic_stance, domain_type FROM factions")
+            rows = cursor.fetchall()
+            conn.close()
+            self.table.setRowCount(len(rows))
+            for r_idx, (fid, name, color, gov, agg, trd, free, magic, dom) in enumerate(rows):
+                self.table.setItem(r_idx, 0, QTableWidgetItem(str(fid)))
+                self.table.setItem(r_idx, 1, QTableWidgetItem(name))
+                color_btn = QPushButton()
+                color_btn.setFixedSize(24, 20)
+                color_btn.setStyleSheet(f"background-color: {color}; border: 1px solid #fff;")
+                color_btn.clicked.connect(lambda _, r=r_idx, s=fid: self.pick_color(r, s))
+                self.table.setCellWidget(r_idx, 2, color_btn)
+                self.table.setItem(r_idx, 3, QTableWidgetItem(str(gov)))
+                self.table.setItem(r_idx, 4, QTableWidgetItem(str(agg)))
+                self.table.setItem(r_idx, 5, QTableWidgetItem(str(trd)))
+                self.table.setItem(r_idx, 6, QTableWidgetItem(str(free)))
+                self.table.setItem(r_idx, 7, QTableWidgetItem(str(magic)))
+                self.table.setItem(r_idx, 8, QTableWidgetItem(str(dom)))
+            self.table.itemChanged.connect(self.handle_edited)
+        except Exception as e:
+            pass
+        self.table.blockSignals(False)
+
+    def handle_edited(self, item):
+        row = item.row()
+        fid = int(self.table.item(row, 0).text())
+        conn = sqlite3.connect(self.db_path, timeout=15.0)
+        conn.execute("PRAGMA journal_mode=WAL;")
+        cursor = conn.cursor()
+        if item.column() == 1:
+            cursor.execute("UPDATE factions SET name = ? WHERE id = ?", (item.text(), fid))
+        elif item.column() == 3:
+            cursor.execute("UPDATE factions SET gov_type = ? WHERE id = ?", (item.text(), fid))
+        conn.commit()
+        conn.close()
+        self.main_window.run_local_lore_reconciliation()
+
+    def pick_color(self, row, fid):
+        color = QColorDialog.getColor()
+        if color.isValid():
+            conn = sqlite3.connect(self.db_path, timeout=15.0)
+            conn.execute("PRAGMA journal_mode=WAL;")
+            cursor = conn.cursor()
+            cursor.execute("UPDATE factions SET color = ? WHERE id = ?", (color.name(), fid))
+            conn.commit()
+            conn.close()
+            self.refresh_grid()
+            self.main_window.map_viewer_canvas.update()
+
+    def add_state(self):
+        conn = sqlite3.connect(self.db_path, timeout=15.0)
+        conn.execute("PRAGMA journal_mode=WAL;")
+        cursor = conn.cursor()
+        new_id = random.randint(100, 9999)
+        hex_color = f"#{random.randint(0, 0xFFFFFF):06x}"
+        cursor.execute("INSERT INTO factions (id, name, color, gov_type, aggression_scale, trade_scale, freedom, magic_stance, domain_type) VALUES (?, ?, ?, 'Feudal Kingdom', 5, 5, 5, 'Regulated', 'Both')", (new_id, f"State_{new_id}", hex_color))
+        conn.commit()
+        conn.close()
+        self.refresh_grid()
+        self.main_window.run_local_lore_reconciliation()
+
+    def on_table_selection_changed(self):
+        ranges = self.table.selectedRanges()
+        if not ranges: return
+        row = ranges[0].topRow()
+        fid = int(self.table.item(row, 0).text())
+        self.main_window.update_parameter_inspector("factions", fid)
+
+class AzgaarProvinceSubsystemWidget(QWidget):
+    def __init__(self, main_window):
+        super().__init__()
+        self.main_window = main_window
+        self.db_path = main_window.db_path
+        layout = QVBoxLayout(self)
+        layout.addWidget(QLabel("<b>🛡️ Internal State Provinces</b>"))
+        self.table = QTableWidget()
+        self.table.setColumnCount(6)
+        self.table.setHorizontalHeaderLabels(["ID", "Province Name", "Color", "Governor", "Local Morale", "Magic Handling"])
+        self.table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
+        self.table.setStyleSheet("QTableWidget { background-color: #0c0c10; }")
+        self.table.itemSelectionChanged.connect(self.on_table_selection_changed)
+        layout.addWidget(self.table)
+        btn_add = QPushButton("➕ Add State Province")
+        btn_add.clicked.connect(self.add_province)
+        layout.addWidget(btn_add)
+        
+    def refresh_grid(self):
+        self.table.blockSignals(True)
+        self.table.setRowCount(0)
+        try:
+            conn = sqlite3.connect(self.db_path, timeout=15.0)
+            conn.execute("PRAGMA journal_mode=WAL;")
+            cursor = conn.cursor()
+            cursor.execute("SELECT id, name, color, governor_name, local_morale, local_magic_handling FROM provinces")
+            rows = cursor.fetchall()
+            conn.close()
+            self.table.setRowCount(len(rows))
+            for r_idx, (pid, name, color, gov, morale, magic) in enumerate(rows):
+                self.table.setItem(r_idx, 0, QTableWidgetItem(str(pid)))
+                self.table.setItem(r_idx, 1, QTableWidgetItem(name))
+                color_btn = QPushButton()
+                color_btn.setFixedSize(24, 20)
+                color_btn.setStyleSheet(f"background-color: {color}; border: 1px solid #fff;")
+                color_btn.clicked.connect(lambda _, r=r_idx, p=pid: self.pick_color(r, p))
+                self.table.setCellWidget(r_idx, 2, color_btn)
+                self.table.setItem(r_idx, 3, QTableWidgetItem(str(gov if gov else "Vacant")))
+                self.table.setItem(r_idx, 4, QTableWidgetItem(str(morale)))
+                self.table.setItem(r_idx, 5, QTableWidgetItem(str(magic)))
+        except Exception as e:
+            pass
+        self.table.blockSignals(False)
+
+    def pick_color(self, row, pid):
+        color = QColorDialog.getColor()
+        if color.isValid():
+            conn = sqlite3.connect(self.db_path, timeout=15.0)
+            conn.execute("PRAGMA journal_mode=WAL;")
+            cursor = conn.cursor()
+            cursor.execute("UPDATE provinces SET color = ? WHERE id = ?", (color.name(), pid))
+            conn.commit()
+            conn.close()
+            self.refresh_grid()
+            self.main_window.map_viewer_canvas.update()
+
+    def add_province(self):
+        conn = sqlite3.connect(self.db_path, timeout=15.0)
+        conn.execute("PRAGMA journal_mode=WAL;")
+        cursor = conn.cursor()
+        new_id = random.randint(100, 9999)
+        hex_color = f"#{random.randint(0, 0xFFFFFF):06x}"
+        cursor.execute("INSERT INTO provinces (id, name, color, state_id, governor_name, local_morale, local_magic_handling) VALUES (?, ?, ?, 1, 'Noble Governor', 5, 'Lax Enforcement')", (new_id, f"Province_{new_id}", hex_color))
+        conn.commit()
+        conn.close()
+        self.refresh_grid()
+        self.main_window.run_local_lore_reconciliation()
+
+    def on_table_selection_changed(self):
+        ranges = self.table.selectedRanges()
+        if not ranges: return
+        row = ranges[0].topRow()
+        pid = int(self.table.item(row, 0).text())
+        self.main_window.update_parameter_inspector("provinces", pid)
+
+
+class AzgaarReligionSubsystemWidget(QWidget):
+    def __init__(self, main_window):
+        super().__init__()
+        self.main_window = main_window
+        self.db_path = main_window.db_path
+        layout = QVBoxLayout(self)
+        layout.addWidget(QLabel("<b>✨ Religions Matrix</b>"))
+        self.table = QTableWidget()
+        self.table.setColumnCount(8)
+        self.table.setHorizontalHeaderLabels(["ID", "Name", "Type", "Official", "Devotion", "Recruit Rate", "Supreme Deity", "Domain"])
+        self.table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
+        self.table.setStyleSheet("QTableWidget { background-color: #0c0c10; }")
+        self.table.itemSelectionChanged.connect(self.on_table_selection_changed)
+        layout.addWidget(self.table)
+        btn_add = QPushButton("➕ Instate New Religion")
+        btn_add.clicked.connect(self.add_religion)
+        layout.addWidget(btn_add)
+
+    def refresh_grid(self):
+        self.table.blockSignals(True)
+        self.table.setRowCount(0)
+        try:
+            conn = sqlite3.connect(self.db_path, timeout=15.0)
+            conn.execute("PRAGMA journal_mode=WAL;")
+            cursor = conn.cursor()
+            cursor.execute("SELECT id, name, religion_type, is_official, devotion, recruit_rate, supreme_deity, domain_type FROM religions")
+            rows = cursor.fetchall()
+            conn.close()
+            self.table.setRowCount(len(rows))
+            for r_idx, (rid, name, rel_type, official, devotion, recruit, deity, domain) in enumerate(rows):
+                self.table.setItem(r_idx, 0, QTableWidgetItem(str(rid)))
+                self.table.setItem(r_idx, 1, QTableWidgetItem(name))
+                self.table.setItem(r_idx, 2, QTableWidgetItem(str(rel_type)))
+                self.table.setItem(r_idx, 3, QTableWidgetItem("Yes" if official else "No"))
+                self.table.setItem(r_idx, 4, QTableWidgetItem(str(devotion)))
+                self.table.setItem(r_idx, 5, QTableWidgetItem(str(recruit)))
+                self.table.setItem(r_idx, 6, QTableWidgetItem(str(deity)))
+                self.table.setItem(r_idx, 7, QTableWidgetItem(str(domain)))
+        except Exception as e: pass
+        self.table.blockSignals(False)
+
+    def add_religion(self):
+        conn = sqlite3.connect(self.db_path, timeout=15.0)
+        conn.execute("PRAGMA journal_mode=WAL;")
+        cursor = conn.cursor()
+        new_id = random.randint(100, 9999)
+        cursor.execute("INSERT INTO religions (id, name, color, religion_type, devotion, recruit_rate, supreme_deity, domain_type) VALUES (?, ?, '#ffd700', 'Deity-Centric', 5, 5, 'Sun God', 'Both')", (new_id, f"Creed_{new_id}"))
+        conn.commit()
+        conn.close()
+        self.refresh_grid()
+        self.main_window.run_local_lore_reconciliation()
+
+    def on_table_selection_changed(self):
+        ranges = self.table.selectedRanges()
+        if not ranges: return
+        row = ranges[0].topRow()
+        rid = int(self.table.item(row, 0).text())
+        self.main_window.update_parameter_inspector("religions", rid)
+
+
+class AzgaarCultureSubsystemWidget(QWidget):
+    def __init__(self, main_window):
+        super().__init__()
+        self.main_window = main_window
+        self.db_path = main_window.db_path
+        layout = QVBoxLayout(self)
+        layout.addWidget(QLabel("<b>🌐 Cultures & Species Registry</b>"))
+        self.table = QTableWidget()
+        self.table.setColumnCount(6)
+        self.table.setHorizontalHeaderLabels(["ID", "Name", "Lang Code", "Primary Syllables", "Trait", "Domain"])
+        self.table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
+        self.table.setStyleSheet("QTableWidget { background-color: #0c0c10; }")
+        self.table.itemSelectionChanged.connect(self.on_table_selection_changed)
+        layout.addWidget(self.table)
+        btn_add = QPushButton("➕ Seed New Culture")
+        btn_add.clicked.connect(self.add_culture)
+        layout.addWidget(btn_add)
+
+    def refresh_grid(self):
+        self.table.blockSignals(True)
+        self.table.setRowCount(0)
+        try:
+            conn = sqlite3.connect(self.db_path, timeout=15.0)
+            conn.execute("PRAGMA journal_mode=WAL;")
+            cursor = conn.cursor()
+            cursor.execute("SELECT id, name, code, language_base, trait_type, domain_type FROM cultures")
+            rows = cursor.fetchall()
+            conn.close()
+            self.table.setRowCount(len(rows))
+            for r_idx, (cid, name, code, lang, trait, domain) in enumerate(rows):
+                self.table.setItem(r_idx, 0, QTableWidgetItem(str(cid)))
+                self.table.setItem(r_idx, 1, QTableWidgetItem(name))
+                self.table.setItem(r_idx, 2, QTableWidgetItem(str(code)))
+                self.table.setItem(r_idx, 3, QTableWidgetItem(str(lang)))
+                self.table.setItem(r_idx, 4, QTableWidgetItem(str(trait)))
+                self.table.setItem(r_idx, 5, QTableWidgetItem(str(domain)))
+        except Exception as e: pass
+        self.table.blockSignals(False)
+
+    def add_culture(self):
+        conn = sqlite3.connect(self.db_path, timeout=15.0)
+        conn.execute("PRAGMA journal_mode=WAL;")
+        cursor = conn.cursor()
+        new_id = random.randint(100, 9999)
+        cursor.execute("INSERT INTO cultures (id, name, code, language_base, trait_type, trait_modifier, domain_type) VALUES (?, ?, 'CUL', 'Common', 'Income Boost', 1.10, 'Both')", (new_id, f"Culture_{new_id}"))
+        conn.commit()
+        conn.close()
+        self.refresh_grid()
+
+    def on_table_selection_changed(self):
+        ranges = self.table.selectedRanges()
+        if not ranges: return
+        row = ranges[0].topRow()
+        cid = int(self.table.item(row, 0).text())
+        self.main_window.update_parameter_inspector("cultures", cid)
+
+
+class AzgaarGenericSubsystemWidget(QWidget):
+    """Generic catch-all grid for the remaining tables to prevent boilerplate."""
+    def __init__(self, main_window, table_name, title, columns):
+        super().__init__()
+        self.main_window = main_window
+        self.db_path = main_window.db_path
+        self.table_name = table_name
+        self.columns = columns
+        
+        layout = QVBoxLayout(self)
+        layout.addWidget(QLabel(f"<b>{title}</b>"))
+        self.table = QTableWidget()
+        self.table.setColumnCount(len(columns))
+        self.table.setHorizontalHeaderLabels([c.upper() for c in columns])
+        self.table.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
+        self.table.setStyleSheet("QTableWidget { background-color: #0c0c10; }")
+        self.table.itemSelectionChanged.connect(self.on_table_selection_changed)
+        layout.addWidget(self.table)
+        
+    def refresh_grid(self):
+        self.table.blockSignals(True)
+        self.table.setRowCount(0)
+        try:
+            conn = sqlite3.connect(self.db_path, timeout=15.0)
+            conn.execute("PRAGMA journal_mode=WAL;")
+            cursor = conn.cursor()
+            cursor.execute(f"SELECT {','.join(self.columns)} FROM {self.table_name}")
+            rows = cursor.fetchall()
+            conn.close()
+            self.table.setRowCount(len(rows))
+            for r_idx, row_data in enumerate(rows):
+                for c_idx, val in enumerate(row_data):
+                    self.table.setItem(r_idx, c_idx, QTableWidgetItem(str(val) if val is not None else ""))
+        except Exception as e: pass
+        self.table.blockSignals(False)
+
+    def on_table_selection_changed(self):
+        ranges = self.table.selectedRanges()
+        if not ranges: return
+        row = ranges[0].topRow()
+        item_id = self.table.item(row, 0).text()
+        self.main_window.update_parameter_inspector(self.table_name, item_id)
+
+
+# =============================================================================
+# PROJECT STARTUP WIZARD
+# =============================================================================
+class ProjectStartupWizard(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.selected_dir = None
+        self.import_notes = False
+        self.setWindowTitle("Lordsmith Studio Startup")
+        self.resize(460, 280)
+        self.setStyleSheet("background-color: #111116; color: #EEEEF8; font-family: Arial; QPushButton { padding: 8px; margin: 4px; }")
+        layout = QVBoxLayout(self)
+        layout.addWidget(QLabel("<h2>🌌 Welcome to Lordsmith Studio</h2>"))
+        
+        btn_open = QPushButton("📂 Open Existing Project")
+        btn_open.clicked.connect(self.action_open_project)
+        layout.addWidget(btn_open)
+
+        btn_import = QPushButton("📥 Start New by Importing Notes")
+        btn_import.clicked.connect(self.action_import_new)
+        layout.addWidget(btn_import)
+        
+        btn_new = QPushButton("📄 Start Blank Project")
+        btn_new.clicked.connect(self.action_new_project)
+        layout.addWidget(btn_new)
+
+    def action_open_project(self):
+        dir_path = QFileDialog.getExistingDirectory(self, "Select Existing Project Directory")
+        if dir_path:
+            self.selected_dir = dir_path
+            self.import_notes = False
+            self.accept()
+            
+    def action_import_new(self):
+        dir_path = QFileDialog.getExistingDirectory(self, "Select Directory for New Project")
+        if dir_path:
+            self.selected_dir = dir_path
+            self.import_notes = True
+            self.accept()
+
+    def action_new_project(self):
+        dir_path = QFileDialog.getExistingDirectory(self, "Select Directory for New Project")
+        if dir_path:
+            self.selected_dir = dir_path
+            self.import_notes = False
+            self.accept()
+
+# =============================================================================
+# MAIN WINDOW ARCHITECTURE
+# =============================================================================
+class LordsmithStudioMainWindow(QMainWindow):
+
+    def __init__(self, project_dir):
+        super().__init__()
+        self.project_dir = os.path.abspath(project_dir)
+        self.setWindowTitle("Lordsmith Studio Workspace")
+        self.resize(1650, 950)
+        self.setStyleSheet("background-color: #111116; color: #EEEEF8; QLineEdit, QTextEdit, QTableWidget { background-color: #0c0c10; border: 1px solid #333333; } QPushButton { background-color: #29293a; padding: 5px; }")
+        
+        # Display boot status message for AI engine
+        self.statusBar().showMessage("Initializing Workspace...")
+        
+        # Add permanent AI Status indicator
+        from PyQt6.QtWidgets import QLabel
+        self.ai_status_label = QLabel("AI Engine: Standby")
+        self.ai_status_label.setStyleSheet("color: #3b82f6; font-weight: bold; margin-right: 20px;")
+        self.statusBar().addPermanentWidget(self.ai_status_label)
+        
+        # Add a QTimer to poll the last backend used so the UI always reflects reality
+        from PyQt6.QtCore import QTimer
+        self.ai_status_timer = QTimer(self)
+        self.ai_status_timer.timeout.connect(self.poll_ai_backend_status)
+        self.ai_status_timer.start(1000) # Update every second
+
+        self.db_path = os.path.join(self.project_dir, "lore_forge_world.db")
+        setup_master_knowledge_db(self.db_path)
+
+        self.map_engine = AzgaarEngine()
+        self.export_engine = WorldsmithExportEngine(self.map_engine, self.db_path)
+
+        # Build Export Menu
+        file_menu = self.menuBar().addMenu("File")
+        
+        action_generate_map = file_menu.addAction("🎲 Generate Procedural World Map")
+        action_generate_map.triggered.connect(self.action_generate_procedural_world)
+        
+        file_menu.addSeparator()
+        
+        action_export_geojson = file_menu.addAction("Export GeoJSON Framework")
+        action_export_geojson.triggered.connect(self.action_export_geojson)
+        
+        action_export_wiki = file_menu.addAction("Export Static HTML Wiki")
+        action_export_wiki.triggered.connect(self.action_export_wiki)
+        
+        action_export_sim = file_menu.addAction("Export Simulation Seed")
+        action_export_sim.triggered.connect(self.action_export_simulation)
+
+        action_import_lore = file_menu.addAction("📥 Import Markdown Vault (.md)")
+        action_import_lore.triggered.connect(self.action_import_lore)
+
+        central_container = QWidget()
+
+        self.setCentralWidget(central_container)
+        main_h_layout = QHBoxLayout(central_container)
+
+        self.panels_splitter = QSplitter(Qt.Orientation.Horizontal)
+        main_h_layout.addWidget(self.panels_splitter)
+
+        # Left panel: Tabbed Interface for Editor, Vault, and AI
+        self.panel_left = QWidget()
+        pl_lay = QVBoxLayout(self.panel_left)
+        
+        self.left_tabs = QTabWidget()
+        self.left_tabs.setStyleSheet("QTabBar::tab { background: #111116; color: #EEEEF8; padding: 8px; border: 1px solid #333; } QTabBar::tab:selected { background: #29293a; font-weight: bold; }")
+        
+        # TAB 1: Editor
+        self.tab_editor = QWidget()
+        tab_ed_lay = QVBoxLayout(self.tab_editor)
+        tab_ed_lay.addWidget(QLabel("<b>✍️ Narrative Lore Writer</b>"))
+        self.note_writer = MarkdownNotebookEditor(self.tab_editor)
+        tab_ed_lay.addWidget(self.note_writer, 1)
+        self.note_writer.spatial_bind_clicked.connect(self.handle_spatial_bind_clicked)
+        self.note_writer.wiki_link_clicked.connect(self.handle_wiki_link_clicked)
+        self.left_tabs.addTab(self.tab_editor, "📝 Lore Editor")
+        
+        # TAB 2: Vault
+        self.tab_vault = QWidget()
+        tab_vault_lay = QVBoxLayout(self.tab_vault)
+        tab_vault_lay.addWidget(QLabel("<b>📂 Extracted Lore Vault</b>"))
+        self.vault_tree = QTreeView()
+        self.vault_model = QFileSystemModel()
+        vault_path = os.path.join(self.project_dir, 'lore_vault')
+        os.makedirs(vault_path, exist_ok=True)
+        self.vault_model.setRootPath(vault_path)
+        self.vault_tree.setModel(self.vault_model)
+        self.vault_tree.setRootIndex(self.vault_model.index(vault_path))
+        self.vault_tree.setColumnWidth(0, 250)
+        self.vault_tree.hideColumn(1)
+        self.vault_tree.hideColumn(2)
+        self.vault_tree.hideColumn(3)
+        self.vault_tree.clicked.connect(self.handle_vault_item_clicked)
+        tab_vault_lay.addWidget(self.vault_tree, 1)
+        self.left_tabs.addTab(self.tab_vault, "📂 Notes Vault")
+        
+        # TAB 3: AI Chat
+        self.tab_chat = QWidget()
+        tab_chat_lay = QVBoxLayout(self.tab_chat)
+        tab_chat_lay.addWidget(QLabel("<b>🤖 Lordsmith AI Assistant</b>"))
+        
+        self.ai_prompt_history = QTextEdit()
+        self.ai_prompt_history.setReadOnly(True)
+        self.ai_prompt_history.setStyleSheet("background-color: #0c0c10; border: none; font-size: 14px;")
+        tab_chat_lay.addWidget(self.ai_prompt_history, 1)
+        
+        chat_input_lay = QHBoxLayout()
+        self.ai_input = QLineEdit()
+        self.ai_input.setPlaceholderText("Ask the AI about your lore, request ideas, or expand notes...")
+        self.ai_input.returnPressed.connect(self.handle_ai_submit)
+        chat_input_lay.addWidget(self.ai_input, 1)
+        
+        btn_ai_send = QPushButton("Send")
+        btn_ai_send.clicked.connect(self.handle_ai_submit)
+        chat_input_lay.addWidget(btn_ai_send)
+        tab_chat_lay.addLayout(chat_input_lay)
+        self.left_tabs.addTab(self.tab_chat, "🤖 AI Chat")
+        
+        pl_lay.addWidget(self.left_tabs, 1)
+        self.panels_splitter.addWidget(self.panel_left)
+
+        # Middle panel: Subsystem Registry Stack
+        self.panel_middle = QWidget()
+        pm_lay = QVBoxLayout(self.panel_middle)
+        self.cb_subject_selector = QComboBox()
+        pm_lay.addWidget(self.cb_subject_selector)
+        self.subsystem_stack = QStackedWidget()
+        pm_lay.addWidget(self.subsystem_stack, 1)
+        self.panels_splitter.addWidget(self.panel_middle)
+
+        # Initialize Subsystem Widgets
+        self.w_factions = AzgaarFactionSubsystemWidget(self)
+        self.w_provinces = AzgaarProvinceSubsystemWidget(self)
+        self.w_religions = AzgaarReligionSubsystemWidget(self)
+        self.w_cultures = AzgaarCultureSubsystemWidget(self)
+        
+        self.subsystems = [
+            ("Sovereign States", self.w_factions),
+            ("Provinces", self.w_provinces),
+            ("Religions", self.w_religions),
+            ("Cultures", self.w_cultures),
+            ("Military Regiments", AzgaarGenericSubsystemWidget(self, "military", "⚔️ Regiments", ["id", "name", "faction_id", "troops_count", "unit_type"])),
+            ("Defensive Structures", AzgaarGenericSubsystemWidget(self, "defensive_structures", "🏰 Defenses", ["id", "name", "structure_type", "defense_value"])),
+            ("Economic Commodities", AzgaarGenericSubsystemWidget(self, "production_goods", "📦 Commodities", ["cell_id", "good", "valuation", "is_market_center"])),
+            ("Trade Routes", AzgaarGenericSubsystemWidget(self, "trade_routes", "🛤️ Routes", ["id", "origin_cell", "destination_cell", "route_type"])),
+            ("Burgs & Settlements", AzgaarGenericSubsystemWidget(self, "settlements", "🏘️ Burgs", ["id", "name", "population", "has_port"])),
+            ("Geography Tectonics", AzgaarGenericSubsystemWidget(self, "geography_plates", "🌍 Plates", ["id", "name", "movement_vector"])),
+            ("Magic Leylines", AzgaarGenericSubsystemWidget(self, "magic_layers", "✨ Magic", ["id", "label", "mode_type", "intensity"])),
+            ("Tech Eras", AzgaarGenericSubsystemWidget(self, "tech_eras", "⚙️ Tech", ["id", "name", "year_range"])),
+            ("Influence Factions", AzgaarGenericSubsystemWidget(self, "influence_factions", "🕸️ Shadow Network", ["id", "name", "category", "influence_intensity"])),
+            ("Calendar Rules", AzgaarGenericSubsystemWidget(self, "calendar_config", "📅 Calendar", ["id", "year_length"])),
+            ("Planetary Moons", AzgaarGenericSubsystemWidget(self, "moons", "🌘 Moons", ["id", "name", "period", "gravitational_tide_mod"])),
+            ("Timeline Events", AzgaarGenericSubsystemWidget(self, "timeline_events", "📜 Historical Events", ["id", "year", "title", "faction_id"])),
+            ("Markers", AzgaarGenericSubsystemWidget(self, "markers", "📍 Markers", ["id", "name", "type"]))
+        ]
+        
+        for name, widget in self.subsystems:
+            self.cb_subject_selector.addItem(name)
+            self.subsystem_stack.addWidget(widget)
+            
+        self.cb_subject_selector.currentIndexChanged.connect(self.on_subject_changed)
+        
+        # Right Panel: Inspector and Interactive Canvas
+        self.panel_right = QWidget()
+        pr_lay = QVBoxLayout(self.panel_right)
+        
+        self.btn_toggle_map = QPushButton("👁️ Show Interactive Canvas")
+        self.btn_toggle_map.setCheckable(True)
+        self.btn_toggle_map.clicked.connect(self.toggle_map_view)
+        pr_lay.addWidget(self.btn_toggle_map)
+        
+        self.btn_upload_heightmap = QPushButton("🗺️ Upload Custom Heightmap Image")
+        self.btn_upload_heightmap.clicked.connect(self.action_upload_heightmap)
+        pr_lay.addWidget(self.btn_upload_heightmap)
+        
+        self.right_stack = QStackedWidget()
+        self.form_widget = QScrollArea()
+        self.form_widget.setWidgetResizable(True)
+        self.form_inner = QWidget()
+        self.form_layout = QFormLayout(self.form_inner)
+        self.form_widget.setWidget(self.form_inner)
+        self.right_stack.addWidget(self.form_widget)
+        
+        self.map_viewer_canvas = InteractiveLordsmithMapCanvas(self)
+        self.right_stack.addWidget(self.map_viewer_canvas)
+        pr_lay.addWidget(self.right_stack, 1)
+        
+        self.panels_splitter.addWidget(self.panel_right)
+        
+        self.on_subject_changed(0)
+
+        # 🚀 Automatically boot and preload the AI model silently via background worker
+        self.statusBar().showMessage("Booting Local AI Engine in Background (This takes 30-120 seconds)...")
+        self.ai_bootstrapper = AIBootstrapperWorker()
+        self.ai_bootstrapper.boot_complete.connect(self.on_ai_boot_complete)
+        self.ai_bootstrapper.start()
+
+    def poll_ai_backend_status(self):
+        try:
+            from python_fmg.core.ai_worker import LordsmithAIClient
+            self.ai_status_label.setText(f"Active AI Brain: {LordsmithAIClient.last_backend_used}")
+        except:
+            pass
+
+    def on_ai_boot_complete(self, success, message):
+        """Callback when the AI finishes loading the model into memory."""
+        self.statusBar().showMessage(message)
+
+    def on_subject_changed(self, index):
+        self.subsystem_stack.setCurrentIndex(index)
+        widget = self.subsystem_stack.widget(index)
+        if hasattr(widget, 'refresh_grid'):
+            widget.refresh_grid()
+
+    def resolve_province_color_from_cache(self, prov_id):
+        try:
+            conn = sqlite3.connect(self.db_path, timeout=15.0)
+            conn.execute("PRAGMA journal_mode=WAL;")
+            cursor = conn.cursor()
+            cursor.execute("SELECT color FROM provinces WHERE id=?", (prov_id,))
+            res = cursor.fetchone()
+            conn.close()
+            if res: return res[0]
+        except: pass
+        return None
+
+    def run_local_lore_reconciliation(self):
+        print("Reconciliation Triggered: Syncing AI knowledge vectors...")
+        
+    def update_parameter_inspector(self, table_name, item_id):
+        while self.form_layout.count():
+            item = self.form_layout.takeAt(0)
+            if item.widget(): item.widget().setParent(None)
+            
+        try:
+            conn = sqlite3.connect(self.db_path, timeout=15.0)
+            conn.execute("PRAGMA journal_mode=WAL;")
+            cursor = conn.cursor()
+            cursor.execute(f"PRAGMA table_info({table_name})")
+            cols = cursor.fetchall()
+            pk_col = cols[0][1] if cols else "id"
+            cursor.execute(f"SELECT * FROM {table_name} WHERE {pk_col}=?", (item_id,))
+            row = cursor.fetchone()
+            conn.close()
+            
+            if not row: return
+            
+            for col, val in zip(cols, row):
+                col_name = col[1]
+                t = QLineEdit(str(val) if val is not None else "")
+                self.form_layout.addRow(f"{col_name}:", t)
+                
+            btn = QPushButton("Save Changes")
+            self.form_layout.addRow(btn)
+        except Exception as e:
+            print(f"Inspector error: {e}")
+
+    def toggle_map_view(self, checked):
+        self.right_stack.setCurrentIndex(1 if checked else 0)
+
+    def action_upload_heightmap(self):
+        file_path, _ = QFileDialog.getOpenFileName(self, "Select Heightmap Image", "", "Images (*.png *.jpg *.jpeg)")
+        if file_path:
+            try:
+                if not getattr(self.map_engine, 'cells', None):
+                    self.map_engine.generate_voronoi_mesh(1000)
+                self.map_engine.run_heightmap_pipeline(file_path)
+                if hasattr(self.map_engine, 'run_biomes_climate'):
+                    self.map_engine.run_biomes_climate()
+                self.btn_toggle_map.setChecked(True)
+                self.toggle_map_view(True)
+                self.map_viewer_canvas.update()
+                QMessageBox.information(self, "Success", "Custom heightmap applied successfully!")
+            except Exception as e:
+                QMessageBox.critical(self, "Error", f"Failed to apply heightmap: {e}")
+
+
+    def action_export_geojson(self):
+        from python_fmg.core.export_engine import WorldsmithExportEngine
+        out_path, _ = QFileDialog.getSaveFileName(self, "Export GeoJSON", os.path.join(self.project_dir, "map.geojson"), "GeoJSON Files (*.geojson)")
+        if out_path:
+            try:
+                exporter = WorldsmithExportEngine(self)
+                exporter.compile_geojson_framework(out_path)
+                QMessageBox.information(self, "Export Complete", f"GeoJSON exported to: {out_path}")
+            except Exception as e:
+                QMessageBox.critical(self, "Export Error", f"Failed to export GeoJSON: {e}")
+
+    def action_import_lore(self):
+        from PyQt6.QtWidgets import QFileDialog, QProgressDialog, QMessageBox
+        import os
+        dir_path = QFileDialog.getExistingDirectory(self, "Select Root Directory for Lore Import", "")
+        if not dir_path:
+            return
+            
+        file_paths = []
+        for root, dirs, files in os.walk(dir_path):
+            for file in files:
+                if file.lower().endswith(('.md', '.txt')):
+                    file_paths.append(os.path.join(root, file))
+                    
+        if not file_paths:
+            QMessageBox.warning(self, "No Files Found", "No markdown (.md) or text (.txt) files were found in the selected directory.")
+            return
+            
+        from python_fmg.core.hybrid_worker import HybridPipelineWorker
+        self.ingestor = HybridPipelineWorker(parent=self)
+        
+        self.progress_dialog = QProgressDialog("Ingesting Lore and Extracting Entities...", "Cancel", 0, len(file_paths), self)
+        self.progress_dialog.setWindowTitle("AI Ingestion Engine")
+        self.progress_dialog.setWindowModality(Qt.WindowModality.WindowModal)
+        self.progress_dialog.setStyleSheet("background-color: #0c0c10; color: #fff;")
+        
+        self.ingestor.progress_update.connect(lambda cur, tot, name: self.progress_dialog.setValue(cur))
+        self.ingestor.progress_update.connect(lambda cur, tot, name: self.progress_dialog.setLabelText(f"Parsing: {name}\nActive Brain: Hybrid Pipeline (Local Ollama)"))
+        self.ingestor.ingestion_complete.connect(self.on_ingestion_complete)
+        
+        self.progress_dialog.show()
+        self.ingestor.start()
+
+    def on_ingestion_complete(self, is_online):
+        self.progress_dialog.setValue(self.progress_dialog.maximum())
+        if is_online:
+            QMessageBox.information(self, "Success", "Lore successfully ingested and synchronized with SQLite database!")
+        else:
+            QMessageBox.warning(self, "Offline Mode", "Lore was saved as plain text, but AI Entity Extraction failed! No Ollama instance was found on port 11434 and no Gemini API key was provided.")
+        self.w_factions.refresh_grid()
+        self.w_provinces.refresh_grid()
+        # Trigger map canvas re-render since new cities might have spawned
+        self.map_viewer_canvas.update()
+        
+        # Switch to chat tab and trigger proactive AI audit
+        self.left_tabs.setCurrentWidget(self.tab_chat)
+        self.trigger_lore_audit()
+
+    def action_export_wiki(self):
+        from python_fmg.core.wiki_compiler import WikiCompiler
+        out_dir = QFileDialog.getExistingDirectory(self, "Select Wiki Export Directory", self.project_dir)
+        if out_dir:
+            try:
+                compiler = WikiCompiler(db_path=self.db_path, output_dir=out_dir)
+                success, msg = compiler.compile_wiki()
+                if success:
+                    QMessageBox.information(self, "Export Complete", msg)
+                else:
+                    QMessageBox.critical(self, "Export Error", f"Failed to compile Wiki: {msg}")
+            except Exception as e:
+                QMessageBox.critical(self, "Export Error", f"Exception compiling Wiki: {e}")
+
+
+    def handle_spatial_bind_clicked(self, cell_idx):
+        if not self.btn_toggle_map.isChecked():
+            self.btn_toggle_map.setChecked(True)
+            self.toggle_map_view(True)
+        self.map_viewer_canvas.hovered_cell_idx = cell_idx
+        self.map_viewer_canvas.update()
+        
+    def handle_wiki_link_clicked(self, title):
+        try:
+            conn = sqlite3.connect(self.db_path, timeout=15.0)
+            conn.execute("PRAGMA journal_mode=WAL;")
+            cursor = conn.cursor()
+            cursor.execute("SELECT content FROM notes WHERE title = ?", (title,))
+            res = cursor.fetchone()
+            conn.close()
+            if res:
+                self.note_writer.setText(res[0])
+            else:
+                QMessageBox.information(self, "Note Not Found", f"No lore entry found for: {title}")
+        except Exception as e:
+            print(f"Error fetching note: {e}")
+
+    def handle_vault_item_clicked(self, index):
+        if not self.vault_model.isDir(index):
+            file_path = self.vault_model.filePath(index)
+            try:
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                self.note_writer.setText(content)
+                self.left_tabs.setCurrentIndex(0) # switch to editor tab
+            except Exception as e:
+                QMessageBox.critical(self, "Error reading file", str(e))
+
+    def handle_ai_submit(self):
+        user_text = self.ai_input.text().strip()
+        if not user_text:
+            return
+            
+        self.ai_input.clear()
+        
+        self.ai_prompt_history.append(
+            f'<div style="text-align: right; margin: 2px 4px 6px 30px;">'
+            f'<span style="background-color: #3b82f6; color: white; padding: 4px 8px; border-radius: 6px; display: inline-block;">'
+            f'<b>You:</b> {user_text}</span></div>'
+        )
+        
+        system_instr = "You are Lordsmith AI, a master cartographer and chronicler of Fantasy worlds. You help users expand their worldbuilding notes and answer questions about their generated content."
+        
+        genre = "Fantasy"
+        self.ai_worker = OllamaPromptWorker(user_text, db_path=self.db_path, genre=genre)
+        self.ai_worker.response_received.connect(self.handle_ai_response)
+        self.ai_worker.start()
+
+    def trigger_lore_audit(self):
+        self.handle_ai_response("Processing worldstate... Analyzing database rules, actors, and diplomatic pressures...")
+        try:
+            import json
+            import sqlite3
+            conn = sqlite3.connect(self.db_path, timeout=15.0)
+            conn.execute("PRAGMA journal_mode=WAL;")
+            cursor = conn.cursor()
+
+            cursor.execute("SELECT name, gov_type FROM factions")
+            factions = cursor.fetchall()
+            
+            # Use a try/except for actors in case the DB hasn't been wiped yet in older test setups
+            try:
+                cursor.execute("SELECT name, is_alive, role FROM actors")
+                actors = cursor.fetchall()
+            except sqlite3.OperationalError:
+                actors = []
+
+            cursor.execute("SELECT name, population FROM settlements")
+            settlements = cursor.fetchall()
+            conn.close()
+
+            db_summary = {
+                "factions": [f"{f[0]} ({f[1]})" for f in factions],
+                "actors": [f"{a[0]} ({a[2]}) - {'Alive' if a[1] else 'Dead'}" for a in actors],
+                "settlements": [f"{s[0]} (Pop: {s[1]})" for s in settlements]
+            }
+            summary_str = json.dumps(db_summary, indent=2)
+            
+            from python_fmg.core.ai_worker import AILoreDriverWorker
+            self.driver_worker = AILoreDriverWorker(system_state=summary_str, parent=self)
+            self.driver_worker.query_resolved.connect(self.handle_ai_response)
+            self.driver_worker.start()
+        except Exception as e:
+            self.handle_ai_response(f"Audit failed: {e}")
+
+    def action_generate_procedural_world(self):
+        try:
+            from PyQt6.QtWidgets import QInputDialog
+            cell_count, ok = QInputDialog.getInt(
+                self, 
+                "World Generation Scale", 
+                "Enter number of Voronoi cells (higher = better resolution but slower):", 
+                10000, 
+                1000, 
+                50000, 
+                1000
+            )
+            if not ok:
+                return
+                
+            self.statusBar().showMessage(f"Generating Procedural World Map with {cell_count} cells...")
+            self.map_engine.generate_voronoi_mesh(cell_count)
+            self.map_engine.run_heightmap_pipeline()
+            if hasattr(self.map_engine, 'run_biomes_climate'):
+                self.map_engine.run_biomes_climate()
+            if hasattr(self.map_engine, 'run_hydrology_rivers'):
+                self.map_engine.run_hydrology_rivers()
+            if hasattr(self.map_engine, 'run_states_expansion'):
+                self.map_engine.run_states_expansion()
+            self.map_engine.sink_generated_world_to_db(self.db_path)
+            
+            self.btn_toggle_map.setChecked(True)
+            self.toggle_map_view(True)
+            self.map_viewer_canvas.update()
+            
+            self.statusBar().showMessage("World Map Generation Complete!")
+            QMessageBox.information(self, "Success", "Procedural World Map successfully generated from the current database state!")
+        except Exception as e:
+            QMessageBox.critical(self, "Error", f"Failed to generate map: {e}")
+
+    def handle_ai_response(self, text):
+        self.ai_prompt_history.append(
+            f'<div style="text-align: left; margin: 2px 30px 6px 4px;">'
+            f'<span style="background-color: #29293a; color: #EEEEF8; padding: 4px 8px; border-radius: 6px; display: inline-block;">'
+            f'<span style="color: #04D361; font-weight: bold;">AI:</span> {text}</span></div>'
+        )
+
+    def action_export_simulation(self):
+        file_path, _ = QFileDialog.getSaveFileName(self, "Save World Seed", "world_seed.json", "JSON Files (*.json)")
+        if file_path:
+            self.export_engine.export_simulation_seed(file_path, db_path=self.db_path)
+            QMessageBox.information(self, "Export Complete", f"Simulation seed successfully exported to {file_path}")
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    wizard = ProjectStartupWizard()
+    if wizard.exec() == QDialog.DialogCode.Accepted and wizard.selected_dir:
+        window = LordsmithStudioMainWindow(wizard.selected_dir)
+        window.show()
+        if wizard.import_notes:
+            # use QTimer to trigger import dialogue shortly after UI shows
+            QTimer.singleShot(500, window.action_import_lore)
+        sys.exit(app.exec())

@@ -1,0 +1,60 @@
+{
+    "Name": "Raccons",
+    "Type": "Cultures",
+    "Description": "",
+    "Stats": {
+        "Vibe": {
+            "Melodic": 5,
+            "Fast": 4,
+            "Hard-Working": 4,
+            "Scrap-Happy": 3
+        },
+        "Appearance": {
+            "Daylight": {
+                "Shades": 5,
+                "Flat Caps": 4,
+                "Suspenders": 3,
+                "Aprons": 2
+            },
+            "Attire": {
+                "Bohemian": 5,
+                "Flowing": 4,
+                "Patterned": 3,
+                "Kimonos": 2
+            }
+        },
+        "Trades": {
+            "Climbers": 5,
+            "Salesmen": 4,
+            "Barbers": 3,
+            "Tree-Farming": 4,
+            "Brewing": 4,
+            "Hospitality": 3
+        },
+        "Economy": {
+            "Fronts": 4,
+            "Moonshine": 4,
+            "Upselling": 5
+        },
+        "Society": {
+            "Migrant Workforce": 4,
+            "Street Urchins": 3,
+            "Nobility": 3
+        },
+        "Religion": {
+            "Shadow-Saints": 4,
+            "Connection": 3,
+            "Magic": 3
+        },
+        "Military Quirk": {
+            "Visual": 3,
+            "Role": 2
+        }
+    },
+    "Flavor": {
+        "Irish-American": 5,
+        "Working Class": 4,
+        "Bohemian": 3,
+        "Farmers": 2
+    }
+}

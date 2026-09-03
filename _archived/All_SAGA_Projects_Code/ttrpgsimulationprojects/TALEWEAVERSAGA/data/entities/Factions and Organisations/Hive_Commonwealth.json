@@ -1,0 +1,60 @@
+{
+    "type": "Factions and Organisations",
+    "name": "Hive Commonwealth",
+    "description": "A collective society of flying insects forged in the presence of the Chaos Dragon, Valkor",
+    "government": "Collectivist",
+    "social_structure": {
+        "Empress": {
+            "role": "Queen of the Commonwealth",
+            "description": "The Empress is the ruler of a coalition of combined hives"
+        },
+        "Queens": {
+            "role": "Queen of an individual hive",
+            "description": "Each queen is the biological and spiritual center of her community"
+        },
+        "Male Castes": {
+            "Warriors": {
+                "role": "Fanatically loyal to their queen",
+                "description": "Their sole purpose is the defense of their queen"
+            },
+            "Workers": {
+                "role": "Loyal and obedient",
+                "description": "Their duties include hunting, foraging, and constructing hive homes"
+            }
+        },
+        "Outcasts": {
+            "role": "Individuals born without a connection to the hive mind",
+            "description": "They are the primary interface with the outside world"
+        }
+    },
+    "economy": {
+        "primary_resources": [
+            "Honey",
+            "Quartz Crystals"
+        ],
+        "secondary_resources": [
+            "Fashion-Driven Markets"
+        ],
+        "trade_goods": [
+            "Honey Wine",
+            "Quartz Crystals"
+        ],
+        "markets": [
+            "Fashion-Driven Markets",
+            "Quartz Crystal Trade"
+        ]
+    },
+    "military_doctrine": {
+        "type": "Surgical Strikes",
+        "description": "Designed for high-stakes asset extraction from environments hostile to the psyche",
+        "tactics": [
+            "Scouting",
+            "Signal & Suppression",
+            "Extraction"
+        ]
+    },
+    "psychological_profile": {
+        "core_vulnerability": "Fear of isolation",
+        "strategic_imperatives": "Unity and defense against psychic fragmentation"
+    }
+}

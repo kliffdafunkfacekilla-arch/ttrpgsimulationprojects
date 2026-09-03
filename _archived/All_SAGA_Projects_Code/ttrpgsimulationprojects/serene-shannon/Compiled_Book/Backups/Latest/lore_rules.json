@@ -1,0 +1,86 @@
+{
+  "project": "Shatterlands",
+  "genre": "Grimdark Hard-Fantasy (No Sci-Fi / Space / Modern Tech)",
+  "ouroboros_loop": [
+    {"element": "Chromium", "power": "Lux", "breaker": "Motus", "shield": "Ordo"},
+    {"element": "Titanium", "power": "Ordo", "breaker": "Lux", "shield": "Lex"},
+    {"element": "Lithium", "power": "Lex", "breaker": "Ordo", "shield": "Flux"},
+    {"element": "Gold", "power": "Flux", "breaker": "Lex", "shield": "Ratio"},
+    {"element": "Silicon", "power": "Ratio", "breaker": "Flux", "shield": "Nexus"},
+    {"element": "Tungsten", "power": "Nexus", "breaker": "Ratio", "shield": "Anumis"},
+    {"element": "Bismuth", "power": "Anumis", "breaker": "Nexus", "shield": "Mass"},
+    {"element": "Osmium", "power": "Mass", "breaker": "Anumis", "shield": "Omen"},
+    {"element": "Iridium", "power": "Omen", "breaker": "Mass", "shield": "Vita"},
+    {"element": "Silver", "power": "Vita", "breaker": "Omen", "shield": "Aura"},
+    {"element": "Phosphorus", "power": "Aura", "breaker": "Vita", "shield": "Motus"},
+    {"element": "Lead", "power": "Motus", "breaker": "Aura", "shield": "Lux"}
+  ],
+  "magistars": [
+    {"name": "Tiraton", "pre_corruption": "Grom", "power": "Mass"},
+    {"name": "Stagus", "pre_corruption": "Isolde", "power": "Ordo"},
+    {"name": "Vecelo", "pre_corruption": "Anya", "power": "Motus"},
+    {"name": "Aurgenas", "pre_corruption": "Leoric", "power": "Flux"},
+    {"name": "Gavusrix", "pre_corruption": "Sorel", "power": "Vita"},
+    {"name": "Carulkem", "pre_corruption": "Vahn", "power": "Nexus"},
+    {"name": "Metrion", "pre_corruption": "Kyros", "power": "Ratio"},
+    {"name": "Opecten", "pre_corruption": "Rictus", "power": "Lux"},
+    {"name": "Termhill", "pre_corruption": "Lyra", "power": "Omen"},
+    {"name": "Virantor", "pre_corruption": "Malaki", "power": "Aura"},
+    {"name": "Tyrustis", "pre_corruption": "Zeila", "power": "Lex"},
+    {"name": "Lophex", "pre_corruption": "Eldra", "power": "Anumis"}
+  ],
+  "required_factions": [
+    "Covenant of Null",
+    "Grey Wardens",
+    "Order of the Clockwork",
+    "Worm Cults",
+    "Gilded Compass",
+    "Free Sky-Barons",
+    "Crimson Corsairs"
+  ],
+  "required_religions_philosophies": [
+    "Church of the Dawn",
+    "360-Hearth",
+    "Doctrine of Self-Sufficiency",
+    "Order of Purifiers",
+    "Vow of the Void"
+  ],
+  "required_characters": [
+    "Jiro the Resolute",
+    "Valen the Witness",
+    "Thrum the Mason",
+    "Liora the Truth-Bearer",
+    "Sh'lar"
+  ],
+  "required_locations": [
+    "The Sacred Spire",
+    "Sacred Groves",
+    "The Convergence",
+    "Cruorbus",
+    "Erranith",
+    "Port Sunder",
+    "Grind Canyons",
+    "Gilded Steppe"
+  ],
+  "required_historical_events": [
+    "The Great Shattering",
+    "The Exodus",
+    "The Divine War",
+    "First Wars of Resource and Pride",
+    "Rending Age"
+  ],
+  "required_technologies": [
+    "Jitter-Rig",
+    "Null-Chains",
+    "Voltaic Fleece",
+    "Silk-Steel",
+    "Phase-Chart",
+    "Aether-Skiff",
+    "Dragonstone"
+  ],
+  "forbidden_terms": [
+    "Kael", "Vrak", "Zylos", "Valkor", "Ulex", "Ghal", "Kyras", "Igni",
+    "spaceship", "sci-fi", "laser", "nanotech", "electricity", "voltage", "nuclear",
+    "radiation", "teleport", "alien", "fake religion", "cybernetic"
+  ]
+}

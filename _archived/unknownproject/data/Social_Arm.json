@@ -1,0 +1,50 @@
+[
+  {
+    "Category Name": "NECESSITIES",
+    "Stat": "ENDURANCE",
+    "Skill": "Stoicism",
+    "Examples": "Heavy Greatcoat, Flask of Whiskey, Survival Gear",
+    "Trait": "Iron Mind",
+    "Effect": "Crit Immunity: Critical insults count as Normal Hits. (You are too comfortable to care)."
+  },
+  {
+    "Category Name": "MAKEUP",
+    "Stat": "REFLEXES",
+    "Skill": "Guile",
+    "Examples": "Masquerade Mask, Face Paint, Dark Glasses, Veil",
+    "Trait": "Poker Face",
+    "Effect": "Blur: +1 Bonus to Deception rolls. (They can't see your micro-expressions)."
+  },
+  {
+    "Category Name": "FINERY",
+    "Stat": "VITALITY",
+    "Skill": "Poise",
+    "Examples": "Silk Suit, Ballroom Gown, Tailored Vest",
+    "Trait": "Appeal",
+    "Effect": "Reliable: Even if you lose a Clash, you never take \"Embarrassment\" status. (You look good failing)."
+  },
+  {
+    "Category Name": "JEWELRY",
+    "Stat": "KNOWLEDGE",
+    "Skill": "Etiquette",
+    "Examples": "Signet Ring, Guild Chain, Monocle, Medals",
+    "Trait": "Tenure",
+    "Effect": "Mana-Weave: Pay the Holding Fee with Focus instead of Stamina. (Symbols of learned rank)."
+  },
+  {
+    "Category Name": "SYMBOLS",
+    "Stat": "WILLPOWER",
+    "Skill": "Discipline",
+    "Examples": "Holy Icon, Crown, badge of Office",
+    "Trait": "Authority",
+    "Effect": "Cover: Reaction. Interject to take Social Damage for an ally. (\"Speak to me, not them.\")"
+  },
+  {
+    "Category Name": "PREPAREDNESS",
+    "Stat": "INTUITION",
+    "Skill": "Empathy",
+    "Examples": "Utility Pouch, Talismans, Hidden Pocket",
+    "Trait": "Deep Pockets",
+    "Effect": "Slots: Gain +2 Slots for \"Social Consumables\" (Bribes, Gifts)."
+  }
+]

@@ -1,0 +1,58 @@
+{
+  "project": "SAGA Beta Build",
+  "phase": "Architecture Refactoring",
+  "tasks": [
+    {
+      "id": "TASK-001",
+      "category": "Setup",
+      "title": "Scaffold Beta Environment",
+      "description": "Create the new decoupled folder structure inside /beta_build.",
+      "status": "completed"
+    },
+    {
+      "id": "TASK-002",
+      "category": "Core Data",
+      "title": "Migrate World & Player State to Pydantic",
+      "description": "Refactor character sheets, inventory, and scene logic into strict Pydantic models for validation and LLM compatibility.",
+      "status": "pending",
+      "priority": "high",
+      "target_dir": "/beta_build/core"
+    },
+    {
+      "id": "TASK-003",
+      "category": "AI Services",
+      "title": "Asynchronous LLM Wrapper",
+      "description": "Wrap the existing llama-cpp-python logic in a dedicated QThread or asyncio task to prevent main thread blocking.",
+      "status": "pending",
+      "priority": "high",
+      "target_dir": "/beta_build/ai_services"
+    },
+    {
+      "id": "TASK-004",
+      "category": "Audio Services",
+      "title": "Decouple STT/TTS",
+      "description": "Move pyttsx3 and speech_recognition into background workers. Set up signals to communicate speech start/stop events to the UI.",
+      "status": "pending",
+      "priority": "medium",
+      "target_dir": "/beta_build/audio"
+    },
+    {
+      "id": "TASK-005",
+      "category": "Frontend",
+      "title": "Integrate qasync",
+      "description": "Port the polling-based PyQt loop to qasync. Remove scene_state.json dependency and wire the UI directly to the Core Engine's state signals.",
+      "status": "pending",
+      "priority": "high",
+      "target_dir": "/beta_build/ui"
+    },
+    {
+      "id": "TASK-006",
+      "category": "Database",
+      "title": "Implement Vector DB for Memory",
+      "description": "Set up ChromaDB/FAISS to store generated narrative chunks. Implement RAG logic to query past events before LLM generation.",
+      "status": "pending",
+      "priority": "medium",
+      "target_dir": "/beta_build/data"
+    }
+  ]
+}

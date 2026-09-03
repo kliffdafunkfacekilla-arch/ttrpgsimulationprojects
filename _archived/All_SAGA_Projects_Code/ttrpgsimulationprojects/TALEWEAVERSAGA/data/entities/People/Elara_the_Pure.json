@@ -1,0 +1,23 @@
+{
+    "entity_name": "Elara the Pure",
+    "tags": [
+        "NPC",
+        "History",
+        "Warden",
+        "Vita",
+        "Vitality"
+    ],
+    "former_master": "Magistar Gavusrix",
+    "role": "Blood-Alchemist",
+    "defection_event": "The Anti-Virus",
+    "abilities": [],
+    "stats": {
+        "morality": 10,
+        "wisdom": 8,
+        "charisma": 9,
+        "intuition": 7,
+        "physical_prowess": 6,
+        "mental_endurance": 5
+    },
+    "description": "\"Life is given, not taken.\""
+}

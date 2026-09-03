@@ -1,0 +1,1347 @@
+import React, { useState, useEffect } from 'react'
+import { MapContainer, TileLayer, GeoJSON, useMap } from 'react-leaflet'
+import axios from 'axios'
+import { 
+  Clock, Play, Shield, Compass, Thermometer, Droplets, 
+  Mountain, Trees, Hammer, Apple, Smile, Eye, Users, 
+  Zap, BookOpen, X, Loader2, Sparkles
+} from 'lucide-react'
+import GroundView from './components/GroundView'
+import SettingsPanel from './components/SettingsPanel'
+import ChronicleLog from './components/ChronicleLog'
+
+// Base URL for FastAPI Backend Integration
+const API_BASE = "http://localhost:8000/api"
+
+// Helper component to center and bound Leaflet map dynamically based on GeoJSON geometries
+const MapRefitter = ({ geojson }) => {
+  const map = useMap()
+  
+  useEffect(() => {
+    if (geojson && geojson.features && geojson.features.length > 0) {
+      let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity
+      
+      geojson.features.forEach(f => {
+        if (f.geometry && f.geometry.coordinates) {
+          f.geometry.coordinates[0].forEach(coord => {
+            const [x, y] = coord
+            if (x < minX) minX = x
+            if (x > maxX) maxX = x
+            if (y < minY) minY = y
+            if (y > maxY) maxY = y
+          })
+        }
+      })
+      
+      if (minX !== Infinity) {
+        const southWest = [minY, minX]
+        const northEast = [maxY, maxX]
+        map.fitBounds([southWest, northEast], { padding: [40, 40] })
+      }
+    }
+  }, [geojson, map])
+  
+  return null
+}
+
+export default function App() {
+  // State management variables
+  const [worldData, setWorldData] = useState(null)
+  const [selectedHex, setSelectedHex] = useState(null)
+  const [deepHexData, setDeepHexData] = useState(null)
+  const [currentTick, setCurrentTick] = useState(0)
+  
+  // Phase 7 state hooks for generative journal entries
+  const [activeJournal, setActiveJournal] = useState(null)
+  const [isJournalLoading, setIsJournalLoading] = useState(false)
+  const [journalCitizen, setJournalCitizen] = useState(null)
+  
+  // UI Status managers
+  const [loading, setLoading] = useState(false)
+  const [simulating, setSimulating] = useState(false)
+  const [expandedCitizen, setExpandedCitizen] = useState(null)
+  const [errorMsg, setErrorMsg] = useState(null)
+  const [showGroundView, setShowGroundView] = useState(false)
+
+  // Phase 11 chronicler states
+  const [showSettings, setShowSettings] = useState(false)
+  const [showChronicle, setShowChronicle] = useState(false)
+
+  // Phase 16 Action Engine States
+  const [actionLog, setActionLog] = useState([])
+  const [activeHero, setActiveHero] = useState(null)
+  
+  // Hero summon controls
+  const [showSummonForm, setShowSummonForm] = useState(false)
+  const [summonName, setSummonName] = useState("")
+  const [summonType, setSummonType] = useState("Mouse")
+  const [summonProfession, setSummonProfession] = useState("Ranger")
+  const [summonTraits, setSummonTraits] = useState("BRAVE")
+  const [summoning, setSummoning] = useState(false)
+
+  // Phase 17 Overland Travel States
+  const [travelDestId, setTravelDestId] = useState("")
+  const [traveling, setTraveling] = useState(false)
+
+  // On Mount: Fetch entire GeoJSON world state
+  useEffect(() => {
+    fetchWorldState()
+  }, [])
+
+  const fetchWorldState = async () => {
+    setLoading(true)
+    setErrorMsg(null)
+    try {
+      const res = await axios.get(`${API_BASE}/world`)
+      setWorldData(res.data)
+      
+      // Extract active tick count from the loaded hex records properties
+      if (res.data.features && res.data.features.length > 0) {
+        const tick = res.data.features[0].properties.tick_count || 0
+        setCurrentTick(tick)
+      }
+    } catch (err) {
+      console.error("Failed to load Ostraka World-state:", err)
+      setErrorMsg("PostgreSQL database is offline or uninitialized. Run world_generator.py first!")
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  // Fetch ground-level citizens array on click
+  const fetchHexEntities = async (hexId) => {
+    try {
+      const res = await axios.get(`${API_BASE}/hex/${hexId}`)
+      setDeepHexData(res.data)
+      
+      // Auto-detect and track selected controlled Hero if present
+      const heroes = res.data.local_entities.filter(ent => ent.is_hero)
+      if (heroes.length > 0) {
+        setActiveHero((prev) => {
+          if (!prev || !heroes.some(h => h.entity_id === prev.entity_id)) {
+            return heroes[0]
+          }
+          return heroes.find(h => h.entity_id === prev.entity_id) || heroes[0]
+        })
+      } else {
+        setActiveHero(null)
+      }
+    } catch (err) {
+      console.error("Failed to fetch entity telemetry:", err)
+    }
+  }
+
+  // Handle clicking a hex polygon on the Map
+  const handleHexClick = (properties) => {
+    setSelectedHex(properties)
+    setExpandedCitizen(null)
+    setDeepHexData(null) // Reset while loading
+    fetchHexEntities(properties.hex_id)
+  }
+
+  // Trigger simulation clock hour advancement
+  const advanceSimulation = async () => {
+    setSimulating(true)
+    setErrorMsg(null)
+    try {
+      const res = await axios.post(`${API_BASE}/simulate/tick`)
+      setCurrentTick(res.data.tick_count)
+      
+      // Immediately refresh map and sidebar parameters to render updated values
+      const resWorld = await axios.get(`${API_BASE}/world`)
+      setWorldData(resWorld.data)
+      
+      // Update selected hex overview parameters in real-time
+      if (selectedHex) {
+        const updatedHex = resWorld.data.features.find(
+          f => f.properties.hex_id === selectedHex.hex_id
+        )
+        if (updatedHex) {
+          setSelectedHex(updatedHex.properties)
+          fetchHexEntities(selectedHex.hex_id)
+        }
+      }
+    } catch (err) {
+      console.error("Simulation tick failed:", err)
+      setErrorMsg("Failed to process simulation step. Is database operational?")
+    } finally {
+      setSimulating(false)
+    }
+  }
+
+  // Phase 7: Fetch citizen journal entries using Ollama / Fallbacks
+  const fetchCitizenJournal = async (citizen) => {
+    if (!selectedHex) return
+    setIsJournalLoading(true)
+    setJournalCitizen(citizen)
+    setActiveJournal(null)
+    
+    try {
+      const res = await axios.post(
+        `${API_BASE}/hex/${selectedHex.hex_id}/entity/${citizen.entity_id}/journal`
+      )
+      setActiveJournal(res.data.journal_entry)
+    } catch (err) {
+      console.error("Journal retrieval error:", err)
+      setActiveJournal("Failed to bridge connection with citizen consciousness.")
+    } finally {
+      setIsJournalLoading(false)
+    }
+  }
+
+  // Phase 16: Handle Contested Action execution
+  const handleContestedAction = async (heroId, targetId, actionType) => {
+    if (!selectedHex) return
+    try {
+      const res = await axios.post(`${API_BASE}/hex/${selectedHex.hex_id}/action/target`, {
+        hero_id: heroId,
+        target_entity_id: targetId,
+        action_type: actionType
+      })
+      
+      const outcome = res.data.result_text
+      // Prepend outcome to log history
+      setActionLog((prev) => [outcome, ...prev].slice(0, 15))
+      
+      // Instantly update target HP/Composure and hero pools dynamically
+      if (res.data.target) {
+        setDeepHexData((prev) => {
+          if (!prev) return prev
+          return {
+            ...prev,
+            local_entities: prev.local_entities.map(ent => {
+              if (ent.entity_id === targetId) {
+                return res.data.target
+              }
+              if (ent.entity_id === heroId) {
+                return {
+                  ...ent,
+                  dynamic_pools: res.data.hero_pools
+                }
+              }
+              return ent
+            })
+          }
+        })
+      }
+      
+      // Sync active hero state references
+      setActiveHero((prev) => {
+        if (prev && prev.entity_id === heroId) {
+          return {
+            ...prev,
+            dynamic_pools: res.data.hero_pools
+          }
+        }
+        return prev
+      })
+      
+    } catch (err) {
+      console.error("Contested resolution failure:", err)
+      const errDetail = err.response?.data?.detail || "Roll aborted due to insufficient Stamina/Focus pools."
+      setActionLog((prev) => [`Error: ${errDetail}`, ...prev])
+    }
+  }
+
+  // Phase 16: Handle Static Environmental Tasks
+  const handleEnvironmentAction = async (taskType) => {
+    if (!selectedHex || !activeHero) return
+    try {
+      const res = await axios.post(`${API_BASE}/hex/${selectedHex.hex_id}/action/environment`, {
+        hero_id: activeHero.entity_id,
+        task_type: taskType
+      })
+      
+      const outcome = res.data.result_text
+      setActionLog((prev) => [outcome, ...prev].slice(0, 15))
+      
+      // Update pools of hero
+      setActiveHero((prev) => {
+        if (prev) {
+          return {
+            ...prev,
+            dynamic_pools: res.data.hero_pools
+          }
+        }
+        return prev
+      })
+      
+      setDeepHexData((prev) => {
+        if (!prev) return prev
+        return {
+          ...prev,
+          local_entities: prev.local_entities.map(ent => {
+            if (ent.entity_id === activeHero.entity_id) {
+              return {
+                ...ent,
+                dynamic_pools: res.data.hero_pools
+              }
+            }
+            return ent
+          })
+        }
+      })
+      
+    } catch (err) {
+      console.error("Static environment resolution failure:", err)
+      const errDetail = err.response?.data?.detail || "Action aborted due to exhausted dynamic pools."
+      setActionLog((prev) => [`Error: ${errDetail}`, ...prev])
+    }
+  }
+
+  // Phase 12/16: Handle summoning custom hero character
+  const handleSummonHero = async (e) => {
+    e.preventDefault()
+    if (!selectedHex || !summonName.trim()) return
+    setSummoning(true)
+    try {
+      const res = await axios.post(`${API_BASE}/hex/${selectedHex.hex_id}/hero`, {
+        name: summonName,
+        biological_type: summonType,
+        profession: summonProfession,
+        traits: summonTraits
+      })
+      
+      if (res.data.success) {
+        // Reload local entities
+        await fetchHexEntities(selectedHex.hex_id)
+        
+        // Refresh map metrics and population counters
+        const resWorld = await axios.get(`${API_BASE}/world`)
+        setWorldData(resWorld.data)
+        const updatedHex = resWorld.data.features.find(
+          f => f.properties.hex_id === selectedHex.hex_id
+        )
+        if (updatedHex) {
+          setSelectedHex(updatedHex.properties)
+        }
+        
+        setActionLog((prev) => [res.data.message, ...prev].slice(0, 15))
+        setSummonName("")
+        setShowSummonForm(false)
+      }
+    } catch (err) {
+      console.error("Summoning workflow error:", err)
+      setActionLog((prev) => [`Summon failed: ${err.message}`, ...prev])
+    } finally {
+      setSummoning(false)
+    }
+  }
+
+  // Phase 17: Overland Travel Trigger Call
+  const handleOverlandTravel = async (mode) => {
+    if (!selectedHex || !activeHero || !travelDestId.trim()) return
+    setTraveling(true)
+    setErrorMsg(null)
+    try {
+      const res = await axios.post(`${API_BASE}/hex/${selectedHex.hex_id}/travel/${travelDestId.trim()}`, {
+        hero_id: activeHero.entity_id,
+        travel_mode: mode
+      })
+      
+      const destId = res.data.destination_hex_id
+      setActionLog((prev) => [res.data.message, ...prev].slice(0, 15))
+      
+      if (res.data.ambushed && res.data.ambush_details) {
+        const ambush = res.data.ambush_details
+        const warnMsg = `⚠️ AMBUSH WARNING! ${ambush.summary}`
+        setActionLog((prev) => [warnMsg, ...prev].slice(0, 15))
+      }
+      
+      // Update selected hex focus and reload state
+      const resWorld = await axios.get(`${API_BASE}/world`)
+      setWorldData(resWorld.data)
+      
+      const targetHex = resWorld.data.features.find(
+        f => f.properties.hex_id === destId
+      )
+      
+      if (targetHex) {
+        setSelectedHex(targetHex.properties)
+        await fetchHexEntities(destId)
+      }
+      
+      setTravelDestId("")
+    } catch (err) {
+      console.error("Overland travel resolution failure:", err)
+      const errDetail = err.response?.data?.detail || "Travel failed due to insufficient resources or invalid target."
+      setActionLog((prev) => [`Error: ${errDetail}`, ...prev])
+      setErrorMsg(errDetail)
+    } finally {
+      setTraveling(false)
+    }
+  }
+
+  // Color mapper based on faction bounds
+  const getFactionColor = (factionId) => {
+    switch (factionId) {
+      case 'Heartland_Alliance':
+        return 'hsl(215, 85%, 55%)'  // Vibrant alliance blue
+      case 'Ursine_Hegemony':
+        return 'hsl(142, 70%, 42%)'  // Hegemony green
+      case 'Aetheric_Enclave':
+        return 'hsl(271, 80%, 60%)'  // Enclave magenta/purple
+      case 'Wildlands_Tribes':
+        return 'hsl(32, 85%, 50%)'   // Tribes orange/amber
+      default:
+        return 'hsl(210, 10%, 35%)'   // Wild wilderness slate gray
+    }
+  }
+
+  const getFactionName = (factionId) => {
+    if (!factionId) return "Neutral Wilds"
+    return factionId.replace('_', ' ')
+  }
+
+  // Leaflet Dynamic Map Styling function
+  const hexStyle = (feature) => {
+    const isSelected = selectedHex && selectedHex.hex_id === feature.properties.hex_id
+    const factionId = feature.properties.faction_id
+    
+    return {
+      fillColor: getFactionColor(factionId),
+      fillOpacity: isSelected ? 0.70 : 0.40,
+      color: isSelected ? '#f472b6' : 'rgba(255,255,255,0.08)', // Glowing highlight border when active
+      weight: isSelected ? 2.5 : 1,
+      dashArray: isSelected ? '' : '3',
+    }
+  }
+
+  // Bind interactive clicks and highlights
+  const onEachHex = (feature, layer) => {
+    layer.on({
+      click: () => {
+        handleHexClick(feature.properties)
+      },
+      mouseover: (e) => {
+        const l = e.target
+        l.setStyle({
+          fillOpacity: 0.60,
+          weight: 2,
+          color: '#c084fc' // Bright violet highlight on hover
+        })
+      },
+      mouseout: (e) => {
+        const l = e.target
+        const isSelected = selectedHex && selectedHex.hex_id === feature.properties.hex_id
+        l.setStyle({
+          fillOpacity: isSelected ? 0.70 : 0.40,
+          color: isSelected ? '#f472b6' : 'rgba(255,255,255,0.08)',
+          weight: isSelected ? 2.5 : 1
+        })
+      }
+    })
+  }
+
+  // Determine current active daily cycle schedule
+  const getClockScheduleInfo = (tick) => {
+    const hour = tick % 24
+    if (6 <= hour && hour < 18) {
+      return { block: "ON_SHIFT", label: "Day Shift (Working)", icon: "☀️", color: "text-amber-400" }
+    } else if (18 <= hour && hour < 21) {
+      return { block: "LEISURE", label: "Leisure Hours", icon: "🍻", color: "text-emerald-400" }
+    } else if (hour === 21) {
+      return { block: "DEVOTION", label: "Devotion Time", icon: "🔮", color: "text-purple-400" }
+    } else {
+      return { block: "REST", label: "Night Rest (Sleeping)", icon: "🌙", color: "text-blue-400" }
+    }
+  }
+
+  const sched = getClockScheduleInfo(currentTick)
+
+  return (
+    <div className="app-container">
+      
+      {/* 1. Leaflet Tactical Canvas Viewport */}
+      {worldData ? (
+        <MapContainer 
+          center={[0.25, 0.35]} 
+          zoom={9} 
+          zoomControl={true}
+          className="map-canvas"
+        >
+          {/* Slick customized CartoDB Dark tile mapping */}
+          <TileLayer
+            url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+            attribution='&copy; <a href="https://carto.com/">CARTO</a>'
+          />
+          <GeoJSON 
+            data={worldData} 
+            style={hexStyle}
+            onEachFeature={onEachHex}
+          />
+          <MapRefitter geojson={worldData} />
+        </MapContainer>
+      ) : (
+        <div className="flex-1 flex flex-col items-center justify-center bg-[#090b11] text-slate-400 text-sm">
+          <Zap className="w-8 h-8 text-purple-400 animate-bounce mb-3" />
+          <p className="font-semibold text-slate-300">Initializing Ostraka Radar Feed...</p>
+          {errorMsg && (
+            <div className="mt-4 p-3 bg-red-950/40 border border-red-800/40 rounded text-red-400 text-xs max-w-md text-center">
+              {errorMsg}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* 2. Glassmorphism God Console Control Panel Sidebar */}
+      <div className="sidebar-panel">
+        
+        {/* Top Header */}
+        <div className="sidebar-header">
+          <div className="flex items-center justify-between">
+            <h1 className="title-gradient text-xl">OSTRAKA // ENGINE</h1>
+            <div className="flex items-center gap-2">
+              <span className="pulsing-indicator"></span>
+              <span className="text-[10px] text-emerald-400 font-bold uppercase tracking-wider">Radar Active</span>
+            </div>
+          </div>
+          <p className="text-[11px] text-slate-400 mt-1 uppercase tracking-widest font-medium">Tactical God Console Overlay</p>
+          
+          {/* Quick Access Menu for settings & logs */}
+          <div className="flex gap-2 mt-3">
+            <button 
+              onClick={() => setShowSettings(true)}
+              className="flex-1 py-1.5 px-3 bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.05] hover:border-white/[0.1] rounded text-[10px] uppercase tracking-wider font-bold transition duration-200 text-slate-300 flex items-center justify-center gap-1.5"
+            >
+              <Zap className="w-3.5 h-3.5 text-purple-400" /> Settings
+            </button>
+            <button 
+              onClick={() => setShowChronicle(true)}
+              className="flex-1 py-1.5 px-3 bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.05] hover:border-white/[0.1] rounded text-[10px] uppercase tracking-wider font-bold transition duration-200 text-slate-300 flex items-center justify-center gap-1.5"
+            >
+              <BookOpen className="w-3.5 h-3.5 text-pink-400" /> Chronicle
+            </button>
+          </div>
+        </div>
+
+        {/* Scrollable Control Dashboard */}
+        <div className="sidebar-content">
+          
+          {/* A. Global Clock Widget */}
+          <div className="glass-card flex flex-col gap-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Clock className="w-4 h-4 text-purple-400" />
+                <span className="text-xs uppercase tracking-wider text-slate-400 font-bold">Chronosphere Status</span>
+              </div>
+              <span className="text-xs text-purple-400 font-mono font-bold">Cycle T+{currentTick}</span>
+            </div>
+            
+            <div className="flex items-center justify-between bg-white/[0.015] border border-white/[0.04] p-3 rounded-lg">
+              <div className="flex flex-col">
+                <span className="text-[10px] text-slate-400 uppercase tracking-widest font-semibold">Active Clock Time</span>
+                <p className="text-lg font-bold font-mono tracking-wide mt-0.5">Hour {String(currentTick % 24).padStart(2, '0')}:00</p>
+              </div>
+              <div className="flex flex-col items-end">
+                <span className="text-[10px] text-slate-400 uppercase tracking-widest font-semibold">Social Schedule</span>
+                <span className={`text-xs font-bold flex items-center gap-1 mt-1 ${sched.color}`}>
+                  <span>{sched.icon}</span> {sched.label}
+                </span>
+              </div>
+            </div>
+
+            <button 
+              onClick={advanceSimulation} 
+              disabled={simulating || !worldData}
+              className="simulate-btn"
+            >
+              <Play className="w-4 h-4" />
+              {simulating ? "PROCESSING TICK..." : "ADVANCE SIMULATION (+1 HOUR)"}
+            </button>
+          </div>
+
+          {/* B. Hex Inspector */}
+          {selectedHex ? (
+            <div className="flex flex-col gap-4">
+              
+              {/* Header Title with Faction Badge */}
+              <div className="flex items-center justify-between border-b border-white/[0.05] pb-2">
+                <div className="flex flex-col">
+                  <span className="text-xs font-bold text-slate-400 font-mono uppercase">{selectedHex.hex_id}</span>
+                  <span className="text-[10px] text-slate-400 uppercase mt-0.5 font-medium">Territory Control</span>
+                </div>
+                <span className={`badge ${
+                  selectedHex.faction_id === 'Heartland_Alliance' ? 'badge-alliance' :
+                  selectedHex.faction_id === 'Ursine_Hegemony' ? 'badge-hegemony' :
+                  selectedHex.faction_id === 'Aetheric_Enclave' ? 'badge-enclave' :
+                  selectedHex.faction_id === 'Wildlands_Tribes' ? 'badge-tribes' : 'badge-wild'
+                }`}>
+                  {getFactionName(selectedHex.faction_id)}
+                </span>
+              </div>
+
+              {/* Grid Metrics (Level 4/3 Parameters) */}
+              <div className="metrics-grid">
+                <div className="metric-tile">
+                  <span className="flex items-center gap-1"><Thermometer className="w-3 h-3 text-red-400" /> Temperature</span>
+                  <p>{selectedHex.temperature}°C</p>
+                </div>
+                <div className="metric-tile">
+                  <span className="flex items-center gap-1"><Droplets className="w-3 h-3 text-cyan-400" /> Moisture</span>
+                  <p>{(selectedHex.moisture * 100).toFixed(0)}%</p>
+                </div>
+                <div className="metric-tile">
+                  <span className="flex items-center gap-1"><Mountain className="w-3 h-3 text-amber-500" /> Elevation</span>
+                  <p>{(selectedHex.elevation * 1000).toFixed(0)}m</p>
+                </div>
+                <div className="metric-tile">
+                  <span className="flex items-center gap-1"><Compass className="w-3 h-3 text-purple-400" /> stability</span>
+                  <p>{(selectedHex.macro_stability * 100).toFixed(0)}%</p>
+                </div>
+              </div>
+
+              {/* Economic Stockpiles (Level 2 parameters) */}
+              <div>
+                <h3 className="section-title flex items-center gap-1.5"><Trees className="w-3.5 h-3.5" /> Economic Stockpiles</h3>
+                <div className="grid grid-cols-2 gap-2 mt-2">
+                  <div className="flex items-center justify-between bg-white/[0.01] border border-white/[0.04] p-2 rounded-lg">
+                    <span className="text-[11px] text-slate-400 flex items-center gap-1 font-medium"><Trees className="w-3 h-3 text-emerald-400" /> Timber</span>
+                    <span className="text-xs font-mono font-bold text-slate-200">
+                      {typeof selectedHex.stockpiles.timber === 'object' ? selectedHex.stockpiles.timber.amount : selectedHex.stockpiles.timber}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between bg-white/[0.01] border border-white/[0.04] p-2 rounded-lg">
+                    <span className="text-[11px] text-slate-400 flex items-center gap-1 font-medium"><Hammer className="w-3 h-3 text-slate-400" /> Iron</span>
+                    <span className="text-xs font-mono font-bold text-slate-200">
+                      {typeof selectedHex.stockpiles.raw_iron === 'object' ? selectedHex.stockpiles.raw_iron.amount : selectedHex.stockpiles.raw_iron}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between bg-white/[0.01] border border-white/[0.04] p-2 rounded-lg">
+                    <span className="text-[11px] text-slate-400 flex items-center gap-1 font-medium"><Apple className="w-3 h-3 text-amber-500" /> Grain</span>
+                    <span className={`text-xs font-mono font-bold ${
+                      (typeof selectedHex.stockpiles.grain === 'object' ? selectedHex.stockpiles.grain.amount : selectedHex.stockpiles.grain) === 0 ? 'text-red-500 font-extrabold' : 'text-slate-200'
+                    }`}>
+                      {typeof selectedHex.stockpiles.grain === 'object' ? selectedHex.stockpiles.grain.amount : selectedHex.stockpiles.grain}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between bg-white/[0.01] border border-white/[0.04] p-2 rounded-lg">
+                    <span className="text-[11px] text-slate-400 flex items-center gap-1 font-medium"><Shield className="w-3 h-3 text-purple-400" /> Steel</span>
+                    <span className="text-xs font-mono font-bold text-slate-200">
+                      {typeof selectedHex.stockpiles.steel === 'object' ? selectedHex.stockpiles.steel.amount : selectedHex.stockpiles.steel}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Hero Protocol Summoner Card */}
+              <div className="glass-card flex flex-col gap-3 border border-purple-500/10 bg-purple-950/5">
+                <div className="flex items-center justify-between border-b border-purple-500/10 pb-1.5">
+                  <span className="text-[10px] text-purple-400 font-bold uppercase tracking-widest flex items-center gap-1">⭐ Hero Protocol Summoner</span>
+                  {deepHexData?.local_entities.some(ent => ent.is_hero) && (
+                    <span className="text-[9px] text-emerald-400 font-bold uppercase">Ready</span>
+                  )}
+                </div>
+                
+                {/* Active Hero Selection / HUD */}
+                {deepHexData?.local_entities.filter(ent => ent.is_hero).length > 0 ? (
+                  <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-1">
+                      <label className="text-[9px] text-slate-500 uppercase tracking-widest font-semibold">Active controlled hero</label>
+                      <select 
+                        value={activeHero?.entity_id || ""}
+                        onChange={(e) => {
+                          const h = deepHexData.local_entities.find(ent => ent.entity_id === e.target.value)
+                          if (h) setActiveHero(h)
+                        }}
+                        className="w-full bg-black/40 border border-white/[0.08] hover:border-purple-500/40 rounded px-2.5 py-1.5 text-xs text-slate-200 outline-none transition duration-150"
+                      >
+                        {deepHexData.local_entities.filter(ent => ent.is_hero).map(hero => (
+                          <option key={hero.entity_id} value={hero.entity_id} className="bg-[#0b0e16]">
+                            ⭐ {hero.name} ({hero.profession})
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    
+                    {/* Render active Hero's Stamina and Focus pools */}
+                    {activeHero && (
+                      <div className="grid grid-cols-2 gap-2 mt-1 bg-black/20 p-2 rounded-lg border border-white/[0.02] text-[10px]">
+                        <div>
+                          <div className="flex justify-between text-slate-400 mb-0.5">
+                            <span>Stamina</span>
+                            <span className="font-mono text-slate-300">{activeHero.dynamic_pools?.stamina || 0}/{activeHero.dynamic_pools?.stamina_max || 0}</span>
+                          </div>
+                          <div className="progress-bar-container h-1 bg-black/40">
+                            <div 
+                              className="progress-bar-fill bg-amber-500" 
+                              style={{ width: `${((activeHero.dynamic_pools?.stamina || 0) / (activeHero.dynamic_pools?.stamina_max || 1)) * 100}%` }}
+                            ></div>
+                          </div>
+                        </div>
+                        <div>
+                          <div className="flex justify-between text-slate-400 mb-0.5">
+                            <span>Focus</span>
+                            <span className="font-mono text-slate-300">{activeHero.dynamic_pools?.focus || 0}/{activeHero.dynamic_pools?.focus_max || 0}</span>
+                          </div>
+                          <div className="progress-bar-container h-1 bg-black/40">
+                            <div 
+                              className="progress-bar-fill bg-purple-500" 
+                              style={{ width: `${((activeHero.dynamic_pools?.focus || 0) / (activeHero.dynamic_pools?.focus_max || 1)) * 100}%` }}
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Phase 17 Overland Travel Console */}
+                    {activeHero && (
+                      <div className="mt-3 pt-3 border-t border-purple-500/10 flex flex-col gap-2">
+                        <label className="text-[9px] text-purple-400 uppercase tracking-widest font-bold flex items-center gap-1">
+                          <Compass className="w-3.5 h-3.5" /> Overland Travel Console
+                        </label>
+                        <div className="flex gap-2">
+                          <input 
+                            type="text" 
+                            value={travelDestId}
+                            onChange={(e) => setTravelDestId(e.target.value)}
+                            placeholder="Dest Hex ID (e.g. hex_42)"
+                            className="flex-1 bg-black/40 border border-white/[0.08] hover:border-purple-500/40 focus:border-purple-500 rounded px-2.5 py-1 text-xs text-slate-200 outline-none transition duration-150"
+                          />
+                        </div>
+                        <div className="grid grid-cols-2 gap-2">
+                          <button
+                            type="button"
+                            onClick={() => handleOverlandTravel("FOOT")}
+                            disabled={traveling}
+                            className="py-1.5 px-2 bg-gradient-to-r from-amber-800/30 to-amber-700/30 hover:from-amber-700 hover:to-amber-600 border border-amber-800/40 hover:border-amber-500 rounded text-xs font-bold text-amber-200 hover:text-white transition duration-150 flex items-center justify-center gap-1 shadow"
+                            title="Travel by Foot. Costs Stamina scaled by destination elevation. Excess drains HP."
+                          >
+                            🚶 Foot
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => handleOverlandTravel("AIRSHIP")}
+                            disabled={traveling}
+                            className="py-1.5 px-2 bg-gradient-to-r from-purple-800/30 to-purple-700/30 hover:from-purple-700 hover:to-purple-600 border border-purple-800/40 hover:border-purple-500 rounded text-xs font-bold text-purple-200 hover:text-white transition duration-150 flex items-center justify-center gap-1 shadow"
+                            title="Travel by Airship. Costs 1 Timber or Steel from starting hex stockpiles."
+                          >
+                            🚁 Airship
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-2">
+                    {!showSummonForm ? (
+                      <button 
+                        onClick={() => setShowSummonForm(true)}
+                        className="w-full py-2 bg-gradient-to-r from-purple-800/40 to-pink-800/40 hover:from-purple-700 hover:to-pink-700 border border-purple-500/20 text-xs font-bold rounded-lg text-slate-200 hover:text-white transition duration-200"
+                      >
+                        ➕ Summon Custom Hero
+                      </button>
+                    ) : (
+                      <form onSubmit={handleSummonHero} className="flex flex-col gap-3 p-3 bg-black/20 rounded-lg border border-white/[0.03]">
+                        <div className="flex flex-col gap-1">
+                          <label className="text-[9px] text-slate-500 uppercase tracking-widest font-semibold">Hero Name</label>
+                          <input 
+                            type="text" 
+                            required 
+                            value={summonName}
+                            onChange={(e) => setSummonName(e.target.value)}
+                            placeholder="e.g. Eldrin Swiftpaw"
+                            className="w-full bg-black/40 border border-white/[0.08] rounded px-2.5 py-1 text-xs text-slate-200 outline-none hover:border-purple-500/40 focus:border-purple-500 transition duration-150"
+                          />
+                        </div>
+                        
+                        <div className="grid grid-cols-2 gap-2">
+                          <div className="flex flex-col gap-1">
+                            <label className="text-[9px] text-slate-500 uppercase tracking-widest font-semibold">Biological Species</label>
+                            <select
+                              value={summonType}
+                              onChange={(e) => setSummonType(e.target.value)}
+                              className="w-full bg-black/40 border border-white/[0.08] rounded px-2.5 py-1 text-xs text-slate-200 outline-none hover:border-purple-500/40 transition duration-150"
+                            >
+                              <option value="Mouse" className="bg-[#0b0e16]">Mouse 🐭</option>
+                              <option value="Wolf" className="bg-[#0b0e16]">Wolf 🐺</option>
+                              <option value="Bear" className="bg-[#0b0e16]">Bear 🐻</option>
+                            </select>
+                          </div>
+                          <div className="flex flex-col gap-1">
+                            <label className="text-[9px] text-slate-500 uppercase tracking-widest font-semibold">Profession</label>
+                            <select
+                              value={summonProfession}
+                              onChange={(e) => setSummonProfession(e.target.value)}
+                              className="w-full bg-black/40 border border-white/[0.08] rounded px-2.5 py-1 text-xs text-slate-200 outline-none hover:border-purple-500/40 transition duration-150"
+                            >
+                              <option value="Ranger" className="bg-[#0b0e16]">Ranger</option>
+                              <option value="Guard" className="bg-[#0b0e16]">Guard</option>
+                              <option value="Scholar" className="bg-[#0b0e16]">Scholar</option>
+                              <option value="Trader" className="bg-[#0b0e16]">Trader</option>
+                              <option value="Miner" className="bg-[#0b0e16]">Miner</option>
+                            </select>
+                          </div>
+                        </div>
+                        
+                        <div className="flex flex-col gap-1">
+                          <label className="text-[9px] text-slate-500 uppercase tracking-widest font-semibold">Personality Trait</label>
+                          <select
+                            value={summonTraits}
+                            onChange={(e) => setSummonTraits(e.target.value)}
+                            className="w-full bg-black/40 border border-white/[0.08] rounded px-2.5 py-1 text-xs text-slate-200 outline-none hover:border-purple-500/40 transition duration-150"
+                          >
+                            <option value="BRAVE" className="bg-[#0b0e16]">Brave ⚔️</option>
+                            <option value="DILIGENT" className="bg-[#0b0e16]">Diligent 🔨</option>
+                            <option value="CUNNING" className="bg-[#0b0e16]">Cunning 🗡️</option>
+                            <option value="PEACEFUL" className="bg-[#0b0e16]">Peaceful 🕊️</option>
+                          </select>
+                        </div>
+                        
+                        <div className="flex gap-2 mt-1">
+                          <button 
+                            type="button" 
+                            onClick={() => setShowSummonForm(false)}
+                            className="flex-1 py-1.5 border border-white/[0.08] hover:bg-white/[0.04] text-xs font-semibold rounded text-slate-400 hover:text-slate-200 transition duration-150"
+                          >
+                            Cancel
+                          </button>
+                          <button 
+                            type="submit" 
+                            disabled={summoning}
+                            className="flex-1 py-1.5 bg-gradient-to-r from-purple-600 to-pink-600 hover:brightness-110 text-xs font-bold rounded text-white shadow transition duration-150"
+                          >
+                            {summoning ? "Summoning..." : "🔥 Inject Hero"}
+                          </button>
+                        </div>
+                      </form>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {/* Society Metrics (Level 2 demographics & happiness) */}
+              <div>
+                <h3 className="section-title flex items-center gap-1.5"><Smile className="w-3.5 h-3.5" /> Society & Demographics</h3>
+                <div className="glass-card flex flex-col gap-3 mt-2">
+                  <div className="flex justify-between items-center text-xs font-medium">
+                    <span className="text-slate-400">Urban Approval (Happy)</span>
+                    <span className={`font-mono font-bold ${
+                      selectedHex.urban_meters.happy_meter < 0.40 ? 'text-red-400 font-extrabold' : 'text-emerald-400'
+                    }`}>{(selectedHex.urban_meters.happy_meter * 100).toFixed(0)}%</span>
+                  </div>
+                  <div className="progress-bar-container">
+                    <div 
+                      className={`progress-bar-fill ${selectedHex.urban_meters.happy_meter < 0.40 ? 'bg-red-50' : 'bg-emerald-500'}`}
+                      style={{ width: `${selectedHex.urban_meters.happy_meter * 100}%` }}
+                    ></div>
+                  </div>
+
+                  <div className="flex justify-between items-center text-xs font-medium mt-1">
+                    <span className="text-slate-400">Socio-Crime Index</span>
+                    <span className="font-mono font-bold text-slate-200">{(selectedHex.urban_meters.crime_rating * 100).toFixed(0)}%</span>
+                  </div>
+                  <div className="progress-bar-container">
+                    <div 
+                      className="progress-bar-fill bg-cyan-500"
+                      style={{ width: `${selectedHex.urban_meters.crime_rating * 100}%` }}
+                    ></div>
+                  </div>
+
+                  <div className="flex items-center justify-between border-t border-white/[0.04] pt-2 mt-2">
+                    <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold flex items-center gap-1"><Users className="w-3 h-3" /> Population Mix</span>
+                    <span className="text-xs font-mono font-bold text-slate-300">
+                      🐻 {selectedHex.demographics.Bears || 0} | 🐺 {selectedHex.demographics.Wolves || 0} | 🐭 {selectedHex.demographics.Mice || 0}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Physical Environmental static checks (Phase 16) */}
+              {activeHero && (
+                <div className="glass-card flex flex-col gap-2 border border-amber-500/10 bg-amber-950/5">
+                  <h3 className="section-title flex items-center justify-between">
+                    <span className="flex items-center gap-1.5 text-amber-400 font-bold"><Compass className="w-3.5 h-3.5" /> Environmental Static Actions</span>
+                  </h3>
+                  <div className="grid grid-cols-2 gap-2 mt-1">
+                    <button
+                      onClick={() => handleEnvironmentAction("BREACH_GATES")}
+                      className="py-2 px-3 bg-gradient-to-r from-amber-700/30 to-amber-600/30 hover:from-amber-600 hover:to-amber-500 border border-amber-700/50 hover:border-amber-400 text-amber-200 hover:text-white text-xs font-bold rounded-lg transition duration-200 flex items-center justify-center gap-1.5 shadow"
+                      title="Might DC 6+ or Logic DC 5+. Costs 1 Stamina or Focus."
+                    >
+                      🏰 Breach Gates
+                    </button>
+                    <button
+                      onClick={() => handleEnvironmentAction("SCAVENGE")}
+                      className="py-2 px-3 bg-gradient-to-r from-emerald-700/30 to-emerald-600/30 hover:from-emerald-600 hover:to-emerald-500 border border-emerald-700/50 hover:border-emerald-400 text-emerald-200 hover:text-white text-xs font-bold rounded-lg transition duration-200 flex items-center justify-center gap-1.5 shadow"
+                      title="Awareness DC 4+ or Finesse DC 5+. Costs 1 Stamina or Focus."
+                    >
+                      🔍 Scavenge Ruins
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Ground level Citizens (Level 1 parameters) */}
+              <div>
+                <h3 className="section-title flex items-center justify-between gap-1.5">
+                  <span className="flex items-center gap-1.5"><Eye className="w-3.5 h-3.5" /> Ground-Level Citizens ({deepHexData?.local_entities.length || 0})</span>
+                  {deepHexData && (
+                    <button 
+                      onClick={() => setShowGroundView(true)}
+                      className="py-1 px-2.5 bg-gradient-to-r from-purple-600 to-pink-600 hover:brightness-110 text-white text-[10px] font-bold rounded uppercase tracking-wider transition duration-200 shadow-md shadow-purple-950/20 flex items-center gap-1 shrink-0"
+                    >
+                      <Sparkles className="w-3 h-3 text-white" /> View Ground Level (2D)
+                    </button>
+                  )}
+                </h3>
+                <div className="citizen-scroll-list mt-2">
+                  {deepHexData ? (
+                    deepHexData.local_entities.map((citizen) => {
+                      const isExpanded = expandedCitizen === citizen.entity_id
+                      const hunger = citizen.metabolic_state.hunger_level
+                      const sanity = citizen.metabolic_state.sanity_score
+                      
+                      // Safely retrieve custom high-fantasy RPG stats and capacities
+                      const stats = citizen.rpg_stats || {
+                        might: 2, endurance: 2, finesse: 2, reflex: 2,
+                        vitality: 2, fortitude: 2, knowledge: 2, logic: 2,
+                        awareness: 2, intuition: 2, charm: 2, willpower: 2
+                      }
+                      
+                      const pools = citizen.dynamic_pools || {
+                        hp: 6, hp_max: 6,
+                        composure: 6, composure_max: 6,
+                        stamina: 6, stamina_max: 6,
+                        focus: 6, focus_max: 6
+                      }
+                      
+                      // Species Icon
+                      const specIcon = citizen.biological_type === "Bear" ? "🐻" :
+                                      citizen.biological_type === "Mouse" ? "🐭" : "🐺"
+                                      
+                      return (
+                        <div 
+                          key={citizen.entity_id}
+                          className={`citizen-card cursor-pointer ${citizen.is_hero ? 'border border-amber-500/30 bg-amber-950/10 shadow-inner' : ''}`}
+                        >
+                          <div 
+                            onClick={() => setExpandedCitizen(isExpanded ? null : citizen.entity_id)}
+                            className="flex justify-between items-center"
+                          >
+                            <div className="flex items-center gap-2">
+                              <span className="text-lg">{specIcon}</span>
+                              <div className="flex flex-col">
+                                <span className="text-xs font-bold text-slate-200 flex items-center gap-1">
+                                  {citizen.is_hero && <span className="text-yellow-400 font-bold">⭐</span>}
+                                  {citizen.name ? citizen.name : citizen.entity_id.split('_').slice(-2).join('_')}
+                                </span>
+                                <span className="text-[10px] text-slate-400 capitalize font-medium">
+                                  {citizen.profession} {citizen.is_hero && <span className="text-purple-400 font-mono font-bold text-[8px] uppercase bg-purple-950/30 px-1 border border-purple-800/20 rounded ml-1">Hero</span>}
+                                </span>
+                              </div>
+                            </div>
+                            
+                            {/* Schedule Status chip */}
+                            <span className={`badge ${
+                              citizen.action_state === "SLEEPING" ? "bg-slate-800 text-slate-400 border-slate-700" :
+                              citizen.action_state === "WORKING" ? "bg-amber-500/10 text-amber-400 border-amber-500/20" :
+                              citizen.action_state === "RELAXING" ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20" :
+                              citizen.action_state === "PRAYING" ? "bg-purple-500/10 text-purple-400 border-purple-500/20" :
+                              citizen.action_state === "EATING" ? "bg-cyan-500/10 text-cyan-400 border-cyan-500/20" : "badge-starving"
+                            }`}>
+                              {citizen.action_state}
+                            </span>
+                          </div>
+
+                          {/* Dynamic Expandable DNA specs & RPG Character Sheet */}
+                          {isExpanded && (
+                            <div className="mt-3 pt-3 border-t border-white/[0.04] text-[11px] text-slate-400 flex flex-col gap-3 bg-black/15 p-3 rounded-lg border border-white/[0.03]">
+                              {/* DNA Profile Block */}
+                              <div className="flex flex-col gap-1.5">
+                                <div className="flex justify-between">
+                                  <span className="font-semibold text-slate-500">Personality Profile</span>
+                                  <span className="text-slate-200 font-mono font-bold">{citizen.dna_profile.personality}</span>
+                                </div>
+                                <div className="flex justify-between">
+                                  <span className="font-semibold text-slate-500">Core Interest</span>
+                                  <span className="text-slate-200 font-mono font-bold">{citizen.dna_profile.interest}</span>
+                                </div>
+                                <div className="flex justify-between">
+                                  <span className="font-semibold text-slate-500">Biological Fears</span>
+                                  <span className="text-red-400 font-mono font-bold">{citizen.dna_profile.fears.join(', ')}</span>
+                                </div>
+                              </div>
+
+                              {/* Derived Pools Section */}
+                              <div className="border-t border-white/[0.04] pt-2">
+                                <span className="text-[10px] text-purple-400 uppercase tracking-widest font-bold">Derived Pools</span>
+                                <div className="grid grid-cols-2 gap-x-3 gap-y-2.5 mt-2">
+                                  {/* HP */}
+                                  <div>
+                                    <div className="flex justify-between text-[9px] font-semibold text-slate-400 mb-0.5">
+                                      <span className="flex items-center gap-1">🩸 Vital HP</span>
+                                      <span className="text-slate-300 font-mono">{pools.hp} / {pools.hp_max}</span>
+                                    </div>
+                                    <div className="progress-bar-container h-1.5 bg-black/35">
+                                      <div 
+                                        className="progress-bar-fill bg-gradient-to-r from-red-600 to-red-500 rounded-full"
+                                        style={{ width: `${(pools.hp / pools.hp_max) * 100}%` }}
+                                      ></div>
+                                    </div>
+                                  </div>
+                                  
+                                  {/* Composure */}
+                                  <div>
+                                    <div className="flex justify-between text-[9px] font-semibold text-slate-400 mb-0.5">
+                                      <span className="flex items-center gap-1">🧠 Composure</span>
+                                      <span className="text-slate-300 font-mono">{pools.composure} / {pools.composure_max}</span>
+                                    </div>
+                                    <div className="progress-bar-container h-1.5 bg-black/35">
+                                      <div 
+                                        className="progress-bar-fill bg-gradient-to-r from-cyan-600 to-cyan-500 rounded-full"
+                                        style={{ width: `${(pools.composure / pools.composure_max) * 100}%` }}
+                                      ></div>
+                                    </div>
+                                  </div>
+
+                                  {/* Stamina */}
+                                  <div>
+                                    <div className="flex justify-between text-[9px] font-semibold text-slate-400 mb-0.5">
+                                      <span className="flex items-center gap-1">⚡ Stamina</span>
+                                      <span className="text-slate-300 font-mono">{pools.stamina} / {pools.stamina_max}</span>
+                                    </div>
+                                    <div className="progress-bar-container h-1.5 bg-black/35">
+                                      <div 
+                                        className="progress-bar-fill bg-gradient-to-r from-amber-600 to-amber-500 rounded-full"
+                                        style={{ width: `${(pools.stamina / pools.stamina_max) * 100}%` }}
+                                      ></div>
+                                    </div>
+                                  </div>
+
+                                  {/* Focus */}
+                                  <div>
+                                    <div className="flex justify-between text-[9px] font-semibold text-slate-400 mb-0.5">
+                                      <span className="flex items-center gap-1">✨ Focus</span>
+                                      <span className="text-slate-300 font-mono">{pools.focus} / {pools.focus_max}</span>
+                                    </div>
+                                    <div className="progress-bar-container h-1.5 bg-black/35">
+                                      <div 
+                                        className="progress-bar-fill bg-gradient-to-r from-purple-600 to-purple-500 rounded-full"
+                                        style={{ width: `${(pools.focus / pools.focus_max) * 100}%` }}
+                                      ></div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              {/* Phase 17 Magic Profile Section */}
+                              <div className="border-t border-white/[0.04] pt-2">
+                                <span className="text-[10px] text-cyan-400 uppercase tracking-widest font-bold flex items-center gap-1">
+                                  <Sparkles className="w-3.5 h-3.5 text-cyan-400 animate-pulse" /> Magic Profile
+                                </span>
+                                <div className="mt-2 bg-black/20 p-2.5 rounded-lg border border-white/[0.02] flex flex-col gap-2">
+                                  <div className="flex justify-between items-center">
+                                    <span className="text-slate-500 font-semibold">Arcane Aptitude</span>
+                                    <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border ${
+                                      (citizen.magic_profile?.tier || 'Null') === 'Null' ? 'text-slate-400 bg-slate-950/30 border-slate-800/40' :
+                                      (citizen.magic_profile?.tier || 'Null') === 'Spark' ? 'text-cyan-400 bg-cyan-950/30 border-cyan-800/40 shadow-sm shadow-cyan-900/10' :
+                                      (citizen.magic_profile?.tier || 'Null') === 'Novice' ? 'text-emerald-400 bg-emerald-950/30 border-emerald-800/40 shadow-sm shadow-emerald-900/10' :
+                                      (citizen.magic_profile?.tier || 'Null') === 'Adept' ? 'text-sky-400 bg-sky-950/30 border-sky-800/40 shadow-sm shadow-sky-900/10' :
+                                      (citizen.magic_profile?.tier || 'Null') === 'Expert' ? 'text-purple-400 bg-purple-950/30 border-purple-800/40 shadow-sm shadow-purple-900/10' :
+                                      (citizen.magic_profile?.tier || 'Null') === 'Archmage' ? 'text-pink-400 bg-pink-950/30 border-pink-800/40 shadow-sm shadow-pink-900/10' :
+                                      'text-amber-400 bg-amber-950/30 border-amber-800/40 animate-pulse shadow-sm shadow-amber-900/20'
+                                    }`}>
+                                      {citizen.magic_profile?.tier || 'Null'}
+                                    </span>
+                                  </div>
+                                  
+                                  {((citizen.magic_profile?.mastered || []).length > 0 || (citizen.magic_profile?.touched || []).length > 0) && (
+                                    <div className="flex flex-col gap-1.5 pt-1.5 border-t border-white/[0.02]">
+                                      {(citizen.magic_profile?.mastered || []).length > 0 && (
+                                        <div className="flex flex-wrap gap-1 items-center">
+                                          <span className="text-[9px] text-amber-500 font-bold uppercase shrink-0">Mastered:</span>
+                                          {(citizen.magic_profile?.mastered || []).map((dom) => (
+                                            <span key={dom} className="text-[9px] text-amber-300 font-medium font-mono bg-amber-950/20 border border-amber-800/20 px-1.5 py-0.5 rounded">
+                                              🔮 {dom}
+                                            </span>
+                                          ))}
+                                        </div>
+                                      )}
+                                      {(citizen.magic_profile?.touched || []).length > 0 && (
+                                        <div className="flex flex-wrap gap-1 items-center">
+                                          <span className="text-[9px] text-slate-500 font-bold uppercase shrink-0">Touched:</span>
+                                          {(citizen.magic_profile?.touched || []).map((dom) => (
+                                            <span key={dom} className="text-[9px] text-slate-300 font-medium font-mono bg-white/[0.02] border border-white/[0.04] px-1.5 py-0.5 rounded">
+                                              ✨ {dom}
+                                            </span>
+                                          ))}
+                                        </div>
+                                      )}
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+
+                              {/* 12 Attribute Matrix Section (3x4 CSS Grid) */}
+                              <div className="border-t border-white/[0.04] pt-2">
+                                <span className="text-[10px] text-pink-400 uppercase tracking-widest font-bold">Attribute Matrix</span>
+                                <div className="grid grid-cols-3 gap-1.5 mt-2 bg-black/20 p-2 rounded-lg border border-white/[0.02]">
+                                  {[
+                                    { label: "MGT", val: stats.might, color: "text-red-400" },
+                                    { label: "END", val: stats.endurance, color: "text-orange-400" },
+                                    { label: "FIN", val: stats.finesse, color: "text-amber-400" },
+                                    { label: "REF", val: stats.reflex, color: "text-yellow-400" },
+                                    { label: "VIT", val: stats.vitality, color: "text-emerald-400" },
+                                    { label: "FOR", val: stats.fortitude, color: "text-teal-400" },
+                                    { label: "KNO", val: stats.knowledge, color: "text-cyan-400" },
+                                    { label: "LOG", val: stats.logic, color: "text-sky-400" },
+                                    { label: "AWA", val: stats.awareness, color: "text-indigo-400" },
+                                    { label: "INT", val: stats.intuition, color: "text-purple-400" },
+                                    { label: "CHM", val: stats.charm, color: "text-pink-400" },
+                                    { label: "WIL", val: stats.willpower, color: "text-rose-400" },
+                                  ].map((attr) => (
+                                    <div key={attr.label} className="flex flex-col items-center justify-center p-1 bg-white/[0.015] border border-white/[0.04] rounded hover:border-white/[0.08] transition duration-150">
+                                      <span className="text-[8px] text-slate-500 uppercase tracking-wider font-bold">{attr.label}</span>
+                                      <span className={`text-xs font-mono font-extrabold mt-0.5 ${attr.color}`}>{attr.val}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                              
+                              {/* Phase 16: Contested Action HUD Row */}
+                              {activeHero && !citizen.is_hero && (
+                                <div className="mt-3 pt-3 border-t border-white/[0.04]">
+                                  <span className="text-[10px] text-amber-400 uppercase tracking-widest font-bold block mb-2">Contested Hero Actions</span>
+                                  <div className="grid grid-cols-5 gap-1">
+                                    <button 
+                                      onClick={(e) => { e.stopPropagation(); handleContestedAction(activeHero.entity_id, citizen.entity_id, "ATTACK") }}
+                                      className="py-1 px-1 bg-red-950/40 hover:bg-red-900/60 border border-red-800/40 hover:border-red-500 rounded text-[9px] font-bold text-red-300 transition duration-150 flex flex-col items-center justify-center gap-0.5"
+                                      title="Contest might vs reflex/fortitude. Inflicts 2 HP damage. Costs 1 Stamina."
+                                    >
+                                      <span>⚔️</span> Attack
+                                    </button>
+                                    <button 
+                                      onClick={(e) => { e.stopPropagation(); handleContestedAction(activeHero.entity_id, citizen.entity_id, "ASSASSINATE") }}
+                                      className="py-1 px-1 bg-slate-950/60 hover:bg-slate-900/80 border border-slate-800/60 hover:border-slate-500 rounded text-[9px] font-bold text-slate-300 transition duration-150 flex flex-col items-center justify-center gap-0.5"
+                                      title="Contest finesse vs awareness. Inflicts 2 HP damage. Costs 1 Stamina."
+                                    >
+                                      <span>🗡️</span> Assass
+                                    </button>
+                                    <button 
+                                      onClick={(e) => { e.stopPropagation(); handleContestedAction(activeHero.entity_id, citizen.entity_id, "INTIMIDATE") }}
+                                      className="py-1 px-1 bg-amber-950/40 hover:bg-amber-900/60 border border-amber-800/40 hover:border-amber-500 rounded text-[9px] font-bold text-amber-300 transition duration-150 flex flex-col items-center justify-center gap-0.5"
+                                      title="Contest might vs willpower. Inflicts 2 Composure damage. Costs 1 Stamina."
+                                    >
+                                      <span>👁️</span> Intim
+                                    </button>
+                                    <button 
+                                      onClick={(e) => { e.stopPropagation(); handleContestedAction(activeHero.entity_id, citizen.entity_id, "DECEIVE") }}
+                                      className="py-1 px-1 bg-cyan-950/40 hover:bg-cyan-900/60 border border-cyan-800/40 hover:border-cyan-500 rounded text-[9px] font-bold text-cyan-300 transition duration-150 flex flex-col items-center justify-center gap-0.5"
+                                      title="Contest charm vs intuition. Inflicts 2 Composure damage. Costs 1 Focus."
+                                    >
+                                      <span>🗣️</span> Deceive
+                                    </button>
+                                    <button 
+                                      onClick={(e) => { e.stopPropagation(); handleContestedAction(activeHero.entity_id, citizen.entity_id, "DEBATE") }}
+                                      className="py-1 px-1 bg-purple-950/40 hover:bg-purple-900/60 border border-purple-800/40 hover:border-purple-500 rounded text-[9px] font-bold text-purple-300 transition duration-150 flex flex-col items-center justify-center gap-0.5"
+                                      title="Contest logic vs knowledge. Inflicts 2 Composure damage. Costs 1 Focus."
+                                    >
+                                      <span>📚</span> Debate
+                                    </button>
+                                  </div>
+                                </div>
+                              )}
+
+                              {/* Phase 7: Read Journal Trigger Button */}
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation()
+                                  fetchCitizenJournal(citizen)
+                                }}
+                                className="w-full flex items-center justify-center gap-1.5 mt-2 py-1.5 px-3 bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/20 hover:border-purple-500/40 text-purple-300 font-semibold rounded-lg text-xs transition duration-200"
+                              >
+                                <BookOpen className="w-3.5 h-3.5" />
+                                Read Consciousness Journal
+                              </button>
+                            </div>
+                          )}
+
+                          {/* Metabolic meters (non-expanded compact view) */}
+                          {!isExpanded && (
+                            <div className="grid grid-cols-2 gap-3 mt-3">
+                              <div>
+                                <div className="flex justify-between text-[9px] font-semibold text-slate-400 mb-0.5">
+                                  <span>Hunger</span>
+                                  <span className={hunger > 80 ? 'text-red-400 font-bold animate-pulse' : 'text-slate-300'}>{hunger}%</span>
+                                </div>
+                                <div className="progress-bar-container">
+                                  <div 
+                                    className={`progress-bar-fill ${hunger > 80 ? 'bg-red-500' : 'bg-amber-500'}`}
+                                    style={{ width: `${hunger}%` }}
+                                  ></div>
+                                </div>
+                              </div>
+                              <div>
+                                <div className="flex justify-between text-[9px] font-semibold text-slate-400 mb-0.5">
+                                  <span>Composure</span>
+                                  <span className="text-slate-300">{(sanity * 100).toFixed(0)}%</span>
+                                </div>
+                                <div className="progress-bar-container">
+                                  <div 
+                                    className="progress-bar-fill bg-cyan-400"
+                                    style={{ width: `${sanity * 100}%` }}
+                                  ></div>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+
+                        </div>
+                      )
+                    })
+                  ) : (
+                    <div className="p-4 bg-white/[0.015] border border-white/[0.04] rounded-lg text-center text-xs text-slate-500">
+                      Loading ground-level tactical telemetry...
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Dedicated Chronosphere Action Log Window */}
+              <div className="glass-card flex flex-col gap-2 border border-pink-500/20 bg-pink-950/5">
+                <div className="flex items-center justify-between border-b border-pink-500/10 pb-1.5">
+                  <span className="text-[10px] text-pink-400 font-bold uppercase tracking-widest flex items-center gap-1">📜 Chronosphere Action Log</span>
+                  <button 
+                    onClick={() => setActionLog([])}
+                    className="text-[9px] text-slate-500 hover:text-slate-300 font-semibold"
+                  >
+                    Clear Log
+                  </button>
+                </div>
+                <div className="h-32 overflow-y-auto pr-1 flex flex-col gap-1.5 font-mono text-[9px] leading-normal scrollbar-thin">
+                  {actionLog.length === 0 ? (
+                    <span className="text-slate-600 italic">No action events recorded yet. Perform contested or environmental actions.</span>
+                  ) : (
+                    actionLog.map((log, idx) => {
+                      const isSuccess = log.startsWith("Success!")
+                      return (
+                        <div 
+                          key={idx} 
+                          className={`p-1.5 rounded border ${
+                            isSuccess 
+                              ? 'bg-emerald-950/20 border-emerald-800/30 text-emerald-300' 
+                              : 'bg-red-950/20 border-red-800/30 text-red-300'
+                          }`}
+                        >
+                          {log}
+                        </div>
+                      )
+                    })
+                  )}
+                </div>
+              </div>
+
+            </div>
+          ) : (
+            <div className="welcome-overlay">
+              <Compass className="w-8 h-8 text-slate-600 animate-pulse mb-2" />
+              <p className="text-xs font-semibold text-slate-500">Select a hex cell on the tactical map to load regional resources and citizen identities.</p>
+            </div>
+          )}
+
+        </div>
+      </div>
+
+      {/* 3. Phase 7: Narrative Journal Modal Overlay */}
+      {(activeJournal || isJournalLoading) && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-[9999] flex items-center justify-center p-4">
+          <div className="bg-[#0b0e16]/95 border border-white/[0.08] p-8 rounded-2xl max-w-lg w-full shadow-2xl relative flex flex-col gap-6 text-center animate-slide-up">
+            
+            {/* Close trigger */}
+            {!isJournalLoading && (
+              <button 
+                onClick={() => {
+                  setActiveJournal(null)
+                  setJournalCitizen(null)
+                }}
+                className="absolute top-4 right-4 p-1.5 rounded-full bg-white/[0.02] hover:bg-white/[0.08] text-slate-400 hover:text-white transition duration-200 border border-white/[0.05]"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
+
+            {isJournalLoading ? (
+              <div className="py-8 flex flex-col items-center justify-center gap-4">
+                <div className="relative">
+                  <Sparkles className="w-10 h-10 text-purple-400 animate-pulse" />
+                  <Loader2 className="w-14 h-14 text-pink-500 animate-spin absolute -top-2 -left-2 opacity-60" />
+                </div>
+                <div className="flex flex-col gap-1 mt-2">
+                  <p className="text-sm font-bold text-slate-200 tracking-wider">COMMUNING WITH THE AETHER...</p>
+                  <p className="text-[11px] text-slate-400 tracking-widest uppercase">Steering consciousness frequencies</p>
+                </div>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-4 text-left">
+                
+                {/* Modal Header */}
+                <div className="flex items-center gap-3 border-b border-white/[0.06] pb-4">
+                  <span className="text-3xl">
+                    {journalCitizen?.biological_type === "Bear" ? "🐻" :
+                     journalCitizen?.biological_type === "Mouse" ? "🐭" : "🐺"}
+                  </span>
+                  <div className="flex flex-col">
+                    <h3 className="text-sm font-bold text-slate-100 font-mono">
+                      {journalCitizen?.name ? journalCitizen.name : journalCitizen?.entity_id.split('_').slice(-2).join('_')}
+                    </h3>
+                    <p className="text-xs text-slate-400 capitalize font-medium">
+                      {journalCitizen?.profession} • {journalCitizen?.dna_profile.personality}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Journal Narrative Block */}
+                <div className="py-2">
+                  <p className="text-slate-300 font-serif leading-relaxed italic text-[15px] bg-black/25 border border-white/[0.03] p-4 rounded-xl shadow-inner relative">
+                    <span className="absolute -top-2.5 -left-1 text-4xl text-purple-500/20 font-serif">“</span>
+                    {activeJournal}
+                    <span className="absolute -bottom-6 -right-1 text-4xl text-purple-500/20 font-serif">”</span>
+                  </p>
+                </div>
+
+                {/* Modal Footer / Actions */}
+                <button
+                  onClick={() => {
+                    setActiveJournal(null)
+                    setJournalCitizen(null)
+                  }}
+                  className="w-full mt-2 py-2.5 px-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold rounded-lg text-sm transition duration-200 hover:brightness-110 shadow-lg shadow-purple-900/35"
+                >
+                  Dismiss Entry
+                </button>
+
+              </div>
+            )}
+
+          </div>
+        </div>
+      )}
+
+      {/* 4. Phase 9B: Ground-Level 2D Pixel Art Modal Overlay */}
+      {showGroundView && selectedHex && deepHexData && (
+        <GroundView 
+          selectedHex={selectedHex}
+          deepHexData={deepHexData}
+          onClose={() => setShowGroundView(false)}
+          onRefresh={() => fetchHexEntities(selectedHex.hex_id)}
+        />
+      )}
+
+      {/* 5. Phase 11: World Settings Panel Modal Overlay */}
+      {showSettings && (
+        <SettingsPanel 
+          onClose={() => setShowSettings(false)}
+        />
+      )}
+
+      {/* 6. Phase 11: World History Chronicle Modal Overlay */}
+      {showChronicle && (
+        <ChronicleLog 
+          onClose={() => setShowChronicle(false)}
+        />
+      )}
+
+    </div>
+  )
+}

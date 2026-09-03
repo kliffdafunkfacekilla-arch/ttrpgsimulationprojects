@@ -1,0 +1,176 @@
+[
+  {
+    "MARGIN RANGE": "NAT 20",
+    "OUTCOME NAME": "CRITICAL",
+    "DAMAGE TYPE": "Double Damage",
+    "STATUS EFFECT / CONSEQUENCE": "INJURY (Roll on Injury Table)."
+  },
+  {
+    "MARGIN RANGE": "#ERROR!",
+    "OUTCOME NAME": "CRUSHING BLOW",
+    "DAMAGE TYPE": "Normal HP Damage",
+    "STATUS EFFECT / CONSEQUENCE": "Target is STAGGERED (No Reactions, Next Action Disadv)."
+  },
+  {
+    "MARGIN RANGE": "#ERROR!",
+    "OUTCOME NAME": "SOLID HIT",
+    "DAMAGE TYPE": "Normal HP Damage",
+    "STATUS EFFECT / CONSEQUENCE": "None."
+  },
+  {
+    "MARGIN RANGE": "#ERROR!",
+    "OUTCOME NAME": "GRAZE",
+    "DAMAGE TYPE": "Half HP Damage",
+    "STATUS EFFECT / CONSEQUENCE": "1d4 Composure Dmg (Stress/Fear)."
+  },
+  {
+    "MARGIN RANGE": "0 (TIE)",
+    "OUTCOME NAME": "THE CLASH",
+    "DAMAGE TYPE": "See Clash Table",
+    "STATUS EFFECT / CONSEQUENCE": "Initiate Clash Protocol."
+  },
+  {
+    "MARGIN RANGE": "-1 to -5",
+    "OUTCOME NAME": "CLEAN MISS",
+    "DAMAGE TYPE": "",
+    "STATUS EFFECT / CONSEQUENCE": "None."
+  },
+  {
+    "MARGIN RANGE": "-6 to -11",
+    "OUTCOME NAME": "BAD MISS",
+    "DAMAGE TYPE": "",
+    "STATUS EFFECT / CONSEQUENCE": "Attacker is STAGGERED (Off-balance)."
+  },
+  {
+    "MARGIN RANGE": "-12 or less",
+    "OUTCOME NAME": "FAIL",
+    "DAMAGE TYPE": "",
+    "STATUS EFFECT / CONSEQUENCE": "Attacker falls PRONE."
+  },
+  {
+    "MARGIN RANGE": "NAT 1",
+    "OUTCOME NAME": "DISASTER",
+    "DAMAGE TYPE": "1d4 Self Damage",
+    "STATUS EFFECT / CONSEQUENCE": "Attacker is PRONE & DISARMED."
+  },
+  {
+    "MARGIN RANGE": "",
+    "OUTCOME NAME": "",
+    "DAMAGE TYPE": "",
+    "STATUS EFFECT / CONSEQUENCE": ""
+  },
+  {
+    "MARGIN RANGE": "OPTION",
+    "OUTCOME NAME": "COST",
+    "DAMAGE TYPE": "EFFECT DESCRIPTION",
+    "STATUS EFFECT / CONSEQUENCE": ""
+  },
+  {
+    "MARGIN RANGE": "OVERPOWER",
+    "OUTCOME NAME": "2 Stamina",
+    "DAMAGE TYPE": "Force a Hit. Deal Normal Damage. (If both Overpower, both take damage).",
+    "STATUS EFFECT / CONSEQUENCE": ""
+  },
+  {
+    "MARGIN RANGE": "COUNTER",
+    "OUTCOME NAME": "2 Stamina",
+    "DAMAGE TYPE": "Force a Miss. Deflect and make an immediate Free Attack.",
+    "STATUS EFFECT / CONSEQUENCE": ""
+  },
+  {
+    "MARGIN RANGE": "BREAK",
+    "OUTCOME NAME": "-1 Durability",
+    "DAMAGE TYPE": "Sunder. Take the hit but the enemy Weapon/Shield takes -1 Penalty permanently.",
+    "STATUS EFFECT / CONSEQUENCE": ""
+  },
+  {
+    "MARGIN RANGE": "YIELD",
+    "OUTCOME NAME": "",
+    "DAMAGE TYPE": "Retreat. No Damage. You are pushed back 5ft and lose Initiative.",
+    "STATUS EFFECT / CONSEQUENCE": ""
+  },
+  {
+    "MARGIN RANGE": "",
+    "OUTCOME NAME": "",
+    "DAMAGE TYPE": "",
+    "STATUS EFFECT / CONSEQUENCE": ""
+  },
+  {
+    "MARGIN RANGE": "TRIGGER EVENT",
+    "OUTCOME NAME": "MECHANIC / RULE",
+    "DAMAGE TYPE": "EFFECT / COST",
+    "STATUS EFFECT / CONSEQUENCE": ""
+  },
+  {
+    "MARGIN RANGE": "OVERCHARGE (Physical)",
+    "OUTCOME NAME": "Pay HP for missing Stamina",
+    "DAMAGE TYPE": "Cost: 2 HP per 1 Stamina. (Muscle Tear).",
+    "STATUS EFFECT / CONSEQUENCE": ""
+  },
+  {
+    "MARGIN RANGE": "OVERCHARGE (Mental)",
+    "OUTCOME NAME": "Pay Comp for missing Focus",
+    "DAMAGE TYPE": "Cost: 2 Composure per 1 Focus. (Mind Fracture).",
+    "STATUS EFFECT / CONSEQUENCE": ""
+  },
+  {
+    "MARGIN RANGE": "BLOWOUT LIMIT",
+    "OUTCOME NAME": "HP < 50% or Focus 0",
+    "DAMAGE TYPE": "Apply STATUS: Weakened or Shaken.",
+    "STATUS EFFECT / CONSEQUENCE": ""
+  },
+  {
+    "MARGIN RANGE": "CRITICAL INJURY",
+    "OUTCOME NAME": "Nat 20 or Massive Dmg",
+    "DAMAGE TYPE": "1: Concussion (No Focus). 2: Broken Arm. 3: Broken Leg.",
+    "STATUS EFFECT / CONSEQUENCE": ""
+  },
+  {
+    "MARGIN RANGE": "...Injury cont.",
+    "OUTCOME NAME": "...",
+    "DAMAGE TYPE": "4: Eye/Ear Loss. 5: Internal Bleeding. 6: Severed Limb.",
+    "STATUS EFFECT / CONSEQUENCE": ""
+  },
+  {
+    "MARGIN RANGE": "",
+    "OUTCOME NAME": "",
+    "DAMAGE TYPE": "",
+    "STATUS EFFECT / CONSEQUENCE": ""
+  },
+  {
+    "MARGIN RANGE": "STATUS",
+    "OUTCOME NAME": "EFFECT SUMMARY",
+    "DAMAGE TYPE": "CURE / END CONDITION",
+    "STATUS EFFECT / CONSEQUENCE": ""
+  },
+  {
+    "MARGIN RANGE": "STAGGERED",
+    "OUTCOME NAME": "No Reactions. Next Action has Disadvantage.",
+    "DAMAGE TYPE": "End of your next Turn.",
+    "STATUS EFFECT / CONSEQUENCE": ""
+  },
+  {
+    "MARGIN RANGE": "PRONE",
+    "OUTCOME NAME": "Melee hits you with Advantage. Ranged has Disadvantage.",
+    "DAMAGE TYPE": "Spend Half Movement to stand.",
+    "STATUS EFFECT / CONSEQUENCE": ""
+  },
+  {
+    "MARGIN RANGE": "DISARMED",
+    "OUTCOME NAME": "Weapon drops in adjacent square (or flies 10ft).",
+    "DAMAGE TYPE": "Interact Action to pick up.",
+    "STATUS EFFECT / CONSEQUENCE": ""
+  },
+  {
+    "MARGIN RANGE": "BROKEN",
+    "OUTCOME NAME": "0 Composure. Cannot Attack/Cast. Can only Defend/Flee.",
+    "DAMAGE TYPE": "Rally Action or Restore Composure.",
+    "STATUS EFFECT / CONSEQUENCE": ""
+  },
+  {
+    "MARGIN RANGE": "INJURED",
+    "OUTCOME NAME": "Structural Damage (Broken Bone, Concussion).",
+    "DAMAGE TYPE": "Medical Surgery or High-Tier Magic.",
+    "STATUS EFFECT / CONSEQUENCE": ""
+  }
+]

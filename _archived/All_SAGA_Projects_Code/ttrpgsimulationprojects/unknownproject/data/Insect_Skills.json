@@ -1,0 +1,338 @@
+[
+  {
+    "Body Part": "Jumping Legs",
+    "Skill Name": "Power Leap",
+    "Type": "Action",
+    "Effect Description": "Jump up to 30ft horizontally or 15ft vertically without a running start."
+  },
+  {
+    "Body Part": "Jumping Legs",
+    "Skill Name": "Kick Off",
+    "Type": "Reaction",
+    "Effect Description": "When an enemy moves within 5ft, you can jump 10ft away without provoking an attack."
+  },
+  {
+    "Body Part": "Extra Limbs",
+    "Skill Name": "Multi-Task",
+    "Type": "Bonus",
+    "Effect Description": "Use an object, reload a weapon, or open a door while keeping your main hands full."
+  },
+  {
+    "Body Part": "Extra Limbs",
+    "Skill Name": "Stability",
+    "Type": "Passive",
+    "Effect Description": "You have Advantage on saving throws against being knocked Prone or Shoved."
+  },
+  {
+    "Body Part": "Flat Body",
+    "Skill Name": "Compression",
+    "Type": "Passive",
+    "Effect Description": "You can squeeze through gaps as small as 1 inch wide without slowing down."
+  },
+  {
+    "Body Part": "Flat Body",
+    "Skill Name": "Low Profile",
+    "Type": "Reaction",
+    "Effect Description": "When targeted by a ranged attack, flatten yourself to the ground to impose Disadvantage."
+  },
+  {
+    "Body Part": "Striped Abdomen",
+    "Skill Name": "Warning",
+    "Type": "Passive",
+    "Effect Description": "You have Advantage on Intimidation checks (biological warning signals)."
+  },
+  {
+    "Body Part": "Striped Abdomen",
+    "Skill Name": "Flash",
+    "Type": "Reaction",
+    "Effect Description": "When attacked, flare your colors. The attacker must save (Will) or choose a new target."
+  },
+  {
+    "Body Part": "Shovel Legs",
+    "Skill Name": "Burrow",
+    "Type": "Action",
+    "Effect Description": "You gain a Burrow speed of 15ft through loose soil or sand."
+  },
+  {
+    "Body Part": "Shovel Legs",
+    "Skill Name": "Entrench",
+    "Type": "Action",
+    "Effect Description": "Dig a foxhole in 1 round. You gain Half-Cover while standing in that spot."
+  },
+  {
+    "Body Part": "Color Change",
+    "Skill Name": "Active Camo",
+    "Type": "Action",
+    "Effect Description": "Turn Invisible until you move or attack by matching the background perfectly."
+  },
+  {
+    "Body Part": "Color Change",
+    "Skill Name": "Ambush",
+    "Type": "Passive",
+    "Effect Description": "If you attack a target that hasn't seen you, you deal extra damage equal to your Level."
+  },
+  {
+    "Body Part": "Large Pincers",
+    "Skill Name": "Crush",
+    "Type": "Action",
+    "Effect Description": "Make a Grapple attempt. If successful, the target takes Bludgeoning damage immediately."
+  },
+  {
+    "Body Part": "Large Pincers",
+    "Skill Name": "Sever",
+    "Type": "Reaction",
+    "Effect Description": "When an enemy misses you with a weapon, attempt to Disarm them (catch the blade)."
+  },
+  {
+    "Body Part": "Thick Plates",
+    "Skill Name": "Heavy Chitin",
+    "Type": "Passive",
+    "Effect Description": "Your base Armor Class is 13 + Dexterity modifier (max +2)."
+  },
+  {
+    "Body Part": "Thick Plates",
+    "Skill Name": "Deflect",
+    "Type": "Reaction",
+    "Effect Description": "Reduce damage from a non-magical slashing or piercing attack by half."
+  },
+  {
+    "Body Part": "Bladed Arms",
+    "Skill Name": "Scythe Sweep",
+    "Type": "Action",
+    "Effect Description": "Make one attack roll against two adjacent enemies within your reach."
+  },
+  {
+    "Body Part": "Bladed Arms",
+    "Skill Name": "Parry",
+    "Type": "Reaction",
+    "Effect Description": "Gain +2 AC against one melee attack by blocking with your blades."
+  },
+  {
+    "Body Part": "Barb Stinger",
+    "Skill Name": "Impale",
+    "Type": "Action",
+    "Effect Description": "Make a piercing attack. On hit, leave the stinger in; target takes damage every turn until removed."
+  },
+  {
+    "Body Part": "Barb Stinger",
+    "Skill Name": "Desperation",
+    "Type": "Reaction",
+    "Effect Description": "If you drop to 0 HP, make one immediate Stinger attack before falling."
+  },
+  {
+    "Body Part": "Toxic Fangs",
+    "Skill Name": "Envenom",
+    "Type": "Bonus",
+    "Effect Description": "Coat your next bite attack with poison. Target must save or be Poisoned for 1 minute."
+  },
+  {
+    "Body Part": "Toxic Fangs",
+    "Skill Name": "Necrosis",
+    "Type": "Passive",
+    "Effect Description": "Damage dealt by your fangs cannot be healed by non-magical means for 1 hour."
+  },
+  {
+    "Body Part": "Serrated Grip",
+    "Skill Name": "Wall Walk",
+    "Type": "Passive",
+    "Effect Description": "You can walk on walls and ceilings at full speed."
+  },
+  {
+    "Body Part": "Serrated Grip",
+    "Skill Name": "Latch",
+    "Type": "Reaction",
+    "Effect Description": "Advantage on checks to avoid being Disarmed or dropping an item."
+  },
+  {
+    "Body Part": "Antennae",
+    "Skill Name": "Tremorsense",
+    "Type": "Passive",
+    "Effect Description": "You can detect the location of any moving creature on the ground within 30ft."
+  },
+  {
+    "Body Part": "Antennae",
+    "Skill Name": "Scent Trail",
+    "Type": "Utility",
+    "Effect Description": "You can track a creature by pheromones or scent with Advantage on Survival checks."
+  },
+  {
+    "Body Part": "Blank Stare",
+    "Skill Name": "Unreadable",
+    "Type": "Passive",
+    "Effect Description": "You are immune to Insight checks; creatures cannot determine your emotions or next move."
+  },
+  {
+    "Body Part": "Blank Stare",
+    "Skill Name": "Unnerving",
+    "Type": "Action",
+    "Effect Description": "Stare at a target. They must save (Will) or hesitate, losing their Reaction for the round."
+  },
+  {
+    "Body Part": "Pheromone Plumes",
+    "Skill Name": "Rally",
+    "Type": "Action",
+    "Effect Description": "Release a scent cloud. Allies within 10ft gain Temporary HP equal to your Proficiency Bonus."
+  },
+  {
+    "Body Part": "Pheromone Plumes",
+    "Skill Name": "Confusion",
+    "Type": "Action",
+    "Effect Description": "Release a cloud. Enemies within 10ft must save or attack a random target next turn."
+  },
+  {
+    "Body Part": "Needle Limbs",
+    "Skill Name": "Pierce Armor",
+    "Type": "Action",
+    "Effect Description": "Make an attack that ignores the target's Armor Class bonus from shields or heavy armor."
+  },
+  {
+    "Body Part": "Needle Limbs",
+    "Skill Name": "Pinpoint",
+    "Type": "Passive",
+    "Effect Description": "Your critical hit range is 19-20 on piercing attacks."
+  },
+  {
+    "Body Part": "Spiracles",
+    "Skill Name": "Air Bubble",
+    "Type": "Passive",
+    "Effect Description": "You can trap air in your shell, allowing you to function underwater for 1 hour."
+  },
+  {
+    "Body Part": "Spiracles",
+    "Skill Name": "Purge",
+    "Type": "Reaction",
+    "Effect Description": "Advantage on saving throws against inhaled gases or Cloudkill effects."
+  },
+  {
+    "Body Part": "Waxy Shell",
+    "Skill Name": "Insulation",
+    "Type": "Passive",
+    "Effect Description": "You have Resistance to Acid damage and cannot be dissolved by slimes."
+  },
+  {
+    "Body Part": "Waxy Shell",
+    "Skill Name": "Slippery",
+    "Type": "Reaction",
+    "Effect Description": "Advantage on checks to escape a Grapple or Web trap."
+  },
+  {
+    "Body Part": "Earthy Claws",
+    "Skill Name": "Mold Earth",
+    "Type": "Utility",
+    "Effect Description": "You can turn a 5ft square of ground into Difficult Terrain (rubble) as an Action."
+  },
+  {
+    "Body Part": "Earthy Claws",
+    "Skill Name": "Anchor",
+    "Type": "Passive",
+    "Effect Description": "You cannot be moved against your will while standing on natural earth/stone."
+  },
+  {
+    "Body Part": "Faceted Eyes",
+    "Skill Name": "Omni-Vision",
+    "Type": "Passive",
+    "Effect Description": "You can see in all directions at once. You cannot be Flanked."
+  },
+  {
+    "Body Part": "Faceted Eyes",
+    "Skill Name": "Reflex Dodge",
+    "Type": "Reaction",
+    "Effect Description": "You gain +2 to Reflex saves against Area of Effect spells (you see it coming)."
+  },
+  {
+    "Body Part": "Spiked Knees",
+    "Skill Name": "Knee Strike",
+    "Type": "Bonus",
+    "Effect Description": "If you have a target Grappled, deal Piercing damage to them automatically."
+  },
+  {
+    "Body Part": "Spiked Knees",
+    "Skill Name": "Vault",
+    "Type": "Reaction",
+    "Effect Description": "When an enemy misses you, you can jump over them to the opposite side (flanking position)."
+  },
+  {
+    "Body Part": "Spinnerets",
+    "Skill Name": "Web Shot",
+    "Type": "Action",
+    "Effect Description": "Fire a sticky net (30ft). Target must save (Dex) or be Restrained."
+  },
+  {
+    "Body Part": "Spinnerets",
+    "Skill Name": "Silk Rope",
+    "Type": "Utility",
+    "Effect Description": "Produce up to 50ft of silk rope per day. It is strong enough to hold your weight."
+  },
+  {
+    "Body Part": "Resisting Chitin",
+    "Skill Name": "Spell Shield",
+    "Type": "Reaction",
+    "Effect Description": "Gain Advantage on a Saving Throw against a magical spell or effect."
+  },
+  {
+    "Body Part": "Resisting Chitin",
+    "Skill Name": "Hardened",
+    "Type": "Passive",
+    "Effect Description": "You have Resistance to one damage type (Fire, Cold, or Lightning) chosen at creation."
+  },
+  {
+    "Body Part": "Skill Name",
+    "Skill Name": "Required Body Part",
+    "Type": "Effect",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Nat_Weapon",
+    "Skill Name": "Mandibles / Claws",
+    "Type": "Unarmed deals 1d6 Slash/Pierce.",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Stinger",
+    "Skill Name": "Barb Stinger",
+    "Type": "Unarmed injects Poison (DC 12).",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Warn_Color",
+    "Skill Name": "Bright Pattern",
+    "Type": "Biter takes 1 Poison Dmg.",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Pheromones",
+    "Skill Name": "Glands / Plumes",
+    "Type": "Leave scent trail for allies.",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Vibration",
+    "Skill Name": "Antennae",
+    "Type": "Detect moving targets 15ft if Blind.",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Climber",
+    "Skill Name": "Serrated Legs",
+    "Type": "Climb Speed = Walk Speed.",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Jumper",
+    "Skill Name": "Jumping Legs",
+    "Type": "Jump distance tripled.",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Motion_Track",
+    "Skill Name": "Compound Eyes",
+    "Type": "Cannot be Flanked.",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Filter",
+    "Skill Name": "Spiracles",
+    "Type": "Immune to Nausea/Sickened condition.",
+    "Effect Description": ""
+  }
+]

@@ -1,0 +1,59 @@
+{
+    "name": "Golden Warren",
+    "type": "Faction",
+    "description": "The Rats control the wealth of the Heartland.",
+    "stats": {
+        "reputation": 8,
+        "influence": 9,
+        "network": 7,
+        "resources": 8,
+        "security": 6,
+        "initiative": 5,
+        "diplomacy": 4,
+        "violence": 3
+    },
+    "abilities": {
+        "soft_power": 9,
+        "financial_resources": 8,
+        "import_network": 7,
+        "debt_management": 6,
+        "security_measures": 5,
+        "auditing": 4,
+        "canemastery": 3
+    },
+    "specialties": {
+        "black_comb": {
+            "source": "Hive Exile Honey",
+            "effect": "Opiate",
+            "clientele": "Old soldiers and nobles"
+        },
+        "spore_drift": {
+            "source": "Vaneer fungi",
+            "effect": "Hallucinogen",
+            "clientele": "Artists and thrill-seekers"
+        },
+        "iron_bile": {
+            "source": "Swamp beasts",
+            "effect": "Stimulant",
+            "clientele": "Pit fighters and laborers"
+        }
+    },
+    "structure": {
+        "knot": {
+            "role": "Supreme Council",
+            "description": "The Supreme Council dictates the 'Exchange Rate' of coin and blood."
+        },
+        "gilded": {
+            "role": "Regional directors",
+            "description": "Regional directors manage the Casinos and the Import Lines."
+        },
+        "auditors": {
+            "role": "Enforcers",
+            "description": "Silent, robed figures ensure deals are honored."
+        },
+        "runners": {
+            "role": "Servants and clerks",
+            "description": "The servants and clerks are invisible, scurrying to refill pipes and carry ledgers."
+        }
+    }
+}

@@ -1,0 +1,686 @@
+import React, { useState, useEffect } from 'react'
+import { MapContainer, TileLayer, GeoJSON, useMap } from 'react-leaflet'
+import axios from 'axios'
+import { 
+  Clock, Play, Shield, Compass, Thermometer, Droplets, 
+  Mountain, Trees, Hammer, Apple, Smile, Eye, Users, 
+  Zap, BookOpen, X, Loader2, Sparkles
+} from 'lucide-react'
+import GroundView from './components/GroundView'
+import SettingsPanel from './components/SettingsPanel'
+import ChronicleLog from './components/ChronicleLog'
+
+// Base URL for FastAPI Backend Integration
+const API_BASE = "http://localhost:8000/api"
+
+// Helper component to center and bound Leaflet map dynamically based on GeoJSON geometries
+const MapRefitter = ({ geojson }) => {
+  const map = useMap()
+  
+  useEffect(() => {
+    if (geojson && geojson.features && geojson.features.length > 0) {
+      let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity
+      
+      geojson.features.forEach(f => {
+        if (f.geometry && f.geometry.coordinates) {
+          f.geometry.coordinates[0].forEach(coord => {
+            const [x, y] = coord
+            if (x < minX) minX = x
+            if (x > maxX) maxX = x
+            if (y < minY) minY = y
+            if (y > maxY) maxY = y
+          })
+        }
+      })
+      
+      if (minX !== Infinity) {
+        const southWest = [minY, minX]
+        const northEast = [maxY, maxX]
+        map.fitBounds([southWest, northEast], { padding: [40, 40] })
+      }
+    }
+  }, [geojson, map])
+  
+  return null
+}
+
+export default function App() {
+  // State management variables
+  const [worldData, setWorldData] = useState(null)
+  const [selectedHex, setSelectedHex] = useState(null)
+  const [deepHexData, setDeepHexData] = useState(null)
+  const [currentTick, setCurrentTick] = useState(0)
+  
+  // Phase 7 state hooks for generative journal entries
+  const [activeJournal, setActiveJournal] = useState(null)
+  const [isJournalLoading, setIsJournalLoading] = useState(false)
+  const [journalCitizen, setJournalCitizen] = useState(null)
+  
+  // UI Status managers
+  const [loading, setLoading] = useState(false)
+  const [simulating, setSimulating] = useState(false)
+  const [expandedCitizen, setExpandedCitizen] = useState(null)
+  const [errorMsg, setErrorMsg] = useState(null)
+  const [showGroundView, setShowGroundView] = useState(false)
+
+  // Phase 11 chronicler states
+  const [showSettings, setShowSettings] = useState(false)
+  const [showChronicle, setShowChronicle] = useState(false)
+
+  // On Mount: Fetch entire GeoJSON world state
+  useEffect(() => {
+    fetchWorldState()
+  }, [])
+
+  const fetchWorldState = async () => {
+    setLoading(true)
+    setErrorMsg(null)
+    try {
+      const res = await axios.get(`${API_BASE}/world`)
+      setWorldData(res.data)
+      
+      // Extract active tick count from the loaded hex records properties
+      if (res.data.features && res.data.features.length > 0) {
+        const tick = res.data.features[0].properties.tick_count || 0
+        setCurrentTick(tick)
+      }
+    } catch (err) {
+      console.error("Failed to load Ostraka World-state:", err)
+      setErrorMsg("PostgreSQL database is offline or uninitialized. Run world_generator.py first!")
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  // Fetch ground-level citizens array on click
+  const fetchHexEntities = async (hexId) => {
+    try {
+      const res = await axios.get(`${API_BASE}/hex/${hexId}`)
+      setDeepHexData(res.data)
+    } catch (err) {
+      console.error("Failed to fetch entity telemetry:", err)
+    }
+  }
+
+  // Handle clicking a hex polygon on the Map
+  const handleHexClick = (properties) => {
+    setSelectedHex(properties)
+    setExpandedCitizen(null)
+    setDeepHexData(null) // Reset while loading
+    fetchHexEntities(properties.hex_id)
+  }
+
+  // Trigger simulation clock hour advancement
+  const advanceSimulation = async () => {
+    setSimulating(true)
+    setErrorMsg(null)
+    try {
+      const res = await axios.post(`${API_BASE}/simulate/tick`)
+      setCurrentTick(res.data.tick_count)
+      
+      // Immediately refresh map and sidebar parameters to render updated values
+      const resWorld = await axios.get(`${API_BASE}/world`)
+      setWorldData(resWorld.data)
+      
+      // Update selected hex overview parameters in real-time
+      if (selectedHex) {
+        const updatedHex = resWorld.data.features.find(
+          f => f.properties.hex_id === selectedHex.hex_id
+        )
+        if (updatedHex) {
+          setSelectedHex(updatedHex.properties)
+          fetchHexEntities(selectedHex.hex_id)
+        }
+      }
+    } catch (err) {
+      console.error("Simulation tick failed:", err)
+      setErrorMsg("Failed to process simulation step. Is database operational?")
+    } finally {
+      setSimulating(false)
+    }
+  }
+
+  // Phase 7: Fetch citizen journal entries using Ollama / Fallbacks
+  const fetchCitizenJournal = async (citizen) => {
+    if (!selectedHex) return
+    setIsJournalLoading(true)
+    setJournalCitizen(citizen)
+    setActiveJournal(null)
+    
+    try {
+      const res = await axios.post(
+        `${API_BASE}/hex/${selectedHex.hex_id}/entity/${citizen.entity_id}/journal`
+      )
+      setActiveJournal(res.data.journal_entry)
+    } catch (err) {
+      console.error("Journal retrieval error:", err)
+      setActiveJournal("Failed to bridge connection with citizen consciousness.")
+    } finally {
+      setIsJournalLoading(false)
+    }
+  }
+
+  // Color mapper based on faction bounds
+  const getFactionColor = (factionId) => {
+    switch (factionId) {
+      case 'Heartland_Alliance':
+        return 'hsl(215, 85%, 55%)'  // Vibrant alliance blue
+      case 'Ursine_Hegemony':
+        return 'hsl(142, 70%, 42%)'  // Hegemony green
+      case 'Aetheric_Enclave':
+        return 'hsl(271, 80%, 60%)'  // Enclave magenta/purple
+      case 'Wildlands_Tribes':
+        return 'hsl(32, 85%, 50%)'   // Tribes orange/amber
+      default:
+        return 'hsl(210, 10%, 35%)'   // Wild wilderness slate gray
+    }
+  }
+
+  const getFactionName = (factionId) => {
+    if (!factionId) return "Neutral Wilds"
+    return factionId.replace('_', ' ')
+  }
+
+  // Leaflet Dynamic Map Styling function
+  const hexStyle = (feature) => {
+    const isSelected = selectedHex && selectedHex.hex_id === feature.properties.hex_id
+    const factionId = feature.properties.faction_id
+    
+    return {
+      fillColor: getFactionColor(factionId),
+      fillOpacity: isSelected ? 0.70 : 0.40,
+      color: isSelected ? '#f472b6' : 'rgba(255,255,255,0.08)', // Glowing highlight border when active
+      weight: isSelected ? 2.5 : 1,
+      dashArray: isSelected ? '' : '3',
+    }
+  }
+
+  // Bind interactive clicks and highlights
+  const onEachHex = (feature, layer) => {
+    layer.on({
+      click: () => {
+        handleHexClick(feature.properties)
+      },
+      mouseover: (e) => {
+        const l = e.target
+        l.setStyle({
+          fillOpacity: 0.60,
+          weight: 2,
+          color: '#c084fc' // Bright violet highlight on hover
+        })
+      },
+      mouseout: (e) => {
+        const l = e.target
+        const isSelected = selectedHex && selectedHex.hex_id === feature.properties.hex_id
+        l.setStyle({
+          fillOpacity: isSelected ? 0.70 : 0.40,
+          color: isSelected ? '#f472b6' : 'rgba(255,255,255,0.08)',
+          weight: isSelected ? 2.5 : 1
+        })
+      }
+    })
+  }
+
+  // Determine current active daily cycle schedule
+  const getClockScheduleInfo = (tick) => {
+    const hour = tick % 24
+    if (6 <= hour && hour < 18) {
+      return { block: "ON_SHIFT", label: "Day Shift (Working)", icon: "☀️", color: "text-amber-400" }
+    } else if (18 <= hour && hour < 21) {
+      return { block: "LEISURE", label: "Leisure Hours", icon: "🍻", color: "text-emerald-400" }
+    } else if (hour === 21) {
+      return { block: "DEVOTION", label: "Devotion Time", icon: "🔮", color: "text-purple-400" }
+    } else {
+      return { block: "REST", label: "Night Rest (Sleeping)", icon: "🌙", color: "text-blue-400" }
+    }
+  }
+
+  const sched = getClockScheduleInfo(currentTick)
+
+  return (
+    <div className="app-container">
+      
+      {/* 1. Leaflet Tactical Canvas Viewport */}
+      {worldData ? (
+        <MapContainer 
+          center={[0.25, 0.35]} 
+          zoom={9} 
+          zoomControl={true}
+          className="map-canvas"
+        >
+          {/* Slick customized CartoDB Dark tile mapping */}
+          <TileLayer
+            url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+            attribution='&copy; <a href="https://carto.com/">CARTO</a>'
+          />
+          <GeoJSON 
+            data={worldData} 
+            style={hexStyle}
+            onEachFeature={onEachHex}
+          />
+          <MapRefitter geojson={worldData} />
+        </MapContainer>
+      ) : (
+        <div className="flex-1 flex flex-col items-center justify-center bg-[#090b11] text-slate-400 text-sm">
+          <Zap className="w-8 h-8 text-purple-400 animate-bounce mb-3" />
+          <p className="font-semibold text-slate-300">Initializing Ostraka Radar Feed...</p>
+          {errorMsg && (
+            <div className="mt-4 p-3 bg-red-950/40 border border-red-800/40 rounded text-red-400 text-xs max-w-md text-center">
+              {errorMsg}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* 2. Glassmorphism God Console Control Panel Sidebar */}
+      <div className="sidebar-panel">
+        
+        {/* Top Header */}
+        <div className="sidebar-header">
+          <div className="flex items-center justify-between">
+            <h1 className="title-gradient text-xl">OSTRAKA // ENGINE</h1>
+            <div className="flex items-center gap-2">
+              <span className="pulsing-indicator"></span>
+              <span className="text-[10px] text-emerald-400 font-bold uppercase tracking-wider">Radar Active</span>
+            </div>
+          </div>
+          <p className="text-[11px] text-slate-400 mt-1 uppercase tracking-widest font-medium">Tactical God Console Overlay</p>
+          
+          {/* Quick Access Menu for settings & logs */}
+          <div className="flex gap-2 mt-3">
+            <button 
+              onClick={() => setShowSettings(true)}
+              className="flex-1 py-1.5 px-3 bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.05] hover:border-white/[0.1] rounded text-[10px] uppercase tracking-wider font-bold transition duration-200 text-slate-300 flex items-center justify-center gap-1.5"
+            >
+              <Zap className="w-3.5 h-3.5 text-purple-400" /> Settings
+            </button>
+            <button 
+              onClick={() => setShowChronicle(true)}
+              className="flex-1 py-1.5 px-3 bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.05] hover:border-white/[0.1] rounded text-[10px] uppercase tracking-wider font-bold transition duration-200 text-slate-300 flex items-center justify-center gap-1.5"
+            >
+              <BookOpen className="w-3.5 h-3.5 text-pink-400" /> Chronicle
+            </button>
+          </div>
+        </div>
+
+        {/* Scrollable Control Dashboard */}
+        <div className="sidebar-content">
+          
+          {/* A. Global Clock Widget */}
+          <div className="glass-card flex flex-col gap-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Clock className="w-4 h-4 text-purple-400" />
+                <span className="text-xs uppercase tracking-wider text-slate-400 font-bold">Chronosphere Status</span>
+              </div>
+              <span className="text-xs text-purple-400 font-mono font-bold">Cycle T+{currentTick}</span>
+            </div>
+            
+            <div className="flex items-center justify-between bg-white/[0.015] border border-white/[0.04] p-3 rounded-lg">
+              <div className="flex flex-col">
+                <span className="text-[10px] text-slate-400 uppercase tracking-widest font-semibold">Active Clock Time</span>
+                <p className="text-lg font-bold font-mono tracking-wide mt-0.5">Hour {String(currentTick % 24).padStart(2, '0')}:00</p>
+              </div>
+              <div className="flex flex-col items-end">
+                <span className="text-[10px] text-slate-400 uppercase tracking-widest font-semibold">Social Schedule</span>
+                <span className={`text-xs font-bold flex items-center gap-1 mt-1 ${sched.color}`}>
+                  <span>{sched.icon}</span> {sched.label}
+                </span>
+              </div>
+            </div>
+
+            <button 
+              onClick={advanceSimulation} 
+              disabled={simulating || !worldData}
+              className="simulate-btn"
+            >
+              <Play className="w-4 h-4" />
+              {simulating ? "PROCESSING TICK..." : "ADVANCE SIMULATION (+1 HOUR)"}
+            </button>
+          </div>
+
+          {/* B. Hex Inspector */}
+          {selectedHex ? (
+            <div className="flex flex-col gap-4">
+              
+              {/* Header Title with Faction Badge */}
+              <div className="flex items-center justify-between border-b border-white/[0.05] pb-2">
+                <div className="flex flex-col">
+                  <span className="text-xs font-bold text-slate-400 font-mono uppercase">{selectedHex.hex_id}</span>
+                  <span className="text-[10px] text-slate-400 uppercase mt-0.5 font-medium">Territory Control</span>
+                </div>
+                <span className={`badge ${
+                  selectedHex.faction_id === 'Heartland_Alliance' ? 'badge-alliance' :
+                  selectedHex.faction_id === 'Ursine_Hegemony' ? 'badge-hegemony' :
+                  selectedHex.faction_id === 'Aetheric_Enclave' ? 'badge-enclave' :
+                  selectedHex.faction_id === 'Wildlands_Tribes' ? 'badge-tribes' : 'badge-wild'
+                }`}>
+                  {getFactionName(selectedHex.faction_id)}
+                </span>
+              </div>
+
+              {/* Grid Metrics (Level 4/3 Parameters) */}
+              <div className="metrics-grid">
+                <div className="metric-tile">
+                  <span className="flex items-center gap-1"><Thermometer className="w-3 h-3 text-red-400" /> Temperature</span>
+                  <p>{selectedHex.temperature}°C</p>
+                </div>
+                <div className="metric-tile">
+                  <span className="flex items-center gap-1"><Droplets className="w-3 h-3 text-cyan-400" /> Moisture</span>
+                  <p>{(selectedHex.moisture * 100).toFixed(0)}%</p>
+                </div>
+                <div className="metric-tile">
+                  <span className="flex items-center gap-1"><Mountain className="w-3 h-3 text-amber-500" /> Elevation</span>
+                  <p>{(selectedHex.elevation * 1000).toFixed(0)}m</p>
+                </div>
+                <div className="metric-tile">
+                  <span className="flex items-center gap-1"><Compass className="w-3 h-3 text-purple-400" /> stability</span>
+                  <p>{(selectedHex.macro_stability * 100).toFixed(0)}%</p>
+                </div>
+              </div>
+
+              {/* Economic Stockpiles (Level 2 parameters) */}
+              <div>
+                <h3 className="section-title flex items-center gap-1.5"><Trees className="w-3.5 h-3.5" /> Economic Stockpiles</h3>
+                <div className="grid grid-cols-2 gap-2 mt-2">
+                  <div className="flex items-center justify-between bg-white/[0.01] border border-white/[0.04] p-2 rounded-lg">
+                    <span className="text-[11px] text-slate-400 flex items-center gap-1 font-medium"><Trees className="w-3 h-3 text-emerald-400" /> Timber</span>
+                    <span className="text-xs font-mono font-bold text-slate-200">
+                      {typeof selectedHex.stockpiles.timber === 'object' ? selectedHex.stockpiles.timber.amount : selectedHex.stockpiles.timber}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between bg-white/[0.01] border border-white/[0.04] p-2 rounded-lg">
+                    <span className="text-[11px] text-slate-400 flex items-center gap-1 font-medium"><Hammer className="w-3 h-3 text-slate-400" /> Iron</span>
+                    <span className="text-xs font-mono font-bold text-slate-200">
+                      {typeof selectedHex.stockpiles.raw_iron === 'object' ? selectedHex.stockpiles.raw_iron.amount : selectedHex.stockpiles.raw_iron}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between bg-white/[0.01] border border-white/[0.04] p-2 rounded-lg">
+                    <span className="text-[11px] text-slate-400 flex items-center gap-1 font-medium"><Apple className="w-3 h-3 text-amber-500" /> Grain</span>
+                    <span className={`text-xs font-mono font-bold ${
+                      (typeof selectedHex.stockpiles.grain === 'object' ? selectedHex.stockpiles.grain.amount : selectedHex.stockpiles.grain) === 0 ? 'text-red-500 font-extrabold' : 'text-slate-200'
+                    }`}>
+                      {typeof selectedHex.stockpiles.grain === 'object' ? selectedHex.stockpiles.grain.amount : selectedHex.stockpiles.grain}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between bg-white/[0.01] border border-white/[0.04] p-2 rounded-lg">
+                    <span className="text-[11px] text-slate-400 flex items-center gap-1 font-medium"><Shield className="w-3 h-3 text-purple-400" /> Steel</span>
+                    <span className="text-xs font-mono font-bold text-slate-200">
+                      {typeof selectedHex.stockpiles.steel === 'object' ? selectedHex.stockpiles.steel.amount : selectedHex.stockpiles.steel}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Society Metrics (Level 2 demographics & happiness) */}
+              <div>
+                <h3 className="section-title flex items-center gap-1.5"><Smile className="w-3.5 h-3.5" /> Society & Demographics</h3>
+                <div className="glass-card flex flex-col gap-3 mt-2">
+                  <div className="flex justify-between items-center text-xs font-medium">
+                    <span className="text-slate-400">Urban Approval (Happy)</span>
+                    <span className={`font-mono font-bold ${
+                      selectedHex.urban_meters.happy_meter < 0.40 ? 'text-red-400 font-extrabold' : 'text-emerald-400'
+                    }`}>{(selectedHex.urban_meters.happy_meter * 100).toFixed(0)}%</span>
+                  </div>
+                  <div className="progress-bar-container">
+                    <div 
+                      className={`progress-bar-fill ${selectedHex.urban_meters.happy_meter < 0.40 ? 'bg-red-500' : 'bg-emerald-500'}`}
+                      style={{ width: `${selectedHex.urban_meters.happy_meter * 100}%` }}
+                    ></div>
+                  </div>
+
+                  <div className="flex justify-between items-center text-xs font-medium mt-1">
+                    <span className="text-slate-400">Socio-Crime Index</span>
+                    <span className="font-mono font-bold text-slate-200">{(selectedHex.urban_meters.crime_rating * 100).toFixed(0)}%</span>
+                  </div>
+                  <div className="progress-bar-container">
+                    <div 
+                      className="progress-bar-fill bg-cyan-500"
+                      style={{ width: `${selectedHex.urban_meters.crime_rating * 100}%` }}
+                    ></div>
+                  </div>
+
+                  <div className="flex items-center justify-between border-t border-white/[0.04] pt-2 mt-2">
+                    <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold flex items-center gap-1"><Users className="w-3 h-3" /> Population Mix</span>
+                    <span className="text-xs font-mono font-bold text-slate-300">
+                      🐻 {selectedHex.demographics.Bears || 0} | 🐺 {selectedHex.demographics.Wolves || 0} | 🐭 {selectedHex.demographics.Mice || 0}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Ground level Citizens (Level 1 parameters) */}
+              <div>
+                <h3 className="section-title flex items-center justify-between gap-1.5">
+                  <span className="flex items-center gap-1.5"><Eye className="w-3.5 h-3.5" /> Ground-Level Citizens (20)</span>
+                  {deepHexData && (
+                    <button 
+                      onClick={() => setShowGroundView(true)}
+                      className="py-1 px-2.5 bg-gradient-to-r from-purple-600 to-pink-600 hover:brightness-110 text-white text-[10px] font-bold rounded uppercase tracking-wider transition duration-200 shadow-md shadow-purple-950/20 flex items-center gap-1 shrink-0"
+                    >
+                      <Sparkles className="w-3 h-3 text-white" /> View Ground Level (2D)
+                    </button>
+                  )}
+                </h3>
+                <div className="citizen-scroll-list mt-2">
+                  {deepHexData ? (
+                    deepHexData.local_entities.map((citizen) => {
+                      const isExpanded = expandedCitizen === citizen.entity_id
+                      const hunger = citizen.metabolic_state.hunger_level
+                      const sanity = citizen.metabolic_state.sanity_score
+                      
+                      // Species Icon
+                      const specIcon = citizen.biological_type === "Bear" ? "🐻" :
+                                      citizen.biological_type === "Mouse" ? "🐭" : "🐺"
+                                      
+                      return (
+                        <div 
+                          key={citizen.entity_id}
+                          className="citizen-card cursor-pointer"
+                        >
+                          <div 
+                            onClick={() => setExpandedCitizen(isExpanded ? null : citizen.entity_id)}
+                            className="flex justify-between items-center"
+                          >
+                            <div className="flex items-center gap-2">
+                              <span className="text-lg">{specIcon}</span>
+                              <div className="flex flex-col">
+                                <span className="text-xs font-bold text-slate-200">{citizen.entity_id.split('_').slice(-2).join('_')}</span>
+                                <span className="text-[10px] text-slate-400 capitalize font-medium">{citizen.profession}</span>
+                              </div>
+                            </div>
+                            
+                            {/* Schedule Status chip */}
+                            <span className={`badge ${
+                              citizen.action_state === "SLEEPING" ? "bg-slate-800 text-slate-400 border-slate-700" :
+                              citizen.action_state === "WORKING" ? "bg-amber-500/10 text-amber-400 border-amber-500/20" :
+                              citizen.action_state === "RELAXING" ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20" :
+                              citizen.action_state === "PRAYING" ? "bg-purple-500/10 text-purple-400 border-purple-500/20" :
+                              citizen.action_state === "EATING" ? "bg-cyan-500/10 text-cyan-400 border-cyan-500/20" : "badge-starving"
+                            }`}>
+                              {citizen.action_state}
+                            </span>
+                          </div>
+
+                          {/* Dynamic Expandable DNA specs */}
+                          {isExpanded && (
+                            <div className="mt-3 pt-3 border-t border-white/[0.04] text-[11px] text-slate-400 flex flex-col gap-3 bg-black/10 p-2 rounded">
+                              <div className="flex justify-between">
+                                <span className="font-semibold text-slate-400">Personality Profile</span>
+                                <span className="text-slate-200 font-mono font-bold">{citizen.dna_profile.personality}</span>
+                              </div>
+                              <div className="flex justify-between">
+                                <span className="font-semibold text-slate-400">Core Interest</span>
+                                <span className="text-slate-200 font-mono font-bold">{citizen.dna_profile.interest}</span>
+                              </div>
+                              <div className="flex justify-between">
+                                <span className="font-semibold text-slate-400">Biological Fears</span>
+                                <span className="text-red-400 font-mono font-bold">{citizen.dna_profile.fears.join(', ')}</span>
+                              </div>
+                              
+                              {/* Phase 7: Read Journal Trigger Button */}
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation()
+                                  fetchCitizenJournal(citizen)
+                                }}
+                                className="w-full flex items-center justify-center gap-1.5 mt-1 py-1.5 px-3 bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/20 hover:border-purple-500/40 text-purple-300 font-semibold rounded text-xs transition duration-200"
+                              >
+                                <BookOpen className="w-3.5 h-3.5" />
+                                Read Journal
+                              </button>
+                            </div>
+                          )}
+
+                          {/* Metabolic meters */}
+                          <div className="grid grid-cols-2 gap-3 mt-3">
+                            <div>
+                              <div className="flex justify-between text-[9px] font-semibold text-slate-400 mb-0.5">
+                                <span>Hunger</span>
+                                <span className={hunger > 80 ? 'text-red-400 font-bold animate-pulse' : 'text-slate-300'}>{hunger}%</span>
+                              </div>
+                              <div className="progress-bar-container">
+                                <div 
+                                  className={`progress-bar-fill ${hunger > 80 ? 'bg-red-500' : 'bg-amber-500'}`}
+                                  style={{ width: `${hunger}%` }}
+                                ></div>
+                              </div>
+                            </div>
+                            <div>
+                              <div className="flex justify-between text-[9px] font-semibold text-slate-400 mb-0.5">
+                                <span>Sanity</span>
+                                <span className="text-slate-300">{(sanity * 100).toFixed(0)}%</span>
+                              </div>
+                              <div className="progress-bar-container">
+                                <div 
+                                  className="progress-bar-fill bg-cyan-400"
+                                  style={{ width: `${sanity * 100}%` }}
+                                ></div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      )
+                    })
+                  ) : (
+                    <div className="p-4 bg-white/[0.015] border border-white/[0.04] rounded-lg text-center text-xs text-slate-500">
+                      Loading ground-level tactical telemetry...
+                    </div>
+                  )}
+                </div>
+              </div>
+
+            </div>
+          ) : (
+            <div className="welcome-overlay">
+              <Compass className="w-8 h-8 text-slate-600 animate-pulse mb-2" />
+              <p className="text-xs font-semibold text-slate-500">Select a hex cell on the tactical map to load regional resources and citizen identities.</p>
+            </div>
+          )}
+
+        </div>
+      </div>
+
+      {/* 3. Phase 7: Narrative Journal Modal Overlay */}
+      {(activeJournal || isJournalLoading) && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-[9999] flex items-center justify-center p-4">
+          <div className="bg-[#0b0e16]/95 border border-white/[0.08] p-8 rounded-2xl max-w-lg w-full shadow-2xl relative flex flex-col gap-6 text-center animate-slide-up">
+            
+            {/* Close trigger */}
+            {!isJournalLoading && (
+              <button 
+                onClick={() => {
+                  setActiveJournal(null)
+                  setJournalCitizen(null)
+                }}
+                className="absolute top-4 right-4 p-1.5 rounded-full bg-white/[0.02] hover:bg-white/[0.08] text-slate-400 hover:text-white transition duration-200 border border-white/[0.05]"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
+
+            {isJournalLoading ? (
+              <div className="py-8 flex flex-col items-center justify-center gap-4">
+                <div className="relative">
+                  <Sparkles className="w-10 h-10 text-purple-400 animate-pulse" />
+                  <Loader2 className="w-14 h-14 text-pink-500 animate-spin absolute -top-2 -left-2 opacity-60" />
+                </div>
+                <div className="flex flex-col gap-1 mt-2">
+                  <p className="text-sm font-bold text-slate-200 tracking-wider">COMMUNING WITH THE AETHER...</p>
+                  <p className="text-[11px] text-slate-400 tracking-widest uppercase">Steering consciousness frequencies</p>
+                </div>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-4 text-left">
+                
+                {/* Modal Header */}
+                <div className="flex items-center gap-3 border-b border-white/[0.06] pb-4">
+                  <span className="text-3xl">
+                    {journalCitizen?.biological_type === "Bear" ? "🐻" :
+                     journalCitizen?.biological_type === "Mouse" ? "🐭" : "🐺"}
+                  </span>
+                  <div className="flex flex-col">
+                    <h3 className="text-sm font-bold text-slate-100 font-mono">
+                      {journalCitizen?.entity_id.split('_').slice(-2).join('_')}
+                    </h3>
+                    <p className="text-xs text-slate-400 capitalize font-medium">
+                      {journalCitizen?.profession} • {journalCitizen?.dna_profile.personality}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Journal Narrative Block */}
+                <div className="py-2">
+                  <p className="text-slate-300 font-serif leading-relaxed italic text-[15px] bg-black/25 border border-white/[0.03] p-4 rounded-xl shadow-inner relative">
+                    <span className="absolute -top-2.5 -left-1 text-4xl text-purple-500/20 font-serif">“</span>
+                    {activeJournal}
+                    <span className="absolute -bottom-6 -right-1 text-4xl text-purple-500/20 font-serif">”</span>
+                  </p>
+                </div>
+
+                {/* Modal Footer / Actions */}
+                <button
+                  onClick={() => {
+                    setActiveJournal(null)
+                    setJournalCitizen(null)
+                  }}
+                  className="w-full mt-2 py-2.5 px-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold rounded-lg text-sm transition duration-200 hover:brightness-110 shadow-lg shadow-purple-900/35"
+                >
+                  Dismiss Entry
+                </button>
+
+              </div>
+            )}
+
+          </div>
+        </div>
+      )}
+
+      {/* 4. Phase 9B: Ground-Level 3D Diorama Modal Overlay */}
+      {showGroundView && selectedHex && deepHexData && (
+        <GroundView 
+          selectedHex={selectedHex}
+          deepHexData={deepHexData}
+          onClose={() => setShowGroundView(false)}
+          onRefresh={() => fetchHexEntities(selectedHex.hex_id)}
+        />
+      )}
+
+      {/* 5. Phase 11: World Settings Panel Modal Overlay */}
+      {showSettings && (
+        <SettingsPanel 
+          onClose={() => setShowSettings(false)}
+        />
+      )}
+
+      {/* 6. Phase 11: World History Chronicle Modal Overlay */}
+      {showChronicle && (
+        <ChronicleLog 
+          onClose={() => setShowChronicle(false)}
+        />
+      )}
+
+    </div>
+  )
+}

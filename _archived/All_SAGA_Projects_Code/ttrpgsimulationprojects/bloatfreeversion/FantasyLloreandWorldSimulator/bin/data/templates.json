@@ -1,0 +1,40 @@
+[
+    {
+        "fields": [
+            {
+                "l": "Description",
+                "t": 0
+            },
+            {
+                "l": "New Field",
+                "t": 0
+            }
+        ],
+        "name": "fauna"
+    },
+    {
+        "fields": [
+            {
+                "l": "Population",
+                "t": 1
+            },
+            {
+                "l": "Color",
+                "t": 3
+            }
+        ],
+        "name": "Faction"
+    },
+    {
+        "fields": [],
+        "name": "New Category"
+    },
+    {
+        "fields": [],
+        "name": "New Category"
+    },
+    {
+        "fields": [],
+        "name": "New Category"
+    }
+]

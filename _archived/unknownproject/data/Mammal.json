@@ -1,0 +1,479 @@
+[
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Ox",
+    "Stat 1": "Might",
+    "Stat 2": "Endurance",
+    "Body Part": "Bovine Anatomy",
+    "Mechanic / Trait": "Includes: Flat Grinding Teeth, Hooves, Horn Stubs, Short Tail."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Stag",
+    "Stat 1": "Endurance",
+    "Stat 2": "Willpower",
+    "Body Part": "Cervid Anatomy",
+    "Mechanic / Trait": "Includes: Antlers (Display), Hooves, Alert Ears, Short Tail."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Ape",
+    "Stat 1": "Finesse",
+    "Stat 2": "Knowledge",
+    "Body Part": "Primate Anatomy",
+    "Mechanic / Trait": "Includes: Opposable Thumbs, Climbing Feet, Flat Teeth, No Tail."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Bear",
+    "Stat 1": "Might",
+    "Stat 2": "Fortitude",
+    "Body Part": "Ursine Anatomy",
+    "Mechanic / Trait": "Includes: Thick Fur, Non-Retractable Claws, Omnivore Teeth, Stub Tail."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Rat",
+    "Stat 1": "Vitality",
+    "Stat 2": "Logic",
+    "Body Part": "Rodent Anatomy",
+    "Mechanic / Trait": "Includes: Gnawing Buck Teeth, Hairless Tail, Whiskers, Paws."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Coon",
+    "Stat 1": "Charm",
+    "Stat 2": "Knowledge",
+    "Body Part": "Bandit Anatomy",
+    "Mechanic / Trait": "Includes: Dexterous Fingers, Night-Mask Fur, Ringed Tail, Paws."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Wolf",
+    "Stat 1": "Endurance",
+    "Stat 2": "Charm",
+    "Body Part": "Canine Anatomy",
+    "Mechanic / Trait": "Includes: Sharp Canines (1d4 Bite), Weather-Fur, Pack-Tail, Paws."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Cat",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Finesse",
+    "Body Part": "Feline Anatomy",
+    "Mechanic / Trait": "Includes: Retractable Claws (Climb only), Balance Tail, Night-Pupils."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Night-Eye",
+    "Stat 1": "Awareness",
+    "Stat 2": "Finesse",
+    "Body Part": "Tapetum Lucidum",
+    "Mechanic / Trait": "Passive: Darkvision (Black & White)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Blood-Scent",
+    "Stat 1": "Intuition",
+    "Stat 2": "Endurance",
+    "Body Part": "Wet Nose",
+    "Mechanic / Trait": "Passive: Scent-Track (Track unseen enemies)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Sonar",
+    "Stat 1": "Awareness",
+    "Stat 2": "Logic",
+    "Body Part": "Swivel Ears",
+    "Mechanic / Trait": "Active: Echolocation (See geometry/invisible in 30ft)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Tremor",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Intuition",
+    "Body Part": "Long Whiskers",
+    "Mechanic / Trait": "Passive: Vibration Sense (Detect ground movement 30ft)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Thermal",
+    "Stat 1": "Logic",
+    "Stat 2": "Knowledge",
+    "Body Part": "Pit Organs",
+    "Mechanic / Trait": "Passive: Heat-Sight (Spot living targets in fog/dark)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Eagle-Eye",
+    "Stat 1": "Awareness",
+    "Stat 2": "Charm",
+    "Body Part": "Fovea Lens",
+    "Mechanic / Trait": "Passive: Telescopic Vision (See detail at 1 mile)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Expressive",
+    "Stat 1": "Charm",
+    "Stat 2": "Intuition",
+    "Body Part": "Mobile Brow",
+    "Mechanic / Trait": "Passive: Empathy (Advantage on Insight/Social)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Scholar",
+    "Stat 1": "Knowledge",
+    "Stat 2": "Logic",
+    "Body Part": "Cranial Ridge",
+    "Mechanic / Trait": "Passive: Recall (Perfect memory)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Slasher",
+    "Stat 1": "Finesse",
+    "Stat 2": "Reflexes",
+    "Body Part": "Retractable Claws",
+    "Mechanic / Trait": "Active: Rend (Apply Bleed 1d4/turn)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Crusher",
+    "Stat 1": "Might",
+    "Stat 2": "Fortitude",
+    "Body Part": "Heavy Paws",
+    "Mechanic / Trait": "Active: Maul (Crit hits Stun target)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Grappler",
+    "Stat 1": "Might",
+    "Stat 2": "Endurance",
+    "Body Part": "Opposable Thumbs",
+    "Mechanic / Trait": "Active: Choke-Slam (Throw target Prone + Dmg)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Digger",
+    "Stat 1": "Might",
+    "Stat 2": "Logic",
+    "Body Part": "Shovel Claws",
+    "Mechanic / Trait": "Active: Tunnel-Strike (Burrow & Attack)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Piercer",
+    "Stat 1": "Finesse",
+    "Stat 2": "Vitality",
+    "Body Part": "Needle Fangs",
+    "Mechanic / Trait": "Active: Latch-On (Grapple with auto-bite dmg)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Breaker",
+    "Stat 1": "Might",
+    "Stat 2": "Willpower",
+    "Body Part": "Iron Hooves",
+    "Mechanic / Trait": "Active: Sunder (Ignore Shield AC / Break Objects)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Tinkerer",
+    "Stat 1": "Finesse",
+    "Stat 2": "Knowledge",
+    "Body Part": "Dexterous Digits",
+    "Mechanic / Trait": "Active: Sabotage (Disarm traps/devices as Bonus)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Climber",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Might",
+    "Body Part": "Hooked Talons",
+    "Mechanic / Trait": "Passive: Wall-Climb (Climb Speed = Walk Speed)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Sprinter",
+    "Stat 1": "Endurance",
+    "Stat 2": "Reflexes",
+    "Body Part": "Fast-Twitch Muscle",
+    "Mechanic / Trait": "Active: Dash (Move 3x Speed in straight line)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Jumper",
+    "Stat 1": "Might",
+    "Stat 2": "Finesse",
+    "Body Part": "Spring Tendons",
+    "Mechanic / Trait": "Active: Bound (Jump distance tripled)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Climber",
+    "Stat 1": "Finesse",
+    "Stat 2": "Reflexes",
+    "Body Part": "Reversible Ankles",
+    "Mechanic / Trait": "Passive: Scramble (Hang upside down / Descent)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Swimmer",
+    "Stat 1": "Vitality",
+    "Stat 2": "Endurance",
+    "Body Part": "Webbed Digits",
+    "Mechanic / Trait": "Passive: Mariner (Swim Speed = Walk, Hold Breath)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Stomper",
+    "Stat 1": "Might",
+    "Stat 2": "Fortitude",
+    "Body Part": "Pillar Legs",
+    "Mechanic / Trait": "Active: Tremor-Stomp (AOE Knockdown 5ft)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Silent",
+    "Stat 1": "Finesse",
+    "Stat 2": "Intuition",
+    "Body Part": "Padded Soles",
+    "Mechanic / Trait": "Passive: Ghost-Walk (0 sound on stone/wood)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Stabilizer",
+    "Stat 1": "Willpower",
+    "Stat 2": "Might",
+    "Body Part": "Split Hooves",
+    "Mechanic / Trait": "Passive: Sure-Foot (Immune to Knockdown/Slip)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Hauler",
+    "Stat 1": "Endurance",
+    "Stat 2": "Might",
+    "Body Part": "Locking Joints",
+    "Mechanic / Trait": "Passive: Beast of Burden (Double Carry Capacity)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Armored",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Willpower",
+    "Body Part": "Bone Plating",
+    "Mechanic / Trait": "Passive: Shell (+2 Natural AC, Heavy)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Insulated",
+    "Stat 1": "Endurance",
+    "Stat 2": "Vitality",
+    "Body Part": "Dense Wool",
+    "Mechanic / Trait": "Passive: Winter-Coat (Resist Cold/Fire)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Slick",
+    "Stat 1": "Finesse",
+    "Stat 2": "Reflexes",
+    "Body Part": "Oily Fur",
+    "Mechanic / Trait": "Passive: Greased (Advantage vs Grapples/Nets)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Spiked",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Might",
+    "Body Part": "Quill-Coat",
+    "Mechanic / Trait": "Passive: Barbed (Grapplers take 1d4 Dmg)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Camouflaged",
+    "Stat 1": "Intuition",
+    "Stat 2": "Finesse",
+    "Body Part": "Chroma-Fur",
+    "Mechanic / Trait": "Passive: Blend (+5 Stealth when stationary)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Elastic",
+    "Stat 1": "Vitality",
+    "Stat 2": "Reflexes",
+    "Body Part": "Loose Skin",
+    "Mechanic / Trait": "Passive: Roll (Resist Bludgeoning/Fall Dmg)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Scarred",
+    "Stat 1": "Willpower",
+    "Stat 2": "Endurance",
+    "Body Part": "Calloused Hide",
+    "Mechanic / Trait": "Passive: Pain-Dead (Ignore wound penalties)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Aquatic",
+    "Stat 1": "Vitality",
+    "Stat 2": "Endurance",
+    "Body Part": "Blubber Layer",
+    "Mechanic / Trait": "Passive: Deep-Dive (Resist Pressure/Cold Water)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Chemical",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Logic",
+    "Body Part": "Musk Glands",
+    "Mechanic / Trait": "Active: Spray (Cone: Blindness/Nausea)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Utility",
+    "Stat 1": "Finesse",
+    "Stat 2": "Knowledge",
+    "Body Part": "Prehensile Tail",
+    "Mechanic / Trait": "Active: Third Hand (Interact/Reload as Bonus)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Flight",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Vitality",
+    "Body Part": "Skin Flaps",
+    "Mechanic / Trait": "Active: Glide (Negate fall dmg, Travel)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Social",
+    "Stat 1": "Charm",
+    "Stat 2": "Willpower",
+    "Body Part": "Resonance Throat",
+    "Mechanic / Trait": "Active: Bellow (AOE Fear or Rally)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Venom",
+    "Stat 1": "Logic",
+    "Stat 2": "Endurance",
+    "Body Part": "Toxic Sacs",
+    "Mechanic / Trait": "Active: Poison-Coat (Lick weapon to poison)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Storage",
+    "Stat 1": "Endurance",
+    "Stat 2": "Might",
+    "Body Part": "Cheek Pouches",
+    "Mechanic / Trait": "Passive: Cache (Hide items in throat)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Signal",
+    "Stat 1": "Charm",
+    "Stat 2": "Charm",
+    "Body Part": "Tail Flag",
+    "Mechanic / Trait": "Active: Rally (Grant Ally +1d4 on next roll)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Balance",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Finesse",
+    "Body Part": "Counter-Tail",
+    "Mechanic / Trait": "Passive: Tightrope (Advantage on Acrobatics)."
+  },
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 1",
+    "Option Name": "Tiny",
+    "Bio": "+2 Reflex, +1 Finesse",
+    "Head": "-2 Might, -1 Vitality",
+    "Body Part": "Small Frame",
+    "Mechanic / Trait": "Squeeze: Move through 4-inch gaps. +Advantage on Stealth."
+  },
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 2",
+    "Option Name": "Small",
+    "Bio": "+1 Reflex",
+    "Head": "-1 Might",
+    "Body Part": "Light Frame",
+    "Mechanic / Trait": "Lightweight: Trigger no pressure plates. Fall damage halved."
+  },
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 3",
+    "Option Name": "Medium",
+    "Bio": "None",
+    "Head": "None",
+    "Body Part": "Balanced Frame",
+    "Mechanic / Trait": "Standard: No penalties. Can use standard gear."
+  },
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 4",
+    "Option Name": "Large",
+    "Bio": "+1 Might",
+    "Head": "-1 Reflex",
+    "Body Part": "Heavy Frame",
+    "Mechanic / Trait": "Bulk: You provide Full Cover to allies. Cannot be Shoved by Medium creatures."
+  },
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 5",
+    "Option Name": "Huge",
+    "Bio": "+2 Might, +1 Vitality",
+    "Head": "-2 Reflex, -1 Finesse",
+    "Body Part": "Siege Frame",
+    "Mechanic / Trait": "Siege: Deal double damage to structures. You occupy a 10ft x 10ft space."
+  }
+]

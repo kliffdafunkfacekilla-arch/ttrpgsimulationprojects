@@ -1,0 +1,61 @@
+{
+    "Name": "Kog Viomuth",
+    "Type": "People",
+    "Appearance": {
+        "Height": null,
+        "Weight": null,
+        "Description": "Monitor Lizard-Kin with thick, Midnight Blue/Purple scales",
+        "Features": {
+            "Scar": {
+                "Location": "Left eye",
+                "Description": "Milk-white vertical scar with heightened heat vision"
+            },
+            "Goggles": {
+                "Description": "Custom-made Forge Goggles with dark glass and magnifying lenses"
+            },
+            "Tail": {
+                "Description": "Powerful auxiliary limb with pale yellow/ivory diamond-shaped spines"
+            }
+        },
+        "Clothing": {
+            "Apron": {
+                "Description": "Charred, stiff, heat-resistant leather apron with screwdrivers and tools"
+            }
+        },
+        "Accessories": {
+            "Wrench": {
+                "Description": "Large adjustable wrench with hammer-head"
+            },
+            "Measuring Stick": {
+                "Description": "Folding measuring stick"
+            },
+            "Chemistry Set": {
+                "Description": "Glass chemistry set for brewing glues and patch-tapes"
+            }
+        }
+    },
+    "Abilities": {
+        "Thermal Comfort": {
+            "Description": "Can tolerate extreme heat"
+        },
+        "Structural Diagnosis": {
+            "Description": "Can diagnose structural issues without tools"
+        }
+    },
+    "Weaknesses": {
+        "Visual Limitations": {
+            "Description": "Blind spot on left side and vulnerable to bright light"
+        },
+        "The 'Nobility' Trigger": {
+            "Description": "Prone to offending those with undeserved power"
+        }
+    },
+    "Traits": {
+        "Outspoken Nature": {
+            "Description": "No concept of social etiquette"
+        },
+        "Taste": {
+            "Description": "Detects metallic tangs and radiation leaks"
+        }
+    }
+}

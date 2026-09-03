@@ -1,0 +1,509 @@
+import React, { useMemo } from 'react'
+import seedrandom from 'seedrandom'
+import { Shield, Sparkles, Eye, X } from 'lucide-react'
+
+// Faction HSL color mapper to match Leaflet map signatures
+const getFactionHexColor = (factionId) => {
+  switch (factionId) {
+    case 'Heartland_Alliance':
+      return '#3b82f6' // Alliance Blue
+    case 'Ursine_Hegemony':
+      return '#22c55e' // Hegemony Green
+    case 'Aetheric_Enclave':
+      return '#a855f7' // Enclave Purple
+    case 'Wildlands_Tribes':
+      return '#f97316' // Tribes Orange
+    default:
+      return '#64748b' // Slate Wilderness Gray
+  }
+}
+
+export default function GroundView({ selectedHex, deepHexData, onClose }) {
+  const { elevation, moisture, faction_id, stockpiles } = selectedHex
+  const factionColor = getFactionHexColor(faction_id)
+
+  const gridSize = 20
+  const hexSeed = selectedHex.hex_id || selectedHex.properties?.hex_id || "default_seed"
+
+  // 1. Procedural Biome Classification
+  const biome = useMemo(() => {
+    if (elevation >= 0.7) return 'mountain'
+    if (moisture >= 0.7) return 'swamp'
+    if (moisture >= 0.4) return 'forest'
+    if (moisture >= 0.2) return 'grassland'
+    return 'desert'
+  }, [elevation, moisture])
+
+  // 2. Deterministic central building coordinates using hex ID seed
+  const buildingsLayout = useMemo(() => {
+    const rng = seedrandom(hexSeed + "_buildings")
+    
+    // Pick locations near center that won't overlap
+    // Silo (Top-Left quadrant of center): (7, 7) or (7, 8) or (8, 7)
+    const siloX = 7 + Math.floor(rng() * 2)
+    const siloY = 7 + Math.floor(rng() * 2)
+
+    // Lumber Mill (Top-Right quadrant of center): (11, 7) or (12, 7) or (12, 8)
+    const lumberX = 11 + Math.floor(rng() * 2)
+    const lumberY = 7 + Math.floor(rng() * 2)
+
+    // Barracks (Bottom-Left quadrant of center): (7, 11) or (7, 12) or (8, 12)
+    const barracksX = 7 + Math.floor(rng() * 2)
+    const barracksY = 11 + Math.floor(rng() * 2)
+
+    return {
+      silo: { x: siloX, y: siloY },
+      lumber: { x: lumberX, y: lumberY },
+      barracks: { x: barracksX, y: barracksY }
+    }
+  }, [hexSeed])
+
+  // 3. Procedurally Generate 20x20 Grid Cells with seedrandom
+  const gridCells = useMemo(() => {
+    const rng = seedrandom(hexSeed + "_terrain")
+    const cells = []
+
+    for (let y = 0; y < gridSize; y++) {
+      for (let x = 0; x < gridSize; x++) {
+        const isEdge = x === 0 || x === gridSize - 1 || y === 0 || y === gridSize - 1
+        let type = 'ground'
+        let subType = 'grass'
+        let content = null // For trees, rocks, shrubs, etc.
+
+        // Determine ground color class & details
+        if (biome === 'mountain') {
+          subType = 'stone'
+          if (isEdge && rng() > 0.4) {
+            content = 'rock'
+          } else if (rng() > 0.95) {
+            content = 'rock'
+          }
+        } else if (biome === 'swamp') {
+          subType = 'mud'
+          if (isEdge && rng() > 0.3) {
+            content = 'dead_tree'
+          } else if (rng() > 0.92) {
+            content = 'water_puddle'
+          }
+        } else if (biome === 'forest') {
+          subType = 'lush'
+          if (isEdge && rng() > 0.2) {
+            content = 'pine_tree'
+          } else if (rng() > 0.9) {
+            content = 'pine_tree'
+          }
+        } else if (biome === 'grassland') {
+          subType = 'grass'
+          if (isEdge && rng() > 0.7) {
+            content = 'bush'
+          } else if (rng() > 0.95) {
+            content = 'flower'
+          }
+        } else {
+          subType = 'sand'
+          if (isEdge && rng() > 0.7) {
+            content = 'cactus'
+          } else if (rng() > 0.97) {
+            content = 'dune'
+          }
+        }
+
+        // Reserve Center Area from receiving random vegetation
+        const inCenterRange = x >= 6 && x <= 13 && y >= 6 && y <= 13
+        if (inCenterRange) {
+          content = null
+        }
+
+        // Central Infrastructure Placements using pre-calculated seeded coordinates
+        if (x === 10 && y === 10) {
+          type = 'town_hall'
+        } else if (stockpiles.grain > 10 && x === buildingsLayout.silo.x && y === buildingsLayout.silo.y) {
+          type = 'silo'
+        } else if (stockpiles.timber > 10 && x === buildingsLayout.lumber.x && y === buildingsLayout.lumber.y) {
+          type = 'lumber_mill'
+        } else if (stockpiles.steel > 10 && x === buildingsLayout.barracks.x && y === buildingsLayout.barracks.y) {
+          type = 'barracks'
+        }
+
+        cells.push({ x, y, type, subType, content })
+      }
+    }
+    return cells
+  }, [biome, stockpiles, hexSeed, buildingsLayout])
+
+  // 4. Map Citizens to Absolutely Positioned Coordinates on the Grid using seedrandom
+  const citizenSprites = useMemo(() => {
+    if (!deepHexData || !deepHexData.local_entities) return []
+    const rng = seedrandom(hexSeed + "_citizens")
+    const sprites = []
+
+    deepHexData.local_entities.forEach((cit, idx) => {
+      let targetX = 10
+      let targetY = 10
+
+      // Placement based on active schedule state
+      if (cit.action_state === "SLEEPING" || cit.action_state === "RESTING" || cit.action_state === "RELAXING") {
+        // Sleep/Rest in the outer corner residential areas (permanently deterministic)
+        const quarters = [
+          { x: 3, y: 3 },
+          { x: 3, y: 16 },
+          { x: 16, y: 3 },
+          { x: 16, y: 16 }
+        ]
+        const corner = quarters[idx % 4]
+        targetX = corner.x
+        targetY = corner.y
+      } else if (cit.action_state === "WORKING") {
+        // Position near active resources
+        if (stockpiles.timber > 10 && idx % 2 === 0) {
+          targetX = buildingsLayout.lumber.x
+          targetY = buildingsLayout.lumber.y + 1
+        } else if (stockpiles.grain > 10) {
+          targetX = buildingsLayout.silo.x
+          targetY = buildingsLayout.silo.y + 1
+        } else {
+          targetX = 9
+          targetY = 10
+        }
+      } else if (cit.action_state === "EATING" || cit.metabolic_state.hunger_level > 70) {
+        // Position at the Silo granary
+        if (stockpiles.grain > 10) {
+          targetX = buildingsLayout.silo.x
+          targetY = buildingsLayout.silo.y - 1
+        } else {
+          targetX = 10
+          targetY = 9
+        }
+      } else if (cit.action_state === "PRAYING") {
+        // Position clustered at the Town Hall center
+        targetX = 10
+        targetY = 12
+      } else {
+        // Random deterministic organic wander
+        targetX = 4 + Math.floor(rng() * 12)
+        targetY = 4 + Math.floor(rng() * 12)
+      }
+
+      // Add a slight micro offset to prevent sprites stacking directly
+      const offsetX = (rng() - 0.5) * 0.5
+      const offsetY = (rng() - 0.5) * 0.5
+
+      sprites.push({
+        citizen: cit,
+        gridX: targetX + offsetX,
+        gridY: targetY + offsetY
+      })
+    })
+
+    return sprites
+  }, [deepHexData, stockpiles, hexSeed, buildingsLayout])
+
+  // Helper to color code citizen sprites
+  const getCitizenColor = (biologicalType) => {
+    switch (biologicalType) {
+      case 'Bear':
+        return '#854d0e' // Rich Brown
+      case 'Wolf':
+        return '#1e3a8a' // Dark Blue
+      case 'Mouse':
+        return '#94a3b8' // Slate Grey
+      default:
+        return '#cbd5e1'
+    }
+  }
+
+  // Get tile visual class/content
+  const renderTileContent = (cell) => {
+    if (cell.type === 'town_hall') {
+      return (
+        <div 
+          className="w-full h-full border-2 border-white/20 rounded flex items-center justify-center font-bold text-[10px] text-white shadow-lg animate-pulse"
+          style={{ backgroundColor: factionColor }}
+        >
+          🏰
+        </div>
+      )
+    }
+    if (cell.type === 'silo') {
+      return (
+        <div className="w-full h-full bg-[#4a5568] border border-[#2d3748] rounded flex items-center justify-center text-xs shadow-md">
+          🌾
+        </div>
+      )
+    }
+    if (cell.type === 'lumber_mill') {
+      return (
+        <div className="w-full h-full bg-[#8b5a2b] border border-[#5c4033] rounded flex items-center justify-center text-xs shadow-md">
+          🪓
+        </div>
+      )
+    }
+    if (cell.type === 'barracks') {
+      return (
+        <div className="w-full h-full bg-[#1e293b] border-2 border-red-950 rounded flex items-center justify-center text-xs shadow-md">
+          🛡️
+        </div>
+      )
+    }
+
+    // Edge items
+    switch (cell.content) {
+      case 'pine_tree':
+        return <span className="text-sm select-none">🌲</span>
+      case 'dead_tree':
+        return <span className="text-sm select-none">🪵</span>
+      case 'rock':
+        return <span className="text-xs select-none">🪨</span>
+      case 'bush':
+        return <span className="text-[10px] select-none">🌿</span>
+      case 'flower':
+        return <span className="text-[10px] select-none">🌸</span>
+      case 'cactus':
+        return <span className="text-xs select-none">🌵</span>
+      case 'water_puddle':
+        return <span className="text-xs select-none">💧</span>
+      default:
+        return null
+    }
+  }
+
+  const getTileBgClass = (subType) => {
+    switch (subType) {
+      case 'stone':
+        return 'bg-[#2d3748] border border-[#1a202c]/40'
+      case 'mud':
+        return 'bg-[#2b1d14] border border-[#1b120c]/40'
+      case 'lush':
+        return 'bg-[#0f2e1a] border border-[#091b0f]/40'
+      case 'sand':
+        return 'bg-[#66533c] border border-[#483927]/40'
+      default:
+        return 'bg-[#183923] border border-[#102717]/40' // standard grass
+    }
+  }
+
+  return (
+    <div className="fixed inset-0 bg-[#06080d]/99 backdrop-blur-xl z-[99999] flex flex-col md:flex-row overflow-hidden animate-fade-in font-sans">
+      
+      {/* Dynamic Style injection for retro pixel grid and tooltips */}
+      <style dangerouslySetInnerHTML={{__html: `
+        .ground-grid {
+          display: grid;
+          grid-template-columns: repeat(20, minmax(0, 1fr));
+          grid-template-rows: repeat(20, minmax(0, 1fr));
+        }
+        .ground-tile {
+          image-rendering: pixelated;
+          transition: filter 0.15s ease;
+        }
+        .ground-tile:hover {
+          filter: brightness(1.2);
+        }
+        .citizen-sprite {
+          transform: translate(-50%, -50%);
+          box-shadow: 0 0 6px rgba(0,0,0,0.8);
+          animation: spriteFloat 1.8s ease-in-out infinite alternate;
+        }
+        @keyframes spriteFloat {
+          0% { margin-top: 0; }
+          100% { margin-top: -2px; }
+        }
+        .retro-tooltip {
+          visibility: hidden;
+          opacity: 0;
+          transition: opacity 0.15s ease, visibility 0.15s ease;
+        }
+        .citizen-dot:hover .retro-tooltip {
+          visibility: visible;
+          opacity: 1;
+        }
+      `}} />
+
+      {/* A. 2D Retro Map Grid Viewport */}
+      <div className="flex-1 relative h-[65vh] md:h-full flex items-center justify-center p-6 bg-black/40 border-r border-white/[0.04]">
+        
+        {/* Main Grid Wrapper */}
+        <div className="relative w-full max-w-[640px] aspect-square rounded-xl overflow-hidden border-4 border-slate-800 shadow-2xl bg-slate-950 flex flex-col">
+          
+          {/* Tile Grid */}
+          <div className="ground-grid w-full h-full relative">
+            {gridCells.map((cell, idx) => (
+              <div 
+                key={idx} 
+                className={`ground-tile w-full h-full flex items-center justify-center select-none ${getTileBgClass(cell.subType)}`}
+              >
+                {renderTileContent(cell)}
+              </div>
+            ))}
+
+            {/* Overlay Citizens sprites layer */}
+            {citizenSprites.map((sprite, idx) => {
+              const cit = sprite.citizen
+              const leftPercent = (sprite.gridX / gridSize) * 100
+              const topPercent = (sprite.gridY / gridSize) * 100
+              const citizenColor = getCitizenColor(cit.biological_type)
+              
+              // Icon tag
+              const specIcon = cit.biological_type === "Bear" ? "🐻" :
+                              cit.biological_type === "Mouse" ? "🐭" : "🐺"
+
+              return (
+                <div 
+                  key={cit.entity_id}
+                  className="citizen-dot absolute w-4 h-4 rounded-full flex items-center justify-center cursor-pointer z-50 citizen-sprite"
+                  style={{ 
+                    left: `${leftPercent}%`, 
+                    top: `${topPercent}%`, 
+                    backgroundColor: citizenColor,
+                    border: '1.5px solid #fff'
+                  }}
+                >
+                  <span className="text-[8px] mt-0.5">{specIcon}</span>
+
+                  {/* Pixelated Hover Tooltip */}
+                  <div className="retro-tooltip absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-48 bg-[#0b0e16]/98 border border-white/[0.12] p-3 rounded-lg shadow-2xl text-[10px] text-slate-300 z-[999] pointer-events-none flex flex-col gap-2 font-mono">
+                    <div className="flex justify-between border-b border-white/[0.08] pb-1">
+                      <span className="font-bold text-slate-200">{cit.entity_id.split('_').slice(-2).join('_')}</span>
+                      <span className="text-[8px] font-bold text-slate-400 capitalize">{cit.profession}</span>
+                    </div>
+                    <div className="flex flex-col gap-1">
+                      <div className="flex justify-between">
+                        <span className="text-slate-500">Action:</span>
+                        <span className="text-emerald-400 font-bold">{cit.action_state}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-slate-500">Sanity:</span>
+                        <span className="text-cyan-400">{(cit.metabolic_state.sanity_score * 100).toFixed(0)}%</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-slate-500">Hunger:</span>
+                        <span className={`font-bold ${cit.metabolic_state.hunger_level > 80 ? 'text-red-400 animate-pulse' : 'text-slate-300'}`}>
+                          {cit.metabolic_state.hunger_level}%
+                        </span>
+                      </div>
+                    </div>
+                    <div className="border-t border-white/[0.08] pt-1 text-[8px] text-slate-500 italic">
+                      "{cit.dna_profile.personality}"
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
+        </div>
+
+        {/* Back to Macro Map Trigger */}
+        <button 
+          onClick={onClose}
+          className="absolute top-4 right-4 py-2 px-3.5 bg-red-950 hover:bg-red-900 border border-red-800 text-red-200 font-bold rounded-lg text-xs transition duration-200 shadow-lg flex items-center gap-1.5 z-50 uppercase tracking-wider font-mono"
+        >
+          <X className="w-3.5 h-3.5" /> Back to Macro Map
+        </button>
+      </div>
+
+      {/* B. Glassmorphism Diorama Sidebar Console */}
+      <div className="w-full md:w-[380px] bg-[#080b11]/98 flex flex-col max-h-[35vh] md:max-h-full overflow-y-auto shrink-0 relative p-6 border-t md:border-t-0 border-white/[0.05]">
+        
+        {/* Region Header */}
+        <div className="flex flex-col border-b border-white/[0.06] pb-4 mb-4">
+          <div className="flex justify-between items-center">
+            <h2 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500">{selectedHex.hex_id}</h2>
+            <span className="text-[10px] text-emerald-400 font-bold uppercase tracking-widest flex items-center gap-1">
+              <Sparkles className="w-3 h-3 text-emerald-400 animate-pulse" /> Persistent
+            </span>
+          </div>
+          <h1 className="text-lg font-black text-slate-100 tracking-tight mt-1 flex items-center gap-1.5 uppercase font-mono">
+            <Shield className="w-5 h-5 text-purple-500" /> RPG Ground View
+          </h1>
+        </div>
+
+        {/* Legend stats */}
+        <div className="flex flex-col gap-4">
+          
+          {/* Map Overview details */}
+          <div className="bg-white/[0.015] border border-white/[0.04] p-4 rounded-xl flex flex-col gap-3">
+            <h3 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1">
+              <Eye className="w-3.5 h-3.5 text-purple-400" /> Region Details
+            </h3>
+            
+            <div className="flex flex-col gap-2.5 text-xs text-slate-300">
+              <div className="flex justify-between items-center">
+                <span className="text-slate-400 flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded bg-[#854d0e] border border-white/20" /> Bear Citizens
+                </span>
+                <span className="font-mono text-slate-400 font-semibold">{selectedHex.demographics.Bears || 0}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-400 flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded bg-[#1e3a8a] border border-white/20" /> Wolf Citizens
+                </span>
+                <span className="font-mono text-slate-400 font-semibold">{selectedHex.demographics.Wolves || 0}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-400 flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded bg-[#94a3b8] border border-white/20" /> Mouse Citizens
+                </span>
+                <span className="font-mono text-slate-400 font-semibold">{selectedHex.demographics.Mice || 0}</span>
+              </div>
+              
+              <div className="border-t border-white/[0.04] pt-2.5 mt-0.5 flex flex-col gap-2.5">
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-400 flex items-center gap-1.5">
+                    🏰 Faction Control
+                  </span>
+                  <span className="font-semibold text-slate-300 capitalize font-mono" style={{ color: factionColor }}>
+                    {selectedHex.faction_id ? selectedHex.faction_id.replace('_', ' ') : "Neutral Wilderness"}
+                  </span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-400 flex items-center gap-1.5">
+                    🌾 Grain Silo
+                  </span>
+                  <span className="font-semibold text-slate-400">{stockpiles.grain > 10 ? `Rendered (${buildingsLayout.silo.x}, ${buildingsLayout.silo.y})` : "0 (Low Stock)"}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-400 flex items-center gap-1.5">
+                    🪓 Lumber Mill
+                  </span>
+                  <span className="font-semibold text-slate-400">{stockpiles.timber > 10 ? `Rendered (${buildingsLayout.lumber.x}, ${buildingsLayout.lumber.y})` : "0 (Low Stock)"}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-slate-400 flex items-center gap-1.5">
+                    🛡️ Weapons Barracks
+                  </span>
+                  <span className="font-semibold text-slate-400">{stockpiles.steel > 10 ? `Rendered (${buildingsLayout.barracks.x}, ${buildingsLayout.barracks.y})` : "0 (Low Stock)"}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Environmental metrics */}
+          <div className="bg-white/[0.01] border border-white/[0.03] p-4 rounded-xl flex flex-col gap-2.5 text-xs text-slate-400">
+            <h3 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Procedural Geography</h3>
+            <div className="flex justify-between mt-1">
+              <span>Classified Biome:</span>
+              <span className="text-slate-300 font-semibold uppercase font-mono">{biome}</span>
+            </div>
+            <div className="flex justify-between">
+              <span>Elevation Metric:</span>
+              <span className="text-slate-300 font-semibold font-mono">{(elevation * 1000).toFixed(0)}m</span>
+            </div>
+            <div className="flex justify-between">
+              <span>Moisture Rating:</span>
+              <span className="text-slate-300 font-semibold font-mono">{(moisture * 100).toFixed(0)}%</span>
+            </div>
+          </div>
+
+          {/* Tactic Guide info */}
+          <div className="text-[10px] text-slate-500 leading-relaxed italic bg-black/20 p-3 rounded-lg border border-white/[0.03]">
+            💡 Seeded PRNG ensures that structures, terrain details, and foliage densities are rigidly persistent for this exact location coordinate.
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  )
+}

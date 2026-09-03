@@ -1,0 +1,102 @@
+[
+  {
+    "Stat_ID": "HP",
+    "Full_Name": "Hit Points (Meat)",
+    "Base_Value": "10",
+    "Attribute_A": "Might",
+    "Attribute_B": "Refflexes",
+    "Attribute_C": "Vitality",
+    "Formula_Logic": "Base + A + B  + C",
+    "Description": "Physical health. If 0, you are Dying."
+  },
+  {
+    "Stat_ID": "CMP",
+    "Full_Name": "Composure",
+    "Base_Value": "10",
+    "Attribute_A": "Willpower",
+    "Attribute_B": "Logic",
+    "Attribute_C": "Awareness",
+    "Formula_Logic": "Base + A + B  + C",
+    "Description": "Mental health. If 0, you are Broken (Panic/Surrender)."
+  },
+  {
+    "Stat_ID": "SP",
+    "Full_Name": "Stamina Points",
+    "Base_Value": "0",
+    "Attribute_A": "Endurance",
+    "Attribute_B": "Finesse",
+    "Attribute_C": "Fortitude",
+    "Formula_Logic": "A + B + C",
+    "Description": "Fuel for Physical Abilities and special attacks."
+  },
+  {
+    "Stat_ID": "FP",
+    "Full_Name": "Focus Points",
+    "Base_Value": "0",
+    "Attribute_A": "Knowledge",
+    "Attribute_B": "Charm",
+    "Attribute_C": "Intuition",
+    "Formula_Logic": "A + B + C",
+    "Description": "Fuel for Spells and Mental Abilities."
+  },
+  {
+    "Stat_ID": "ALT",
+    "Full_Name": "Alertness",
+    "Base_Value": "0",
+    "Attribute_A": "Intuition",
+    "Attribute_B": "Reflex",
+    "Attribute_C": "-",
+    "Formula_Logic": "A + B ",
+    "Description": "Combat turn order."
+  },
+  {
+    "Stat_ID": "SPD",
+    "Full_Name": "Move Speed",
+    "Base_Value": "0",
+    "Attribute_A": "Vitality",
+    "Attribute_B": "Willpower",
+    "Attribute_C": "-",
+    "Formula_Logic": "A + B ruond up tonearest multiple of  5",
+    "Description": "Movement in feet per turn."
+  },
+  {
+    "Stat_ID": "CAMO",
+    "Full_Name": "Stealth",
+    "Base_Value": "0",
+    "Attribute_A": "Finesse",
+    "Attribute_B": "Awareness",
+    "Attribute_C": "-",
+    "Formula_Logic": "(A+B )",
+    "Description": "your stealth floor wont be seen if not moving"
+  },
+  {
+    "Stat_ID": "CACHE",
+    "Full_Name": "Carry Cap.",
+    "Base_Value": "2",
+    "Attribute_A": "Might",
+    "Attribute_B": "Knowledge",
+    "Attribute_C": "-",
+    "Formula_Logic": "((A+B)/10) + base",
+    "Description": "pockets or slots for quick items"
+  },
+  {
+    "Stat_ID": "THERM",
+    "Full_Name": "Temp Regulation",
+    "Base_Value": "0",
+    "Attribute_A": "Endurance",
+    "Attribute_B": "Logic",
+    "Attribute_C": "-",
+    "Formula_Logic": "(A+B)/5",
+    "Description": "the range out of you comfort zone you can handle"
+  },
+  {
+    "Stat_ID": "HYDRO",
+    "Full_Name": "Drought Sensitivity",
+    "Base_Value": "0",
+    "Attribute_A": "Fortitude",
+    "Attribute_B": "Charm",
+    "Attribute_C": "-",
+    "Formula_Logic": "(A+B)/5",
+    "Description": "the range out of you comfort zone you can handle"
+  }
+]

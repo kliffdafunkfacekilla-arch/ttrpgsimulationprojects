@@ -1,0 +1,290 @@
+[
+  {
+    "Attribute": "MIGHT",
+    "Type": "Weapon",
+    "Skill Name": "Great Weapons",
+    "Description": "Mastery of heavy impact weapons like greatswords and mauls."
+  },
+  {
+    "Attribute": "MIGHT",
+    "Type": "Weapon",
+    "Skill Name": "The Ballistics",
+    "Description": "Mastery of high-draw-weight ranged weapons like warbows and ballistae."
+  },
+  {
+    "Attribute": "MIGHT",
+    "Type": "Social",
+    "Skill Name": "Intimidation",
+    "Description": "Using physical presence and threats of violence to force compliance."
+  },
+  {
+    "Attribute": "MIGHT",
+    "Type": "Utility",
+    "Skill Name": "Athletics",
+    "Description": "Action: Swimming, climbing, breaking objects. Lore: War tactics and sieges."
+  },
+  {
+    "Attribute": "ENDURANCE",
+    "Type": "Armor",
+    "Skill Name": "Heavy",
+    "Description": "Mastery of full plate and heavy chitin armor. You are the anvil."
+  },
+  {
+    "Attribute": "ENDURANCE",
+    "Type": "Tool",
+    "Skill Name": "Shield",
+    "Description": "Mastery of bucklers, heaters, and tower shields for active cover and bashing."
+  },
+  {
+    "Attribute": "ENDURANCE",
+    "Type": "Social",
+    "Skill Name": "Stoicism",
+    "Description": "Mastery of the ego. Remaining unbothered by insults, pain, or fear."
+  },
+  {
+    "Attribute": "ENDURANCE",
+    "Type": "Utility",
+    "Skill Name": "Labor",
+    "Description": "Action: Sustained heavy work, carrying loads. Lore: Structure and masonry."
+  },
+  {
+    "Attribute": "FINESSE",
+    "Type": "Weapon",
+    "Skill Name": "Small",
+    "Description": "Mastery of precision weapons like rapiers, shivs, and stilettos."
+  },
+  {
+    "Attribute": "FINESSE",
+    "Type": "Weapon",
+    "Skill Name": "Thrown",
+    "Description": "Mastery of balanced throwing weapons like knives, axes, and kunai."
+  },
+  {
+    "Attribute": "FINESSE",
+    "Type": "Social",
+    "Skill Name": "Repartee",
+    "Description": "Using wit, mockery, and stinging insults to fluster an opponent."
+  },
+  {
+    "Attribute": "FINESSE",
+    "Type": "Utility",
+    "Skill Name": "Mechanism",
+    "Description": "Action: Picking locks, disarming traps. Lore: Gears and complex devices."
+  },
+  {
+    "Attribute": "REFLEXES",
+    "Type": "Armor",
+    "Skill Name": "Light",
+    "Description": "Mastery of light hides and padded armor for maximum mobility."
+  },
+  {
+    "Attribute": "REFLEXES",
+    "Type": "Tool",
+    "Skill Name": "Snares",
+    "Description": "Mastery of caltrops, tripwires, and smoke bombs to control the ground."
+  },
+  {
+    "Attribute": "REFLEXES",
+    "Type": "Social",
+    "Skill Name": "Guile",
+    "Description": "Feigning ignorance, hiding emotions, and deceiving others."
+  },
+  {
+    "Attribute": "REFLEXES",
+    "Type": "Utility",
+    "Skill Name": "Motion",
+    "Description": "Action: Acrobatics, stealth, balancing. Lore: Ballistics and physics of speed."
+  },
+  {
+    "Attribute": "VITALITY",
+    "Type": "Armor",
+    "Skill Name": "Natural",
+    "Description": "Mastery of armor made from once-living things (furs, bone, wood)."
+  },
+  {
+    "Attribute": "VITALITY",
+    "Type": "Tool",
+    "Skill Name": "Tinctures",
+    "Description": "Mastery of non-magical aids like herbal salves, bandages, and stimulants."
+  },
+  {
+    "Attribute": "VITALITY",
+    "Type": "Social",
+    "Skill Name": "Poise",
+    "Description": "Being naturally radiant, likable, and projecting health/status."
+  },
+  {
+    "Attribute": "VITALITY",
+    "Type": "Utility",
+    "Skill Name": "Nature",
+    "Description": "Action: Survival, handling animals. Lore: Biology, ecology, and healing."
+  },
+  {
+    "Attribute": "FORTITUDE",
+    "Type": "Weapon",
+    "Skill Name": "Fist",
+    "Description": "Mastery of unarmed strikes, cestus, and claws. Clinch fighting."
+  },
+  {
+    "Attribute": "FORTITUDE",
+    "Type": "Weapon",
+    "Skill Name": "Simple",
+    "Description": "Mastery of simple kinetic weapons like slings and shortbows."
+  },
+  {
+    "Attribute": "FORTITUDE",
+    "Type": "Social",
+    "Skill Name": "Coercion",
+    "Description": "Using relentless pressure and \"The Gaze\" to corner an opponent."
+  },
+  {
+    "Attribute": "FORTITUDE",
+    "Type": "Utility",
+    "Skill Name": "Craft",
+    "Description": "Action: Repairing gear, smithing, hardening. Lore: Physiology and metallurgy."
+  },
+  {
+    "Attribute": "KNOWLEDGE",
+    "Type": "Armor",
+    "Skill Name": "Cloth",
+    "Description": "Mastery of runed cloth and woven wards that require academic understanding."
+  },
+  {
+    "Attribute": "KNOWLEDGE",
+    "Type": "Tool",
+    "Skill Name": "Catalysts",
+    "Description": "Mastery of items that channel magic, such as scrolls, wands, and staves."
+  },
+  {
+    "Attribute": "KNOWLEDGE",
+    "Type": "Social",
+    "Skill Name": "Etiquette",
+    "Description": "Using rank, protocol, and proper titles as a social shield."
+  },
+  {
+    "Attribute": "KNOWLEDGE",
+    "Type": "Utility",
+    "Skill Name": "Academics",
+    "Description": "Action: Researching libraries. Lore: History, languages, and heraldry."
+  },
+  {
+    "Attribute": "LOGIC",
+    "Type": "Weapon",
+    "Skill Name": "Medium Weapons",
+    "Description": "Mastery of technical swordsmanship like katanas and arming swords."
+  },
+  {
+    "Attribute": "LOGIC",
+    "Type": "Weapon",
+    "Skill Name": "Blast",
+    "Description": "Mastery of chemical weapons, grenades, scatterguns, and fuse times."
+  },
+  {
+    "Attribute": "LOGIC",
+    "Type": "Social",
+    "Skill Name": "Rhetoric",
+    "Description": "Using facts, logic, and debate to dismantle arguments."
+  },
+  {
+    "Attribute": "LOGIC",
+    "Type": "Utility",
+    "Skill Name": "Analysis",
+    "Description": "Action: Solving puzzles, deduction. Lore: Math, engineering, and chemistry."
+  },
+  {
+    "Attribute": "AWARENESS",
+    "Type": "Weapon",
+    "Skill Name": "Reach Weapons",
+    "Description": "Mastery of spears and halberds. Keeping enemies at exact range."
+  },
+  {
+    "Attribute": "AWARENESS",
+    "Type": "Weapon",
+    "Skill Name": "Long Shot",
+    "Description": "Mastery of sniper rifles, crossbows, and flintlocks. Lining up the shot."
+  },
+  {
+    "Attribute": "AWARENESS",
+    "Type": "Social",
+    "Skill Name": "Insight",
+    "Description": "Using cold reading to detect lies and expose secrets."
+  },
+  {
+    "Attribute": "AWARENESS",
+    "Type": "Utility",
+    "Skill Name": "Scouting",
+    "Description": "Action: Tracking, spotting danger. Lore: Forensics and investigation."
+  },
+  {
+    "Attribute": "INTUITION",
+    "Type": "Armor",
+    "Skill Name": "Utility",
+    "Description": "Mastery of utility vests, ghillie suits, and \"deep pockets\" preparation."
+  },
+  {
+    "Attribute": "INTUITION",
+    "Type": "Tool",
+    "Skill Name": "Curios",
+    "Description": "Mastery of gaming sets, dice, tarot, and tokens of luck/fate."
+  },
+  {
+    "Attribute": "INTUITION",
+    "Type": "Social",
+    "Skill Name": "Empathy",
+    "Description": "Sensing the \"vibe,\" emotional intent, and defusing anger."
+  },
+  {
+    "Attribute": "INTUITION",
+    "Type": "Utility",
+    "Skill Name": "Mysticism",
+    "Description": "Action: Gut-feeling pathfinding. Lore: Folklore, spirits, and omens."
+  },
+  {
+    "Attribute": "CHARM",
+    "Type": "Weapon",
+    "Skill Name": "Exotic Melee",
+    "Description": "Mastery of performance weapons like whips and nunchaku. Flow and style."
+  },
+  {
+    "Attribute": "CHARM",
+    "Type": "Weapon",
+    "Skill Name": "Exotic Ranged",
+    "Description": "Mastery of tricky tools like bolas and blowguns."
+  },
+  {
+    "Attribute": "CHARM",
+    "Type": "Social",
+    "Skill Name": "Persuasion",
+    "Description": "Using allure and inspiration to seduce or motivate others."
+  },
+  {
+    "Attribute": "CHARM",
+    "Type": "Utility",
+    "Skill Name": "Performance",
+    "Description": "Action: Acting, disguise. Lore: Art, culture, and high fashion."
+  },
+  {
+    "Attribute": "WILLPOWER",
+    "Type": "Armor",
+    "Skill Name": "Medium",
+    "Description": "Mastery of chain and scale. Relying on reliability and faith."
+  },
+  {
+    "Attribute": "WILLPOWER",
+    "Type": "Tool",
+    "Skill Name": "Regalia",
+    "Description": "Mastery of banners, warhorns, and badges to signal and rally troops."
+  },
+  {
+    "Attribute": "WILLPOWER",
+    "Type": "Social",
+    "Skill Name": "Discipline",
+    "Description": "Resisting fear, mind control, and maintaining order."
+  },
+  {
+    "Attribute": "WILLPOWER",
+    "Type": "Utility",
+    "Skill Name": "Command",
+    "Description": "Action: Leadership, interrogation. Lore: Religion, theology, and cults."
+  }
+]

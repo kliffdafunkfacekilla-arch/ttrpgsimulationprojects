@@ -1,0 +1,45 @@
+services:
+  # Mechanics Engines (Stateless)
+  saga-rules-engine:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+      args:
+        - SERVICE_DIR=saga_rules_engine
+    ports:
+      - "8014:8014"
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8014"]
+
+  # World
+  saga-architect:
+    build:
+      context: .
+      dockerfile: saga_architect/Dockerfile
+    ports:
+      - "8013:8013"
+
+  # Orchestration
+  saga-director:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+      args:
+        - SERVICE_DIR=saga_director
+    ports:
+      - "8000:8000"
+    environment:
+      - RULES_ENGINE_URL=http://saga-rules-engine:8014
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+    depends_on:
+      - saga-rules-engine
+
+  # Frontend
+  saga-vtt-client:
+    build:
+      context: .
+      dockerfile: saga_vtt_client/Dockerfile
+    ports:
+      - "5173:5173"
+    depends_on:
+      - saga-director

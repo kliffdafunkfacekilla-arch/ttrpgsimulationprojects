@@ -1,0 +1,40 @@
+{
+    "tech_tier": "1.0",
+    "energy_cost": 10,
+    "raw_form": "Dragonstone Embers",
+    "processed_forms": [
+        {
+            "name": "Dragonstone Shards",
+            "energy_cost": 5
+        },
+        {
+            "name": "Dragonstone Gravel or pebbles",
+            "energy_cost": 1
+        },
+        {
+            "name": "Dragonstone Dust (D-Dust)",
+            "energy_cost": 0.5
+        }
+    ],
+    "alchemical_requirements": [
+        {
+            "medium": "Dusted Ink",
+            "concentration": 0.5
+        }
+    ],
+    "unifying_theory": "Aether-Channels and Dusted Ink Alchemy",
+    "applications": [
+        {
+            "type": "Industrial Power and Volatility",
+            "energy_cost": 50
+        },
+        {
+            "type": "Jitter-Rig",
+            "energy_cost": 10
+        },
+        {
+            "type": "Charms and Sigil-Script",
+            "energy_cost": 1
+        }
+    ]
+}

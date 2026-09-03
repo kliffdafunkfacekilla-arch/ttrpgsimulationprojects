@@ -1,0 +1,70 @@
+{
+    "name": "Heartland Alliance",
+    "type": "Faction",
+    "description": "Agricultural society that supplies the majority of the world's grain",
+    "reputation": 80,
+    "influence": 60,
+    "strength": 70,
+    "weaknesses": [
+        {
+            "name": "Logistical Stranglehold",
+            "description": "Dependence on [[Sump-Kin]] for heavy logistics",
+            "impact": 30
+        },
+        {
+            "name": "Economic Pressures",
+            "description": "Constantly pressured by more aggressive factions seeking to control their resources",
+            "impact": 20
+        }
+    ],
+    "doctrine": {
+        "name": "Doctrine of Vigilance",
+        "description": "Asymmetrical defense focusing on environmental awareness and denial-of-surprise tactics",
+        "primary_tactics": [
+            {
+                "name": "Snare Lines",
+                "description": "Tripwire alarm system providing auditory alerts to approaching danger"
+            }
+        ]
+    },
+    "military": {
+        "composition": [
+            {
+                "name": "Wolf-like and Coyote-like Folk",
+                "description": "General military duties",
+                "strength": 40
+            },
+            {
+                "name": "Wolverines",
+                "description": "Elite warriors serving as city and palace guard",
+                "strength": 20
+            }
+        ]
+    },
+    "government": {
+        "name": "Council of Diverse Peoples",
+        "description": "Consensus-based system with a representative from each constituent species",
+        "vulnerabilities": [
+            {
+                "name": "Tie-Breaker System",
+                "description": "Double vote system that can lead to stalemates and manipulation"
+            }
+        ]
+    },
+    "culture": {
+        "name": "Culture Forged by Wind and Speed",
+        "description": "Society that prizes speed, hyper-aware communication, and a deep connection to the environment",
+        "core_traits": [
+            {
+                "name": "Competitive Spirit",
+                "description": "Prizes speed and quick reaction",
+                "impact": 20
+            },
+            {
+                "name": "Rapid Information Spread",
+                "description": "Functions as an informal intelligence network",
+                "impact": 10
+            }
+        ]
+    }
+}

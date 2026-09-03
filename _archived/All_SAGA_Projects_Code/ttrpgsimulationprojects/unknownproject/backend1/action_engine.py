@@ -1,0 +1,210 @@
+import random
+from backend import rpg_system
+
+# Definition of all possible contested rolls for Hero vs Entity interactions
+ACTION_MAPPINGS = {
+    "ATTACK": {
+        "attacker": "might",
+        "defender_options": ["reflex", "fortitude"],
+        "damage_type": "hp",
+        "damage_amount": 2,
+        "burn_pool": "stamina"
+    },
+    "ASSASSINATE": {
+        "attacker": "finesse",
+        "defender_options": ["awareness"],
+        "damage_type": "hp",
+        "damage_amount": 2,
+        "burn_pool": "stamina"
+    },
+    "INTIMIDATE": {
+        "attacker": "might",
+        "defender_options": ["willpower"],
+        "damage_type": "composure",
+        "damage_amount": 2,
+        "burn_pool": "stamina"
+    },
+    "DECEIVE": {
+        "attacker": "charm",
+        "defender_options": ["intuition"],
+        "damage_type": "composure",
+        "damage_amount": 2,
+        "burn_pool": "focus"
+    },
+    "DEBATE": {
+        "attacker": "logic",
+        "defender_options": ["knowledge"],
+        "damage_type": "composure",
+        "damage_amount": 2,
+        "burn_pool": "focus"
+    }
+}
+
+def ensure_stats_and_pools(entity):
+    """
+    Ensures that an entity possesses valid rpg_stats, magic_profile, and dynamic_pools.
+    Generates standard defaults procedurally if missing.
+    """
+    if "rpg_stats" not in entity or "dynamic_pools" not in entity or "magic_profile" not in entity:
+        is_hero = entity.get("is_hero", False)
+        traits_dict = {
+            "personality": entity.get("dna_profile", {}).get("personality", "PEACEFUL"),
+            "interest": entity.get("dna_profile", {}).get("interest", "SURVIVAL")
+        }
+        entity_type = "HERO" if is_hero else "CITIZEN"
+        rpg_stats, magic_profile = rpg_system.generate_stats(
+            entity.get("biological_type", "Mouse"),
+            entity.get("profession", "Farmer"),
+            entity_type=entity_type,
+            traits=traits_dict
+        )
+        if "rpg_stats" not in entity:
+            entity["rpg_stats"] = rpg_stats
+        if "magic_profile" not in entity:
+            entity["magic_profile"] = magic_profile
+        if "dynamic_pools" not in entity:
+            entity["dynamic_pools"] = rpg_system.calculate_derived_pools(entity["rpg_stats"])
+
+def resolve_contested(hero, target, action_type):
+    """
+    Resolves a contested roll between a Hero and a Target NPC.
+    Rolls: 1d10 + Hero Stat vs 1d10 + Defending Stat (highest option chosen).
+    Deducts 1 Stamina or Focus from Hero, inflicts HP/Composure damage,
+    and returns a clean, fully-formatted calculation summary text.
+    """
+    # 1. Guarantee valid stats and pools exist
+    ensure_stats_and_pools(hero)
+    ensure_stats_and_pools(target)
+    
+    # 2. Match action map
+    action_type_upper = action_type.upper()
+    if action_type_upper not in ACTION_MAPPINGS:
+        return f"Unknown contested action class: '{action_type}'"
+        
+    mapping = ACTION_MAPPINGS[action_type_upper]
+    attacker_stat = mapping["attacker"]
+    defender_options = mapping["defender_options"]
+    damage_type = mapping["damage_type"]
+    damage_amount = mapping["damage_amount"]
+    burn_pool = mapping["burn_pool"]
+    
+    hero_stats = hero["rpg_stats"]
+    hero_pools = hero["dynamic_pools"]
+    target_stats = target["rpg_stats"]
+    target_pools = target["dynamic_pools"]
+    
+    # 3. Choose the target's highest defending stat option
+    defender_stat = max(defender_options, key=lambda s: target_stats.get(s, 0))
+    
+    hero_stat_val = hero_stats.get(attacker_stat, 0)
+    target_stat_val = target_stats.get(defender_stat, 0)
+    
+    # 4. Burn 1 stamina/focus from the Hero depending on action pool
+    hero_pools[burn_pool] = max(0, hero_pools.get(burn_pool, 1) - 1)
+    
+    # 5. Roll 1d10 and add modifiers
+    roll_hero = random.randint(1, 10)
+    roll_target = random.randint(1, 10)
+    total_hero = roll_hero + hero_stat_val
+    total_target = roll_target + target_stat_val
+    
+    hero_prof = hero.get("profession", "Hero")
+    target_prof = target.get("profession", "Citizen")
+    hero_name = hero.get("name", hero_prof)
+    target_name = target.get("name", "_".join(target.get("entity_id", target_prof).split('_')[-2:]) if '_' in target.get("entity_id", "") else target_prof)
+    
+    # Clean target name for display
+    if '_' in target.get("entity_id", ""):
+        target_name = target.get("entity_id", "").split('_')[-1].upper()
+    else:
+        target_name = target_prof.upper()
+        
+    # 6. Determine winner and apply consequences
+    if total_hero > total_target:
+        # HERO WINS! Apply consequence to target
+        target_pools[damage_type] = max(0, target_pools.get(damage_type, damage_amount) - damage_amount)
+        
+        # Sync legacy target metabolic states
+        if damage_type == "hp":
+            hp_max = target_pools.get("hp_max", 10)
+            target["metabolic_state"]["health"] = int((target_pools["hp"] / hp_max) * 100) if hp_max > 0 else 0
+            consequence_text = f"Target suffers {damage_amount} HP damage!"
+            if target_pools["hp"] <= 0:
+                consequence_text += " [DEFECTIVE/DEFEATED]"
+        else:
+            composure_max = target_pools.get("composure_max", 10)
+            target["metabolic_state"]["sanity_score"] = round(target_pools["composure"] / composure_max, 2) if composure_max > 0 else 0.0
+            consequence_text = f"Target suffers {damage_amount} Composure damage!"
+            if target_pools["composure"] <= 0:
+                consequence_text += " [MENTALLY CRUSHED]"
+                
+        return (
+            f"Success! [{hero_name} {attacker_stat.capitalize()} ({hero_stat_val}) + Roll ({roll_hero}) = {total_hero}] "
+            f"beat [{target_name} {defender_stat.capitalize()} ({target_stat_val}) + Roll ({roll_target}) = {total_target}]. "
+            f"{consequence_text} (Spent 1 {burn_pool.capitalize()})"
+        )
+    else:
+        # TARGET WINS / TIE! Hero fails and suffers HP/Composure penalty
+        hero_damage_type = "hp" if burn_pool == "stamina" else "composure"
+        hero_pools[hero_damage_type] = max(0, hero_pools.get(hero_damage_type, 1) - 1)
+        
+        # Sync legacy hero metabolic states
+        if hero_damage_type == "hp":
+            hp_max = hero_pools.get("hp_max", 10)
+            hero["metabolic_state"]["health"] = int((hero_pools["hp"] / hp_max) * 100) if hp_max > 0 else 0
+            penalty_text = "Hero loses 1 HP!"
+        else:
+            composure_max = hero_pools.get("composure_max", 10)
+            hero["metabolic_state"]["sanity_score"] = round(hero_pools["composure"] / composure_max, 2) if composure_max > 0 else 0.0
+            penalty_text = "Hero loses 1 Composure!"
+            
+        return (
+            f"Failure! [{hero_name} {attacker_stat.capitalize()} ({hero_stat_val}) + Roll ({roll_hero}) = {total_hero}] "
+            f"failed to beat [{target_name} {defender_stat.capitalize()} ({target_stat_val}) + Roll ({roll_target}) = {total_target}]. "
+            f"{penalty_text} (Spent 1 {burn_pool.capitalize()})"
+        )
+
+def resolve_static_task(hero, task_dc_primary, task_dc_secondary, stat_primary, stat_secondary):
+    """
+    Resolves an environmental static task check.
+    If Hero Stat >= Task DC for either option, succeeds and deducts 1 Stamina or Focus.
+    Returns: (success_boolean, detail_string_outcome)
+    """
+    # 1. Guarantee valid stats and pools
+    ensure_stats_and_pools(hero)
+    
+    hero_stats = hero["rpg_stats"]
+    hero_pools = hero["dynamic_pools"]
+    
+    hero_stat_primary = hero_stats.get(stat_primary, 0)
+    hero_stat_secondary = hero_stats.get(stat_secondary, 0)
+    
+    success = False
+    used_stat = None
+    details = ""
+    
+    # 2. Check if primary or secondary conditions are met (highest priority first)
+    if hero_stat_primary >= task_dc_primary:
+        success = True
+        used_stat = stat_primary
+        details = f"[Hero {stat_primary.capitalize()} ({hero_stat_primary}) meets DC ({task_dc_primary})]"
+    elif hero_stat_secondary >= task_dc_secondary:
+        success = True
+        used_stat = stat_secondary
+        details = f"[Hero {stat_secondary.capitalize()} ({hero_stat_secondary}) meets DC ({task_dc_secondary})]"
+    else:
+        details = (
+            f"[Hero {stat_primary.capitalize()} ({hero_stat_primary}) < DC ({task_dc_primary}) AND "
+            f"{stat_secondary.capitalize()} ({hero_stat_secondary}) < DC ({task_dc_secondary})]"
+        )
+        
+    # 3. Apply dynamic pool deductions
+    physical_stats = ["might", "endurance", "finesse", "reflex", "vitality", "fortitude"]
+    
+    if success:
+        burn_pool = "stamina" if used_stat in physical_stats else "focus"
+        hero_pools[burn_pool] = max(0, hero_pools.get(burn_pool, 1) - 1)
+        return True, f"Success! {details}. Spent 1 {burn_pool.capitalize()}."
+    else:
+        # Static task failure does not damage HP/Composure, just returns failure details
+        return False, f"Failure! {details}."

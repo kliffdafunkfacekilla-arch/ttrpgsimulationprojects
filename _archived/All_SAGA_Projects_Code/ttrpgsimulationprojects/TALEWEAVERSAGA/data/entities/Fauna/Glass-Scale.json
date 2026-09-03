@@ -1,0 +1,33 @@
+{
+    "base_health": 15,
+    "speed": 12,
+    "diet": [
+        "insects",
+        "small reptiles",
+        "small mammals"
+    ],
+    "size": 0.5,
+    "tags": [
+        "chaos-mutated",
+        "subterranean",
+        "predator"
+    ],
+    "ecological_hazard": true,
+    "special_abilities": [
+        {
+            "name": "Frictionless Motion",
+            "description": "Can 'swim' through loose sand at high speed"
+        },
+        {
+            "name": "Frictional Grip",
+            "description": "Can use scales to grip bone and flesh"
+        }
+    ],
+    "defensive_tactics": [
+        {
+            "name": "Swarm Anchor",
+            "description": "Hunt in swarms, bite, and drag prey down into sand"
+        }
+    ],
+    "threat_level": 8
+}

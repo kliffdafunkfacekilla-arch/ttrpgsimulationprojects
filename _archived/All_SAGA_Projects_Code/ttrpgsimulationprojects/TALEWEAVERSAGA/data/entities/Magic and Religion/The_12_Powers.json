@@ -1,0 +1,135 @@
+{
+    "Attributes": [
+        {
+            "name": "Might",
+            "tier": 0
+        },
+        {
+            "name": "Endurance",
+            "tier": 0
+        },
+        {
+            "name": "Reflex",
+            "tier": 0
+        },
+        {
+            "name": "Finesse",
+            "tier": 0
+        },
+        {
+            "name": "Vitality",
+            "tier": 0
+        },
+        {
+            "name": "Fortitude",
+            "tier": 0
+        },
+        {
+            "name": "Knowledge",
+            "tier": 0
+        },
+        {
+            "name": "Logic",
+            "tier": 0
+        },
+        {
+            "name": "Awareness",
+            "tier": 0
+        },
+        {
+            "name": "Intuition",
+            "tier": 0
+        },
+        {
+            "name": "Charm",
+            "tier": 0
+        },
+        {
+            "name": "Willpower",
+            "tier": 0
+        }
+    ],
+    "Elements": [
+        {
+            "name": "Force",
+            "stopper": "Osmium"
+        },
+        {
+            "name": "Acid",
+            "stopper": "Gold"
+        },
+        {
+            "name": "Shock",
+            "stopper": "Silicon"
+        },
+        {
+            "name": "Sonic",
+            "stopper": "Lead"
+        },
+        {
+            "name": "Cold",
+            "stopper": "Titanium"
+        },
+        {
+            "name": "Fire",
+            "stopper": "Tungsten"
+        },
+        {
+            "name": "Psychic",
+            "stopper": "Lithium"
+        },
+        {
+            "name": "Poison",
+            "stopper": "Silver"
+        },
+        {
+            "name": "Necrotic",
+            "stopper": "Iridium"
+        },
+        {
+            "name": "Radiant",
+            "stopper": "Chromium"
+        },
+        {
+            "name": "Arcane",
+            "stopper": "Bismuth"
+        },
+        {
+            "name": "Spirit",
+            "stopper": "Phosphorus"
+        }
+    ],
+    "Spectrum": [
+        {
+            "tier": "Attuned",
+            "percentage": 50,
+            "role": "The foundation of society; possess innate physical or instinctual responses keyed to survival."
+        },
+        {
+            "tier": "Minor Abilities",
+            "percentage": 30,
+            "role": "Capable of everyday utility; produce detectable magical output useful for simple, practical tasks."
+        },
+        {
+            "tier": "Proficiency",
+            "percentage": 15,
+            "role": "Skilled specialists; serve as military leaders, advanced engineers, and high-level merchants."
+        },
+        {
+            "tier": "Exceptional",
+            "percentage": 5,
+            "role": "Rare and powerful assets; candidates for elite military units or secretive intelligence organizations."
+        },
+        {
+            "tier": "Mastery",
+            "percentage": 1,
+            "role": "Critical national assets; hold positions such as High Forgemasters, Dragon Cult Priests, or members of the Elderwood Council."
+        }
+    ],
+    "Geographic": [
+        {
+            "tag": "The Convergence",
+            "function": "disrupted near"
+        }
+    ]
+}

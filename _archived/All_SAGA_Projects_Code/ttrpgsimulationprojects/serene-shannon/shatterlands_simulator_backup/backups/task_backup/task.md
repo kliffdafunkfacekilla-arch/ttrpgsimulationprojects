@@ -1,0 +1,9 @@
+- [x] Back up original files `core_engine/db_setup.py` and `core_engine/fractal_core.py`
+- [x] Add `associated_farm_id` column to the `buildings` table schema in `core_engine/db_setup.py`
+- [x] Implement database migrations for `associated_farm_id` and seed new sub-structure costs in `core_engine/db_setup.py`
+- [x] Implement biome-specific plant/animal gathering in `core_engine/fractal_core.py`
+- [x] Implement internal sub-structure slot verification and construction logic in `core_engine/fractal_core.py`
+- [x] Implement production processing pipelines (Mill, Brewery, Butcher, Bakery, Smelter, Forge, Workshop, Apothecary) in `core_engine/fractal_core.py`
+- [x] Implement refined food consumption and health/composure buffs in `core_engine/fractal_core.py`
+- [x] Run a manual test of `autopilot.py`
+- [x] Verify results and document in `walkthrough.md`

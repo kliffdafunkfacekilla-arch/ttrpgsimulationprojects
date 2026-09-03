@@ -1,0 +1,26 @@
+{
+    "Name": "Fur-Wyrm",
+    "Diet": [
+        "omnivore",
+        "scavenger"
+    ],
+    "Base_Health": 10,
+    "Speed": 6,
+    "Thermal_Regulation": 2,
+    "Aggression": 1,
+    "Threat_Damage": 3,
+    "Noise_Potential": 5,
+    "Stealth_Potential": 4,
+    "Locomotion_Type": [
+        "side-winding",
+        "slinking"
+    ],
+    "Threat_Indicators": [
+        "solitary",
+        "starving",
+        "wounded"
+    ],
+    "Defense_Indicators": [
+        "thermal regulation"
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "base_health": 150,
+    "speed": 3,
+    "diet": "detritivore",
+    "strength": 18,
+    "agility": 12,
+    "weight": 5,
+    "resilience": 15,
+    "locomotion": "climb",
+    "habit": "subterranean",
+    "specialability": {
+        "maglock_saddle": true,
+        "van_der_waals_force": true
+    }
+}

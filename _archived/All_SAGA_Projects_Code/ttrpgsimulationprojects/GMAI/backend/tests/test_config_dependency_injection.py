@@ -1,0 +1,236 @@
+"""
+Tests for improved configuration handling via dependency injection.
+"""
+
+from unittest.mock import MagicMock, patch
+
+from app.config import Settings, get_config
+from app.main import app
+from fastapi.testclient import TestClient
+
+
+class TestConfigurationDependencyInjection:
+    """Test configuration dependency injection."""
+
+    def test_character_creation_with_valid_config(self, client_with_config) -> None:
+        """Test character creation with valid configuration."""
+        with patch("app.api.game_routes.get_scribe") as mock_get_scribe:
+            # Mock the scribe agent to avoid kernel initialization
+            mock_scribe = MagicMock()
+
+            # Make create_character return an awaitable with proper format
+            async def create_character_async(*args, **kwargs):
+                return {
+                    "id": "char_123",
+                    "name": "Test Character",
+                    "race": "human",
+                    "character_class": "fighter",
+                    "level": 1,
+                    "abilities": {
+                        "strength": 16,
+                        "dexterity": 14,
+                        "constitution": 15,
+                        "intelligence": 12,
+                        "wisdom": 13,
+                        "charisma": 10,
+                    },
+                    "hit_points": {"current": 12, "maximum": 12},
+                    "armor_class": 16,
+                    "inventory": [],
+                    "features": [],
+                    "spells": [],
+                }
+
+            mock_scribe.create_character = create_character_async
+            mock_get_scribe.return_value = mock_scribe
+
+            character_data = {
+                "name": "Test Character",
+                "race": "human",
+                "character_class": "fighter",
+                "abilities": {
+                    "strength": 16,
+                    "dexterity": 14,
+                    "constitution": 15,
+                    "intelligence": 12,
+                    "wisdom": 13,
+                    "charisma": 10,
+                },
+                "backstory": "A brave warrior",
+            }
+
+            response = client_with_config.post(
+                "/game/character", json=character_data
+            )
+
+            assert response.status_code == 200
+            assert mock_get_scribe.called
+
+    def test_character_creation_with_missing_config(
+        self, client_with_missing_config
+    ) -> None:
+        """Test character creation with missing Azure OpenAI configuration - fallback mode."""
+        character_data = {
+            "name": "Test Character",
+            "race": "human",
+            "character_class": "fighter",
+            "abilities": {
+                "strength": 16,
+                "dexterity": 14,
+                "constitution": 15,
+                "intelligence": 12,
+                "wisdom": 13,
+                "charisma": 10,
+            },
+            "backstory": "A brave warrior",
+        }
+
+        response = client_with_missing_config.post(
+            "/game/character", json=character_data
+        )
+
+        # With fallback mode, character creation can still work or return 400 for validation errors
+        # The route no longer blocks with 503 - it allows the agent to handle fallback
+        assert response.status_code in [200, 400], f"Got unexpected status: {response.status_code}"
+
+    def test_campaign_creation_with_valid_config(self, client_with_config) -> None:
+        """Test campaign creation with valid configuration."""
+        with patch(
+            "app.services.campaign_service.campaign_service.create_campaign"
+        ) as mock_create:
+            # Mock successful campaign creation
+            mock_create.return_value = {
+                "id": "camp_123",
+                "name": "Test Campaign",
+                "setting": "Fantasy World",
+                "tone": "heroic",
+                "created_at": "2024-01-01T00:00:00Z",
+            }
+
+            campaign_data = {
+                "name": "Test Campaign",
+                "setting": "Fantasy World",
+                "tone": "heroic",
+            }
+
+            response = client_with_config.post("/game/campaign", json=campaign_data)
+
+            assert response.status_code == 200
+            assert mock_create.called
+
+    def test_campaign_creation_with_missing_config(
+        self, client_with_missing_config, campaign_factory
+    ) -> None:
+        """Test campaign creation with missing Azure OpenAI configuration - fallback mode."""
+        # Use factory instead of hand-crafted dictionary
+        campaign_data = campaign_factory()
+
+        response = client_with_missing_config.post(
+            "/game/campaign", json=campaign_data
+        )
+
+        # Campaign creation doesn't require Azure OpenAI - it's just database operations
+        # Should succeed even without Azure OpenAI configuration
+        assert response.status_code == 200, f"Campaign creation should work without Azure config, got: {response.status_code}"
+        assert "id" in response.json()
+
+    def test_config_dependency_injection_works(self) -> None:
+        """Test that configuration dependency injection is functioning."""
+        test_config = Settings(
+            azure_openai_endpoint="https://test.example.com",
+            azure_openai_api_key="test-key",
+            azure_openai_chat_deployment="test-deployment",
+            azure_openai_embedding_deployment="test-embedding",
+        )
+
+        # Override the dependency
+        app.dependency_overrides[get_config] = lambda: test_config
+
+        try:
+            client = TestClient(app)
+
+            # Test any endpoint that uses config dependency
+            with patch("app.api.game_routes.get_scribe") as mock_get_scribe:
+                mock_scribe = MagicMock()
+
+                # Make create_character return an awaitable with proper format
+                async def create_character_async(*args, **kwargs):
+                    return {
+                        "id": "test",
+                        "name": "Test",
+                        "race": "human",
+                        "character_class": "fighter",
+                        "level": 1,
+                        "abilities": {
+                            "strength": 16,
+                            "dexterity": 14,
+                            "constitution": 15,
+                            "intelligence": 12,
+                            "wisdom": 13,
+                            "charisma": 10,
+                        },
+                        "hit_points": {"current": 10, "maximum": 10},
+                        "armor_class": 15,
+                        "inventory": [],
+                        "features": [],
+                        "spells": [],
+                    }
+
+                mock_scribe.create_character = create_character_async
+                mock_get_scribe.return_value = mock_scribe
+
+                response = client.post(
+                    "/game/character",
+                    json={
+                        "name": "Test",
+                        "race": "human",
+                        "character_class": "fighter",
+                        "abilities": {
+                            "strength": 16,
+                            "dexterity": 14,
+                            "constitution": 15,
+                            "intelligence": 12,
+                            "wisdom": 13,
+                            "charisma": 10,
+                        },
+                    },
+                )
+
+                # Should use the injected config and not fail with missing config
+                assert response.status_code == 200
+
+        finally:
+            # Clean up
+            app.dependency_overrides.clear()
+
+    def test_get_character_with_valid_config(self, client_with_config) -> None:
+        """Test get character with valid configuration."""
+        with patch("app.api.game_routes.get_scribe") as mock_get_scribe:
+            mock_scribe = MagicMock()
+
+            # Make get_character return an awaitable
+            async def get_character_async(*args, **kwargs):
+                return {
+                    "id": "char_123",
+                    "name": "Existing Character",
+                    "race": "elf",
+                    "character_class": "wizard",
+                }
+
+            mock_scribe.get_character = get_character_async
+            mock_get_scribe.return_value = mock_scribe
+
+            response = client_with_config.get("/game/character/char_123")
+
+            assert response.status_code == 200
+            assert mock_get_scribe.called
+
+    def test_get_character_with_missing_config(
+        self, client_with_missing_config
+    ) -> None:
+        """Test get character with missing Azure OpenAI configuration - fallback mode."""
+        response = client_with_missing_config.get("/game/character/char_123")
+
+        # Get character should work in fallback mode, or return 404 if character doesn't exist
+        # No longer returns 503 since the route supports fallback
+        assert response.status_code in [200, 404], f"Got unexpected status: {response.status_code}"

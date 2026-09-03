@@ -1,0 +1,19 @@
+{
+    "name": "Ghost Flotilla",
+    "type": "Faction",
+    "operational_doctrine": "3.0 Operational Doctrine: The 'Ghost Flotilla' Strategy",
+    "description": "Strategic doctrine of utilizing hidden, temporary, and camouflaged bases to maintain strategic unpredictability and operational independence.",
+    "tactics": {
+        "ghosting": {
+            "type": "Temporary Base",
+            "description": "Transform old, abandoned airship wrecks into temporary, camouflaged bases"
+        },
+        "nomadic_nature": {
+            "type": "Mobility",
+            "description": "Avoid established, controlled ports and maintain strategic unpredictability"
+        }
+    },
+    "strategic_advantage": "Strategic Denial",
+    "denial_method": "Refusing to concentrate forces or rely on fixed infrastructure",
+    "denial_effect": "Denies larger, more conventional powers a viable target"
+}

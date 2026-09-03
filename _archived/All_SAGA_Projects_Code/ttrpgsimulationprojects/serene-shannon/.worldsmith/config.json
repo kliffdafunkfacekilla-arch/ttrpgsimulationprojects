@@ -1,0 +1,51 @@
+{
+  "vault_settings": {
+    "world_name": "Ostraka",
+    "active_modules": {
+      "climate_simulation": true,
+      "ocean_currents": true,
+      "custom_calendar": true,
+      "astronomical_spheres": true,
+      "crime_underworld": true
+    },
+    "master_timeline": "Dawn Era -> Age of Magic -> Present Day"
+  },
+  "custom_layers": [
+    {
+      "layer_id": "usr_lay_dream_realm",
+      "name": "The Dream-Realm",
+      "type": "polygon_overlay",
+      "attributes": [
+        "sanity_drain_int",
+        "deity_doc_id"
+      ]
+    }
+  ],
+  "custom_templates": {
+    "superpower": [
+      {
+        "fieldName": "power_class",
+        "fieldType": "string",
+        "isRequired": true
+      },
+      {
+        "fieldName": "arcane_catalyst",
+        "fieldType": "document_link",
+        "isRequired": false
+      },
+      {
+        "fieldName": "collateral_damage_risk",
+        "fieldType": "number",
+        "isRequired": true
+      }
+    ]
+  },
+  "ai_auditor_settings": {
+    "strictness_mode": "permissive",
+    "disabled_linters": []
+  },
+  "timeline_milestones": [
+    "The Shattered Rift",
+    "Great Alignment"
+  ]
+}

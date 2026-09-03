@@ -1,0 +1,39 @@
+{
+    "size": 2,
+    "base_health": 150,
+    "speed": 60,
+    "diet": [
+        "Carnivore",
+        "Omnivore"
+    ],
+    "active_chromatophores": true,
+    "stinger": {
+        "barbed": true,
+        "neurotoxin": true,
+        "potency": 2,
+        "range": 1
+    },
+    "camouflage": {
+        "azure": 1,
+        "bruised_purple": 1,
+        "starry_black": 1
+    },
+    "ramming": true,
+    "nesting": {
+        "bubble_nesting": true,
+        "hard_cloud": true
+    },
+    "storm_state": {
+        "aggression": 2,
+        "overcharged": true
+    },
+    "contraband": {
+        "glowing_spike": true,
+        "crystallized_chaos": true,
+        "illegality": true
+    },
+    "superstition": {
+        "pilots_of_the_wind": true,
+        "blinding_the_ship": true
+    }
+}

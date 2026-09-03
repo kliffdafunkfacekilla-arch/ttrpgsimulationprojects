@@ -1,0 +1,72 @@
+[
+  {
+    "Tier": "1",
+    "Shape_Name": "Touch",
+    "Range_Area": "Melee / Self",
+    "Cost_Modifier": "0",
+    "Description": "Affects you or target you touch."
+  },
+  {
+    "Tier": "2",
+    "Shape_Name": "Bolt",
+    "Range_Area": "60ft Range",
+    "Cost_Modifier": "1",
+    "Description": "Single target projectile."
+  },
+  {
+    "Tier": "3",
+    "Shape_Name": "Line",
+    "Range_Area": "30ft Line",
+    "Cost_Modifier": "2",
+    "Description": "Pierces through targets in a straight line."
+  },
+  {
+    "Tier": "4",
+    "Shape_Name": "Cone",
+    "Range_Area": "20ft Cone",
+    "Cost_Modifier": "2",
+    "Description": "Wide spray originating from you."
+  },
+  {
+    "Tier": "5",
+    "Shape_Name": "Blast",
+    "Range_Area": "20ft Radius",
+    "Cost_Modifier": "3",
+    "Description": "Explosion at a specific point within range."
+  },
+  {
+    "Tier": "6",
+    "Shape_Name": "Aura",
+    "Range_Area": "Self (15ft)",
+    "Cost_Modifier": "4",
+    "Description": "Sustained field that moves with you."
+  },
+  {
+    "Tier": "7",
+    "Shape_Name": "Wall",
+    "Range_Area": "50ft Length",
+    "Cost_Modifier": "5",
+    "Description": "Static barrier or hazard line."
+  },
+  {
+    "Tier": "8",
+    "Shape_Name": "Chain",
+    "Range_Area": "3 Targets",
+    "Cost_Modifier": "6",
+    "Description": "Hits primary, then jumps to 2 others."
+  },
+  {
+    "Tier": "9",
+    "Shape_Name": "Storm",
+    "Range_Area": "1 Mile Radius",
+    "Cost_Modifier": "8",
+    "Description": "Massive weather-like effect."
+  },
+  {
+    "Tier": "10",
+    "Shape_Name": "World",
+    "Range_Area": "Global",
+    "Cost_Modifier": "15",
+    "Description": "Affects the entire region or plane."
+  }
+]

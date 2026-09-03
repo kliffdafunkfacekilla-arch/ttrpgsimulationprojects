@@ -1,0 +1,9 @@
+{
+    "Name": "Jolt Cakes",
+    "Type": "Resource",
+    "Properties": {
+        "Flavor": "Luxury Dessert",
+        "Appearance": "Dusted with Crystallized Sugar",
+        "Effect": "Static Charge on Tongue"
+    }
+}

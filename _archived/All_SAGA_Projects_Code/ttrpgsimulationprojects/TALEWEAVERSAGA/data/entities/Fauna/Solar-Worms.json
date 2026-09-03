@@ -1,0 +1,24 @@
+{
+    "Name": "Solar-Worms",
+    "Type": "Fauna",
+    "Diet": [
+        "Plant-based"
+    ],
+    "Base_Health": 12,
+    "Speed": 3,
+    "Thermal_Energy": 15,
+    "Heat_Duration": 5,
+    "Danger": true,
+    "Harvest_Technique": {
+        "Timing": "Winter overcast days",
+        "Handling": [
+            "Long-handled tongs",
+            "Ceramic-tipped spears"
+        ]
+    },
+    "Value": {
+        "Thermal_Battery": true,
+        "Scouting_Aid": true
+    },
+    "Description": "A segmented caterpillar reaching 5 to 6 feet in length and the thickness of a man's thigh, with biological solar panels that store thermal energy."
+}

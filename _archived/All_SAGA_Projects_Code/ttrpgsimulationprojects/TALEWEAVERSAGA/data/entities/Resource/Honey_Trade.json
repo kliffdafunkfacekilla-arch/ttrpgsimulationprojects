@@ -1,0 +1,31 @@
+{
+    "Name": "Honey Trade",
+    "Type": "Resource",
+    "Description": "A naturally occurring narcotic substance, classified as strictly illegal across all Major Factions.",
+    "Properties": {
+        "Mental Effects": {
+            "description": "Extremely stimulating in small doses. Induces profound psychosis in high doses.",
+            "impact": "High demand among nobility and strategists for its cognitive benefits. Psychotic effects create a volatile and unpredictable user base in the underworld."
+        },
+        "Physical Effects": {
+            "description": "Physically numbing with slowed reaction times. Moderate use is akin to alcohol intoxication.",
+            "impact": "Can be used as a potent incapacitating agent. Users are physically vulnerable, making them easy targets for exploitation or elimination."
+        },
+        "Potency": {
+            "description": "A single drop or two, diluted to the consistency of water, is enough to completely incapacitate a person.",
+            "impact": "Extremely high value-to-weight ratio makes it ideal for smuggling. Small quantities can disrupt large organizations or disable key personnel."
+        },
+        "Handling Hazard": {
+            "description": "The raw substance is so potent it can be absorbed through the skin.",
+            "impact": "Creates a high-risk bottleneck at the processing stage. Only specialized, high-level operatives (known as 'Cut-Masters') can safely dilute it, consolidating power and profit. Accidental self-dosing is a constant threat."
+        }
+    },
+    "Ecological Niche": {
+        "description": "The creation of Ichor-Honey is not a simple agricultural process but a closed, self-sustaining ecological trap.",
+        "impact": "Its unique production cycle, extreme potency, and hazardous handling requirements ensure that only a select few can ever hope to control it."
+    },
+    "Strategic Implication": {
+        "description": "This commodity is the definitive high-risk, high-reward resource, defined by its chokepoints.",
+        "impact": "The exclusive and uniquely qualified group that dares to harvest it holds a profound influence over the global black market."
+    }
+}

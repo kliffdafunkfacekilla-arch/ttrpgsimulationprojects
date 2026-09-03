@@ -1,0 +1,47 @@
+{
+    "Name": "Terror Fowl",
+    "Type": "Fauna",
+    "Diet": "Meat",
+    "Base_Health": 150,
+    "Speed": 3,
+    "Size": 7,
+    "Special_Abilities": {
+        "Beak": {
+            "Damage": 20,
+            "Type": "Crush"
+        },
+        "Legs": {
+            "Jump Height": 15,
+            "Damage": 10
+        },
+        "Sickle-Claw": {
+            "Damage": 15,
+            "Type": "Pierce"
+        }
+    },
+    "Products": {
+        "Meat": {
+            "Rarity": 1,
+            "Value": 10,
+            "Description": "Lean, gamey, and tastes like a cross between turkey and steak"
+        },
+        "Eggs": {
+            "Rarity": 1,
+            "Value": 5,
+            "Description": "Massive, blue-speckled egg that can feed a family of four"
+        },
+        "Feathers": {
+            "Rarity": 2,
+            "Value": 3,
+            "Description": "Waterproof and stiff, used for arrows and quill-pens"
+        }
+    },
+    "Behavior": {
+        "Aggression": "Extreme",
+        "Pack_Hunting": true,
+        "Handling": {
+            "Plate-Greaves": true,
+            "Feeding_Time": "The Snap"
+        }
+    }
+}

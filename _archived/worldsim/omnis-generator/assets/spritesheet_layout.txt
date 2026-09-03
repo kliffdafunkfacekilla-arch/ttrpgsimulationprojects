@@ -1,0 +1,222 @@
+Based on the grid system present in your sprite sheet (which is organized in a 16-column wide format for the UI elements in the bottom row, with the main map tiles occupying columns 1 through 12 across the other rows), here is the breakdown of assets and their locations.
+
+I am using a standard reference system:
+
+* **Rows (R):** R1 (top row) to R12 (bottom row).
+* **Columns (C):** C1 (leftmost) to C16 (rightmost).
+
+---
+
+### Rows 1–3: Land Biomes & Terrains
+
+These rows show different complexity levels for standard biomes. Row 1 is base terrain, Row 2 adds sparse detail, and Row 3 adds maximum detail (dense forests, dunes, high peaks).
+
+| Grid | Asset Name | Description |
+| --- | --- | --- |
+| **R1, C1** | Grassland Base | Light Green, flat plain. |
+| **R1, C2** | Deciduous Forest Base | Mid-green, flat wooded area. |
+| **R1, C3** | Dark Forest Base | Dark-green, dense wooded area. |
+| **R1, C4** | Sand/Desert Base | Yellow desert flat. |
+| **R1, C5** | Savannah/Dry Grass Base | Orange/brown plain. |
+| **R1, C6** | Hills Base | Light brown hilly terrain. |
+| **R1, C7** | Mountains Base | Grey jagged mountains. |
+| **R1, C8** | Swamp Base | Dark-green/brown, muddy ground. |
+| **R1, C9** | Tundra/Snow Base | White/light-blue arctic plain. |
+| **R1, C10** | Volcanic Ground Base | Blackened, cracked terrain. |
+| **R1, C11** | Crystalline/Alien Base | Purple jagged ground. |
+| **R1, C12** | Void/Chaos Base | Deep purple/black swirling void. |
+|  |  |  |
+| **R2, C1** | Sparse Grassland | Grass with sparse small bushes. |
+| **R2, C2** | Light Deciduous Forest | Wooded area with visible ground patches. |
+| **R2, C3** | Light Dark Forest | Dense dark trees with visible ground. |
+| **R2, C4** | Sandy Terrain | Sand with small pebbles. |
+| **R2, C5** | Savannah Scrubland | Dry ground with small shrubs. |
+| **R2, C6** | Rolling Hills | Defined hilly landscape. |
+| **R2, C7** | Rugged Mountains | Steep, jagged grey peaks. |
+| **R2, C8** | Swampland | Muddy terrain with small water patches. |
+| **R2, C9** | Snowy Hills | White terrain with snowy rises. |
+| **R2, C10** | Charred Ashlands | Black volcanic ground. |
+| **R2, C11** | Spiked Crystalline Terrain | Ground covered in purple spikes. |
+| **R2, C12** | Fractured Void | Deep purple ground with void fissures. |
+|  |  |  |
+| **R3, C1** | Lush Grassland | Lush grass with flowers. |
+| **R3, C2** | Dense Deciduous Forest | Thick green tree canopy. |
+| **R3, C3** | Dense Pine/Dark Forest | Thick dark-green tree canopy. |
+| **R3, C4** | Desert Dunes | Sand with large, defined dunes. |
+| **R3, C5** | Savannah Plains | Dry plains with scattered shrubs. |
+| **R3, C6** | High Hilly Range | Complex range of high hills. |
+| **R3, C7** | Tall Mountain Range | Range of very tall, jagged peaks. |
+| **R3, C8** | Thick Swamp | Muddy water with moss and lilypads. |
+| **R3, C9** | Snowy Mountains | Large, snow-capped white peaks. |
+| **R3, C10** | Active Volcanic Terrain | Black ground with visible lava cracks. |
+| **R3, C11** | Glowing Crystal Spikes | Radiant purple spiked terrain. |
+| **R3, C12** | Corrupted Spiked Void | Deep corrupted purple void spikes. |
+
+---
+
+### Rows 4–6: Subaquatic/Water Biomes
+
+These rows provide different complexity levels for the ocean floors and formations.
+
+| Grid | Asset Name | Description |
+| --- | --- | --- |
+| **R4, C1** | Sandy Seabed Base | Shallow ocean floor, plain sand. |
+| **R4, C2** | Deep Sandy Seabed Base | Deeper ocean floor sand. |
+| **R4, C3** | Deepest Abyss Floor | Pure dark-blue floor. |
+| **R4, C4** | Coral Reef Base | Sandy area with base coral structure. |
+| **R4, C5** | Seaweed Bed Base | Deep sand with base kelp structure. |
+| **R4, C6** | Underwater Hills Base | Large sand dunes underwater. |
+| **R4, C7** | Underwater Mountains Base | Sandy underwater peaks. |
+| **R4, C8** | Abyssal Trench Base | Simple deep blue trench cut. |
+| **R4, C9** | Open Water (Pure) | Simple pure blue water block. |
+| **R4, C10** | Void Water (Pure) | Dark, corrupted purple water block. |
+| **R4, C11** | Volcanic Vents Base | Sandy floor with simple fissures. |
+| **R4, C12** | Sunken Ruins Base | Sandy floor with simple stone layout. |
+|  |  |  |
+| **R5, C1** | Rocky Seabed | Sandy seabed with scattered small rocks. |
+| **R5, C2** | Undulating Seabed | Wavy patterns in deeper sand. |
+| **R5, C3** | Dusted Deep Abyss Floor | Deep blue floor with sand dusting. |
+| **R5, C4** | Basic Coral Formation | Scattered branching corals. |
+| **R5, C5** | Light Kelp Forest | Sparse green seaweed growth. |
+| **R5, C6** | Jagged Underwater Hills | Steeper, jagged sand formations. |
+| **R5, C7** | Rugged Underwater Mountains | Sandy seamounts with defined ridges. |
+| **R5, C8** | Wide Abyssal Trench | Defined, deep-cut sandy trench. |
+| **R5, C9** | Rippling Open Water | Pure blue with surface rippling. |
+| **R5, C10** | Swirling Void Water | Corrupted water with internal swirling. |
+| **R5, C11** | active Volcanic Vents | Floor with active fissures. |
+| **R5, C12** | Crumbling Sunken Structures | Sandy floor with crumbling stone. |
+|  |  |  |
+| **R6, C1** | Deep Ocean Floor (Gravel) | Sandy seabed with gravel patches. |
+| **R6, C2** | Textured Deep Seabed | Sandy ocean floor with wavy details. |
+| **R6, C3** | Abyssal Chasm | Extreme deep blue chasm. |
+| **R6, C4** | Colorful Coral Reef | Highly detailed, colorful branching corals. |
+| **R6, C5** | Dense Kelp Forest | Thick green and blue seaweed forest. |
+| **R6, C6** | Complex Underwater Hills | Range of sandy underwater hills. |
+| **R6, C7** | Complex Underwater Mountains | Range of complex sandy seamounts. |
+| **R6, C8** | Deep Abyssal Trench | Highly detailed, extreme deep trench. |
+| **R6, C9** | Choppy Open Water | Deep blue water with choppy rippling. |
+| **R6, C10** | Chaos Void Swirl | Corrupted water with violent void eddies. |
+| **R6, C11** | active Steaming Vents | active vents with rising gas/heat. |
+| **R6, C12** | Ancient Sunken Ruins | Ancient city foundations and pillars. |
+
+---
+
+### Rows 7–8: Chaos/Corrupted Biomes
+
+These are the warped, corrupted "Chaos" versions of the standard terrains.
+
+| Grid | Asset Name | Description |
+| --- | --- | --- |
+| **R7, C1** | Purple Pulsing Chaos Plains | Dark ground with glowing purple rings. |
+| **R7, C2** | Chaos forest (Twisted Trees) | Forest of gnarled, twisted wood. |
+| **R7, C3** | Jagged Spiked Mountains | Twisted black/purple peaks with spikes. |
+| **R7, C4** | Blighted Chaos Swamp | Gnarled trees in muddy water. |
+| **R7, C5** | Ashlands Chaos Savannah | Dead, twisted trees on charred ground. |
+| **R7, C6** | Burnt Hills (Volcanic) | Blackened, skeletal mountains and hills. |
+| **R7, C7** | active Volcanic Mountain Range | Volcano peaks on blackened ground. |
+| **R7, C8** | Corrupted Chaos Frostland | Cracked, gnarled arctic landscape. |
+| **R7, C9** | Spiked Crystalline Chaos | Extreme spiked purple shard terrain. |
+| **R7, C10** | Abyss Void Chasm (Land) | Deep black hole void chasm. |
+| **R7, C11** | Coastal Chaos | Twisted land with lava and sea. |
+| **R7, C12** | Ruined Chaos City | Crumbling human structures on dead ground. |
+|  |  |  |
+| **R8, C1** | Corrupted Chaos Ocean Floor | Purple ground with void particles. |
+| **R8, C2** | Void Seaweed Forest | Gnarled dark kelp underwater. |
+| **R8, C3** | Spiked Chaos Chasm Floor | Spiked ground in deep abyss. |
+| **R8, C4** | Corrupted Chaos Spiked Reef | warped, dangerous purple spiked reef. |
+| **R8, C5** | Volcanic Vents (Chaos) | Floor with violent chaos magma vents. |
+| **R8, C6** | Spiked Chaos Vents | Spiked ground with chaos vents. |
+| **R8, C7** | Sunken Chaos Spiked Ruins | Warpstone and spiked sunken city. |
+| **R8, C8** | Deep Void Abyss Chasm | Extreme deep chasm in void sea. |
+| **R8, C9** | Corrupted Void Open Water | Dark swirling void water. |
+| **R8, C10** | active Chaos Vents (Deep) | Deep ocean floor chaos magma vents. |
+| **R8, C11** | Chaos Spiked Crystal Floor | Underwater ground with spikes and crystals. |
+| **R8, C12** | Chaos Void Archipelago | Twisted black islands in void sea. |
+
+---
+
+### Row 9: Transitions & Overlays
+
+This row contains blended tiles for smoother map edges and decorative overlays.
+
+| Grid | Asset Name | Description |
+| --- | --- | --- |
+| **R9, C1** | Grassland to Forest Blend | Blended edge. |
+| **R9, C2** | Grassland to Desert Blend | Blended sand edge. |
+| **R9, C3** | Forest to Swamp Blend | Blended murky water edge. |
+| **R9, C4** | Coastal Blend | Blended sand-to-grass edge. |
+| **R9, C5** | River Overlay (Straight) | Clear blue river segment (straight). |
+| **R9, C6** | River Overlay (Curved) | Clear blue river segment (curved). |
+| **R9, C7** | Road Overlay (Dirt) | Brown dirt road segment. |
+| **R9, C8** | Road Overlay (Stone) | Paved stone road segment. |
+| **R9, C9** | Chaos Edge Blend (Land) | Blended edge of standard terrain to Chaos. |
+| **R9, C10** | Chaos Edge Blend (Water) | Blended edge of Open Water to Void Water. |
+| **R9, C11** | Lava River Overlay | Stream of molten lava. |
+| **R9, C12** | Ice River Overlay | Stream of ice/frozen water. |
+
+---
+
+### Row 10: Specific Points of Interest (POIs)
+
+Unique structures for the map.
+
+| Grid | Asset Name | Description |
+| --- | --- | --- |
+| **R10, C1** | Great Tree City | Integrated platforms and walkways. |
+| **R10, C2** | Burrow City (Mole Entrance) | Mole entrance with visible air vents. |
+| **R10, C3** | Cave Entrance (Land) | Dark entrance in a standard hillside. |
+| **R10, C4** | Submerged Cave Entrance | Underwater entrance. |
+| **R10, C5** | Waterfall (Large) | cascading rushed water over a cliff. |
+| **R10, C6** | Hot Spring | Steaming blue water pool. |
+| **R10, C7** | Active Volcano Peak | Peaking cone releasing smoke. |
+| **R10, C8** | Deep-Sea Geyser (Hydrothermal) | active underwater volcanic vent. |
+| **R10, C9** | Ancient Stone Ruin | ancient crumbled human stonework. |
+| **R10, C10** | Castle/Keep (Ruined) | crumbling stone fortress. |
+| **R10, C11** | Coastal Lighthouse | tall tower with light beacon. |
+| **R10, C12** | Stone Arched Bridge | human stonework bridge crossing. |
+
+---
+
+### Row 11: Creatures & Entities (Units)
+
+Based strictly on your requested visual list.
+
+| Grid | Asset Name | Description |
+| --- | --- | --- |
+| **R11, C1** | Badger Guard | badger unit in armor with shield and spear. |
+| **R11, C2** | Fox Ranger | fox unit with bow and quiver. |
+| **R11, C3** | Mole Sapper | mole unit with goggles, holding a pickaxe. |
+| **R11, C4** | Rodent Caravan | wagon pulled by mice. |
+| **R11, C5** | Seed-pod Airship | seed-carrying glider airship. |
+| **R11, C6** | Brown Bear | large bear unit. |
+| **R11, C7** | Snapping Turtle | snapping turtle unit. |
+| **R11, C8** | Giant Dragonfly | dragonfly unit. |
+| **R11, C9** | Badger Family | Badger family group (Adult and two cubs). |
+| **R11, C10** | School of Fish | small blue fish unit (underwater). |
+| **R11, C11** | Large Crab | large red coastal crab unit. |
+| **R11, C12** | Sp spore Bear | bear with fungal growths unit. |
+
+---
+
+### Row 12: UI Elements, Effects, and Icons
+
+This row uses all 16 columns for the various interface icons and local effects.
+
+| Grid | Asset Name | Description |
+| --- | --- | --- |
+| **R12, C1** | Fire Effect | localized fire particle effect. |
+| **R12, C2** | Poison Effect | localized green poison particle effect. |
+| **R12, C3** | Acid Rain Effect | localized rain particle effect. |
+| **R12, C4** | Fog Effect | localized fog particle effect. |
+| **R12, C5** | localized Magic Surge | localized magic surge effect (swirl). |
+| **R12, C6** | Settings Gear Icon | localized GSettings gear icon. |
+| **R12, C7** | Map Scroll Icon | localized Map Scroll icon. |
+| **R12, C8** | Blank Button (Check/Green) | blank green button (checkmark icon). |
+| **R12, C9** | Blank Button (X/Red) | blank red button (X symbol icon). |
+| **R12, C10** | Blank Button (Play/Blue) | blank blue button (Arrow symbol icon). |
+| **R12, C11** | Directional Cross-pad | Arrow Pad for UI navigation. |
+| **R12, C12** | Blank Profile Silhouette | blank profile silhouette icon. |
+| **R12, C13** | Coin Stack Icon | blank coin stack UI currency icon. |
+| **R12, C14** | Hammer/Item Icon | blank hammer/potion/spellbook icons. |
+| **R12, C15** | Ornate Frame Corner A | blank profile silhouette, ornate frame corner. |
+| **R12, C16** | Ornate Frame Corner B | blank coin stack, ornate frame corner. |

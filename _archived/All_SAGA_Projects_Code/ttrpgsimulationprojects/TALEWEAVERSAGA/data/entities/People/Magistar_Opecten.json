@@ -1,0 +1,29 @@
+{
+    "name": "Magistar Opecten",
+    "aliases": [
+        "Magistar Opecten",
+        "The All-Seeing",
+        "The Mirror Lord"
+    ],
+    "tags": [
+        "Magistar",
+        "Lux",
+        "Awareness",
+        "Dragon/Chromium",
+        "NPC"
+    ],
+    "school": "Lux",
+    "element": "Chromium",
+    "original_title": "The All-Seeing",
+    "dragon_form": "The Mirror Lord",
+    "pre_corruption_name": "Rictus",
+    "stats": {
+        "awareness": 9,
+        "magic_resistance": 5,
+        "willpower": 7,
+        "mental_health": -2,
+        "physical_health": 4,
+        "speed": 3,
+        "corruption_level": 8
+    }
+}

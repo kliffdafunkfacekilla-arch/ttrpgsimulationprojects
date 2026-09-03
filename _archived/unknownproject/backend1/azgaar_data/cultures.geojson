@@ -1,0 +1,26 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "culture_id": 1,
+        "name": "River_Folk"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "culture_id": 2,
+        "name": "Shadow_Guild"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "culture_id": 3,
+        "name": "Ironclad_Clan"
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+sqlalchemy
+psycopg2-binary
+geopandas
+shapely
+streamlit
+langchain
+pgvector
+pandas

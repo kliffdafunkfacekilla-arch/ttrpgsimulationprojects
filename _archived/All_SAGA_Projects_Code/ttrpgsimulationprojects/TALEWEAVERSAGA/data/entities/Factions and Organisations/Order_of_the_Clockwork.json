@@ -1,0 +1,45 @@
+{
+    "Name": "Order of the Clockwork",
+    "Type": "Faction",
+    "Tags": [
+        "Clandestine Network",
+        "Scholars",
+        "Technological Balance",
+        "Benevolent Aid",
+        "Total Secrecy"
+    ],
+    "Core Tenets": {
+        "Total Secrecy": true,
+        "Technological Balance": true,
+        "Benevolent Aid": true
+    },
+    "Path Divisions": {
+        "The Archeologist (The Historian)": true,
+        "The Psychologist (The Sociologist)": true,
+        "The Cosmologist (The Navigator)": true,
+        "The Engineer (The Maker)": true,
+        "The Chemist (The Alchemist)": true,
+        "The Moralist (The Captain)": true
+    },
+    "Path of Initiation": {
+        "Scavenger Hunt": true,
+        "Personal Treasure": true,
+        "Clockwork Cache": true
+    },
+    "Hidden Hand": {
+        "Moralist (The Captain)": true,
+        "Black Box": true,
+        "University of Reliance": true
+    },
+    "Gilded Cage": {
+        "Subterranean Prison": true,
+        "Collectors": true
+    },
+    "Grand Convergence": {
+        "Last Signpost": true,
+        "Quiet Puzzle": true,
+        "Gravity of the Obsessed": true,
+        "Connection": true,
+        "Final Cracking": true
+    }
+}

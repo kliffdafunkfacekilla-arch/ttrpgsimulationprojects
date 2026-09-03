@@ -1,0 +1,40 @@
+{
+    "stat_block": {
+        "Name": "Reliance",
+        "Type": "Culture",
+        "Description": "A culture of self-sufficiency and stoicism, characterized by a unique biology and societal structure.",
+        "Attributes": {
+            "Material Basicness": 10,
+            "Subterranean Simplicity": 8,
+            "Austerity in Sustenance": 7,
+            "Goal of Wanting Nothing": 9,
+            "Generational Wisdom": 12,
+            "Societal Structure": 10,
+            "Defense": 15,
+            "Fungal Alloy": 18,
+            "Sacrifice": 14,
+            "Ritual of Sporing": 16,
+            "Breeding": 11,
+            "Colonization": 8
+        },
+        "Abilities": [
+            {
+                "name": "Subterranean Labyrinth",
+                "description": "The Reliance's domain is a maze-like network of tunnels, designed to repel and neutralize intruders.",
+                "effect": "Disorientation by Design, Engineered Collapse, Decay as a Weapon"
+            },
+            {
+                "name": "Fungal Alloy",
+                "description": "The Reliance's biological essence, immune to chaos and used for defense and creation.",
+                "effect": "Immunity to Chaos, Chaos-Immune Material"
+            }
+        ],
+        "Vulnerabilities": [
+            {
+                "name": "Rooting and Regrowth",
+                "description": "During the rooting and regrowth phase, the individual is in a completely helpless state, vulnerable to destruction."
+            }
+        ]
+    },
+    "lore": "An Expos\u00e9 on The Reliance: Stoicism, Self-Sufficiency, and Sacrifice"
+}

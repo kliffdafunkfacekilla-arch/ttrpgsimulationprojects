@@ -1,0 +1,50 @@
+[
+  {
+    "Category Name": "THREATS",
+    "Stat": "MIGHT",
+    "Skill": "Intimidate",
+    "Examples": "Crowbar, Heavy Cane, Brass Knuckles, Hunting Knife",
+    "Trait": "Shock",
+    "Effect": "Exploding Dice: If you roll max damage on the Composure die, roll again."
+  },
+  {
+    "Category Name": "FIDGETS",
+    "Stat": "FINESSE",
+    "Skill": "Repartee",
+    "Examples": "Coin (for flipping), Locket (snapping shut), Fan, Lighter",
+    "Trait": "Wit",
+    "Effect": "Crit 19-20: Distracting motions make your insults land harder."
+  },
+  {
+    "Category Name": "PROPS",
+    "Stat": "FORTITUDE",
+    "Skill": "Coercion",
+    "Examples": "Pocket Watch (checking time), Apple (eating slowly), Cigar",
+    "Trait": "Corner",
+    "Effect": "Lock-In: On Hit, target is \"Cornered\" (Cannot leave conversation until they win a Clash)."
+  },
+  {
+    "Category Name": "PLANNING",
+    "Stat": "LOGIC",
+    "Skill": "Rhetoric",
+    "Examples": "Blueprint, Contract, Ledger, Map",
+    "Trait": "Objection",
+    "Effect": "Pierce: Ignores 2 points of target's Social Defense Bonus (DB)."
+  },
+  {
+    "Category Name": "INTEL",
+    "Stat": "AWARENESS",
+    "Skill": "Insight",
+    "Examples": "Blackmail Letter, Stolen Diary, Surveillance Photo",
+    "Trait": "Expose",
+    "Effect": "Leverage: Deal +2 Damage if you reveal a secret or flaw."
+  },
+  {
+    "Category Name": "SCENTS",
+    "Stat": "CHARM",
+    "Skill": "Persuasion",
+    "Examples": "Perfume, Musk, Incense, Instrument",
+    "Trait": "Allure",
+    "Effect": "Debilitate: Low Dmg, but applies Charmed status (Target cannot attack you next turn)."
+  }
+]

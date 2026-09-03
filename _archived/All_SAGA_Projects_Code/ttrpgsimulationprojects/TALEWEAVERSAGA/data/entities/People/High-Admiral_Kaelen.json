@@ -1,0 +1,23 @@
+{
+    " Species": "Golden Eagle",
+    "Intimidation": {
+        "Type": "Stare",
+        "Duration": 20
+    },
+    "Armor": {
+        "Type": "Aetherium",
+        "Weight": "Lightweight gold alloy"
+    },
+    "Clothing": {
+        "Type": "Voltaic Fleece",
+        "Purpose": "Signal immunity to lightning/shock tactics"
+    },
+    "Leadership": {
+        "Title": "High-Admiral",
+        "Ship": "The Radiant Raptor"
+    },
+    "Tactics": {
+        "Type": "Silence",
+        "Method": "Invites enemy captains aboard for parley and stares at them"
+    }
+}

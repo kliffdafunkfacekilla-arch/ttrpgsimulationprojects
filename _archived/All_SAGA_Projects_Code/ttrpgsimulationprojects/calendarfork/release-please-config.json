@@ -1,0 +1,25 @@
+{
+    "packages": {
+        ".": {
+            "changelog-path": "CHANGELOG.md",
+            "release-type": "node"
+        }
+    },
+    "include-component-in-tag": false,
+    "include-v-in-tag": false,
+    "extra-files": [
+        {
+            "type": "json",
+            "path": "manifest.json",
+            "jsonpath": "$.version"
+        },
+        {
+            "type": "json",
+            "path": "manifest-beta.json",
+            "jsonpath": "$.version"
+        }
+    ],
+    "last-release-sha": "e4c417a5f1761e83c457ff72100d24da3e4eea5e",
+
+    "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
+}

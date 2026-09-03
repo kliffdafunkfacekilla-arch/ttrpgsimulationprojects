@@ -1,0 +1,159 @@
+---
+name: Integration Tests
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Run nightly at 2 AM UTC to save runner minutes
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    # Allow manual triggering for high-risk PRs
+
+jobs:
+  # Job to detect which files have changed
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      backend: ${{ steps.filter.outputs.backend }}
+      integration: ${{ steps.filter.outputs.integration }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Check for file changes
+      uses: dorny/paths-filter@v3
+      id: filter
+      with:
+        filters: |
+          backend:
+            - 'backend/**'
+          integration:
+            - 'frontend/**'
+            - 'backend/**'
+
+  backend-integration-tests:
+    runs-on: ubuntu-latest
+    needs: changes
+    if: ${{ needs.changes.outputs.backend == 'true' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+
+    - name: Setup Node.js (for OpenAPI client validation)
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+        cache: 'npm'
+        cache-dependency-path: frontend/package-lock.json
+
+    - name: Install UV
+      run: curl -LsSf https://astral.sh/uv/install.sh | sh
+
+    - name: Install backend dependencies
+      run: |
+        export PATH="$HOME/.local/bin:$PATH"
+        uv sync
+
+    - name: Run backend integration tests (slow)
+      run: |
+        export PATH="$HOME/.local/bin:$PATH"
+        cd backend
+        uv run python -m pytest tests/ -m "integration or slow" --durations=20 -v
+
+  cross-component-integration:
+    runs-on: ubuntu-latest
+    needs: [changes, backend-integration-tests]
+    if: ${{ always() && (needs.changes.outputs.integration == 'true' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') && (needs.backend-integration-tests.result == 'success' || needs.backend-integration-tests.result == 'skipped') }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+
+    - name: Setup Node.js (for OpenAPI client validation)
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+        cache: 'npm'
+        cache-dependency-path: frontend/package-lock.json
+
+    - name: Install UV
+      run: curl -LsSf https://astral.sh/uv/install.sh | sh
+
+    - name: Install backend dependencies
+      run: |
+        export PATH="$HOME/.local/bin:$PATH"
+        uv sync
+
+    - name: Check API compatibility
+      run: |
+        export PATH="$HOME/.local/bin:$PATH"
+        uv run python -c "
+        import sys
+        sys.path.append('backend')
+        from backend.app.models.game_models import *
+        from backend.app.main import app
+        print('✅ Backend models and API routes compatible')
+        "
+
+    - name: Performance regression check
+      run: |
+        export PATH="$HOME/.local/bin:$PATH"
+        cd backend
+        echo "Running performance regression tests..."
+        uv run python -m pytest tests/test_parameterized_combat.py -m "slow" --durations=10 -v
+        echo "✅ Performance tests completed"
+
+    - name: Validate OpenAPI client generation
+      run: |
+        # Install frontend dependencies for OpenAPI generation
+        cd frontend
+        npm ci --legacy-peer-deps
+        
+        # Start backend server for OpenAPI schema generation
+        export PATH="$HOME/.local/bin:$PATH"
+        cd ../backend
+        uv run python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 &
+        BACKEND_PID=$!
+        # Wait for backend server to be ready (timeout after 30s)
+        for i in {1..30}; do
+          if curl -fs http://localhost:8000/openapi.json > /dev/null; then
+            break
+          fi
+          sleep 1
+        done
+        # Test OpenAPI schema availability
+        curl -f http://localhost:8000/openapi.json > /dev/null || {
+          echo "❌ OpenAPI schema not available"
+          kill $BACKEND_PID 2>/dev/null || true
+          exit 1
+        }
+        
+        # Generate API client
+        cd ../frontend
+        npm run generate:api || {
+          echo "❌ OpenAPI client generation failed"
+          kill $BACKEND_PID 2>/dev/null || true
+          exit 1
+        }
+        
+        # Check that client was generated
+        if [ ! -f "src/api-client/index.ts" ]; then
+          echo "❌ OpenAPI client files not generated"
+          kill $BACKEND_PID 2>/dev/null || true
+          exit 1
+        fi
+        
+        echo "✅ OpenAPI client generation validated"
+        kill $BACKEND_PID 2>/dev/null || true

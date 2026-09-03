@@ -1,0 +1,412 @@
+# python_fmg/core/db_sync.py
+import sqlite3
+import json
+import os
+from typing import Optional
+from python_fmg.core.models import MapState, GlobalHex, Settlement, Faction, Paragon, WorldEntity, TradeRoute, Religion, Culture, Province, Marker
+
+def load_from_db(db_path: str) -> Optional[MapState]:
+    if not os.path.exists(db_path):
+        return None
+    
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+    
+    # 1. Database schema upgrades/alters for new simulation fields
+    try:
+        cursor.execute("SELECT coa_json FROM factions LIMIT 1")
+    except sqlite3.OperationalError:
+        try:
+            cursor.execute("ALTER TABLE factions ADD COLUMN coa_json TEXT DEFAULT '{}'")
+            conn.commit()
+        except Exception:
+            pass
+
+    # Alter factions table for simulation variables
+    cols_to_add = [
+        ("species_population_json", "TEXT DEFAULT '{}'"),
+        ("sparkborn_attunement_json", "TEXT DEFAULT '[]'"),
+        ("aggression_level", "REAL DEFAULT 5.0"),
+        ("trade_level", "REAL DEFAULT 5.0"),
+        ("faction_trait", "TEXT DEFAULT ''")
+    ]
+    for col_name, col_def in cols_to_add:
+        try:
+            cursor.execute(f"SELECT {col_name} FROM factions LIMIT 1")
+        except sqlite3.OperationalError:
+            try:
+                cursor.execute(f"ALTER TABLE factions ADD COLUMN {col_name} {col_def}")
+                conn.commit()
+            except Exception:
+                pass
+
+    try:
+        cursor.execute("SELECT micro_q, micro_r FROM world_entities LIMIT 1")
+    except sqlite3.OperationalError:
+        try:
+            cursor.execute("ALTER TABLE world_entities ADD COLUMN micro_q INTEGER DEFAULT 0")
+            cursor.execute("ALTER TABLE world_entities ADD COLUMN micro_r INTEGER DEFAULT 0")
+            conn.commit()
+        except Exception:
+            pass
+            
+    # 2. Load Factions
+    factions = {}
+    try:
+        cursor.execute("""
+            SELECT id, name, treasury, technology_level, special_rule, coa_json, 
+                   species_population_json, sparkborn_attunement_json, aggression_level, trade_level, faction_trait 
+            FROM factions
+        """)
+        for row in cursor.fetchall():
+            f_id = row[0]
+            factions[f_id] = Faction(
+                id=f_id,
+                name=row[1],
+                treasury=row[2],
+                technology_level=row[3],
+                special_rule=row[4],
+                coa_json=row[5] or "{}",
+                species_population_json=row[6] or "{}",
+                sparkborn_attunement_json=row[7] or "[]",
+                aggression_level=row[8] if row[8] is not None else 5.0,
+                trade_level=row[9] if row[9] is not None else 5.0,
+                faction_trait=row[10] or ""
+            )
+            
+        # Load Faction Relations
+        cursor.execute("SELECT faction_a_id, faction_b_id, status, trust_level FROM faction_relations")
+        for f_a, f_b, status, trust in cursor.fetchall():
+            if f_a in factions:
+                factions[f_a].relations[f_b] = (status, trust)
+    except sqlite3.OperationalError:
+        pass
+        
+    # 3. Load Paragons (linked to settlements)
+    paragon_map = {}
+    try:
+        cursor.execute("SELECT id, settlement_id, name, archetype, level, stats_json, traits_json, motivation FROM paragons")
+        for p_id, s_id, name, arch, lvl, stats, traits, mot in cursor.fetchall():
+            p = Paragon(
+                id=p_id,
+                name=name,
+                archetype=arch,
+                level=lvl,
+                stats_json=stats,
+                traits_json=traits,
+                motivation=mot
+            )
+            if s_id not in paragon_map:
+                paragon_map[s_id] = []
+            paragon_map[s_id].append(p)
+    except sqlite3.OperationalError:
+        pass
+
+    # 4. Load Settlements with temporal and dimensional bounds
+    settlements = {}
+    try:
+        cursor.execute("""
+            SELECT s.id, s.faction_id, s.global_hex_id, s.name, s.settlement_level, 
+                   s.population, s.wealth, s.security_points, s.inventory_json, 
+                   s.hidden_cultists, s.magic_loadout, f.name, s.valid_from, s.valid_until, s.z_layer
+            FROM settlements s
+            LEFT JOIN factions f ON s.faction_id = f.id
+        """)
+        for s_id, f_id, g_hex_id, name, lvl, pop, wealth, sec, inv, hidden, magic, f_name, v_from, v_until, z_lay in cursor.fetchall():
+            sett = Settlement(
+                id=s_id,
+                faction_id=f_id,
+                faction_name=f_name or "Neutral",
+                name=name,
+                settlement_level=lvl,
+                population=pop,
+                wealth=wealth,
+                security_points=sec,
+                inventory_json=inv,
+                hidden_cultists=hidden,
+                magic_loadout=magic,
+                paragons=paragon_map.get(s_id, [])
+            )
+            sett.valid_from = v_from if v_from is not None else 0
+            sett.valid_until = v_until if v_until is not None else 9999
+            sett.z_layer = z_lay if z_lay is not None else "surface"
+            try:
+                sett.linked_paragon_id = int(magic) if magic and magic.isdigit() else None
+            except Exception:
+                sett.linked_paragon_id = None
+            settlements[g_hex_id] = sett
+    except sqlite3.OperationalError:
+        pass
+
+    # 5. Load Hexes
+    hexes = {}
+    hex_id_to_coords = {}
+    try:
+        cursor.execute("""
+            SELECT id, q, r, pack_geo, pack_meso, pack_ecology, micro_data_json, 
+                   flow_target_id, wind_direction, river_volume, is_lake, chaos_domain 
+            FROM global_hexes
+        """)
+        rows = cursor.fetchall()
+        
+        for h_id, q, r, pack_geo, pack_meso, pack_eco, micro_json, flow_tgt, wind_dir, r_vol, is_lake, domain in rows:
+            biome = pack_geo & 0xF
+            elevation = (pack_geo >> 4) & 0xF
+            
+            p1 = pack_eco & 0xFF
+            p2 = (pack_eco >> 8) & 0xFF
+            p3 = (pack_eco >> 16) & 0xFF
+            res = (pack_eco >> 24) & 0xFFFF
+            
+            hx = GlobalHex(
+                id=h_id,
+                q=q,
+                r=r,
+                biome=biome,
+                elevation=elevation,
+                p1=p1,
+                p2=p2,
+                p3=p3,
+                res=res,
+                wind_direction=wind_dir,
+                river_volume=r_vol,
+                is_lake=bool(is_lake),
+                chaos_domain=domain,
+                flow_target_id=flow_tgt,
+                micro_data_json=micro_json
+            )
+            if h_id in settlements:
+                hx.settlement = settlements[h_id]
+                
+            hexes[(q, r)] = hx
+            hex_id_to_coords[h_id] = (q, r)
+    except sqlite3.OperationalError:
+        conn.close()
+        return None
+        
+    # 6. Load World Entities (Military / Units)
+    entities_list = []
+    try:
+        cursor.execute("""
+            SELECT id, type, global_hex_id, radius, duration, intensity, alignment, micro_q, micro_r 
+            FROM world_entities
+        """)
+        for e_id, e_type, g_hex_id, radius, duration, intensity, alignment, mq, mr in cursor.fetchall():
+            g_coords = hex_id_to_coords.get(g_hex_id, (0, 0))
+            entities_list.append(WorldEntity(
+                id=e_id,
+                type=e_type,
+                global_hex_id=g_hex_id,
+                global_q=g_coords[0],
+                global_r=g_coords[1],
+                radius=radius,
+                duration=duration,
+                intensity=intensity,
+                alignment=alignment,
+                micro_q=mq,
+                micro_r=mr
+            ))
+    except sqlite3.OperationalError:
+        pass
+        
+    # 7. Load Trade Routes with Z-binding
+    routes_list = []
+    try:
+        cursor.execute("SELECT id, faction_id, settlement_a_id, settlement_b_id, bandwidth, route_type, z_layer FROM trade_routes")
+        for r_id, f_id, s_a, s_b, band, r_type, z_lay in cursor.fetchall():
+            rt = TradeRoute(
+                id=r_id,
+                faction_id=f_id,
+                settlement_a_id=s_a,
+                settlement_b_id=s_b,
+                bandwidth=band,
+                route_type=r_type
+            )
+            rt.z_layer = z_lay if z_lay is not None else "surface"
+            routes_list.append(rt)
+    except sqlite3.OperationalError:
+        # Fallback if z_layer missing
+        try:
+            cursor.execute("SELECT id, faction_id, settlement_a_id, settlement_b_id, bandwidth, route_type FROM trade_routes")
+            for r_id, f_id, s_a, s_b, band, r_type in cursor.fetchall():
+                rt = TradeRoute(
+                    id=r_id,
+                    faction_id=f_id,
+                    settlement_a_id=s_a,
+                    settlement_b_id=s_b,
+                    bandwidth=band,
+                    route_type=r_type
+                )
+                rt.z_layer = "surface"
+                routes_list.append(rt)
+        except Exception:
+            pass
+
+    # 8. Load Markers (POIs)
+    markers_list = []
+    try:
+        cursor.execute("SELECT id, icon, type, global_hex_id FROM markers")
+        for m_id, icon, m_type, g_hex_id in cursor.fetchall():
+            g_coords = hex_id_to_coords.get(g_hex_id, (0, 0))
+            mk = Marker(
+                id=m_id,
+                type=m_type,
+                global_q=g_coords[0],
+                global_r=g_coords[1]
+            )
+            mk.icon = icon or "*"
+            mk.global_hex_id = g_hex_id
+            markers_list.append(mk)
+    except sqlite3.OperationalError:
+        pass
+        
+    conn.close()
+    return MapState(hexes=hexes, factions=factions, entities=entities_list, routes=routes_list, markers=markers_list)
+
+def save_to_db(state: MapState, db_path: str):
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+    
+    # 1. Save Factions
+    faction_updates = []
+    for f_id, f in state.factions.items():
+        faction_updates.append((
+            f.name,
+            f.treasury,
+            f.technology_level,
+            f.special_rule,
+            f.coa_json,
+            f.species_population_json,
+            f.sparkborn_attunement_json,
+            f.aggression_level,
+            f.trade_level,
+            f.faction_trait,
+            f.id
+        ))
+    if faction_updates:
+        try:
+            cursor.executemany("""
+                UPDATE factions 
+                SET name=?, treasury=?, technology_level=?, special_rule=?, coa_json=?,
+                    species_population_json=?, sparkborn_attunement_json=?, aggression_level=?, trade_level=?, faction_trait=?
+                WHERE id=?
+            """, faction_updates)
+        except sqlite3.OperationalError:
+            cursor.executemany("""
+                UPDATE factions 
+                SET name=?, treasury=?, technology_level=?, special_rule=?
+                WHERE id=?
+            """, [item[:4] + (item[-1],) for item in faction_updates])
+            
+    # Save Faction Relations
+    for f_id, f in state.factions.items():
+        for target_id, (status, trust) in f.relations.items():
+            cursor.execute("""
+                INSERT OR REPLACE INTO faction_relations (faction_a_id, faction_b_id, status, trust_level)
+                VALUES (?, ?, ?, ?)
+            """, (f.id, target_id, status, trust))
+
+    # 2. Save Hexes
+    hex_updates = []
+    hex_id_to_coords = {}
+    for (q, r), hx in state.hexes.items():
+        pack_geo = (hx.biome & 0xF) | ((hx.elevation & 0xF) << 4)
+        pack_eco = hx.p1 | (hx.p2 << 8) | (hx.p3 << 16) | (hx.res << 24)
+        hex_updates.append((
+            pack_geo,
+            pack_eco,
+            hx.micro_data_json,
+            hx.wind_direction,
+            hx.river_volume,
+            1 if hx.is_lake else 0,
+            hx.chaos_domain,
+            hx.flow_target_id,
+            hx.id
+        ))
+        hex_id_to_coords[hx.id] = (q, r)
+        
+    cursor.executemany("""
+        UPDATE global_hexes 
+        SET pack_geo=?, pack_ecology=?, micro_data_json=?, wind_direction=?, 
+            river_volume=?, is_lake=?, chaos_domain=?, flow_target_id=?
+        WHERE id=?
+    """, hex_updates)
+    
+    # 3. Save Settlements & Paragons with dimensional bounds
+    for (q, r), hx in state.hexes.items():
+        if hx.settlement:
+            s = hx.settlement
+            magic_field = str(s.linked_paragon_id) if s.linked_paragon_id is not None else s.magic_loadout
+            v_from = getattr(s, "valid_from", 0)
+            v_until = getattr(s, "valid_until", 9999)
+            z_lay = getattr(s, "z_layer", "surface")
+            if s.id is not None:
+                cursor.execute("""
+                    UPDATE settlements 
+                    SET faction_id=?, name=?, settlement_level=?, population=?, 
+                        wealth=?, security_points=?, inventory_json=?, hidden_cultists=?, magic_loadout=?,
+                        valid_from=?, valid_until=?, z_layer=?
+                    WHERE id=?
+                """, (s.faction_id, s.name, s.settlement_level, s.population, s.wealth, s.security_points, s.inventory_json, s.hidden_cultists, magic_field, v_from, v_until, z_lay, s.id))
+            else:
+                cursor.execute("""
+                    INSERT INTO settlements 
+                    (faction_id, global_hex_id, name, settlement_level, population, wealth, security_points, inventory_json, hidden_cultists, magic_loadout, valid_from, valid_until, z_layer)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """, (s.faction_id, hx.id, s.name, s.settlement_level, s.population, s.wealth, s.security_points, s.inventory_json, s.hidden_cultists, magic_field, v_from, v_until, z_lay))
+                s.id = cursor.lastrowid
+                
+            cursor.execute("DELETE FROM paragons WHERE settlement_id=?", (s.id,))
+            for p in s.paragons:
+                cursor.execute("""
+                    INSERT INTO paragons (settlement_id, name, archetype, level, stats_json, traits_json, motivation)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)
+                """, (s.id, p.name, p.archetype, p.level, p.stats_json, p.traits_json, p.motivation))
+        else:
+            cursor.execute("SELECT id FROM settlements WHERE global_hex_id=?", (hx.id,))
+            sett_row = cursor.fetchone()
+            if sett_row:
+                s_id = sett_row[0]
+                cursor.execute("DELETE FROM paragons WHERE settlement_id=?", (s_id,))
+                cursor.execute("DELETE FROM settlements WHERE id=?", (s_id,))
+                
+    # 4. Save World Entities (Moving units / Storms)
+    cursor.execute("DELETE FROM world_entities")
+    for ent in state.entities:
+        cursor.execute("""
+            INSERT INTO world_entities (type, global_hex_id, radius, duration, intensity, alignment, micro_q, micro_r)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        """, (ent.type, ent.global_hex_id, ent.radius, ent.duration, ent.intensity, ent.alignment, ent.micro_q, ent.micro_r))
+        ent.id = cursor.lastrowid
+        
+    # 5. Save Trade Routes with Z-binding
+    cursor.execute("DELETE FROM trade_routes")
+    for route in state.routes:
+        z_lay = getattr(route, "z_layer", "surface")
+        cursor.execute("""
+            INSERT INTO trade_routes (faction_id, settlement_a_id, settlement_b_id, bandwidth, route_type, z_layer)
+            VALUES (?, ?, ?, ?, ?, ?)
+        """, (route.faction_id, route.settlement_a_id, route.settlement_b_id, route.bandwidth, route.route_type, z_lay))
+        route.id = cursor.lastrowid
+
+    # 6. Save Markers (POIs)
+    try:
+        cursor.execute("DELETE FROM markers")
+        for mark in state.markers:
+            g_hex_id = getattr(mark, "global_hex_id", None)
+            if not g_hex_id:
+                for h_id, coords in hex_id_to_coords.items():
+                    if coords == (mark.global_q, mark.global_r):
+                        g_hex_id = h_id
+                        break
+            if g_hex_id is not None:
+                icon = getattr(mark, "icon", "*")
+                cursor.execute("""
+                    INSERT INTO markers (icon, type, global_hex_id)
+                    VALUES (?, ?, ?)
+                """, (icon, mark.type, g_hex_id))
+    except sqlite3.OperationalError:
+        pass
+            
+    conn.commit()
+    conn.close()

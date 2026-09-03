@@ -1,0 +1,326 @@
+[
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "1",
+    "Type": "Offense",
+    "Name": "Push",
+    "Damage_Type": "Force",
+    "Description": "Shove target away (Knockback)."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "1",
+    "Type": "Defense",
+    "Name": "Brace",
+    "Damage_Type": "Force",
+    "Description": "Ignore Knockback or Prone effects."
+  },
+  {
+    "School": "Mass",
+    "Attribute": "Might",
+    "Tier": "1",
+    "Type": "Utility",
+    "Name": "Lift",
+    "Damage_Type": "Force",
+    "Description": "Reduce the weight of an object."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "1",
+    "Type": "Offense",
+    "Name": "Halt",
+    "Damage_Type": "Cold",
+    "Description": "Stop target movement completely."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "1",
+    "Type": "Defense",
+    "Name": "Stand",
+    "Damage_Type": "Cold",
+    "Description": "Stand up from Prone instantly."
+  },
+  {
+    "School": "Ordo",
+    "Attribute": "Endurance",
+    "Tier": "1",
+    "Type": "Utility",
+    "Name": "Hold",
+    "Damage_Type": "Cold",
+    "Description": "Keep a door or object shut."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "1",
+    "Type": "Offense",
+    "Name": "Pierce",
+    "Damage_Type": "Acid",
+    "Description": "Ignore Armor Rating (AR)."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "1",
+    "Type": "Defense",
+    "Name": "Dodge",
+    "Damage_Type": "Acid",
+    "Description": "Bonus to AC vs one attack."
+  },
+  {
+    "School": "Flux",
+    "Attribute": "Finesse",
+    "Tier": "1",
+    "Type": "Utility",
+    "Name": "Unlock",
+    "Damage_Type": "Acid",
+    "Description": "Open simple mechanism."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "1",
+    "Type": "Offense",
+    "Name": "Snap",
+    "Damage_Type": "Sonic",
+    "Description": "Quick low-damage hit."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "1",
+    "Type": "Defense",
+    "Name": "Duck",
+    "Damage_Type": "Sonic",
+    "Description": "Reaction AC bonus."
+  },
+  {
+    "School": "Motus",
+    "Attribute": "Reflexes",
+    "Tier": "1",
+    "Type": "Utility",
+    "Name": "Step",
+    "Damage_Type": "Sonic",
+    "Description": "5ft Shift (No Opportunity)."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "1",
+    "Type": "Offense",
+    "Name": "Sting",
+    "Damage_Type": "Poison",
+    "Description": "Minor Poison damage."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "1",
+    "Type": "Defense",
+    "Name": "Clot",
+    "Damage_Type": "Poison",
+    "Description": "Stop Bleeding immediately."
+  },
+  {
+    "School": "Vita",
+    "Attribute": "Vitality",
+    "Tier": "1",
+    "Type": "Utility",
+    "Name": "Mend",
+    "Damage_Type": "Poison",
+    "Description": "Heal minor wounds."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "1",
+    "Type": "Offense",
+    "Name": "Heat",
+    "Damage_Type": "Fire",
+    "Description": "Deal Fire Damage."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "1",
+    "Type": "Defense",
+    "Name": "Harden",
+    "Damage_Type": "Fire",
+    "Description": "Bonus AC."
+  },
+  {
+    "School": "Nexus",
+    "Attribute": "Fortitude",
+    "Tier": "1",
+    "Type": "Utility",
+    "Name": "Shape",
+    "Damage_Type": "Fire",
+    "Description": "Mold clay/stone/wood."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "1",
+    "Type": "Offense",
+    "Name": "Mark",
+    "Damage_Type": "Arcane",
+    "Description": "Prevent Stealth."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "1",
+    "Type": "Defense",
+    "Name": "Shield",
+    "Damage_Type": "Arcane",
+    "Description": "Magic Armor (Temp AC)."
+  },
+  {
+    "School": "Anumis",
+    "Attribute": "Knowledge",
+    "Tier": "1",
+    "Type": "Utility",
+    "Name": "Read",
+    "Damage_Type": "Arcane",
+    "Description": "Decipher text/runes."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "1",
+    "Type": "Offense",
+    "Name": "Angle",
+    "Damage_Type": "Shock",
+    "Description": "Ignore Cover penalty."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "1",
+    "Type": "Defense",
+    "Name": "Predict",
+    "Damage_Type": "Shock",
+    "Description": "Small AC Bonus."
+  },
+  {
+    "School": "Ratio",
+    "Attribute": "Logic",
+    "Tier": "1",
+    "Type": "Utility",
+    "Name": "Count",
+    "Damage_Type": "Shock",
+    "Description": "Know exact number of items."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "1",
+    "Type": "Offense",
+    "Name": "Flare",
+    "Damage_Type": "Radiant",
+    "Description": "Dazzle (-1 to Hit)."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "1",
+    "Type": "Defense",
+    "Name": "Blur",
+    "Damage_Type": "Radiant",
+    "Description": "Visual Noise (Def Bonus)."
+  },
+  {
+    "School": "Lux",
+    "Attribute": "Awareness",
+    "Tier": "1",
+    "Type": "Utility",
+    "Name": "Spot",
+    "Damage_Type": "Radiant",
+    "Description": "Bonus Perception."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "1",
+    "Type": "Offense",
+    "Name": "Jinx",
+    "Damage_Type": "Necrotic",
+    "Description": "-1d4 to Hit."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "1",
+    "Type": "Defense",
+    "Name": "Bless",
+    "Damage_Type": "Necrotic",
+    "Description": "+1d4 to Hit."
+  },
+  {
+    "School": "Omen",
+    "Attribute": "Intuition",
+    "Tier": "1",
+    "Type": "Utility",
+    "Name": "Guess",
+    "Damage_Type": "Necrotic",
+    "Description": "Coin Flip (50/50)."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "1",
+    "Type": "Offense",
+    "Name": "Mock",
+    "Damage_Type": "Spirit",
+    "Description": "Psychic Damage."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "1",
+    "Type": "Defense",
+    "Name": "Friend",
+    "Damage_Type": "Spirit",
+    "Description": "Sanctuary (No Attack)."
+  },
+  {
+    "School": "Aura",
+    "Attribute": "Charm",
+    "Tier": "1",
+    "Type": "Utility",
+    "Name": "Chime",
+    "Damage_Type": "Spirit",
+    "Description": "Attract attention."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "1",
+    "Type": "Offense",
+    "Name": "Halt",
+    "Damage_Type": "Psychic",
+    "Description": "Stop movement."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "1",
+    "Type": "Defense",
+    "Name": "Focus",
+    "Damage_Type": "Psychic",
+    "Description": "Save Bonus."
+  },
+  {
+    "School": "Lex",
+    "Attribute": "Willpower",
+    "Tier": "1",
+    "Type": "Utility",
+    "Name": "Open",
+    "Damage_Type": "Psychic",
+    "Description": "Unlock (Command)."
+  }
+]

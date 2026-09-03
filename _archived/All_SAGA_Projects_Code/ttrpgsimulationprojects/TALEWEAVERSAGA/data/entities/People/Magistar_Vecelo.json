@@ -1,0 +1,42 @@
+{
+    "Name": "Magistar Vecelo",
+    "Aliases": [
+        "Magistar Vecelo",
+        "The Razor",
+        "The Silent Echo"
+    ],
+    "Tags": [
+        "Magistar",
+        "Motus",
+        "Reflex",
+        "Dragon/Lead",
+        "NPC"
+    ],
+    "School": "Motus",
+    "Element": "Lead",
+    "Original Title": "The Razor",
+    "Dragon Form": "The Silent Echo",
+    "Pre-Corruption Name": "Anya",
+    "Speed": 10,
+    "Reflex": 10,
+    "Acceleration": 5,
+    "Corruption": {
+        "Effect": "Perpetual Acceleration",
+        "Description": "Trapped in a state of perpetual acceleration"
+    },
+    "Abilities": {
+        "Instant Gravitation": {
+            "Description": "Ability to accelerate consumption of resources",
+            "Effect": "Accelerates resource consumption"
+        }
+    },
+    "Stats": {
+        "Base Health": 8,
+        "Strength": 4,
+        "Dexterity": 10,
+        "Constitution": 6,
+        "Intelligence": 3,
+        "Wisdom": 5,
+        "Charisma": 2
+    }
+}

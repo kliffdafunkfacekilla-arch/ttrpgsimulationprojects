@@ -1,0 +1,36 @@
+{
+    "aura": {
+        "offense": {
+            "spirit": {
+                "frequency": "dissonant",
+                "effects": [
+                    "psychic anguish",
+                    "primal fear",
+                    "primal rage"
+                ]
+            }
+        },
+        "defense": {
+            "sanctuary": {
+                "harmony": "absolute",
+                "effects": [
+                    "mental impossibility of attack"
+                ]
+            },
+            "resolve": {
+                "boost": true
+            }
+        },
+        "utility": {
+            "charm": {
+                "wavelength": "matching",
+                "effects": [
+                    "telepathic communication"
+                ]
+            },
+            "implant": {
+                "suggestion": "telepathic"
+            }
+        }
+    }
+}

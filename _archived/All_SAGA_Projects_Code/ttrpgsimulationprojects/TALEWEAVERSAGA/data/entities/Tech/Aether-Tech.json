@@ -1,0 +1,36 @@
+{
+    "tech_tier": 3,
+    "energy_cost": 500,
+    "coil_stacks": 5,
+    "conduit_unpredictability": 7,
+    "emotional_influence": 4,
+    "geographical_sensitivity": 3,
+    "blowout_risk": 8,
+    "failure_consequence": [
+        "gravity_reversal",
+        "instantaneous_petrification_of_living_tissue"
+    ],
+    "engineering_type": "aether-tech",
+    "elemental_resonance": [
+        "osmium",
+        "gold",
+        "silicon",
+        "lead",
+        "titanium",
+        "tungsten",
+        "lithium",
+        "silver",
+        "iridium",
+        "chromium",
+        "bismuth",
+        "phosphorus"
+    ],
+    "unpredictability_factor": 2.5,
+    "failure_probability": 0.3,
+    "chaos_resistance": 0.5,
+    "energy_storage": 10000,
+    "activation_time": 10,
+    "deactivation_time": 5,
+    "overload_threshold": 10000,
+    "cooldown_time": 30
+}

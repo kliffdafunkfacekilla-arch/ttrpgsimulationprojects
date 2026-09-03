@@ -1,0 +1,39 @@
+{
+    "vitality": {
+        "offense": {
+            "poison": {
+                "effect": "auto-immune failure",
+                "duration": "varies",
+                "cost": "2/4/6"
+            }
+        },
+        "defense": {
+            "regeneration": {
+                "speed": "instantaneous",
+                "power": "2/4/6"
+            },
+            "mutate": {
+                "type": "chitin/bark",
+                "duration": "varies",
+                "cost": "2/4/6"
+            }
+        },
+        "utility": {
+            "heal": {
+                "amount": "10-20",
+                "range": "self",
+                "cost": "1/2/3"
+            },
+            "accelerate": {
+                "speed": "varies",
+                "duration": "varies",
+                "cost": "1/2/3"
+            },
+            "link": {
+                "range": "party",
+                "duration": "varies",
+                "cost": "2/4/6"
+            }
+        }
+    }
+}

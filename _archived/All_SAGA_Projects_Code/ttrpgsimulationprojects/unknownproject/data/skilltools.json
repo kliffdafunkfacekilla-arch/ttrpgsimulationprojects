@@ -1,0 +1,317 @@
+[
+  {
+    "Name": "Ablative Paste",
+    "Type": "Consumable",
+    "Cost": "25",
+    "Mode": "Prep",
+    "Description": "Thick alchemical clay applied to armor.",
+    "Effect": "Grants Resistance: Fire for 1 Hour.",
+    "Logic_Tags": "RESIST:Fire"
+  },
+  {
+    "Name": "Insulated Lining",
+    "Type": "Gear",
+    "Cost": "50",
+    "Mode": "Prep",
+    "Description": "Wool and rubber under-padding.",
+    "Effect": "Grants Resistance: Cold/Shock for 1 Hour.",
+    "Logic_Tags": "RESIST:Cold/Shock"
+  },
+  {
+    "Name": "Tower Shield",
+    "Type": "Armor",
+    "Cost": "30",
+    "Mode": "Combat",
+    "Description": "Massive shield.",
+    "Effect": "Action: Plant shield to provide Total Cover in one direction.",
+    "Logic_Tags": "COVER:Total"
+  },
+  {
+    "Name": "Phalanx Shield",
+    "Type": "Armor",
+    "Cost": "20",
+    "Mode": "Combat",
+    "Description": "Interlocking shield.",
+    "Effect": "Reaction: Grant +2 AC to an adjacent ally when they are hit.",
+    "Logic_Tags": "REACT:Ally_AC+2"
+  },
+  {
+    "Name": "Spiked Buckler",
+    "Type": "Armor",
+    "Cost": "15",
+    "Mode": "Combat",
+    "Description": "Small shield with a spike.",
+    "Effect": "Reaction: Deal 1d4 damage to an attacker that misses you in melee.",
+    "Logic_Tags": "REACT:Dmg_1d4"
+  },
+  {
+    "Name": "Name",
+    "Type": "Type",
+    "Cost": "Cost",
+    "Mode": "Mode",
+    "Description": "Description",
+    "Effect": "Effect",
+    "Logic_Tags": "Logic_Tags"
+  },
+  {
+    "Name": "Bear Trap",
+    "Type": "Tool",
+    "Cost": "10",
+    "Mode": "Prep",
+    "Description": "Heavy steel jaws.",
+    "Effect": "Set on ground (1 min). Trigger: 1d8 Dmg + Restrained.",
+    "Logic_Tags": "TRAP:1d8"
+  },
+  {
+    "Name": "Tripwire Alarm",
+    "Type": "Tool",
+    "Cost": "5",
+    "Mode": "Prep",
+    "Description": "Bell and wire.",
+    "Effect": "Set perimeter (10 min). Trigger: Loud noise if crossed.",
+    "Logic_Tags": "TRAP:Alarm"
+  },
+  {
+    "Name": "Caltrop Bag",
+    "Type": "Consumable",
+    "Cost": "5",
+    "Mode": "Combat",
+    "Description": "Sharp spikes.",
+    "Effect": "Reaction (on Dodge): Drop in 5ft square. Enemy takes 1 Dmg + Stop.",
+    "Logic_Tags": "REACT:Drop"
+  },
+  {
+    "Name": "Oil Flask",
+    "Type": "Consumable",
+    "Cost": "2",
+    "Mode": "Combat",
+    "Description": "Slick grease.",
+    "Effect": "Action: Throw to create slick surface (Prone) or ignite (Fire Wall).",
+    "Logic_Tags": "AREA:10ft"
+  },
+  {
+    "Name": "Grapple Gun",
+    "Type": "Tool",
+    "Cost": "100",
+    "Mode": "Combat",
+    "Description": "Spring-loaded hook.",
+    "Effect": "Bonus Action: Pull self to ledge or pull object to hand (30ft).",
+    "Logic_Tags": "MOVE:30ft"
+  },
+  {
+    "Name": "Name",
+    "Type": "Type",
+    "Cost": "Cost",
+    "Mode": "Mode",
+    "Description": "Description",
+    "Effect": "Effect",
+    "Logic_Tags": "Logic_Tags"
+  },
+  {
+    "Name": "Ironbark Tonic",
+    "Type": "Consumable",
+    "Cost": "50",
+    "Mode": "Prep",
+    "Description": "Thick, bitter syrup.",
+    "Effect": "Gain 10 Temporary HP for 4 Hours.",
+    "Logic_Tags": "BUFF:TempHP:10"
+  },
+  {
+    "Name": "Night-Eye Drops",
+    "Type": "Consumable",
+    "Cost": "25",
+    "Mode": "Prep",
+    "Description": "Dilates pupils.",
+    "Effect": "Gain Darkvision for 1 Hour. Light Sensitivity.",
+    "Logic_Tags": "BUFF:Darkvision"
+  },
+  {
+    "Name": "Smelling Salts",
+    "Type": "Consumable",
+    "Cost": "10",
+    "Mode": "Combat",
+    "Description": "Ammonia crystal.",
+    "Effect": "Reaction (on Stun): Instantly remove Stunned/Unconscious condition.",
+    "Logic_Tags": "CURE:Stun"
+  },
+  {
+    "Name": "Quick-Clot Bandage",
+    "Type": "Consumable",
+    "Cost": "15",
+    "Mode": "Combat",
+    "Description": "Chemically treated gauze.",
+    "Effect": "Reaction (on Hit): Reduce incoming Slashing/Piercing damage by 1d6.",
+    "Logic_Tags": "REACT:Reduce_Dmg"
+  },
+  {
+    "Name": "Flash Salve",
+    "Type": "Consumable",
+    "Cost": "20",
+    "Mode": "Combat",
+    "Description": "Cooling gel.",
+    "Effect": "Reaction (on Burn): Cure Burning condition immediately.",
+    "Logic_Tags": "CURE:Burn"
+  },
+  {
+    "Name": "Name",
+    "Type": "Type",
+    "Cost": "Cost",
+    "Mode": "Mode",
+    "Description": "Description",
+    "Effect": "Effect",
+    "Logic_Tags": "Logic_Tags"
+  },
+  {
+    "Name": "Mana Battery",
+    "Type": "Tool",
+    "Cost": "100",
+    "Mode": "Prep",
+    "Description": "Empty crystal.",
+    "Effect": "Absorb a spell cast on it to store for later.",
+    "Logic_Tags": "EFFECT:Store_Spell"
+  },
+  {
+    "Name": "Focus Wand",
+    "Type": "Tool",
+    "Cost": "50",
+    "Mode": "Active",
+    "Description": "Conductive wood.",
+    "Effect": "Passive: Reduces Resource Cost of Tier 1 Spells by 1.",
+    "Logic_Tags": "BUFF:Cost_Reduct"
+  },
+  {
+    "Name": "Snap-Rune (Fire)",
+    "Type": "Consumable",
+    "Cost": "30",
+    "Mode": "Combat",
+    "Description": "Brittle clay tablet.",
+    "Effect": "Action: Snap to cast Burning Hands (Cone, No Roll, Half Dmg).",
+    "Logic_Tags": "CAST:Burn_Hands"
+  },
+  {
+    "Name": "Snap-Rune (Force)",
+    "Type": "Consumable",
+    "Cost": "30",
+    "Mode": "Combat",
+    "Description": "Brittle glass tablet.",
+    "Effect": "Action: Snap to cast Shield (+5 AC) until start of next turn.",
+    "Logic_Tags": "CAST:Shield"
+  },
+  {
+    "Name": "Thunder Stone",
+    "Type": "Consumable",
+    "Cost": "25",
+    "Mode": "Combat",
+    "Description": "Unstable rock.",
+    "Effect": "Action: Throw. All in 10ft must Save vs Deafness/Push.",
+    "Logic_Tags": "AREA:10ft"
+  },
+  {
+    "Name": "Name",
+    "Type": "Type",
+    "Cost": "Cost",
+    "Mode": "Mode",
+    "Description": "Description",
+    "Effect": "Effect",
+    "Logic_Tags": "Logic_Tags"
+  },
+  {
+    "Name": "Tarot Deck",
+    "Type": "Tool",
+    "Cost": "10",
+    "Mode": "Prep",
+    "Description": "Divination cards.",
+    "Effect": "10 min Ritual: Ask DM one \"Yes/No\" question about the future.",
+    "Logic_Tags": "EFFECT:Augury"
+  },
+  {
+    "Name": "Loaded Dice",
+    "Type": "Tool",
+    "Cost": "20",
+    "Mode": "Prep",
+    "Description": "Weighted bone dice.",
+    "Effect": "Auto-succeed on a Gambling skill check.",
+    "Logic_Tags": "EFFECT:Success"
+  },
+  {
+    "Name": "Pocket Sand/Ash",
+    "Type": "Consumable",
+    "Cost": "1",
+    "Mode": "Combat",
+    "Description": "Pouch of grit.",
+    "Effect": "Reaction (Melee): Attacker has Disadvantage on one hit.",
+    "Logic_Tags": "DEBUFF:Disadv"
+  },
+  {
+    "Name": "Flash Powder",
+    "Type": "Consumable",
+    "Cost": "15",
+    "Mode": "Combat",
+    "Description": "Magnesium dust.",
+    "Effect": "Bonus Action: Blind adjacent enemies until end of turn.",
+    "Logic_Tags": "COND:Blind"
+  },
+  {
+    "Name": "Monkey Cymbal",
+    "Type": "Tool",
+    "Cost": "25",
+    "Mode": "Combat",
+    "Description": "Wind-up toy.",
+    "Effect": "Action: Moves 15ft and makes noise. Enemies must Save or look at it.",
+    "Logic_Tags": "EFFECT:Distract"
+  },
+  {
+    "Name": "Name",
+    "Type": "Type",
+    "Cost": "Cost",
+    "Mode": "Mode",
+    "Description": "Description",
+    "Effect": "Effect",
+    "Logic_Tags": "Logic_Tags"
+  },
+  {
+    "Name": "Battle Standard",
+    "Type": "Gear",
+    "Cost": "50",
+    "Mode": "Prep",
+    "Description": "Large flag on pole.",
+    "Effect": "Allies within 30ft gain +1 to Saves vs Fear (Passive).",
+    "Logic_Tags": "AURA:Courage"
+  },
+  {
+    "Name": "Officer's Coat",
+    "Type": "Armor",
+    "Cost": "75",
+    "Mode": "Prep",
+    "Description": "Impressive uniform.",
+    "Effect": "Advantage on Persuasion/Intimidation vs Soldiers.",
+    "Logic_Tags": "BUFF:Advantage"
+  },
+  {
+    "Name": "War Horn",
+    "Type": "Tool",
+    "Cost": "25",
+    "Mode": "Combat",
+    "Description": "Loud instrument.",
+    "Effect": "Action: Enemies in 30ft must Save or become Frightened.",
+    "Logic_Tags": "COND:Frightened"
+  },
+  {
+    "Name": "Rally Whistle",
+    "Type": "Tool",
+    "Cost": "5",
+    "Mode": "Combat",
+    "Description": "Piercing sound.",
+    "Effect": "Reaction (Ally Fall): Ally drops to 1 HP instead of 0. (Once/Battle).",
+    "Logic_Tags": "HEAL:1HP"
+  },
+  {
+    "Name": "Signet Ring",
+    "Type": "Gear",
+    "Cost": "50",
+    "Mode": "Combat",
+    "Description": "Symbol of authority.",
+    "Effect": "Action: Command one target to \"Halt\" or \"Drop\" (No magic, just authority).",
+    "Logic_Tags": "EFFECT:Command"
+  }
+]

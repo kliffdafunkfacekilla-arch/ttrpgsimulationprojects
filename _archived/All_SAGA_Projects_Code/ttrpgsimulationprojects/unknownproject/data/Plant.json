@@ -1,0 +1,479 @@
+[
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 1",
+    "Option Name": "Tiny",
+    "Stat 1": "+2 Reflex, +1 Finesse",
+    "Stat 2": "-2 Might, -1 Vitality",
+    "Body Part": "Small Frame",
+    "Mechanic / Trait": "Squeeze: Move through 4-inch gaps. +Advantage on Stealth."
+  },
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 2",
+    "Option Name": "Small",
+    "Stat 1": "+1 Reflex",
+    "Stat 2": "-1 Might",
+    "Body Part": "Light Frame",
+    "Mechanic / Trait": "Lightweight: Trigger no pressure plates. Fall damage halved."
+  },
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 3",
+    "Option Name": "Medium",
+    "Stat 1": "None",
+    "Stat 2": "None",
+    "Body Part": "Balanced Frame",
+    "Mechanic / Trait": "Standard: No penalties. Can use standard gear."
+  },
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 4",
+    "Option Name": "Large",
+    "Stat 1": "+1 Might",
+    "Stat 2": "-1 Reflex",
+    "Body Part": "Heavy Frame",
+    "Mechanic / Trait": "Bulk: You provide Full Cover to allies. Cannot be Shoved by Medium creatures."
+  },
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 5",
+    "Option Name": "Huge",
+    "Stat 1": "+2 Might, +1 Vitality",
+    "Stat 2": "-2 Reflex, -1 Finesse",
+    "Body Part": "Siege Frame",
+    "Mechanic / Trait": "Siege: Deal double damage to structures. You occupy a 10ft x 10ft space."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Tree",
+    "Stat 1": "Knowledge",
+    "Stat 2": "Vitality",
+    "Body Part": "Arboreal Anatomy",
+    "Mechanic / Trait": "Includes: Hard Bark (AC), Branch-Arms, Root-Legs, Photosynthesis."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Flower",
+    "Stat 1": "Finesse",
+    "Stat 2": "Might",
+    "Body Part": "Floral Anatomy",
+    "Mechanic / Trait": "Includes: Petal-Hair, Pollen Glands, Scent, Soft Stem."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Vine",
+    "Stat 1": "Endurance",
+    "Stat 2": "Willpower",
+    "Body Part": "Creeper Anatomy",
+    "Mechanic / Trait": "Includes: Flexible Body, Thorns, Grasping Tendrils, No Bones."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Shrub",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Intuition",
+    "Body Part": "Bush Anatomy",
+    "Mechanic / Trait": "Includes: Leafy Camouflage, Berry Growth, Dense Twigs."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Cactus",
+    "Stat 1": "Endurance",
+    "Stat 2": "Fortitude",
+    "Body Part": "Succulent Anatomy",
+    "Mechanic / Trait": "Includes: Water Storage, Needle-Skin, Heat Resist, Waxy Hide."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Mushroom",
+    "Stat 1": "Charm",
+    "Stat 2": "Finesse",
+    "Body Part": "Fungal Anatomy",
+    "Mechanic / Trait": "Includes: Spore Cap, Mycelial Network (Telepathy), No Eyes."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Moss",
+    "Stat 1": "Endurance",
+    "Stat 2": "Awareness",
+    "Body Part": "Bryophyte Anatomy",
+    "Mechanic / Trait": "Includes: Carpet-Like Skin, Clinging Rhizoids, Spore Capsules."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Fern",
+    "Stat 1": "Willpower",
+    "Stat 2": "Logic",
+    "Body Part": "Pteridophyte Anatomy",
+    "Mechanic / Trait": "Includes: Frond Leaves, Fiddleheads, Rhizome Roots."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Solar",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Knowledge",
+    "Body Part": "Photosensors",
+    "Mechanic / Trait": "Passive: Sun-Fed (Regain 1 SP per hour in sunlight. No need to eat)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Tremor",
+    "Stat 1": "Willpower",
+    "Stat 2": "Might",
+    "Body Part": "Root-Nerves",
+    "Mechanic / Trait": "Passive: Ground-Sense (Detect footsteps within 30ft. Cannot be Surprised)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Pheromone",
+    "Stat 1": "Knowledge",
+    "Stat 2": "Endurance",
+    "Body Part": "Scent-Glands",
+    "Mechanic / Trait": "Passive: Empathy (Communicate emotions via scent. Advantage on Insight)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Network",
+    "Stat 1": "Finesse",
+    "Stat 2": "Willpower",
+    "Body Part": "Mycelium-Brain",
+    "Mechanic / Trait": "Active: Hive-Mind (Share senses with willing allies within 60ft)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Heat",
+    "Stat 1": "Charm",
+    "Stat 2": "Intuition",
+    "Body Part": "Thermal-Pits",
+    "Mechanic / Trait": "Passive: Infra-Red (See heat sources through walls/darkness)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Taste",
+    "Stat 1": "Logic",
+    "Stat 2": "Awareness",
+    "Body Part": "Chemo-Receptors",
+    "Mechanic / Trait": "Passive: Analyzer (Identify potions/poisons by touch instantly)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Lure",
+    "Stat 1": "Knowledge",
+    "Stat 2": "Intuition",
+    "Body Part": "Sweet-Nectar",
+    "Mechanic / Trait": "Active: Entice (Target must Wis Save or move closer to you)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Hygro",
+    "Stat 1": "Vitality",
+    "Stat 2": "Knowledge",
+    "Body Part": "Moisture-Sense",
+    "Mechanic / Trait": "Passive: Dowsing (Detect water sources within 1 mile)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Boughs",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Charm",
+    "Body Part": "Heavy Branches",
+    "Mechanic / Trait": "Active: Slam (Melee Attack. High Dmg + Knockback)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Vines",
+    "Stat 1": "Charm",
+    "Stat 2": "Finesse",
+    "Body Part": "Whip-Limbs",
+    "Mechanic / Trait": "Active: Lash (Reach 10ft. Trip or Disarm target)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Thorns",
+    "Stat 1": "Logic",
+    "Stat 2": "Knowledge",
+    "Body Part": "Needle-Fingers",
+    "Mechanic / Trait": "Active: Pierce (Melee Unarmed. Ignores Light Armor)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Spores",
+    "Stat 1": "Finesse",
+    "Stat 2": "Logic",
+    "Body Part": "Puff-Ball Hands",
+    "Mechanic / Trait": "Active: Dust (Cone Spray. Poison, Sleep, or Hallucinate)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Traps",
+    "Stat 1": "Vitality",
+    "Stat 2": "Might",
+    "Body Part": "Fly-Trap Jaws",
+    "Mechanic / Trait": "Active: Snap (Grapple. If successful, swallow hand/weapon for auto-dmg)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Sap",
+    "Stat 1": "Endurance",
+    "Stat 2": "Charm",
+    "Body Part": "Sticky Palms",
+    "Mechanic / Trait": "Passive: Adhesive (Advantage on Grapple. Climb without checks)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Needles",
+    "Stat 1": "Willpower",
+    "Stat 2": "Fortitude",
+    "Body Part": "Cactus-Spines",
+    "Mechanic / Trait": "Active: Barrage (Ranged Attack. Fire volley of needles)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Roots",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Willpower",
+    "Body Part": "Root-Fists",
+    "Mechanic / Trait": "Active: Entangle (Hit restrains target)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Root-Walk",
+    "Stat 1": "Might",
+    "Stat 2": "Willpower",
+    "Body Part": "Stump-Roots",
+    "Mechanic / Trait": "Passive: Anchor (Cannot be Knocked Prone. Speed -5ft)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Slither",
+    "Stat 1": "Vitality",
+    "Stat 2": "Endurance",
+    "Body Part": "Vine-Mass",
+    "Mechanic / Trait": "Passive: Creeper (Ignore Difficult Terrain. Climb Speed = Walk Speed)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Drift",
+    "Stat 1": "Logic",
+    "Stat 2": "Reflexes",
+    "Body Part": "Spore-Cloud",
+    "Mechanic / Trait": "Active: Float (Hover 5ft off ground. Slow fall)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Tumble",
+    "Stat 1": "Intuition",
+    "Stat 2": "Fortitude",
+    "Body Part": "Roll-Cage",
+    "Mechanic / Trait": "Active: Roll-Out (Move 2x Speed in straight line. Must stop to act)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Mycelium",
+    "Stat 1": "Might",
+    "Stat 2": "Might",
+    "Body Part": "Sub-Surface",
+    "Mechanic / Trait": "Active: Shift (Bonus Action. Teleport 15ft via ground network)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Strider",
+    "Stat 1": "Awareness",
+    "Stat 2": "Charm",
+    "Body Part": "Stalk-Legs",
+    "Mechanic / Trait": "Passive: Marsh-Walk (Move over water/mud without sinking)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Burrow",
+    "Stat 1": "Endurance",
+    "Stat 2": "Finesse",
+    "Body Part": "Drill-Roots",
+    "Mechanic / Trait": "Active: Dig (Burrow Speed = Half Walk Speed)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Climb",
+    "Stat 1": "Awareness",
+    "Stat 2": "Charm",
+    "Body Part": "Tendrils",
+    "Mechanic / Trait": "Passive: Spider-Climb (Walk on walls/ceilings)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Bark",
+    "Stat 1": "Awareness",
+    "Stat 2": "Willpower",
+    "Body Part": "Iron-Wood",
+    "Mechanic / Trait": "Passive: Hardwood (+3 Natural AC. Vulnerable to Fire)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Rubber",
+    "Stat 1": "Awareness",
+    "Stat 2": "Might",
+    "Body Part": "Fungal-Flesh",
+    "Mechanic / Trait": "Passive: Bounce (Resistance to Bludgeoning. Immune to Crit Hits)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Thorn",
+    "Stat 1": "Awareness",
+    "Stat 2": "Vitality",
+    "Body Part": "Spiked-Skin",
+    "Mechanic / Trait": "Passive: Barbed (Grapplers/Melee attackers take 1d4 Pierce)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Moss",
+    "Stat 1": "Vitality",
+    "Stat 2": "Fortitude",
+    "Body Part": "Soft-Moss",
+    "Mechanic / Trait": "Passive: Dampener (Silent Movement. Resistance to Fire)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Waxy",
+    "Stat 1": "Charm",
+    "Stat 2": "Willpower",
+    "Body Part": "Cuticle-Layer",
+    "Mechanic / Trait": "Passive: Sealed (Immune to dehydration. Resistance to Acid)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Vascular",
+    "Stat 1": "Charm",
+    "Stat 2": "Awareness",
+    "Body Part": "Hydraulic-Vines",
+    "Mechanic / Trait": "Active: Pump (Bonus Action. Increase Reach by 5ft for 1 turn)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Hollow",
+    "Stat 1": "Endurance",
+    "Stat 2": "Willpower",
+    "Body Part": "Reed-Structure",
+    "Mechanic / Trait": "Passive: Lightweight (Float on water. Advantage to Jump)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Hardy",
+    "Stat 1": "Might",
+    "Stat 2": "Endurance",
+    "Body Part": "Cork-Skin",
+    "Mechanic / Trait": "Passive: Temperature-Proof (Resist Cold/Fire/Weather)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Regrow",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Awareness",
+    "Body Part": "Rapid-Cell",
+    "Mechanic / Trait": "Active: Photosynthesis (Heal 25% HP in sunlight over 1 min)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Toxic",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Fortitude",
+    "Body Part": "Poison-Sap",
+    "Mechanic / Trait": "Passive: Bad-Blood (Melee attackers making contact are Poisoned)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Fruit",
+    "Stat 1": "Logic",
+    "Stat 2": "Knowledge",
+    "Body Part": "Goodberry",
+    "Mechanic / Trait": "Active: Harvest (Produce 1d4 healing berries per Long Rest)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Sleep",
+    "Stat 1": "Intuition",
+    "Stat 2": "Charm",
+    "Body Part": "Pollen-Cloud",
+    "Mechanic / Trait": "Active: Drowse (20ft Radius. Con Save or Sleep)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Shriek",
+    "Stat 1": "Charm",
+    "Stat 2": "Vitality",
+    "Body Part": "Mandrake-Root",
+    "Mechanic / Trait": "Active: Scream (AOE Psychic Damage/Stun)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Entangle",
+    "Stat 1": "Logic",
+    "Stat 2": "Might",
+    "Body Part": "Root-Burst",
+    "Mechanic / Trait": "Active: Overgrowth (Restrain all enemies within 10ft radius)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Clone",
+    "Stat 1": "Willpower",
+    "Stat 2": "Willpower",
+    "Body Part": "Fungal-Spore",
+    "Mechanic / Trait": "Passive: Rebirth (If killed, a clone grows from your corpse in 1 week)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Symbiosis",
+    "Stat 1": "Might",
+    "Stat 2": "Vitality",
+    "Body Part": "Pollen-Link",
+    "Mechanic / Trait": "Active: Bolster (Ally gains temp HP or advantage)."
+  }
+]

@@ -1,0 +1,42 @@
+{
+    "Name": "Pringle",
+    "Type": "People",
+    "Category": "Caterpillar-Kin",
+    "Appearance": {
+        "Skin": "Pale mint-green, velvety",
+        "Hands": 12,
+        "Special Features": [
+            "Prolegs",
+            "Silver tasting spoon",
+            "Spatula",
+            "Steel cleaver",
+            "Carving knife",
+            "Silk production"
+        ]
+    },
+    "Personality": {
+        "Backstory": {
+            "Stalled Change": true,
+            "Revenge of the Palate": true
+        },
+        "Logic": "Perfectionist",
+        "Quirks": [
+            "Silk-Rigging",
+            "The Impossible List"
+        ]
+    },
+    "Strengths": {
+        "Morale Officer": true,
+        "Vertical Utility": true
+    },
+    "Weaknesses": {
+        "Wanted Man": true,
+        "Ingredient Greed": true
+    },
+    "Stats": {
+        "Agility": 6,
+        "Strength": 4,
+        "Intelligence": 8,
+        "Endurance": 7
+    }
+}

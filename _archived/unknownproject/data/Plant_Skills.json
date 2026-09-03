@@ -1,0 +1,320 @@
+[
+  {
+    "Body Part": "Mossy Skin",
+    "Skill Name": "Photosynth",
+    "Type": "Short Rest",
+    "Effect Description": "If you rest in direct sunlight, you regain maximum Hit Points possible for your dice roll."
+  },
+  {
+    "Body Part": "Mossy Skin",
+    "Skill Name": "Dampen",
+    "Type": "Passive",
+    "Effect Description": "You are constantly moist. You have Resistance to Fire damage."
+  },
+  {
+    "Body Part": "Tendril Fingers",
+    "Skill Name": "Entangle",
+    "Type": "Action",
+    "Effect Description": "Cast a vine to Entangle a target 30ft away. Deal 1d6 Bludgeoning damage. If successful, they are Restrained."
+  },
+  {
+    "Body Part": "Tendril Fingers",
+    "Skill Name": "Climb",
+    "Type": "Passive",
+    "Effect Description": "You gain a Climb Speed equal to your Walk Speed."
+  },
+  {
+    "Body Part": "Mushroom Cap",
+    "Skill Name": "Spore Cloud",
+    "Type": "Action",
+    "Effect Description": "Release a cloud adjacent to you. Enemies take 1d6 Poison damage and must save (Con) or be Poisoned for 1 minute."
+  },
+  {
+    "Body Part": "Mushroom Cap",
+    "Skill Name": "Umbrella",
+    "Type": "Reaction",
+    "Effect Description": "Shield yourself or an adjacent ally from rain, falling debris, or overhead acid attacks."
+  },
+  {
+    "Body Part": "Sharp Thorns",
+    "Skill Name": "Spike Armor",
+    "Type": "Passive",
+    "Effect Description": "Creatures that hit you with unarmed strikes or Grapple you take 1d4 Piercing damage."
+  },
+  {
+    "Body Part": "Sharp Thorns",
+    "Skill Name": "Latch",
+    "Type": "Reaction",
+    "Effect Description": "Advantage on checks to maintain a Grapple (the thorns hook into the enemy)."
+  },
+  {
+    "Body Part": "Closing Foliage",
+    "Skill Name": "Snap Trap",
+    "Type": "Action",
+    "Effect Description": "Make a bite attack. If it hits, the target is automatically Grappled."
+  },
+  {
+    "Body Part": "Closing Foliage",
+    "Skill Name": "Digest",
+    "Type": "Bonus",
+    "Effect Description": "Deal Acid damage to a creature you currently have Grappled."
+  },
+  {
+    "Body Part": "Adaptive Leaves",
+    "Skill Name": "Camouflage",
+    "Type": "Action",
+    "Effect Description": "Change leaf color to match the season/terrain. Gain Advantage on Stealth checks."
+  },
+  {
+    "Body Part": "Adaptive Leaves",
+    "Skill Name": "Weatherproof",
+    "Type": "Passive",
+    "Effect Description": "You ignore penalties from extreme heat or extreme cold environments."
+  },
+  {
+    "Body Part": "Thorns",
+    "Skill Name": "Deterrent",
+    "Type": "Passive",
+    "Effect Description": "You have Advantage on Intimidation checks (you look painful to touch)."
+  },
+  {
+    "Body Part": "Thorns",
+    "Skill Name": "Barricade",
+    "Type": "Action",
+    "Effect Description": "Lock your limbs together to create a wall of spikes. You provide Three-Quarters Cover to allies behind you."
+  },
+  {
+    "Body Part": "IronBark",
+    "Skill Name": "Hardwood",
+    "Type": "Passive",
+    "Effect Description": "Your base Armor Class is 14 + Dexterity modifier (max +2)."
+  },
+  {
+    "Body Part": "IronBark",
+    "Skill Name": "Rooted",
+    "Type": "Reaction",
+    "Effect Description": "Advantage on saving throws to resist being Shoved or knocked Prone."
+  },
+  {
+    "Body Part": "Razor Leaves",
+    "Skill Name": "Leaf Storm",
+    "Type": "Action",
+    "Effect Description": "Fire a volley of sharp leaves in a 15ft cone. Deal 3d6 Slashing damage (Dex save for half)."
+  },
+  {
+    "Body Part": "Razor Leaves",
+    "Skill Name": "Serrated",
+    "Type": "Passive",
+    "Effect Description": "Your unarmed strikes deal Slashing damage instead of Bludgeoning."
+  },
+  {
+    "Body Part": "Cactus Spines",
+    "Skill Name": "Needle Burst",
+    "Type": "Reaction",
+    "Effect Description": "When hit by melee, explode spines outward. Attackers within 5ft take Piercing damage."
+  },
+  {
+    "Body Part": "Cactus Spines",
+    "Skill Name": "Water Store",
+    "Type": "Passive",
+    "Effect Description": "You can survive for 7 days without water."
+  },
+  {
+    "Body Part": "Toxic Sap",
+    "Skill Name": "Poison Coat",
+    "Type": "Bonus",
+    "Effect Description": "Coat a weapon or your hands in sap. Your next attack deals extra Poison damage."
+  },
+  {
+    "Body Part": "Toxic Sap",
+    "Skill Name": "Splatter",
+    "Type": "Reaction",
+    "Effect Description": "When you take Slashing damage, your blood sprays. Attacker must save (Dex) or take Acid damage."
+  },
+  {
+    "Body Part": "Wide Roots",
+    "Skill Name": "Tremorsense",
+    "Type": "Passive",
+    "Effect Description": "You can detect the location of moving creatures on the ground within 20ft."
+  },
+  {
+    "Body Part": "Wide Roots",
+    "Skill Name": "Stability",
+    "Type": "Passive",
+    "Effect Description": "You are immune to being pushed or pulled against your will while on soil."
+  },
+  {
+    "Body Part": "Flower Head",
+    "Skill Name": "Allure",
+    "Type": "Action",
+    "Effect Description": "Release a pleasant scent. Humanoids must save (Will) or be Charmed (Passive/Non-hostile) for 1 minute."
+  },
+  {
+    "Body Part": "Flower Head",
+    "Skill Name": "Solar Beam",
+    "Type": "Action",
+    "Effect Description": "Absorb light and fire a dazzling beam. Range 60ft. Deal 2d8 Radiant damage and Target must save or be Blinded."
+  },
+  {
+    "Body Part": "Root Ball",
+    "Skill Name": "Earth Glide",
+    "Type": "Action",
+    "Effect Description": "Sink into the earth and move through soil/dirt (Burrow speed 15ft)."
+  },
+  {
+    "Body Part": "Root Ball",
+    "Skill Name": "Bludgeon",
+    "Type": "Action",
+    "Effect Description": "Use your heavy base to slam a prone enemy. Deal critical damage."
+  },
+  {
+    "Body Part": "Whistling Branches",
+    "Skill Name": "Scream",
+    "Type": "Action",
+    "Effect Description": "Let the wind pass through you to create a terrifying shriek. Enemies save vs Fear."
+  },
+  {
+    "Body Part": "Whistling Branches",
+    "Skill Name": "Signal",
+    "Type": "Utility",
+    "Effect Description": "Communicate with allies over long distances (1 mile) using wind sounds."
+  },
+  {
+    "Body Part": "Gnarled Face",
+    "Skill Name": "Ancient Visage",
+    "Type": "Passive",
+    "Effect Description": "You have Advantage on Insight and History checks (you look wise and old)."
+  },
+  {
+    "Body Part": "Gnarled Face",
+    "Skill Name": "Knotty Skin",
+    "Type": "Passive",
+    "Effect Description": "You are immune to Critical Hits; knots deflect the blow to non-vital wood."
+  },
+  {
+    "Body Part": "Fluff Blooms",
+    "Skill Name": "Drift",
+    "Type": "Reaction",
+    "Effect Description": "When falling, deploy seeds/fluff to float down safely (Feather Fall)."
+  },
+  {
+    "Body Part": "Fluff Blooms",
+    "Skill Name": "Obscure",
+    "Type": "Action",
+    "Effect Description": "Shake loose a cloud of white fluff. Creates a Heavily Obscured area (fog cloud) for 1 round."
+  },
+  {
+    "Body Part": "Irritating Sap",
+    "Skill Name": "Itch",
+    "Type": "Action",
+    "Effect Description": "Touch attack. Target gets a rash and has Disadvantage on Concentration checks."
+  },
+  {
+    "Body Part": "Irritating Sap",
+    "Skill Name": "Bad Taste",
+    "Type": "Passive",
+    "Effect Description": "Any creature that bites you must make a Con save or spend their next action retching (Stunned)."
+  },
+  {
+    "Body Part": "Long Stem",
+    "Skill Name": "Reach",
+    "Type": "Passive",
+    "Effect Description": "Your melee reach increases by 5ft."
+  },
+  {
+    "Body Part": "Long Stem",
+    "Skill Name": "Sway",
+    "Type": "Reaction",
+    "Effect Description": "Gain +2 AC against a Ranged Attack by bending your flexible body out of the way."
+  },
+  {
+    "Body Part": "Stalk Hairs",
+    "Skill Name": "Trigger",
+    "Type": "Passive",
+    "Effect Description": "You cannot be Surprised. You feel air displacement before a hit connects."
+  },
+  {
+    "Body Part": "Stalk Hairs",
+    "Skill Name": "Sticky",
+    "Type": "Passive",
+    "Effect Description": "Advantage on checks to climb or hold onto objects (Velcro-like grip)."
+  },
+  {
+    "Body Part": "Pine Needles",
+    "Skill Name": "Evergreen",
+    "Type": "Passive",
+    "Effect Description": "You remain conscious and active even in magical sleep or freezing temperatures."
+  },
+  {
+    "Body Part": "Pine Needles",
+    "Skill Name": "Carpet",
+    "Type": "Action",
+    "Effect Description": "Shake off needles to cover the floor. The area becomes Difficult Terrain and deals 1 damage per 5ft moved."
+  },
+  {
+    "Body Part": "Fruit Blooms",
+    "Skill Name": "Goodberry",
+    "Type": "Action",
+    "Effect Description": "Grow a magical fruit. Eating it restores 1d4 HP (Max 3 per day)."
+  },
+  {
+    "Body Part": "Fruit Blooms",
+    "Skill Name": "Bait",
+    "Type": "Utility",
+    "Effect Description": "Grow a delicious-smelling fruit to lure hungry beasts into a trap."
+  },
+  {
+    "Body Part": "Pine Cones",
+    "Skill Name": "Seed Grenade",
+    "Type": "Action",
+    "Effect Description": "Throw a cone. It explodes on impact, dealing Bludgeoning damage in a 5ft radius."
+  },
+  {
+    "Body Part": "Pine Cones",
+    "Skill Name": "Scaly Armor",
+    "Type": "Passive",
+    "Effect Description": "You have Resistance to Piercing damage (overlapping wooden scales)."
+  },
+  {
+    "Body Part": "Skill Name",
+    "Skill Name": "Required Body Part",
+    "Type": "Effect",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Stable",
+    "Skill Name": "Roots",
+    "Type": "Advantage vs Knock Prone.",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Grounding",
+    "Skill Name": "Wide Roots",
+    "Type": "Sense tremors 30ft.",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Siege_Fist",
+    "Skill Name": "Heavy Bough",
+    "Type": "Double Unarmed Dmg to objects.",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Thorns",
+    "Skill Name": "Spines",
+    "Type": "Grappler takes 1d4 damage (derived from Warn_Color).",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Photosynth",
+    "Skill Name": "Leaves",
+    "Type": "Go 1 week without food (Renamed from Storage).",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Hard_Kill",
+    "Skill Name": "Wood Heart",
+    "Type": "Advantage on Death Saves.",
+    "Effect Description": ""
+  }
+]

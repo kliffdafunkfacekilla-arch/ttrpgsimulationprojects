@@ -1,0 +1,110 @@
+"""
+Configuration for the backend application.
+"""
+
+from typing import Annotated
+
+from dotenv import load_dotenv
+from fastapi import Depends
+from pydantic import ConfigDict
+from pydantic_settings import BaseSettings
+
+
+class Settings(BaseSettings):
+    model_config = ConfigDict(env_file=".env", env_file_encoding="utf-8")
+
+    # Azure OpenAI Settings
+    # Pydantic-settings automatically reads from environment variables
+    azure_openai_endpoint: str = ""
+    azure_openai_api_key: str = ""
+    azure_openai_api_version: str = "2023-12-01-preview"
+
+    # Model Deployments
+    azure_openai_chat_deployment: str = ""
+    azure_openai_embedding_deployment: str = ""
+    azure_openai_dalle_deployment: str = "dall-e-3"
+
+    # Storage Settings
+    storage_connection_string: str = ""
+
+    # App Settings
+    # Note: Default binds to all interfaces (0.0.0.0) for development convenience.
+    # Production deployments MUST override via APP_HOST environment variable
+    # to bind to specific interface (e.g., 127.0.0.1 or specific IP).
+    app_host: str = "0.0.0.0"  # noqa: S104
+    app_port: int = 8000
+    app_debug: bool = False
+    app_log_level: str = "INFO"
+
+    def is_azure_openai_configured(self) -> bool:
+        """Check if Azure OpenAI is properly configured."""
+        return (
+            bool(self.azure_openai_endpoint)
+            and bool(self.azure_openai_api_key)
+            and bool(self.azure_openai_chat_deployment)
+            and bool(self.azure_openai_embedding_deployment)
+        )
+
+
+# Global configuration instance - initialized at startup
+_settings: Settings | None = None
+
+
+def init_settings() -> Settings:
+    """Initialize settings by loading .env file. Called at startup."""
+    # Load environment variables from .env file
+    load_dotenv()
+
+    try:
+        return Settings()
+    except Exception as e:
+        # Check if this is due to missing Azure OpenAI configuration
+        error_msg = str(e)
+        if "azure_openai" in error_msg.lower():
+            raise ValueError(
+                "Azure OpenAI configuration is missing or invalid. "
+                "This agentic demo requires proper Azure OpenAI setup. "
+                "Please ensure the following environment variables are set: "
+                "AZURE_OPENAI_ENDPOINT, AZURE_OPENAI_API_KEY, "
+                "AZURE_OPENAI_CHAT_DEPLOYMENT, AZURE_OPENAI_EMBEDDING_DEPLOYMENT"
+            ) from e
+        # Re-raise original error for non-Azure OpenAI issues
+        raise
+
+
+def get_settings() -> Settings:
+    """Get the settings instance. Used for FastAPI dependency injection."""
+    global _settings
+    if _settings is None:
+        _settings = init_settings()
+    return _settings
+
+
+def set_settings(settings: Settings) -> None:
+    """Set the global settings instance. Used for testing."""
+    global _settings
+    _settings = settings
+
+
+# For backward compatibility, expose as 'settings'
+class SettingsProxy:
+    """Proxy object that forwards attribute access to the settings instance."""
+
+    def __getattr__(self, name):
+        return getattr(get_settings(), name)
+
+    def __setattr__(self, name, value) -> None:
+        return setattr(get_settings(), name, value)
+
+
+settings = SettingsProxy()
+
+
+# FastAPI dependency for configuration injection
+def get_config() -> Settings:
+    """FastAPI dependency to inject configuration."""
+    return get_settings()
+
+
+# Type alias for dependency injection
+ConfigDep = Annotated[Settings, Depends(get_config)]

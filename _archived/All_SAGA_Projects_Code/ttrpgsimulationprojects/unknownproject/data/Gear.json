@@ -1,0 +1,515 @@
+[
+  {
+    "Name": "Greatsword",
+    "Type": "Weapon",
+    "Cost": "50",
+    "Related_Skill": "Great",
+    "Description": "Heavy two-handed blade.",
+    "Effect": "Deal 2d6 Slashing damage.",
+    "Logic_Tags": "DMG:2d6:Slash|PROP:Heavy|PROP:2H"
+  },
+  {
+    "Name": "Maul",
+    "Type": "Weapon",
+    "Cost": "45",
+    "Related_Skill": "Great",
+    "Description": "Massive iron hammer.",
+    "Effect": "Deal 2d6 Bludgeoning damage.",
+    "Logic_Tags": "DMG:2d6:Bludgeon|PROP:Heavy|PROP:2H"
+  },
+  {
+    "Name": "Warbow",
+    "Type": "Weapon",
+    "Cost": "75",
+    "Related_Skill": "Ballistics",
+    "Description": "Heavy draw-weight bow.",
+    "Effect": "Deal 1d10 Piercing damage.",
+    "Logic_Tags": "DMG:1d10:Pierce|RANGE:150/600|PROP:2H"
+  },
+  {
+    "Name": "Arbalest",
+    "Type": "Weapon",
+    "Cost": "100",
+    "Related_Skill": "Ballistics",
+    "Description": "Portable ballista-style crossbow.",
+    "Effect": "Deal 1d12 Piercing damage.",
+    "Logic_Tags": "DMG:1d12:Pierce|RANGE:100/400|PROP:Loading"
+  },
+  {
+    "Name": "Rapier",
+    "Type": "Weapon",
+    "Cost": "25",
+    "Related_Skill": "Small",
+    "Description": "Elegant thrusting blade.",
+    "Effect": "Deal 1d8 Piercing damage.",
+    "Logic_Tags": "DMG:1d8:Pierce|PROP:Finesse"
+  },
+  {
+    "Name": "Shiv",
+    "Type": "Weapon",
+    "Cost": "2",
+    "Related_Skill": "Small",
+    "Description": "Concealable improvised blade.",
+    "Effect": "Deal 1d4 Piercing damage.",
+    "Logic_Tags": "DMG:1d4:Pierce|PROP:Light|PROP:Hidden"
+  },
+  {
+    "Name": "Throwing Knife",
+    "Type": "Weapon",
+    "Cost": "2",
+    "Related_Skill": "Thrown",
+    "Description": "Balanced knife.",
+    "Effect": "Deal 1d4 Piercing damage.",
+    "Logic_Tags": "DMG:1d4:Pierce|RANGE:20/60|PROP:Thrown"
+  },
+  {
+    "Name": "Hand Axe",
+    "Type": "Weapon",
+    "Cost": "5",
+    "Related_Skill": "Thrown",
+    "Description": "Small axe suitable for throwing.",
+    "Effect": "Deal 1d6 Slashing damage.",
+    "Logic_Tags": "DMG:1d6:Slash|RANGE:20/60|PROP:Thrown"
+  },
+  {
+    "Name": "Cestus",
+    "Type": "Weapon",
+    "Cost": "5",
+    "Related_Skill": "Fist",
+    "Description": "Leather/Iron knuckle wrap.",
+    "Effect": "Deal 1d4 Bludgeoning damage.",
+    "Logic_Tags": "DMG:1d4:Bludgeon|PROP:Unarmed"
+  },
+  {
+    "Name": "Tiger Claws",
+    "Type": "Weapon",
+    "Cost": "10",
+    "Related_Skill": "Fist",
+    "Description": "Metal claws attached to gloves.",
+    "Effect": "Deal 1d6 Slashing damage.",
+    "Logic_Tags": "DMG:1d6:Slash|PROP:Unarmed|PROP:Finesse"
+  },
+  {
+    "Name": "Sling",
+    "Type": "Weapon",
+    "Cost": "1",
+    "Related_Skill": "Simple",
+    "Description": "Simple leather strap.",
+    "Effect": "Deal 1d4 Bludgeoning damage.",
+    "Logic_Tags": "DMG:1d4:Bludgeon|RANGE:30/120"
+  },
+  {
+    "Name": "Shortbow",
+    "Type": "Weapon",
+    "Cost": "25",
+    "Related_Skill": "Simple",
+    "Description": "Compact bow for skirmishers.",
+    "Effect": "Deal 1d6 Piercing damage.",
+    "Logic_Tags": "DMG:1d6:Pierce|RANGE:80/320|PROP:2H"
+  },
+  {
+    "Name": "Katana",
+    "Type": "Weapon",
+    "Cost": "150",
+    "Related_Skill": "Medium",
+    "Description": "Masterwork curved blade.",
+    "Effect": "Deal 1d8 (1d10) Slashing damage.",
+    "Logic_Tags": "DMG:1d8:Slash|PROP:Versatile"
+  },
+  {
+    "Name": "Longsword",
+    "Type": "Weapon",
+    "Cost": "15",
+    "Related_Skill": "Medium",
+    "Description": "Standard knight's blade.",
+    "Effect": "Deal 1d8 (1d10) Slashing damage.",
+    "Logic_Tags": "DMG:1d8:Slash|PROP:Versatile"
+  },
+  {
+    "Name": "Flintlock Pistol",
+    "Type": "Weapon",
+    "Cost": "200",
+    "Related_Skill": "Blast",
+    "Description": "Black powder firearm.",
+    "Effect": "Deal 1d10 Piercing damage.",
+    "Logic_Tags": "DMG:1d10:Pierce|RANGE:30/90|PROP:Reload"
+  },
+  {
+    "Name": "Blunderbuss",
+    "Type": "Weapon",
+    "Cost": "250",
+    "Related_Skill": "Blast",
+    "Description": "Short-range scatter gun.",
+    "Effect": "Deal 2d6 Piercing damage (Cone).",
+    "Logic_Tags": "DMG:2d6:Pierce|RANGE:15:Cone|PROP:Reload"
+  },
+  {
+    "Name": "Halberd",
+    "Type": "Weapon",
+    "Cost": "20",
+    "Related_Skill": "Large",
+    "Description": "Axe head on a long pole.",
+    "Effect": "Deal 1d10 Slashing damage.",
+    "Logic_Tags": "DMG:1d10:Slash|PROP:Reach|PROP:2H"
+  },
+  {
+    "Name": "Spear",
+    "Type": "Weapon",
+    "Cost": "1",
+    "Related_Skill": "Large",
+    "Description": "Simple pointed pole.",
+    "Effect": "Deal 1d6 (1d8) Piercing damage.",
+    "Logic_Tags": "DMG:1d6:Pierce|PROP:Reach|PROP:Versatile"
+  },
+  {
+    "Name": "Sniper Crossbow",
+    "Type": "Weapon",
+    "Cost": "200",
+    "Related_Skill": "Long Shot",
+    "Description": "High-tension scoped crossbow.",
+    "Effect": "Deal 1d10 Piercing damage.",
+    "Logic_Tags": "DMG:1d10:Pierce|RANGE:200/800|PROP:Heavy"
+  },
+  {
+    "Name": "Long Rifle",
+    "Type": "Weapon",
+    "Cost": "300",
+    "Related_Skill": "Long Shot",
+    "Description": "Precision barrel firearm.",
+    "Effect": "Deal 1d12 Piercing damage.",
+    "Logic_Tags": "DMG:1d12:Pierce|RANGE:100/400|PROP:Reload"
+  },
+  {
+    "Name": "Chain Whip",
+    "Type": "Weapon",
+    "Cost": "15",
+    "Related_Skill": "Exotic Melee",
+    "Description": "Segmented metal lash.",
+    "Effect": "Deal 1d4 Slashing damage.",
+    "Logic_Tags": "DMG:1d4:Slash|PROP:Reach|PROP:Finesse"
+  },
+  {
+    "Name": "Nunchaku",
+    "Type": "Weapon",
+    "Cost": "5",
+    "Related_Skill": "Exotic Melee",
+    "Description": "Connected wooden batons.",
+    "Effect": "Deal 1d6 Bludgeoning damage.",
+    "Logic_Tags": "DMG:1d6:Bludgeon|PROP:Light|PROP:Flashy"
+  },
+  {
+    "Name": "Bola",
+    "Type": "Weapon",
+    "Cost": "5",
+    "Related_Skill": "Exotic Ranged",
+    "Description": "Weighted cords.",
+    "Effect": "Deal no damage; trips target.",
+    "Logic_Tags": "EFFECT:Prone|RANGE:20/60|PROP:Thrown"
+  },
+  {
+    "Name": "Blowgun",
+    "Type": "Weapon",
+    "Cost": "10",
+    "Related_Skill": "Exotic Ranged",
+    "Description": "Silent dart tube.",
+    "Effect": "Deal 1 Piercing damage.",
+    "Logic_Tags": "DMG:1:Pierce|RANGE:25/100|PROP:Silent"
+  },
+  {
+    "Name": "Full Plate",
+    "Type": "Armor",
+    "Cost": "1500",
+    "Related_Skill": "Heavy",
+    "Description": "Interlocking steel plates (Standard).",
+    "Effect": "Immunity to Critical Hit extra damage.",
+    "Logic_Tags": "IMMUNE:Crit_Dmg|PROP:Heavy|STEALTH:Disadv"
+  },
+  {
+    "Name": "Juggernaut Suit",
+    "Type": "Armor",
+    "Cost": "2000",
+    "Related_Skill": "Heavy",
+    "Description": "Reinforced heavy plating.",
+    "Effect": "Advantage on Saves vs Push/Prone.",
+    "Logic_Tags": "BUFF:Advantage:Physics|PROP:Heavy"
+  },
+  {
+    "Name": "Duelist Leathers",
+    "Type": "Armor",
+    "Cost": "45",
+    "Related_Skill": "Leather",
+    "Description": "Fitted flexible leather.",
+    "Effect": "Stand up from Prone as a Free Action.",
+    "Logic_Tags": "BUFF:Free_Stand|PROP:Light"
+  },
+  {
+    "Name": "Shadow Leathers",
+    "Type": "Armor",
+    "Cost": "100",
+    "Related_Skill": "Leather",
+    "Description": "Darkened, muffled leather.",
+    "Effect": "Advantage on Stealth in Dim Light.",
+    "Logic_Tags": "BUFF:Advantage:Stealth|COND:Dim_Light"
+  },
+  {
+    "Name": "Bone Mesh",
+    "Type": "Armor",
+    "Cost": "40",
+    "Related_Skill": "Natural",
+    "Description": "Armor made of polished bone.",
+    "Effect": "Advantage on Intimidation checks.",
+    "Logic_Tags": "BUFF:Advantage:Social|MAT:Bone"
+  },
+  {
+    "Name": "Troll Hide",
+    "Type": "Armor",
+    "Cost": "100",
+    "Related_Skill": "Natural",
+    "Description": "Cured regenerative hide.",
+    "Effect": "Regenerate 1 HP per hour out of combat.",
+    "Logic_Tags": "REGEN:1:Hourly|MAT:Hide"
+  },
+  {
+    "Name": "Highborn Robes",
+    "Type": "Armor",
+    "Cost": "200",
+    "Related_Skill": "Cloth",
+    "Description": "Silk vestments of nobility.",
+    "Effect": "Advantage on Etiquette/Persuasion.",
+    "Logic_Tags": "BUFF:Advantage:Social|PROP:Fancy"
+  },
+  {
+    "Name": "Warding Robes",
+    "Type": "Armor",
+    "Cost": "150",
+    "Related_Skill": "Cloth",
+    "Description": "Cloth inscribed with runes.",
+    "Effect": "Resistance to Arcane Damage.",
+    "Logic_Tags": "RESIST:Arcane|PROP:Magic"
+  },
+  {
+    "Name": "Ghillie Suit",
+    "Type": "Armor",
+    "Cost": "50",
+    "Related_Skill": "Utility",
+    "Description": "Camouflage netting.",
+    "Effect": "Invisible to Vision while stationary.",
+    "Logic_Tags": "EFFECT:Invis|COND:Stationary"
+  },
+  {
+    "Name": "Tactical Vest",
+    "Type": "Armor",
+    "Cost": "100",
+    "Related_Skill": "Utility",
+    "Description": "Vest with many pouches.",
+    "Effect": "Hold 2 Consumables for Instant Use.",
+    "Logic_Tags": "SLOTS:2|USE:Instant"
+  },
+  {
+    "Name": "Mithral Chain",
+    "Type": "Armor",
+    "Cost": "500",
+    "Related_Skill": "Medium",
+    "Description": "Fine, lightweight chainmail.",
+    "Effect": "Concealable under normal clothing.",
+    "Logic_Tags": "PROP:Hidden|PROP:Light"
+  },
+  {
+    "Name": "Dragon Scale",
+    "Type": "Armor",
+    "Cost": "750",
+    "Related_Skill": "Medium",
+    "Description": "Scales of a beast.",
+    "Effect": "Resistance to Fire/Cold (Choose 1).",
+    "Logic_Tags": "RESIST:Elem|MAT:Scale"
+  },
+  {
+    "Name": "Piston Hammer",
+    "Type": "Weapon",
+    "Cost": "150",
+    "Related_Skill": "Great",
+    "Description": "Hammer with clockwork piston.",
+    "Effect": "Deal Max Damage vs Structures/Doors.",
+    "Logic_Tags": "DMG:2d6:Bludgeon|EFFECT:Siege|PROP:Heavy"
+  },
+  {
+    "Name": "Executioner's Blade",
+    "Type": "Weapon",
+    "Cost": "100",
+    "Related_Skill": "Great",
+    "Description": "Flat-tipped decapitation sword.",
+    "Effect": "Auto-Critical vs Prone/Restrained targets.",
+    "Logic_Tags": "DMG:1d12:Slash|CRIT:Auto:Prone|PROP:Heavy"
+  },
+  {
+    "Name": "Compound Bow",
+    "Type": "Weapon",
+    "Cost": "125",
+    "Related_Skill": "Ballistics",
+    "Description": "Pulley-system bow.",
+    "Effect": "Add Strength Mod to Damage rolls.",
+    "Logic_Tags": "DMG:1d8:Pierce|MOD:Str|RANGE:150/600"
+  },
+  {
+    "Name": "Main-Gauche",
+    "Type": "Weapon",
+    "Cost": "20",
+    "Related_Skill": "Small",
+    "Description": "Large parrying dagger.",
+    "Effect": "advantage if usefinesse in clash",
+    "Logic_Tags": "DMG:1d4:Pierce|BUFF:clash advantage with finesse|PROP:Light"
+  },
+  {
+    "Name": "Cane Sword",
+    "Type": "Weapon",
+    "Cost": "50",
+    "Related_Skill": "Small",
+    "Description": "Hidden blade in walking stick.",
+    "Effect": "Enemy is Surprised on first round of combat.",
+    "Logic_Tags": "DMG:1d6:Pierce|EFFECT:Surprise|PROP:Hidden"
+  },
+  {
+    "Name": "Chakram",
+    "Type": "Weapon",
+    "Cost": "15",
+    "Related_Skill": "Thrown",
+    "Description": "Circular throwing disc.",
+    "Effect": "Returns to hand on a miss.",
+    "Logic_Tags": "DMG:1d6:Slash|PROP:Return|RANGE:30/90"
+  },
+  {
+    "Name": "Quarterstaff",
+    "Type": "Weapon",
+    "Cost": "1",
+    "Related_Skill": "Large",
+    "Description": "Simple iron-shod staff.",
+    "Effect": "weighted hits adjacent person on crit",
+    "Logic_Tags": "DMG:1d6:Bludgeon|PROP:hit 2nd adjacent target on crit|PROP:Versatile"
+  },
+  {
+    "Name": "Mancatcher",
+    "Type": "Weapon",
+    "Cost": "25",
+    "Related_Skill": "Large",
+    "Description": "Pole with spring-loaded collar.",
+    "Effect": "Grapples target on hit (Escape DC 13).",
+    "Logic_Tags": "EFFECT:Grapple|PROP:Reach|PROP:2H"
+  },
+  {
+    "Name": "Pneumatic Rifle",
+    "Type": "Weapon",
+    "Cost": "400",
+    "Related_Skill": "Long Shot",
+    "Description": "Air-pressure dart rifle.",
+    "Effect": "Silent firing (No location reveal).",
+    "Logic_Tags": "DMG:1d10:Pierce|PROP:Silent|PROP:Reload"
+  },
+  {
+    "Name": "Hand Cannon",
+    "Type": "Weapon",
+    "Cost": "300",
+    "Related_Skill": "Blast",
+    "Description": "Large bore pistol.",
+    "Effect": "Knocks target Prone on Critical Hit.",
+    "Logic_Tags": "DMG:1d12:Pierce|CRIT:Prone|RANGE:20/60"
+  },
+  {
+    "Name": "War Fan",
+    "Type": "Weapon",
+    "Cost": "25",
+    "Related_Skill": "Exotic Melee",
+    "Description": "Reinforced steel fan.",
+    "Effect": " advantage if use charm in a clash",
+    "Logic_Tags": "DMG:1d4:Slash|PROP:clash advantage with charm|PROP:Light"
+  },
+  {
+    "Name": "Spiked Plate",
+    "Type": "Armor",
+    "Cost": "1600",
+    "Related_Skill": "Heavy",
+    "Description": "Armor covered in barbs.",
+    "Effect": "Deal 1d4 damage to anyone grappling you.",
+    "Logic_Tags": "DMG:1d4:Grapple|PROP:Heavy"
+  },
+  {
+    "Name": "Ceramic Plate",
+    "Type": "Armor",
+    "Cost": "1400",
+    "Related_Skill": "Heavy",
+    "Description": "Heat-resistant tiling.",
+    "Effect": "Resistance to Fire Damage.",
+    "Logic_Tags": "RESIST:Fire|PROP:Heavy"
+  },
+  {
+    "Name": "Mirror Shield",
+    "Type": "Armor",
+    "Cost": "50",
+    "Related_Skill": "Shield",
+    "Description": "Polished chrome shield.",
+    "Effect": "Reaction: Impose Disadvantage on Light/Gaze attacks.",
+    "Logic_Tags": "DEF:Gaze|PROP:Shield"
+  },
+  {
+    "Name": "Lantern Shield",
+    "Type": "Armor",
+    "Cost": "75",
+    "Related_Skill": "Shield",
+    "Description": "Shield with built-in lamp and spikes.",
+    "Effect": "Hands-free Light source + 1d4 Bash damage.",
+    "Logic_Tags": "LIGHT:20ft|DMG:1d4:Bash|PROP:Shield"
+  },
+  {
+    "Name": "Acrobat's Leathers",
+    "Type": "Armor",
+    "Cost": "60",
+    "Related_Skill": "Light",
+    "Description": "Tight, grip-enhanced leather.",
+    "Effect": "Gain Climbing Speed equal to Walking Speed.",
+    "Logic_Tags": "SPEED:Climb|PROP:Light"
+  },
+  {
+    "Name": "Chitin Carapace",
+    "Type": "Armor",
+    "Cost": "80",
+    "Related_Skill": "Natural",
+    "Description": "Insectoid plating.",
+    "Effect": "Resistance to Acid Damage.",
+    "Logic_Tags": "RESIST:Acid|MAT:Chitin"
+  },
+  {
+    "Name": "Fungal Raiment",
+    "Type": "Armor",
+    "Cost": "60",
+    "Related_Skill": "Natural",
+    "Description": "Living moss and spores.",
+    "Effect": "Immunity to Spore/Scent-based toxins.",
+    "Logic_Tags": "IMMUNE:Inhaled|MAT:Plant"
+  },
+  {
+    "Name": "Scholar's Robes",
+    "Type": "Armor",
+    "Cost": "30",
+    "Related_Skill": "Cloth",
+    "Description": "Many deep, waterproof pockets.",
+    "Effect": "Hold 4 Scrolls/Books safely (Waterproof).",
+    "Logic_Tags": "CAP:Scrolls|PROP:Light"
+  },
+  {
+    "Name": "Engineer's Rig",
+    "Type": "Armor",
+    "Cost": "120",
+    "Related_Skill": "Utility",
+    "Description": "Harness with tool loops.",
+    "Effect": "Reduce time to craft/repair by 50%.",
+    "Logic_Tags": "BUFF:Craft_Speed|PROP:Tech"
+  },
+  {
+    "Name": "Gilded Mail",
+    "Type": "Armor",
+    "Cost": "200",
+    "Related_Skill": "Medium",
+    "Description": "Gold-washed chainmail.",
+    "Effect": "+2 Bonus to Insight checks (Look important).",
+    "Logic_Tags": "BUFF:Insight+2|PROP:Flashy"
+  }
+]

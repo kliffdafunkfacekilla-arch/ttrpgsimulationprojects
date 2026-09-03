@@ -1,0 +1,802 @@
+import os
+import sys
+import math
+import random
+import requests
+import uvicorn
+from typing import Optional
+from fastapi import FastAPI, Depends, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy.orm import Session
+from sqlalchemy.orm.attributes import flag_modified
+from pydantic import BaseModel
+
+# Ensure the workspace directory is in the Python path for clean imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from backend.database import SessionLocal, IS_ASYNC
+from backend.models import HexState, WorldSettings, EventLog
+from backend.simulation import process_tick
+from backend.logger import SimulationLogger
+from backend import rpg_system
+from backend import action_engine
+
+# Initialize the FastAPI Application
+app = FastAPI(
+    title="Ostraka World-Engine God Console API",
+    description="High-performance simulation web service exposing GeoJSON macro world-states, ground-level entity telemetry, configuration parameters, and incident history.",
+    version="1.2.0"
+)
+
+# Configure CORS Middleware to allow smooth integration with local React/Vite frontends
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+def get_db():
+    """
+    FastAPI dependency yielding a clean SQLAlchemy session context.
+    Properly disposes of the connection upon request completion.
+    """
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+# Dynamic DB Migration on Startup
+@app.on_event("startup")
+def run_migrations():
+    """
+    Runs real-time database schema migrations on server startup.
+    Ensures that PostgreSQL dynamically receives the new column witnessed_by_heroes on EventLog
+    without needing full database wipes or complex migration frameworks.
+    """
+    from sqlalchemy import text
+    db = SessionLocal()
+    try:
+        db.execute(text("ALTER TABLE event_logs ADD COLUMN IF NOT EXISTS witnessed_by_heroes JSONB DEFAULT '[]'::jsonb;"))
+        db.commit()
+        print("Dynamic DB Migration Successful: witnessed_by_heroes column verified.")
+    except Exception as e:
+        db.rollback()
+        print(f"Warning: Dynamic DB Migration error: {e}")
+    finally:
+        db.close()
+
+# =============================================================================
+# PYDANTIC SCHEMAS FOR CONFIGURATION CONTROL
+# =============================================================================
+
+class SettingsUpdateSchema(BaseModel):
+    global_magic_flow: Optional[float] = None
+    global_metabolism_rate: Optional[float] = None
+    base_crop_yield: Optional[float] = None
+    species_modifiers: Optional[dict] = None
+    faction_modifiers: Optional[dict] = None
+
+class HeroCreateSchema(BaseModel):
+    name: str
+    biological_type: str
+    profession: str
+    traits: str
+
+class DirectiveUpdateSchema(BaseModel):
+    directive: str
+
+class TargetActionSchema(BaseModel):
+    hero_id: str
+    target_entity_id: str
+    action_type: str
+
+class EnvironmentActionSchema(BaseModel):
+    hero_id: str
+    task_type: str
+
+# =============================================================================
+# API ENDPOINTS
+# =============================================================================
+
+@app.get("/api/world")
+def get_world(db: Session = Depends(get_db)):
+    """
+    Retrieves all HexState records and maps them into a tiled pointy-topped GeoJSON 
+    FeatureCollection for visual rendering on React map layers.
+    Excludes granular local_entities payload to maximize transmission speeds.
+    """
+    try:
+        hexes = db.query(HexState).order_by(HexState.hex_id).all()
+        features = []
+        
+        # Spacing and trigonometry constants for perfect pointy-topped hex grids
+        R = 0.010  # Outer radius (controls size of hexes in coordinates space)
+        angles = [math.radians(a) for a in [30, 90, 150, 210, 270, 330, 30]]
+        
+        for h in hexes:
+            # Reconstruct grid coordinate position (x=col, y=row) from hex_id index
+            # Check if preserved Azgaar geometry exists in urban_meters
+            azgaar_geom = h.urban_meters.get("azgaar_geometry") if h.urban_meters else None
+            
+            if azgaar_geom:
+                # Use preserved coordinates directly!
+                coordinates = azgaar_geom
+            else:
+                try:
+                    idx = int(h.hex_id.split('_')[1])
+                    col = (idx - 1) % 50
+                    row = (idx - 1) // 50
+                except Exception:
+                    col, row = 0, 0
+                    
+                # Pointy-topped hex offset grid geometry center calculation
+                cx = col * 0.015
+                cy = row * 0.01732 + (col % 2) * 0.00866
+                
+                # Generate the six vertices forming the hex polygon boundary
+                coordinates = [[
+                    round(cx + R * math.cos(a), 6),
+                    round(cy + R * math.sin(a), 6)
+                ] for a in angles]
+            
+            feature = {
+                "type": "Feature",
+                "id": h.hex_id,
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": coordinates
+                },
+                "properties": {
+                    "hex_id": h.hex_id,
+                    "tick_count": h.tick_count,
+                    "faction_id": h.faction_id,
+                    "temperature": h.temperature,
+                    "moisture": h.moisture,
+                    "elevation": h.elevation,
+                    "macro_stability": h.macro_stability,
+                    "aetheric_leak_rate": h.aetheric_leak_rate,
+                    "urban_meters": h.urban_meters,
+                    "stockpiles": h.stockpiles,
+                    "demographics": h.demographics,
+                    # Expose Layer 3 Grand Strategy parameters
+                    "military_engagements": h.military_engagements,
+                    "covert_networks": h.covert_networks
+                }
+            }
+            features.append(feature)
+            
+        return {
+            "type": "FeatureCollection",
+            "features": features
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/hex/{hex_id}")
+def get_hex_inspect(hex_id: str, db: Session = Depends(get_db)):
+    """
+    Retrieves the complete state of a single hex cell.
+    Returns full ground-level 'local_entities' telemetry including personality DNA,
+    hunger, sanity indices, and active schedule actions.
+    """
+    hex_state = db.query(HexState).filter(HexState.hex_id == hex_id).first()
+    if not hex_state:
+        raise HTTPException(
+            status_code=404, 
+            detail=f"HexState with identifier '{hex_id}' could not be located."
+        )
+        
+    return {
+        "hex_id": hex_state.hex_id,
+        "tick_count": hex_state.tick_count,
+        "faction_id": hex_state.faction_id,
+        "elevation": hex_state.elevation,
+        "moisture": hex_state.moisture,
+        "temperature": hex_state.temperature,
+        "macro_stability": hex_state.macro_stability,
+        "aetheric_leak_rate": hex_state.aetheric_leak_rate,
+        "urban_meters": hex_state.urban_meters,
+        "stockpiles": hex_state.stockpiles,
+        "demographics": hex_state.demographics,
+        "military_engagements": hex_state.military_engagements,
+        "covert_networks": hex_state.covert_networks,
+        "local_entities": hex_state.local_entities
+    }
+
+@app.post("/api/hex/{hex_id}/entity/{entity_id}/journal")
+def generate_entity_journal(hex_id: str, entity_id: str, db: Session = Depends(get_db)):
+    """
+    Exposes a dynamic in-character journal generator using Ollama local Llama3 LLM.
+    Collects ground-level DNA profile metrics, daily metabolism rates, local factions,
+    and climate values, and prompts the local generative LLM.
+    Contains robust deterministic fallback generation if the Ollama server is offline.
+    """
+    hex_state = db.query(HexState).filter(HexState.hex_id == hex_id).first()
+    if not hex_state:
+        raise HTTPException(status_code=404, detail="Selected hex coordinate could not be located.")
+        
+    # Search local entities list for matching ID
+    target_entity = None
+    for ent in hex_state.local_entities:
+        if ent.get("entity_id") == entity_id:
+            target_entity = ent
+            break
+            
+    if not target_entity:
+        raise HTTPException(status_code=404, detail="Tactical citizen entity could not be found inside this hex.")
+        
+    # Gather granular context variables
+    biological_type = target_entity.get("biological_type", "Mouse")
+    profession = target_entity.get("profession", "Farmer")
+    dna = target_entity.get("dna_profile", {})
+    metabolic = target_entity.get("metabolic_state", {})
+    
+    traits = dna.get("personality", "Quiet")
+    fears = ", ".join(dna.get("fears", ["Famine"]))
+    interest = dna.get("interest", "Survival")
+    
+    hunger = metabolic.get("hunger_level", 0)
+    sanity = metabolic.get("sanity_score", 1.0)
+    
+    faction_owned = hex_state.faction_id or "Neutral Wilderness"
+    temp = hex_state.temperature
+    
+    # Construct concise, high-context instruction prompt
+    constructed_prompt = (
+        f"You are a {biological_type} working as a {profession} in the fantasy realm of Ostraka. "
+        f"Your personality is {traits}. You deeply fear {fears} and are highly interested in {interest}. "
+        f"Currently, your metabolic hunger is {hunger}/100 and your sanity score is {sanity}/1.0. "
+        f"You reside in a regional territory owned by {faction_owned}. The local weather temperature is {temp}°C. "
+        f"Write a raw, first-person, exactly 3-sentence journal entry about your current life right now. "
+        f"Do not include any greetings, labels, notes, or pleasantries. Write in character immediately."
+    )
+    
+    # Ollama integration call
+    try:
+        ollama_url = "http://localhost:11434/api/generate"
+        payload = {
+            "model": "llama3",
+            "prompt": constructed_prompt,
+            "stream": False
+        }
+        res = requests.post(ollama_url, json=payload, timeout=4.0)
+        
+        if res.status_code == 200:
+            text = res.json().get("response", "").strip()
+            if not text:
+                raise ValueError("Blank response from Ollama")
+        else:
+            raise ConnectionError("Ollama returned unhealthy status")
+            
+    except Exception as e:
+        # Fallback templates
+        fallback_templates = [
+            f"The shadow of {faction_owned} looms heavily over my daily shifts. As a {traits} {biological_type}, my thoughts constantly drift towards {interest}. With hunger gnawing at {hunger}% and sanity draining, I pray the cold temperature of {temp}°C does not break my resolve.",
+            f"Working as a local {profession} is all I have left in this wilderness. Fear of {fears} keeps me awake during the dark resting hours. My hands are worn from the grind, but Ostraka demands diligence if I want to survive another tick.",
+            f"My basic instincts as a {biological_type} warn me of incoming structural decay. The stockpiles are running thin, and my sanity score of {sanity:.2f} reflects our isolation. I must remain focused on my duties today."
+        ]
+        text = random.choice(fallback_templates)
+        
+    return {
+        "success": True,
+        "journal_entry": text
+    }
+
+@app.post("/api/simulate/tick")
+def trigger_simulation_tick(db: Session = Depends(get_db)):
+    """
+    Triggers a single-step simulation hourly tick transformation across all hexes.
+    Evaluates demographics consumption, logistics production, covert espionage operations,
+    military siege resolution and conquests, and metabolic schedules.
+    Persists deep mutations back to PostgreSQL and returns new clock telemetry.
+    """
+    try:
+        # 1. Fetch adjustable simulation settings
+        settings = db.query(WorldSettings).filter_by(id=1).first()
+        if not settings:
+            settings = WorldSettings(
+                id=1,
+                global_magic_flow=1.0,
+                global_metabolism_rate=1.0,
+                base_crop_yield=1.0,
+                species_modifiers={},
+                faction_modifiers={}
+            )
+            db.add(settings)
+            db.commit()
+            settings = db.query(WorldSettings).filter_by(id=1).first()
+
+        # 2. Instantiate adjustable logger
+        logger_inst = SimulationLogger()
+
+        # 3. Process each hex cell
+        hexes = db.query(HexState).all()
+        if not hexes:
+            raise HTTPException(
+                status_code=404, 
+                detail="No hex state database records found. Please initialize the database with world generator first."
+            )
+            
+        total_entities_processed = 0
+        for h in hexes:
+            processed_count = process_tick(
+                h, 
+                settings=settings, 
+                session=db, 
+                logger=logger_inst
+            )
+            total_entities_processed += processed_count
+            
+            # Flag nested JSONB columns to notify SQLAlchemy tracker of deep dict changes
+            flag_modified(h, "stockpiles")
+            flag_modified(h, "urban_meters")
+            flag_modified(h, "demographics")
+            flag_modified(h, "military_engagements")
+            flag_modified(h, "covert_networks")
+            flag_modified(h, "local_entities")
+            flag_modified(h, "local_scars")
+            
+        db.commit()
+        
+        # Extrapolate new simulation clock status
+        new_tick = hexes[0].tick_count
+        hour = new_tick % 24
+        
+        return {
+            "success": True,
+            "tick_count": new_tick,
+            "in_game_hour": f"{hour:02d}:00",
+            "processed_entities": total_entities_processed,
+            "message": f"Tick [{new_tick}] completed. Advanced clock to Hour [{hour:02d}:00]."
+        }
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
+
+# =============================================================================
+# NEW ARCHITECTURE SETTINGS & LOGGING ENDPOINTS (PHASE 9A)
+# =============================================================================
+
+@app.get("/api/settings")
+def get_settings(db: Session = Depends(get_db)):
+    """
+    Retrieves the global simulation configuration settings.
+    Guarantees existence of settings row 1.
+    """
+    try:
+        settings = db.query(WorldSettings).filter_by(id=1).first()
+        if not settings:
+            settings = WorldSettings(
+                id=1,
+                global_magic_flow=1.0,
+                global_metabolism_rate=1.0,
+                base_crop_yield=1.0,
+                species_modifiers={},
+                faction_modifiers={}
+            )
+            db.add(settings)
+            db.commit()
+            db.refresh(settings)
+        return settings
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/settings")
+def update_settings(payload: SettingsUpdateSchema, db: Session = Depends(get_db)):
+    """
+    Updates the global simulation settings with partial overrides.
+    Drives real-time physics tuning for magic, crops, and metabolic scales.
+    """
+    try:
+        settings = db.query(WorldSettings).filter_by(id=1).first()
+        if not settings:
+            settings = WorldSettings(id=1)
+            db.add(settings)
+            
+        if payload.global_magic_flow is not None:
+            settings.global_magic_flow = payload.global_magic_flow
+        if payload.global_metabolism_rate is not None:
+            settings.global_metabolism_rate = payload.global_metabolism_rate
+        if payload.base_crop_yield is not None:
+            settings.base_crop_yield = payload.base_crop_yield
+        if payload.species_modifiers is not None:
+            settings.species_modifiers = payload.species_modifiers
+        if payload.faction_modifiers is not None:
+            settings.faction_modifiers = payload.faction_modifiers
+            
+        db.commit()
+        db.refresh(settings)
+        
+        return {
+            "success": True,
+            "settings": settings
+        }
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/logs")
+def get_logs(
+    hex_id: Optional[str] = None,
+    event_type: Optional[str] = None,
+    tick_range: Optional[str] = None,
+    db: Session = Depends(get_db)
+):
+    """
+    Queries EventLog records for tactical events (SIEGE, FAMINE, STORM, REBELLION)
+    to support story generation and history reconstruction in TTRPG worldbuilding.
+    Filters optionally on target hex coordinates, event types, and tick spans.
+    """
+    try:
+        query = db.query(EventLog)
+        
+        if hex_id:
+            query = query.filter(EventLog.hex_id.ilike(f"%{hex_id}%"))
+        if event_type:
+            query = query.filter(EventLog.event_type.ilike(f"%{event_type}%"))
+        if tick_range:
+            try:
+                parts = tick_range.split('-')
+                if len(parts) == 2:
+                    min_tick = int(parts[0])
+                    max_tick = int(parts[1])
+                    query = query.filter(EventLog.tick_count.between(min_tick, max_tick))
+            except Exception:
+                pass
+                
+        # Order by newest ticks and limit response size for maximum transmission speed
+        logs = query.order_by(EventLog.tick_count.desc(), EventLog.id.desc()).limit(100).all()
+        return logs
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+# =============================================================================
+# HERO PROTOCOL & NOVELIST'S LOOM EXPORT ROUTING (PHASE 12 & 13)
+# =============================================================================
+
+@app.post("/api/hex/{hex_id}/hero")
+def inject_custom_hero(hex_id: str, payload: HeroCreateSchema, db: Session = Depends(get_db)):
+    """
+    Injects a custom player-controlled character (Hero) into a hex.
+    Heroes obey simulation metabolic rules but support manual pre-tick directives.
+    Demographics counters are incremented accordingly to maintain world balance.
+    """
+    try:
+        hex_state = db.query(HexState).filter(HexState.hex_id == hex_id).first()
+        if not hex_state:
+            raise HTTPException(status_code=404, detail="Selected hex coordinate could not be located.")
+            
+        if not isinstance(hex_state.local_entities, list):
+            hex_state.local_entities = []
+            
+        # Generate clean unique ID
+        import uuid
+        entity_id = f"hero_{uuid.uuid4().hex[:8]}"
+        
+        # Determine stats and pools based on high fantasy RPG ruleset
+        traits_dict = {
+            "personality": payload.traits,
+            "interest": "ADVENTURING"
+        }
+        rpg_stats = rpg_system.generate_stats(
+            payload.biological_type,
+            payload.profession,
+            entity_type="HERO",
+            traits=traits_dict
+        )
+        dynamic_pools = rpg_system.calculate_derived_pools(rpg_stats)
+        
+        # Build new player hero structure
+        new_hero = {
+            "entity_id": entity_id,
+            "name": payload.name,
+            "biological_type": payload.biological_type,
+            "profession": payload.profession,
+            "dna_profile": {
+                "personality": payload.traits,
+                "interest": "ADVENTURING",
+                "fears": ["FAMINE", "DECAY"]
+            },
+            "metabolic_state": {
+                "hunger_level": 0,
+                "sanity_score": 1.0,
+                "health": 100
+            },
+            "action_state": "RESTING",
+            "is_hero": True,
+            "active_directive": "AUTO",
+            "default_behavior": "AUTO",
+            "rpg_stats": rpg_stats,
+            "dynamic_pools": dynamic_pools
+        }
+        
+        hex_state.local_entities.append(new_hero)
+        
+        # Increment dynamic demographics counter
+        species_plural = payload.biological_type + "s"
+        if payload.biological_type.lower() == "mouse":
+            species_plural = "Mice"
+        elif payload.biological_type.lower() == "wolf":
+            species_plural = "Wolves"
+        elif payload.biological_type.lower() == "bear":
+            species_plural = "Bears"
+            
+        hex_state.demographics[species_plural] = hex_state.demographics.get(species_plural, 0) + 1
+        
+        # Flag deep structures as mutated to notify SQLAlchemy tracker
+        flag_modified(hex_state, "local_entities")
+        flag_modified(hex_state, "demographics")
+        
+        db.commit()
+        db.refresh(hex_state)
+        
+        return {
+            "success": True,
+            "hero": new_hero,
+            "message": f"Hero '{payload.name}' successfully injected into hex '{hex_id}'."
+        }
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.put("/api/hex/{hex_id}/entity/{entity_id}/directive")
+def update_hero_directive(hex_id: str, entity_id: str, payload: DirectiveUpdateSchema, db: Session = Depends(get_db)):
+    """
+    Overrides a custom Hero's schedule pre-tick action using a manual GM directive.
+    Requires is_hero flag to prevent tampering with standard civilian NPCs.
+    """
+    try:
+        hex_state = db.query(HexState).filter(HexState.hex_id == hex_id).first()
+        if not hex_state:
+            raise HTTPException(status_code=404, detail="Selected hex coordinate could not be located.")
+            
+        target_hero = None
+        for ent in hex_state.local_entities:
+            if ent.get("entity_id") == entity_id:
+                target_hero = ent
+                break
+                
+        if not target_hero:
+            raise HTTPException(status_code=404, detail="Entity not found inside this hex.")
+            
+        if not target_hero.get("is_hero", False):
+            raise HTTPException(status_code=400, detail="Directive overrides are only supported for player Hero entities.")
+            
+        target_hero["active_directive"] = payload.directive
+        
+        flag_modified(hex_state, "local_entities")
+        db.commit()
+        
+        return {
+            "success": True,
+            "entity_id": entity_id,
+            "active_directive": payload.directive,
+            "message": f"Hero '{target_hero.get('name', 'Unknown')}' active directive updated to '{payload.directive}'."
+        }
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/export/chronicle")
+def export_chronicle(
+    hero_id: Optional[str] = None,
+    tick_range: Optional[str] = None,
+    db: Session = Depends(get_db)
+):
+    r"""
+    Extracts chronological narrative EventLog listings and compiles them into a beautiful,
+    Obsidian/Notion-ready Markdown export named C:/Users/krazy/Ostraka_Chronicle_[HeroName].md.
+    Translates simulation clock ticks into readable Year/Day/Hour indices.
+    """
+    try:
+        hero_name = "The Chronicles of Ostraka"
+        hero_species = "N/A"
+        hero_prof = "N/A"
+        hero_traits = "N/A"
+        
+        if hero_id:
+            target_hero = None
+            hexes = db.query(HexState).all()
+            for h in hexes:
+                for ent in h.local_entities:
+                    if ent.get("entity_id") == hero_id:
+                        target_hero = ent
+                        hero_name = ent.get("name", "Unknown Hero")
+                        hero_species = ent.get("biological_type", "Unknown")
+                        hero_prof = ent.get("profession", "Unknown")
+                        hero_traits = ent.get("dna_profile", {}).get("personality", "Unknown")
+                        break
+                if target_hero:
+                    break
+                    
+        query = db.query(EventLog)
+        
+        if tick_range:
+            try:
+                parts = tick_range.split('-')
+                if len(parts) == 2:
+                    min_tick = int(parts[0])
+                    max_tick = int(parts[1])
+                    query = query.filter(EventLog.tick_count.between(min_tick, max_tick))
+            except Exception:
+                pass
+                
+        logs = query.order_by(EventLog.tick_count.asc()).all()
+        
+        # Filter logs witnessed by this hero
+        if hero_id:
+            filtered_logs = []
+            for log in logs:
+                witnesses = log.witnessed_by_heroes or []
+                if hero_id in witnesses:
+                    filtered_logs.append(log)
+            logs = filtered_logs
+            
+        # Build Obsidian-ready, high-fantasy styled Markdown output
+        md_lines = []
+        md_lines.append(f"# 📜 THE NOVELIST'S LOOM: CHRONICLE OF {hero_name.upper()}")
+        md_lines.append("\n*Generated from the Ostraka World-Engine Simulation*\n")
+        
+        if hero_id:
+            md_lines.append("## 👤 HERO PROFILE")
+            md_lines.append(f"- **Name**: {hero_name}")
+            md_lines.append(f"- **Species**: {hero_species}")
+            md_lines.append(f"- **Profession**: {hero_prof}")
+            md_lines.append(f"- **Personality Traits**: {hero_traits}")
+            md_lines.append(f"- **Loom Identifier**: `{hero_id}`")
+            md_lines.append("\n---\n")
+            
+        md_lines.append("## 📖 RECORDED HISTORICAL EVENTS")
+        
+        if not logs:
+            md_lines.append("\n*No significant events have been witnessed by or recorded for this hero during this period.*")
+        else:
+            for log in logs:
+                tick = log.tick_count
+                hour = tick % 24
+                day = (tick // 24) % 365 + 1
+                year = tick // (24 * 365) + 1
+                
+                md_lines.append(f"\n### 🕒 Year {year}, Day {day} at {hour:02d}:00 (Tick {tick})")
+                md_lines.append(f"- **Regional Territory**: `{log.hex_id}`")
+                md_lines.append(f"- **Incident Classification**: `{log.event_type}` (Severity: {log.severity}/5)")
+                md_lines.append(f"- **Chronicler Summary**: *{log.summary}*")
+                
+        md_lines.append("\n---\n*May your words shape the future of Ostraka.*")
+        
+        markdown_content = "\n".join(md_lines)
+        return {
+            "success": True,
+            "markdown_content": markdown_content
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+# =============================================================================
+# ACTION RESOLUTION ENGINE ENDPOINTS (PHASE 16)
+# =============================================================================
+
+@app.post("/api/hex/{hex_id}/action/target")
+def execute_target_action(hex_id: str, payload: TargetActionSchema, db: Session = Depends(get_db)):
+    """
+    Executes a contested roll (e.g. ATTACK, DECEIVE) between a custom player Hero
+    and an NPC resident inside the target hex coordinate.
+    Updates stamina/focus and health/composure metrics.
+    """
+    try:
+        hex_state = db.query(HexState).filter(HexState.hex_id == hex_id).first()
+        if not hex_state:
+            raise HTTPException(status_code=404, detail="Selected hex coordinate could not be located.")
+            
+        hero = None
+        target = None
+        for ent in hex_state.local_entities:
+            if ent.get("entity_id") == payload.hero_id:
+                hero = ent
+            elif ent.get("entity_id") == payload.target_entity_id:
+                target = ent
+                
+        if not hero:
+            raise HTTPException(status_code=404, detail=f"Hero with ID '{payload.hero_id}' not found in hex.")
+        if not target:
+            raise HTTPException(status_code=404, detail=f"Target NPC with ID '{payload.target_entity_id}' not found in hex.")
+            
+        # Resolve Contested Roll
+        result_text = action_engine.resolve_contested(hero, target, payload.action_type)
+        
+        # Flag mutated local entities column for SQLAlchemy commit tracking
+        flag_modified(hex_state, "local_entities")
+        db.commit()
+        db.refresh(hex_state)
+        
+        # Retrieve target's updated copy from hex_state to ensure fresh state mapping back to React
+        updated_target = None
+        for ent in hex_state.local_entities:
+            if ent.get("entity_id") == payload.target_entity_id:
+                updated_target = ent
+                break
+                
+        return {
+            "success": True,
+            "result_text": result_text,
+            "hero_pools": hero["dynamic_pools"],
+            "target": updated_target
+        }
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/hex/{hex_id}/action/environment")
+def execute_environment_action(hex_id: str, payload: EnvironmentActionSchema, db: Session = Depends(get_db)):
+    """
+    Resolves a static environmental check (e.g. BREACH_GATES, SCAVENGE) for a Hero.
+    Task DCs are dynamically adjusted based on the hex's regional physical variables.
+    """
+    try:
+        hex_state = db.query(HexState).filter(HexState.hex_id == hex_id).first()
+        if not hex_state:
+            raise HTTPException(status_code=404, detail="Selected hex coordinate could not be located.")
+            
+        hero = None
+        for ent in hex_state.local_entities:
+            if ent.get("entity_id") == payload.hero_id:
+                hero = ent
+                break
+                
+        if not hero:
+            raise HTTPException(status_code=404, detail=f"Hero with ID '{payload.hero_id}' not found in hex.")
+            
+        # Determine and scale task parameters dynamically
+        task_type_upper = payload.task_type.upper()
+        if task_type_upper == "BREACH_GATES":
+            stat_primary = "might"
+            stat_secondary = "logic"
+            
+            # Base Might DC 6, logic DC 5. Scaled upward by regional physical elevation index
+            dc_primary = max(1, min(9, 6 + int((hex_state.elevation or 0.0) * 3)))
+            dc_secondary = max(1, min(9, 5 + int((hex_state.aetheric_leak_rate or 0.0) * 3)))
+        elif task_type_upper == "SCAVENGE":
+            stat_primary = "awareness"
+            stat_secondary = "finesse"
+            
+            # Base Awareness DC 4, Finesse DC 5. Scaled by extreme cold temperatures and dampness
+            dc_primary = 4
+            if (hex_state.temperature or 0) < 0:
+                dc_primary += 2
+                
+            dc_secondary = 5
+            if (hex_state.moisture or 0) > 0.6:
+                dc_secondary += 1
+                
+            dc_primary = max(1, min(9, dc_primary))
+            dc_secondary = max(1, min(9, dc_secondary))
+        else:
+            raise HTTPException(status_code=400, detail=f"Unsupported environmental task type: '{payload.task_type}'")
+            
+        # Resolve task check via resolution math module
+        success, result_text = action_engine.resolve_static_task(
+            hero, dc_primary, dc_secondary, stat_primary, stat_secondary
+        )
+        
+        # Save modifications back to DB
+        flag_modified(hex_state, "local_entities")
+        db.commit()
+        db.refresh(hex_state)
+        
+        return {
+            "success": success,
+            "result_text": result_text,
+            "hero_pools": hero["dynamic_pools"],
+            "dc_primary": dc_primary,
+            "dc_secondary": dc_secondary
+        }
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
+
+if __name__ == "__main__":
+    # Run the Uvicorn application on port 8000 directly when invoked
+    uvicorn.run(app, host="0.0.0.0", port=8000)

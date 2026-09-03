@@ -1,0 +1,33 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "state_id": 1,
+        "name": "Heartland_Alliance"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state_id": 2,
+        "name": "Ursine_Hegemony"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state_id": 3,
+        "name": "Aetheric_Enclave"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "state_id": 4,
+        "name": "Wildlands_Tribes"
+      }
+    }
+  ]
+}

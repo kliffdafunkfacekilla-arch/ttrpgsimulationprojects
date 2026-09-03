@@ -1,0 +1,33 @@
+{
+    "Name": "Thunder-Stride",
+    "Type": "Fauna",
+    "Diet": "Herbivore",
+    "Base_Hp": 200,
+    "Speed": 30,
+    "Locomotion": "Endurance",
+    "Feet": {
+        "Toes": 3,
+        "Talons": {
+            "Length": 9,
+            "Material": "Obsidian-Black"
+        },
+        "Snowshoes": true
+    },
+    "Sensory_Adaptation": {
+        "Blindness": true,
+        "Seismic_Sense": true
+    },
+    "Utility": {
+        "Silent_Cavalier": true,
+        "Killing_Claw": true,
+        "Magical_Immunity": true
+    },
+    "Handling": {
+        "The_Bond": true,
+        "Saddle": {
+            "Type": "Thump-Saddle",
+            "Material": "Leather",
+            "Mallets": true
+        }
+    }
+}

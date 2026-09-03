@@ -1,0 +1,54 @@
+{
+    "name": "River Folk",
+    "core_identity": {
+        "mercantile_soul": true,
+        "merchants_above_all": true,
+        "sly_but_fair_traders": true,
+        "pragmatism_and_ruthlessness": true,
+        "obsessive_cleanliness": true,
+        "medical_savvy": true
+    },
+    "domain": {
+        "great_lake": {
+            "source": true,
+            "falls": true,
+            "staircase": true,
+            "ledge": true
+        },
+        "floating_city": true,
+        "anchor_s_inn": true,
+        "second_waterfall_town": true,
+        "delta": true,
+        "coastal_city": true
+    },
+    "society_and_justice": {
+        "pragmatic_law": true,
+        "punishment": {
+            "slavery": true
+        }
+    },
+    "adaptation_and_defense": {
+        "innate_navigation": true,
+        "tidal_acuity": true,
+        "airship_mastery": true,
+        "chaos_zone_explorers": true
+    },
+    "purifiers": {
+        "recruitment": true,
+        "headquarters": true,
+        "training": true,
+        "mission": true,
+        "social_standing": true,
+        "funding": true,
+        "razor-cloth_robe": true
+    },
+    "ritual_and_tradition": {
+        "shadow_week": true,
+        "vigil": true
+    },
+    "external_relations": {
+        "scute_confederacy": true,
+        "crimson_corsairs": true,
+        "ghostwind_raiders": true
+    }
+}

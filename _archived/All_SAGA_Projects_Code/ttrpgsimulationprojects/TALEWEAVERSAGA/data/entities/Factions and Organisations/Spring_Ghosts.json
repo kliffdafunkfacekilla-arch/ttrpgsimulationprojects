@@ -1,0 +1,25 @@
+{
+    "name": "Spring Ghosts",
+    "type": "Faction/Organization",
+    "description": "A secretive and exiled sub-culture of the River Folk, living in a network of warm, mineral-rich caves.",
+    "goals": [
+        "Defend their hidden territory and way of life",
+        "Maintain secrecy and concealment from the surface world"
+    ],
+    "methods": [
+        "Passive defense through calculated, non-lethal doctrine of haunting and misdirection",
+        "Escalation protocol for eliminating intruders"
+    ],
+    "resources": [
+        "Warm, mineral-rich caves and underground networks",
+        "Biomancy or Illusion magic for temporary disguise"
+    ],
+    "strengths": [
+        "Adaptability to unique environment",
+        "Unique biological features"
+    ],
+    "weaknesses": [
+        "Vulnerability to data-driven intelligence and analysis",
+        "Limited resources and isolation from the surface world"
+    ]
+}

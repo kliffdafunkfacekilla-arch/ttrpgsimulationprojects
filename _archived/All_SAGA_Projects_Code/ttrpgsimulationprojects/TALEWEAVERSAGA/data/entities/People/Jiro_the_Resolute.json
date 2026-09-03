@@ -1,0 +1,21 @@
+{
+    "Entity_Name": "Jiro the Resolute",
+    "Tags": [
+        "NPC",
+        "History",
+        "Warden",
+        "Nexus",
+        "Fortitude"
+    ],
+    "Attributes": {
+        "Former_Master": {
+            "Value": "Magistar Carulkem",
+            "Type": "Nexus/Fortitude"
+        },
+        "Role": "Chief Inquisitor",
+        "Defection_Event": {
+            "Name": "The Vision of Beauty",
+            "Description": "Torturing a Fae prisoner, shown a vision of the world's beauty before the hubris of man, released every prisoner and became the spiritual anchor of the rebellion"
+        }
+    }
+}

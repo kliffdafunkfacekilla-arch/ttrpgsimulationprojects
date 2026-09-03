@@ -1,0 +1,104 @@
+{
+    "Name": "The Canopy Clans",
+    "Type": "Faction",
+    "Patron": "Magistar Aurgenas",
+    "Power": [
+        "Flux1",
+        "Finesse",
+        "Liquidity",
+        "Gold"
+    ],
+    "Philosophy": "Value rots if it sits. Keep it moving.",
+    "Influence": "The Curse of Stagnation",
+    "Geography": {
+        "Environment": {
+            "Paths": "Fluid",
+            "Trees": "Solid"
+        },
+        "Defense": {
+            "Dexterity": "High",
+            "Innate Sense of Flow": "Exist"
+        }
+    },
+    "Societal Structure": {
+        "Hierarchy": {
+            "King/Queen": "Wealthiest Individual",
+            "Spending Crown": "Circulate Wealth"
+        }
+    },
+    "Major Cities": [
+        {
+            "Name": "Vulpus-Prime",
+            "Trade": [
+                "Diplomacy",
+                "Luxury Spices",
+                "Law"
+            ],
+            "Vibe": "High-stakes Negotiation Parlors"
+        },
+        {
+            "Name": "Simia-Reach",
+            "Trade": [
+                "Alchemical Fruit & Potions"
+            ],
+            "Vibe": "Vertical Markets"
+        },
+        {
+            "Name": "The Grey Tangle",
+            "Trade": [
+                "Waste Management & Recycling"
+            ],
+            "Vibe": "Industrial"
+        },
+        {
+            "Name": "Glider's Roost",
+            "Trade": [
+                "Courier Services & Resin"
+            ],
+            "Vibe": "Transit Hub"
+        }
+    ],
+    "Military": {
+        "Unit": "The Kite-Runners",
+        "Gear": [
+            "Glider-suits",
+            "Monofilament Hooks"
+        ],
+        "Tactic": "Fight in 3D, Never Stand Still"
+    },
+    "Foreign Relations": {
+        "Vs. [[The Iron Caldera]]": "Hire Couriers to Move Goods",
+        "Vs. [[The Avian Empire]]": "Charge Guide Fees"
+    },
+    "Economic Model": "High-End Manufacturing & Exotic Agriculture",
+    "Industries": [
+        {
+            "Name": "Boom Industry (Arms & Explosives)",
+            "Workshop": "The Silent-Spring Armory",
+            "Products": [
+                {
+                    "Name": "Long-Eye Jezzail",
+                    "Description": "Comically long, rifled musket"
+                },
+                {
+                    "Name": "Brush-Clearer",
+                    "Description": "Short-barreled blunderbuss"
+                },
+                {
+                    "Name": "Volley-Pistol",
+                    "Description": "Three-barreled rotating pistol"
+                }
+            ]
+        },
+        {
+            "Name": "Extractive Industry (Mines & Quarries)",
+            "Source": "Deep Mines",
+            "Use": "Fireproof Construction Beams"
+        },
+        {
+            "Name": "Textile & Leather Industry",
+            "Farm": "[[Magistar Aurgenas]] Pits",
+            "Product": "Shed-Skin (Waterproof Tarp)"
+        }
+    ]
+}

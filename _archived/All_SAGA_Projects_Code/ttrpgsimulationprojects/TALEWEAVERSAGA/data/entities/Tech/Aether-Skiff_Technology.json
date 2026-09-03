@@ -1,0 +1,42 @@
+{
+    "tech_tier": 4,
+    "energy_cost": 10,
+    "propulsion_system": "Dragonstone Engine",
+    "navigational_system": "Jitter-Rig",
+    "construction_type": "Biological/processed coral/chitin composite",
+    "resilience": 8,
+    "stability": 9,
+    "production_method": "Grown",
+    "role": "Sky-Barque",
+    "class": "Personal/Luxury",
+    "coils": 4,
+    "fuel_efficiency": "High",
+    "shields": "High",
+    "sensors": "Advanced",
+    " crew": [
+        {
+            "role": "Captain",
+            "responsibilities": [
+                "Vessel, crew, and mission"
+            ]
+        },
+        {
+            "role": "Aether-Wright",
+            "responsibilities": [
+                "Dragonstone core and coils"
+            ]
+        },
+        {
+            "role": "Navigator",
+            "responsibilities": [
+                "Interpreting Jitter-Rig and other instruments"
+            ]
+        },
+        {
+            "role": "Whisperer",
+            "responsibilities": [
+                "Countering crew panic and rage"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,19 @@
+{
+    "tech_tier": 3,
+    "energy_cost": 50,
+    "resonance_level": 10,
+    "chaos_stability": 8,
+    "foundational_resource": "Dragonstone",
+    "primary_source": "cosmic in nature, arriving in violent meteor showers",
+    "terrestrial_origin": "massive deposits pulsate deep within the earth",
+    "nomadic_collection": "polished 'river rocks' and fine dust carried down from mountain peaks",
+    "high_tech_application": {
+        "name": "Chaos-Boiler",
+        "description": "shielded Dragonstone acts as a 'battery' to industry and propels the world's airships"
+    },
+    "low_tech_application": {
+        "name": "Charms and Sigil-Script",
+        "description": "single-use, hand-painted sigils crafted by nomadic artisans known as 'Hedge-Wizards'"
+    },
+    "economic_valuation": "Dragonstone Shards represent the highest form of value"
+}

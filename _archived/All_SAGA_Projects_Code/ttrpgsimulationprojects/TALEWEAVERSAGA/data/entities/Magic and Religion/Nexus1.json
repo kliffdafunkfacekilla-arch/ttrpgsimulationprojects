@@ -1,0 +1,29 @@
+{
+    "magic_tier": 5,
+    "passive": {
+        "atomic_bond_control": {
+            "description": "Excitement level of atoms",
+            "effect": "Volatile chemical reactions"
+        }
+    },
+    "active": [
+        {
+            "name": "Offense (Fire)",
+            "cooldown": 3,
+            "cost": 10,
+            "effect": "Combusts atoms into superheated plasma, vaporizing enemies or melting through steel bulkheads with concentrated thermal lances"
+        },
+        {
+            "name": "Defense",
+            "cooldown": 2,
+            "cost": 5,
+            "effect": "Grounds self against energy, absorbing heat or shock, or transmutes skin into steel or stone to ignore physical trauma"
+        },
+        {
+            "name": "Utility",
+            "cooldown": 4,
+            "cost": 15,
+            "effect": "Fuses broken items back together, transmutes base materials (turning mud to stone), or reshapes raw matter into weapons and tools"
+        }
+    ]
+}

@@ -1,0 +1,67 @@
+[SETUP] Setting up environment...
+  [CC] src\platform\WindowsUtils.cpp
+  [CC] src\io\PlatformUtils.cpp
+  [CC] src\io\BinaryExporter.cpp
+  [CC] src\io\AssetManager.cpp
+  [CC] src\io\LoreManager.cpp
+  [CC] src\io\MasterExporter.cpp
+  [CC] src\io\stb_image_impl.cpp
+  [CC] src\io\HeightmapLoader.cpp
+  [CC] src\lore\LoreScribe.cpp
+  [CC] src\lore\NameGenerator.cpp
+  [CC] src\core\TerrainController.cpp
+  [CC] src\core\NeighborFinder.cpp
+  [CC] src\visuals\MapRenderer.cpp
+  [CC] src\frontend\GuiController.cpp
+  [CC] src\frontend\EditorUI.cpp
+  [CC] src\frontend\WikiEditor.cpp
+  [CC] src\biology\AgentSystem.cpp
+  [CC] src\environment\ClimateSim.cpp
+  [CC] src\environment\HydrologySim.cpp
+  [CC] src\environment\ChaosField.cpp
+  [CC] src\environment\DisasterSystem.cpp
+  [CC] src\simulation\CivilizationSim.cpp
+  [CC] src\simulation\ConflictSystem.cpp
+src\simulation\ConflictSystem.cpp:65:39: error: no member named 'greed' in 'FactionData'
+   65 |       float factionGreed = myFaction->greed;
+      |                            ~~~~~~~~~  ^
+src\simulation\ConflictSystem.cpp:72:26: error: no member named 'desireResourceID' in 'FactionData'
+   72 |           if (myFaction->desireResourceID != -1 && b.GetResource(nIdx, myFaction->desireResourceID) > 10.0f) {
+      |               ~~~~~~~~~  ^
+src\simulation\ConflictSystem.cpp:72:83: error: no member named 'desireResourceID' in 'FactionData'
+   72 |           if (myFaction->desireResourceID != -1 && b.GetResource(nIdx, myFaction->desireResourceID) > 10.0f) {
+      |                                                                        ~~~~~~~~~  ^
+src\simulation\ConflictSystem.cpp:75:26: error: no member named 'hateAgentID' in 'FactionData'
+   75 |           if (myFaction->hateAgentID != -1 && theirID == myFaction->hateAgentID) isWar = true;
+      |               ~~~~~~~~~  ^
+src\simulation\ConflictSystem.cpp:75:69: error: no member named 'hateAgentID' in 'FactionData'
+   75 |           if (myFaction->hateAgentID != -1 && theirID == myFaction->hateAgentID) isWar = true;
+      |                                                          ~~~~~~~~~  ^
+src\simulation\ConflictSystem.cpp:76:26: error: no member named 'strategy' in 'FactionData'
+   76 |           if (myFaction->strategy == FactionStrategy::FORTIFY && (rand() % 100 < 80)) isWar = false;
+      |               ~~~~~~~~~  ^
+src\simulation\ConflictSystem.cpp:76:38: error: use of undeclared identifier 'FactionStrategy'
+   76 |           if (myFaction->strategy == FactionStrategy::FORTIFY && (rand() % 100 < 80)) isWar = false;
+      |                                      ^
+src\simulation\ConflictSystem.cpp:83:43: error: no member named 'might' in 'AgentTemplate'
+   83 |                 damage *= (1.0f + species.might);
+      |                                   ~~~~~~~ ^
+8 errors generated.
+  [FAIL] src\simulation\ConflictSystem.cpp
+  [CC] src\simulation\LogisticsSystem.cpp
+  [CC] src\simulation\UnitSystem.cpp
+  [CC] deps\imgui\imgui.cpp
+  [CC] deps\imgui\imgui_draw.cpp
+  [CC] deps\imgui\imgui_tables.cpp
+  [CC] deps\imgui\imgui_widgets.cpp
+  [CC] deps\imgui\misc\cpp\imgui_stdlib.cpp
+  [CC] deps\imgui\backends\imgui_impl_glfw.cpp
+  [CC] deps\imgui\backends\imgui_impl_opengl3.cpp
+  [CC] src\apps\App_Launcher.cpp
+  [CC] src\apps\App_Architect.cpp
+  [CC] src\apps\App_Lore.cpp
+  [CC] src\apps\App_Sim.cpp
+  [CC] src\apps\App_Replay.cpp
+
+[INFO] Compiled: 36 | Cached: 0
+[ERROR] 1 file(s) failed to compile.

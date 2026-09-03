@@ -1,0 +1,5 @@
+{
+  "name": "TTRPG Manual Builder",
+  "description": "An AI-powered multi-agent framework to convert raw lore into a formatted TTRPG encyclopedia.",
+  "requestFramePermissions": []
+}

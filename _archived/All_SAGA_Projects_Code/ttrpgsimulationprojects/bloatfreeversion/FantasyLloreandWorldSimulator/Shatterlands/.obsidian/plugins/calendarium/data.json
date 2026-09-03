@@ -1,0 +1,390 @@
+{
+  "autoParse": true,
+  "calendars": [
+    {
+      "name": "Wardens Reckoning",
+      "description": "Wardens watch Calander",
+      "id": "ID_19eb08992829",
+      "showIntercalarySeparately": true,
+      "static": {
+        "incrementDay": false,
+        "firstWeekDay": 0,
+        "overflow": true,
+        "weekdays": [
+          {
+            "type": "day",
+            "name": "Spireday",
+            "id": "ID_3898796b584b"
+          },
+          {
+            "type": "day",
+            "name": "Ironday",
+            "id": "ID_38eabb9a0a58"
+          },
+          {
+            "type": "day",
+            "name": "Whispday",
+            "id": "ID_b889caabab2a"
+          },
+          {
+            "type": "day",
+            "name": "Heartday",
+            "id": "ID_4a08f908d8c9"
+          },
+          {
+            "type": "day",
+            "name": "Mindday",
+            "id": "ID_d8588a0a2a68"
+          },
+          {
+            "type": "day",
+            "name": "Razoday",
+            "id": "ID_8909e9195b88"
+          },
+          {
+            "type": "day",
+            "name": "Voiday",
+            "id": "ID_a87bd938dbfb"
+          }
+        ],
+        "months": [
+          {
+            "type": "month",
+            "name": "Nexar",
+            "length": 35,
+            "id": "ID_d8eaa97828a9",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Massis",
+            "length": 28,
+            "id": "ID_eb0809186b1a",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Motom",
+            "length": 21,
+            "id": "ID_8a6ad94908aa",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Fluxen",
+            "length": 42,
+            "id": "ID_19a9b9c97b2b",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Vitan",
+            "length": 49,
+            "id": "ID_e82a984bc9da",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Lexis",
+            "length": 28,
+            "id": "ID_8aa8c88a090a",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Ration",
+            "length": 28,
+            "id": "ID_da2af90be848",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Ordis",
+            "length": 28,
+            "id": "ID_f81a38cb0b2a",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Luxen",
+            "length": 49,
+            "id": "ID_39f8abcb4959",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Omin",
+            "length": 63,
+            "id": "ID_09695bf9f9e8",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Aurum",
+            "length": 35,
+            "id": "ID_38d9c8c89919",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Anum",
+            "length": 42,
+            "id": "ID_5a79aac9ba78",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "month",
+            "name": "Maelen",
+            "length": 84,
+            "id": "ID_7a4b798bab49",
+            "interval": 1,
+            "offset": 0
+          },
+          {
+            "type": "intercalary",
+            "name": "Shadowfall",
+            "length": 7,
+            "id": "ID_5adbf83b4a59",
+            "interval": 1,
+            "offset": 0
+          }
+        ],
+        "moons": [
+          {
+            "name": "Shatterface",
+            "cycle": 49,
+            "offset": 0,
+            "faceColor": "#f425e2",
+            "shadowColor": "#000",
+            "id": "ID_ea789acb29e8"
+          }
+        ],
+        "displayMoons": true,
+        "displayDayNumber": true,
+        "leapDays": [],
+        "eras": [
+          {
+            "id": "ID_9bf8c8f9fb7b",
+            "type": "era",
+            "name": "B.S.",
+            "description": "",
+            "format": "{{era_name}}",
+            "endsYear": false,
+            "isEvent": false,
+            "category": null,
+            "isStartingEra": true,
+            "date": {
+              "year": -10000000000,
+              "month": 0,
+              "day": 1
+            },
+            "end": {
+              "year": -6650,
+              "month": 0,
+              "day": 1
+            }
+          },
+          {
+            "id": "ID_6b4b892b7aa8",
+            "type": "era",
+            "name": "S.S.",
+            "description": "",
+            "format": "{{era_name}}",
+            "endsYear": false,
+            "isEvent": false,
+            "category": null,
+            "isStartingEra": false,
+            "date": {
+              "year": -6650,
+              "month": 0,
+              "day": 1
+            },
+            "end": {
+              "year": 1,
+              "month": 0,
+              "day": 1
+            }
+          },
+          {
+            "id": "ID_7b7b9a3b9ae8",
+            "type": "era",
+            "name": "A.W.",
+            "description": "",
+            "format": "{{era_name}}",
+            "endsYear": false,
+            "isEvent": false,
+            "category": null,
+            "isStartingEra": false,
+            "date": {
+              "year": 1,
+              "month": 0,
+              "day": 1
+            }
+          }
+        ],
+        "padMonths": 2,
+        "padDays": 2
+      },
+      "seasonal": {
+        "seasons": [
+          {
+            "id": "ID_78bb9a694a18",
+            "name": "Shadowburn",
+            "type": "Periodic",
+            "color": "#c8d50b",
+            "duration": 84,
+            "peak": 0,
+            "weatherOffset": 20,
+            "weatherPeak": 44,
+            "kind": "Summer"
+          },
+          {
+            "id": "ID_0a4a594a8b5b",
+            "name": "Dryspell",
+            "type": "Periodic",
+            "color": "#cb5e15",
+            "duration": 42,
+            "peak": 0,
+            "weatherOffset": 10,
+            "weatherPeak": 20,
+            "kind": "Autumn"
+          },
+          {
+            "id": "ID_c85a296bcb18",
+            "name": "Frostin",
+            "type": "Periodic",
+            "color": "#8a97ad",
+            "duration": 49,
+            "peak": 0,
+            "weatherOffset": 10,
+            "weatherPeak": 30,
+            "kind": "Winter"
+          },
+          {
+            "id": "ID_2a1bbbaadbb8",
+            "name": "GreenSpan",
+            "type": "Periodic",
+            "color": "#43e740",
+            "duration": 84,
+            "peak": 0,
+            "weatherOffset": 25,
+            "weatherPeak": 44,
+            "kind": "Spring"
+          },
+          {
+            "id": "ID_89894bcab82a",
+            "name": "Highreach",
+            "type": "Periodic",
+            "color": "#f9bdb9",
+            "duration": 112,
+            "peak": 0,
+            "weatherOffset": 30,
+            "weatherPeak": 60,
+            "kind": "Summer"
+          },
+          {
+            "id": "ID_9af939f9c9f8",
+            "name": "Spurium",
+            "type": "Periodic",
+            "color": "#ff7300",
+            "duration": 77,
+            "peak": 0,
+            "weatherOffset": 10,
+            "weatherPeak": 40,
+            "kind": "Autumn"
+          },
+          {
+            "id": "ID_aa0938082949",
+            "name": "Dimfreeze",
+            "type": "Periodic",
+            "color": "#655d79",
+            "duration": 84,
+            "peak": 0,
+            "weatherOffset": 25,
+            "weatherPeak": 25,
+            "kind": "Winter"
+          },
+          {
+            "id": "ID_d80afbfbe96b",
+            "name": "Shadowfall",
+            "type": "Periodic",
+            "color": "#0d0c0d",
+            "duration": 7,
+            "peak": 0,
+            "weatherOffset": 0,
+            "weatherPeak": 7,
+            "kind": "Winter"
+          }
+        ],
+        "offset": 0,
+        "type": "Periodic",
+        "displayColors": true,
+        "interpolateColors": true,
+        "weather": {
+          "enabled": true,
+          "seed": -517904547,
+          "tempUnits": "Metric",
+          "windUnits": "Metric",
+          "primaryWindDirection": "E",
+          "freezingPoint": 0
+        }
+      },
+      "locations": {
+        "locations": [],
+        "defaultLocation": ""
+      },
+      "current": {
+        "day": 1,
+        "month": 0,
+        "year": 1650
+      },
+      "events": [],
+      "categories": [],
+      "path": [],
+      "supportInlineEvents": true,
+      "inlineEventTag": "#inline-events"
+    }
+  ],
+  "configDirectory": null,
+  "dailyNotes": false,
+  "dateFormat": "YYYY-MM-DD",
+  "defaultCalendar": "ID_19eb08992829",
+  "eventPreview": false,
+  "exit": {
+    "saving": false,
+    "event": false,
+    "calendar": false,
+    "savingEvent": false
+  },
+  "eventFrontmatter": false,
+  "parseDates": true,
+  "version": {
+    "major": 2,
+    "minor": 1,
+    "patch": 0,
+    "beta": null
+  },
+  "debug": false,
+  "askedToMoveFC": false,
+  "askedAboutSync": false,
+  "syncBehavior": "Ask",
+  "inlineEventsTag": null,
+  "paths": [
+    [
+      "/",
+      "DEFAULT"
+    ]
+  ]
+}

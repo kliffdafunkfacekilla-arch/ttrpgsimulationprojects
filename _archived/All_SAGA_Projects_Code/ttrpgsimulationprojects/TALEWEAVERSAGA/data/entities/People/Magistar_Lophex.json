@@ -1,0 +1,36 @@
+{
+    "Name": "Magistar Lophex",
+    "Title": "The Hoarder of Void",
+    "Attributes": {
+        "School": "Anumis",
+        "Element": "Bismuth"
+    },
+    "Dragon Form": "The Geometric Void",
+    "Pre-Corruption Name": "Eldra",
+    "Abilities": {
+        "Knowledge Hoard": {
+            "Effect": "Cataloged and locked away every secret stolen from other species",
+            "Cost": 0,
+            "Range": 0,
+            "Duration": 0
+        },
+        "Mental Scourge": {
+            "Effect": "Turns knowledge into a weapon of domination",
+            "Cost": 0,
+            "Range": 0,
+            "Duration": 0
+        },
+        "Arcane Nullification": {
+            "Effect": "Unravels the logic and science of enemies",
+            "Cost": 0,
+            "Range": 0,
+            "Duration": 0
+        }
+    },
+    "Corruption": {
+        "Effect": "Becomes The Geometric Void, a dragon of Bismuth crystals and impossible angles",
+        "Cost": 0,
+        "Range": 0,
+        "Duration": 0
+    }
+}

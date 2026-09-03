@@ -1,0 +1,42 @@
+{
+    "Attributes": {
+        "School": "Lex",
+        "Element": "Lithium",
+        "Willpower": 100,
+        "Original Title": "The Unbroken",
+        "Dragon Form": "The Mad King",
+        "Pre-Corruption Name": "Zeila"
+    },
+    "Stats": {
+        "Health": 80,
+        "Mana": 120,
+        "Strength": 60,
+        "Agility": 40,
+        "Intelligence": 90,
+        "Willpower": 100
+    },
+    "Abilities": {
+        "Dragon Form": {
+            "Cost": 50,
+            "Duration": 30,
+            "Description": "Tyrustis becomes a dragon of volatile Lithium, stripping the identity out of everyone around her and imposing laws of physics that change moment to moment."
+        },
+        "Void": {
+            "Cost": 20,
+            "Duration": 15,
+            "Description": "Tyrustis' will is absolute but erratic, causing reality to bend to her whims. Enemies within a certain radius are disoriented and have their attributes randomly modified."
+        },
+        "Enforcer": {
+            "Cost": 30,
+            "Duration": 20,
+            "Description": "Tyrustis' sheer stubbornness allows her to enforce brutal work quotas and mentally break the spirit of resistance in subjugated species. Enemies within a certain radius have their morale reduced."
+        }
+    },
+    "Tags": [
+        "Magistar",
+        "Lex",
+        "Willpower",
+        "Dragon/Lithium",
+        "NPC"
+    ]
+}

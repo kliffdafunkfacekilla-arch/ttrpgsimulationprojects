@@ -1,0 +1,30 @@
+{
+  "system_name": "Classic Fantasy OGL",
+  "version": "5.0",
+  "attributes": [
+    {"id": "str", "name": "Strength", "description": "Physical power."},
+    {"id": "dex", "name": "Dexterity", "description": "Agility and balance."},
+    {"id": "con", "name": "Constitution", "description": "Endurance and health."},
+    {"id": "int", "name": "Intelligence", "description": "Reasoning and memory."},
+    {"id": "wis", "name": "Wisdom", "description": "Perception and insight."},
+    {"id": "cha", "name": "Charisma", "description": "Force of personality."}
+  ],
+  "vitals": [
+    {
+      "id": "hp",
+      "name": "Hit Points",
+      "formula": "10 + con_mod",
+      "abbreviation": "HP"
+    },
+    {
+      "id": "ac",
+      "name": "Armor Class",
+      "formula": "10 + dex_mod",
+      "abbreviation": "AC"
+    }
+  ],
+  "resolutions": {
+    "standard_check": "1d20 + @attr_mod",
+    "attack_roll": "1d20 + @proficiency + @str_mod"
+  }
+}

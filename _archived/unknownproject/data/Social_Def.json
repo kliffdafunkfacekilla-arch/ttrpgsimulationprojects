@@ -1,0 +1,38 @@
+[
+  {
+    "Attribute": "ENDURANCE",
+    "Skill Name": "Stoicism",
+    "The Armor": "The Ego",
+    "Description (The Reaction)": "The Tank. Taking the insult on the chin and not flinching. \"Is that the best you've got?\""
+  },
+  {
+    "Attribute": "REFLEXES",
+    "Skill Name": "Guile",
+    "The Armor": "The Mask",
+    "Description (The Reaction)": "The Dodge. Changing the subject, feigning ignorance, or hiding your true emotion. \"I haven't the faintest idea what you mean.\""
+  },
+  {
+    "Attribute": "VITALITY",
+    "Skill Name": "Poise",
+    "The Armor": "The Halo",
+    "Description (The Reaction)": "The Glow. Being naturally likable. Insults slide off because you are simply too radiant/cool to care. \"Oh, you're adorable.\""
+  },
+  {
+    "Attribute": "KNOWLEDGE",
+    "Skill Name": "Etiquette",
+    "The Armor": "The Title",
+    "Description (The Reaction)": "The Rank. Using protocol and tradition as a shield. \"One does not speak to the Crown in that tone.\""
+  },
+  {
+    "Attribute": "WILLPOWER",
+    "Skill Name": "Discipline",
+    "The Armor": "The Badge",
+    "Description (The Reaction)": "The Wall. Iron will. Refusing to be baited or broken by sheer mental fortitude. \"Your orders are irrelevant.\""
+  },
+  {
+    "Attribute": "INTUITION",
+    "Skill Name": "Empathy",
+    "The Armor": "The Vibe",
+    "Description (The Reaction)": "The Sense. Sensing the emotional intent behind the words and defusing it before it lands. \"I know you're angry, but this isn't about me.\""
+  }
+]

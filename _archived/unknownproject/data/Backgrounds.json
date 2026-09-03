@@ -1,0 +1,476 @@
+[
+  {
+    "id": "Origin",
+    "title": "Step 8: Origin",
+    "description": "Where do you come from? (Choose a Social Skill)",
+    "options": [
+      {
+        "name": "The Hammer",
+        "category": "Social Offense",
+        "narrative": "The Threat. Using physical presence, volume, or violence to force compliance. \"Get out of my way or I'll go through you.\"",
+        "grants": [
+          "Social Offense",
+          "The Hammer"
+        ]
+      },
+      {
+        "name": "The Quill",
+        "category": "Social Offense",
+        "narrative": "The Jab. Fast talk, witty comebacks, and stinging insults. Using words like a rapier. \"Nice outfit. Did you lose a bet?\"",
+        "grants": [
+          "Social Offense",
+          "The Quill"
+        ]
+      },
+      {
+        "name": "The Gaze",
+        "category": "Social Offense",
+        "narrative": "The Pressure. Relentless, unblinking pressure. Not shouting, just refusing to back down until they crack. \"I can wait all day.\"",
+        "grants": [
+          "Social Offense",
+          "The Gaze"
+        ]
+      },
+      {
+        "name": "The Ledger",
+        "category": "Social Offense",
+        "narrative": "The Argument. Using facts, laws, and logical fallacies to dismantle their point. \"Actually, regulation 4.B clearly states...\"",
+        "grants": [
+          "Social Offense",
+          "The Ledger"
+        ]
+      },
+      {
+        "name": "The Lens",
+        "category": "Social Offense",
+        "narrative": "The Read. Cold reading. Calling out their ticks, secrets, or lies to rattle them. \"You're sweating. What are you afraid of?\"",
+        "grants": [
+          "Social Offense",
+          "The Lens"
+        ]
+      },
+      {
+        "name": "The Stage",
+        "category": "Social Offense",
+        "narrative": "The Performance. Seduction, inspiration, or active deception. Making them want to agree with you. \"Trust me, it's for the best.\"",
+        "grants": [
+          "Social Offense",
+          "The Stage"
+        ]
+      },
+      {
+        "name": "The Ego",
+        "category": "Social Defense",
+        "narrative": "The Tank. Taking the insult on the chin and not flinching. \"Is that the best you've got?\"",
+        "grants": [
+          "Social Defense",
+          "The Ego"
+        ]
+      },
+      {
+        "name": "The Mask",
+        "category": "Social Defense",
+        "narrative": "The Dodge. Changing the subject, feigning ignorance, or hiding your true emotion. \"I haven't the faintest idea what you mean.\"",
+        "grants": [
+          "Social Defense",
+          "The Mask"
+        ]
+      },
+      {
+        "name": "The Halo",
+        "category": "Social Defense",
+        "narrative": "The Glow. Being naturally likable. Insults slide off because you are simply too radiant/cool to care. \"Oh, you're adorable.\"",
+        "grants": [
+          "Social Defense",
+          "The Halo"
+        ]
+      },
+      {
+        "name": "The Title",
+        "category": "Social Defense",
+        "narrative": "The Rank. Using protocol and tradition as a shield. \"One does not speak to the Crown in that tone.\"",
+        "grants": [
+          "Social Defense",
+          "The Title"
+        ]
+      },
+      {
+        "name": "The Badge",
+        "category": "Social Defense",
+        "narrative": "The Wall. Iron will. Refusing to be baited or broken by sheer mental fortitude. \"Your orders are irrelevant.\"",
+        "grants": [
+          "Social Defense",
+          "The Badge"
+        ]
+      },
+      {
+        "name": "The Vibe",
+        "category": "Social Defense",
+        "narrative": "The Sense. Sensing the emotional intent behind the words and defusing it before it lands. \"I know you're angry, but this isn't about me.\"",
+        "grants": [
+          "Social Defense",
+          "The Vibe"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Utility Skills",
+    "title": "Step 9: Childhood",
+    "description": "What did you do as a child? (Choose a Utility Skill)",
+    "options": [
+      {
+        "name": "Athletics",
+        "category": "Utility",
+        "narrative": "Swimming climbing breaking objects. Lore: War tactics and sieges.",
+        "grants": [
+          "Utility",
+          "Athletics"
+        ]
+      },
+      {
+        "name": "Labor",
+        "category": "Utility",
+        "narrative": "Sustained heavy work carrying loads. Lore: Structure and masonry.",
+        "grants": [
+          "Utility",
+          "Labor"
+        ]
+      },
+      {
+        "name": "Mechanism",
+        "category": "Utility",
+        "narrative": "Picking locks disarming traps. Lore: Gears and complex devices.",
+        "grants": [
+          "Utility",
+          "Mechanism"
+        ]
+      },
+      {
+        "name": "Motion",
+        "category": "Utility",
+        "narrative": "Acrobatics stealth balancing. Lore: Ballistics and physics of speed.",
+        "grants": [
+          "Utility",
+          "Motion"
+        ]
+      },
+      {
+        "name": "Nature",
+        "category": "Utility",
+        "narrative": "Survival handling animals. Lore: Biology ecology and healing.",
+        "grants": [
+          "Utility",
+          "Nature"
+        ]
+      },
+      {
+        "name": "Craft",
+        "category": "Utility",
+        "narrative": "Repairing gear smithing hardening. Lore: Physiology and metallurgy.",
+        "grants": [
+          "Utility",
+          "Craft"
+        ]
+      },
+      {
+        "name": "Academics",
+        "category": "Utility",
+        "narrative": "Researching libraries. Lore: History languages and heraldry.",
+        "grants": [
+          "Utility",
+          "Academics"
+        ]
+      },
+      {
+        "name": "Analysis",
+        "category": "Utility",
+        "narrative": "Solving puzzles deduction. Lore: Math engineering and chemistry.",
+        "grants": [
+          "Utility",
+          "Analysis"
+        ]
+      },
+      {
+        "name": "Scouting",
+        "category": "Utility",
+        "narrative": "Tracking spotting danger. Lore: Forensics and investigation.",
+        "grants": [
+          "Utility",
+          "Scouting"
+        ]
+      },
+      {
+        "name": "Mysticism",
+        "category": "Utility",
+        "narrative": "Gut-feeling pathfinding. Lore: Folklore spirits and omens.",
+        "grants": [
+          "Utility",
+          "Mysticism"
+        ]
+      },
+      {
+        "name": "Performance",
+        "category": "Utility",
+        "narrative": "Acting disguise. Lore: Art culture and high fashion.",
+        "grants": [
+          "Utility",
+          "Performance"
+        ]
+      },
+      {
+        "name": "Command",
+        "category": "Utility",
+        "narrative": "Leadership interrogation. Lore: Religion theology and cults.",
+        "grants": [
+          "Utility",
+          "Command"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Tool Skills",
+    "title": "Step 10: Apprenticeship",
+    "description": "What trade did you learn? (Choose a Tool Skill)",
+    "options": [
+      {
+        "name": "Shield",
+        "category": "Tool",
+        "narrative": "Mastery of bucklers heaters and tower shields for active cover and bashing.",
+        "grants": [
+          "Tool",
+          "Shield"
+        ]
+      },
+      {
+        "name": "Snares",
+        "category": "Tool",
+        "narrative": "Mastery of caltrops tripwires and smoke bombs to control the ground.",
+        "grants": [
+          "Tool",
+          "Snares"
+        ]
+      },
+      {
+        "name": "Tinctures",
+        "category": "Tool",
+        "narrative": "Mastery of non-magical aids like herbal salves bandages and stimulants.",
+        "grants": [
+          "Tool",
+          "Tinctures"
+        ]
+      },
+      {
+        "name": "Catalysts",
+        "category": "Tool",
+        "narrative": "Mastery of items that channel magic such as scrolls wands and staves.",
+        "grants": [
+          "Tool",
+          "Catalysts"
+        ]
+      },
+      {
+        "name": "Curios",
+        "category": "Tool",
+        "narrative": "Mastery of gaming sets dice tarot and tokens of luck/fate.",
+        "grants": [
+          "Tool",
+          "Curios"
+        ]
+      },
+      {
+        "name": "Regalia",
+        "category": "Tool",
+        "narrative": "Mastery of banners warhorns and badges to signal and rally troops.",
+        "grants": [
+          "Tool",
+          "Regalia"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Melee Access",
+    "title": "Step 11: Coming of Age",
+    "description": "You learned to fight. (Choose a Melee Weapon Skill)",
+    "options": [
+      {
+        "name": "Great",
+        "category": "Weapon Skill",
+        "narrative": "Impact. Raw muscle to swing heavy metal.",
+        "grants": [
+          "Weapon Skill",
+          "Great"
+        ]
+      },
+      {
+        "name": "Small",
+        "category": "Weapon Skill",
+        "narrative": "Precision. Hand-eye coordination and dexterity.",
+        "grants": [
+          "Weapon Skill",
+          "Small"
+        ]
+      },
+      {
+        "name": "Fist",
+        "category": "Weapon Skill",
+        "narrative": "Clinch. Using your body\u2019s hardness as a weapon.",
+        "grants": [
+          "Weapon Skill",
+          "Fist"
+        ]
+      },
+      {
+        "name": "Medium",
+        "category": "Weapon Skill",
+        "narrative": "Parry. Technical fighting. Analyzing the duel.",
+        "grants": [
+          "Weapon Skill",
+          "Medium"
+        ]
+      },
+      {
+        "name": "Large",
+        "category": "Weapon Skill",
+        "narrative": "Reach. Spatial awareness. Keeping the enemy at exact range.",
+        "grants": [
+          "Weapon Skill",
+          "Large"
+        ]
+      },
+      {
+        "name": "Exotic Melee",
+        "category": "Weapon Skill",
+        "narrative": "Wrap. Performance. Flow. Distracting the enemy.",
+        "grants": [
+          "Weapon Skill",
+          "Exotic Melee"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Armor Access",
+    "title": "Step 12: Training",
+    "description": "You learned to survive. (Choose an Armor Skill)",
+    "options": [
+      {
+        "name": "Heavy",
+        "category": "Armor Skill",
+        "narrative": "Bulwark. You are the anvil. You absorb the blow.",
+        "grants": [
+          "Armor Skill",
+          "Heavy"
+        ]
+      },
+      {
+        "name": "Natural",
+        "category": "Armor Skill",
+        "narrative": "Reliable. \"Living Armor made of once living material\" ",
+        "grants": [
+          "Armor Skill",
+          "Natural"
+        ]
+      },
+      {
+        "name": "Light",
+        "category": "Armor Skill",
+        "narrative": "Silent. Armor that allows you to dodge and twist.",
+        "grants": [
+          "Armor Skill",
+          "Light"
+        ]
+      },
+      {
+        "name": "Cloth",
+        "category": "Armor Skill",
+        "narrative": "Mana-Weave. Warding patterns that require academic understanding.",
+        "grants": [
+          "Armor Skill",
+          "Cloth"
+        ]
+      },
+      {
+        "name": "Medium",
+        "category": "Armor Skill",
+        "narrative": "Cover. Scales or flexible metal that moves with you.",
+        "grants": [
+          "Armor Skill",
+          "Medium"
+        ]
+      },
+      {
+        "name": "Utility",
+        "category": "Armor Skill",
+        "narrative": "Deep Pockets. Preparedness. Having the right tool in the right pocket by instinct.",
+        "grants": [
+          "Armor Skill",
+          "Utility"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Ranged Access",
+    "title": "Step 13: Catalyst",
+    "description": "Something changed you. (Choose a Ranged Weapon Skill)",
+    "options": [
+      {
+        "name": "Ballistics",
+        "category": "Weapon Skill",
+        "narrative": "Power Shot.  weight requires strength.",
+        "grants": [
+          "Weapon Skill",
+          "Ballistics"
+        ]
+      },
+      {
+        "name": "Thrown",
+        "category": "Weapon Skill",
+        "narrative": "Dual-Utility. Flick of the wrist and balance.",
+        "grants": [
+          "Weapon Skill",
+          "Thrown"
+        ]
+      },
+      {
+        "name": "Simple",
+        "category": "Weapon Skill",
+        "narrative": "Mobile Fire. Cardio. Running and gunning without shaking.",
+        "grants": [
+          "Weapon Skill",
+          "Simple"
+        ]
+      },
+      {
+        "name": "Blast",
+        "category": "Weapon Skill",
+        "narrative": "Splash.  Calculating arc, fuse time, and chemical mix.",
+        "grants": [
+          "Weapon Skill",
+          "Blast"
+        ]
+      },
+      {
+        "name": "Long Shot",
+        "category": "Weapon Skill",
+        "narrative": "Pierce. Aim. Lining up the sights. The Sniper.",
+        "grants": [
+          "Weapon Skill",
+          "Long Shot"
+        ]
+      },
+      {
+        "name": "Exotic Ranged",
+        "category": "Weapon Skill",
+        "narrative": "Debilitate. Tricky, annoying, and stylish tools.",
+        "grants": [
+          "Weapon Skill",
+          "Exotic Ranged"
+        ]
+      }
+    ]
+  }
+]

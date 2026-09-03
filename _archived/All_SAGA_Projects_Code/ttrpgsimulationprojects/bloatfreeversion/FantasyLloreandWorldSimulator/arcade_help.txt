@@ -1,0 +1,33 @@
+['AStarBarrierList', 'AnimatedWalkingSprite', 'ArcadeContext', 'BasicSprite', 'Camera2D', 'ControllerManager', 'DefaultTextureAtlas', 'FACE_DOWN', 'FACE_LEFT', 'FACE_RIGHT', 'FACE_UP', 'Final', 'LBWH', 'LRBT', 'MOUSE_BUTTON_LEFT', 'MOUSE_BUTTON_MIDDLE', 'MOUSE_BUTTON_RIGHT', 'NoOpenGLException', 'Path', 'PerfGraph', 'PhysicsEnginePlatformer', 'PhysicsEngineSimple', 'PyMunk', 'PymunkException', 'PymunkMixin', 'PymunkPhysicsEngine', 'PymunkPhysicsObject', 'Rect', 'Scene', 'SceneKeyError', 'Section', 'SectionManager', 'Sound', 'SpatialHash', 'Sprite', 'SpriteCircle', 'SpriteList', 'SpriteSequence', 'SpriteSheet', 'SpriteSolidColor', 'SpriteType', 'SpriteType_co', 'Text', 'Texture', 'TextureAnimation', 'TextureAnimationSprite', 'TextureCacheManager', 'TextureKeyframe', 'TileMap', 'VERSION', 'Vec2', 'Vec3', 'Vec4', 'View', 'Window', 'XYWH', '__all__', '__annotations__', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__path__', '__spec__', '__version__', 'application', 'astar_calculate_path', 'cache', 'camera', 'check_for_collision', 'check_for_collision_with_list', 'check_for_collision_with_lists', 'clear_timings', 'clock', 'close_window', 'color', 'configure_logging', 'context', 'controller', 'create_text_sprite', 'csscolor', 'disable_timings', 'draw', 'draw_arc_filled', 'draw_arc_outline', 'draw_circle_filled', 'draw_circle_outline', 'draw_ellipse_filled', 'draw_ellipse_outline', 'draw_lbwh_rectangle_filled', 'draw_lbwh_rectangle_outline', 'draw_line', 'draw_line_strip', 'draw_lines', 'draw_lrbt_rectangle_filled', 'draw_lrbt_rectangle_outline', 'draw_parabola_filled', 'draw_parabola_outline', 'draw_point', 'draw_points', 'draw_polygon_filled', 'draw_polygon_outline', 'draw_rect_filled', 'draw_rect_outline', 'draw_sprite', 'draw_sprite_rect', 'draw_text', 'draw_texture_rect', 'draw_triangle_filled', 'draw_triangle_outline', 'earclip', 'enable_timings', 'exceptions', 'exit', 'experimental', 'finish_render', 'geometry', 'get_closest_sprite', 'get_controllers', 'get_default_image', 'get_default_texture', 'get_display_size', 'get_distance_between_sprites', 'get_fps', 'get_game_controllers', 'get_image', 'get_joysticks', 'get_pixel', 'get_points_for_thick_line', 'get_screens', 'get_sprites_at_exact_point', 'get_sprites_at_point', 'get_sprites_in_rect', 'get_timings', 'get_window', 'gl', 'has_line_of_sight', 'headless', 'hitbox', 'joysticks', 'key', 'lib_location', 'load_animated_gif', 'load_font', 'load_image', 'load_sound', 'load_spritesheet', 'load_texture', 'load_tilemap', 'make_circle_texture', 'make_soft_circle_texture', 'make_soft_square_texture', 'mappings_file', 'math', 'open_window', 'os', 'paths', 'perf_graph', 'perf_info', 'physics_engines', 'play_sound', 'print_timings', 'pyglet', 'pymunk_physics_engine', 'rect', 'resources', 'run', 'scene', 'schedule', 'schedule_once', 'screenshot', 'sections', 'set_background_color', 'set_window', 'shape_list', 'sound', 'sprite', 'sprite_list', 'start_render', 'stop_sound', 'sys', 'text', 'texture', 'texture_atlas', 'tilemap', 'timings_enabled', 'types', 'uicolor', 'unschedule', 'utils', 'version', 'window_commands']
+Help on function draw_texture_rect in module arcade.draw.rect:
+
+draw_texture_rect(
+    texture: arcade.texture.texture.Texture,
+    rect: arcade.types.rect.Rect,
+    *,
+    color: arcade.types.color.Color = Color(r=255, g=255, b=255, a=255),
+    angle=0.0,
+    blend=True,
+    alpha=255,
+    pixelated=False,
+    atlas: arcade.texture_atlas.base.TextureAtlasBase | None = None
+) -> None
+    Draw a texture on a rectangle.
+
+    Args:
+        texture:
+            The texture to draw.
+        rect:
+            Rectangle to draw the texture on.
+        color:
+             Color multiplier for the texture. Defaults to white.
+        angle:
+            Rotation of the texture in degrees. Defaults to zero.
+        blend:
+            If True, enable alpha blending. Defaults to True.
+        alpha:
+            Transparency of image. 0 is fully transparent, 255 (default) is fully opaque.
+        atlas:
+            The texture atlas the texture resides in.
+            if not supplied the default texture atlas is used
+

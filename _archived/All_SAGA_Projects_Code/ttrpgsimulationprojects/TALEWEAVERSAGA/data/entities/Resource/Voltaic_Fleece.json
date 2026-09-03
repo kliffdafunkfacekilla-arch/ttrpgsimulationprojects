@@ -1,0 +1,27 @@
+{
+    "Name": "Voltaic Fleece",
+    "Type": "Resource",
+    "Properties": {
+        "Capacitance": {
+            "Value": "weeks",
+            "Description": "Holds a charge for weeks after being shorn"
+        },
+        "Insulation": {
+            "Value": "electrical and Aetheric",
+            "Description": "Effective insulation against electrical and Aetheric energy after the charge is drained"
+        },
+        "Weight": {
+            "Value": "light",
+            "Description": "Remarkably light to aid the beast's flight"
+        }
+    },
+    "EconomicApplication": {
+        "TechGap": "Aether-Tech",
+        "Industry": "Iron Caldera",
+        "Usage": "linesuits of Aether-Wrights"
+    },
+    "Harvesting": {
+        "Risk": "using metal shears",
+        "Hazard": "Spark-Stampede"
+    }
+}

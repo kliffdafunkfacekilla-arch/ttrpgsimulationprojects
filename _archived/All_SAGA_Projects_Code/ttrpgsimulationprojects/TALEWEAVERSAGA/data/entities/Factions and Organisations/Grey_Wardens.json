@@ -1,0 +1,45 @@
+{
+    "name": "Grey Wardens",
+    "type": "Factions and Organisations",
+    "description": "The silent, unthanked guardians maintaining the fragile balance of the Shattered World, a thin gray line against an abyss of chaos.",
+    "recruitment": "Takes broken individuals and forges them into new, loyal members through a brutal crucible.",
+    "secrecy": "Operates from isolated fortresses; its internal structure is a complete secret, but its existence is known.",
+    "ultimate_goal": "To guard the prisons of the Chaos Dragons and hold back the tide of chaos, preserving reality.",
+    "modular_arsenal": [
+        "dual-wield small scimitars and sickle-like hook blades that can lock together into a double-ended short staff"
+    ],
+    "sigil_thread_system": [
+        "metal threads sewn into their robes channel chaos energy into devastating powers"
+    ],
+    "logic_of_reaction": [
+        "Wardens follow a 'See, Decide, React' philosophy"
+    ],
+    "branches": [
+        {
+            "name": "The Heart",
+            "description": "The logistical core of the Order, responsible for the practical necessities of survival and warfare."
+        },
+        {
+            "name": "The Fist",
+            "description": "The primary military and enforcement arm of the order, the 'blade and spell' that directly confronts the world's most terrifying threats."
+        },
+        {
+            "name": "The Eyes",
+            "description": "The intelligence and counter-intelligence division, operating from the shadows to gather information and manipulate events."
+        },
+        {
+            "name": "The Mind",
+            "description": "The strategic leadership and research core, the 'brain' of the organism, guiding its actions with ancient wisdom and calculated strategy."
+        }
+    ],
+    "hidden_cogs": [
+        {
+            "name": "The Recruiters",
+            "description": "A paradox: the friendly, public face of a brutal and secretive organization."
+        },
+        {
+            "name": "The Tail",
+            "description": "The internal secret police force, moving unseen through the shadows of Warden fortresses."
+        }
+    ]
+}

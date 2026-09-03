@@ -1,0 +1,75 @@
+{
+  "LOOT_POOLS": {
+    
+    "POOL_SUMP_KIN_GRUNT": {
+      "description": "Standard drop for Slither-Guard and Turtle Train laborers.",
+      "wealth_roll": {
+        "aetherium_coins": "1d4",
+        "d_dust_grams": "2d6", 
+        "blackstone_grams": "1d4" 
+      },
+      "item_drops": [
+        {"item_name": "Grade C 'Sludge-Grade' Stimulant", "category": "CONSUMABLE", "chance_percent": 45},
+        {"item_name": "Caustic-Cure Syrup", "category": "CONSUMABLE", "chance_percent": 20},
+        {"item_name": "Sump-Ignis Gel Flask", "category": "WEAPON", "chance_percent": 15},
+        {"item_name": "Heavy Bowie Knife", "category": "WEAPON", "chance_percent": 10}
+      ]
+    },
+
+    "POOL_GUERRILLA_CLAN_SCOUT": {
+      "description": "Drops for Ghostwind Raiders and Canopy Clan operatives.",
+      "wealth_roll": {
+        "aetherium_coins": "1d2",
+        "d_dust_grams": "3d6"
+      },
+      "item_drops": [
+        {"item_name": "Pop-Bolt", "category": "CONSUMABLE", "chance_percent": 50},
+        {"item_name": "Leap-Charm (Dusted Ink)", "category": "CONSUMABLE", "chance_percent": 30},
+        {"item_name": "Glass-Dagger (Obsidian)", "category": "WEAPON", "chance_percent": 20},
+        {"item_name": "Clot-Moss Bandage", "category": "CONSUMABLE", "chance_percent": 15}
+      ]
+    },
+
+    "POOL_AVIAN_ELITE": {
+      "description": "High-value drops for Iron-Beaks, Roost Guards, and Cloud-Harriers.",
+      "wealth_roll": {
+        "aetherium_coins": "3d10",
+        "d_dust_grams": "1d4"
+      },
+      "item_drops": [
+        {"item_name": "Shadow-Seal Ink Vial", "category": "TOOL", "chance_percent": 25},
+        {"item_name": "Raw Ozone-Milk", "category": "CONSUMABLE", "chance_percent": 30},
+        {"item_name": "Storm-Grade Voltaic Fleece Scrap", "category": "ARMOR_UPGRADE", "chance_percent": 10},
+        {"item_name": "Lith-Weave Cloak", "category": "ARMOR", "chance_percent": 5}
+      ]
+    },
+
+    "POOL_IRON_CALDERA_ENGINEER": {
+      "description": "Drops for Gecko mechanics, Forge Dancers, and Stone-Scales.",
+      "wealth_roll": {
+        "aetherium_coins": "2d6",
+        "d_dust_grams": "2d8"
+      },
+      "item_drops": [
+        {"item_name": "Ceramic Wrench", "category": "TOOL", "chance_percent": 40},
+        {"item_name": "Silver-Needle 'Ice-Blood' Tea", "category": "CONSUMABLE", "chance_percent": 35},
+        {"item_name": "Piezoelectric Spark-Crystal", "category": "TOOL", "chance_percent": 20},
+        {"item_name": "Furnace-Tick Carapace", "category": "TREASURE", "chance_percent": 15}
+      ]
+    },
+
+    "POOL_HIGH_END_CONTRABAND": {
+      "description": "Vault loot from the River-King's Shuffle, Rat Barons, or Hive Exiles.",
+      "wealth_roll": {
+        "aetherium_coins": "10d10",
+        "d_dust_grams": "5d10"
+      },
+      "item_drops": [
+        {"item_name": "Whisper-Vial of Ichor-Honey", "category": "CONSUMABLE", "chance_percent": 100},
+        {"item_name": "Grade A 'Baron's-Choice' Stim", "category": "CONSUMABLE", "chance_percent": 60},
+        {"item_name": "Black-Comb Opiate Hookah", "category": "TREASURE", "chance_percent": 40},
+        {"item_name": "Void-Lute (Formicidae Carved)", "category": "TREASURE", "chance_percent": 5}
+      ]
+    }
+  }
+}

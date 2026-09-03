@@ -1,0 +1,44 @@
+[
+  {
+    "Family Name": "Plate",
+    "The Stat": "ENDURANCE",
+    "Examples": "Full Plate, Chitin,scale,",
+    "Trait": "Bulwark",
+    "Why this Stat?": "You are the anvil. You absorb the blow."
+  },
+  {
+    "Family Name": "Bio",
+    "The Stat": "VITALITY",
+    "Examples": "bone ,fur, wood,etc.",
+    "Trait": "Reliable",
+    "Why this Stat?": "\"Living Armor made of once living material\" "
+  },
+  {
+    "Family Name": "Light ",
+    "The Stat": "REFLEXES",
+    "Examples": "Hides, Padded,",
+    "Trait": "Silent",
+    "Why this Stat?": "Armor that allows you to dodge and twist."
+  },
+  {
+    "Family Name": "Robes",
+    "The Stat": "KNOWLEDGE",
+    "Examples": "Runed Cloth",
+    "Trait": "Mana-Weave",
+    "Why this Stat?": "Warding patterns that require academic understanding."
+  },
+  {
+    "Family Name": "Mail",
+    "The Stat": "WILLPOWER",
+    "Examples": "chain, scale, ring",
+    "Trait": "Cover",
+    "Why this Stat?": "Scales or flexible metal that moves with you."
+  },
+  {
+    "Family Name": "Rigs",
+    "The Stat": "INTUITION",
+    "Examples": "Ghillie, utility Vest, harness",
+    "Trait": "Deep Pockets",
+    "Why this Stat?": "Preparedness. Having the right tool in the right pocket by instinct."
+  }
+]

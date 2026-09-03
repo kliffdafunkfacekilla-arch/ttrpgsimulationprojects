@@ -1,0 +1,344 @@
+[
+  {
+    "Body Part": "Antlers",
+    "Skill Name": "Gore",
+    "Type": "Action",
+    "Effect Description": "If you move 20ft in a straight line, your next attack deals +1d6 damage and knocks the target Prone."
+  },
+  {
+    "Body Part": "Antlers",
+    "Skill Name": "Parry",
+    "Type": "Reaction",
+    "Effect Description": "When hit by melee, reduce the damage taken by 1d6 + Might."
+  },
+  {
+    "Body Part": "Long Arms",
+    "Skill Name": "Lunge",
+    "Type": "Passive",
+    "Effect Description": "Your melee reach increases by +5 feet on your turn."
+  },
+  {
+    "Body Part": "Long Arms",
+    "Skill Name": "Swing",
+    "Type": "Move",
+    "Effect Description": "You can move through trees, rafters, or hanging ropes at full speed without checks."
+  },
+  {
+    "Body Part": "Hairless Tail",
+    "Skill Name": "Rudder",
+    "Type": "Reaction",
+    "Effect Description": "Gain Advantage on checks to avoid being knocked Prone or Shoved."
+  },
+  {
+    "Body Part": "Hairless Tail",
+    "Skill Name": "Tactile Grip",
+    "Type": "Utility",
+    "Effect Description": "Use your tail to press buttons, pull levers, or lift light items (under 5lbs) behind you."
+  },
+  {
+    "Body Part": "Slit Pupils",
+    "Skill Name": "Focus",
+    "Type": "Bonus",
+    "Effect Description": "For the rest of this turn, your ranged attacks ignore Half-Cover and Three-Quarters Cover."
+  },
+  {
+    "Body Part": "Slit Pupils",
+    "Skill Name": "Night Hunter",
+    "Type": "Passive",
+    "Effect Description": "You treat Dim Light as Bright Light and Darkness as Dim Light."
+  },
+  {
+    "Body Part": "Prehensile Tail",
+    "Skill Name": "Hangman",
+    "Type": "Action",
+    "Effect Description": "Hang upside down from a stable point; Ranged attacks against you have Disadvantage."
+  },
+  {
+    "Body Part": "Prehensile Tail",
+    "Skill Name": "Third Hand",
+    "Type": "Passive",
+    "Effect Description": "Hold a torch or light item in your tail, leaving your hands free for weapons/shields."
+  },
+  {
+    "Body Part": "Round Ears",
+    "Skill Name": "Sonar",
+    "Type": "Action",
+    "Effect Description": "Instantly pinpoint the location of any invisible or hidden moving creature within 30ft."
+  },
+  {
+    "Body Part": "Round Ears",
+    "Skill Name": "Eavesdrop",
+    "Type": "Passive",
+    "Effect Description": "You suffer no penalties to Perception when listening through doors or thin walls."
+  },
+  {
+    "Body Part": "Spiked Fur",
+    "Skill Name": "Quill Shot",
+    "Type": "Action",
+    "Effect Description": "Shake your body to fire loose quills in a 10ft cone (Dex save for damage)."
+  },
+  {
+    "Body Part": "Spiked Fur",
+    "Skill Name": "Barbed",
+    "Type": "Passive",
+    "Effect Description": "Any creature that Grapples you or hits you with an Unarmed Strike takes 1d4 Piercing damage."
+  },
+  {
+    "Body Part": "Thick Fur Coat",
+    "Skill Name": "Shrug It Off",
+    "Type": "Reaction",
+    "Effect Description": "Once per encounter, reduce the damage of an incoming Bludgeoning attack by half."
+  },
+  {
+    "Body Part": "Thick Fur Coat",
+    "Skill Name": "Insulated",
+    "Type": "Passive",
+    "Effect Description": "You are immune to extreme cold weather and resist Cold damage."
+  },
+  {
+    "Body Part": "Retractable Claws",
+    "Skill Name": "Gut Rake",
+    "Type": "Bonus",
+    "Effect Description": "If you have a target Grappled, make a free claw attack against them with Advantage."
+  },
+  {
+    "Body Part": "Retractable Claws",
+    "Skill Name": "Climber",
+    "Type": "Passive",
+    "Effect Description": "You gain a Climb Speed equal to your Walk Speed."
+  },
+  {
+    "Body Part": "Hooves",
+    "Skill Name": "Rear Kick",
+    "Type": "Reaction",
+    "Effect Description": "When an enemy enters the space directly behind you, make a reflex attack against them."
+  },
+  {
+    "Body Part": "Hooves",
+    "Skill Name": "Trample",
+    "Type": "Action",
+    "Effect Description": "Move through a smaller enemy's space. They must save or take damage and fall Prone."
+  },
+  {
+    "Body Part": "Scent Glands",
+    "Skill Name": "Musk Spray",
+    "Type": "Action",
+    "Effect Description": "Release a 5ft cloud. Creatures inside must save or be Sickened (Disadvantage on attacks)."
+  },
+  {
+    "Body Part": "Scent Glands",
+    "Skill Name": "Mark Territory",
+    "Type": "Utility",
+    "Effect Description": "Mark an area. Animals of your species recognize your claim and may be Friendly or Fearful."
+  },
+  {
+    "Body Part": "Square Jaw",
+    "Skill Name": "Crunch",
+    "Type": "Action",
+    "Effect Description": "You can bite through inanimate objects (wood, bone, soft metal) to sunder items."
+  },
+  {
+    "Body Part": "Square Jaw",
+    "Skill Name": "Lockjaw",
+    "Type": "Passive",
+    "Effect Description": "Creatures grappled by your mouth have Disadvantage on checks to escape."
+  },
+  {
+    "Body Part": "Neck Mane",
+    "Skill Name": "Regal Roar",
+    "Type": "Action",
+    "Effect Description": "Bellow to give allies within 30ft a +1 bonus to Attack Rolls for the next round."
+  },
+  {
+    "Body Part": "Neck Mane",
+    "Skill Name": "Throat Guard",
+    "Type": "Passive",
+    "Effect Description": "You are immune to \"Critical Hits\" caused by called shots to the neck or strangulation."
+  },
+  {
+    "Body Part": "Expressive Eyes",
+    "Skill Name": "Puppy Dog",
+    "Type": "Reaction",
+    "Effect Description": "When targeted by a humanoid, force a Will save. On fail, they must choose a different target."
+  },
+  {
+    "Body Part": "Expressive Eyes",
+    "Skill Name": "Distract",
+    "Type": "Bonus",
+    "Effect Description": "You can use the Help action as a Bonus Action by catching an enemy's gaze."
+  },
+  {
+    "Body Part": "Thick Throat",
+    "Skill Name": "Bellow",
+    "Type": "Action",
+    "Effect Description": "Shout in a 15ft cone. Targets must save or be Deafened and take Thunder damage."
+  },
+  {
+    "Body Part": "Thick Throat",
+    "Skill Name": "Gulp",
+    "Type": "Bonus",
+    "Effect Description": "Swallow a small object (key/ring) instantly to hide it, regurgitating it later safely."
+  },
+  {
+    "Body Part": "Mossed Fur",
+    "Skill Name": "Blend In",
+    "Type": "Bonus",
+    "Effect Description": "If standing near foliage, turn Invisible until you move or attack."
+  },
+  {
+    "Body Part": "Mossed Fur",
+    "Skill Name": "Ambush",
+    "Type": "Passive",
+    "Effect Description": "You deal extra damage on attacks against creatures that haven't detected you yet."
+  },
+  {
+    "Body Part": "Wide Paws",
+    "Skill Name": "Snowshoe",
+    "Type": "Passive",
+    "Effect Description": "You ignore Difficult Terrain caused by snow, mud, or sand."
+  },
+  {
+    "Body Part": "Wide Paws",
+    "Skill Name": "Paddle",
+    "Type": "Passive",
+    "Effect Description": "You gain a Swim Speed equal to your Walk Speed."
+  },
+  {
+    "Body Part": "Oily Fur",
+    "Skill Name": "Slippery",
+    "Type": "Reaction",
+    "Effect Description": "Automatically succeed on a check to escape a Grapple."
+  },
+  {
+    "Body Part": "Oily Fur",
+    "Skill Name": "Waterproof",
+    "Type": "Passive",
+    "Effect Description": "You dry off instantly and never suffer penalties from being wet or cold due to water."
+  },
+  {
+    "Body Part": "Silky Fur",
+    "Skill Name": "Groom",
+    "Type": "Short Rest",
+    "Effect Description": "Clean self or ally to remove smells and dirt, curing minor diseases or parasites."
+  },
+  {
+    "Body Part": "Silky Fur",
+    "Skill Name": "Silent Fabric",
+    "Type": "Passive",
+    "Effect Description": "Your fur makes no sound. Gain Advantage on Stealth checks in quiet environments."
+  },
+  {
+    "Body Part": "Swivel Ears",
+    "Skill Name": "Radar",
+    "Type": "Action",
+    "Effect Description": "Listen to a door to identify exactly how many creatures are in the next room."
+  },
+  {
+    "Body Part": "Swivel Ears",
+    "Skill Name": "Uncanny Dodge",
+    "Type": "Reaction",
+    "Effect Description": "Take half damage from a Ranged Attack that you hear coming."
+  },
+  {
+    "Body Part": "Padded Feet",
+    "Skill Name": "Silence",
+    "Type": "Passive",
+    "Effect Description": "Moving at normal speed does not impose penalties on Stealth checks."
+  },
+  {
+    "Body Part": "Padded Feet",
+    "Skill Name": "Cat Fall",
+    "Type": "Passive",
+    "Effect Description": "You take half damage from falls and always land on your feet."
+  },
+  {
+    "Body Part": "Long Fingers",
+    "Skill Name": "Pickpocket",
+    "Type": "Bonus",
+    "Effect Description": "Attempt to steal an item from an adjacent distracted target (Sleight of Hand)."
+  },
+  {
+    "Body Part": "Long Fingers",
+    "Skill Name": "Choke",
+    "Type": "Action",
+    "Effect Description": "If you Grapple a target, you can prevent them from speaking or casting verbal spells."
+  },
+  {
+    "Body Part": "Iron Gut",
+    "Skill Name": "Scavenge",
+    "Type": "Short Rest",
+    "Effect Description": "Eat spoiled food/raw meat to regain Hit Points as if it were a standard ration."
+  },
+  {
+    "Body Part": "Iron Gut",
+    "Skill Name": "Toxin Filter",
+    "Type": "Passive",
+    "Effect Description": "You have Advantage on saving throws against Ingested Poisons."
+  },
+  {
+    "Body Part": "Skill Name",
+    "Skill Name": "Required Body Part",
+    "Type": "Effect",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Winter",
+    "Skill Name": "Thick Fur / Blubber",
+    "Type": "Ignore Cold Damage / Environmental Cold.",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Scent_Track",
+    "Skill Name": "Wet Nose / Snout",
+    "Type": "Advantage to track by smell.",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Sniff",
+    "Skill Name": "Wet Nose",
+    "Type": "Detect Poison/Chemicals by smell.",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Roar",
+    "Skill Name": "Throat Sac / Mane",
+    "Type": "Action: 30ft Fear (Will Save).",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Bellow",
+    "Skill Name": "Thick Throat",
+    "Type": "AoE Fear (30ft) as Action.",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Play Dead",
+    "Skill Name": "Slow Heart (Possum)",
+    "Type": "Enemies ignore you if you are Prone.",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Stink",
+    "Skill Name": "Scent Glands",
+    "Type": "5ft Cloud. Targets inside have Disadvantage.",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Iron-Gut",
+    "Skill Name": "Scavenger Gut",
+    "Type": "Immune to ingested disease/rot.",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Sonar",
+    "Skill Name": "Round/Bat Ears",
+    "Type": "No Perception penalty in dim light.",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Pounce",
+    "Skill Name": "Powerful Legs",
+    "Type": "#ERROR!",
+    "Effect Description": ""
+  }
+]

@@ -1,0 +1,55 @@
+{
+    "entity_name": "Magistar Termhill",
+    "school": "Omen (Intuition)",
+    "element": "Iridium",
+    "dragon_form": "The Black Star",
+    "pre_corruption_name": "Lyra",
+    "stats": {
+        "str": 18,
+        "int": 22,
+        "wis": 15,
+        "dex": 12,
+        "con": 16,
+        "cha": 19,
+        "level": 12,
+        "hp": 150,
+        "mp": 200,
+        "spd": 10,
+        "init": 15,
+        "ac": 18,
+        "fort": 16,
+        "ref": 14,
+        "will": 17
+    },
+    "abilities": {
+        "Divination": {
+            "score": 4,
+            "proficiency": 3
+        },
+        "Darkness": {
+            "score": 6,
+            "proficiency": 2
+        },
+        "Shadow Magic": {
+            "score": 5,
+            "proficiency": 2
+        },
+        "Temporal Instability": {
+            "score": 3,
+            "proficiency": 1
+        }
+    },
+    "special_abilities": {
+        "The Shifting Web": {
+            "description": "Warping illusions of strategic ruin",
+            "effect": "Inflicts necrotic decay on the future itself"
+        },
+        "Temporal Instability": {
+            "description": "Tearing open time rifts"
+        }
+    },
+    "vulnerabilities": [
+        "Iridium (weak to)"
+    ],
+    "immunities": []
+}

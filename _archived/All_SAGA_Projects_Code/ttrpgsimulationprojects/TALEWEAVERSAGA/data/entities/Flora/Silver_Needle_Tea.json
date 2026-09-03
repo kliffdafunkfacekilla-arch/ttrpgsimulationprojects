@@ -1,0 +1,26 @@
+{
+    "Name": "Silver Needle Tea",
+    "Scientific Name": "Camellia Cryogenica",
+    "Primary Cultivator": "Red Pandas",
+    "Grow Zone": "Cloud-Peaks",
+    "Temperature Regulation": {
+        "Effect": "Coolant",
+        "Degree Change": "Several"
+    },
+    "Industrial Use": {
+        "Market": "Iron Caldera",
+        "Use Case": "Preventing Heatstroke"
+    },
+    "Medical Use": {
+        "Preservation": "Natural Ice-Pack"
+    },
+    "Growth Cycle": {
+        "Duration": 5,
+        "Type": "Slow-growing"
+    },
+    "Hazards": {
+        "Harvest Method": "Hand-picked",
+        "Risk Factor": "Dizzying Altitude",
+        "Additional Risk": "Sheer Vertical Bark-cliffs"
+    }
+}

@@ -1,0 +1,62 @@
+{
+    "faction": {
+        "name": "Scute Confederacy",
+        "people": "Reptilian people, including various snake types and formidable alligator- and crocodile-like folk",
+        "homeland": "Jungle-like tropics and large islands in the eastern territories",
+        "core philosophy": "Unyielding will and precision industry",
+        "reputation": "Peerless stone masons",
+        "defining influence": "Perpetual threat of elemental chaos from Igni, The Raging Maw"
+    },
+    "relations": [
+        {
+            "faction": "Iron Caldera",
+            "relationship": "Highest Respect"
+        },
+        {
+            "faction": "Vaneer Concord",
+            "relationship": "Absolute Contempt (No Dealings)"
+        },
+        {
+            "faction": "URSINE Hegemony",
+            "relationship": "Confused Caution"
+        },
+        {
+            "faction": "The Free Sky-Baronies",
+            "relationship": "Mutual Respect & Active Trade"
+        },
+        {
+            "faction": "Eastern Hounds",
+            "relationship": "Respect for Struggle"
+        },
+        {
+            "faction": "Warden Clans",
+            "relationship": "High Regard"
+        },
+        {
+            "faction": "River Folk",
+            "relationship": "Transactional & Wary"
+        }
+    ],
+    "resources": [
+        {
+            "name": "Stone Masonry & Sheet Metal",
+            "significance": "Foundational industry born from surviving elemental chaos"
+        },
+        {
+            "name": "Unique Crops & Fruit",
+            "significance": "Cultivated on specialized mountain-top farms, provides self-sufficiency and valuable trade goods"
+        },
+        {
+            "name": "The Strongest Booze",
+            "significance": "Famously potent spirit, valuable trade commodity"
+        },
+        {
+            "name": "Psychedelic/Narcotic Plants",
+            "significance": "Famous export, forms lucrative black market commodity"
+        },
+        {
+            "name": "Colorful Birds & Feathers",
+            "significance": "Highly symbolic or spiritual value within their culture"
+        }
+    ]
+}

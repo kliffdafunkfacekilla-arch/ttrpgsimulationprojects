@@ -1,0 +1,479 @@
+[
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 1",
+    "Option Name": "Tiny",
+    "Stat 1": "+2 Reflex, +1 Finesse",
+    "Stat 2": "-2 Might, -1 Vitality",
+    "Body Part": "Small Frame",
+    "Mechanic / Trait": "Squeeze: Move through 4-inch gaps. +Advantage on Stealth."
+  },
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 2",
+    "Option Name": "Small",
+    "Stat 1": "+1 Reflex",
+    "Stat 2": "-1 Might",
+    "Body Part": "Light Frame",
+    "Mechanic / Trait": "Lightweight: Trigger no pressure plates. Fall damage halved."
+  },
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 3",
+    "Option Name": "Medium",
+    "Stat 1": "None",
+    "Stat 2": "None",
+    "Body Part": "Balanced Frame",
+    "Mechanic / Trait": "Standard: No penalties. Can use standard gear."
+  },
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 4",
+    "Option Name": "Large",
+    "Stat 1": "+1 Might",
+    "Stat 2": "-1 Reflex",
+    "Body Part": "Heavy Frame",
+    "Mechanic / Trait": "Bulk: You provide Full Cover to allies. Cannot be Shoved by Medium creatures."
+  },
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 5",
+    "Option Name": "Huge",
+    "Stat 1": "+2 Might, +1 Vitality",
+    "Stat 2": "-2 Reflex, -1 Finesse",
+    "Body Part": "Siege Frame",
+    "Mechanic / Trait": "Siege: Deal double damage to structures. You occupy a 10ft x 10ft space."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Beetle",
+    "Stat 1": "Logic",
+    "Stat 2": "Might",
+    "Body Part": "Coleoptera Anatomy",
+    "Mechanic / Trait": "Includes: Hard Elytra (Wing Cases), Mandibles, 6 Legs, Antennae."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Mantis",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Intuition",
+    "Body Part": "Mantodea Anatomy",
+    "Mechanic / Trait": "Includes: Raptorial Forelegs, Triangular Head, Wings, 4 Walking Legs."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Spider",
+    "Stat 1": "Awareness",
+    "Stat 2": "Charm",
+    "Body Part": "Arachnid Anatomy",
+    "Mechanic / Trait": "Includes: 8 Legs, Spinnerets (Silk), Pedipalps, Multiple Eyes."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Ant",
+    "Stat 1": "Finesse",
+    "Stat 2": "Willpower",
+    "Body Part": "Formicidae Anatomy",
+    "Mechanic / Trait": "Includes: Crushing Mandibles, Antennae, Hive-Mind Link, 6 Legs."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Dragonfly",
+    "Stat 1": "Endurance",
+    "Stat 2": "Might",
+    "Body Part": "Odonata Anatomy",
+    "Mechanic / Trait": "Includes: 4 Wings (Hover), 360\u00b0 Vision, Grasping Legs, Long Tail."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Scorpion",
+    "Stat 1": "Willpower",
+    "Stat 2": "Fortitude",
+    "Body Part": "Scorpiones Anatomy",
+    "Mechanic / Trait": "Includes: Pincers, Telson (Stinger Tail), 8 Legs, Exoskeleton."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Moth",
+    "Stat 1": "Knowledge",
+    "Stat 2": "Reflexes",
+    "Body Part": "Lepidoptera Anatomy",
+    "Mechanic / Trait": "Includes: Powdered Wings (Flight), Plumose Antennae, Proboscis."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Centipede",
+    "Stat 1": "Vitality",
+    "Stat 2": "Fortitude",
+    "Body Part": "Myriapod Anatomy",
+    "Mechanic / Trait": "Includes: Segmented Body, Many Legs (Speed), Venom Fangs."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Compound",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Logic",
+    "Body Part": "Faceted Eyes",
+    "Mechanic / Trait": "Passive: Mosaic (Cannot be Flanked. +2 Initiative)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Antennae",
+    "Stat 1": "Awareness",
+    "Stat 2": "Willpower",
+    "Body Part": "Feelers",
+    "Mechanic / Trait": "Passive: Air-Currents (Detect invisible movement within 10ft)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Ocelli",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Willpower",
+    "Body Part": "Light Sensors",
+    "Mechanic / Trait": "Passive: Twitch (Reaction. If a light source moves, gain +2 AC)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Pheromone",
+    "Stat 1": "Charm",
+    "Stat 2": "Awareness",
+    "Body Part": "Chemical Receptors",
+    "Mechanic / Trait": "Passive: Hive-Speak (Communicate silently with own species 100ft)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Mandible",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Finesse",
+    "Body Part": "Serrated Jaws",
+    "Mechanic / Trait": "Active: Crunch (Melee Bite. Ignores Hardness of objects)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Proboscis",
+    "Stat 1": "Knowledge",
+    "Stat 2": "Intuition",
+    "Body Part": "Needle Mouth",
+    "Mechanic / Trait": "Active: Drain (Grapple. Heal 1d4 HP per turn while holding target)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Luminescent",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Might",
+    "Body Part": "Biolum-Glands",
+    "Mechanic / Trait": "Active: Flash-Bang (Cone of Light. Blindness or Signaling)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Parasite",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Reflexes",
+    "Body Part": "Ovipositor",
+    "Mechanic / Trait": "Active: Implant (Inject egg/tracker. You know location of target always)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Scythes",
+    "Stat 1": "Vitality",
+    "Stat 2": "Awareness",
+    "Body Part": "Raptorial Blades",
+    "Mechanic / Trait": "Active: Snatch-Strike (Reach Attack. Pull target 5ft closer)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Pincers",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Might",
+    "Body Part": "Crushing Claws",
+    "Mechanic / Trait": "Active: Vice-Grip (Grapple. Target is Restrained and cannot speak)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Silk-Weaver",
+    "Stat 1": "Awareness",
+    "Stat 2": "Endurance",
+    "Body Part": "Spinneret Wrists",
+    "Mechanic / Trait": "Active: Tangle (Ranged Web. Target Speed is 0)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Spears",
+    "Stat 1": "Finesse",
+    "Stat 2": "Fortitude",
+    "Body Part": "Barbed Forelegs",
+    "Mechanic / Trait": "Active: Impale (Crit deals x3 Damage instead of x2)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Shields",
+    "Stat 1": "Logic",
+    "Stat 2": "Willpower",
+    "Body Part": "Flat-Plate Arms",
+    "Mechanic / Trait": "Passive: Phalanx (+2 AC against Melee Attacks)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Swarm",
+    "Stat 1": "Awareness",
+    "Stat 2": "Might",
+    "Body Part": "Tiny Claws",
+    "Mechanic / Trait": "Passive: Latch (Advantage on Climbing and hanging on giant foes)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Digger",
+    "Stat 1": "Might",
+    "Stat 2": "Awareness",
+    "Body Part": "Spade Limbs",
+    "Mechanic / Trait": "Active: Burrow (Create tunnel. Collapse it behind you)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Needles",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Knowledge",
+    "Body Part": "Hypodermic Spurs",
+    "Mechanic / Trait": "Active: Inject (Apply Toxin. Con Save or Sleep)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Skitter",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Willpower",
+    "Body Part": "Multi-Legs",
+    "Mechanic / Trait": "Passive: Wall-Crawler (Climb Speed = Run Speed. No check needed)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Hopper",
+    "Stat 1": "Logic",
+    "Stat 2": "Fortitude",
+    "Body Part": "Hydraulic Knees",
+    "Mechanic / Trait": "Active: Launch (Jump 30ft vertically or horizontally)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Anchor",
+    "Stat 1": "Endurance",
+    "Stat 2": "Fortitude",
+    "Body Part": "Hooked Tarsi",
+    "Mechanic / Trait": "Passive: Unshakeable (Immune to Knockback and Prone)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Strider",
+    "Stat 1": "Might",
+    "Stat 2": "Awareness",
+    "Body Part": "Surface Tension",
+    "Mechanic / Trait": "Passive: Water-Walk (Run across liquid surfaces)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Hover",
+    "Stat 1": "Might",
+    "Stat 2": "Awareness",
+    "Body Part": "Buzzing Wings",
+    "Mechanic / Trait": "Active: Dart (Fly speed 30ft. Must land at end of turn)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Silent",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Fortitude",
+    "Body Part": "Soft-Hairs",
+    "Mechanic / Trait": "Passive: Creep (0 Sound on webs or leaves. No vibration)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Dasher",
+    "Stat 1": "Awareness",
+    "Stat 2": "Might",
+    "Body Part": "Rhythmic Gait",
+    "Mechanic / Trait": "Active: Scuttle (Dash as Bonus Action)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Amphibious",
+    "Stat 1": "Intuition",
+    "Stat 2": "Finesse",
+    "Body Part": "Paddle Hairs",
+    "Mechanic / Trait": "Passive: Diver (Swim Speed = Walk Speed. Breathe Water)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Chitin",
+    "Stat 1": "Awareness",
+    "Stat 2": "Fortitude",
+    "Body Part": "Hard Shell",
+    "Mechanic / Trait": "Passive: Exoskeleton (AC = 13 + Dex. Cannot wear standard armor)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Camouflage",
+    "Stat 1": "Willpower",
+    "Stat 2": "Charm",
+    "Body Part": "Stick-Bug Shape",
+    "Mechanic / Trait": "Passive: Mimicry (Look like a branch/stone when still)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Toxic",
+    "Stat 1": "Willpower",
+    "Stat 2": "Endurance",
+    "Body Part": "Warning Colors",
+    "Mechanic / Trait": "Passive: Bad-Blood (Melee attackers take Poison dmg)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Spined",
+    "Stat 1": "Vitality",
+    "Stat 2": "Might",
+    "Body Part": "Thorax Spines",
+    "Mechanic / Trait": "Passive: Barbed-Wire (Grapplers take 1d4 Slash dmg per turn)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Hairy",
+    "Stat 1": "Awareness",
+    "Stat 2": "Willpower",
+    "Body Part": "Sensory Bristles",
+    "Mechanic / Trait": "Passive: Radar (Cannot be Surprised by Invisible foes)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Glow",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Might",
+    "Body Part": "Abdominal Light",
+    "Mechanic / Trait": "Active: Lure (Target must make Wis save or move toward you)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Flat",
+    "Stat 1": "Intuition",
+    "Stat 2": "Awareness",
+    "Body Part": "Compressed Thorax",
+    "Mechanic / Trait": "Passive: Squeeze (Fit through 1-inch gaps)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Regen",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Might",
+    "Body Part": "Molting Hormones",
+    "Mechanic / Trait": "Active: Molt (Short Rest: Regain full HP, lose AC bonus for 1 hour)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Stinger",
+    "Stat 1": "Awareness",
+    "Stat 2": "Might",
+    "Body Part": "Abdominal Spur",
+    "Mechanic / Trait": "Active: Envenom (Bonus Action attack. Paralyze or Necrotic dmg)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Web-Shot",
+    "Stat 1": "Logic",
+    "Stat 2": "Reflexes",
+    "Body Part": "Rear Spinnerets",
+    "Mechanic / Trait": "Active: Net-Trap (Create 10ft area of Difficult Terrain/Stickiness)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Hive",
+    "Stat 1": "Vitality",
+    "Stat 2": "Fortitude",
+    "Body Part": "Pheromone Cloud",
+    "Mechanic / Trait": "Active: Command (Allies within 30ft gain +2 To Hit)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Bombardier",
+    "Stat 1": "Willpower",
+    "Stat 2": "Intuition",
+    "Body Part": "Chemical Chamber",
+    "Mechanic / Trait": "Active: Blast (10ft Cone of Boiling Acid. Fire/Acid dmg)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Flight",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Knowledge",
+    "Body Part": "Elytra/Wings",
+    "Mechanic / Trait": "Passive: True-Flight (Fly Speed = Walk Speed. Hover capable)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Sonic",
+    "Stat 1": "Finesse",
+    "Stat 2": "Charm",
+    "Body Part": "Stridulation Legs",
+    "Mechanic / Trait": "Active: Chirp (AOE Deafness or Sonic Dmg)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Swarm",
+    "Stat 1": "Awareness",
+    "Stat 2": "Might",
+    "Body Part": "Brood Sac",
+    "Mechanic / Trait": "Active: Spawn (Create 1d4 Tiny Minions that distract enemies)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Parasite",
+    "Stat 1": "Willpower",
+    "Stat 2": "Might",
+    "Body Part": "Mind-Spore",
+    "Mechanic / Trait": "Passive: Rider (Attach to Large foe. They provide you Cover)."
+  }
+]

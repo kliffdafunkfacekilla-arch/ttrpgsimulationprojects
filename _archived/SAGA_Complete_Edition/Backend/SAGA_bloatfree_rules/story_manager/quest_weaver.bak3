@@ -1,0 +1,165 @@
+import random
+import time
+
+class GruntPack:
+    """A cohesive unit of enemies sharing a single initiative slot."""
+    def __init__(self, name: str, pack_type: str, count: int, level: int):
+        self.name = name
+        self.pack_type = pack_type  # Heavies, Predators, Specialists, Balancers
+        self.count = count
+        self.level = level
+        
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "pack_type": self.pack_type,
+            "count": self.count,
+            "level": self.level
+        }
+
+class QuestJournal:
+    """Tracks active and completed quests for the player."""
+    def __init__(self):
+        self.active_quests = []
+        self.completed_quests = []
+        
+    def add_quest(self, objective: str, source: str, stage: int = 1):
+        self.active_quests.append({
+            "objective": objective,
+            "source": source,
+            "timestamp": time.time(),
+            "status": "active",
+            "stage": stage
+        })
+        
+    def complete_quest(self, index: int = -1):
+        if self.active_quests:
+            quest = self.active_quests.pop(index)
+            quest["status"] = "completed"
+            self.completed_quests.append(quest)
+            return quest
+        return None
+            
+    def get_journal_summary(self) -> str:
+        if not self.active_quests: return "No active quests."
+        return "\n".join([f"- [Stage {q.get('stage', 1)}] {q['objective']} (Source: {q['source']})" for q in self.active_quests])
+        
+    def to_dict(self):
+        return {
+            "active_quests": self.active_quests,
+            "completed_quests": self.completed_quests
+        }
+        
+    @classmethod
+    def from_dict(cls, data):
+        journal = cls()
+        journal.active_quests = data.get("active_quests", [])
+        journal.completed_quests = data.get("completed_quests", [])
+        return journal
+
+class QuestWeaver:
+    """
+    Manages overarching story threads and generates localized hooks based on region data and past beats.
+    Now supports both campaign progression (combat) and natural non-combat hooks (lore/npc).
+    """
+    def __init__(self):
+        self.journal = QuestJournal()
+        self.beat_history = []
+        
+        # Base templates for Stage 1 encounters
+        self.combat_templates = [
+            {"type": "The Assassination", "objective": "Eliminate the local warlord's scouts.", "pack_type": "Specialists", "enemy_name": "Scout"},
+            {"type": "The Escort", "objective": "Protect the caravan from marauders.", "pack_type": "Balancers", "enemy_name": "Marauder"},
+            {"type": "The Retrieval", "objective": "Recover the stolen relic from a band of thieves.", "pack_type": "Heavies", "enemy_name": "Thief"},
+            {"type": "The Hunt", "objective": "Track down and cull the aggressive beasts.", "pack_type": "Predators", "enemy_name": "Beast"}
+        ]
+        
+        self.lore_templates = [
+            {"type": "Ancient Ruin", "objective": "You uncover the crumbled foundation of a pre-Sundering structure. Strange runes pulse faintly."},
+            {"type": "Abandoned Camp", "objective": "You find a smoldering campfire. Whoever was here left in a hurry, leaving behind scattered supplies."},
+            {"type": "Ominous Tracks", "objective": "Massive, inhuman footprints cross the path ahead, heading deeper into the wilderness."}
+        ]
+        
+        self.npc_templates = [
+            {"type": "Wandering Merchant", "objective": "A heavily burdened traveler offers to trade goods and rumors."},
+            {"type": "Wounded Survivor", "objective": "You stumble upon someone clinging to life, babbling about what attacked them."},
+            {"type": "Mysterious Pilgrim", "objective": "A cloaked figure kneels in prayer, offering cryptic warnings about the road ahead."}
+        ]
+        
+    def log_beat(self, action: str, outcome: str):
+        """Records a major story beat to ensure future adaptability."""
+        self.beat_history.append({"action": action, "outcome": outcome})
+        if len(self.beat_history) > 10:
+            self.beat_history.pop(0)
+
+    def generate_hook_for_cell(self, cx: int, cy: int, party_level: int = 1, event_type: str = "combat") -> dict:
+        """
+        Generates an adaptive hook based on the event_type.
+        'combat': advances campaign stage.
+        'lore' or 'npc': provides non-combat narrative flavor.
+        """
+        hook = {"id": f"hook_{cx}_{cy}_{int(time.time())}"}
+        
+        if event_type == "lore":
+            template = random.choice(self.lore_templates)
+            hook["type"] = template["type"]
+            hook["objective"] = template["objective"]
+            return hook
+            
+        if event_type == "npc":
+            template = random.choice(self.npc_templates)
+            hook["type"] = template["type"]
+            hook["objective"] = template["objective"]
+            return hook
+            
+        # Combat Event Logic
+        if self.journal.active_quests:
+            # Continue the current overarching story campaign
+            current_quest = self.journal.active_quests[-1]
+            stage = current_quest.get("stage", 1)
+            base_objective = current_quest["objective"]
+            
+            if stage == 1:
+                new_objective = f"The survivors from '{base_objective}' regrouped and launched an ambush!"
+                pack_type = "Predators"
+                enemy_name = "Ambushers"
+            elif stage == 2:
+                new_objective = f"You tracked the attackers back to their lieutenant's camp."
+                pack_type = "Specialists"
+                enemy_name = "Lieutenant Guard"
+            else:
+                new_objective = f"Final Showdown: The leader behind the attacks makes their final stand!"
+                pack_type = "Heavies"
+                enemy_name = "Warlord Elite"
+                
+            self.journal.complete_quest(-1)
+            self.journal.add_quest(new_objective, "Campaign Progression", stage=stage+1)
+            template = {"type": f"Campaign Stage {stage+1}", "objective": new_objective, "pack_type": pack_type, "enemy_name": enemy_name}
+            
+        else:
+            # Start a brand new story thread
+            template = random.choice(self.combat_templates)
+            self.journal.add_quest(template["objective"], "World Generator", stage=1)
+            
+        pack_size = random.randint(2, 5)
+        pack = GruntPack(template.get('enemy_name', 'Bandit'), template['pack_type'], pack_size, party_level)
+                
+        hook["type"] = template["type"]
+        hook["objective"] = template["objective"]
+        hook["grunt_pack"] = pack.to_dict()
+            
+        return hook
+        
+    def to_dict(self):
+        return {
+            "journal": self.journal.to_dict(),
+            "beat_history": self.beat_history
+        }
+        
+    @classmethod
+    def from_dict(cls, data):
+        weaver = cls()
+        weaver.beat_history = data.get("beat_history", [])
+        if "journal" in data:
+            weaver.journal = QuestJournal.from_dict(data["journal"])
+        return weaver

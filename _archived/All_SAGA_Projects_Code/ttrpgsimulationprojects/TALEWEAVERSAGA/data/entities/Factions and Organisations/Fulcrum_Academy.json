@@ -1,0 +1,54 @@
+{
+    "Name": "Fulcrum Academy",
+    "Type": "Factions and Organisations",
+    "Description": "The premier center for advanced technological research and training of elite airship crews.",
+    "Neutrality": true,
+    "Technological Supremacy": true,
+    "Strategic Dissemination": true,
+    "Influence": 8,
+    "Reputation": 8,
+    "Graduate Specializations": [
+        {
+            "School": "Whisperer Wing",
+            "Description": "Mastery of emotional regulation and psychological control.",
+            "Abilities": [
+                {
+                    "name": "Emotional Conduit",
+                    "description": "Can sense and counteract the emotions of crewmates."
+                }
+            ]
+        },
+        {
+            "School": "Aether-Wrights' Forge",
+            "Description": "Taming the Chaos-Boiler and maintaining Aetheric-Reaction Engine.",
+            "Abilities": [
+                {
+                    "name": "Sigil-Wright",
+                    "description": "Can manage and maintain the Aetheric-Reaction Engine."
+                }
+            ]
+        },
+        {
+            "School": "Navigator's Art",
+            "Description": "Charting the unknowable and navigating Chaos Zones.",
+            "Abilities": [
+                {
+                    "name": "Jitter-Rig",
+                    "description": "Can read and navigate chaotic currents in the sky."
+                }
+            ]
+        }
+    ],
+    "Graduate Combinations": [
+        {
+            "name": "Red Sash",
+            "description": "A multi-disciplinary team of Whisperers, Aether-Wrights, and Navigators.",
+            "Abilities": [
+                {
+                    "name": "Synergistic Unit",
+                    "description": "Can operate at the pinnacle of airship operation."
+                }
+            ]
+        }
+    ]
+}

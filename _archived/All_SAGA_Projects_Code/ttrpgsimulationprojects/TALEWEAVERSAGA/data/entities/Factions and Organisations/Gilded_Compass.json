@@ -1,0 +1,44 @@
+{
+    "Name": "Gilded Compass",
+    "Type": "Faction",
+    "Description": "A global economic powerhouse controlling the flow of Dragonstone and Aether-Tech.",
+    "Tags": [
+        "Economic",
+        "Powerful",
+        "Influential"
+    ],
+    "Controlled Resources": [
+        "Dragonstone",
+        "Aether-Tech"
+    ],
+    "Financial Infrastructure": {
+        "Bank": "Fulcrum Bank",
+        "Currency": "Aetherium Coin"
+    },
+    "Logistical Supremacy": {
+        "Airships": true,
+        "Standardized Trade Routes": true,
+        "Ground-Based Support Systems": true
+    },
+    "Operational Doctrine": {
+        "Avian Oversight": true,
+        "Mixed-Crew Policy": true,
+        "Master of Coin": true
+    },
+    "Enforcement and Intelligence": {
+        "Security Forces": true,
+        "Information Brokerage": true,
+        "Espionage": true
+    },
+    "Rivalries": [
+        {
+            "Faction": "Free Sky-Baronies",
+            "Nature of Rivalry": "Smugglers and champions of liberty"
+        },
+        {
+            "Faction": "Crimson Corsairs",
+            "Nature of Rivalry": "Pirates and disruptors of trade"
+        }
+    ],
+    "Global Watchmen": true
+}

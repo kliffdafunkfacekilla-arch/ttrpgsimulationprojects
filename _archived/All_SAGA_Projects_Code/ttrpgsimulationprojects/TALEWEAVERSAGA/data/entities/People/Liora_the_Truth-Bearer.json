@@ -1,0 +1,25 @@
+{
+    "Entity Name": "Liora the Truth-Bearer",
+    "Aliases": [
+        "Liora",
+        "The Truth-Bearer"
+    ],
+    "Tags": [
+        "NPC",
+        "History",
+        "Warden",
+        "Aura",
+        "Charm"
+    ],
+    "Attributes": {
+        "Former Master": {
+            "type": "Magistar Virantor",
+            "subtypes": [
+                "Aura",
+                "Charm"
+            ]
+        },
+        "Role": "Chief Propagandist",
+        "Defection Event": "The Great Broadcast"
+    }
+}

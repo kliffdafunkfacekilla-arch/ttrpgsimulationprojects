@@ -1,0 +1,296 @@
+import random
+import json
+
+BIOME_MAPPINGS = {
+    'ocean': 9,
+    'reef': 10,
+    'vent_field': 11,
+    'trench': 12,
+    'plains': 4,
+    'forest': 1,
+    'mountain': 6,
+    'desert': 3,
+    'glacier': 8,
+    'jungle': 0,
+    'taiga': 2,
+    'tundra': 5,
+    'volcano': 7,
+    'arctic': 8,
+    'prison': 13,
+    'wastes': 13
+}
+
+CHAOS_DOMAINS = {
+    "WARP_STORM": "WARP",
+    "CULT_INSURGENCY": "CULT",
+    "LUX_ECLIPSE": "LUX",
+    "NEXUS_BREACH": "NEXUS"
+}
+
+DEFAULT_TAGS = {
+    "Forest": ["FLAMMABLE", "ORGANIC"],
+    "Plains": ["OPEN_TERRAIN", "ORGANIC"],
+    "Mountain": ["HIGH_ELEVATION", "MINERAL_RICH", "HARD_TERRAIN"],
+    "Desert": ["ARID", "HEAT_SOURCE"],
+    "Glacier": ["COLD", "WATER_SOURCE", "HARD_TERRAIN"],
+    "Ocean": ["WATER_SOURCE", "DEEP"],
+    "Reef": ["ORGANIC", "WATER_SOURCE"],
+    "Vent_Field": ["HEAT_SOURCE", "MINERAL_RICH", "PRESSURE_HIGH"],
+    "Trench": ["DEEP", "PRESSURE_HIGH", "DARK"],
+    "Jungle": ["FLAMMABLE", "ORGANIC", "DENSE"],
+    "Taiga": ["COLD", "FLAMMABLE", "ORGANIC"],
+    "Tundra": ["COLD", "ARID"],
+    "Volcano": ["HEAT_SOURCE", "MINERAL_RICH", "HAZARDOUS"]
+}
+
+BIOME_RESOURCES = {
+    "Forest": {"plant": "Berries", "meat": "Venison", "material": "Leather", "building": "Wood", "reagent": "Resin"},
+    "Plains": {"plant": "Grain", "meat": "Beef", "material": "Leather", "building": "Clay", "reagent": "Fiber"},
+    "Mountain": {"plant": "Roots", "meat": "Goat", "material": "Horn", "building": "Stone", "reagent": "Ash"},
+    "Desert": {"plant": "Cactus", "meat": "Lizard", "material": "Scales", "building": "Sandstone", "reagent": "Venom"},
+    "Glacier": {"plant": "Moss", "meat": "Seal", "material": "Fur", "building": "Ice", "reagent": "Oil"}
+}
+
+VARIANTS = {
+    "Berries": "Bloodthorn Berries",
+    "Wood": "Ironwood",
+    "Venison": "Shadow-Stag Meat",
+    "Leather": "Shadow-Stag Hide",
+    "Resin": "Amberglass",
+    "Grain": "Sun-Wheat",
+    "Beef": "Auroch Meat",
+    "Clay": "Red-River Clay",
+    "Fiber": "Silkweed",
+    "Roots": "Deep-Tuber",
+    "Goat": "Crag-Goat",
+    "Horn": "Crag-Horn",
+    "Stone": "Marble",
+    "Ash": "Volcanic Ash",
+    "Cactus": "Glass-Spine Cactus",
+    "Lizard": "Sand-Drake Meat",
+    "Scales": "Sand-Drake Scales",
+    "Sandstone": "Obsidian",
+    "Venom": "Basilisk Venom",
+    "Moss": "Frost-Lichen",
+    "Seal": "Ice-Leviathan Meat",
+    "Fur": "Ice-Leviathan Fur",
+    "Ice": "True-Ice",
+    "Oil": "Leviathan Blubber"
+}
+
+def get_biome_type(biome_id):
+    if biome_id in (1, 4, 5): return "Forest"
+    if biome_id in (2, 3): return "Plains"
+    if biome_id in (6, 7): return "Mountain"
+    if biome_id == 8: return "Desert"
+    if biome_id == 0: return "Glacier"
+    return "Plains"
+
+def mutate_resource(base_name):
+    if random.random() < 0.10: # 10% mutation chance
+        return VARIANTS.get(base_name, base_name)
+    return base_name
+
+class MicroHex:
+    def __init__(self, q, r, biome_id, elevation):
+        self.q = q
+        self.r = r
+        self.biome_id = biome_id
+        self.elevation = elevation
+        self.p1 = 0
+        self.p2 = 0
+        self.p3 = 0
+        self.res = 0
+
+        self.res_plant = ""
+        self.res_meat = ""
+        self.res_material = ""
+        self.res_building = ""
+        self.res_reagent = ""
+        self.res_special = ""
+
+    @property
+    def distance_from_center(self):
+        return (abs(self.q) + abs(self.r) + abs(-self.q - self.r)) // 2
+
+def get_hexes_in_radius(N):
+    hexes = []
+    for q in range(-N, N+1):
+        for r in range(max(-N, -q-N), min(N, -q+N)+1):
+            hexes.append((q, r))
+    return hexes
+
+def unpack_micro_cluster(global_q, global_r, pack_geo, pack_meso, pack_eco, micro_data_json=None):
+    random.seed(f"{global_q}_{global_r}_{pack_meso}")
+
+    base_biome = pack_geo & 0xF
+    elevation_val = (pack_geo >> 4) & 0xF
+    base_elev = float(elevation_val)
+    if base_biome in [9, 10, 11, 12]:
+        base_elev = -base_elev
+
+    micro_hexes = {}
+    coords = get_hexes_in_radius(5)
+
+    for q, r in coords:
+        noise = random.uniform(-1.5, 1.5)
+        elev = base_elev + noise
+
+        final_biome = base_biome
+        if random.random() < 0.1:
+            final_biome = (base_biome + random.randint(-1, 1)) % 16
+
+        hx = MicroHex(q, r, final_biome, elev)
+
+        b_type = get_biome_type(final_biome)
+        res_dict = BIOME_RESOURCES[b_type]
+
+        hx.res_plant = mutate_resource(res_dict["plant"])
+        hx.res_meat = mutate_resource(res_dict["meat"])
+        hx.res_material = mutate_resource(res_dict["material"])
+        hx.res_building = mutate_resource(res_dict["building"])
+        hx.res_reagent = mutate_resource(res_dict["reagent"])
+
+        special_chance = random.random()
+        if b_type == "Mountain" and special_chance < 0.15:
+            hx.res_special = random.choice(["Iron Vein", "Copper Vein", "Gold Vein", "Fire Element", "Earth Element"])
+        elif special_chance < 0.02:
+            hx.res_special = random.choice(["Dragon Stone", "Blackstone", "Ancient Artifact", "Relic"])
+
+        micro_hexes[(q, r)] = hx
+
+    if micro_data_json:
+        try:
+            data = json.loads(micro_data_json)
+        except:
+            data = []
+        if isinstance(data, dict):
+            data = data.get("hexes", [])
+        if isinstance(data, list):
+            for hex_data in data:
+                if not isinstance(hex_data, dict): continue
+                q = hex_data.get("q", 0)
+                r = hex_data.get("r", 0)
+                if (q, r) in micro_hexes:
+                    hx = micro_hexes[(q, r)]
+                    hx.p1 = hex_data.get("p1", 0)
+                    hx.p2 = hex_data.get("p2", 0)
+                    hx.p3 = hex_data.get("p3", 0)
+                    hx.res = hex_data.get("res", 0)
+
+                    if "res_plant" in hex_data: hx.res_plant = hex_data["res_plant"]
+                    if "res_meat" in hex_data: hx.res_meat = hex_data["res_meat"]
+                    if "res_material" in hex_data: hx.res_material = hex_data["res_material"]
+                    if "res_building" in hex_data: hx.res_building = hex_data["res_building"]
+                    if "res_reagent" in hex_data: hx.res_reagent = hex_data["res_reagent"]
+                    if "res_special" in hex_data: hx.res_special = hex_data["res_special"]
+    else:
+        g_p1 = pack_eco & 0xFF
+        g_p2 = (pack_eco >> 8) & 0xFF
+        g_p3 = (pack_eco >> 16) & 0xFF
+        g_res = (pack_eco >> 24) & 0xFFFF
+
+        for (q, r), hx in micro_hexes.items():
+            hx.p1 = max(0, min(255, int(g_p1 + random.uniform(-20, 20))))
+            hx.p2 = max(0, min(255, int(g_p2 + random.uniform(-20, 20))))
+            hx.p3 = max(0, min(255, int(g_p3 + random.uniform(-10, 10))))
+            hx.res = max(0, int(g_res + random.uniform(-1000, 1000)))
+
+    return micro_hexes
+
+def pack_micro_cluster(micro_hexes):
+    data = []
+    for (q, r), hx in micro_hexes.items():
+        data.append({
+            "q": q,
+            "r": r,
+            "p1": hx.p1,
+            "p2": hx.p2,
+            "p3": hx.p3,
+            "res": hx.res,
+            "res_plant": hx.res_plant,
+            "res_meat": hx.res_meat,
+            "res_material": hx.res_material,
+            "res_building": hx.res_building,
+            "res_reagent": hx.res_reagent,
+            "res_special": hx.res_special
+        })
+    return json.dumps(data)
+
+def unpack_nano_cluster(global_q, global_r, micro_q, micro_r, base_biome, base_elev, p1, p2, p3, res, settlement_name=None, settlement_level=0, infrastructure_type=None):
+    random.seed(f"nano_{global_q}_{global_r}_{micro_q}_{micro_r}")
+
+    nano_hexes = {}
+    coords = get_hexes_in_radius(5)
+
+    for q, r in coords:
+        # Finer noise for 1.68 km hexes
+        noise = random.uniform(-0.5, 0.5)
+        elev = base_elev + noise
+
+        final_biome = base_biome
+        if random.random() < 0.05:
+            final_biome = (base_biome + random.randint(-1, 1)) % 16
+
+        hx = MicroHex(q, r, final_biome, elev)
+
+        b_type = get_biome_type(final_biome)
+        res_dict = BIOME_RESOURCES[b_type]
+
+        hx.res_plant = mutate_resource(res_dict["plant"])
+        hx.res_meat = mutate_resource(res_dict["meat"])
+        hx.res_material = mutate_resource(res_dict["material"])
+        hx.res_building = mutate_resource(res_dict["building"])
+        hx.res_reagent = mutate_resource(res_dict["reagent"])
+
+        # Determine distance from center for layout logic
+        dist = (abs(q) + abs(r) + abs(-q - r)) // 2
+
+        # 1. Procedural Settlement Layout
+        if settlement_name:
+            if dist == 0:
+                hx.res_special = "Town Center"
+            elif dist == 1:
+                hx.res_special = random.choice(["Market District", "Residential District", "Guard Barracks", "Temple", "Crafting District"])
+            elif dist == 2 and settlement_level > 2:
+                hx.res_special = random.choice(["Outer Slums", "Granary", "Trading Post", "None"])
+            elif dist == 3 and settlement_level > 5:
+                hx.res_special = "City Wall / Gatehouse"
+
+        # 2. Procedural Infrastructure Layout (if no settlement, or on outskirts)
+        elif infrastructure_type:
+            if "Farm" in infrastructure_type:
+                if dist <= 2:
+                    hx.res_special = random.choice(["Wheat Field", "Irrigation Canal", "Farmhouse", "Windmill"])
+            elif "Mine" in infrastructure_type:
+                if dist == 0:
+                    hx.res_special = "Main Mine Shaft"
+                elif dist == 1:
+                    hx.res_special = random.choice(["Miner Camp", "Smelting Furnace", "Slag Heap"])
+            elif "Outpost" in infrastructure_type:
+                if dist == 0:
+                    hx.res_special = "Outpost Keep"
+                elif dist == 1:
+                    hx.res_special = "Palisade Wall"
+        
+        # 3. Wilderness Features
+        if not hx.res_special or hx.res_special == "None":
+            feature_chance = random.random()
+            if b_type == "Mountain" and feature_chance < 0.10:
+                hx.res_special = random.choice(["Cave Entrance", "Overhang", "Steep Cliff", "Mineral Outcropping"])
+            elif b_type == "Forest" and feature_chance < 0.10:
+                hx.res_special = random.choice(["Ancient Tree", "Clearing", "Dense Thicket", "Stream"])
+            elif feature_chance < 0.05:
+                hx.res_special = random.choice(["Ruined Tower", "Strange Monolith", "Abandoned Campsite", "Fresh Spring"])
+
+        if hx.res_special == "None":
+            hx.res_special = ""
+
+        hx.p1 = max(0, min(255, int(p1 + random.uniform(-10, 10))))
+        hx.p2 = max(0, min(255, int(p2 + random.uniform(-10, 10))))
+        hx.p3 = max(0, min(255, int(p3 + random.uniform(-5, 5))))
+        hx.res = max(0, int(res + random.uniform(-100, 100)))
+
+        nano_hexes[(q, r)] = hx
+
+    return nano_hexes

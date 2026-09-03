@@ -1,0 +1,35 @@
+{
+    "Name": "Wolverine Brotherhood",
+    "Autonomy": true,
+    "Politics": "indifferent",
+    "Loyalty": "contract-based",
+    "Rank Recognition": [
+        "Bear",
+        "Wolf"
+    ],
+    "Leadership": "military rank",
+    "Tactics": [
+        "The Empty Room",
+        "Patrol Mimicry"
+    ],
+    "Combat Gear": {
+        "Armor": "Black Light Leather with Blackened Chainmail",
+        "Weapons": "unarmed but lethal"
+    },
+    "Ceremonial/Guard Uniform": {
+        "Torso": "blood-red fabric with white accents",
+        "Lower Body": "kilt-like covering",
+        "Arms": "gauntlets with 'Elbow Spike'",
+        "Feet": "unique footwear covering top of foot"
+    },
+    "Muzzle Plate": {
+        "Effect": "multi-colored leather strings"
+    },
+    "Hidden Town": {
+        "Location": "rugged, rocky woodland on tri-border",
+        "Deal": "treaty with major powers",
+        "Anomaly": "one visible town, too small to house numbers",
+        "Secret": "no-fly zone, bulk of civilization hidden"
+    },
+    "Reputation": "undefeated as guards"
+}

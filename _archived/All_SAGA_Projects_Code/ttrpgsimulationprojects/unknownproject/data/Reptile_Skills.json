@@ -1,0 +1,338 @@
+[
+  {
+    "Body Part": "Heavy Shell",
+    "Skill Name": "Withdraw",
+    "Type": "Action",
+    "Effect Description": "Pull your limbs and head inside your shell to gain +5 AC until the start of your next turn."
+  },
+  {
+    "Body Part": "Heavy Shell",
+    "Skill Name": "Bulwark",
+    "Type": "Passive",
+    "Effect Description": "You are immune to Critical Hits; attacks striking your shell become normal hits."
+  },
+  {
+    "Body Part": "Sticky Toe Pads",
+    "Skill Name": "Wall Crawler",
+    "Type": "Passive",
+    "Effect Description": "You can walk on vertical surfaces and ceilings without needing to make ability checks."
+  },
+  {
+    "Body Part": "Sticky Toe Pads",
+    "Skill Name": "Grip",
+    "Type": "Reaction",
+    "Effect Description": "Advantage on saving throws to resist being disarmed or knocked off a surface."
+  },
+  {
+    "Body Part": "Forked Tongue",
+    "Skill Name": "Taste the Air",
+    "Type": "Action",
+    "Effect Description": "Detect the presence of poisons, magic, or fresh blood within 60ft by tasting scent particles."
+  },
+  {
+    "Body Part": "Forked Tongue",
+    "Skill Name": "Tracker",
+    "Type": "Passive",
+    "Effect Description": "You gain Advantage on Survival checks to track a creature you have smelled before."
+  },
+  {
+    "Body Part": "Long Jaw",
+    "Skill Name": "Snap",
+    "Type": "Action",
+    "Effect Description": "Make a bite attack with Reach (10ft range)."
+  },
+  {
+    "Body Part": "Long Jaw",
+    "Skill Name": "Drag",
+    "Type": "Bonus",
+    "Effect Description": "If you have a creature Grappled in your mouth, you can move them up to 10ft without a check."
+  },
+  {
+    "Body Part": "Webbed Claws",
+    "Skill Name": "Mud Slinger",
+    "Type": "Action",
+    "Effect Description": "Kick up mud or sand into an adjacent enemy's face. They are Blinded until they wipe it off (Action)."
+  },
+  {
+    "Body Part": "Webbed Claws",
+    "Skill Name": "Swimmer",
+    "Type": "Passive",
+    "Effect Description": "You gain a Swim Speed equal to your Walk Speed."
+  },
+  {
+    "Body Part": "Shifting Scales",
+    "Skill Name": "Active Camo",
+    "Type": "Action",
+    "Effect Description": "Change your skin color to match the environment, gaining Advantage on Stealth checks."
+  },
+  {
+    "Body Part": "Shifting Scales",
+    "Skill Name": "Flash",
+    "Type": "Reaction",
+    "Effect Description": "When hit by a spell attack, shift colors to reflect the energy, gaining Resistance to that damage type for the hit."
+  },
+  {
+    "Body Part": "Tail Rattle",
+    "Skill Name": "Warning Shake",
+    "Type": "Action",
+    "Effect Description": "Rattle loudly. Enemies within 15ft must save (Willpower) or be Frightened for 1 round."
+  },
+  {
+    "Body Part": "Tail Rattle",
+    "Skill Name": "Lure",
+    "Type": "Bonus",
+    "Effect Description": "Shake softly to mimic an insect buzz, distracting a target to give an ally Advantage on their next attack."
+  },
+  {
+    "Body Part": "Bony Knobs",
+    "Skill Name": "Spiked Armor",
+    "Type": "Passive",
+    "Effect Description": "Your natural Armor Class increases by +1."
+  },
+  {
+    "Body Part": "Bony Knobs",
+    "Skill Name": "Headbutt",
+    "Type": "Bonus",
+    "Effect Description": "Make an unarmed strike with your head. If it hits, the target is shoved back 5ft."
+  },
+  {
+    "Body Part": "Hooked Claws",
+    "Skill Name": "Latch On",
+    "Type": "Action",
+    "Effect Description": "Jump onto a creature larger than you and attach. You move with them and have Advantage on attacks against them."
+  },
+  {
+    "Body Part": "Hooked Claws",
+    "Skill Name": "Dig In",
+    "Type": "Passive",
+    "Effect Description": "You cannot be moved against your will (Shoved/Pulled) while you are conscious and on solid ground."
+  },
+  {
+    "Body Part": "Heavy Tail",
+    "Skill Name": "Tail Sweep",
+    "Type": "Action",
+    "Effect Description": "Spin in a circle. All creatures within 5ft must save (Reflex) or be knocked Prone."
+  },
+  {
+    "Body Part": "Heavy Tail",
+    "Skill Name": "Counter-Balance",
+    "Type": "Passive",
+    "Effect Description": "You have Advantage on Acrobatics checks to maintain balance on narrow ledges."
+  },
+  {
+    "Body Part": "Retractable Fangs",
+    "Skill Name": "Venom Injection",
+    "Type": "Bonus",
+    "Effect Description": "If you hit with a bite, inject venom. Target takes 1d6 Poison damage."
+  },
+  {
+    "Body Part": "Retractable Fangs",
+    "Skill Name": "Concealed",
+    "Type": "Passive",
+    "Effect Description": "You appear unarmed even when inspected. You have Advantage on Deception checks regarding your threat level."
+  },
+  {
+    "Body Part": "Curved Teeth",
+    "Skill Name": "No Escape",
+    "Type": "Passive",
+    "Effect Description": "Enemies have Disadvantage on checks to escape your Grapple (teeth hook inwards)."
+  },
+  {
+    "Body Part": "Curved Teeth",
+    "Skill Name": "Rend",
+    "Type": "Action",
+    "Effect Description": "Bite a target. If they are already bleeding or below half HP, deal double damage."
+  },
+  {
+    "Body Part": "Head Crest",
+    "Skill Name": "Frill Display",
+    "Type": "Action",
+    "Effect Description": "Flair your crest. Make an Intimidation check against a target's Insight to stun them with fear."
+  },
+  {
+    "Body Part": "Head Crest",
+    "Skill Name": "Thermoregulation",
+    "Type": "Passive",
+    "Effect Description": "You recover from Exhaustion twice as fast during a Short Rest by regulating heat through your crest."
+  },
+  {
+    "Body Part": "Vertical Pupils",
+    "Skill Name": "Hypnotic Gaze",
+    "Type": "Action",
+    "Effect Description": "Lock eyes with a target. They are Charmed by you until you or your allies attack them."
+  },
+  {
+    "Body Part": "Vertical Pupils",
+    "Skill Name": "Night Vision",
+    "Type": "Passive",
+    "Effect Description": "You can see in Dim Light as if it were Bright Light."
+  },
+  {
+    "Body Part": "Throat Pouch",
+    "Skill Name": "Booming Call",
+    "Type": "Action",
+    "Effect Description": "Amplify your voice to be heard up to 1 mile away, or to deal Thunder damage in a 10ft cone."
+  },
+  {
+    "Body Part": "Throat Pouch",
+    "Skill Name": "Breath Holder",
+    "Type": "Passive",
+    "Effect Description": "You can hold your breath for up to 1 hour."
+  },
+  {
+    "Body Part": "Heavy Eyelids",
+    "Skill Name": "Nictitating Membrane",
+    "Type": "Passive",
+    "Effect Description": "You are immune to being Blinded by sand, dust, or bright light."
+  },
+  {
+    "Body Part": "Heavy Eyelids",
+    "Skill Name": "Feign Torpor",
+    "Type": "Action",
+    "Effect Description": "Enter a state that perfectly mimics a statue or dead body. Perception checks to spot life have Disadvantage."
+  },
+  {
+    "Body Part": "Heat Pits",
+    "Skill Name": "Thermal Sight",
+    "Type": "Action",
+    "Effect Description": "Detect living creatures within 30ft even through darkness, fog, or invisibility."
+  },
+  {
+    "Body Part": "Heat Pits",
+    "Skill Name": "Cold Sense",
+    "Type": "Passive",
+    "Effect Description": "You automatically detect sudden drops in temperature or the presence of undead (cold bodies)."
+  },
+  {
+    "Body Part": "Neck Gills",
+    "Skill Name": "Amphibious",
+    "Type": "Passive",
+    "Effect Description": "You can breathe air and water."
+  },
+  {
+    "Body Part": "Neck Gills",
+    "Skill Name": "Filter Feeder",
+    "Type": "Reaction",
+    "Effect Description": "Advantage on saving throws against inhaled poisons or gas clouds."
+  },
+  {
+    "Body Part": "Back Fins",
+    "Skill Name": "Hydrodynamics",
+    "Type": "Passive",
+    "Effect Description": "While swimming, you can Dash as a Bonus Action."
+  },
+  {
+    "Body Part": "Back Fins",
+    "Skill Name": "Stabilizer",
+    "Type": "Reaction",
+    "Effect Description": "When hit by a water-based attack or current, you remain upright and are not pushed."
+  },
+  {
+    "Body Part": "Long Tongue",
+    "Skill Name": "Lash",
+    "Type": "Action",
+    "Effect Description": "Make a Grapple attempt or disarm attempt against a target 10ft away."
+  },
+  {
+    "Body Part": "Long Tongue",
+    "Skill Name": "Sticky Trap",
+    "Type": "Reaction",
+    "Effect Description": "Snatch a small projectile (arrow/rock) out of the air to reduce damage to 0."
+  },
+  {
+    "Body Part": "Angular Eyes",
+    "Skill Name": "Peripheral Sight",
+    "Type": "Passive",
+    "Effect Description": "You can see 180 degrees. You cannot be Flanked."
+  },
+  {
+    "Body Part": "Angular Eyes",
+    "Skill Name": "Focus",
+    "Type": "Bonus",
+    "Effect Description": "Analyze a target. Your next attack against them has +2 Accuracy."
+  },
+  {
+    "Body Part": "Glider Fins",
+    "Skill Name": "Glide",
+    "Type": "Reaction",
+    "Effect Description": "When falling, you can move 2ft horizontally for every 1ft you fall."
+  },
+  {
+    "Body Part": "Glider Fins",
+    "Skill Name": "Slow Fall",
+    "Type": "Passive",
+    "Effect Description": "You take no damage from falls of 30ft or less."
+  },
+  {
+    "Body Part": "Metallic Scales",
+    "Skill Name": "Reflection",
+    "Type": "Reaction",
+    "Effect Description": "When hit by a Radiant or Light-based attack, reduce damage by half."
+  },
+  {
+    "Body Part": "Metallic Scales",
+    "Skill Name": "Dazzle",
+    "Type": "Action",
+    "Effect Description": "Reflect light into an enemy's eyes. They must save or be Blinded for 1 turn."
+  },
+  {
+    "Body Part": "Skill Name",
+    "Skill Name": "Required Body Part",
+    "Type": "Effect",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Nat_Armor",
+    "Skill Name": "Heavy Shell / Scales",
+    "Type": "Base AC is 12 + Def Stat.",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Tail_Club",
+    "Skill Name": "Heavy Tail",
+    "Type": "Unarmed Dmg + Shove Bonus Action.",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Lash",
+    "Skill Name": "Long Tongue",
+    "Type": "#ERROR!",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Regen_Minor",
+    "Skill Name": "Regenerating Tail",
+    "Type": "Regain 1 HP after Short Rest.",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Wall_Walk",
+    "Skill Name": "Sticky Pads",
+    "Type": "Move on vertical surfaces.",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Lock",
+    "Skill Name": "Curved Teeth",
+    "Type": "You cannot be disarmed or forced to drop (Jaw lock).",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Latch",
+    "Skill Name": "Hooked Claws",
+    "Type": "Automatically Grapple target on Hit.",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Heat_Sense",
+    "Skill Name": "Heat Pits",
+    "Type": "Detect invisible/hidden foes 10ft (renamed from Third_Eye).",
+    "Effect Description": ""
+  },
+  {
+    "Body Part": "Warmth",
+    "Skill Name": "Frill / Crest",
+    "Type": "Recover from exhaustion faster (Thermoregulation).",
+    "Effect Description": ""
+  }
+]

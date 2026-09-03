@@ -1,0 +1,3021 @@
+# Autopilot Simulation Analysis & Fixes Report
+
+## Run Date: 2026-06-21 13:35:06 (Tick: 35 -> 65)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_133504`
+- **Total Settlements:** 6
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 0
+- **Active Wars:** 0
+- **Weather Storms:** 6
+- **Active Entities:** 3
+
+### Actions & Patches Applied:
+- No critical issues found. Simulation stable.
+
+---
+
+## Run Date: 2026-06-21 13:39:21 (Tick: 65 -> 95)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_133920`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 0
+- **Active Wars:** 0
+- **Weather Storms:** 8
+- **Active Entities:** 4
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+---
+
+## Run Date: 2026-06-21 13:40:02 (Tick: 95 -> 125)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_134001`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 0
+- **Active Wars:** 0
+- **Weather Storms:** 4
+- **Active Entities:** 10
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+---
+
+## Run Date: 2026-06-21 13:41:11 (Tick: 125 -> 155)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_134110`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 0
+- **Active Wars:** 0
+- **Weather Storms:** 7
+- **Active Entities:** 28
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+---
+
+## Run Date: 2026-06-21 13:50:03 (Tick: 155 -> 185)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_135002`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 0
+- **Active Wars:** 0
+- **Weather Storms:** 13
+- **Active Entities:** 38
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+---
+
+## Run Date: 2026-06-21 14:00:03 (Tick: 185 -> 215)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_140002`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 0
+- **Active Wars:** 0
+- **Weather Storms:** 9
+- **Active Entities:** 47
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+---
+
+## Run Date: 2026-06-21 14:10:03 (Tick: 215 -> 245)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_141001`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 0
+- **Active Wars:** 0
+- **Weather Storms:** 7
+- **Active Entities:** 49
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+---
+
+## Run Date: 2026-06-21 14:20:03 (Tick: 245 -> 275)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_142001`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 0
+- **Active Wars:** 0
+- **Weather Storms:** 7
+- **Active Entities:** 49
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+---
+
+## Run Date: 2026-06-21 14:30:03 (Tick: 275 -> 305)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_143001`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 0
+- **Active Wars:** 0
+- **Weather Storms:** 9
+- **Active Entities:** 49
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+---
+
+## Run Date: 2026-06-21 14:40:03 (Tick: 305 -> 335)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_144001`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 0
+- **Active Wars:** 0
+- **Weather Storms:** 10
+- **Active Entities:** 51
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+---
+
+## Run Date: 2026-06-21 14:50:03 (Tick: 335 -> 365)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_145002`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 0
+- **Active Wars:** 0
+- **Weather Storms:** 10
+- **Active Entities:** 47
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+---
+
+## Run Date: 2026-06-21 15:00:03 (Tick: 365 -> 395)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_150002`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 0
+- **Active Wars:** 0
+- **Weather Storms:** 9
+- **Active Entities:** 49
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+---
+
+## Run Date: 2026-06-21 15:01:05 (Tick: 395 -> 425)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_150103`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 0
+- **Active Wars:** 0
+- **Weather Storms:** 7
+- **Active Entities:** 49
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 396]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 396]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 397]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 398]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 399]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 400]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 401]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 402]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 403]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 404]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 405]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 406]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 407]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 408]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 409]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 410]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 411]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 412]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 413]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 414]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 415]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 416]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 417]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 418]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 419]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 420]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 421]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 422]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 423]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 423]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 424]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 425]** *Mandate*: A crusade of Null Zealots has mobilized!
+
+---
+
+## Run Date: 2026-06-21 15:08:34 (Tick: 425 -> 455)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_150833`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 0
+- **Active Wars:** 0
+- **Weather Storms:** 4
+- **Active Entities:** 20
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 426]** *Construction*: Eldermere built a new Farm.
+- **[Tick 427]** *Construction*: Eldermere built a new Farm.
+- **[Tick 428]** *Construction*: Eldermere built a new Farm.
+- **[Tick 429]** *Construction*: Eldermere built a new Farm.
+- **[Tick 430]** *Construction*: Eldermere built a new Farm.
+- **[Tick 431]** *Construction*: Eldermere built a new Farm.
+- **[Tick 432]** *Construction*: Eldermere built a new Farm.
+- **[Tick 433]** *Construction*: Eldermere built a new Farm.
+- **[Tick 434]** *Construction*: Eldermere built a new Farm.
+- **[Tick 435]** *Construction*: Eldermere built a new Farm.
+- **[Tick 436]** *Construction*: Eldermere built a new Farm.
+- **[Tick 437]** *Construction*: Eldermere built a new Farm.
+- **[Tick 440]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+
+---
+
+## Run Date: 2026-06-21 15:13:44 (Tick: 455 -> 485)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_151343`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 0
+- **Active Wars:** 0
+- **Weather Storms:** 1
+- **Active Entities:** 2
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 459]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 479]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 481]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+
+---
+
+## Run Date: 2026-06-21 15:14:15 (Tick: 485 -> 515)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_151414`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 0
+- **Active Wars:** 0
+- **Weather Storms:** 1
+- **Active Entities:** 4
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 486]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 488]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 494]** *Mandate*: A crusade of Null Zealots has mobilized!
+
+---
+
+## Run Date: 2026-06-21 15:20:03 (Tick: 515 -> 545)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_152002`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 0
+- **Active Wars:** 0
+- **Weather Storms:** 2
+- **Active Entities:** 0
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 517]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+
+---
+
+## Run Date: 2026-06-21 15:25:23 (Tick: 549 -> 579)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_152517`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 1
+- **Active Wars:** 0
+- **Weather Storms:** 2
+- **Active Entities:** 2
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 550]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 550]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 550]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 551]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 551]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 551]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 552]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 552]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 552]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 552]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 553]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 553]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 553]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 553]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 554]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 554]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 554]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 555]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 555]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 555]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 556]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 556]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 556]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 557]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 557]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 557]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 558]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 558]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 558]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 559]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 559]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 559]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 560]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 560]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 560]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 560]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 561]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 561]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 561]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 562]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 562]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 562]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 562]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 563]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 563]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 563]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 564]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 564]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 564]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 564]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 565]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 565]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 565]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 566]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 566]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 566]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 567]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 567]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 567]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 568]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 568]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 568]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 569]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 569]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 569]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 569]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 570]** *Resources*: A rare deposit of Star-Herb has been discovered at (95, 26)!
+- **[Tick 570]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 570]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 570]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 570]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 571]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 571]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 571]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 572]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 572]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 572]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 573]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 573]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 573]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 574]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 574]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 574]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 574]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 575]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 575]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 575]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 575]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 576]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 576]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 576]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 577]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 577]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 577]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 577]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 578]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 578]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 578]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 579]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 579]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 579]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+
+---
+
+## Run Date: 2026-06-21 15:30:07 (Tick: 579 -> 609)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_153001`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 1
+- **Active Wars:** 0
+- **Weather Storms:** 2
+- **Active Entities:** 1
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 580]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 580]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 580]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 581]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 581]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 581]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 582]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 582]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 582]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 583]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 583]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 583]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 584]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 584]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 584]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 585]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 585]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 585]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 585]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 586]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 586]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 586]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 587]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 587]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 587]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 588]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 588]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 588]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 589]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 589]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 589]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 590]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 590]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 590]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 591]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 591]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 591]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 591]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 592]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 592]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 592]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 593]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 593]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 593]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 594]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 594]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 594]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 595]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 595]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 595]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 596]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 596]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 596]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 597]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 597]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 597]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 597]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 598]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 598]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 598]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 599]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 599]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 599]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 600]** *Resources*: A rare deposit of Star-Herb has been discovered at (32, 40)!
+- **[Tick 600]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 600]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 600]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 601]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 601]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 601]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 602]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 602]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 602]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 603]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 603]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 603]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 603]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 604]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 604]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 604]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 605]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 605]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 605]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 606]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 606]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 606]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 607]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 607]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 607]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 608]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 608]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 608]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 609]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 609]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 609]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 609]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+
+---
+
+## Run Date: 2026-06-21 15:40:08 (Tick: 609 -> 639)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_154002`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 1
+- **Active Wars:** 0
+- **Weather Storms:** 1
+- **Active Entities:** 2
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 610]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 610]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 610]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 611]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 611]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 611]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 612]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 612]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 612]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 613]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 613]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 613]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 614]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 614]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 614]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 614]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 615]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 615]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 615]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 615]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 616]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 616]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 616]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 617]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 617]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 617]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 618]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 618]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 618]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 619]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 619]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 619]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 619]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 620]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 620]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 620]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 621]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 621]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 621]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 622]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 622]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 622]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 623]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 623]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 623]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 624]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 624]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 624]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 625]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 625]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 625]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 626]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 626]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 626]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 627]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 627]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 627]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 627]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 628]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 628]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 628]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 629]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 629]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 629]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 630]** *Resources*: A rare deposit of Star-Herb has been discovered at (35, 25)!
+- **[Tick 630]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 630]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 630]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 631]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 631]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 631]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 631]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 632]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 632]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 632]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 633]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 633]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 633]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 634]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 634]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 634]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 635]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 635]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 635]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 636]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 636]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 636]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 636]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 637]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 637]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 637]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 638]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 638]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 638]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 639]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 639]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 639]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 639]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+
+---
+
+## Run Date: 2026-06-21 15:50:08 (Tick: 639 -> 669)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_155002`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 1
+- **Active Wars:** 0
+- **Weather Storms:** 0
+- **Active Entities:** 2
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 640]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 640]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 640]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 641]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 641]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 641]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 642]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 642]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 642]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 643]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 643]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 643]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 644]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 644]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 644]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 645]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 645]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 645]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 646]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 646]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 646]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 646]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 647]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 647]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 647]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 648]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 648]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 648]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 649]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 649]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 649]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 650]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 650]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 650]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 650]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 650]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 650]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 651]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 651]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 651]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 651]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 652]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 652]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 652]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 653]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 653]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 653]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 653]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 654]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 654]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 654]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 654]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 655]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 655]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 655]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 656]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 656]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 656]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 657]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 657]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 657]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 657]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 658]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 658]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 658]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 658]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 659]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 659]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 659]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 659]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 660]** *Resources*: A rare deposit of Star-Herb has been discovered at (16, 31)!
+- **[Tick 660]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 660]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 660]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 661]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 661]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 661]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 662]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 662]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 662]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 662]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 663]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 663]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 663]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 664]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 664]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 664]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 665]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 665]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 665]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 666]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 666]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 666]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 666]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 667]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 667]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 667]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 668]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 668]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 668]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 669]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 669]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 669]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+
+---
+
+## Run Date: 2026-06-21 16:00:08 (Tick: 669 -> 699)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_160002`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 1
+- **Active Wars:** 0
+- **Weather Storms:** 2
+- **Active Entities:** 1
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 670]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 670]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 670]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 671]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 671]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 671]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 672]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 672]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 672]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 673]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 673]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 673]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 674]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 674]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 674]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 674]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 675]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 675]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 675]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 676]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 676]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 676]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 677]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 677]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 677]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 678]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 678]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 678]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 678]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 679]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 679]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 679]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 679]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 680]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 680]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 680]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 680]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 681]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 681]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 681]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 682]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 682]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 682]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 682]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 683]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 683]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 683]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 683]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 684]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 684]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 684]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 685]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 685]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 685]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 686]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 686]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 686]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 687]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 687]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 687]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 688]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 688]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 688]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 689]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 689]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 689]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 690]** *Resources*: A rare deposit of Mithril has been discovered at (100, -9)!
+- **[Tick 690]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 690]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 690]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 691]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 691]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 691]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 692]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 692]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 692]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 692]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 693]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 693]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 693]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 694]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 694]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 694]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 695]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 695]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 695]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 696]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 696]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 696]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 697]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 697]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 697]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 698]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 698]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 698]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 698]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 699]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 699]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 699]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+
+---
+
+## Run Date: 2026-06-21 16:10:08 (Tick: 699 -> 729)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_161002`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 1
+- **Active Wars:** 0
+- **Weather Storms:** 3
+- **Active Entities:** 6
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 700]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 700]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 700]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 701]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 701]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 701]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 702]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 702]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 702]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 703]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 703]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 703]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 704]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 704]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 704]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 705]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 705]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 705]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 706]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 706]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 706]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 707]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 707]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 707]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 708]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 708]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 708]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 708]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 709]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 709]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 709]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 710]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 710]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 710]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 711]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 711]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 711]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 712]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 712]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 712]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 713]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 713]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 713]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 714]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 714]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 714]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 714]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 715]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 715]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 715]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 716]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 716]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 716]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 717]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 717]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 717]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 718]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 718]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 718]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 719]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 719]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 719]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 720]** *Resources*: A rare deposit of Star-Herb has been discovered at (48, 18)!
+- **[Tick 720]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 720]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 720]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 721]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 721]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 721]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 721]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 722]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 722]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 722]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 722]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 722]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 723]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 723]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 723]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 724]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 724]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 724]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 725]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 725]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 725]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 726]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 726]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 726]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 726]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 727]** *Security*: Guards deserted Eldermere Hub-Village due to lack of upkeep.
+- **[Tick 727]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 727]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 727]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 728]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 728]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 728]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+- **[Tick 729]** *Security*: Guards deserted Stonewatch due to lack of upkeep.
+- **[Tick 729]** *Security*: Guards deserted Goldhaven due to lack of upkeep.
+- **[Tick 729]** *Security*: Guards deserted Mistmoor due to lack of upkeep.
+
+---
+
+## Run Date: 2026-06-21 16:18:06 (Tick: 729 -> 759)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_161759`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 1
+- **Active Wars:** 0
+- **Weather Storms:** 5
+- **Active Entities:** 5
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 730]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 730]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 730]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 730]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 731]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 731]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 731]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 732]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 732]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 732]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 733]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 733]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 733]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 734]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 734]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 734]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 735]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 735]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 735]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 735]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 736]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 736]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 736]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 737]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 737]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 737]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 738]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 738]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 738]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 739]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 739]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 739]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 740]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 740]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 740]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 741]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 741]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 741]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 742]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 742]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 742]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 743]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 743]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 743]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 744]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 744]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 744]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 744]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 745]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 745]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 745]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 746]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 746]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 746]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 747]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 747]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 747]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 747]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 748]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 748]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 748]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 748]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 749]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 749]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 749]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 750]** *Resources*: A rare deposit of Mithril has been discovered at (20, 16)!
+- **[Tick 750]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 750]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 750]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 751]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 751]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 751]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 752]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 752]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 752]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 753]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 753]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 753]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 753]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 754]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 754]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 754]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 754]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 755]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 755]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 755]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 756]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 756]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 756]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 756]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 757]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 757]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 757]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 758]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 758]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 758]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 759]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 759]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 759]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+
+---
+
+## Run Date: 2026-06-21 16:20:08 (Tick: 759 -> 789)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_162002`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 1
+- **Active Wars:** 0
+- **Weather Storms:** 3
+- **Active Entities:** 3
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 760]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 760]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 760]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 760]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 761]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 761]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 761]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 762]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 762]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 762]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 763]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 763]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 763]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 764]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 764]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 764]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 765]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 765]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 765]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 766]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 766]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 766]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 766]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 767]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 767]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 767]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 768]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 768]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 768]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 769]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 769]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 769]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 770]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 770]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 770]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 770]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 771]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 771]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 771]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 771]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 772]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 772]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 772]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 773]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 773]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 773]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 773]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 774]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 774]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 774]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 775]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 775]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 775]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 776]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 776]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 776]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 777]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 777]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 777]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 778]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 778]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 778]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 779]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 779]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 779]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 780]** *Resources*: A rare deposit of Mithril has been discovered at (-20, 45)!
+- **[Tick 780]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 780]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 780]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 781]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 781]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 781]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 782]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 782]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 782]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 782]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 783]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 783]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 783]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 784]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 784]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 784]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 784]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 785]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 785]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 785]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 786]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 786]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 786]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 787]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 787]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 787]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 788]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 788]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 788]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 788]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 788]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 789]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 789]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 789]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+
+---
+
+## Run Date: 2026-06-21 16:30:08 (Tick: 789 -> 819)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_163002`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 1
+- **Active Wars:** 0
+- **Weather Storms:** 1
+- **Active Entities:** 2
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 790]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 790]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 790]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 790]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 791]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 791]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 791]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 792]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 792]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 792]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 793]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 793]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 793]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 793]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 794]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 794]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 794]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 794]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 795]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 795]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 795]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 795]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 796]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 796]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 796]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 797]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 797]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 797]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 798]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 798]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 798]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 798]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 799]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 799]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 799]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 800]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 800]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 800]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 800]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 801]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 801]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 801]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 802]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 802]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 802]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 803]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 803]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 803]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 804]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 804]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 804]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 804]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 805]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 805]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 805]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 806]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 806]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 806]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 807]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 807]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 807]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 808]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 808]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 808]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 809]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 809]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 809]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 810]** *Resources*: A rare deposit of Mithril has been discovered at (22, 1)!
+- **[Tick 810]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 810]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 810]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 811]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 811]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 811]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 812]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 812]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 812]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 813]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 813]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 813]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 814]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 814]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 814]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 815]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 815]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 815]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 815]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 816]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 816]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 816]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 816]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 817]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 817]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 817]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 817]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 818]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 818]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 818]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 818]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 818]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 819]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 819]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 819]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+
+---
+
+## Run Date: 2026-06-21 16:40:08 (Tick: 819 -> 849)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_164003`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 1
+- **Active Wars:** 1
+- **Weather Storms:** 3
+- **Active Entities:** 1
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 820]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 820]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 820]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 820]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 820]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 821]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 821]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 821]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 822]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 822]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 822]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 823]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 823]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 823]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 823]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 824]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 824]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 824]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 825]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 825]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 825]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 826]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 826]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 826]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 827]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 827]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 827]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 827]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 828]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 828]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 828]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 829]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 829]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 829]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 830]** *Diplomacy*: Kingdom of Arcanum and Free Cities entered conflict — skirmish near Highvale. (trust:-53)
+- **[Tick 830]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Stonewatch (sec -4).
+- **[Tick 830]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 830]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 830]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 831]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 831]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 831]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 832]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 832]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 832]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 833]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 833]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 833]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 833]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 834]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 834]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 834]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 835]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 835]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 835]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 835]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 836]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 836]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 836]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 836]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 836]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 837]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 837]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 837]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 837]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 838]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 838]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 838]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 839]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 839]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 839]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 840]** *Resources*: A rare deposit of Mithril has been discovered at (-20, 44)!
+- **[Tick 840]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Mistmoor (sec -4).
+- **[Tick 840]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 840]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 840]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 840]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 841]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 841]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 841]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 842]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 842]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 842]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 843]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 843]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 843]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 843]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 844]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 844]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 844]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 845]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 845]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 845]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 846]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 846]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 846]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 847]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 847]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 847]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 848]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 848]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 848]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 849]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 849]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 849]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+
+---
+
+## Run Date: 2026-06-21 16:50:08 (Tick: 849 -> 879)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_165003`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 1
+- **Active Wars:** 1
+- **Weather Storms:** 1
+- **Active Entities:** 7
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 850]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Mistmoor (sec -4).
+- **[Tick 850]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 850]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 850]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 851]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 851]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 851]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 851]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 852]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 852]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 852]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 853]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 853]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 853]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 854]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 854]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 854]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 854]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 855]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 855]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 855]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 856]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 856]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 856]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 857]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 857]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 857]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 858]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 858]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 858]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 859]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 859]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 859]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 859]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 860]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Eldermere (sec -4).
+- **[Tick 860]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 860]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 860]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 861]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 861]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 861]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 862]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 862]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 862]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 862]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 863]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 863]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 863]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 863]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 864]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 864]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 864]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 865]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 865]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 865]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 865]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 865]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 866]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 866]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 866]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 867]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 867]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 867]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 867]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 868]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 868]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 868]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 869]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 869]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 869]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 870]** *Resources*: A rare deposit of Star-Herb has been discovered at (113, 11)!
+- **[Tick 870]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Eldermere Hub-Village (sec -4).
+- **[Tick 870]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 870]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 870]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 871]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 871]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 871]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 872]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 872]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 872]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 872]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 873]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 873]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 873]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 874]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 874]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 874]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 874]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 874]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 875]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 875]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 875]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 876]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 876]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 876]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 877]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 877]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 877]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 878]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 878]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 878]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 878]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 879]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 879]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 879]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 879]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+
+---
+
+## Run Date: 2026-06-21 17:00:08 (Tick: 879 -> 909)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_170003`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 1
+- **Active Wars:** 1
+- **Weather Storms:** 5
+- **Active Entities:** 4
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 880]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Eldermere (sec -4).
+- **[Tick 880]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 880]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 880]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 881]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 881]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 881]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 882]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 882]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 882]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 882]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 883]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 883]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 883]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 884]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 884]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 884]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 884]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 885]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 885]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 885]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 886]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 886]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 886]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 887]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 887]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 887]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 888]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 888]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 888]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 889]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 889]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 889]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 889]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 890]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Stonewatch (sec -4).
+- **[Tick 890]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 890]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 890]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 891]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 891]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 891]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 892]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 892]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 892]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 893]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 893]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 893]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 893]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 894]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 894]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 894]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 895]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 895]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 895]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 896]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 896]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 896]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 896]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 897]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 897]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 897]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 898]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 898]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 898]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 899]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 899]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 899]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 899]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 900]** *Resources*: A rare deposit of Star-Herb has been discovered at (-5, 12)!
+- **[Tick 900]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Mistmoor (sec -4).
+- **[Tick 900]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 900]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 900]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 901]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 901]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 901]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 902]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 902]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 902]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 903]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 903]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 903]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 904]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 904]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 904]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 905]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 905]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 905]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 905]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 906]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 906]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 906]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 907]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 907]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 907]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 907]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 908]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 908]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 908]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 909]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 909]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 909]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+
+---
+
+## Run Date: 2026-06-21 17:02:24 (Tick: 909 -> 939)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_170217`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 7
+- **Low Security Settlements Found:** 7
+- **Active Wars:** 1
+- **Weather Storms:** 3
+- **Active Entities:** 3
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 910]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Eldermere Hub-Village (sec -4).
+- **[Tick 910]** *Starvation*: Eldermere is experiencing critical food shortages!
+- **[Tick 910]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 910]** *Starvation*: Eldermere Hub-Village is experiencing critical food shortages!
+- **[Tick 910]** *Starvation*: Rivenshire is experiencing critical food shortages!
+- **[Tick 910]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 910]** *Starvation*: Stonewatch is experiencing critical food shortages!
+- **[Tick 910]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 910]** *Starvation*: Goldhaven is experiencing critical food shortages!
+- **[Tick 910]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 910]** *Starvation*: Mistmoor is experiencing critical food shortages!
+- **[Tick 910]** *Starvation*: Highvale is experiencing critical food shortages!
+- **[Tick 911]** *Starvation*: Eldermere is experiencing violent food riots due to famine!
+- **[Tick 911]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 911]** *Starvation*: Eldermere Hub-Village is experiencing violent food riots due to famine!
+- **[Tick 911]** *Starvation*: Rivenshire is experiencing violent food riots due to famine!
+- **[Tick 911]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 911]** *Starvation*: Stonewatch is experiencing violent food riots due to famine!
+- **[Tick 911]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 911]** *Starvation*: Goldhaven is experiencing violent food riots due to famine!
+- **[Tick 911]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 911]** *Starvation*: Mistmoor is experiencing violent food riots due to famine!
+- **[Tick 911]** *Starvation*: Highvale is experiencing violent food riots due to famine!
+- **[Tick 912]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 183625 citizens.
+- **[Tick 912]** *Construction*: Eldermere built a new internal Mill sub-structure.
+- **[Tick 912]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 44 citizens.
+- **[Tick 912]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 16853 citizens.
+- **[Tick 912]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 912]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 9360 citizens.
+- **[Tick 912]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 912]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 9307 citizens.
+- **[Tick 912]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 912]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 9364 citizens.
+- **[Tick 912]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 9322 citizens.
+- **[Tick 913]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 165262 citizens.
+- **[Tick 913]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 913]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 39 citizens.
+- **[Tick 913]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 15167 citizens.
+- **[Tick 913]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 913]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 8423 citizens.
+- **[Tick 913]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 913]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 8376 citizens.
+- **[Tick 913]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 913]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 8427 citizens.
+- **[Tick 913]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 8389 citizens.
+- **[Tick 914]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 148736 citizens.
+- **[Tick 914]** *Construction*: Eldermere built a new internal Apothecary sub-structure.
+- **[Tick 914]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 35 citizens.
+- **[Tick 914]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 13651 citizens.
+- **[Tick 914]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 914]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 7581 citizens.
+- **[Tick 914]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 914]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 7538 citizens.
+- **[Tick 914]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 914]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 7584 citizens.
+- **[Tick 914]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 7551 citizens.
+- **[Tick 915]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 133862 citizens.
+- **[Tick 915]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 915]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 32 citizens.
+- **[Tick 915]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 12285 citizens.
+- **[Tick 915]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 915]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 6822 citizens.
+- **[Tick 915]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 915]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 6784 citizens.
+- **[Tick 915]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 915]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 6825 citizens.
+- **[Tick 915]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 6795 citizens.
+- **[Tick 916]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 120476 citizens.
+- **[Tick 916]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 29 citizens.
+- **[Tick 916]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 11057 citizens.
+- **[Tick 916]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 916]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 6139 citizens.
+- **[Tick 916]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 916]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 6105 citizens.
+- **[Tick 916]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 916]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 6142 citizens.
+- **[Tick 916]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 6116 citizens.
+- **[Tick 917]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 108428 citizens.
+- **[Tick 917]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 917]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 26 citizens.
+- **[Tick 917]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 9951 citizens.
+- **[Tick 917]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 917]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 5525 citizens.
+- **[Tick 917]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 917]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 5494 citizens.
+- **[Tick 917]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 917]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 5527 citizens.
+- **[Tick 917]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 5504 citizens.
+- **[Tick 918]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 918]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 97586 citizens.
+- **[Tick 918]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 23 citizens.
+- **[Tick 918]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 8956 citizens.
+- **[Tick 918]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 918]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 4972 citizens.
+- **[Tick 918]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 918]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 4944 citizens.
+- **[Tick 918]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 918]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 4974 citizens.
+- **[Tick 918]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 4954 citizens.
+- **[Tick 919]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 87827 citizens.
+- **[Tick 919]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 21 citizens.
+- **[Tick 919]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 8061 citizens.
+- **[Tick 919]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 919]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 4474 citizens.
+- **[Tick 919]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 919]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 4449 citizens.
+- **[Tick 919]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 919]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 4476 citizens.
+- **[Tick 919]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 4459 citizens.
+- **[Tick 920]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Eldermere Hub-Village (sec -4).
+- **[Tick 920]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 79835 citizens.
+- **[Tick 920]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 19 citizens.
+- **[Tick 920]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 7327 citizens.
+- **[Tick 920]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 920]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 4066 citizens.
+- **[Tick 920]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 920]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 4044 citizens.
+- **[Tick 920]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 920]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 4068 citizens.
+- **[Tick 920]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 4053 citizens.
+- **[Tick 921]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 71851 citizens.
+- **[Tick 921]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 17 citizens.
+- **[Tick 921]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 6594 citizens.
+- **[Tick 921]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 921]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 3659 citizens.
+- **[Tick 921]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 921]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 3639 citizens.
+- **[Tick 921]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 921]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 3661 citizens.
+- **[Tick 921]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 3647 citizens.
+- **[Tick 922]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 64666 citizens.
+- **[Tick 922]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 15 citizens.
+- **[Tick 922]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 5935 citizens.
+- **[Tick 922]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 922]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 3293 citizens.
+- **[Tick 922]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 922]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 3274 citizens.
+- **[Tick 922]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 922]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 3294 citizens.
+- **[Tick 922]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 3283 citizens.
+- **[Tick 923]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 58200 citizens.
+- **[Tick 923]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 923]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 14 citizens.
+- **[Tick 923]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 5341 citizens.
+- **[Tick 923]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 923]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 2963 citizens.
+- **[Tick 923]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 923]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 2946 citizens.
+- **[Tick 923]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 923]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 2965 citizens.
+- **[Tick 923]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 2954 citizens.
+- **[Tick 924]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 52380 citizens.
+- **[Tick 924]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 12 citizens.
+- **[Tick 924]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 4807 citizens.
+- **[Tick 924]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 924]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 2666 citizens.
+- **[Tick 924]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 924]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 2651 citizens.
+- **[Tick 924]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 924]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 2668 citizens.
+- **[Tick 924]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 2659 citizens.
+- **[Tick 925]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 47142 citizens.
+- **[Tick 925]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 11 citizens.
+- **[Tick 925]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 4327 citizens.
+- **[Tick 925]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 925]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 2399 citizens.
+- **[Tick 925]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 925]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 2386 citizens.
+- **[Tick 925]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 925]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 2400 citizens.
+- **[Tick 925]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 2393 citizens.
+- **[Tick 926]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 42427 citizens.
+- **[Tick 926]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 10 citizens.
+- **[Tick 926]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 3894 citizens.
+- **[Tick 926]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 926]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 2159 citizens.
+- **[Tick 926]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 926]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 2147 citizens.
+- **[Tick 926]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 926]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 2160 citizens.
+- **[Tick 926]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 2154 citizens.
+- **[Tick 927]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 38185 citizens.
+- **[Tick 927]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 927]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 9 citizens.
+- **[Tick 927]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 3504 citizens.
+- **[Tick 927]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 927]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 1942 citizens.
+- **[Tick 927]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 927]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 1931 citizens.
+- **[Tick 927]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 927]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 1943 citizens.
+- **[Tick 927]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 1938 citizens.
+- **[Tick 928]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 34366 citizens.
+- **[Tick 928]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 8 citizens.
+- **[Tick 928]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 3154 citizens.
+- **[Tick 928]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 928]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 1748 citizens.
+- **[Tick 928]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 928]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 1738 citizens.
+- **[Tick 928]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 928]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 1748 citizens.
+- **[Tick 928]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 1745 citizens.
+- **[Tick 929]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 30930 citizens.
+- **[Tick 929]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 929]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 7 citizens.
+- **[Tick 929]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 2839 citizens.
+- **[Tick 929]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 929]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 1572 citizens.
+- **[Tick 929]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 929]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 1564 citizens.
+- **[Tick 929]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 929]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 1573 citizens.
+- **[Tick 929]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 1570 citizens.
+- **[Tick 930]** *Resources*: A rare deposit of Star-Herb has been discovered at (-20, 45)!
+- **[Tick 930]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Eldermere (sec -4).
+- **[Tick 930]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 28115 citizens.
+- **[Tick 930]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 7 citizens.
+- **[Tick 930]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 2580 citizens.
+- **[Tick 930]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 930]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 1429 citizens.
+- **[Tick 930]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 930]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 1421 citizens.
+- **[Tick 930]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 930]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 1429 citizens.
+- **[Tick 930]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 1427 citizens.
+- **[Tick 931]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 25303 citizens.
+- **[Tick 931]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 6 citizens.
+- **[Tick 931]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 2322 citizens.
+- **[Tick 931]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 931]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 1285 citizens.
+- **[Tick 931]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 931]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 1278 citizens.
+- **[Tick 931]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 931]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 1286 citizens.
+- **[Tick 931]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 1285 citizens.
+- **[Tick 932]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 22773 citizens.
+- **[Tick 932]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 932]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 5 citizens.
+- **[Tick 932]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 2090 citizens.
+- **[Tick 932]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 932]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 1156 citizens.
+- **[Tick 932]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 932]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 1150 citizens.
+- **[Tick 932]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 932]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 1157 citizens.
+- **[Tick 932]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 1156 citizens.
+- **[Tick 933]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 20496 citizens.
+- **[Tick 933]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 5 citizens.
+- **[Tick 933]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 1881 citizens.
+- **[Tick 933]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 933]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 1040 citizens.
+- **[Tick 933]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 933]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 1034 citizens.
+- **[Tick 933]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 933]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 1041 citizens.
+- **[Tick 933]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 1040 citizens.
+- **[Tick 934]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 934]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 18446 citizens.
+- **[Tick 934]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 4 citizens.
+- **[Tick 934]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 1693 citizens.
+- **[Tick 934]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 934]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 936 citizens.
+- **[Tick 934]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 934]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 930 citizens.
+- **[Tick 934]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 934]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 936 citizens.
+- **[Tick 934]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 936 citizens.
+- **[Tick 935]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 16602 citizens.
+- **[Tick 935]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 935]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 4 citizens.
+- **[Tick 935]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 1524 citizens.
+- **[Tick 935]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 935]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 842 citizens.
+- **[Tick 935]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 935]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 837 citizens.
+- **[Tick 935]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 935]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 842 citizens.
+- **[Tick 935]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 843 citizens.
+- **[Tick 936]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 14941 citizens.
+- **[Tick 936]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 936]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 4 citizens.
+- **[Tick 936]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 1371 citizens.
+- **[Tick 936]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 936]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 757 citizens.
+- **[Tick 936]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 936]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 753 citizens.
+- **[Tick 936]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 936]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 757 citizens.
+- **[Tick 936]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 759 citizens.
+- **[Tick 937]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 13447 citizens.
+- **[Tick 937]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 3 citizens.
+- **[Tick 937]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 1234 citizens.
+- **[Tick 937]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 937]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 681 citizens.
+- **[Tick 937]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 937]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 677 citizens.
+- **[Tick 937]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 937]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 681 citizens.
+- **[Tick 937]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 683 citizens.
+- **[Tick 938]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 12103 citizens.
+- **[Tick 938]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 3 citizens.
+- **[Tick 938]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 1111 citizens.
+- **[Tick 938]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 938]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 612 citizens.
+- **[Tick 938]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 938]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 609 citizens.
+- **[Tick 938]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 938]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 613 citizens.
+- **[Tick 938]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 614 citizens.
+- **[Tick 939]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 939]** *Starvation*: Eldermere has collapsed into total anarchy! Starvation claims 10892 citizens.
+- **[Tick 939]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 939]** *Starvation*: Eldermere Hub-Village has collapsed into total anarchy! Starvation claims 3 citizens.
+- **[Tick 939]** *Starvation*: Rivenshire has collapsed into total anarchy! Starvation claims 1000 citizens.
+- **[Tick 939]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 939]** *Starvation*: Stonewatch has collapsed into total anarchy! Starvation claims 551 citizens.
+- **[Tick 939]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 939]** *Starvation*: Goldhaven has collapsed into total anarchy! Starvation claims 547 citizens.
+- **[Tick 939]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 939]** *Starvation*: Mistmoor has collapsed into total anarchy! Starvation claims 551 citizens.
+- **[Tick 939]** *Starvation*: Highvale has collapsed into total anarchy! Starvation claims 553 citizens.
+
+---
+
+## Run Date: 2026-06-21 17:02:58 (Tick: 939 -> 969)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_170251`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 1
+- **Active Wars:** 1
+- **Weather Storms:** 3
+- **Active Entities:** 4
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 940]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Eldermere Hub-Village (sec -4).
+- **[Tick 940]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 940]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 940]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 940]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 941]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 941]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 941]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 941]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 941]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 942]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 942]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 942]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 943]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 943]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 943]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 944]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 944]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 944]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 945]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 945]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 945]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 946]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 946]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 946]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 947]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 947]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 947]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 948]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 948]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 948]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 949]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 949]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 949]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 949]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 950]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Eldermere (sec -4).
+- **[Tick 950]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 950]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 950]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 951]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 951]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 951]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 952]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 952]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 952]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 953]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 953]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 953]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 953]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 953]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 954]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 954]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 954]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 955]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 955]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 955]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 956]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 956]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 956]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 957]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 957]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 957]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 958]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 958]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 958]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 959]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 959]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 959]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 960]** *Resources*: A rare deposit of Star-Herb has been discovered at (75, 25)!
+- **[Tick 960]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Stonewatch (sec -4).
+- **[Tick 960]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 960]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 960]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 961]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 961]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 961]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 961]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 962]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 962]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 962]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 963]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 963]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 963]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 964]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 964]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 964]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 964]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 965]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 965]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 965]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 966]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 966]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 966]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 967]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 967]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 967]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 967]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 968]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 968]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 968]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 969]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 969]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 969]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+
+---
+
+## Run Date: 2026-06-21 17:50:11 (Tick: 969 -> 999)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_175003`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 1
+- **Active Wars:** 1
+- **Weather Storms:** 1
+- **Active Entities:** 3
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 970]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Stonewatch (sec -4).
+- **[Tick 970]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 970]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 970]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 971]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 971]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 971]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 972]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 972]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 972]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 973]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 973]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 973]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 974]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 974]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 974]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 975]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 975]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 975]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 976]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 976]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 976]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 977]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 977]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 977]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 978]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 978]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 978]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 979]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 979]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 979]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 980]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Mistmoor (sec -4).
+- **[Tick 980]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 980]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 980]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 981]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 981]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 981]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 982]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 982]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 982]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 983]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 983]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 983]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 984]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 984]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 984]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 985]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 985]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 985]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 986]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 986]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 986]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 987]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 987]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 987]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 988]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 988]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 988]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 988]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 989]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 989]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 989]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 989]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 990]** *Resources*: A rare deposit of Mithril has been discovered at (-9, 25)!
+- **[Tick 990]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Eldermere (sec -4).
+- **[Tick 990]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 990]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 990]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 991]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 991]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 991]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 992]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 992]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 992]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 993]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 993]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 993]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 994]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 994]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 994]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 995]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 995]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 995]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 996]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 996]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 996]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 997]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 997]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 997]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 998]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 998]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 998]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 999]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 999]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 999]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 999]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+
+---
+
+## Run Date: 2026-06-21 18:00:09 (Tick: 999 -> 1029)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_180002`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 1
+- **Active Wars:** 1
+- **Weather Storms:** 5
+- **Active Entities:** 2
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 1000]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Stonewatch (sec -4).
+- **[Tick 1000]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1000]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1000]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1001]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1001]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1001]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1002]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1002]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1002]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1003]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1003]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1003]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1004]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 1004]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1004]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1004]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1004]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1005]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1005]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1005]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1006]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1006]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1006]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1007]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1007]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1007]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1008]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1008]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1008]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1009]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1009]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1009]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1010]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Stonewatch (sec -4).
+- **[Tick 1010]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1010]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1010]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1011]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1011]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1011]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1012]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1012]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1012]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1012]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1013]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1013]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1013]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1014]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1014]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1014]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1015]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1015]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1015]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1016]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1016]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1016]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1017]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1017]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1017]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1018]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1018]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1018]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1019]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1019]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1019]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1020]** *Resources*: A rare deposit of Mithril has been discovered at (4, 16)!
+- **[Tick 1020]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Eldermere Hub-Village (sec -4).
+- **[Tick 1020]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1020]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1020]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1020]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1021]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1021]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1021]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1022]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1022]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1022]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1023]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1023]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1023]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1024]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1024]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1024]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1025]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1025]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1025]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1026]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1026]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1026]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1027]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 1027]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1027]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1027]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1028]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1028]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1028]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1029]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1029]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1029]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+
+---
+
+## Run Date: 2026-06-21 18:10:09 (Tick: 1029 -> 1059)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_181002`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 1
+- **Active Wars:** 1
+- **Weather Storms:** 2
+- **Active Entities:** 3
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 1030]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Eldermere Hub-Village (sec -4).
+- **[Tick 1030]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1030]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1030]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1031]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1031]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1031]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1032]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1032]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1032]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1032]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1033]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1033]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1033]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1034]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1034]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1034]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1035]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1035]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1035]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1036]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1036]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1036]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1036]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1037]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1037]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1037]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1038]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1038]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1038]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1039]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1039]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1039]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1040]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Eldermere Hub-Village (sec -4).
+- **[Tick 1040]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1040]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1040]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1041]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1041]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1041]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1042]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1042]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1042]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1043]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1043]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1043]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1044]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1044]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1044]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1045]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 1045]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1045]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1045]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1046]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 1046]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1046]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1046]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1047]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1047]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1047]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1048]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1048]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1048]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1049]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 1049]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1049]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1049]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1050]** *Resources*: A rare deposit of Mithril has been discovered at (97, -11)!
+- **[Tick 1050]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Mistmoor (sec -4).
+- **[Tick 1050]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1050]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1050]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1051]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1051]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1051]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1052]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1052]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1052]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1052]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1053]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1053]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1053]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1054]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1054]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1054]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1054]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1055]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1055]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1055]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1056]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1056]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1056]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1056]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1057]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1057]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1057]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1058]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1058]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1058]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1058]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1059]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1059]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1059]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1059]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+
+---
+
+## Run Date: 2026-06-21 18:20:08 (Tick: 1059 -> 1089)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_182001`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 1
+- **Active Wars:** 1
+- **Weather Storms:** 3
+- **Active Entities:** 3
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 1060]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Eldermere Hub-Village (sec -4).
+- **[Tick 1060]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1060]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1060]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1061]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1061]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1061]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1062]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1062]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1062]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1063]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1063]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1063]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1063]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1064]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1064]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1064]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1065]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1065]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1065]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1066]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 1066]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1066]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1066]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1067]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1067]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1067]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1068]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1068]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1068]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1069]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1069]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1069]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1070]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Mistmoor (sec -4).
+- **[Tick 1070]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1070]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1070]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1071]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1071]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1071]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1071]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1072]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1072]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1072]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1072]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1073]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1073]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1073]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1074]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1074]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1074]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1075]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1075]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1075]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1076]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1076]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1076]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1077]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 1077]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1077]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1077]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1078]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 1078]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1078]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1078]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1079]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1079]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1079]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1080]** *Resources*: A rare deposit of Mithril has been discovered at (11, -9)!
+- **[Tick 1080]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Eldermere (sec -4).
+- **[Tick 1080]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1080]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1080]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1081]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1081]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1081]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1081]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1082]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1082]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1082]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1082]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1083]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1083]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1083]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1083]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1084]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1084]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1084]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1085]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1085]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1085]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1086]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1086]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1086]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1087]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1087]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1087]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1088]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1088]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1088]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1089]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1089]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1089]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+
+---
+
+## Run Date: 2026-06-21 18:30:09 (Tick: 1089 -> 1119)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_183002`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 1
+- **Active Wars:** 1
+- **Weather Storms:** 1
+- **Active Entities:** 4
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 1090]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Eldermere (sec -4).
+- **[Tick 1090]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1090]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1090]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1091]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1091]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1091]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1092]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1092]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1092]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1092]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1093]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1093]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1093]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1094]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1094]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1094]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1094]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1095]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 1095]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1095]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1095]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1096]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1096]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1096]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1097]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1097]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1097]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1098]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1098]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1098]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1098]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1099]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1099]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1099]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1100]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Eldermere Hub-Village (sec -4).
+- **[Tick 1100]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1100]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1100]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1101]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1101]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1101]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1101]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1102]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1102]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1102]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1103]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1103]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1103]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1104]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1104]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1104]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1105]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1105]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1105]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1106]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1106]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1106]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1107]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1107]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1107]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1108]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1108]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1108]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1109]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 1109]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1109]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1109]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1109]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1110]** *Resources*: A rare deposit of Mithril has been discovered at (19, -3)!
+- **[Tick 1110]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Eldermere (sec -4).
+- **[Tick 1110]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1110]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1110]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1111]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 1111]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1111]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1111]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1112]** *Mandate*: A crusade of Null Zealots has mobilized!
+- **[Tick 1112]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1112]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1112]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1113]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1113]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1113]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1114]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1114]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1114]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1115]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1115]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1115]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1116]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1116]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1116]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1117]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1117]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1117]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1118]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1118]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1118]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1119]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1119]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1119]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+
+---
+
+## Run Date: 2026-06-21 18:40:09 (Tick: 1119 -> 1149)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_184002`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 1
+- **Active Wars:** 1
+- **Weather Storms:** 5
+- **Active Entities:** 1
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 1120]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Stonewatch (sec -4).
+- **[Tick 1120]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1120]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1120]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1121]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1121]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1121]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1121]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1122]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1122]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1122]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1123]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1123]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1123]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1124]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1124]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1124]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1125]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1125]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1125]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1126]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1126]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1126]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1126]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1127]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1127]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1127]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1128]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1128]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1128]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1129]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1129]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1129]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1130]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Stonewatch (sec -4).
+- **[Tick 1130]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1130]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1130]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1130]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1131]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1131]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1131]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1132]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1132]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1132]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1133]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1133]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1133]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1134]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1134]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1134]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1135]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1135]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1135]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1136]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1136]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1136]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1137]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1137]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1137]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1138]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1138]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1138]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1139]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1139]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1139]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1139]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1140]** *Resources*: A rare deposit of Mithril has been discovered at (67, 30)!
+- **[Tick 1140]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Eldermere (sec -4).
+- **[Tick 1140]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1140]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1140]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1141]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1141]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1141]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1142]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1142]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1142]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1142]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1143]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1143]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1143]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1144]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1144]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1144]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1145]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1145]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1145]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1146]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1146]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1146]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1147]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1147]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1147]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1148]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1148]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1148]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1148]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1149]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1149]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1149]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+
+---
+
+## Run Date: 2026-06-21 18:43:11 (Tick: 1149 -> 1179)
+- **Backup Folder:** `backups/autopilot_backups/run_20260621_184303`
+- **Total Settlements:** 7
+- **Dead Settlements Found:** 0
+- **Starving Settlements Found:** 0
+- **Low Security Settlements Found:** 1
+- **Active Wars:** 1
+- **Weather Storms:** 2
+- **Active Entities:** 0
+
+### Actions & Patches Applied:
+- Pure Diagnostic Mode: No database patches/resources injected. Simulation is allowed to run naturally.
+
+### Chronicle of Simulation Events:
+- **[Tick 1150]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 1150]** *Chaos*: A wild Chaos Creature spawned on a Chaos Path!
+- **[Tick 1150]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Stonewatch (sec -4).
+- **[Tick 1150]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1150]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1150]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1151]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1151]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1151]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1151]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1152]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1152]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1152]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1153]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1153]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1153]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1154]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1154]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1154]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1154]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1155]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1155]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1155]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1156]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1156]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1156]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1157]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1157]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1157]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1158]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1158]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1158]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1159]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1159]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1159]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1160]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Stonewatch (sec -4).
+- **[Tick 1160]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1160]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1160]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1161]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1161]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1161]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1161]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1162]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1162]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1162]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1163]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1163]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1163]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1163]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1164]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1164]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1164]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1165]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1165]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1165]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1165]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1166]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1166]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1166]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1167]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1167]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1167]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1168]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1168]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1168]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1168]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1169]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1169]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1169]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1170]** *Resources*: A rare deposit of Star-Herb has been discovered at (127, -16)!
+- **[Tick 1170]** *Paragon*: Maren Ironblade (Warrior) of Rivenshire raided Eldermere Hub-Village (sec -4).
+- **[Tick 1170]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1170]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1170]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1171]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1171]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1171]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1172]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1172]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1172]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1172]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1173]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1173]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1173]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1174]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1174]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1174]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1175]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1175]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1175]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1176]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1176]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1176]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1177]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1177]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1177]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1178]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1178]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1178]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1178]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1179]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1179]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+- **[Tick 1179]** *Security*: Guards deserted and security decayed due to lack of upkeep.
+
+---
+

@@ -1,0 +1,180 @@
+import sqlite3
+import json
+from core_engine.engine import DB_PATH, unpack_ecology
+from ai_director.oracle import ContextOracle
+
+
+class NPCDirector:
+    def __init__(self, db_path=DB_PATH):
+        self.db_path = db_path
+
+    def get_npc_motivations(self):
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+
+        # Fetch paragons and their associated settlement/hex data
+        cursor.execute("""
+            SELECT p.id, p.name, p.descriptor, p.settlement_id,
+                   s.faction_id, s.name as s_name, s.wealth, s.security_points,
+                   g.pack_ecology, g.chaos_domain, g.q, g.r
+            FROM paragons p
+            JOIN settlements s ON p.settlement_id = s.id
+            JOIN global_hexes g ON s.global_hex_id = g.id
+        """)
+        paragons = cursor.fetchall()
+
+        npc_table = []
+        for p_id, p_name, descriptor, s_id, f_id, s_name, wealth, security, pack_ecology, chaos_domain, q, r in paragons:
+            p1_chaos, _, _, _ = unpack_ecology(pack_ecology)
+
+            base_motivation = f"{descriptor} driven by personal goals."
+
+            # Scale motivation by chaos index
+            chaos_factor = p1_chaos / 255.0
+
+            scaled_motivation = base_motivation
+            if chaos_factor > 0.8:
+                scaled_motivation = f"Driven to madness and paranoia by intense chaos from {chaos_domain}."
+            elif chaos_factor > 0.5:
+                scaled_motivation = f"Highly stressed and suspicious due to rising chaos ({chaos_domain})."
+            elif wealth < 100:
+                scaled_motivation = f"Desperate for resources and wealth in {s_name}."
+            elif security < 50:
+                scaled_motivation = f"Fearful for the safety of {s_name}."
+
+            npc_table.append({
+                "paragon_id": p_id,
+                "name": p_name,
+                "descriptor": descriptor,
+                "settlement": s_name,
+                "faction_id": f_id,
+                "local_chaos_index": p1_chaos,
+                "chaos_domain": chaos_domain,
+                "motivation": scaled_motivation
+            })
+
+        conn.close()
+        return npc_table
+
+    def get_scaled_faction_trust(self):
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+
+        # Fetch faction relations
+        cursor.execute("SELECT faction_a_id, faction_b_id, trust_level, status FROM faction_relations")
+        relations = cursor.fetchall()
+
+        # Calculate average chaos for each faction's settlements
+        cursor.execute("""
+            SELECT s.faction_id, AVG(g.pack_ecology)
+            FROM settlements s
+            JOIN global_hexes g ON s.global_hex_id = g.id
+            GROUP BY s.faction_id
+        """)
+        faction_chaos_raw = cursor.fetchall()
+
+        faction_chaos = {}
+        for f_id, avg_ecology in faction_chaos_raw:
+            p1_chaos, _, _, _ = unpack_ecology(int(avg_ecology))
+            faction_chaos[f_id] = p1_chaos
+
+        trust_table = []
+        for fa, fb, base_trust, status in relations:
+            # Average chaos between the two factions
+            chaos_a = faction_chaos.get(fa, 0)
+            chaos_b = faction_chaos.get(fb, 0)
+            avg_chaos = (chaos_a + chaos_b) / 2.0
+
+            # Chaos breeds paranoia, degrading trust
+            # Every 10 points of chaos reduces trust by 1
+            chaos_penalty = int(avg_chaos / 10.0)
+            scaled_trust = max(-100, min(100, base_trust - chaos_penalty))
+
+            trust_table.append({
+                "faction_a_id": fa,
+                "faction_b_id": fb,
+                "base_trust": base_trust,
+                "status": status,
+                "avg_chaos_exposure": avg_chaos,
+                "scaled_trust": scaled_trust,
+                "trust_penalty_from_chaos": chaos_penalty
+            })
+
+        conn.close()
+        return trust_table
+
+
+class NarrativeStageManager:
+    def __init__(self, db_path=DB_PATH, player_pos=(0, 0), radius=2):
+        self.db_path = db_path
+        self.player_hex = player_pos
+        self.radius = radius
+        self.oracle = ContextOracle(db_path=self.db_path)
+
+    def update_stage(self):
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        
+        # 1. Clear NPCs outside of radius
+        cursor.execute("""
+            SELECT a.id, g.q, g.r 
+            FROM active_stages a
+            JOIN global_hexes g ON a.global_hex_id = g.id
+        """)
+        active_coords = cursor.fetchall()
+        
+        pq, pr = self.player_hex
+        for stage_id, gq, gr in active_coords:
+            dist = (abs(pq - gq) + abs(pq + pr - gq - gr) + abs(pr - gr)) // 2
+            if dist > self.radius:
+                cursor.execute("DELETE FROM active_stages WHERE id=?", (stage_id,))
+                
+        # 2. Query settlements within radius
+        cursor.execute("""
+            SELECT s.id, g.id, g.q, g.r, s.name, s.wealth, s.security_points
+            FROM settlements s
+            JOIN global_hexes g ON s.global_hex_id = g.id
+        """)
+        all_settlements = cursor.fetchall()
+        
+        for s_id, g_id, gq, gr, s_name, wealth, security in all_settlements:
+            dist = (abs(pq - gq) + abs(pq + pr - gq - gr) + abs(pr - gr)) // 2
+            if dist <= self.radius:
+                # 3. If NPCs don't exist for this hex, generate them
+                cursor.execute("SELECT id, npcs_json, conflict_signal FROM active_stages WHERE settlement_id=?", (s_id,))
+                stage = cursor.fetchone()
+                
+                if not stage:
+                    # Get Oracle Context
+                    context = self.oracle.get_hex_context(gq, gr)
+                    
+                    # Generate deterministic NPCs based on conditions
+                    npcs = []
+                    if security < 20:
+                        npcs.append({"role": "Crime Leader", "status": "Active"})
+                        npcs.append({"role": "Informant", "status": "Scared"})
+                    elif wealth > 80:
+                        npcs.append({"role": "Merchant Prince", "status": "Greedy"})
+                        npcs.append({"role": "Thief", "status": "Plotting"})
+                    else:
+                        npcs.append({"role": "Local Guard", "status": "Bored"})
+                        npcs.append({"role": "Tavern Keeper", "status": "Gossip"})
+                        
+                    cursor.execute("INSERT INTO active_stages (settlement_id, global_hex_id, npcs_json, last_updated_tick) VALUES (?, ?, ?, ?)", 
+                                   (s_id, g_id, json.dumps(npcs), 0))
+                else:
+                    # 4. Process ConflictSignal if pushed by GlobalEngine
+                    stage_id, npcs_json, conflict_signal = stage
+                    if conflict_signal:
+                        npcs = json.loads(npcs_json)
+                        if conflict_signal == 'Anarchy':
+                            npcs.append({"role": "Rioter", "status": "Angry"})
+                        elif conflict_signal == 'Starvation':
+                            npcs.append({"role": "Desperate Beggar", "status": "Dying"})
+                            
+                        # Clear signal after processing narrative
+                        cursor.execute("UPDATE active_stages SET npcs_json=?, conflict_signal=NULL WHERE id=?", (json.dumps(npcs), stage_id))
+                        print(f"[Narrative Bubble] Handled {conflict_signal} at {s_name}!")
+                        
+        conn.commit()
+        conn.close()

@@ -1,0 +1,540 @@
+{
+  "fariType": "character",
+  "id": "2fa529e8-d702-4682-9ea6-7aa712d6d358",
+  "lastUpdated": 1660825666,
+  "name": "",
+  "pages": [
+    {
+      "id": "1f936e3c-19b1-4564-871e-38752fbc1d7d",
+      "label": "CHARACTER",
+      "rows": [
+        {
+          "columns": [
+            {
+              "sections": [
+                {
+                  "id": "5daed53c-820f-40de-8a32-a2fa97166b3b",
+                  "label": "DETAILS\n",
+                  "blocks": [
+                    {
+                      "id": "c2f89eee-c163-41d3-a365-32801e4d8804",
+                      "label": "NAME",
+                      "type": "Text",
+                      "value": "",
+                      "meta": {}
+                    },
+                    {
+                      "id": "b5a8c69f-8826-4560-b05a-5f148c763fb5",
+                      "label": "GENDER",
+                      "type": "Text",
+                      "value": "",
+                      "meta": {}
+                    },
+                    {
+                      "id": "6de62381-2d4b-41ed-acdc-85114bada367",
+                      "label": "LOOKS",
+                      "type": "Text",
+                      "value": "",
+                      "meta": {}
+                    },
+                    {
+                      "id": "3a950c9c-d2d8-45d0-89c9-b713b63fc0f2",
+                      "label": "PERSONALITY",
+                      "type": "Text",
+                      "value": "",
+                      "meta": {}
+                    }
+                  ]
+                },
+                {
+                  "id": "a9f705a4-0c29-4ed8-b31a-a0eb1dd49ceb",
+                  "label": "ATRIBUTES",
+                  "blocks": [
+                    {
+                      "id": "be65bf5b-d9f9-4501-8086-9c040f58b7cb",
+                      "label": "BODY",
+                      "type": "Skill",
+                      "value": "0",
+                      "meta": { "commands": ["1d6"], "width": 1 }
+                    },
+                    {
+                      "id": "a3d3e3d2-34f1-4121-9d85-2c8fe27d3c8d",
+                      "label": "MIND",
+                      "type": "Skill",
+                      "value": "0",
+                      "meta": { "commands": ["1d6"], "width": 1 }
+                    },
+                    {
+                      "id": "52821831-7261-4ecf-99fc-9736417b2a28",
+                      "label": "HEART",
+                      "type": "Skill",
+                      "value": "0",
+                      "meta": { "commands": ["1d6"], "width": 1 }
+                    },
+                    {
+                      "id": "6a5392da-e039-4beb-8015-b4584c9d5991",
+                      "label": "+ND",
+                      "type": "DicePool",
+                      "value": "",
+                      "meta": { "commands": ["1d6"] }
+                    }
+                  ]
+                },
+                {
+                  "id": "c9a972cc-bc43-400d-bafc-18734b085db3",
+                  "blocks": [
+                    {
+                      "id": "90186e53-16a7-4fcf-9666-1eb49609d88a",
+                      "type": "Text",
+                      "meta": { "checked": false },
+                      "label": "CONCEPT",
+                      "value": ""
+                    },
+                    {
+                      "id": "853ca8a7-385c-40e5-b2dd-8c1688777c4d",
+                      "type": "Text",
+                      "meta": { "checked": false },
+                      "label": "TALENT",
+                      "value": ""
+                    },
+                    {
+                      "id": "5205716c-3719-43e8-ab43-7cb3cc0c3e4a",
+                      "type": "Text",
+                      "meta": { "checked": false },
+                      "label": "MOTIVATION",
+                      "value": ""
+                    },
+                    {
+                      "id": "dcf8662a-27e0-4e2d-bb2f-2d4045589d99",
+                      "type": "Text",
+                      "meta": { "checked": false },
+                      "label": "RELATIONSHIP",
+                      "value": ""
+                    },
+                    {
+                      "id": "c3a98649-cb4f-448a-be60-e1f54c3019f9",
+                      "type": "Text",
+                      "meta": { "checked": false },
+                      "label": "TROUBLE",
+                      "value": ""
+                    }
+                  ],
+                  "label": "TAGS",
+                  "visibleOnCard": true
+                },
+                {
+                  "id": "0abf9573-50a5-4f73-8381-e9ba0143b20d",
+                  "blocks": [
+                    {
+                      "id": "6fcf9bb6-04f5-41a0-bf06-44b5735ac887",
+                      "type": "Text",
+                      "meta": { "checked": false },
+                      "label": "TAG #1",
+                      "value": ""
+                    },
+                    {
+                      "id": "84caa6c5-422a-4259-87bf-67a7a6a4be11",
+                      "type": "Text",
+                      "meta": { "checked": false },
+                      "label": "TAG #2",
+                      "value": ""
+                    }
+                  ],
+                  "label": "EXTRA TAG"
+                },
+                {
+                  "id": "daf076d1-dba2-495f-acac-d1af503ce06c",
+                  "blocks": [
+                    {
+                      "id": "5be8b3f2-8829-430b-b47f-1a325d6776cb",
+                      "type": "Text",
+                      "meta": {},
+                      "label": "NOTES",
+                      "value": ""
+                    }
+                  ],
+                  "label": "OTHER"
+                },
+                {
+                  "id": "b3b3db06-7008-4383-88bf-4ee62253b236",
+                  "blocks": [
+                    {
+                      "id": "8d9724df-4638-46d2-a0fb-7df7b2b3b90f",
+                      "label": "La esquina del rol for Primal Quest Essential™ by Diogo Nogueira",
+                      "type": "Link",
+                      "meta": { "hasDisplayName": true },
+                      "value": "https://diogo-old-skull.itch.io/primal-quest-essentials"
+                    }
+                  ],
+                  "label": "CREDITS"
+                }
+              ]
+            },
+            {
+              "sections": [
+                {
+                  "id": "8b568e0c-7d24-475d-8d23-6e4dc23984b7",
+                  "blocks": [
+                    {
+                      "id": "c6ce0905-f7d6-4151-bd3e-d011a56e9125",
+                      "label": "XP",
+                      "type": "PointCounter",
+                      "meta": { "isMainPointCounter": false, "width": 0.5 },
+                      "value": "0"
+                    },
+                    {
+                      "id": "723e4dbe-d2a6-428c-95a6-5105ba9169f0",
+                      "label": "VITALITY",
+                      "type": "PointCounter",
+                      "meta": {
+                        "max": "0",
+                        "isMainPointCounter": false,
+                        "width": 0.5
+                      },
+                      "value": "0"
+                    },
+                    {
+                      "id": "7c3bd170-7507-451f-b52b-262884f50d23",
+                      "label": "DEFENSE",
+                      "type": "PointCounter",
+                      "meta": { "isMainPointCounter": false },
+                      "value": "0"
+                    },
+                    {
+                      "id": "959b003b-5541-4f4a-8f96-c5f262277d86",
+                      "label": "BOONS",
+                      "type": "PointCounter",
+                      "meta": { "isMainPointCounter": false, "width": 0.5 },
+                      "value": "0"
+                    },
+                    {
+                      "id": "6680d7f5-9a3a-44b3-9046-462e88c9a29f",
+                      "label": "SETBACKS",
+                      "type": "PointCounter",
+                      "meta": { "isMainPointCounter": false, "width": 0.5 },
+                      "value": "0"
+                    }
+                  ],
+                  "label": "OTHER STATS"
+                },
+                {
+                  "id": "1df916bb-49fd-4fd9-bc8c-9b214acfb208",
+                  "label": "FOOD &amp; WATER",
+                  "blocks": [
+                    {
+                      "id": "8693fec1-f2ab-4044-9932-faf4619907a5",
+                      "label": "FOOD",
+                      "type": "Numeric",
+                      "value": "0",
+                      "meta": { "width": 0.5 }
+                    },
+                    {
+                      "id": "9e0de90f-114e-486d-92f1-bbc060740d0f",
+                      "label": "WATER",
+                      "type": "Numeric",
+                      "value": "0",
+                      "meta": { "width": 0.5 }
+                    }
+                  ]
+                },
+                {
+                  "id": "e02b5ba8-0e6f-4848-b092-d38034502b2b",
+                  "label": "WEAPONS",
+                  "blocks": [
+                    {
+                      "id": "f6aecf25-609a-4f21-ae0c-3649676dcb84",
+                      "label": "WEAPON",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "checked": false }
+                    },
+                    {
+                      "id": "78edf224-8bdd-4237-ac45-b12233cabe34",
+                      "label": "RANGE",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "width": 0.5 }
+                    },
+                    {
+                      "id": "424d5fef-cb35-45e8-bb09-c26d18f765bd",
+                      "label": "DMG",
+                      "type": "Numeric",
+                      "value": "",
+                      "meta": { "width": 0.5 }
+                    },
+                    {
+                      "id": "362615ae-a1ee-4e1f-a31e-02f0ab94867b",
+                      "label": "",
+                      "type": "Separator",
+                      "meta": { "hasLabel": false, "hideDivider": false },
+                      "value": ""
+                    },
+                    {
+                      "id": "ff79db6e-7f52-4243-9f8e-4c6e7454d805",
+                      "label": "WEAPON",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "checked": false }
+                    },
+                    {
+                      "id": "1f6ea396-94cb-4e44-ad97-dd6e455ba2f5",
+                      "label": "RANGE",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "width": 0.5 }
+                    },
+                    {
+                      "id": "ee51bdd4-e756-42b7-93de-7c5ccf859ade",
+                      "label": "DMG",
+                      "type": "Numeric",
+                      "value": "",
+                      "meta": { "width": 0.5 }
+                    },
+                    {
+                      "id": "43c71b2f-9b52-4aec-a143-15fa3ea6bc94",
+                      "label": "",
+                      "type": "Separator",
+                      "meta": { "hasLabel": false },
+                      "value": ""
+                    },
+                    {
+                      "id": "15dec92d-1821-41ba-b0e6-f8e5264078d6",
+                      "label": "WEAPON",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "checked": false }
+                    },
+                    {
+                      "id": "1539714a-c789-4ccb-9cd0-77c0d635dbe3",
+                      "label": "RANGE",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "width": 0.5 }
+                    },
+                    {
+                      "id": "3758660d-dd47-4015-a994-6a3119308ccc",
+                      "label": "DMG",
+                      "type": "Numeric",
+                      "value": "",
+                      "meta": { "width": 0.5 }
+                    },
+                    {
+                      "id": "05b0d587-4c3c-4fef-becd-b4c8ba7e1019",
+                      "label": "",
+                      "type": "Separator",
+                      "meta": { "hasLabel": false },
+                      "value": ""
+                    },
+                    {
+                      "id": "bb8d655c-ef53-467d-abb4-bc1bd6b42b5d",
+                      "label": "WEAPON",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "checked": false }
+                    },
+                    {
+                      "id": "25adca73-c83f-4690-80e1-7c84c38f7986",
+                      "label": "RANGE",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "width": 0.5 }
+                    },
+                    {
+                      "id": "e2d776a7-4933-4a99-a60a-006d0f28a644",
+                      "label": "DMG",
+                      "type": "Numeric",
+                      "value": "",
+                      "meta": { "width": 0.5 }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0af47b98-15f9-422a-bb92-0128b2f4a63d",
+      "rows": [
+        {
+          "columns": [
+            {
+              "sections": [
+                {
+                  "id": "a499bdee-6c1a-4918-ac73-c8780d974479",
+                  "label": "ENCUMBRANCE",
+                  "blocks": [
+                    {
+                      "id": "ddb61ce5-699d-4b4e-8217-8ee4afb8f876",
+                      "label": "ENCUMBRANCE THRESHOLD ",
+                      "type": "Numeric",
+                      "value": "",
+                      "meta": { "width": 0.5 }
+                    },
+                    {
+                      "id": "7cbb0ad6-6d4b-4a22-b7da-c6a445d4e737",
+                      "label": "ENCUMBRANCE LIMIT",
+                      "type": "Numeric",
+                      "value": "20",
+                      "meta": { "width": 0.5 }
+                    }
+                  ]
+                },
+                {
+                  "id": "eb3b3db1-eda7-402d-a1b2-3aca6779ae1a",
+                  "label": "EQUIPMENT LIST",
+                  "blocks": [
+                    {
+                      "id": "e8780174-d175-4354-adc4-8a03fb02c39f",
+                      "label": "UNIT #1",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "checked": false, "width": 0.5 }
+                    },
+                    {
+                      "id": "414ea1db-2292-42b5-b379-f2bb7aa70bf3",
+                      "label": "UNIT #11",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "checked": false, "width": 0.5 }
+                    },
+                    {
+                      "id": "e52c9d1e-a6e7-44ef-a8e8-988dea273719",
+                      "label": "UNIT #2",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "checked": false, "width": 0.5 }
+                    },
+                    {
+                      "id": "2aee5737-be71-4b9b-9ed5-767e485e2c5c",
+                      "label": "UNIT #12",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "checked": false, "width": 0.5 }
+                    },
+                    {
+                      "id": "d8b2d9ec-099e-4450-b7dc-cff4eacd4149",
+                      "label": "UNIT #3",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "checked": false, "width": 0.5 }
+                    },
+                    {
+                      "id": "81e2ba14-6394-4197-9bbd-39d11c4eef9f",
+                      "label": "UNIT #13",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "checked": false, "width": 0.5 }
+                    },
+                    {
+                      "id": "e20e73ca-6911-44ef-89bd-dc4a6802dd0a",
+                      "label": "UNIT #4",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "checked": false, "width": 0.5 }
+                    },
+                    {
+                      "id": "dee6e206-6d15-449e-b728-4cca2764bbf4",
+                      "label": "UNIT #14",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "checked": false, "width": 0.5 }
+                    },
+                    {
+                      "id": "b933b1e2-9326-4e5a-b059-32a8fed8db1c",
+                      "label": "UNIT #5",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "checked": false, "width": 0.5 }
+                    },
+                    {
+                      "id": "6019fc9e-c487-4e46-8b61-3b2f8e288f72",
+                      "label": "UNIT #15",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "checked": false, "width": 0.5 }
+                    },
+                    {
+                      "id": "ef9431a5-1943-4c16-9ba1-ad2ce8f898b3",
+                      "label": "UNIT #6",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "checked": false, "width": 0.5 }
+                    },
+                    {
+                      "id": "ac533a61-c217-4a93-ad8e-19a3c04b7119",
+                      "label": "UNIT #16",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "checked": false, "width": 0.5 }
+                    },
+                    {
+                      "id": "2377a5a4-fa4a-469f-860a-326c9d3eb4c9",
+                      "label": "UNIT #7",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "checked": false, "width": 0.5 }
+                    },
+                    {
+                      "id": "23c9bd1d-1bd0-487a-833a-490ad3215c20",
+                      "label": "UNIT #17",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "checked": false, "width": 0.5 }
+                    },
+                    {
+                      "id": "fe1d7217-7e02-412a-8304-78e8ab0805a8",
+                      "label": "UNIT #8",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "checked": false, "width": 0.5 }
+                    },
+                    {
+                      "id": "e634e545-58af-487d-b188-8e713ed471e3",
+                      "label": "UNIT #18",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "checked": false, "width": 0.5 }
+                    },
+                    {
+                      "id": "1f704855-d990-41d7-bbb9-e48428fb26ad",
+                      "label": "UNIT #9",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "checked": false, "width": 0.5 }
+                    },
+                    {
+                      "id": "87448db0-8b2e-4f67-8c96-fe44116ee102",
+                      "label": "UNIT #19",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "checked": false, "width": 0.5 }
+                    },
+                    {
+                      "id": "39621e61-fec5-41cb-8e07-68494b1a8486",
+                      "label": "UNIT #10",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "checked": false, "width": 0.5 }
+                    },
+                    {
+                      "id": "77bce632-850c-4d29-a47f-6606473ef27b",
+                      "label": "UNIT #20",
+                      "type": "Text",
+                      "value": "",
+                      "meta": { "checked": false, "width": 0.5 }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "label": "EQUIPMENT"
+    }
+  ],
+  "version": 6,
+  "wide": false
+}

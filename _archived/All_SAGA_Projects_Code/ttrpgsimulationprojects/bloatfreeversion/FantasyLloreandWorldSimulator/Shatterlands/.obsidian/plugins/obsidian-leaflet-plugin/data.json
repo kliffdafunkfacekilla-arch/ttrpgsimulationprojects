@@ -1,0 +1,187 @@
+{
+  "mapMarkers": [
+    {
+      "id": "my-first-map",
+      "lastAccessed": 1773303271616,
+      "markers": [
+        {
+          "id": "ID_3b4929faca8b",
+          "type": "default",
+          "loc": [
+            -5.793295741081238,
+            11.021090507507324
+          ],
+          "link": "The Sacred Spire",
+          "layer": "%5B%5Bshatter1.png%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_eb79588a190b",
+          "type": "default",
+          "loc": [
+            -7.699545741081238,
+            11.247653007507324
+          ],
+          "link": "Undines Undying Dance",
+          "layer": "%5B%5Bshatter1.png%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_1a8b9b3bfba9",
+          "type": "default",
+          "loc": [
+            -4.92578125,
+            13.95703125
+          ],
+          "link": "Opallow",
+          "layer": "%5B%5Bshatter1.png%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": [
+            0.5823960880195599,
+            0.3334655559962978
+          ],
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_eba85af9a899",
+          "type": "default",
+          "loc": [
+            -4.695993423461914,
+            13.909735202789307
+          ],
+          "link": "River-King's Shuffle",
+          "layer": "%5B%5Bshatter1.png%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_f8496b9898ea",
+          "type": "default",
+          "loc": [
+            -5.753440260887146,
+            12.835981369018555
+          ],
+          "link": "Peculiurus Spire",
+          "layer": "%5B%5Bshatter1.png%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_0be968d8d969",
+          "type": "default",
+          "loc": [
+            -5.499354600906372,
+            12.532800197601318
+          ],
+          "link": "Excelsis",
+          "layer": "%5B%5Bshatter1.png%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_d959097ae9ab",
+          "type": "default",
+          "loc": [
+            -6.192803621292114,
+            11.289438247680664
+          ],
+          "link": "Convergence",
+          "layer": "%5B%5Bshatter1.png%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        },
+        {
+          "id": "ID_ca9b289989ab",
+          "type": "default",
+          "loc": [
+            -11.665200471878052,
+            10.014711380004883
+          ],
+          "link": "Port Sunder",
+          "layer": "%5B%5Bshatter1.png%5D%5D",
+          "mutable": true,
+          "command": false,
+          "percent": null,
+          "description": null,
+          "minZoom": null,
+          "maxZoom": null,
+          "tooltip": "hover"
+        }
+      ],
+      "overlays": [],
+      "shapes": [],
+      "files": []
+    }
+  ],
+  "defaultMarker": {
+    "type": "default",
+    "iconName": "map-marker",
+    "color": "#dddddd",
+    "transform": {
+      "size": 6,
+      "x": 0,
+      "y": -2
+    }
+  },
+  "markerIcons": [],
+  "color": "#dddddd",
+  "lat": 39.983334,
+  "long": -82.98333,
+  "notePreview": false,
+  "layerMarkers": true,
+  "previousVersion": "6.0.5",
+  "version": {
+    "major": 6,
+    "minor": 0,
+    "patch": 5
+  },
+  "warnedAboutMapMarker": false,
+  "copyOnClick": false,
+  "displayMarkerTooltips": "hover",
+  "displayOverlayTooltips": true,
+  "configDirectory": null,
+  "mapViewEnabled": true,
+  "mapViewParameters": {},
+  "enableDraw": true,
+  "defaultUnitType": "imperial",
+  "defaultTile": "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png",
+  "defaultTileDark": "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png",
+  "defaultAttribution": "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors &copy; <a href=\"https://carto.com/attributions\">CARTO</a>",
+  "defaultTileSubdomains": "a,b,c,d"
+}

@@ -1,0 +1,41 @@
+{
+    "Name": "Emperor Aurelius III",
+    "Title": "Emperor of the Avian Empire",
+    "Species": "Albino Peacock",
+    "Visuals": {
+        "Robes": {
+            "Material": "Avian Silk",
+            "Color": "White",
+            "Thread": "Gold"
+        },
+        "Tail Feathers": {
+            "Alchemical Ink": true,
+            "Luminescent": true
+        }
+    },
+    "Abilities": {
+        "Negotiation": {
+            "Tactics": [
+                {
+                    "Name": "Wall of Light",
+                    "Description": "Fans tail to block view, forcing opponents to focus on him"
+                }
+            ],
+            "Effectiveness": 8
+        },
+        "Psychological": {
+            "Obsession": {
+                "Name": "Geometric Purity",
+                "Description": "Currently obsessed with aligning the capital's entrance with the sunrise"
+            }
+        }
+    },
+    "Stats": {
+        "Charisma": 15,
+        "Intelligence": 12,
+        "Agility": 8,
+        "Strength": 10,
+        "Health": 14,
+        "Morale": 12
+    }
+}

@@ -1,0 +1,48 @@
+{
+    "Name": "Formicidae",
+    "Role": "Cultures",
+    "Category": "Luthiers, Master Joiners, Heavy Architects",
+    "Home City": "The Hollow-Halls",
+    "Stats": {
+        "Perfectionism": {
+            "value": 3,
+            "description": "They are incapable of doing a 'rush job.'"
+        },
+        "Hive-Echo": {
+            "value": 2,
+            "description": "They operate on a low-level pheromonal 'Hive-Net.'"
+        },
+        "Philosophy of 'The One Piece'": {
+            "value": 2,
+            "description": "They believe that a structure is only strong if it is continuous."
+        },
+        "Smell of Pine/Citrus": {
+            "value": 1,
+            "description": "They communicate emotion through scent, with a smell of pine/citrus indicating happiness/agreement."
+        },
+        "Smell of Vinegar/Acid": {
+            "value": 1,
+            "description": "They communicate emotion through scent, with a smell of vinegar/acid indicating anger/aggressive."
+        },
+        "Smell of Burnt Sugar": {
+            "value": 1,
+            "description": "They communicate emotion through scent, with a smell of burnt sugar indicating panic/danger."
+        },
+        "Antennae-Tap": {
+            "value": 1,
+            "description": "To show affection or deep trust, they gently touch antennae with another being."
+        }
+    },
+    "Culture": {
+        "Description": "They are a culture of master craftsmen, prioritizing the creation of intricate wooden structures and instruments."
+    },
+    "Industrial Role": {
+        "Description": "They create 'Void-Lutes,' 'Ghost-Cellos,' and other intricate instruments, as well as precision joinery and puzzle-boxes."
+    },
+    "Military Role": {
+        "Description": "They are skilled in siege engineering and anti-structure tactics, using their mandibles and acid to dismantle enemy defenses."
+    },
+    "Diet": {
+        "Description": "They consume 'Honeydew' and massive amounts of wood-pulp, which they digest with specialized gut bacteria."
+    }
+}

@@ -1,0 +1,479 @@
+[
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 1",
+    "Option Name": "Tiny",
+    "Stat 1": "+2 Reflex, +1 Finesse",
+    "Stat 2": "-2 Might, -1 Vitality",
+    "Body Part": "Small Frame",
+    "Mechanic / Trait": "Squeeze: Move through 4-inch gaps. +Advantage on Stealth."
+  },
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 2",
+    "Option Name": "Small",
+    "Stat 1": "+1 Reflex",
+    "Stat 2": "-1 Might",
+    "Body Part": "Light Frame",
+    "Mechanic / Trait": "Lightweight: Trigger no pressure plates. Fall damage halved."
+  },
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 3",
+    "Option Name": "Medium",
+    "Stat 1": "None",
+    "Stat 2": "None",
+    "Body Part": "Balanced Frame",
+    "Mechanic / Trait": "Standard: No penalties. Can use standard gear."
+  },
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 4",
+    "Option Name": "Large",
+    "Stat 1": "+1 Might",
+    "Stat 2": "-1 Reflex",
+    "Body Part": "Heavy Frame",
+    "Mechanic / Trait": "Bulk: You provide Full Cover to allies. Cannot be Shoved by Medium creatures."
+  },
+  {
+    "STEP": "1_SIZE",
+    "Category": "SIZE 5",
+    "Option Name": "Huge",
+    "Stat 1": "+2 Might, +1 Vitality",
+    "Stat 2": "-2 Reflex, -1 Finesse",
+    "Body Part": "Siege Frame",
+    "Mechanic / Trait": "Siege: Deal double damage to structures. You occupy a 10ft x 10ft space."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Gator",
+    "Stat 1": "Logic",
+    "Stat 2": "Willpower",
+    "Body Part": "Crocodilian Anatomy",
+    "Mechanic / Trait": "Includes: Armor Scales, Hold Breath (30m), Swim Tail, Conical Teeth."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Cobra",
+    "Stat 1": "Endurance",
+    "Stat 2": "Intuition",
+    "Body Part": "Serpentine Anatomy",
+    "Mechanic / Trait": "Includes: Fangs (Injection), Hood, No Legs (Slither), Heat Pits."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Turtle",
+    "Stat 1": "Vitality",
+    "Stat 2": "Awareness",
+    "Body Part": "Testudine Anatomy",
+    "Mechanic / Trait": "Includes: Shell (Partial Cover), Beak, Stub Tail, Plodding Speed."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Gecko",
+    "Stat 1": "Logic",
+    "Stat 2": "Finesse",
+    "Body Part": "Climbing Anatomy",
+    "Mechanic / Trait": "Includes: Sticky Pads (Climb), Detachable Tail, Night-Pupils."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Monitor",
+    "Stat 1": "Might",
+    "Stat 2": "Reflexes",
+    "Body Part": "Varanid Anatomy",
+    "Mechanic / Trait": "Includes: Forked Tongue (Tracker), Rending Claws, Whip Tail."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Chameleon",
+    "Stat 1": "Knowledge",
+    "Stat 2": "Charm",
+    "Body Part": "Arboreal Anatomy",
+    "Mechanic / Trait": "Includes: Independent Eyes, Color-Shift Skin, Zodactyl Feet."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Raptor",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Fortitude",
+    "Body Part": "Theropod Anatomy",
+    "Mechanic / Trait": "Includes: Sickle Talons, Counter-Balance Tail, Proto-Feathers."
+  },
+  {
+    "STEP": "2_BIO",
+    "Category": "ANCESTRY",
+    "Option Name": "The Iguana",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Reflexes",
+    "Body Part": "Display Anatomy",
+    "Mechanic / Trait": "Includes: Dorsal Spines, Throat Dewlap, Whip Tail, Cheek Scales."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Thermal",
+    "Stat 1": "Logic",
+    "Stat 2": "Charm",
+    "Body Part": "Pit Organs",
+    "Mechanic / Trait": "Passive: Heat-Sight (See living targets through walls/darkness)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Taster",
+    "Stat 1": "Awareness",
+    "Stat 2": "Logic",
+    "Body Part": "Forked Tongue",
+    "Mechanic / Trait": "Passive: Chemoreception (Track scents at +5, detect poison)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Sniper",
+    "Stat 1": "Logic",
+    "Stat 2": "Logic",
+    "Body Part": "Swivel Eyes",
+    "Mechanic / Trait": "Active: Target-Lock (Next attack has Advantage and ignores Cover)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Amphibious",
+    "Stat 1": "Logic",
+    "Stat 2": "Fortitude",
+    "Body Part": "Nictitating Membrane",
+    "Mechanic / Trait": "Passive: Clear-Sight (See perfectly underwater and immune to Sandstorms)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Hypnotic",
+    "Stat 1": "Intuition",
+    "Stat 2": "Finesse",
+    "Body Part": "Spectacle Hood",
+    "Mechanic / Trait": "Active: Mesmerize (Target makes Will save or is Stunned 1 turn)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Panic",
+    "Stat 1": "Willpower",
+    "Stat 2": "Intuition",
+    "Body Part": "Parietal Eye",
+    "Mechanic / Trait": "Passive: Third Eye (Cannot be Surprised or Flanked)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Snapper",
+    "Stat 1": "Knowledge",
+    "Stat 2": "Logic",
+    "Body Part": "Locking Jaw",
+    "Mechanic / Trait": "Active: Death-Roll (Grapple. If successful, auto-crit damage)."
+  },
+  {
+    "STEP": "3_HEAD",
+    "Category": "SENSES",
+    "Option Name": "Spitter",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Fortitude",
+    "Body Part": "Venom Glands",
+    "Mechanic / Trait": "Active: Blind (Ranged Attack. Target is Blinded for 1d4 rounds)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Constrictor",
+    "Stat 1": "Logic",
+    "Stat 2": "Intuition",
+    "Body Part": "Muscular Coils",
+    "Mechanic / Trait": "Active: Squeeze (Grappled targets take 1d6 Bludgeoning per turn)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Ripper",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Endurance",
+    "Body Part": "Sickle Claws",
+    "Mechanic / Trait": "Active: Eviscerate (Apply Deep Wound: Healing is halved for target)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Climber",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Reflexes",
+    "Body Part": "Van der Waals Pads",
+    "Mechanic / Trait": "Passive: Spider-Climb (Walk on ceilings/glass with hands free)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Basher",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Finesse",
+    "Body Part": "Club-Fists",
+    "Mechanic / Trait": "Active: Smash (Melee Attack. Knock target back 10ft)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Injector",
+    "Stat 1": "Knowledge",
+    "Stat 2": "Logic",
+    "Body Part": "Hollow Spurs",
+    "Mechanic / Trait": "Active: Neurotoxin (Melee Hit: Target Speed is 0 for 1 turn)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Digger",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Charm",
+    "Body Part": "Spade Claws",
+    "Mechanic / Trait": "Active: Trench (Create Cover/Terrain modifiers instantly)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Glider",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Vitality",
+    "Body Part": "Rib-Wings",
+    "Mechanic / Trait": "Passive: Draco-Glide (Negate fall damage. 3:1 Travel ratio)."
+  },
+  {
+    "STEP": "4_ARMS",
+    "Category": "ARMS",
+    "Option Name": "Mimic",
+    "Stat 1": "Logic",
+    "Stat 2": "Might",
+    "Body Part": "Change-Skin",
+    "Mechanic / Trait": "Active: Camo-Strike (Turn Invisible for 1 turn, attack breaks it)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Sprinter",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Intuition",
+    "Body Part": "Bipedal Hips",
+    "Mechanic / Trait": "Active: Burst (Move 4x Speed, but Lethargic next turn)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Swimmer",
+    "Stat 1": "Vitality",
+    "Stat 2": "Logic",
+    "Body Part": "Paddle Tail",
+    "Mechanic / Trait": "Passive: River-King (Swim Speed = Walk x2. Hold breath 1 hour)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Leaper",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Finesse",
+    "Body Part": "Coiled Muscles",
+    "Mechanic / Trait": "Active: Strike-Jump (Jump 20ft instantly as part of an attack)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Anchor",
+    "Stat 1": "Might",
+    "Stat 2": "Knowledge",
+    "Body Part": "Grip Talons",
+    "Mechanic / Trait": "Passive: Rooted (Immune to Shove/Trip/Pull)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Silent",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Fortitude",
+    "Body Part": "Soft Scales",
+    "Mechanic / Trait": "Passive: Stalk (No penalty to Stealth for moving at full speed)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Wall-Run",
+    "Stat 1": "Endurance",
+    "Stat 2": "Logic",
+    "Body Part": "Hooked Toes",
+    "Mechanic / Trait": "Passive: Skitter (Move across vertical surfaces without slowing)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Surface",
+    "Stat 1": "Awareness",
+    "Stat 2": "Intuition",
+    "Body Part": "Webbed Fringe",
+    "Mechanic / Trait": "Passive: Water-Walk (Run across liquid surfaces if you don't stop)."
+  },
+  {
+    "STEP": "5_LEGS",
+    "Category": "LEGS",
+    "Option Name": "Strider",
+    "Stat 1": "Intuition",
+    "Stat 2": "Fortitude",
+    "Body Part": "Desert Scales",
+    "Mechanic / Trait": "Passive: Heat-Sync (Immune to Exhaustion from Heat/Travel)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Iron-Scale",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Logic",
+    "Body Part": "Osteoderms",
+    "Mechanic / Trait": "Passive: Heavy Plate (+3 Natural AC, -5 Speed)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Regen",
+    "Stat 1": "Endurance",
+    "Stat 2": "Charm",
+    "Body Part": "Stem-Cell Biology",
+    "Mechanic / Trait": "Active: Shed (Bonus Action. Heal 25% HP, remove all Status Effects)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Reactive",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Vitality",
+    "Body Part": "Color-Shift Scales",
+    "Mechanic / Trait": "Passive: Active Camo (+5 Stealth if you moved less than 5ft)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Spined",
+    "Stat 1": "Willpower",
+    "Stat 2": "Logic",
+    "Body Part": "Dorsal Spines",
+    "Mechanic / Trait": "Passive: Thorns (Grapplers/Melee attackers take 1d4 Pierce)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Solar",
+    "Stat 1": "Intuition",
+    "Stat 2": "Might",
+    "Body Part": "Solar Scales",
+    "Mechanic / Trait": "Passive: Cold-Blood (Regain 1 SP per hour in direct sunlight)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Slippery",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Reflexes",
+    "Body Part": "Mucus Coat",
+    "Mechanic / Trait": "Passive: Evasion (Take half damage from AOE/Breath attacks)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Ablative",
+    "Stat 1": "Intuition",
+    "Stat 2": "Fortitude",
+    "Body Part": "Layered Scutes",
+    "Mechanic / Trait": "Passive: Molt (Negate one Critical Hit per day by shedding armor)."
+  },
+  {
+    "STEP": "6_BODY",
+    "Category": "BODY",
+    "Option Name": "Rubber",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Fortitude",
+    "Body Part": "Elastic Hide",
+    "Mechanic / Trait": "Passive: Impact (Resistance to Bludgeoning damage)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Whip",
+    "Stat 1": "Fortitude",
+    "Stat 2": "Intuition",
+    "Body Part": "Prehensile Tail",
+    "Mechanic / Trait": "Active: Trip (Bonus Action. Knock target Prone at 10ft range)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Rattle",
+    "Stat 1": "Awareness",
+    "Stat 2": "Might",
+    "Body Part": "Tail Rattle",
+    "Mechanic / Trait": "Active: Warning (AOE Fear effect within 30ft)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Frill",
+    "Stat 1": "Knowledge",
+    "Stat 2": "Intuition",
+    "Body Part": "Neck Frill",
+    "Mechanic / Trait": "Active: Flare (Target loses next Action due to shock/startle)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Venom",
+    "Stat 1": "Willpower",
+    "Stat 2": "Vitality",
+    "Body Part": "Poison Sacs",
+    "Mechanic / Trait": "Active: Envenom (Coat weapon. Con Save or Paralyzed)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Drop",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Intuition",
+    "Body Part": "Autotomy Tail",
+    "Mechanic / Trait": "Active: Decoy (Reaction. Drop tail. It wiggles. You turn Invisible)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Breath",
+    "Stat 1": "Intuition",
+    "Stat 2": "Reflexes",
+    "Body Part": "Throat Gland",
+    "Mechanic / Trait": "Active: Exhale (15ft Cone of Acid or Fire)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Grip",
+    "Stat 1": "Charm",
+    "Stat 2": "Logic",
+    "Body Part": "Constrictor Coils",
+    "Mechanic / Trait": "Passive:Crush (Advantage on all Grapple Checks)."
+  },
+  {
+    "STEP": "7_SPEC",
+    "Category": "SPECIAL",
+    "Option Name": "Sense",
+    "Stat 1": "Reflexes",
+    "Stat 2": "Reflexes",
+    "Body Part": "Seismic Scales",
+    "Mechanic / Trait": "Passive: Tremor-Sense (Detect all movement within 60ft)."
+  }
+]

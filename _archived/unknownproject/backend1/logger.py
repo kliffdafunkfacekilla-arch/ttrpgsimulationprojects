@@ -1,0 +1,92 @@
+import logging
+from typing import List, Dict, Any, Optional
+from sqlalchemy.orm import Session
+from backend.models import EventLog
+
+# Initialize system logger for debugging and graceful error reports
+logger = logging.getLogger("ostraka.logger")
+
+class SimulationLogger:
+    """
+    SimulationLogger handles live event logging and TTRPG narrative capture during ticks.
+    Features adjustable log levels, event type filters, and target hex coordinates tracking.
+    Stores high-fidelity citizen snapshots when log_level is set to HIGH.
+    """
+    def __init__(
+        self, 
+        log_level: str = "HIGH", 
+        watched_events: Optional[List[str]] = None, 
+        watched_hexes: Optional[List[str]] = None
+    ):
+        self.log_level = log_level.upper()
+        # Default watched events include standard major narrative updates
+        self.watched_events = watched_events or ["SIEGE", "FAMINE", "STORM", "REBELLION"]
+        self.watched_hexes = watched_hexes or ["ALL"]
+
+    def log_event(
+        self, 
+        session: Session, 
+        tick: int, 
+        hex_id: str, 
+        event_type: str, 
+        severity: int, 
+        summary: str, 
+        current_entities: Optional[List[Dict[str, Any]]] = None
+    ) -> None:
+        """
+        Filters and logs a simulation event to the EventLog table.
+        Fails gracefully to ensure the high-performance main simulation loop is never blocked.
+        """
+        try:
+            # 1. Evaluate Event Type Filter
+            is_event_watched = (
+                "ALL" in self.watched_events or 
+                event_type.upper() in [e.upper() for e in self.watched_events]
+            )
+            if not is_event_watched:
+                return
+
+            # 2. Evaluate Hex Coordinates Filter
+            is_hex_watched = (
+                "ALL" in self.watched_hexes or 
+                hex_id in self.watched_hexes
+            )
+            if not is_hex_watched:
+                return
+
+            # 3. Handle High-Detail Serialization Snapshot & Witnessed by Heroes
+            deep_snap = None
+            witnessed_by = []
+            
+            if current_entities is not None:
+                for ent in current_entities:
+                    if ent.get("is_hero", False):
+                        hero_name = ent.get("entity_id", "Unknown Hero")
+                        witnessed_by.append(hero_name)
+                        
+                if self.log_level == "HIGH":
+                    # Fully serialize NPC structures into a clean JSON-serializable list of dicts
+                    deep_snap = []
+                    for ent in current_entities:
+                        # Clean copy to avoid circular session tracking errors
+                        deep_snap.append(dict(ent))
+
+            # 4. Create and Save Log Entry
+            log_entry = EventLog(
+                tick_count=tick,
+                hex_id=hex_id,
+                event_type=event_type.upper(),
+                severity=severity,
+                summary=summary,
+                deep_snapshot=deep_snap,
+                witnessed_by_heroes=witnessed_by
+            )
+            session.add(log_entry)
+            
+            # NOTE: We allow the outer transaction manager (such as process_tick or API)
+            # to commit this log alongside the hex state mutations. This prevents
+            # transactional lockups and maximizes database throughput.
+            
+        except Exception as e:
+            # Graceful fallback: log the failure internally without breaking the world engine
+            logger.error(f"Graceful Logger Failure: Failed to commit event '{event_type}' on '{hex_id}': {e}")

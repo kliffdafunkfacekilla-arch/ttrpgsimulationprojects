@@ -1,0 +1,330 @@
+[
+  {
+    "Name": "Iron Rations (1 Day)",
+    "Type": "Provision",
+    "Cost": "0.5",
+    "Description": "Dried meat, hardtack, and nuts.",
+    "Effect": "Prevents starvation. No morale bonus.",
+    "Logic_Tags": "PROP:Food|QUALITY:Poor"
+  },
+  {
+    "Name": "Traveler's Stew",
+    "Type": "Provision",
+    "Cost": "1",
+    "Description": "Hot meal cooked at a campfire.",
+    "Effect": "Restores 1 extra Hit Die during Short Rest.",
+    "Logic_Tags": "REST:Bonus_HD|QUALITY:Fair"
+  },
+  {
+    "Name": "Fresh Water Skin",
+    "Type": "Provision",
+    "Cost": "0.2",
+    "Description": "Leather pouch of water (1 Gallon).",
+    "Effect": "Prevents dehydration for 1 day.",
+    "Logic_Tags": "PROP:Drink|CAP:1_Gal"
+  },
+  {
+    "Name": "Noble Feast",
+    "Type": "Provision",
+    "Cost": "10",
+    "Description": "Exquisite multi-course meal.",
+    "Effect": "Advantage on Con Saves against Disease for 24hr.",
+    "Logic_Tags": "BUFF:Advantage:Health|QUALITY:High"
+  },
+  {
+    "Name": "Cheap Ale (Pint)",
+    "Type": "Intoxicant",
+    "Cost": "0.1",
+    "Description": "Watered down beer.",
+    "Effect": "Mild buzz. No mechanical benefit.",
+    "Logic_Tags": "PROP:Alcohol|QUAL:Poor"
+  },
+  {
+    "Name": "Spiced Wine (Bottle)",
+    "Type": "Intoxicant",
+    "Cost": "5",
+    "Description": "Fine vintage from the capital.",
+    "Effect": "Advantage on Persuasion for 1 hour. Disadvantage on Reflexs and Finesse.",
+    "Logic_Tags": "BUFF:Social|DEBUFF:Dex|PROP:Alcohol"
+  },
+  {
+    "Name": "Dwarven Spirits",
+    "Type": "Intoxicant",
+    "Cost": "2",
+    "Description": "High-proof liquor.",
+    "Effect": "Advantage vs Fear. Disadvantage on logic/know",
+    "Logic_Tags": "BUFF:Fear|DEBUFF:Mental|PROP:Strong"
+  },
+  {
+    "Name": "Dreamleaf",
+    "Type": "Narcotic",
+    "Cost": "10",
+    "Description": "Mild hallucinogenic herb.",
+    "Effect": "User enters trance. Advantage on intuition.",
+    "Logic_Tags": "BUFF:Insight|COND:Trance"
+  },
+  {
+    "Name": "Quicksilver Snuff",
+    "Type": "Narcotic",
+    "Cost": "25",
+    "Description": "Stimulant powder.",
+    "Effect": "+1 Action for combat, half speed and disadvantage all rolls until rest. Prolong use worsens side effects and causes addiction which requires long time to wear off",
+    "Logic_Tags": "ACT:Bonus|COST:Exhaustion"
+  },
+  {
+    "Name": "Void Dust",
+    "Type": "Narcotic",
+    "Cost": "50",
+    "Description": "Ground chaotic crystal.",
+    "Effect": "Regain 1 Spell Slot. Roll Chaos Die (Risk of failure).",
+    "Logic_Tags": "RESTORE:Slot|RISK:Chaos"
+  },
+  {
+    "Name": "Torch",
+    "Type": "Gear",
+    "Cost": "0.1",
+    "Description": "Wooden stick with pitch.",
+    "Effect": "Sheds bright light for 20ft (1 Hour).",
+    "Logic_Tags": "LIGHT:20ft|DUR:1hr"
+  },
+  {
+    "Name": "Oil Lantern",
+    "Type": "Gear",
+    "Cost": "5",
+    "Description": "Glass-paned lamp.",
+    "Effect": "Sheds bright light for 30ft (6 Hours/Pint).",
+    "Logic_Tags": "LIGHT:30ft|DUR:6hr"
+  },
+  {
+    "Name": "Hempen Rope (50ft)",
+    "Type": "Gear",
+    "Cost": "1",
+    "Description": "Standard durable rope.",
+    "Effect": "Essential for climbing and binding.",
+    "Logic_Tags": "PROP:Climb|HP:2"
+  },
+  {
+    "Name": "Silk Rope (50ft)",
+    "Type": "Gear",
+    "Cost": "10",
+    "Description": "Strong, lightweight rope.",
+    "Effect": "+2 to Stealth checks involving climbing (Quiet).",
+    "Logic_Tags": "BUFF:Stealth|HP:4"
+  },
+  {
+    "Name": "Backpack",
+    "Type": "Gear",
+    "Cost": "2",
+    "Description": "Leather pack with straps.",
+    "Effect": "Increases Carrying Capacity by 30 lbs.",
+    "Logic_Tags": "CAP:+30lbs"
+  },
+  {
+    "Name": "Bedroll",
+    "Type": "Gear",
+    "Cost": "1",
+    "Description": "Padded sleeping roll.",
+    "Effect": "Required to gain Long Rest benefits outdoors.",
+    "Logic_Tags": "PROP:Rest"
+  },
+  {
+    "Name": "Two-Person Tent",
+    "Type": "Gear",
+    "Cost": "2",
+    "Description": "Canvas shelter.",
+    "Effect": "Protects against rain/wind (Avoid Exhaustion).",
+    "Logic_Tags": "PROP:Shelter|CAP:2_Person"
+  },
+  {
+    "Name": "Crowbar",
+    "Type": "Gear",
+    "Cost": "2",
+    "Description": "Iron lever.",
+    "Effect": "Advantage on Strength checks to pry open.",
+    "Logic_Tags": "BUFF:Advantage:Open"
+  },
+  {
+    "Name": "Manacles",
+    "Type": "Gear",
+    "Cost": "2",
+    "Description": "Iron wrist restraints.",
+    "Effect": "Restrains target (DC 20 Strength to break).",
+    "Logic_Tags": "COND:Restrained|DC:20"
+  },
+  {
+    "Name": "Steel Mirror",
+    "Type": "Gear",
+    "Cost": "5",
+    "Description": "Polished steel plate.",
+    "Effect": "Look around corners safely.",
+    "Logic_Tags": "EFFECT:Vision"
+  },
+  {
+    "Name": "Spyglass",
+    "Type": "Gear",
+    "Cost": "100",
+    "Description": "Brass telescope.",
+    "Effect": "Magnifies view x4. Advantage on Spotting at range.",
+    "Logic_Tags": "BUFF:Advantage:Perception"
+  },
+  {
+    "Name": "Rope Ring",
+    "Type": "Gear",
+    "Cost": "2",
+    "Description": "Iron hook with ring.",
+    "Effect": "Anchors rope for climbing.",
+    "Logic_Tags": "PROP:Climb"
+  },
+  {
+    "Name": "Chalk (10 Pieces)",
+    "Type": "Gear",
+    "Cost": "0.1",
+    "Description": "Stick of white chalk.",
+    "Effect": "Marking paths or writing messages.",
+    "Logic_Tags": "PROP:Marking"
+  },
+  {
+    "Name": "Ink & Pen",
+    "Type": "Gear",
+    "Cost": "10",
+    "Description": "Vial of ink and quill.",
+    "Effect": "Writing letters or mapping.",
+    "Logic_Tags": "PROP:Writing"
+  },
+  {
+    "Name": "Inn Stay (Squalid)",
+    "Type": "Service",
+    "Cost": "0.1",
+    "Description": "Spot on the floor/Hayloft.",
+    "Effect": "Poor rest. Risk of theft.",
+    "Logic_Tags": "REST:Poor|RISK:High"
+  },
+  {
+    "Name": "Inn Stay (Common)",
+    "Type": "Service",
+    "Cost": "0.5",
+    "Description": "Shared room, simple bed.",
+    "Effect": "Standard Long Rest benefits.",
+    "Logic_Tags": "REST:Standard"
+  },
+  {
+    "Name": "Inn Stay (Luxury)",
+    "Type": "Service",
+    "Cost": "4",
+    "Description": "Private suite, bath, servants.",
+    "Effect": "Start next day with Inspiration (1 Reroll).",
+    "Logic_Tags": "REST:Lux|BUFF:Inspiration"
+  },
+  {
+    "Name": "Bathhouse",
+    "Type": "Service",
+    "Cost": "1",
+    "Description": "Hot water and soap.",
+    "Effect": "Remove \"Dirty/Smelly\" condition. Advantage on next Social.",
+    "Logic_Tags": "CURE:Scent|BUFF:Social"
+  },
+  {
+    "Name": "Doctor's Visit",
+    "Type": "Service",
+    "Cost": "10",
+    "Description": "Professional treatment.",
+    "Effect": "Treat Disease, Poison, or Restore 2d8 HP.",
+    "Logic_Tags": "HEAL:2d8|CURE:Disease"
+  },
+  {
+    "Name": "Courier",
+    "Type": "Service",
+    "Cost": "5",
+    "Description": "Runner service.",
+    "Effect": "Deliver a letter/package to local town (1 day).",
+    "Logic_Tags": "EFFECT:Message"
+  },
+  {
+    "Name": "Sage Consultation",
+    "Type": "Service",
+    "Cost": "25",
+    "Description": "Research assistance.",
+    "Effect": "Advantage on a Lore check regarding a specific topic.",
+    "Logic_Tags": "INFO:Lore"
+  },
+  {
+    "Name": "Mercenary (Grunt)",
+    "Type": "Service",
+    "Cost": "2",
+    "Description": "Hireling warrior (Per Day).",
+    "Effect": "Basic guard. Stats of a Guard.",
+    "Logic_Tags": "ALLY:Guard|COST:Daily"
+  },
+  {
+    "Name": "Coach Cab",
+    "Type": "Service",
+    "Cost": "0.2",
+    "Description": "Local transport.",
+    "Effect": "Travel across city safely.",
+    "Logic_Tags": "MOVE:City"
+  },
+  {
+    "Name": "Caravan Passage",
+    "Type": "Service",
+    "Cost": "5",
+    "Description": "Safe travel between towns.",
+    "Effect": "Guarded travel (No random encounters).",
+    "Logic_Tags": "MOVE:Region|SAFE:Yes"
+  },
+  {
+    "Name": "Mule",
+    "Type": "Mount",
+    "Cost": "8",
+    "Description": "Sturdy beast of burden.",
+    "Effect": "Carries heavy loads. Not for combat.",
+    "Logic_Tags": "CAP:High|SPEED:Slow"
+  },
+  {
+    "Name": "Riding Horse",
+    "Type": "Mount",
+    "Cost": "75",
+    "Description": "Fast travel mount.",
+    "Effect": "Double overland travel speed.",
+    "Logic_Tags": "SPEED:Fast|PROP:Mount"
+  },
+  {
+    "Name": "Warhorse",
+    "Type": "Mount",
+    "Cost": "400",
+    "Description": "Armored combat mount.",
+    "Effect": "Can attack in combat. High HP.",
+    "Logic_Tags": "TYPE:Combat|PROP:Mount"
+  },
+  {
+    "Name": "Cart",
+    "Type": "Vehicle",
+    "Cost": "15",
+    "Description": "Two-wheeled vehicle.",
+    "Effect": "Pulled by 1 beast. Carries 200 lbs.",
+    "Logic_Tags": "CAP:200lbs|SLOTS:2"
+  },
+  {
+    "Name": "Wagon",
+    "Type": "Vehicle",
+    "Cost": "35",
+    "Description": "Four-wheeled vehicle.",
+    "Effect": "Pulled by 2 beasts. Carries 1000 lbs.",
+    "Logic_Tags": "CAP:1000lbs|SLOTS:4"
+  },
+  {
+    "Name": "Carriage",
+    "Type": "Vehicle",
+    "Cost": "100",
+    "Description": "Enclosed transport.",
+    "Effect": "Carries 4 passengers comfortably.",
+    "Logic_Tags": "SLOTS:4|PROP:Shelter"
+  },
+  {
+    "Name": "Riverboat",
+    "Type": "Vehicle",
+    "Cost": "50",
+    "Description": "Small skiff/rowboat.",
+    "Effect": "Water travel. Requires rowing.",
+    "Logic_Tags": "TYPE:Water|SPEED:Medium"
+  }
+]

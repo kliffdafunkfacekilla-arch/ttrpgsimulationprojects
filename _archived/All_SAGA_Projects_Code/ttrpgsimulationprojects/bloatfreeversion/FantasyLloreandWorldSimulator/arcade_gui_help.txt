@@ -1,0 +1,419 @@
+Help on class UIWidget in module arcade.gui.widgets:
+
+class UIWidget(pyglet.event.EventDispatcher, abc.ABC)
+ |  UIWidget(
+ |      *,
+ |      x: 'float' = 0,
+ |      y: 'float' = 0,
+ |      width: 'float' = 100,
+ |      height: 'float' = 100,
+ |      children: 'Iterable[UIWidget]' = (),
+ |      size_hint: 'tuple[float | None, float | None] | None' = None,
+ |      size_hint_min: 'tuple[float | None, float | None] | None' = None,
+ |      size_hint_max: 'tuple[float | None, float | None] | None' = None,
+ |      **kwargs
+ |  )
+ |
+ |  The :class:`UIWidget` class is the base class required for creating widgets.
+ |
+ |  We also have some default values and behaviors that you should be aware of:
+ |
+ |  * A :class:`UIWidget` is not a :class:`~arcade.gui.UILayout`: it will not
+ |    change the position or the size of its children. If you want control over
+ |    positioning or sizing, use a :class:`~arcade.gui.UILayout`.
+ |
+ |  Args:
+ |      x: x coordinate of bottom left
+ |      y: y coordinate of bottom left
+ |      width: width of widget
+ |      height: height of widget
+ |      size_hint: Tuple of floats (0.0-1.0), how much space of the parent should be requested
+ |      size_hint_min: min width and height in pixel
+ |      size_hint_max: max width and height in pixel
+ |
+ |  Method resolution order:
+ |      UIWidget
+ |      pyglet.event.EventDispatcher
+ |      abc.ABC
+ |      builtins.object
+ |
+ |  Methods defined here:
+ |
+ |  __contains__(self, item)
+ |
+ |  __copy__(self) from arcade.utils.copy_dunders_unimplemented.<locals>
+ |
+ |  __deepcopy__(self, memo) from arcade.utils.copy_dunders_unimplemented.<locals>
+ |
+ |  __init__(
+ |      self,
+ |      *,
+ |      x: 'float' = 0,
+ |      y: 'float' = 0,
+ |      width: 'float' = 100,
+ |      height: 'float' = 100,
+ |      children: 'Iterable[UIWidget]' = (),
+ |      size_hint: 'tuple[float | None, float | None] | None' = None,
+ |      size_hint_min: 'tuple[float | None, float | None] | None' = None,
+ |      size_hint_max: 'tuple[float | None, float | None] | None' = None,
+ |      **kwargs
+ |  )
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |
+ |  __iter__(self)
+ |
+ |  __repr__(self)
+ |      Return repr(self).
+ |
+ |  __str__(self)
+ |      Return str(self).
+ |
+ |  add(self, child: 'W', **kwargs) -> 'W'
+ |      Add a widget as a child.
+ |
+ |      Added widgets will receive UI events and be rendered.
+ |
+ |      By default, the latest added widget will receive ui events first and will
+ |      be rendered on top of others.
+ |
+ |      Args:
+ |          child: widget to add
+ |          index: position a widget is added, None has the highest
+ |              priority
+ |
+ |      Returns:
+ |          given child
+ |
+ |  center_on_screen(self: 'W') -> 'W'
+ |      Places this widget in the center of the current window.
+ |
+ |      This is a convenience method for simple centering of widgets without using
+ |      a layout.
+ |
+ |      In general, it is recommended to use layouts for more complex UIs.
+ |
+ |  clear(self)
+ |      Removes all children
+ |
+ |  dispatch_ui_event(self, event: 'UIEvent')
+ |      Dispatch a :class:`UIEvent` using pyglet event dispatch mechanism
+ |
+ |  do_render(self, surface: 'Surface')
+ |      Render the widgets graphical representation, use :meth:`UIWidget.prepare_render`
+ |      to limit the drawing area to the widgets rect and draw relative to 0,0.
+ |
+ |  do_render_base(self, surface: 'Surface')
+ |      Renders background, border and "padding
+ |
+ |  do_render_focus(self, surface: 'Surface')
+ |      Render the widgets focus representation overlay`
+ |
+ |  get_ui_manager(self) -> 'UIManager | None'
+ |      The UIManager this widget is attached to. During creation, this will be None.
+ |
+ |  move(self, dx=0, dy=0)
+ |      Move the widget by dx and dy.
+ |
+ |      Args:
+ |          dx: x axis difference
+ |          dy: y axis difference
+ |
+ |  on_event(self, event: 'UIEvent') -> 'bool | None'
+ |      Passes :class:`UIEvent` s through the widget tree.
+ |
+ |  on_update(self, dt)
+ |      Custom logic which will be triggered.
+ |
+ |  prepare_render(self, surface)
+ |      Helper for rendering, the drawing area will be adjusted to the own position and size.
+ |      Draw calls have to be relative to 0,0.
+ |      This will also prevent any overdraw outside of the widgets area
+ |
+ |      Args:
+ |          surface: Surface used for rendering
+ |
+ |  remove(self, child: 'UIWidget') -> 'dict | None'
+ |      Removes a child from the UIManager which was directly added to it.
+ |      This will not remove widgets which are added to a child of UIManager.
+ |
+ |      Return:
+ |          kwargs which were used when child was added
+ |
+ |  resize(self, *, width=None, height=None, anchor: 'Vec2' = Vec2(x=0.5, y=0.5))
+ |      Resizes the widget.
+ |
+ |      Args:
+ |          width: new width
+ |          height: new height
+ |          anchor: anchor point for resizing, default is center
+ |
+ |  scale(self, factor: 'AsFloat', anchor: 'Vec2' = Vec2(x=0.5, y=0.5))
+ |      Scales the size of the widget (x,y,width, height) by factor.
+ |
+ |      Args:
+ |          factor: scale factor
+ |          anchor: anchor point
+ |
+ |  trigger_full_render(self) -> 'None'
+ |      In case a widget uses transparent areas or was moved,
+ |      it might be important to request a full rendering of parents
+ |
+ |  trigger_render(self)
+ |      This will delay a render right before the next frame is rendered, so that
+ |      :meth:`UIWidget.do_render` is not called multiple times.
+ |
+ |  with_background(
+ |      self,
+ |      *,
+ |      color: 'Color | EllipsisType | None' = Ellipsis,
+ |      texture: 'Texture | NinePatchTexture | EllipsisType | None' = Ellipsis
+ |  ) -> 'Self'
+ |      Set widgets background.
+ |
+ |      A color or texture can be used for background,
+ |      if a texture is given, start and end point can be added to use the texture as ninepatch.
+ |
+ |      Args:
+ |          color: A color used as background
+ |          texture: A texture or ninepatch texture used as background
+ |
+ |      Returns:
+ |          self
+ |
+ |  with_border(
+ |      self,
+ |      *,
+ |      width=2,
+ |      color: 'Color | None' = Color(r=128, g=128, b=128, a=255)
+ |  ) -> 'Self'
+ |      Sets border properties
+ |
+ |      Args:
+ |          width: border width
+ |          color: border color
+ |
+ |      Returns:
+ |          self
+ |
+ |  with_padding(
+ |      self,
+ |      *,
+ |      top: 'int | None' = None,
+ |      right: 'int | None' = None,
+ |      bottom: 'int | None' = None,
+ |      left: 'int | None' = None,
+ |      all: 'int | None' = None
+ |  ) -> 'Self'
+ |      Changes the padding to the given values if set. Returns itself
+ |
+ |      Returns:
+ |          self
+ |
+ |  ----------------------------------------------------------------------
+ |  Readonly properties defined here:
+ |
+ |  children
+ |      Provides all child widgets.
+ |
+ |  content_height
+ |      Returns the height of the content area,
+ |      which is the height of the widget minus padding and border.
+ |
+ |  content_rect
+ |      Returns the content area as a rect.
+ |      The content area is the area of the widget minus padding and border.
+ |
+ |  content_size
+ |      Returns the size of the content area,
+ |      which is the size of the widget minus padding and border.
+ |
+ |  content_width
+ |      Returns the width of the content area,
+ |      which is the width of the widget minus padding and border.
+ |
+ |  position
+ |      Returns bottom left coordinates
+ |
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |
+ |  bottom
+ |      Bottom coordinate of the widget
+ |
+ |  center
+ |      Returns center coordinates
+ |
+ |  center_x
+ |      Center x coordinate
+ |
+ |  center_y
+ |      Center y coordinate
+ |
+ |  focused
+ |
+ |  height
+ |      Height of the widget.
+ |
+ |  left
+ |      Left coordinate of the widget
+ |
+ |  padding
+ |      Returns padding as tuple (top, right, bottom, left)
+ |
+ |  parent
+ |
+ |  rect
+ |
+ |  right
+ |      Right coordinate of the widget
+ |
+ |  size
+ |      Size of the widget.
+ |
+ |  size_hint
+ |
+ |  size_hint_max
+ |
+ |  size_hint_min
+ |
+ |  top
+ |      Top coordinate of the widget
+ |
+ |  visible
+ |
+ |  width
+ |      Width of the widget.
+ |
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |
+ |  __abstractmethods__ = frozenset()
+ |
+ |  __annotations__ = {'focus_mode': 'FocusMode', 'parent': 'WeakRef[UIMan...
+ |
+ |  focus_mode = <FocusMode.NONE: 0>
+ |
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from pyglet.event.EventDispatcher:
+ |
+ |  dispatch_event(self, event_type: 'str', *args: 'Any') -> 'bool | None'
+ |      Dispatch an event to the attached event handlers.
+ |
+ |      The event is propagated to all registered event handlers
+ |      in the stack, starting and the top and going down. If any
+ |      registered event handler returns ``EVENT_HANDLED``, no further
+ |      handlers down the stack will receive this event.
+ |
+ |      This method has several possible return values. If any event
+ |      handler has returned ``EVENT_HANDLED``, then this method will
+ |      also return ``EVENT_HANDLED``. If not, this method will return
+ |      ``EVENT_UNHANDLED``. If there were no events registered to
+ |      receive this event, ``False`` is returned.
+ |
+ |      Returns:
+ |          ``EVENT_HANDLED`` if any event handler returned ``EVENT_HANDLED``;
+ |          ``EVENT_UNHANDLED`` if one or more event handlers were invoked
+ |          without any of them returning `EVENT_HANDLED`; ``False`` if no
+ |          event handlers were registered.
+ |
+ |  event(self, *args: 'Any') -> 'Callable'
+ |      Function decorator for an event handler.
+ |
+ |      If the function or method name matches the event name,
+ |      the decorator can be added without arguments. Likewise,
+ |      if the name does not match, you can provide the target
+ |      event name by passing it as an argument.
+ |
+ |      Name matches::
+ |
+ |          win = window.Window()
+ |
+ |          @win.event
+ |          def on_resize(self, width, height):
+ |              # ...
+ |
+ |      Name does not match::
+ |
+ |          @win.event('on_resize')
+ |          def foo(self, width, height):
+ |              # ...
+ |
+ |  pop_handlers(self) -> 'None'
+ |      Pop the top level of event handlers off the stack.
+ |
+ |  post_event(self, event_type: 'str', *args: 'Any') -> 'bool | None'
+ |      Post an event to the main application thread.
+ |
+ |      Unlike the :py:meth:`~pyglet.event.EventDispatcher.dispatch_event`
+ |      method, this method does not dispatch events directly. Instead, it
+ |      hands off the dispatch call to the main application thread. This
+ |      ensures that any event handlers are also executed in the main thread.
+ |
+ |      This method aliases :py:meth:`~pyglet.app.PlatformEventLoop.post_event`,
+ |      which can be seen for more information on behavior.
+ |
+ |  push_handlers(self, *args: 'Any', **kwargs: 'Any') -> 'None'
+ |      Push a new level onto the handler stack, and add 0 or more handlers.
+ |
+ |      This method first pushes a new level to the top of the handler stack.
+ |      It then attaches any handlers that were passed to this new level.
+ |
+ |      If keyword arguments are given, they name the event type to attach.
+ |      Otherwise, a callable's ``__name__`` attribute will be used. Any
+ |      other object may also be specified, in which case it will be searched
+ |      for callables with event names.
+ |
+ |  remove_handler(self, name: 'str', handler: 'Callable') -> 'None'
+ |      Remove a single event handler.
+ |
+ |      The given event handler is removed from the first handler stack frame
+ |      it appears in.  The handler must be the exact same callable as passed
+ |      to `set_handler`, `set_handlers` or
+ |      :py:meth:`~pyglet.event.EventDispatcher.push_handlers`; and the name
+ |      must match the event type it is bound to.
+ |
+ |      No error is raised if the event handler is not set.
+ |
+ |  remove_handlers(self, *args: 'Any', **kwargs: 'Any') -> 'None'
+ |      Remove event handlers from the event stack.
+ |
+ |      See :py:meth:`~pyglet.event.EventDispatcher.push_handlers` for the
+ |      accepted argument types. All handlers are removed from the first stack
+ |      frame that contains any of the given handlers. No error is raised if
+ |      any handler does not appear in that frame, or if no stack frame
+ |      contains any of the given handlers.
+ |
+ |      If the stack frame is empty after removing the handlers, it is
+ |      removed from the stack.  Note that this interferes with the expected
+ |      symmetry of :py:meth:`~pyglet.event.EventDispatcher.push_handlers` and
+ |      :py:meth:`~pyglet.event.EventDispatcher.pop_handlers`.
+ |
+ |  set_handler(self, name: 'str', handler: 'Callable') -> 'None'
+ |      Attach a single event handler.
+ |
+ |  set_handlers(self, *args: 'Any', **kwargs: 'Any') -> 'None'
+ |      Attach one or more event handlers to the top level of the handler stack.
+ |
+ |      See :py:meth:`~pyglet.event.EventDispatcher.push_handlers` for the accepted
+ |      argument types.
+ |
+ |  ----------------------------------------------------------------------
+ |  Class methods inherited from pyglet.event.EventDispatcher:
+ |
+ |  register_event_type(name: 'str') -> 'str'
+ |      Register an event type with the dispatcher.
+ |
+ |      Before dispatching events, they must first be registered by name.
+ |      Registering event types allows the dispatcher to validate event
+ |      handler names as they are attached, and to search attached objects
+ |      for suitable handlers.
+ |
+ |  ----------------------------------------------------------------------
+ |  Data descriptors inherited from pyglet.event.EventDispatcher:
+ |
+ |  __dict__
+ |      dictionary for instance variables
+ |
+ |  __weakref__
+ |      list of weak references to the object
+

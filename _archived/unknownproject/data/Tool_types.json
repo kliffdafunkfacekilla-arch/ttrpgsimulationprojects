@@ -1,0 +1,32 @@
+[
+  {
+    "Tool_Name": "The Shield",
+    "Attribute": "Endurance",
+    "Description": "Active protection and cover."
+  },
+  {
+    "Tool_Name": "Snares",
+    "Attribute": "Reflexes",
+    "Description": "Area control and escape tools."
+  },
+  {
+    "Tool_Name": "Tinctures",
+    "Attribute": "Vitality",
+    "Description": "Natural aids and herbal medicine."
+  },
+  {
+    "Tool_Name": "Catalysts",
+    "Attribute": "Knowledge",
+    "Description": " Charms , Folk Magic"
+  },
+  {
+    "Tool_Name": "Curios",
+    "Attribute": "Intuition",
+    "Description": "Gaming sets and luck tokens.Totems"
+  },
+  {
+    "Tool_Name": "Regalia",
+    "Attribute": "Willpower",
+    "Description": "Symbols of authority used to rally or signal."
+  }
+]

@@ -1,0 +1,14 @@
+{
+    "Name": "Draft-Beetle",
+    "Type": "Fauna",
+    "Diet": "Green-Coal, rotten fruit",
+    "Base_health": 10,
+    "Speed": 3,
+    "Strength": 6,
+    "Dexterity": 5,
+    "Size": "Pony or small car",
+    "Weight": 5000,
+    "Special_Ability": "Microscopic hooks for vertical movement",
+    "Special_Weakness": "Fears noise, can become immobile if scared",
+    "Industrial_Utility": "Transport, hauling, shield-making"
+}

@@ -1,0 +1,80 @@
+on:
+    workflow_dispatch:
+
+    push:
+        branches:
+            - "main"
+env:
+    PLUGIN_NAME: calendarium
+
+permissions:
+    contents: write
+    pull-requests: write
+
+name: Release
+
+jobs:
+    release:
+        runs-on: ubuntu-latest
+        outputs:
+            release_created: ${{ steps.release.outputs.release_created }}
+            upload_url: ${{ steps.release.outputs.upload_url }}
+            tag_name: ${{ steps.release.outputs.tag_name }}
+        steps:
+            - uses: googleapis/release-please-action@v4
+              id: release
+              with:
+                  config-file: release-please-config.json
+                  manifest-file: .release-please-manifest.json
+                  target-branch: main
+
+    build:
+        runs-on: ubuntu-latest
+        needs: release
+        if: ${{ needs.release.outputs.release_created }}
+        env:
+            upload_url: ${{ needs.release.outputs.upload_url }}
+            tag_name: ${{ needs.release.outputs.tag_name }}
+        steps:
+            - uses: actions/checkout@v4
+            - name: Use Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "latest"
+            - name: Build
+              id: build
+              run: |
+                  npm install
+                  npm run build --if-present
+                  mkdir ${{ env.PLUGIN_NAME }}
+                  cp main.js manifest.json styles.css ${{ env.PLUGIN_NAME }}
+                  zip -r ${{ env.PLUGIN_NAME }}.zip ${{ env.PLUGIN_NAME }}
+            - name: Upload Release Artifact
+              if: ${{ needs.release.outputs.release_created }}
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: |
+                  gh release upload ${{ needs.release.outputs.tag_name }} \
+                      './${{ env.PLUGIN_NAME }}.zip' \
+                      './main.js' \
+                      './styles.css' \
+                      './manifest.json'
+    notify:
+        runs-on: ubuntu-latest
+        needs: build
+        steps:
+            - name: Obsidian
+              uses: javalent/workflows/actions/discord-embed@main
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                  name: Calendarium
+                  webhook-urls: ${{ secrets.OBSIDIAN_WEBHOOK }}
+
+            - name: TTRPG
+              uses: javalent/workflows/actions/discord-embed@main
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                  name: Calendarium
+                  webhook-urls: ${{ secrets.TTRPG_WEBHOOK }}

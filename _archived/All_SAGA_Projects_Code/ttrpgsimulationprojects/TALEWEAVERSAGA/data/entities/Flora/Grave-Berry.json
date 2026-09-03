@@ -1,0 +1,40 @@
+{
+    "Name": "Grave-Berry",
+    "Scientific Name": "Solanum Manes",
+    "Grow Zone": "The Bone-Fields (Burial Mounds & Battlefields)",
+    "Biology": {
+        "Type": "Creeping, thorny vine",
+        "Requirements": "Rich in calcium and decaying organic matter",
+        "Appearance": "Small, pale white berries"
+    },
+    "Growth Cycle": {
+        "Cycle": "Bloom at night, rot instantly in direct sunlight",
+        "Harvest Method": "Rite of Asking"
+    },
+    "Mystical & Medical Utility": {
+        "Effects": [
+            {
+                "Dose": "Small",
+                "Description": "Psychoactive 'Memory-Enhancer', helps recall forgotten history"
+            },
+            {
+                "Dose": "Large",
+                "Description": "Allows drinker to experience memories of buried creature"
+            },
+            {
+                "Description": "Preservative, arrests decay in flesh"
+            },
+            {
+                "Description": "Powerful numbing agent, treats battlefield wounds"
+            }
+        ],
+        "Utilities": [
+            "Embalming Fluid",
+            "Pain-Killer"
+        ]
+    },
+    "Danger": {
+        "Risk": "Soul-Rot",
+        "Description": "Consuming too many causes 'Soul-Rot', leading to madness"
+    }
+}

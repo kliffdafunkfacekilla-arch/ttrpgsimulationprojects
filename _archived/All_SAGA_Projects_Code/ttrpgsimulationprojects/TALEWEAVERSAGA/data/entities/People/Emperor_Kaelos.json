@@ -1,0 +1,34 @@
+{
+    "Name": "Emperor Kaelos",
+    "Type": "People",
+    "Tags": [
+        "NPC",
+        "History",
+        "Avian Empire",
+        "Legend"
+    ],
+    "Attributes": {
+        "Intellect": 18,
+        "Perception": 12,
+        "Charisma": 15,
+        "Agility": 10,
+        "Strength": 8,
+        "Endurance": 12,
+        "Willpower": 18,
+        "Luck": 10
+    },
+    "Skills": {
+        "Persuasion": 14,
+        "Deception": 10,
+        "Intimidation": 12,
+        "Negotiation": 16,
+        "History": 18,
+        "Law": 16
+    },
+    "Equipment": {
+        "Lost Eye": {
+            "Type": "Artifact",
+            "Description": "The ultimate reminder: No one is above the Truth."
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "name": "Motus",
+    "type": "Magic and Religion",
+    "flux": {
+        "offense": {
+            "type": "Acid",
+            "damage": 5,
+            "range": 3,
+            "cooldown": 2,
+            "description": "Melts armor into slag or separates muscle from bone with caustic precision"
+        },
+        "defense": {
+            "type": "Phase",
+            "armor": 2,
+            "speed": 0.5,
+            "description": "Aligns atoms with empty space in solid matter, allowing attacks to phase harmlessly through or becomes fluid as water to roll with any impact"
+        },
+        "utility": {
+            "type": "Unlock",
+            "range": 1,
+            "cooldown": 1,
+            "description": "Unlocks any mechanical device by vibrating its tumblers, passes through solid walls, or separates mixed liquids into their base components"
+        }
+    }
+}

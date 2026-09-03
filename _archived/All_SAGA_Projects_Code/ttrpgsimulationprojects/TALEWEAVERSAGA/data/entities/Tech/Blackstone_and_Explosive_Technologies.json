@@ -1,0 +1,13 @@
+{
+    "tech_tier": 3,
+    "energy_cost": 5,
+    "initiative": 4,
+    "toughness": 2,
+    "maneuverability": 6,
+    "special_ability": "Dusted Ink",
+    "special_ability_desc": "Can paint sigils on the battlefield, using D-Dust to create single-use magical effects.",
+    "special_ability_energy_cost": 2,
+    "special_ability_cooldown": 3,
+    "special_ability_range": 10,
+    "special_ability_effect": "Deals 2 damage to all enemies within range."
+}

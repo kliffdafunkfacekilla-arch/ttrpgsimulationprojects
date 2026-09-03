@@ -1,0 +1,225 @@
+{
+    "Name": "Nightfang",
+    "Species": "Insect",
+    "Stats": {
+        "Might": 14,
+        "Endurance": 9,
+        "Finesse": 10,
+        "Reflexes": 10,
+        "Vitality": 11,
+        "Fortitude": 15,
+        "Knowledge": 10,
+        "Logic": 11,
+        "Awareness": 11,
+        "Intuition": 12,
+        "Charm": 9,
+        "Willpower": 10
+    },
+    "Traits": [
+        {
+            "Name": "Medium",
+            "Type": "SIZE 3",
+            "Effect": "Standard: No penalties. Can use standard gear.",
+            "BodyPart": "Balanced Frame"
+        },
+        {
+            "Name": "The Scorpion",
+            "Type": "ANCESTRY",
+            "Effect": "Includes: Pincers, Telson (Stinger Tail), 8 Legs, Exoskeleton.",
+            "BodyPart": "Scorpiones Anatomy"
+        },
+        {
+            "Name": "Ocelli",
+            "Type": "SENSES",
+            "Effect": "Passive: Twitch (Reaction. If a light source moves, gain +2 AC).",
+            "BodyPart": "Light Sensors"
+        },
+        {
+            "Name": "Digger",
+            "Type": "ARMS",
+            "Effect": "Active: Burrow (Create tunnel. Collapse it behind you).",
+            "BodyPart": "Spade Limbs"
+        },
+        {
+            "Name": "Anchor",
+            "Type": "LEGS",
+            "Effect": "Passive: Unshakeable (Immune to Knockback and Prone).",
+            "BodyPart": "Hooked Tarsi"
+        },
+        {
+            "Name": "Spined",
+            "Type": "BODY",
+            "Effect": "Passive: Barbed-Wire (Grapplers take 1d4 Slash dmg per turn).",
+            "BodyPart": "Thorax Spines"
+        },
+        {
+            "Name": "Hive",
+            "Type": "SPECIAL",
+            "Effect": "Active: Command (Allies within 30ft gain +2 To Hit).",
+            "BodyPart": "Pheromone Cloud"
+        },
+        {
+            "Name": "The Mask",
+            "Type": "Social Defense",
+            "Effect": "Skill Mastery"
+        },
+        {
+            "Name": "Scouting",
+            "Type": "Utility",
+            "Effect": "Skill Mastery"
+        },
+        {
+            "Name": "Curios",
+            "Type": "Tool",
+            "Effect": "Skill Mastery"
+        },
+        {
+            "Name": "Small",
+            "Type": "Weapon Skill",
+            "Effect": "Skill Mastery"
+        },
+        {
+            "Name": "Heavy",
+            "Type": "Armor Skill",
+            "Effect": "Skill Mastery"
+        },
+        {
+            "Name": "Thrown",
+            "Type": "Weapon Skill",
+            "Effect": "Skill Mastery"
+        }
+    ],
+    "Powers": [
+        {
+            "School": "Lex",
+            "Attribute": "Willpower",
+            "Tier": "1",
+            "Type": "Offense",
+            "Name": "Halt",
+            "Damage_Type": "Psychic",
+            "Description": "Stop movement."
+        },
+        {
+            "School": "Ordo",
+            "Attribute": "Endurance",
+            "Tier": "1",
+            "Type": "Defense",
+            "Name": "Stand",
+            "Damage_Type": "Cold",
+            "Description": "Stand up from Prone instantly."
+        }
+    ],
+    "Inventory": [],
+    "Gear": {},
+    "Backstory": "The Dodge. Changing the subject, feigning ignorance, or hiding your true emotion. \"I haven't the faintest idea what you mean.\"\n\nTracking spotting danger. Lore: Forensics and investigation.\n\nMastery of gaming sets dice tarot and tokens of luck/fate.\n\nPrecision. Hand-eye coordination and dexterity.\n\nBulwark. You are the anvil. You absorb the blow.\n\nDual-Utility. Flick of the wrist and balance.",
+    "Portrait": "Hero_013_front.png",
+    "sprite": "squirrel_right.png",
+    "Skills": [
+        "Fist Weapons",
+        "Exotic Ranged",
+        "Insight",
+        "Stoicism",
+        "Heavy",
+        "Mechanism",
+        "Catalysts",
+        "Signal"
+    ],
+    "current_hp": 41,
+    "equipment": {
+        "Armor": "Gilded Mail",
+        "Main Hand": "Bola",
+        "Off Hand": "Throwing Knife"
+    },
+    "inventory": [
+        "Cestus",
+        "Ceramic Plate"
+    ],
+    "level": 1,
+    "max_hp": 33,
+    "name": "Blaze",
+    "powers": [
+        {
+            "active": true,
+            "name": "Burn",
+            "type": "Power"
+        },
+        {
+            "active": true,
+            "name": "Chill",
+            "type": "Power"
+        }
+    ],
+    "skills": [
+        {
+            "active": false,
+            "name": "Fist Weapons",
+            "type": "Skill"
+        },
+        {
+            "active": false,
+            "name": "Exotic Ranged",
+            "type": "Skill"
+        },
+        {
+            "active": false,
+            "name": "Insight",
+            "type": "Skill"
+        },
+        {
+            "active": false,
+            "name": "Stoicism",
+            "type": "Skill"
+        },
+        {
+            "active": false,
+            "name": "Heavy",
+            "type": "Skill"
+        },
+        {
+            "active": false,
+            "name": "Mechanism",
+            "type": "Skill"
+        },
+        {
+            "active": false,
+            "name": "Catalysts",
+            "type": "Skill"
+        },
+        {
+            "active": false,
+            "name": "Signal",
+            "type": "Skill"
+        }
+    ],
+    "species": "Plant",
+    "stats": {
+        "Awareness": 11,
+        "Charm": 12,
+        "Endurance": 11,
+        "Finesse": 10,
+        "Fortitude": 13,
+        "Intuition": 11,
+        "Knowledge": 8,
+        "Logic": 10,
+        "Might": 11,
+        "Reflexes": 9,
+        "Vitality": 13,
+        "Willpower": 13
+    },
+    "traits": [
+        "Tendril Fingers",
+        "Thorns",
+        "Cactus Spines",
+        "Whistling Branches",
+        "Long Stem",
+        "Stalk Hairs"
+    ],
+    "AI": "Ranged",
+    "cmp": 44,
+    "fp": 31,
+    "max_cmp": 44,
+    "max_fp": 31,
+    "max_sp": 34,
+    "sp": 34,
+    "Sprite": "Hero_013_front.png"
+}

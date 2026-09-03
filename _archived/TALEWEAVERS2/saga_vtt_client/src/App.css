@@ -1,0 +1,6 @@
+/* App-level component styles — intentionally minimal since Tailwind handles most styling */
+
+/* Canvas container for Pixi.js */
+canvas {
+  display: block;
+}

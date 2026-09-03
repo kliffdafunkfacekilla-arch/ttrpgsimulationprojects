@@ -1,0 +1,23 @@
+{
+    "Attribute": [
+        "Mass",
+        "Might",
+        "Dragon/Osmium",
+        "NPC"
+    ],
+    "Stats": {
+        "Strength": 10,
+        "Agility": 6,
+        "Endurance": 12,
+        "Intelligence": 4,
+        "Wits": 3
+    },
+    "Abilities": {
+        "School": "Mass",
+        "Element": "Osmium"
+    },
+    "Forms": {
+        "Dragon Form": "The World-Weight"
+    },
+    "Title": "The Living Siege"
+}

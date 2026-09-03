@@ -1,0 +1,42 @@
+{
+    "name": "Storm-Lancers",
+    "type": "Faction/Organization",
+    "description": "Anti-Airship Cavalry and Stealth Bombers",
+    "recruitment": {
+        "mission": "The Nest-Heist",
+        "method": "No nets. No violence. Use Beetle-Bait and Throat-Clicking (mimicry) to coax the frightened animal.",
+        "bond": "The Shedding"
+    },
+    "gear": {
+        "saddle": "Carved from light pumice stone and lined with leather. Provides a stable platform for the heavy Scute physique.",
+        "grounding_chain": "A heavy copper chain drags from the saddle to ground any residual static charge when landing."
+    },
+    "weaponry": {
+        "ram": "The Ray uses its bone crest to smash through the wooden hulls of enemy airships.",
+        "stinger-whip": "The rider guides the Ray to 'tail-whip' enemy engines, discharging a massive chaos-shock that disables Aether-Tech.",
+        "ray-daggers": "Warriors carry harvested stingers in stone sheaths as single-use biological grenades."
+    },
+    "status_symbol": "A Scute General riding a War-Ray is the ultimate projection of power. It says, 'I conquered the sky with my bare hands.'",
+    "catch": "The First Flight Intercept",
+    "biology": {
+        "reptile_connection": "The Scute (Lizards/Crocodiles) and the Rays share a distant evolutionary ancestor.",
+        "communication_interface": "The Rays use their chameleon skin [User Input] to signal emotion. The Scute, being observant reptiles, can read these subtle color shifts instinctively."
+    },
+    "stinger": {
+        "biology": "The Ray absorbs ambient Chaos radiation. Its liver processes this radiation, transmuting the entropy into a volatile biological fluid stored in the tail sac.",
+        "mechanism": {
+            "on_the_beast": "When the Ray stings, it injects the fluid. The fluid reacts violently with the target's blood or engine fuel, causing rapid necrosis or combustion.",
+            "trophy": "A harvested stinger is effectively a sealed glass dagger filled with acid."
+        }
+    },
+    "cultural_integration": {
+        "gear": {
+            "saddle": "The saddles are carved from light, pumice-like stone and lined with leather, grounding the rider and providing a stable platform for the heavy Scute physique."
+        }
+    },
+    "phase_1": {
+        "lure": "The Scute climber spends days on the peak. They don't hide; they project 'calm dominance.'",
+        "bait": "They use crushed Gem-Shell Beetles (the Ray's favorite snack) or vibrate the rock to mimic a beetle swarm.",
+        "vocalization": "They utilize a 'Throat-Rattle'\u2014a sound that mimics a Ray's mating or nesting hum to lower its guard."
+    }
+}

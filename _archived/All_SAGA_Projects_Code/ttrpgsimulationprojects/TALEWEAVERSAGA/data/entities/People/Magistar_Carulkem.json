@@ -1,0 +1,24 @@
+{
+    "EntityName": "Magistar Carulkem",
+    "School": "Nexus (Fortitude)",
+    "Element": "Tungsten",
+    "OriginalTitle": "The Shield",
+    "DragonForm": "The Furnace Eternal",
+    "PreCorruptionName": "Vahn",
+    "Attributes": {
+        "CorruptionResistance": 100,
+        "ThermalManipulation": 80,
+        "PropagandaSkill": 90,
+        "Fortitude": 120,
+        "Endurance": 110,
+        " RageThreshold": 50,
+        "ElementalCatastrophe": 100
+    },
+    "Abilities": [
+        {
+            "name": "Elemental Catastrophe",
+            "effect": "Turns the area around the entity into an oven",
+            "cost": 100
+        }
+    ]
+}

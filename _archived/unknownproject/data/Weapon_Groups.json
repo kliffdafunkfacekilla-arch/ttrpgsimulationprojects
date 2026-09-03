@@ -1,0 +1,98 @@
+[
+  {
+    "Family Name": "Large Weapons",
+    "Type": "Melee",
+    "The Stat": "MIGHT",
+    "Examples": "Greatsword, Maul",
+    "Trait": "Impact",
+    "Why this Stat?": "Raw muscle to swing heavy metal."
+  },
+  {
+    "Family Name": "The Ballistics",
+    "Type": "Ranged",
+    "The Stat": "MIGHT",
+    "Examples": " Warbow, Arbalist",
+    "Trait": "Power Shot",
+    "Why this Stat?": " weight requires strength."
+  },
+  {
+    "Family Name": "Small Weapons",
+    "Type": "Melee",
+    "The Stat": "FINESSE",
+    "Examples": "Rapier, Shiv",
+    "Trait": "Precision",
+    "Why this Stat?": "Hand-eye coordination and dexterity."
+  },
+  {
+    "Family Name": "The Thrown",
+    "Type": "Ranged",
+    "The Stat": "FINESSE",
+    "Examples": "Throwing Axe, Kunai",
+    "Trait": "Dual-Utility",
+    "Why this Stat?": "Flick of the wrist and balance."
+  },
+  {
+    "Family Name": "Fist Weapons",
+    "Type": "Melee",
+    "The Stat": "FORTITUDE",
+    "Examples": "Cestus, Claws",
+    "Trait": "Clinch",
+    "Why this Stat?": "Using your body\u2019s hardness as a weapon."
+  },
+  {
+    "Family Name": "The Simple Shot",
+    "Type": "Ranged",
+    "The Stat": "FORTITUDE",
+    "Examples": "Shortbow, Sling",
+    "Trait": "Mobile Fire",
+    "Why this Stat?": "Cardio. Running and gunning without shaking."
+  },
+  {
+    "Family Name": "Medium Weapons",
+    "Type": "Melee",
+    "The Stat": "LOGIC",
+    "Examples": "Katana, Arming Sword",
+    "Trait": "Parry",
+    "Why this Stat?": "Technical fighting. Analyzing the duel."
+  },
+  {
+    "Family Name": "The Blast",
+    "Type": "Ranged",
+    "The Stat": "LOGIC",
+    "Examples": "Grenade, Scattergun",
+    "Trait": "Splash",
+    "Why this Stat?": " Calculating arc, fuse time, and chemical mix."
+  },
+  {
+    "Family Name": "Reach Weapons",
+    "Type": "Melee",
+    "The Stat": "AWARENESS",
+    "Examples": "Spear, Halberd",
+    "Trait": "Reach",
+    "Why this Stat?": "Spatial awareness. Keeping the enemy at exact range."
+  },
+  {
+    "Family Name": "The Long Shot",
+    "Type": "Ranged",
+    "The Stat": "AWARENESS",
+    "Examples": "Crossbow, Flintlock",
+    "Trait": "Pierce",
+    "Why this Stat?": "Aim. Lining up the sights. The Sniper."
+  },
+  {
+    "Family Name": "Exotic Weapons",
+    "Type": "Melee",
+    "The Stat": "CHARM",
+    "Examples": "Whip, Nunchaku",
+    "Trait": "Wrap",
+    "Why this Stat?": "Performance. Flow. Distracting the enemy."
+  },
+  {
+    "Family Name": "Ranged Exotics",
+    "Type": "Ranged",
+    "The Stat": "CHARM",
+    "Examples": "Bolas, Blowgun",
+    "Trait": "Debilitate",
+    "Why this Stat?": "Tricky, annoying, and stylish tools."
+  }
+]
