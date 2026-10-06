@@ -1,0 +1,7 @@
+numpy
+scipy
+pygame
+shapely
+networkx
+mesa==2.3.0
+pillow
