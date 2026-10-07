@@ -1,0 +1,36 @@
+{
+  "campaign_name": "The Wastes of Aloa",
+  "version": "1.0",
+  "acts": [
+    {
+      "act_id": "act_1",
+      "title": "Awakening in the Dust",
+      "nodes": [
+        {
+          "node_id": "intro_01",
+          "title": "Survive the Drift",
+          "description": "You have awakened in the hostile desert of Aloa. Gather resources and find shelter before nightfall.",
+          "is_major_plot_point": true,
+          "dynamic_slots": 2,
+          "next_nodes": ["town_01"]
+        },
+        {
+          "node_id": "town_01",
+          "title": "The Rusty Boar",
+          "description": "You reached a makeshift settlement. A local merchant claims raiders are planning an attack.",
+          "is_major_plot_point": true,
+          "dynamic_slots": 3,
+          "next_nodes": ["boss_01"]
+        },
+        {
+          "node_id": "boss_01",
+          "title": "Raider Ambush",
+          "description": "The raider leader, Krell, has found you. Defeat him to secure the settlement.",
+          "is_major_plot_point": true,
+          "dynamic_slots": 0,
+          "next_nodes": []
+        }
+      ]
+    }
+  ]
+}

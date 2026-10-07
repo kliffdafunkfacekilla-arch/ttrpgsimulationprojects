@@ -1,29 +1,15 @@
-# Node
 node_modules/
-dist/
-build/
-.env
-
-# Python
 __pycache__/
-*.py[cod]
-*$py.class
 .venv/
 venv/
-ENV/
-env/
+*.pyc
+*.pyo
+target/
+coverage/
+*.db
 .env
-.pytest_cache/
-*.egg-info/
-dist/
-build/
-
-# OS
-.DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
+*.zip
+client_vtt/public/assets/
+client_vtt/tokens/
+client_vtt/terrain/
+backend/world_sim/omnis-generator/backups/
